@@ -1,0 +1,621 @@
+@font-face {
+  font-family: "OpenSans-SemiBold";
+  src: url("../fonts/OpenSans-SemiBold.eot");
+  src: url("../fonts/OpenSans-SemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-SemiBold.woff2") format("woff2"), url("../fonts/OpenSans-SemiBold.woff") format("woff"), url("../fonts/OpenSans-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../fonts/OpenSans-Bold.eot");
+  src: url("../fonts/OpenSans-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Bold.woff2") format("woff2"), url("../fonts/OpenSans-Bold.woff") format("woff"), url("../fonts/OpenSans-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url("../fonts/Roboto-Regular.eot");
+  src: url("../fonts/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto-Regular.woff2") format("woff2"), url("../fonts/Roboto-Regular.woff") format("woff"), url("../fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+@media screen and (max-width: 400px) {
+  .col-xxs-12 {
+    width: 100%; }
+
+  .col-xxs-6 {
+    width: 50%; }
+
+  .col-xxs-4 {
+    width: 33.33%; }
+
+  .col-xxs-3 {
+    width: 25%; }
+
+  .col-xxs-2 {
+    width: 16.67%; } }
+body {
+  margin: 0;
+  font-family: Calibri, sans-serif;
+  color: #1d1d1d; }
+  body.overflow-hidden {
+    overflow: hidden; }
+
+.fs-0 {
+  font-size: 0px !important; }
+
+.fs-1 {
+  font-size: 1px !important; }
+
+.fs-2 {
+  font-size: 2px !important; }
+
+.fs-3 {
+  font-size: 3px !important; }
+
+.fs-4 {
+  font-size: 4px !important; }
+
+.fs-5 {
+  font-size: 5px !important; }
+
+.fs-6 {
+  font-size: 6px !important; }
+
+.fs-7 {
+  font-size: 7px !important; }
+
+.fs-8 {
+  font-size: 8px !important; }
+
+.fs-9 {
+  font-size: 9px !important; }
+
+.fs-10 {
+  font-size: 10px !important; }
+
+.fs-11 {
+  font-size: 11px !important; }
+
+.fs-12 {
+  font-size: 12px !important; }
+
+.fs-13 {
+  font-size: 13px !important; }
+
+.fs-14 {
+  font-size: 14px !important; }
+
+.fs-15 {
+  font-size: 15px !important; }
+
+.fs-16 {
+  font-size: 16px !important; }
+
+.fs-17 {
+  font-size: 17px !important; }
+
+.fs-18 {
+  font-size: 18px !important; }
+
+.fs-19 {
+  font-size: 19px !important; }
+
+.fs-20 {
+  font-size: 20px !important; }
+
+.fs-21 {
+  font-size: 21px !important; }
+
+.fs-22 {
+  font-size: 22px !important; }
+
+.fs-23 {
+  font-size: 23px !important; }
+
+.fs-24 {
+  font-size: 24px !important; }
+
+.fs-25 {
+  font-size: 25px !important; }
+
+.fs-26 {
+  font-size: 26px !important; }
+
+.fs-27 {
+  font-size: 27px !important; }
+
+.fs-28 {
+  font-size: 28px !important; }
+
+.fs-29 {
+  font-size: 29px !important; }
+
+.fs-30 {
+  font-size: 30px !important; }
+
+.fs-31 {
+  font-size: 31px !important; }
+
+.fs-32 {
+  font-size: 32px !important; }
+
+.fs-33 {
+  font-size: 33px !important; }
+
+.fs-34 {
+  font-size: 34px !important; }
+
+.fs-35 {
+  font-size: 35px !important; }
+
+.fs-36 {
+  font-size: 36px !important; }
+
+.fs-37 {
+  font-size: 37px !important; }
+
+.fs-38 {
+  font-size: 38px !important; }
+
+.fs-39 {
+  font-size: 39px !important; }
+
+.fs-40 {
+  font-size: 40px !important; }
+
+.fs-41 {
+  font-size: 41px !important; }
+
+.fs-42 {
+  font-size: 42px !important; }
+
+.fs-43 {
+  font-size: 43px !important; }
+
+.fs-44 {
+  font-size: 44px !important; }
+
+.fs-45 {
+  font-size: 45px !important; }
+
+.fs-46 {
+  font-size: 46px !important; }
+
+.fs-47 {
+  font-size: 47px !important; }
+
+.fs-48 {
+  font-size: 48px !important; }
+
+.fs-49 {
+  font-size: 49px !important; }
+
+.fs-50 {
+  font-size: 50px !important; }
+
+.fs-51 {
+  font-size: 51px !important; }
+
+.fs-52 {
+  font-size: 52px !important; }
+
+.fs-53 {
+  font-size: 53px !important; }
+
+.fs-54 {
+  font-size: 54px !important; }
+
+.fs-55 {
+  font-size: 55px !important; }
+
+.fs-56 {
+  font-size: 56px !important; }
+
+.fs-57 {
+  font-size: 57px !important; }
+
+.fs-58 {
+  font-size: 58px !important; }
+
+.fs-59 {
+  font-size: 59px !important; }
+
+.fs-60 {
+  font-size: 60px !important; }
+
+.fs-61 {
+  font-size: 61px !important; }
+
+.fs-62 {
+  font-size: 62px !important; }
+
+.fs-63 {
+  font-size: 63px !important; }
+
+.fs-64 {
+  font-size: 64px !important; }
+
+.fs-65 {
+  font-size: 65px !important; }
+
+.fs-66 {
+  font-size: 66px !important; }
+
+.fs-67 {
+  font-size: 67px !important; }
+
+.fs-68 {
+  font-size: 68px !important; }
+
+.fs-69 {
+  font-size: 69px !important; }
+
+.fs-70 {
+  font-size: 70px !important; }
+
+.fs-71 {
+  font-size: 71px !important; }
+
+.fs-72 {
+  font-size: 72px !important; }
+
+.fs-73 {
+  font-size: 73px !important; }
+
+.fs-74 {
+  font-size: 74px !important; }
+
+.fs-75 {
+  font-size: 75px !important; }
+
+.fs-76 {
+  font-size: 76px !important; }
+
+.fs-77 {
+  font-size: 77px !important; }
+
+.fs-78 {
+  font-size: 78px !important; }
+
+.fs-79 {
+  font-size: 79px !important; }
+
+.fs-80 {
+  font-size: 80px !important; }
+
+* {
+  outline: none;
+  box-sizing: border-box; }
+
+:focus {
+  outline: transparent none; }
+
+.bold {
+  font-weight: bold; }
+
+.no-gutter {
+  padding: 0; }
+
+.inline-block {
+  display: inline-block;
+  float: none;
+  vertical-align: middle; }
+
+.inline-block-important {
+  display: inline-block !important;
+  float: none;
+  vertical-align: middle; }
+
+.inline-block-top {
+  display: inline-block;
+  float: none;
+  vertical-align: top; }
+
+.inline-block-bottom {
+  display: inline-block;
+  float: none;
+  vertical-align: bottom; }
+
+.nowrap {
+  white-space: nowrap; }
+
+.list-inline {
+  margin-left: 0 !important; }
+
+ul, li, h1, h2, h3, h4, h5, h6, p {
+  padding: 0;
+  margin: 0; }
+
+li {
+  list-style: none; }
+
+a {
+  color: #4a4a4a; }
+  a:hover, a:active, a:visited, a:focus {
+    text-decoration: none; }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+.white-black-btn {
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  padding: 6px 15px;
+  font-weight: bold;
+  border: 2px solid black;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .white-black-btn:hover {
+    color: black;
+    background-color: white; }
+
+.white-blue-btn {
+  background-color: #679dca;
+  color: white;
+  font-size: 16px;
+  padding: 6px 15px;
+  font-weight: bold;
+  border: 2px solid white;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .white-blue-btn:hover {
+    color: #679dca;
+    background-color: white; }
+
+.white-blue-rounded-btn {
+  background-color: #679dca;
+  color: white;
+  font-size: 16px;
+  padding: 8px 24px;
+  font-weight: bold;
+  border: 2px solid white;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .white-blue-rounded-btn:hover {
+    color: #679dca;
+    background-color: white;
+    border: 2px solid #679dca; }
+
+svg.svg-with-lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; }
+  svg.svg-with-lines line {
+    stroke-width: 2; }
+
+.custom-dot {
+  display: inline-block;
+  height: 100%; }
+
+.section-title {
+  color: #333333;
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase; }
+
+.homepage-container .intro {
+  padding-top: 30px;
+  position: relative; }
+  .homepage-container .intro .bg-wrapper {
+    background-image: url("/assets/images/dentacoin-symbol-background.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%; }
+    .homepage-container .intro .bg-wrapper .btn-container {
+      text-align: right; }
+      .homepage-container .intro .bg-wrapper .btn-container .btn-and-line {
+        text-align: center;
+        min-width: 90px; }
+        .homepage-container .intro .bg-wrapper .btn-container .btn-and-line a {
+          display: block; }
+    .homepage-container .intro .bg-wrapper .second-dot-parent {
+      text-align: right;
+      bottom: 0;
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%); }
+      .homepage-container .intro .bg-wrapper .second-dot-parent .wrapper {
+        text-align: center;
+        min-width: 90px;
+        display: inline-block; }
+    .homepage-container .intro .bg-wrapper .content-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }
+      .homepage-container .intro .bg-wrapper .content-wrapper .title {
+        font-size: 70px;
+        font-weight: bold;
+        line-height: 70px; }
+      .homepage-container .intro .bg-wrapper .content-wrapper .subtitle {
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 25px; }
+      .homepage-container .intro .bg-wrapper .content-wrapper .description {
+        font-size: 16px;
+        padding-top: 20px;
+        line-height: 18px; }
+        .homepage-container .intro .bg-wrapper .content-wrapper .description.italic {
+          font-size: 18px;
+          font-style: italic; }
+    .homepage-container .intro .bg-wrapper .video {
+      padding-top: 20px; }
+.homepage-container .dentacoin-ecosystem {
+  background-image: url("/assets/images/dentacoin-ecosystem-background.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; }
+  .homepage-container .dentacoin-ecosystem .btn-container {
+    text-align: right;
+    padding-top: 30px; }
+    .homepage-container .dentacoin-ecosystem .btn-container .btn-and-line {
+      text-align: center;
+      min-width: 90px; }
+      .homepage-container .dentacoin-ecosystem .btn-container .btn-and-line a {
+        display: block; }
+  .homepage-container .dentacoin-ecosystem .rotated-text {
+    color: white;
+    font-weight: bold;
+    font-size: 35px;
+    left: -80px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); }
+    .homepage-container .dentacoin-ecosystem .rotated-text span {
+      display: block;
+      -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      transform: rotate(-90deg); }
+  .homepage-container .dentacoin-ecosystem .list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    .homepage-container .dentacoin-ecosystem .list figure {
+      padding-bottom: 25px;
+      text-align: center; }
+      .homepage-container .dentacoin-ecosystem .list figure figcaption {
+        color: white;
+        font-size: 18px;
+        padding-top: 15px; }
+.homepage-container .successful-practices .dots {
+  height: 80px; }
+  .homepage-container .successful-practices .dots .first-dot-wrapper {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    width: 90px;
+    text-align: center;
+    font-size: 0; }
+    .homepage-container .successful-practices .dots .first-dot-wrapper .inline-block {
+      font-size: 14px; }
+  .homepage-container .successful-practices .dots .second-dot-wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    width: 90px;
+    text-align: center;
+    font-size: 0; }
+    .homepage-container .successful-practices .dots .second-dot-wrapper .inline-block {
+      font-size: 14px; }
+  .homepage-container .successful-practices .dots .third-dot {
+    position: absolute;
+    bottom: 0;
+    left: 15px; }
+  .homepage-container .successful-practices .dots .logo-over-line {
+    position: absolute;
+    padding: 0 20px;
+    background: white;
+    top: 80px;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    -webkit-transform: translate(-50%, -100%);
+    -ms-transform: translate(-50%, -100%); }
+.homepage-container .successful-practices .section-title {
+  padding-top: 30px;
+  padding-bottom: 70px; }
+.homepage-container .successful-practices .content figure {
+  padding-right: 0; }
+  .homepage-container .successful-practices .content figure .fourth-dot {
+    position: absolute;
+    bottom: 0;
+    left: 15px; }
+  .homepage-container .successful-practices .content figure .fifth-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0; }
+  .homepage-container .successful-practices .content figure img {
+    visibility: hidden; }
+    .homepage-container .successful-practices .content figure img.active {
+      visibility: visible; }
+.homepage-container .successful-practices .content .title {
+  font-size: 35px;
+  font-weight: bold;
+  line-height: 34px;
+  padding-bottom: 15px; }
+.homepage-container .successful-practices .content .description {
+  font-size: 16px;
+  line-height: 18px; }
+.homepage-container .successful-practices .content .btn-container {
+  padding-top: 30px; }
+  .homepage-container .successful-practices .content .btn-container .white-blue-rounded-btn {
+    font-size: 18px; }
+.homepage-container .below-successful-practices .cells {
+  font-size: 0;
+  text-align: center; }
+  .homepage-container .below-successful-practices .cells .cell {
+    width: 40%;
+    padding-top: 25px;
+    text-align: left; }
+    .homepage-container .below-successful-practices .cells .cell .title {
+      font-size: 34px;
+      font-weight: bold;
+      color: #333333; }
+    .homepage-container .below-successful-practices .cells .cell .description {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333333;
+      line-height: 16px; }
+.homepage-container .below-successful-practices .description-over-line {
+  text-align: center;
+  padding-top: 100px; }
+  .homepage-container .below-successful-practices .description-over-line .wrapper {
+    position: relative; }
+    .homepage-container .below-successful-practices .description-over-line .wrapper .first-dot {
+      left: -15px;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    .homepage-container .below-successful-practices .description-over-line .wrapper .second-dot {
+      right: 0;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    .homepage-container .below-successful-practices .description-over-line .wrapper .description {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333333;
+      padding: 0 5px;
+      background: white; }
+      .homepage-container .below-successful-practices .description-over-line .wrapper .description span {
+        font-size: 34px;
+        font-weight: bold;
+        color: #333333;
+        vertical-align: middle;
+        padding: 0 5px; }
+
+/*# sourceMappingURL=style.css.map */

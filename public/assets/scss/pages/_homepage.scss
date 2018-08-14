@@ -1,0 +1,233 @@
+.homepage-container {
+    .intro {
+        padding-top: 30px;
+        position: relative;
+        .bg-wrapper {
+            background-image: url('/assets/images/dentacoin-symbol-background.png');
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 100%;
+            .btn-container {
+                text-align: right;
+                .btn-and-line {
+                    text-align: center;
+                    min-width: 90px;
+                    a {
+                        display: block;
+                    }
+                }
+            }
+            .second-dot-parent {
+                text-align: right;
+                bottom: 0;
+                @include horizontal-align(absolute);
+                .wrapper {
+                    text-align: center;
+                    min-width: 90px;
+                    display: inline-block;
+                }
+            }
+            .content-wrapper {
+                @include vertical-horizontal-align(absolute);
+                .title {
+                    font-size: 70px;
+                    font-weight: bold;
+                    line-height: 70px;
+                }
+                .subtitle {
+                    font-size: 30px;
+                    font-weight: bold;
+                    line-height: 25px;
+                }
+                .description {
+                    font-size: 16px;
+                    padding-top: 20px;
+                    line-height: 18px;
+                    &.italic {
+                        font-size: 18px;
+                        font-style: italic;
+                    }
+                }
+            }
+            .video {
+                padding-top: 20px;
+            }
+        }
+    }
+    .dentacoin-ecosystem {
+        background-image: url('/assets/images/dentacoin-ecosystem-background.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        .btn-container {
+            text-align: right;
+            padding-top: 30px;
+            .btn-and-line {
+                text-align: center;
+                min-width: 90px;
+                a {
+                    display: block;
+                }
+            }
+        }
+        .rotated-text {
+            color: white;
+            font-weight: bold;
+            font-size: 35px;
+            left: -80px;
+            @include vertical-align(absolute);
+            span {
+                display: block;
+                @include rotate(-90deg);
+            }
+        }
+        .list {
+            @include vertical-horizontal-align(absolute);
+            figure {
+                padding-bottom: 25px;
+                text-align: center;
+                figcaption {
+                    color: white;
+                    font-size: 18px;
+                    padding-top: 15px;
+                }
+            }
+        }
+    }
+    .successful-practices {
+        .dots {
+            height: 80px;
+            .first-dot-wrapper {
+                position: absolute;
+                top: 0;
+                right: 15px;
+                width: 90px;
+                text-align: center;
+                font-size: 0;
+                .inline-block {
+                    font-size: 14px;
+                }
+            }
+            .second-dot-wrapper {
+                position: absolute;
+                bottom: 0;
+                right: 15px;
+                width: 90px;
+                text-align: center;
+                font-size: 0;
+                .inline-block {
+                    font-size: 14px;
+                }
+            }
+            .third-dot {
+                position: absolute;
+                bottom: 0;
+                left: 15px;
+            }
+            .logo-over-line {
+                position: absolute;
+                padding: 0 20px;
+                background: white;
+                top: 80px;
+                left: 50%;
+                transform: translate(-50%, -100%);
+                -webkit-transform: translate(-50%, -100%);
+                -ms-transform: translate(-50%, -100%);
+            }
+        }
+        .section-title {
+            padding-top: 30px;
+            padding-bottom: 70px;
+        }
+        .content {
+            figure {
+                padding-right: 0;
+                .fourth-dot {
+                    position: absolute;
+                    bottom: 0;
+                    left: 15px;
+                }
+                .fifth-dot {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                }
+                img {
+                    visibility: hidden;
+                    &.active {
+                        visibility: visible;
+                    }
+                }
+            }
+            .title {
+                font-size: 35px;
+                font-weight: bold;
+                line-height: 34px;
+                padding-bottom: 15px;
+            }
+            .description {
+                font-size: 16px;
+                line-height: 18px;
+            }
+            .btn-container {
+                padding-top: 30px;
+                .white-blue-rounded-btn {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    .below-successful-practices {
+        .cells {
+            font-size: 0;
+            text-align: center;
+            .cell {
+                width: 40%;
+                padding-top: 25px;
+                text-align: left;
+                .title {
+                    font-size: 34px;
+                    font-weight: bold;
+                    color: $dark_gray;
+                }
+                .description {
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: $dark_gray;
+                    line-height: 16px;
+                }
+            }
+        }
+        .description-over-line {
+            text-align: center;
+            padding-top: 100px;
+            .wrapper {
+                position: relative;
+                .first-dot {
+                    left: -15px;
+                    @include vertical-align(absolute);
+                }
+                .second-dot {
+                    right: 0;
+                    @include vertical-align(absolute);
+                }
+                .description {
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: $dark_gray;
+                    padding: 0 5px;
+                    background: white;
+                    span {
+                        font-size: 34px;
+                        font-weight: bold;
+                        color: $dark_gray;
+                        vertical-align: middle;
+                        padding: 0 5px;
+                    }
+                }
+            }
+        }
+    }
+}

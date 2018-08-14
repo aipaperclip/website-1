@@ -1,0 +1,144 @@
+body{
+    margin: 0;
+    font-family: Calibri, sans-serif;
+    color: $main_color;
+    &.overflow-hidden {
+        overflow: hidden;
+    }
+}
+
+@for $i from 0 through 80 {
+    .fs-#{$i} {
+        font-size: 0px + $i!important;
+    }
+}
+
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+
+:focus {
+    outline: transparent none;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.no-gutter{
+    padding: 0;
+}
+
+.inline-block {
+    display: inline-block; float: none; vertical-align: middle;
+}
+
+.inline-block-important{
+    display: inline-block !important; float: none; vertical-align: middle;
+}
+
+.inline-block-top {
+    display: inline-block; float: none; vertical-align: top;
+}
+
+.inline-block-bottom {
+    display: inline-block; float: none; vertical-align: bottom;
+}
+
+.nowrap{
+    white-space: nowrap;
+}
+
+.list-inline{
+    margin-left: 0 !important;
+}
+
+ul, li, h1, h2, h3, h4, h5, h6, p {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #4a4a4a;
+    &:hover, &:active, &:visited, &:focus {
+        text-decoration:none;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.white-black-btn {
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    padding: 6px 15px;
+    font-weight: bold;
+    border: 2px solid black;
+    @include rounded(4px);
+    @include simple_transition(.3s);
+    &:hover {
+        color: black;
+        background-color: white;
+    }
+}
+
+.white-blue-btn {
+    background-color: $light_blue;
+    color: white;
+    font-size: 16px;
+    padding: 6px 15px;
+    font-weight: bold;
+    border: 2px solid white;
+    @include simple_transition(.3s);
+    &:hover {
+        color: $light_blue;
+        background-color: white;
+    }
+}
+
+.white-blue-rounded-btn {
+    background-color: $light_blue;
+    color: white;
+    font-size: 16px;
+    padding: 8px 24px;
+    font-weight: bold;
+    border: 2px solid white;
+    @include rounded(4px);
+    @include simple_transition(.3s);
+    &:hover {
+        color: $light_blue;
+        background-color: white;
+        border: 2px solid $light_blue;
+    }
+}
+
+svg.svg-with-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    line {
+        stroke-width: 2;
+    }
+}
+
+.custom-dot {
+    display: inline-block;
+    height: 100%;
+}
+
+.section-title {
+    color: $dark_gray;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
