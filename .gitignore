@@ -4,6 +4,8 @@
 /storage/*.key
 /vendor
 /.idea
+/routes/admin.php
+/app/Http/Controllers/Admin
 /.vagrant
 /.env
 Homestead.json
