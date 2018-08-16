@@ -4,11 +4,13 @@
 /storage/*.key
 /vendor
 /.idea
-/routes/admin.php
-/app/Http/Controllers/Admin
 /.vagrant
 /.env
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+/routes/admin.php
+/app/Http/Controllers/Admin
+/database
