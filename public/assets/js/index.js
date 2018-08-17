@@ -6,6 +6,7 @@ if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elain
 $(document).ready(function() {
     $(this).scrollTop(0);
 
+    //HOMEPAGE
     if($('.homepage-container').length > 0) {
         $('.fullpage-section').outerHeight($(window).height());
     }
@@ -16,7 +17,7 @@ $(document).ready(function() {
 });
 
 jQuery(window).on("load", function()   {
-
+    checkInWhichSectionWeAre();
 });
 
 jQuery(window).on('resize', function(){
@@ -26,15 +27,25 @@ jQuery(window).on('resize', function(){
 jQuery(window).on('scroll', function(){
     checkIfLineIsReadyToBeCreated('second', 'vertical', ['third', 'fourth'], ['horizontal', 'vertical'], 'load-successful-practices-gif');
     checkIfLineIsReadyToBeCreated('fifth', 'vertical', ['sixth'], ['horizontal']);
+    checkIfLineIsReadyToBeCreated('seventh', 'vertical', ['eighth', 'ninth'], ['horizontal', 'vertical']);
 });
 
 $(window).on('wheel', onMousewheel);
 
-function scrollToSectionAnimation(to_become_current) {
+function scrollToSectionAnimation(to_become_current, full_height) {
+    //doing this check, because IE 11 not support ES6
+    if(full_height === undefined) {
+        full_height = null;
+    }
+
+    var scroll_obj = {};
+    if(full_height != null) {
+        scroll_obj.scrollTop = $('.'+to_become_current).offset().top;
+    }else {
+        scroll_obj.scrollTop = $('.fullpage-section.'+to_become_current).offset().top;
+    }
     $(window).unbind('wheel');
-    jQuery('html, body').animate({
-        scrollTop: $('.fullpage-section.'+to_become_current).offset().top
-    }, 500).promise().then(function() {
+    jQuery('html, body').animate(scroll_obj, 500).promise().then(function() {
         $(window).on('wheel', onMousewheel);
     });
     $('body').attr('data-current', to_become_current);
@@ -53,7 +64,7 @@ function onMousewheel(event) {
         if($('body').attr('data-current') == 'one') {
             scrollToSectionAnimation('two');
         }else if($('body').attr('data-current') == 'two') {
-            $('body').attr('data-current', 'rest-data');
+            scrollToSectionAnimation('rest-data', true);
         }
     }
 }
@@ -99,8 +110,25 @@ function setLinesDots(resize)    {
     $('line.sixth').attr('x1', $('.below-successful-practices .first-dot').offset().left);
     $('line.sixth').attr('y1', $('.below-successful-practices .first-dot').offset().top + $('.below-successful-practices .first-dot').height() / 2);
     $('line.sixth').attr('y2', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2);
-    // + 15 for the column right padding
-    $('line.sixth').attr('max-x2', $('.below-successful-practices .second-dot').offset().left + $('.below-successful-practices .second-dot').width() + 15);
+    $('line.sixth').attr('max-x2', $('.below-successful-practices .second-dot').offset().left + $('.below-successful-practices .second-dot').width());
+
+    //SEVENTH LINE
+    $('line.seventh').attr('x1', $('.below-successful-practices .second-dot').offset().left + $('.below-successful-practices .second-dot').width());
+    $('line.seventh').attr('y1', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2);
+    $('line.seventh').attr('x2', $('.testimonials .first-dot').offset().left + $('.below-successful-practices .second-dot').width());
+    $('line.seventh').attr('max-y2', $('.testimonials .first-dot').offset().top + $('.testimonials .first-dot').height() / 2);
+
+    //EIGHTH LINE
+    $('line.eighth').attr('x1', $('.testimonials .first-dot').offset().left + $('.testimonials .first-dot').width());
+    $('line.eighth').attr('y1', $('.testimonials .first-dot').offset().top + $('.testimonials .first-dot').height() / 2);
+    $('line.eighth').attr('y2', $('.testimonials .second-dot').offset().top + $('.testimonials .second-dot').height() / 2);
+    $('line.eighth').attr('max-x2', $('.testimonials .second-dot').offset().left);
+
+    //NINTH LINE
+    $('line.ninth').attr('x1', $('.testimonials .second-dot').offset().left + $('.testimonials .second-dot').width());
+    $('line.ninth').attr('y1', $('.testimonials .second-dot').offset().top + $('.testimonials .second-dot').height() / 2);
+    $('line.ninth').attr('x2', $('.testimonials .third-dot').offset().left + $('.testimonials .third-dot').width());
+    $('line.ninth').attr('max-y2', $('.testimonials .third-dot').offset().top + $('.testimonials .third-dot').height());
 
     //MUST SET ATTR WHEN LINE IS EXECUTED AND CHECK FOR IT ALSO
     if(resize)  {
@@ -109,7 +137,10 @@ function setLinesDots(resize)    {
         $('line.third').attr('x2', $('.successful-practices .third-dot').offset().left);
         $('line.fourth').attr('y2', $('.successful-practices .fourth-dot').offset().top + $('.successful-practices .fourth-dot').height());
         $('line.fifth').attr('y2', $('.below-successful-practices .first-dot').offset().top + $('.below-successful-practices .first-dot').height() / 2);
-        $('line.sixth').attr('x2', $('.successful-practices .second-dot').offset().left + $('.successful-practices .second-dot').width() + 15);
+        $('line.sixth').attr('x2', $('.successful-practices .second-dot').offset().left + $('.successful-practices .second-dot').width());
+        $('line.seventh').attr('y2', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2);
+        $('line.eighth').attr('x2', $('.testimonials .second-dot').offset().left);
+        $('line.ninth').attr('y2', $('.testimonials .third-dot').offset().top + $('.testimonials .third-dot').height());
     }else {
         $('line.first').attr('y2', $('.intro .first-dot').offset().top);
         $('line.second').attr('y2', $('.successful-practices .first-dot').offset().top);
@@ -117,6 +148,9 @@ function setLinesDots(resize)    {
         $('line.fourth').attr('y2', $('.successful-practices .third-dot').offset().top);
         $('line.fifth').attr('y2', $('.successful-practices .fifth-dot').offset().top + $('.successful-practices .fifth-dot').height());
         $('line.sixth').attr('x2', $('.below-successful-practices .first-dot').offset().left);
+        $('line.seventh').attr('y2', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2);
+        $('line.eighth').attr('x2', $('.testimonials .first-dot').offset().left + $('.testimonials .first-dot').width());
+        $('line.ninth').attr('y2', $('.testimonials .second-dot').offset().top + $('.testimonials .second-dot').height() / 2);
     }
 }
 
@@ -131,7 +165,10 @@ function checkIfLineIsReadyToBeCreated(el, position, tail, tail_position, action
     }
     //checking if element offset top passed the viewport middle vertically and if it has been executed before
     if($(window).height() / 2 + $(window).scrollTop() > $('line.'+el).offset().top)    {
-        drawLine(el, position, tail, tail_position, action);
+        //checking if it's not the first line and if the line before the current one is executed
+        if($('line.'+el).index() - 1 > -1 && $('line').eq($('line.'+el).index() - 1).attr('executed') == 'true')   {
+            drawLine(el, position, tail, tail_position, action);
+        }
     }
 }
 
@@ -166,7 +203,7 @@ function drawLine(el, position, tail, tail_position, action) {
             if (parseFloat($('line.' + el).attr('y2')) + draw_line_increment < parseFloat($('line.' + el).attr('max-y2'))) {
                 $('line.' + el).attr('y2', parseFloat($('line.' + el).attr('y2')) + draw_line_increment);
             } else {
-                $('line.' + el).attr('y2', $('line.' + el).attr('max-y2'));
+                $('line.' + el).attr('y2', $('line.' + el).attr('max-y2')).attr('executed', 'true');
                 clearInterval(intervals_arr[el]);
                 callTheTail(tail, tail_position, action);
             }
@@ -176,7 +213,7 @@ function drawLine(el, position, tail, tail_position, action) {
             if(parseFloat($('line.'+el).attr('x2')) + draw_line_increment > parseFloat($('line.'+el).attr('max-x2'))) {
                 $('line.'+el).attr('x2', parseFloat($('line.'+el).attr('x2')) - draw_line_increment);
             }else {
-                $('line.'+el).attr('x2', $('line.'+el).attr('max-x2'));
+                $('line.'+el).attr('x2', $('line.'+el).attr('max-x2')).attr('executed', 'true');
                 clearInterval(intervals_arr[el]);
                 callTheTail(tail, tail_position, action);
             }
@@ -186,7 +223,7 @@ function drawLine(el, position, tail, tail_position, action) {
             if(parseFloat($('line.'+el).attr('x2')) + draw_line_increment < parseFloat($('line.'+el).attr('max-x2'))) {
                 $('line.'+el).attr('x2', parseFloat($('line.'+el).attr('x2')) + draw_line_increment);
             }else {
-                $('line.'+el).attr('x2', $('line.'+el).attr('max-x2'));
+                $('line.'+el).attr('x2', $('line.'+el).attr('max-x2')).attr('executed', 'true');
                 clearInterval(intervals_arr[el]);
                 callTheTail(tail, tail_position, action);
             }
@@ -227,4 +264,71 @@ function callActionOnLastTailFinish(action)    {
             $('.homepage-container .successful-practices .content figure img').addClass('active').attr("src", $('.homepage-container .successful-practices .content figure img').attr('src')+'?'+new Date().getTime());
             break;
     }
+}
+
+//HOMEPAGE
+if($('.homepage-container').length > 0) {
+    $('.homepage-container .intro .bg-wrapper .video .play-btn').bind("click", openVideo);
+
+    $('.homepage-container .intro .bg-wrapper .video .video-wrapper figure.close-video').click(function()   {
+        $(this).closest('.video-wrapper').animate({
+            width: "60px"
+        }, {
+            duration: 500,
+            complete: function () {
+                $(this).closest('.video-wrapper').addClass('visibility-hidden');
+                $(this).closest('.video').find('.play-btn').slideDown(500, function() {
+                    $(this).bind("click", openVideo);
+                });
+            }
+        });
+    });
+
+    function openVideo()    {
+        $(this).slideUp(500);
+        //$(this).closest('.video').find('video').slideDown(300);
+        $(this).unbind("click", openVideo).closest('.video').find('.video-wrapper').removeClass('visibility-hidden').animate({
+            width: "100%"
+        }, 500);
+    }
+
+    //logic for open testimonials and close the ones that are too near to the current opening one
+    $('.homepage-container .testimonials .circle-wrapper').click(function()   {
+        $(this).addClass('active').removeClass('not-active');
+        var this_text = $(this).find('.text');
+        var text_width = 250;
+        for(let i = 0; i < $('.homepage-container .testimonials .circle-wrapper.active').length; i+=1)  {
+            var current_active_testimonial = $('.homepage-container .testimonials .circle-wrapper.active').eq(i);
+            if(!current_active_testimonial.is($(this))) {
+                if(current_active_testimonial.find('.text').offset().left > this_text.offset().left)   {
+                    if(current_active_testimonial.find('.text').offset().left - this_text.offset().left < text_width) {
+                        current_active_testimonial.removeClass('active').addClass('not-active');
+                    }
+                }else if(current_active_testimonial.find('.text').offset().left < this_text.offset().left)  {
+                    if(this_text.offset().left - current_active_testimonial.find('.text').offset().left < text_width) {
+                        current_active_testimonial.removeClass('active').addClass('not-active');
+                    }
+                }
+            }
+        }
+    });
+
+    var testimonial_icons = ['avatar-icon-1.svg', 'avatar-icon-22.svg'];
+    for(let i = 0; i < $('.homepage-container .testimonials .circle-wrapper.no-image').length; i+=1)  {
+        console.log('background-imageurl(/assets/images/'+testimonial_icons[Math.floor(Math.random()*testimonial_icons.length)]+')');
+        $('.homepage-container .testimonials .circle-wrapper.no-image').eq(i).find('.circle .background').css({'background-image' : 'url(/assets/images/'+testimonial_icons[Math.floor(Math.random()*testimonial_icons.length)]+')'});
+    }
+}
+
+//if on refresh page our scrollTop is more than 0 we check in which section we are
+function checkInWhichSectionWeAre() {
+    var current_screen_middle_scroll = $(window).scrollTop() + $(window).height() / 2;
+    for(let i = 0, len = $('.fullpage-section').length; i < len; i+=1)  {
+        var section = $('.fullpage-section').eq(i);
+        if(current_screen_middle_scroll > section.offset().top && current_screen_middle_scroll < section.offset().top + section.height()) {
+            scrollToSectionAnimation(section.attr('data-section'));
+            return false;
+        }
+    }
+    $('body').attr('data-current', 'rest-data');
 }

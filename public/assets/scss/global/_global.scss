@@ -126,7 +126,8 @@ svg.svg-with-lines {
     height: 100%;
     top: 0;
     line {
-        stroke-width: 2;
+        stroke-width: 2px;
+        stroke: black;
     }
 }
 
@@ -141,4 +142,8 @@ svg.svg-with-lines {
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
+}
+
+.visibility-hidden {
+    visibility: hidden;
 }

@@ -7,12 +7,15 @@
 </head>
 <body data-current="one">
     <svg class="svg-with-lines">
-        <line class="first" x1="0" y1="0" x2="0" y2="0" stroke="black"/>
-        <line class="second" x1="0" y1="0" x2="0" y2="0" stroke="black"/>
-        <line class="third" x1="0" y1="0" x2="0" y2="0" stroke="black"/>
-        <line class="fourth" x1="0" y1="0" x2="0" y2="0" stroke="black"/>
-        <line class="fifth" x1="0" y1="0" x2="0" y2="0" stroke="black"/>
-        <line class="sixth" x1="0" y1="0" x2="0" y2="0" stroke="black"/>
+        <line class="first" x1="0" y1="0" x2="0" y2="0"/>
+        <line class="second" x1="0" y1="0" x2="0" y2="0"/>
+        <line class="third" x1="0" y1="0" x2="0" y2="0"/>
+        <line class="fourth" x1="0" y1="0" x2="0" y2="0"/>
+        <line class="fifth" x1="0" y1="0" x2="0" y2="0"/>
+        <line class="sixth" x1="0" y1="0" x2="0" y2="0"/>
+        <line class="seventh" x1="0" y1="0" x2="0" y2="0"/>
+        <line class="eighth" x1="0" y1="0" x2="0" y2="0"/>
+        <line class="ninth" x1="0" y1="0" x2="0" y2="0"/>
     </svg>
     <header>
 

@@ -399,7 +399,8 @@ svg.svg-with-lines {
   height: 100%;
   top: 0; }
   svg.svg-with-lines line {
-    stroke-width: 2; }
+    stroke-width: 2px;
+    stroke: black; }
 
 .custom-dot {
   display: inline-block;
@@ -412,6 +413,9 @@ svg.svg-with-lines {
   text-align: center;
   text-transform: uppercase; }
 
+.visibility-hidden {
+  visibility: hidden; }
+
 .homepage-container .intro {
   padding-top: 30px;
   position: relative; }
@@ -421,6 +425,8 @@ svg.svg-with-lines {
     background-repeat: no-repeat;
     background-size: contain;
     height: 100%; }
+    .homepage-container .intro .bg-wrapper .logo-container img {
+      width: 40px; }
     .homepage-container .intro .bg-wrapper .btn-container {
       text-align: right; }
       .homepage-container .intro .bg-wrapper .btn-container .btn-and-line {
@@ -464,6 +470,23 @@ svg.svg-with-lines {
           font-style: italic; }
     .homepage-container .intro .bg-wrapper .video {
       padding-top: 20px; }
+      .homepage-container .intro .bg-wrapper .video .play-btn {
+        display: inline-block; }
+        .homepage-container .intro .bg-wrapper .video .play-btn img {
+          width: 60px;
+          cursor: pointer; }
+      .homepage-container .intro .bg-wrapper .video .video-wrapper {
+        width: 60px;
+        position: relative; }
+        .homepage-container .intro .bg-wrapper .video .video-wrapper video {
+          width: 100%; }
+        .homepage-container .intro .bg-wrapper .video .video-wrapper figure.close-video {
+          position: absolute;
+          top: 0;
+          right: -25px;
+          cursor: pointer; }
+          .homepage-container .intro .bg-wrapper .video .video-wrapper figure.close-video img {
+            width: 14px; }
 .homepage-container .dentacoin-ecosystem {
   background-image: url("/assets/images/dentacoin-ecosystem-background.jpg");
   background-position: center center;
@@ -541,6 +564,8 @@ svg.svg-with-lines {
     transform: translate(-50%, -100%);
     -webkit-transform: translate(-50%, -100%);
     -ms-transform: translate(-50%, -100%); }
+    .homepage-container .successful-practices .dots .logo-over-line img {
+      width: 40px; }
 .homepage-container .successful-practices .section-title {
   padding-top: 30px;
   padding-bottom: 70px; }
@@ -590,7 +615,8 @@ svg.svg-with-lines {
   text-align: center;
   padding-top: 100px; }
   .homepage-container .below-successful-practices .description-over-line .wrapper {
-    position: relative; }
+    position: relative;
+    padding-right: 15px; }
     .homepage-container .below-successful-practices .description-over-line .wrapper .first-dot {
       left: -15px;
       position: absolute;
@@ -617,5 +643,87 @@ svg.svg-with-lines {
         color: #333333;
         vertical-align: middle;
         padding: 0 5px; }
+.homepage-container .testimonials .upper-empty-space {
+  height: 200px;
+  position: relative; }
+  .homepage-container .testimonials .upper-empty-space .first-dot {
+    position: absolute;
+    bottom: 0;
+    right: 15px; }
+  .homepage-container .testimonials .upper-empty-space .second-dot {
+    position: absolute;
+    bottom: 0;
+    left: 15px; }
+.homepage-container .testimonials .expressions {
+  margin-top: -10px;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%); }
+  .homepage-container .testimonials .expressions .circle-wrapper {
+    width: 30px;
+    margin: 0 5px;
+    position: relative; }
+    .homepage-container .testimonials .expressions .circle-wrapper .circle {
+      width: 25px;
+      height: 25px;
+      border: 3px solid black;
+      margin: 0 auto;
+      background-color: white;
+      cursor: pointer;
+      position: relative;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      border-radius: 50%;
+      -webkit-transition: 0.3s;
+      -moz-transition: 0.3s;
+      -o-transition: 0.3s;
+      -ms-transition: 0.3s;
+      transition: 0.3s; }
+      .homepage-container .testimonials .expressions .circle-wrapper .circle .background {
+        background-position: center center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        position: absolute;
+        z-index: 5;
+        width: 100%;
+        height: 100%;
+        opacity: 0; }
+    .homepage-container .testimonials .expressions .circle-wrapper .text {
+      display: none;
+      width: 250px;
+      text-align: left;
+      padding-top: 15px;
+      padding-left: 15px;
+      padding-right: 15px;
+      color: #3e3e3e;
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%); }
+    .homepage-container .testimonials .expressions .circle-wrapper.active {
+      width: 80px;
+      margin: 0 25px; }
+      .homepage-container .testimonials .expressions .circle-wrapper.active .circle {
+        margin: 0 auto;
+        width: 70px;
+        height: 70px; }
+        .homepage-container .testimonials .expressions .circle-wrapper.active .circle .background {
+          opacity: 1; }
+      .homepage-container .testimonials .expressions .circle-wrapper.active .text {
+        display: block; }
+    .homepage-container .testimonials .expressions .circle-wrapper.not-active .circle:hover {
+      background-color: black;
+      background-image: url("/assets/images/no-active-avatar-hover.svg") !important;
+      background-position: center center;
+      background-size: 70% 70%;
+      background-repeat: no-repeat; }
+.homepage-container .testimonials .below-expressions {
+  padding-top: 200px; }
+  .homepage-container .testimonials .below-expressions .third-dot {
+    position: absolute;
+    bottom: 0;
+    left: 15px; }
 
 /*# sourceMappingURL=style.css.map */
