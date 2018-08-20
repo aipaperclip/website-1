@@ -8,7 +8,11 @@ $(document).ready(function() {
 
     //HOMEPAGE
     if($('.homepage-container').length > 0) {
+        //set all fullpage sections with window height
         $('.fullpage-section').outerHeight($(window).height());
+
+        //center vertically the 'show more' button in testimonials section
+        $('.homepage-container .testimonials .below-expressions .show-more').css({'top' : 'calc(50% - '+$('.homepage-container .testimonials .expressions').height()/2+'px)'});
     }
     $('svg.svg-with-lines').height($(document).height());
 
@@ -27,7 +31,13 @@ jQuery(window).on('resize', function(){
 jQuery(window).on('scroll', function(){
     checkIfLineIsReadyToBeCreated('second', 'vertical', ['third', 'fourth'], ['horizontal', 'vertical'], 'load-successful-practices-gif');
     checkIfLineIsReadyToBeCreated('fifth', 'vertical', ['sixth'], ['horizontal']);
-    checkIfLineIsReadyToBeCreated('seventh', 'vertical', ['eighth', 'ninth'], ['horizontal', 'vertical']);
+    checkIfLineIsReadyToBeCreated('seventh', 'vertical', ['eighth'], ['horizontal']);
+    checkIfLineIsReadyToBeCreated('ninth', 'vertical');
+    checkIfLineIsReadyToBeCreated('tenth', 'horizontal', ['eleventh'], ['vertical'], 'load-buy-dentacoin-gif');
+    checkIfLineIsReadyToBeCreated('twelfth', 'vertical');
+    checkIfLineIsReadyToBeCreated('thirteenth', 'horizontal', ['fourteenth'], ['vertical']);
+    checkIfLineIsReadyToBeCreated('fifteenth', 'horizontal', ['sixteenth'], ['vertical']);
+    checkIfLineIsReadyToBeCreated('seventeenth', 'horizontal', ['eighteenth'], ['vertical'], 'load-roadmap-gif');
 });
 
 $(window).on('wheel', onMousewheel);
@@ -78,7 +88,8 @@ function setLinesDots(resize)    {
 
     //FIRST LINE
     $('line.first').attr('x1', $('.intro .first-dot').offset().left);
-    $('line.first').attr('y1', $('.intro .first-dot').offset().top);
+    $('line.first').attr('x1', $('.intro .first-dot').offset().left);
+    //$('line.first').attr('y1', $('.intro .first-dot').offset().top);
     $('line.first').attr('x2', $('.intro .second-dot').offset().left);
     $('line.first').attr('max-y2', $('.intro .second-dot').offset().top + $('.intro .second-dot').height());
 
@@ -125,10 +136,64 @@ function setLinesDots(resize)    {
     $('line.eighth').attr('max-x2', $('.testimonials .second-dot').offset().left);
 
     //NINTH LINE
-    $('line.ninth').attr('x1', $('.testimonials .second-dot').offset().left + $('.testimonials .second-dot').width());
+    $('line.ninth').attr('x1', $('.testimonials .second-dot').offset().left);
     $('line.ninth').attr('y1', $('.testimonials .second-dot').offset().top + $('.testimonials .second-dot').height() / 2);
-    $('line.ninth').attr('x2', $('.testimonials .third-dot').offset().left + $('.testimonials .third-dot').width());
+    $('line.ninth').attr('x2', $('.testimonials .third-dot').offset().left);
     $('line.ninth').attr('max-y2', $('.testimonials .third-dot').offset().top + $('.testimonials .third-dot').height());
+
+    //TENTH LINE
+    $('line.tenth').attr('x1', $('.testimonials .third-dot').offset().left);
+    $('line.tenth').attr('y1', $('.testimonials .third-dot').offset().top + $('.testimonials .third-dot').height());
+    $('line.tenth').attr('y2', $('.buy-dentacoin .first-dot').offset().top);
+    $('line.tenth').attr('max-x2', $('.buy-dentacoin .first-dot').offset().left + $('.buy-dentacoin .first-dot').width());
+
+    //ELEVENTH LINE
+    $('line.eleventh').attr('x1', $('.buy-dentacoin .first-dot').offset().left + $('.buy-dentacoin .first-dot').width());
+    $('line.eleventh').attr('y1', $('.buy-dentacoin .first-dot').offset().top);
+    $('line.eleventh').attr('x2', $('.buy-dentacoin .second-dot').offset().left + $('.buy-dentacoin .second-dot').width());
+    $('line.eleventh').attr('max-y2', $('.buy-dentacoin .second-dot').offset().top + $('.buy-dentacoin .second-dot').height());
+
+    //TWELFTH LINE
+    $('line.twelfth').attr('x1', $('.buy-dentacoin .third-dot').offset().left);
+    $('line.twelfth').attr('y1', $('.buy-dentacoin .third-dot').offset().top + $('.buy-dentacoin .third-dot').height());
+    $('line.twelfth').attr('x2', $('.buy-dentacoin .fourth-dot').offset().left);
+    $('line.twelfth').attr('max-y2', $('.buy-dentacoin .fourth-dot').offset().top + $('.buy-dentacoin .fourth-dot').height());
+
+    //THIRTEENTH LINE
+    $('line.thirteenth').attr('x1', $('.buy-dentacoin .fourth-dot').offset().left);
+    $('line.thirteenth').attr('y1', $('.buy-dentacoin .fourth-dot').offset().top + $('.buy-dentacoin .fourth-dot').height());
+    $('line.thirteenth').attr('y2', $('.buy-dentacoin .fifth-dot').offset().top + $('.buy-dentacoin .fifth-dot').height() / 2);
+    $('line.thirteenth').attr('max-x2', $('.buy-dentacoin .fifth-dot').offset().left);
+
+    //FOURTEENTH LINE
+    $('line.fourteenth').attr('x1', $('.buy-dentacoin .fifth-dot').offset().left);
+    $('line.fourteenth').attr('y1', $('.buy-dentacoin .fifth-dot').offset().top);
+    $('line.fourteenth').attr('x2', $('.below-buy-dentacoin .first-dot').offset().left);
+    $('line.fourteenth').attr('max-y2', $('.below-buy-dentacoin .first-dot').offset().top + $('.below-buy-dentacoin .first-dot').height());
+
+    //FIFTEENTH LINE
+    $('line.fifteenth').attr('x1', $('.below-buy-dentacoin .first-dot').offset().left);
+    $('line.fifteenth').attr('y1', $('.below-buy-dentacoin .first-dot').offset().top + $('.below-buy-dentacoin .first-dot').height());
+    $('line.fifteenth').attr('y2', $('.below-buy-dentacoin .second-dot').offset().top + $('.below-buy-dentacoin .second-dot').height());
+    $('line.fifteenth').attr('max-x2', $('.below-buy-dentacoin .second-dot').offset().left + $('.below-buy-dentacoin .second-dot').width());
+
+    //SIXTEENTH LINE
+    $('line.sixteenth').attr('x1', $('.below-buy-dentacoin .second-dot').offset().left + $('.below-buy-dentacoin .second-dot').width());
+    $('line.sixteenth').attr('y1', $('.below-buy-dentacoin .second-dot').offset().top + $('.below-buy-dentacoin .second-dot').height());
+    $('line.sixteenth').attr('x2', $('.awards-and-publications .first-dot').offset().left + $('.awards-and-publications .first-dot').width());
+    $('line.sixteenth').attr('max-y2', $('.awards-and-publications .first-dot').offset().top + $('.awards-and-publications .first-dot').height());
+
+    //SEVENTEENTH LINE
+    $('line.seventeenth').attr('x1', $('.awards-and-publications .first-dot').offset().left + $('.awards-and-publications .first-dot').width());
+    $('line.seventeenth').attr('y1', $('.awards-and-publications .first-dot').offset().top + $('.awards-and-publications .first-dot').height());
+    $('line.seventeenth').attr('y2', $('.roadmap .first-dot').offset().top);
+    $('line.seventeenth').attr('max-x2', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width());
+
+    //EIGHTEENTH LINE
+    $('line.eighteenth').attr('x1', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width());
+    $('line.eighteenth').attr('y1', $('.roadmap .first-dot').offset().top);
+    $('line.eighteenth').attr('x2', $('.roadmap .second-dot').offset().left + $('.roadmap .second-dot').width());
+    $('line.eighteenth').attr('max-y2', $('.roadmap .second-dot').offset().top + $('.roadmap .second-dot').height());
 
     //MUST SET ATTR WHEN LINE IS EXECUTED AND CHECK FOR IT ALSO
     if(resize)  {
@@ -137,10 +202,19 @@ function setLinesDots(resize)    {
         $('line.third').attr('x2', $('.successful-practices .third-dot').offset().left);
         $('line.fourth').attr('y2', $('.successful-practices .fourth-dot').offset().top + $('.successful-practices .fourth-dot').height());
         $('line.fifth').attr('y2', $('.below-successful-practices .first-dot').offset().top + $('.below-successful-practices .first-dot').height() / 2);
-        $('line.sixth').attr('x2', $('.successful-practices .second-dot').offset().left + $('.successful-practices .second-dot').width());
-        $('line.seventh').attr('y2', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2);
+        $('line.sixth').attr('x2', $('.below-successful-practices .second-dot').offset().left + $('.below-successful-practices .second-dot').width());
+        $('line.seventh').attr('y2', $('.testimonials .first-dot').offset().top + $('.testimonials .first-dot').height() / 2);
         $('line.eighth').attr('x2', $('.testimonials .second-dot').offset().left);
         $('line.ninth').attr('y2', $('.testimonials .third-dot').offset().top + $('.testimonials .third-dot').height());
+        $('line.tenth').attr('x2', $('.buy-dentacoin .first-dot').offset().left + $('.buy-dentacoin .first-dot').width());
+        $('line.eleventh').attr('y2', $('.buy-dentacoin .second-dot').offset().top + $('.buy-dentacoin .second-dot').height());
+        $('line.twelfth').attr('y2', $('.buy-dentacoin .fourth-dot').offset().top + $('.buy-dentacoin .fourth-dot').height());
+        $('line.thirteenth').attr('x2', $('.buy-dentacoin .fifth-dot').offset().left);
+        $('line.fourteenth').attr('y2', $('.below-buy-dentacoin .first-dot').offset().top + $('.below-buy-dentacoin .first-dot').height());
+        $('line.fifteenth').attr('x2', $('.below-buy-dentacoin .second-dot').offset().left + $('.below-buy-dentacoin .second-dot').width());
+        $('line.sixteenth').attr('y2', $('.awards-and-publications .first-dot').offset().top + $('.awards-and-publications .first-dot').height());
+        $('line.seventeenth').attr('x2', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width());
+        $('line.eighteenth').attr('y2', $('.roadmap .second-dot').offset().top + $('.roadmap .second-dot').height());
     }else {
         $('line.first').attr('y2', $('.intro .first-dot').offset().top);
         $('line.second').attr('y2', $('.successful-practices .first-dot').offset().top);
@@ -151,6 +225,15 @@ function setLinesDots(resize)    {
         $('line.seventh').attr('y2', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2);
         $('line.eighth').attr('x2', $('.testimonials .first-dot').offset().left + $('.testimonials .first-dot').width());
         $('line.ninth').attr('y2', $('.testimonials .second-dot').offset().top + $('.testimonials .second-dot').height() / 2);
+        $('line.tenth').attr('x2', $('.testimonials .third-dot').offset().left);
+        $('line.eleventh').attr('y2', $('.buy-dentacoin .first-dot').offset().top);
+        $('line.twelfth').attr('y2', $('.buy-dentacoin .third-dot').offset().top + $('.buy-dentacoin .third-dot').height());
+        $('line.thirteenth').attr('x2', $('.buy-dentacoin .fourth-dot').offset().left);
+        $('line.fourteenth').attr('y2', $('.buy-dentacoin .fifth-dot').offset().top);
+        $('line.fifteenth').attr('x2', $('.below-buy-dentacoin .first-dot').offset().left);
+        $('line.sixteenth').attr('y2', $('.below-buy-dentacoin .second-dot').offset().top + $('.below-buy-dentacoin .second-dot').height());
+        $('line.seventeenth').attr('x2', $('.awards-and-publications .first-dot').offset().left + $('.awards-and-publications .first-dot').width());
+        $('line.eighteenth').attr('y2', $('.roadmap .first-dot').offset().top);
     }
 }
 
@@ -263,14 +346,21 @@ function callActionOnLastTailFinish(action)    {
         case 'load-successful-practices-gif':
             $('.homepage-container .successful-practices .content figure img').addClass('active').attr("src", $('.homepage-container .successful-practices .content figure img').attr('src')+'?'+new Date().getTime());
             break;
+        case 'load-buy-dentacoin-gif':
+            $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').addClass('active').attr("src", $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr('src')+'?'+new Date().getTime());
+            break;
+        case 'load-roadmap-gif':
+            $('.homepage-container .roadmap-timeline img').addClass('active').attr("src", $('.homepage-container .roadmap-timeline img').attr('src')+'?'+new Date().getTime());
+            break;
     }
 }
 
 //HOMEPAGE
 if($('.homepage-container').length > 0) {
+    // ===== first section video logic =====
     $('.homepage-container .intro .bg-wrapper .video .play-btn').bind("click", openVideo);
-
     $('.homepage-container .intro .bg-wrapper .video .video-wrapper figure.close-video').click(function()   {
+        $(this).closest('.video-wrapper').find('video').get(0).pause();
         $(this).closest('.video-wrapper').animate({
             width: "60px"
         }, {
@@ -286,11 +376,11 @@ if($('.homepage-container').length > 0) {
 
     function openVideo()    {
         $(this).slideUp(500);
-        //$(this).closest('.video').find('video').slideDown(300);
         $(this).unbind("click", openVideo).closest('.video').find('.video-wrapper').removeClass('visibility-hidden').animate({
             width: "100%"
         }, 500);
     }
+    // ===== /first section video logic =====
 
     //logic for open testimonials and close the ones that are too near to the current opening one
     $('.homepage-container .testimonials .circle-wrapper').click(function()   {
@@ -313,11 +403,36 @@ if($('.homepage-container').length > 0) {
         }
     });
 
-    var testimonial_icons = ['avatar-icon-1.svg', 'avatar-icon-22.svg'];
+    //load random default avatar for testimonial givers without avatar
+    var testimonial_icons = ['avatar-icon-1.svg', 'avatar-icon-2.svg'];
     for(let i = 0; i < $('.homepage-container .testimonials .circle-wrapper.no-image').length; i+=1)  {
-        console.log('background-imageurl(/assets/images/'+testimonial_icons[Math.floor(Math.random()*testimonial_icons.length)]+')');
         $('.homepage-container .testimonials .circle-wrapper.no-image').eq(i).find('.circle .background').css({'background-image' : 'url(/assets/images/'+testimonial_icons[Math.floor(Math.random()*testimonial_icons.length)]+')'});
     }
+
+    //logic for show/hide different exchange methods on click in BUY DCN section
+    $('.homepage-container .exchange-platforms-and-wallets .exchange-method .title').click(function() {
+        if($(this).closest('.exchange-method').hasClass('active'))  {
+            $(this).closest('.exchange-method').removeClass('active').find('.list').slideUp(300);
+        }else {
+            $('.homepage-container .exchange-platforms-and-wallets .exchange-method').removeClass('active').find('.list').slideUp(300);
+            $(this).closest('.exchange-method').addClass('active').find('.list').slideDown(300);
+        }
+    });
+
+    //init slider for publications
+    $('.homepage-container .awards-and-publications .publications-slider').slick({
+        centerMode: true,
+        centerPadding: '140px',
+        slidesToShow: 3,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 4000
+    });
+
+    //on click make slide active
+    $('.homepage-container .awards-and-publications .publications-slider .single-slide').on("click", function (){
+        $('.homepage-container .awards-and-publications .publications-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
+    });
 }
 
 //if on refresh page our scrollTop is more than 0 we check in which section we are
@@ -332,3 +447,16 @@ function checkInWhichSectionWeAre() {
     }
     $('body').attr('data-current', 'rest-data');
 }
+
+//checking if submitted email is valid
+function newsletterRegisterValidation() {
+    $('.newsletter-register form').on('submit', function(event)  {
+        var this_form = $(this);
+        if(!basic.validateEmail(this_form.find('input[type="email"]').val().trim()))    {
+            event.preventDefault();
+            this_form.find('.alert').remove();
+            this_form.addClass('not-valid').append('<div class="alert alert-danger">'+this_form.find('.form-row').attr('data-valid-email-message')+'</div>');
+        }
+    });
+}
+newsletterRegisterValidation();

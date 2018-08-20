@@ -1,3 +1,15 @@
 header {
-
+    padding-top: 30px;
+    .logo-container {
+        img {
+            width: 40px;
+        }
+    }
 }
+
+body.home {
+    header {
+        top: 0;
+        @include horizontal-align(absolute);
+    }
+} 

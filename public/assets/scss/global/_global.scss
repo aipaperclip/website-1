@@ -46,6 +46,10 @@ body{
     display: inline-block; float: none; vertical-align: bottom;
 }
 
+.flex {
+    display: flex;
+}
+
 .nowrap{
     white-space: nowrap;
 }
@@ -142,6 +146,26 @@ svg.svg-with-lines {
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
+}
+
+.section-subtitle {
+    color: black;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.between-sections-description {
+    .title {
+        font-size: 34px;
+        font-weight: bold;
+        color: $dark_gray;
+    }
+    .description {
+        font-size: 16px;
+        font-weight: bold;
+        color: $dark_gray;
+        line-height: 16px;
+    }
 }
 
 .visibility-hidden {

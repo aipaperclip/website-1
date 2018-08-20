@@ -13,3 +13,7 @@
 
 
 Route::get("/", "HomeController@getView")->name('home');
+
+Route::get('/publications', 'HomeController@getPublications')->name('publications');
+
+Route::get('/testimonials', 'HomeController@getPublications')->name('testimonials');

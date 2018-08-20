@@ -16,6 +16,12 @@
   src: url("../fonts/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto-Regular.woff2") format("woff2"), url("../fonts/Roboto-Regular.woff") format("woff"), url("../fonts/Roboto-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: "Calibri-Bold";
+  src: url("../fonts/Calibri Bold.eot");
+  src: url("../fonts/Calibri Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Calibri Bold.woff2") format("woff2"), url("../fonts/Calibri Bold.woff") format("woff"), url("../fonts/Calibri Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
 @media screen and (max-width: 400px) {
   .col-xxs-12 {
     width: 100%; }
@@ -314,6 +320,9 @@ body {
   float: none;
   vertical-align: bottom; }
 
+.flex {
+  display: flex; }
+
 .nowrap {
   white-space: nowrap; }
 
@@ -413,8 +422,94 @@ svg.svg-with-lines {
   text-align: center;
   text-transform: uppercase; }
 
+.section-subtitle {
+  color: black;
+  font-size: 35px;
+  font-weight: bold; }
+
+.between-sections-description .title {
+  font-size: 34px;
+  font-weight: bold;
+  color: #333333; }
+.between-sections-description .description {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+  line-height: 16px; }
+
 .visibility-hidden {
   visibility: hidden; }
+
+header {
+  padding-top: 30px; }
+  header .logo-container img {
+    width: 40px; }
+
+body.home header {
+  top: 0;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+footer .section-title {
+  padding-top: 30px; }
+footer .newsletter-register {
+  padding-top: 50px;
+  padding-bottom: 30px; }
+  footer .newsletter-register form input[type='email'] {
+    width: 70%;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #aaaaaa;
+    border-left: 1px solid #aaaaaa;
+    border-right: 0;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    -ms-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px; }
+  footer .newsletter-register form input[type='submit'] {
+    width: 30%;
+    font-size: 20px;
+    background-color: #aaaaaa;
+    border: 1px solid #aaaaaa;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    -ms-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0; }
+  footer .newsletter-register form.not-valid input[type='email'], footer .newsletter-register form.not-valid input[type='submit'] {
+    border-color: red;
+    border-width: 2px; }
+  footer .newsletter-register form.not-valid .alert {
+    margin-top: 10px; }
+footer .socials {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px; }
+  footer .socials ul li {
+    padding: 0 10px; }
+    footer .socials ul li img {
+      width: 25px; }
+footer .menu {
+  text-align: center;
+  padding-bottom: 30px; }
+  footer .menu ul li {
+    padding: 0 20px; }
+    footer .menu ul li a {
+      color: #3e3e3e;
+      font-size: 20px;
+      font-weight: bold; }
+      footer .menu ul li a:hover {
+        text-decoration: underline; }
+footer .all-rights {
+  text-align: center;
+  padding-bottom: 70px;
+  font-size: 14px;
+  color: #3e3e3e; }
+  footer .all-rights a {
+    text-decoration: underline; }
 
 .homepage-container .intro {
   padding-top: 30px;
@@ -425,8 +520,6 @@ svg.svg-with-lines {
     background-repeat: no-repeat;
     background-size: contain;
     height: 100%; }
-    .homepage-container .intro .bg-wrapper .logo-container img {
-      width: 40px; }
     .homepage-container .intro .bg-wrapper .btn-container {
       text-align: right; }
       .homepage-container .intro .bg-wrapper .btn-container .btn-and-line {
@@ -583,9 +676,7 @@ svg.svg-with-lines {
     visibility: hidden; }
     .homepage-container .successful-practices .content figure img.active {
       visibility: visible; }
-.homepage-container .successful-practices .content .title {
-  font-size: 35px;
-  font-weight: bold;
+.homepage-container .successful-practices .content .section-subtitle {
   line-height: 34px;
   padding-bottom: 15px; }
 .homepage-container .successful-practices .content .description {
@@ -598,19 +689,10 @@ svg.svg-with-lines {
 .homepage-container .below-successful-practices .cells {
   font-size: 0;
   text-align: center; }
-  .homepage-container .below-successful-practices .cells .cell {
+  .homepage-container .below-successful-practices .cells .between-sections-description {
     width: 40%;
     padding-top: 25px;
     text-align: left; }
-    .homepage-container .below-successful-practices .cells .cell .title {
-      font-size: 34px;
-      font-weight: bold;
-      color: #333333; }
-    .homepage-container .below-successful-practices .cells .cell .description {
-      font-size: 16px;
-      font-weight: bold;
-      color: #333333;
-      line-height: 16px; }
 .homepage-container .below-successful-practices .description-over-line {
   text-align: center;
   padding-top: 100px; }
@@ -688,20 +770,39 @@ svg.svg-with-lines {
         z-index: 5;
         width: 100%;
         height: 100%;
-        opacity: 0; }
+        opacity: 0;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        border-radius: 50%; }
     .homepage-container .testimonials .expressions .circle-wrapper .text {
       display: none;
       width: 250px;
       text-align: left;
       padding-top: 15px;
-      padding-left: 15px;
-      padding-right: 15px;
+      padding-left: 20px;
+      padding-right: 20px;
       color: #3e3e3e;
+      position: relative;
+      line-height: 18px;
       position: absolute;
       left: 50%;
       -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
       transform: translateX(-50%); }
+      .homepage-container .testimonials .expressions .circle-wrapper .text .start, .homepage-container .testimonials .expressions .circle-wrapper .text .end {
+        width: 10px; }
+      .homepage-container .testimonials .expressions .circle-wrapper .text .start {
+        top: 10px;
+        left: 0;
+        position: absolute; }
+      .homepage-container .testimonials .expressions .circle-wrapper .text .end {
+        display: inline-block;
+        margin-left: 5px; }
+      .homepage-container .testimonials .expressions .circle-wrapper .text .name_job_location {
+        padding-top: 5px;
+        font-style: italic;
+        line-height: 16px; }
     .homepage-container .testimonials .expressions .circle-wrapper.active {
       width: 80px;
       margin: 0 25px; }
@@ -720,10 +821,227 @@ svg.svg-with-lines {
       background-size: 70% 70%;
       background-repeat: no-repeat; }
 .homepage-container .testimonials .below-expressions {
-  padding-top: 200px; }
+  padding-top: 300px; }
+  .homepage-container .testimonials .below-expressions .show-more {
+    position: absolute;
+    left: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%); }
+    .homepage-container .testimonials .below-expressions .show-more p {
+      margin-top: -15px;
+      font-size: 16px;
+      margin-left: -50px;
+      transform-origin: bottom;
+      -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      transform: rotate(-90deg); }
+    .homepage-container .testimonials .below-expressions .show-more figure {
+      border: 2px solid black;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      background: white;
+      padding: 3px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      border-radius: 50%; }
+      .homepage-container .testimonials .below-expressions .show-more figure img {
+        width: 90%;
+        margin: 0 auto; }
   .homepage-container .testimonials .below-expressions .third-dot {
     position: absolute;
     bottom: 0;
     left: 15px; }
+.homepage-container .buy-dentacoin .logo .logo-over-line {
+  background-color: white;
+  padding: 0 20px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); }
+  .homepage-container .buy-dentacoin .logo .logo-over-line img {
+    width: 40px; }
+.homepage-container .buy-dentacoin .logo .first-dot {
+  position: absolute;
+  top: 0;
+  right: 15px; }
+.homepage-container .buy-dentacoin .section-title {
+  padding-top: 30px;
+  padding-bottom: 60px; }
+.homepage-container .buy-dentacoin .wallet-app-and-gif {
+  font-size: 0;
+  display: flex;
+  position: relative; }
+  .homepage-container .buy-dentacoin .wallet-app-and-gif .fifth-dot {
+    position: absolute;
+    bottom: 0;
+    left: 15px; }
+  .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app {
+    font-size: 16px; }
+    .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .section-subtitle {
+      padding-bottom: 20px;
+      padding-top: 20px; }
+    .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .description {
+      color: #3e3e3e;
+      padding-bottom: 20px; }
+    .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets {
+      font-size: 0; }
+      .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets {
+        font-size: 16px;
+        width: 50%;
+        padding: 0 5px; }
+        .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms .title, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets .title {
+          cursor: pointer; }
+          .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms .title .icon, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets .title .icon {
+            width: 15px;
+            height: 15px;
+            background-image: url("/assets/images/plus-black-background-bordered.svg");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%; }
+          .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms .title span, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets .title span {
+            padding-left: 5px; }
+        .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list {
+          display: none; }
+          .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list li, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list li {
+            list-style: disc inside none; }
+        .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms.active .title .icon, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets.active .title .icon {
+          background-image: url("/assets/images/minus-black-background-bordered.svg"); }
+        .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms.active .title span, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets.active .title span {
+          text-decoration: underline;
+          font-weight: bold; }
+  .homepage-container .buy-dentacoin .wallet-app-and-gif .gif figure {
+    position: relative; }
+    .homepage-container .buy-dentacoin .wallet-app-and-gif .gif figure img {
+      visibility: hidden; }
+      .homepage-container .buy-dentacoin .wallet-app-and-gif .gif figure img.active {
+        visibility: visible; }
+    .homepage-container .buy-dentacoin .wallet-app-and-gif .gif figure .second-dot {
+      position: absolute;
+      right: 0;
+      bottom: 0; }
+    .homepage-container .buy-dentacoin .wallet-app-and-gif .gif figure .third-dot {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      font-size: 16px; }
+  .homepage-container .buy-dentacoin .wallet-app-and-gif .gif .between-sections-description {
+    padding: 25px 20px;
+    position: relative; }
+    .homepage-container .buy-dentacoin .wallet-app-and-gif .gif .between-sections-description .fourth-dot {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      font-size: 16px; }
+  .homepage-container .buy-dentacoin .wallet-app-and-gif .buy-btn {
+    padding-top: 40px; }
+.homepage-container .below-buy-dentacoin .container {
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 60px; }
+  .homepage-container .below-buy-dentacoin .container .logo-over-line {
+    position: absolute;
+    padding: 0 20px;
+    background: white;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); }
+    .homepage-container .below-buy-dentacoin .container .logo-over-line img {
+      width: 40px; }
+  .homepage-container .below-buy-dentacoin .container .first-dot {
+    position: absolute;
+    left: 15px;
+    bottom: 0; }
+  .homepage-container .below-buy-dentacoin .container .second-dot {
+    position: absolute;
+    right: 15px;
+    bottom: 0; }
+.homepage-container .below-buy-dentacoin .between-sections-description {
+  padding-left: 40px;
+  padding-right: 40px; }
+.homepage-container .awards-and-publications .section-title {
+  padding-top: 40px;
+  padding-bottom: 60px; }
+.homepage-container .awards-and-publications .awards {
+  padding-bottom: 120px; }
+  .homepage-container .awards-and-publications .awards figure {
+    text-align: center; }
+.homepage-container .awards-and-publications .publications-slider-wrapper {
+  position: relative; }
+  .homepage-container .awards-and-publications .publications-slider-wrapper .first-dot {
+    position: absolute;
+    bottom: 0;
+    right: 15px; }
+  .homepage-container .awards-and-publications .publications-slider-wrapper .logo-over-line {
+    position: absolute;
+    padding: 0 20px;
+    background: white;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); }
+    .homepage-container .awards-and-publications .publications-slider-wrapper .logo-over-line img {
+      width: 40px; }
+  .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider {
+    height: 400px;
+    padding-left: 20px;
+    padding-right: 20px; }
+    .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .slick-track {
+      display: flex; }
+    .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .slick-track .slick-slide {
+      display: flex;
+      height: auto;
+      align-items: center;
+      justify-content: center; }
+    .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide {
+      cursor: -webkit-grab;
+      cursor: grab; }
+      .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide figure img {
+        margin: 0 auto; }
+      .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide .description {
+        padding: 30px 30px;
+        display: none; }
+      .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide .btn-container {
+        font-weight: bold;
+        text-align: center;
+        display: none;
+        padding-left: 15px;
+        padding-right: 15px; }
+        .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide .btn-container a {
+          color: black; }
+          .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide .btn-container a:hover {
+            color: black;
+            text-decoration: underline; }
+      .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current {
+        border-left: 2px solid black;
+        border-right: 2px solid black; }
+        .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .description, .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .btn-container {
+          display: block;
+          font-size: 16px; }
+.homepage-container .roadmap .container {
+  padding-top: 40px;
+  padding-bottom: 150px;
+  position: relative; }
+  .homepage-container .roadmap .container .first-dot {
+    position: absolute;
+    top: 0;
+    left: 15px; }
+  .homepage-container .roadmap .container .second-dot {
+    position: absolute;
+    bottom: 0;
+    left: 15px; }
+.homepage-container .roadmap-timeline .gif figure {
+  padding: 0 2px; }
+  .homepage-container .roadmap-timeline .gif figure img {
+    visibility: hidden; }
+    .homepage-container .roadmap-timeline .gif figure img.active {
+      visibility: visible; }
 
 /*# sourceMappingURL=style.css.map */

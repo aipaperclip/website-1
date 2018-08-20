@@ -8,11 +8,6 @@
             background-repeat: no-repeat;
             background-size: contain;
             height: 100%;
-            .logo-container {
-                img {
-                    width: 40px;
-                }
-            }
             .btn-container {
                 text-align: right;
                 .btn-and-line {
@@ -192,9 +187,7 @@
                     }
                 }
             }
-            .title {
-                font-size: 35px;
-                font-weight: bold;
+            .section-subtitle {
                 line-height: 34px;
                 padding-bottom: 15px;
             }
@@ -214,21 +207,10 @@
         .cells {
             font-size: 0;
             text-align: center;
-            .cell {
+            .between-sections-description {
                 width: 40%;
                 padding-top: 25px;
                 text-align: left;
-                .title {
-                    font-size: 34px;
-                    font-weight: bold;
-                    color: $dark_gray;
-                }
-                .description {
-                    font-size: 16px;
-                    font-weight: bold;
-                    color: $dark_gray;
-                    line-height: 16px;
-                }
             }
         }
         .description-over-line {
@@ -305,6 +287,7 @@
                         width: 100%;
                         height: 100%;
                         opacity: 0;
+                        @include rounded(50%);
                     }
                 }
                 .text {
@@ -312,10 +295,29 @@
                     width: 250px;
                     text-align: left;
                     padding-top: 15px;
-                    padding-left: 15px;
-                    padding-right: 15px;
+                    padding-left: 20px;
+                    padding-right: 20px;
                     color: $light_gray;
+                    position: relative;
+                    line-height: 18px;
                     @include horizontal-align(absolute);
+                    .start, .end {
+                        width: 10px;
+                    }
+                    .start {
+                        top: 10px;
+                        left: 0;
+                        position: absolute;
+                    }
+                    .end {
+                        display: inline-block;
+                        margin-left: 5px;
+                    }
+                    .name_job_location {
+                        padding-top: 5px;
+                        font-style: italic;
+                        line-height: 16px;
+                    }
                 }
                 &.active {
                     width: 80px;
@@ -346,11 +348,305 @@
             }
         }
         .below-expressions {
-            padding-top: 200px;
+            padding-top: 300px;
+            .show-more {
+                position: absolute;
+                left: 0;
+                transform: translateY(-50%);
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                p {
+                    margin-top: -15px;
+                    font-size: 16px;
+                    margin-left: -50px;
+                    transform-origin: bottom;
+                    @include rotate(-90deg);
+                }
+                figure {
+                    border: 2px solid black;
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
+                    background: white;
+                    padding: 3px;
+                    @include rounded(50%);
+                    img {
+                        width: 90%;
+                        margin: 0 auto;
+                    }
+                }
+            }
             .third-dot {
                 position: absolute;
                 bottom: 0;
                 left: 15px;
+            }
+        }
+    }
+    .buy-dentacoin {
+        .logo {
+            .logo-over-line {
+                background-color: white;
+                padding: 0 20px;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                img {
+                    width: 40px;
+                }
+            }
+            .first-dot {
+                position: absolute;
+                top: 0;
+                right: 15px;
+            }
+        }
+        .section-title {
+            padding-top: 30px;
+            padding-bottom: 60px;
+        }
+        .wallet-app-and-gif {
+            font-size: 0;
+            display: flex;
+            position: relative;
+            .fifth-dot {
+                position: absolute;
+                bottom: 0;
+                left: 15px;
+            }
+            .wallet-app {
+                font-size: 16px;
+                .section-subtitle {
+                    padding-bottom: 20px;
+                    padding-top: 20px;
+                }
+                .description {
+                    color: $light_gray;
+                    padding-bottom: 20px;
+                }
+                .exchange-platforms-and-wallets {
+                    font-size: 0;
+                    .exchange-platforms, .wallets {
+                        font-size: 16px;
+                        width: 50%;
+                        padding: 0 5px;
+                        .title {
+                            cursor: pointer;
+                            .icon {
+                                width: 15px;
+                                height: 15px;
+                                background-image: url('/assets/images/plus-black-background-bordered.svg');
+                                background-position: center center;
+                                background-repeat: no-repeat;
+                                background-size: 100% 100%;
+                            }
+                            span {
+                                padding-left: 5px;
+                            }
+                        }
+                        ul.list {
+                            display: none;
+                            li {
+                                list-style: disc inside none;
+                            }
+                        }
+                        &.active {
+                            .title {
+                                .icon {
+                                    background-image: url('/assets/images/minus-black-background-bordered.svg');
+                                }
+                                span {
+                                    text-decoration: underline;
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .gif {
+                figure {
+                    position: relative;
+                    img {
+                        visibility: hidden;
+                        &.active {
+                            visibility: visible;
+                        }
+                    }
+                    .second-dot {
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                    }
+                    .third-dot {
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        font-size: 16px;
+                    }
+                }
+                .between-sections-description {
+                    padding: 25px 20px;
+                    position: relative;
+                    .fourth-dot {
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        font-size: 16px;
+                    }
+                }
+            }
+            .buy-btn {
+                padding-top: 40px;
+            }
+        }
+    }
+    .below-buy-dentacoin {
+        .container {
+            position: relative;
+            padding-top: 60px;
+            padding-bottom: 60px;
+            .logo-over-line {
+                position: absolute;
+                padding: 0 20px;
+                background: white;
+                top: 100%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                img {
+                    width: 40px;
+                }
+            }
+            .first-dot {
+                position: absolute;
+                left: 15px;
+                bottom: 0;
+            }
+            .second-dot {
+                position: absolute;
+                right: 15px;
+                bottom: 0;
+            }
+        }
+        .between-sections-description {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+    }
+    .awards-and-publications {
+        .section-title {
+            padding-top: 40px;
+            padding-bottom: 60px;
+        }
+        .awards {
+            padding-bottom: 120px;
+            figure {
+                text-align: center;
+            }
+        }
+        .publications-slider-wrapper {
+            position: relative;
+            .first-dot {
+                position: absolute;
+                bottom: 0;
+                right: 15px;
+            }
+
+            .logo-over-line {
+                position: absolute;
+                padding: 0 20px;
+                background: white;
+                top: 100%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                img {
+                    width: 40px;
+                }
+            }
+            .publications-slider {
+                height: 400px;
+                padding-left: 20px;
+                padding-right: 20px;
+                .slick-track {
+                    display: flex;
+                }
+                .slick-track .slick-slide {
+                    display: flex;
+                    height: auto;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .single-slide {
+                    cursor: -webkit-grab;
+                    cursor: grab;
+                    figure {
+                        img {
+                            margin: 0 auto;
+                        }
+                    }
+                    .description {
+                        padding: 30px 30px;
+                        display: none;
+                    }
+                    .btn-container {
+                        font-weight: bold;
+                        text-align: center;
+                        display: none;
+                        padding-left: 15px;
+                        padding-right: 15px;
+                        a {
+                            color: black;
+                            &:hover {
+                                color: black;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                    &.slick-current {
+                        border-left: 2px solid black;
+                        border-right: 2px solid black;
+                        .description, .btn-container {
+                            display: block;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .roadmap {
+        .container {
+            padding-top: 40px;
+            padding-bottom: 150px;
+            position: relative;
+            .first-dot {
+                position: absolute;
+                top: 0;
+                left: 15px;
+            }
+            .second-dot {
+                position: absolute;
+                bottom: 0;
+                left: 15px;
+            }
+        }
+    }
+    .roadmap-timeline {
+        .gif {
+            figure {
+                padding: 0 2px;
+                img {
+                    visibility: hidden;
+                    &.active {
+                        visibility: visible;
+                    }
+                }
             }
         }
     }
