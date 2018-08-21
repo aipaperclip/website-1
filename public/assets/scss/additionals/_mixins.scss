@@ -83,3 +83,12 @@
        -o-transform: rotate($degrees);
           transform: rotate($degrees);
 }
+
+@mixin animation($duration, $animation) {
+    -webkit-animation-duration: $duration;
+    -webkit-animation-name: $animation;
+    -moz-animation-duration: $duration;
+    -moz-animation-name: $animation;
+    animation-duration: $duration;
+    animation-name: $animation;
+}

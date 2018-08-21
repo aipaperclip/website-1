@@ -640,11 +640,46 @@
     .roadmap-timeline {
         .gif {
             figure {
-                padding: 0 2px;
+                padding-left: 2px;
+                padding-right: 1px;
+                position: relative;
                 img {
                     visibility: hidden;
                     &.active {
                         visibility: visible;
+                    }
+                }
+                .first-dot {
+                    position: absolute;
+                    right: 2px;
+                    bottom: 0;
+                }
+            }
+        }
+    }
+    .below-roadmap-timeline {
+        .wrapper {
+            padding-top: 200px;
+            .figure-wrapper {
+                position: relative;
+                .first-dot {
+                    position: absolute;
+                    top: 50%;
+                    right: 2px;
+                    -webkit-transform: translateY(-50%);
+                    -ms-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                }
+                .logo-over-line {
+                    padding: 0 20px;
+                    background: white;
+                    text-align: center;
+                    position: relative;
+                    .second-dot {
+                        @include vertical-horizontal-align(absolute);
+                    }
+                    img {
+                        width: 40px;
                     }
                 }
             }

@@ -22,6 +22,37 @@
   src: url("../fonts/Calibri Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Calibri Bold.woff2") format("woff2"), url("../fonts/Calibri Bold.woff") format("woff"), url("../fonts/Calibri Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-moz-keyframes fadeIn {
+  /* Firefox */
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-webkit-keyframes fadeIn {
+  /* Safari and Chrome */
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-o-keyframes fadeIn {
+  /* Opera */
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+.fade-in-animation {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-duration: 1s;
+  -moz-animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-name: fadeIn; }
+
 @media screen and (max-width: 400px) {
   .col-xxs-12 {
     width: 100%; }
@@ -403,11 +434,15 @@ img {
     border: 2px solid #679dca; }
 
 svg.svg-with-lines {
+  display: none; }
+
+body.home svg.svg-with-lines {
+  display: block;
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0; }
-  svg.svg-with-lines line {
+  body.home svg.svg-with-lines line {
     stroke-width: 2px;
     stroke: black; }
 
@@ -440,6 +475,9 @@ svg.svg-with-lines {
 .visibility-hidden {
   visibility: hidden; }
 
+.visibility-visible {
+  visibility: visible; }
+
 header {
   padding-top: 30px; }
   header .logo-container img {
@@ -458,32 +496,42 @@ footer .section-title {
 footer .newsletter-register {
   padding-top: 50px;
   padding-bottom: 30px; }
-  footer .newsletter-register form input[type='email'] {
-    width: 70%;
-    font-size: 20px;
-    padding: 5px 10px;
-    border-top: 1px solid #aaaaaa;
-    border-bottom: 1px solid #aaaaaa;
-    border-left: 1px solid #aaaaaa;
-    border-right: 0;
-    -webkit-border-radius: 4px 0 0 4px;
-    -moz-border-radius: 4px 0 0 4px;
-    -ms-border-radius: 4px 0 0 4px;
-    border-radius: 4px 0 0 4px; }
-  footer .newsletter-register form input[type='submit'] {
-    width: 30%;
-    font-size: 20px;
-    background-color: #aaaaaa;
-    border: 1px solid #aaaaaa;
-    -webkit-border-radius: 0 4px 4px 0;
-    -moz-border-radius: 0 4px 4px 0;
-    -ms-border-radius: 0 4px 4px 0;
-    border-radius: 0 4px 4px 0; }
+  footer .newsletter-register form .form-row {
+    padding-top: 10px; }
+    footer .newsletter-register form .form-row input[type='email'] {
+      width: 70%;
+      font-size: 20px;
+      padding: 5px 10px;
+      border-top: 1px solid #aaaaaa;
+      border-bottom: 1px solid #aaaaaa;
+      border-left: 1px solid #aaaaaa;
+      border-right: 0;
+      -webkit-border-radius: 4px 0 0 4px;
+      -moz-border-radius: 4px 0 0 4px;
+      -ms-border-radius: 4px 0 0 4px;
+      border-radius: 4px 0 0 4px; }
+    footer .newsletter-register form .form-row input[type='submit'] {
+      width: 30%;
+      font-size: 20px;
+      background-color: #aaaaaa;
+      border: 1px solid #aaaaaa;
+      -webkit-border-radius: 0 4px 4px 0;
+      -moz-border-radius: 0 4px 4px 0;
+      -ms-border-radius: 0 4px 4px 0;
+      border-radius: 0 4px 4px 0; }
+    footer .newsletter-register form .form-row .checkbox-wrapper {
+      width: 20px; }
+    footer .newsletter-register form .form-row label {
+      width: calc(100% - 20px);
+      font-size: 14px; }
+      footer .newsletter-register form .form-row label a {
+        text-decoration: underline; }
   footer .newsletter-register form.not-valid input[type='email'], footer .newsletter-register form.not-valid input[type='submit'] {
     border-color: red;
     border-width: 2px; }
   footer .newsletter-register form.not-valid .alert {
-    margin-top: 10px; }
+    margin-top: 5px;
+    margin-bottom: 10px; }
 footer .socials {
   text-align: center;
   padding-top: 30px;
@@ -1038,10 +1086,102 @@ footer .all-rights {
     bottom: 0;
     left: 15px; }
 .homepage-container .roadmap-timeline .gif figure {
-  padding: 0 2px; }
+  padding-left: 2px;
+  padding-right: 1px;
+  position: relative; }
   .homepage-container .roadmap-timeline .gif figure img {
     visibility: hidden; }
     .homepage-container .roadmap-timeline .gif figure img.active {
       visibility: visible; }
+  .homepage-container .roadmap-timeline .gif figure .first-dot {
+    position: absolute;
+    right: 2px;
+    bottom: 0; }
+.homepage-container .below-roadmap-timeline .wrapper {
+  padding-top: 200px; }
+  .homepage-container .below-roadmap-timeline .wrapper .figure-wrapper {
+    position: relative; }
+    .homepage-container .below-roadmap-timeline .wrapper .figure-wrapper .first-dot {
+      position: absolute;
+      top: 50%;
+      right: 2px;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    .homepage-container .below-roadmap-timeline .wrapper .figure-wrapper .logo-over-line {
+      padding: 0 20px;
+      background: white;
+      text-align: center;
+      position: relative; }
+      .homepage-container .below-roadmap-timeline .wrapper .figure-wrapper .logo-over-line .second-dot {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); }
+      .homepage-container .below-roadmap-timeline .wrapper .figure-wrapper .logo-over-line img {
+        width: 40px; }
+
+.container-404 {
+  padding-bottom: 100px;
+  border-bottom: 2px solid #aaaaaa;
+  background-image: url("/assets/images/dentacoin-symbol-background.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: contain; }
+  .container-404 figure {
+    padding-top: 50px;
+    padding-bottom: 50px; }
+  .container-404 .ops {
+    font-size: 26px; }
+  .container-404 .homepage-link {
+    font-size: 32px;
+    padding-top: 20px;
+    font-family: 'Calibri-Bold'; }
+    .container-404 .homepage-link a {
+      font-size: 32px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      border-radius: 4px; }
+      .container-404 .homepage-link a:hover {
+        border: 2px solid #679dca; }
+
+.privacy-policy-container {
+  padding-top: 50px;
+  padding-bottom: 70px; }
+  .privacy-policy-container .section-title {
+    font-size: 44px;
+    padding-bottom: 10px; }
+  .privacy-policy-container .section-subtitle {
+    padding-bottom: 50px; }
+  .privacy-policy-container p {
+    padding-bottom: 20px;
+    font-size: 16px; }
+  .privacy-policy-container h5 {
+    font-size: 20px;
+    padding-bottom: 15px;
+    color: #679dca;
+    font-family: 'Calibri-Bold'; }
+  .privacy-policy-container h4 {
+    font-family: 'Calibri-Bold';
+    padding-bottom: 15px;
+    font-size: 26px; }
+  .privacy-policy-container a {
+    text-decoration: underline;
+    color: #679dca; }
+  .privacy-policy-container ul {
+    padding-bottom: 20px; }
+    .privacy-policy-container ul li {
+      line-height: 27px;
+      font-size: 16px;
+      list-style: disc inside none; }
+
+.testimonials-container {
+  padding-top: 30px;
+  padding-bottom: 100px; }
+  .testimonials-container .section-title {
+    font-size: 44px; }
 
 /*# sourceMappingURL=style.css.map */

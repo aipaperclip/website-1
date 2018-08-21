@@ -116,7 +116,7 @@
                     <figure class="col-xs-12 col-sm-5">
                         <div class="fourth-dot inline-block">&nbsp;</div>
                         <div class="fifth-dot inline-block">&nbsp;</div>
-                        <img src="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}"/>
+                        <img src="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}" data-svg="{{URL::asset('assets/images/chair.svg') }}" data-gif="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}" class="refresh-image"/>
                     </figure>
                     <div class="col-xs-12 col-sm-5 col-sm-offset-2">
                         <h2 class="section-subtitle">Moving From Sick Care to Preventive Care</h2>
@@ -130,11 +130,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-5 cells">
-                        <div class="between-sections-description inline-block-top">
+                        <div class="between-sections-description visibility-hidden inline-block-top">
                             <div class="title">60K+</div>
                             <div class="description">Users of the Dentacoin tools</div>
                         </div>
-                        <div class="between-sections-description inline-block-top">
+                        <div class="between-sections-description visibility-hidden inline-block-top">
                             <div class="title">4K+</div>
                             <div class="description">Dentists in the Dentacoin Ecosystem</div>
                         </div>
@@ -143,7 +143,7 @@
                         <div class="wrapper">
                             <div class="first-dot inline-block">&nbsp;</div>
                             <div class="second-dot inline-block">&nbsp;</div>
-                            <div class="description inline-block">Dental practices, labs, shops in <span>16 Countries</span> accept payments in Dentacoin</div>
+                            <div class="description inline-block"><div class="wrapper visibility-hidden">Dental practices, labs, shops in <span>16 Countries</span> accept payments in Dentacoin</div></div>
                         </div>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
                     </div>
                     <div class="col-xs-12 below-expressions">
                         <div class="show-more">
-                            <figure class="inline-block"><a href=""><img src="{{URL::asset('assets/images/plus-solid.svg') }}"/></a></figure>
+                            <figure class="inline-block"><a href="{{ route('testimonials') }}"><img src="{{URL::asset('assets/images/plus-solid.svg') }}"/></a></figure>
                             <p class="inline-block">Show 100 more quotes</p>
                         </div>
                         <div class="third-dot inline-block">&nbsp;</div>
@@ -237,11 +237,11 @@
                     </div>
                     <div class="col-xs-5 col-xs-offset-1 gif inline-block-top">
                         <figure>
-                            <img src="{{URL::asset('assets/images/animation-hand-with-credit-card.gif') }}"/>
+                            <img src="{{URL::asset('assets/images/animation-hand-with-credit-card.gif') }}" data-svg="{{URL::asset('assets/images/hand-with-credit-card.svg') }}" data-gif="{{URL::asset('assets/images/animation-hand-with-credit-card.gif') }}" class="refresh-image"/>
                             <div class="second-dot inline-block">&nbsp;</div>
                             <div class="third-dot inline-block">&nbsp;</div>
                         </figure>
-                        <div class="between-sections-description">
+                        <div class="between-sections-description visibility-hidden">
                             <div class="title">32K+</div>
                             <div class="description">Dentacoin (DCN) <br> Token Holders Globally</div>
                             <div class="fourth-dot inline-block">&nbsp;</div>
@@ -259,7 +259,7 @@
                 <div class="second-dot inline-block">&nbsp;</div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="between-sections-description">
+                        <div class="between-sections-description visibility-hidden">
                             <div class="title">140K+</div>
                             <div class="description">Transactions With Dentacoin (DCN) Tokens</div>
                         </div>
@@ -323,7 +323,25 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 gif">
-                        <figure><img src="{{URL::asset('assets/images/roadmap.gif') }}"/></figure>
+                        <figure>
+                            <img src="{{URL::asset('assets/images/roadmap.gif') }}" data-gif="{{URL::asset('assets/images/roadmap.gif') }}" class="refresh-image"/>
+                            <div class="first-dot inline-block">&nbsp;</div>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="below-roadmap-timeline">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 wrapper text-center">
+                        <div class="figure-wrapper">
+                            <div class="first-dot inline-block">&nbsp;</div>
+                            <figure class="logo-over-line inline-block">
+                                <img src="{{URL::asset('assets/images/logo.svg') }}"/>
+                                <div class="second-dot inline-block">&nbsp;</div>
+                            </figure>
+                        </div>
                     </div>
                 </div>
             </div>

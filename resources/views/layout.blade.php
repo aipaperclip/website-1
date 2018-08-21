@@ -25,6 +25,8 @@
         <line class="sixteenth" x1="0" y1="0" x2="0" y2="0"/>
         <line class="seventeenth" x1="0" y1="0" x2="0" y2="0"/>
         <line class="eighteenth" x1="0" y1="0" x2="0" y2="0"/>
+        <line class="nineteenth" x1="0" y1="0" x2="0" y2="0"/>
+        <line class="twentieth" x1="0" y1="0" x2="0" y2="0"/>
     </svg>
     <header>
         <div class="container">
@@ -43,11 +45,15 @@
             </div>
             <div class="row newsletter-register">
                 <div class="">
-                    <form action="//dentacoin.us15.list-manage.com/subscribe/post?u=2db886e44db15e869246f6964&amp;id=6906b05278" method="post" class="col-xs-12 col-sm-4 col-sm-offset-4" target="_blank">
+                    <form action="//dentacoin.us15.list-manage.com/subscribe/post?u=2db886e44db15e869246f6964&amp;id=6906b05278" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="col-xs-12 col-sm-4 col-sm-offset-4" target="_blank" data-success-message="Thank you for signing up!">
                         <div class="form-row fs-0 flex" data-valid-email-message="Please enter valid email.">
                             <input type="email" name="EMAIL" id="input-email" placeholder="Get DCN updates">
                             <input type="submit" value="Sign Up" name="subscribe">
                             <input type="hidden" name="b_2db886e44db15e869246f6964_6906b05278" tabindex="-1" value="">
+                        </div>
+                        <div class="form-row fs-0" data-valid-message="Please agree with our Privacy Policy.">
+                            <div class="inline-block-top checkbox-wrapper"><input type="checkbox" id="agree-with-privacy-policy"/></div>
+                            <label for="agree-with-privacy-policy" class="inline-block-top">By clicking on the SIGN UP button, you agree to our <a href="{{ route('privacy-policy') }}" target="_blank">Privacy Policy</a> .</label>
                         </div>
                     </form>
                 </div>
@@ -75,7 +81,7 @@
                         <li class="inline-block"><a target="_blank" href="https://blog.dentacoin.com/">Blog</a></li>
                         <li class="inline-block"><a target="_blank" href="https://dentacoin.com/web/white-paper/Whitepaper-en1.pdf">Whitepaper</a></li>
                         <li class="inline-block"><a target="_blank" href="https://dentists.dentacoin.com/">For dentist</a></li>
-                        <li class="inline-block"><a target="_blank" href="https://dentists.dentacoin.com/">Privacy Policy</a></li>
+                        <li class="inline-block"><a target="_blank" href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
                     </ul>
                 </nav>
             </div>

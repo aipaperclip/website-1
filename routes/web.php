@@ -16,4 +16,8 @@ Route::get("/", "HomeController@getView")->name('home');
 
 Route::get('/publications', 'HomeController@getPublications')->name('publications');
 
-Route::get('/testimonials', 'HomeController@getPublications')->name('testimonials');
+Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
+
+//Route::get('/press-center', 'PressCenterController@getView')->name('press-center');
+
+Route::get('/testimonials/page/{page}', 'UserExpressionsController@getView')->name('testimonials');

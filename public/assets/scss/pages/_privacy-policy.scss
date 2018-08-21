@@ -1,0 +1,38 @@
+.privacy-policy-container {
+    padding-top: 50px;
+    padding-bottom: 70px;
+    .section-title {
+        font-size: 44px;
+        padding-bottom: 10px;
+    }
+    .section-subtitle {
+        padding-bottom: 50px;
+    }
+    p {
+        padding-bottom: 20px;
+        font-size: 16px;
+    }
+    h5 {
+        font-size: 20px;
+        padding-bottom: 15px;
+        color: $light_blue;
+        font-family: 'Calibri-Bold';
+    }
+    h4 {
+        font-family: 'Calibri-Bold';
+        padding-bottom: 15px;
+        font-size: 26px;
+    }
+    a {
+        text-decoration: underline;
+        color: $light_blue;
+    }
+    ul {
+        padding-bottom: 20px;
+        li {
+            line-height: 27px;
+            font-size: 16px;
+            list-style: disc inside none;
+        }
+    }
+}
