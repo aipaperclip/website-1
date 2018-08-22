@@ -10,7 +10,7 @@ const draw_line_increment = 10;
 
 $(document).ready(function() {
     //HOMEPAGE
-    if($('.homepage-container').length > 0) {
+    if($('.homepage-container').length > 0 && !isMobile) {
         //set all fullpage sections with window height
         $('.fullpage-section').outerHeight($(window).height());
 
@@ -25,17 +25,24 @@ $(document).ready(function() {
 });
 
 $(window).on('beforeunload', function() {
-    $(window).scrollTop(0);
+    //HOMEPAGE
+    if($('.homepage-container').length > 0 && !isMobile) {
+        $(window).scrollTop(0);
+    }
 });
 
 jQuery(window).on("load", function()   {
-    //checkInWhichSectionWeAre();
+
 });
 
 jQuery(window).on('resize', function(){
     //HOMEPAGE
-    if($('.homepage-container').length > 0) {
+    if($('.homepage-container').length > 0 && !isMobile) {
         setLinesDots(true);
+    }
+    //TESTIMONIALS
+    if($('.testimonials-container').length > 0) {
+        testimonialAvatarsLine();
     }
 });
 
@@ -54,7 +61,7 @@ jQuery(window).on('scroll', function()  {
 
 $(window).on('wheel', onMousewheel);
 
-function scrollToSectionAnimation(to_become_current, full_height, clear_dots, clear_first_dot) {
+function scrollToSectionAnimation(to_become_current, full_height, clear_dots, draw_first) {
     //doing this check, because IE 11 not support ES6
     if(full_height === undefined) {
         full_height = null;
@@ -74,9 +81,7 @@ function scrollToSectionAnimation(to_become_current, full_height, clear_dots, cl
         $(window).on('wheel', onMousewheel);
         if(clear_dots != null)  {
             refreshingMainDots();
-        }else if(clear_first_dot != null)  {
-            stoppers = [];
-            $('svg.svg-with-lines line.first').attr('y2', $('svg.svg-with-lines line.first').attr('fresh-y2'));
+        }else if(draw_first != null)  {
             drawLine('first', 'vertical');
         }
     });
@@ -85,18 +90,18 @@ function scrollToSectionAnimation(to_become_current, full_height, clear_dots, cl
 
 function onMousewheel(event) {
     //HOMEPAGE
-    if($('.homepage-container').length > 0) {
+    if($('.homepage-container').length > 0 && !isMobile) {
         if(event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
             //up
             if($('body').attr('data-current') == 'two') {
-                scrollToSectionAnimation('one');
+                scrollToSectionAnimation('one', null, null, true);
             }else if($(window).scrollTop() < $('.fullpage-section.two').offset().top + $('.fullpage-section.two').outerHeight() && $('body').attr('data-current') == 'rest-data') {
                 scrollToSectionAnimation('two', null, true);
             }
         }else {
             //down
             if($('body').attr('data-current') == 'one') {
-                scrollToSectionAnimation('two', null, null, true);
+                scrollToSectionAnimation('two', null, true);
             }else if($('body').attr('data-current') == 'two') {
                 scrollToSectionAnimation('rest-data', true);
             }
@@ -272,7 +277,7 @@ function setLinesDots(resize)    {
         $('line.fourteenth').attr('y2', $('.buy-dentacoin .fifth-dot').offset().top).attr('fresh-y2', $('.buy-dentacoin .fifth-dot').offset().top);
         $('line.fifteenth').attr('x2', $('.below-buy-dentacoin .first-dot').offset().left).attr('fresh-x2', $('.below-buy-dentacoin .first-dot').offset().left);
         $('line.sixteenth').attr('y2', $('.below-buy-dentacoin .second-dot').offset().top + $('.below-buy-dentacoin .second-dot').height()).attr('fresh-y2', $('.below-buy-dentacoin .second-dot').offset().top + $('.below-buy-dentacoin .second-dot').height());
-        $('line.seventeenth').attr('x2', $('.awards-and-publications .first-dot').offset().left + $('.awards-and-publications .first-dot').width());
+        $('line.seventeenth').attr('x2', $('.awards-and-publications .first-dot').offset().left + $('.awards-and-publications .first-dot').width()).attr('fresh-x2', $('.awards-and-publications .first-dot').offset().left + $('.awards-and-publications .first-dot').width());
         $('line.eighteenth').attr('y2', $('.roadmap .first-dot').offset().top).attr('fresh-y2', $('.roadmap .first-dot').offset().top);
         $('line.nineteenth').attr('y2', $('.roadmap-timeline .first-dot').offset().top + $('.roadmap-timeline .first-dot').height()).attr('fresh-y2', $('.roadmap-timeline .first-dot').offset().top + $('.roadmap-timeline .first-dot').height());
         $('line.twentieth').attr('x2', $('.below-roadmap-timeline .first-dot').offset().left + $('.below-roadmap-timeline .first-dot').width()).attr('fresh-x2', $('.below-roadmap-timeline .first-dot').offset().left + $('.below-roadmap-timeline .first-dot').width());
@@ -302,11 +307,14 @@ function refreshingMainDots()   {
     //bring back gifs texts to their starting position
     $('.between-sections-description').addClass('visibility-hidden').removeClass('fade-in-animation');
     $('.below-successful-practices .description-over-line .description .wrapper').addClass('visibility-hidden').removeClass('fade-in-animation');
+    for(let i = 0, len = $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').length; i < len; i+=1)   {
+        $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').eq(i).removeClass('fade-in-animation-'+(i+1));
+    }
 }
 
 function checkIfLineIsReadyToBeCreated(el, position, tail, tail_position, action) {
     //HOMEPAGE
-    if($('.homepage-container').length > 0) {
+    if($('.homepage-container').length > 0 && !isMobile) {
         //doing this check, because IE 11 not support ES6
         if (action === undefined) {
             action = null;
@@ -411,22 +419,43 @@ function callActionOnLastTailFinish(action)    {
     switch(action) {
         case 'load-successful-practices-gif':
             if(basic.isInViewport($('.homepage-container .successful-practices .content figure img')))    {
-                $('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-gif')+'?'+new Date().getTime()).addClass('active');
+                $('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-gif')+'?'+new Date().getTime()).on('load', function()    {
+                    $('.homepage-container .successful-practices .content figure img').addClass('active');
+                });
             }else {
-                $('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-svg')+'?'+new Date().getTime()).addClass('active');
+                $('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-svg')+'?'+new Date().getTime()).on('load', function()    {
+                    $('.homepage-container .successful-practices .content figure img').addClass('active');
+                });
             }
+            //description fade-in animation
             $('.homepage-container .below-successful-practices .between-sections-description').removeClass('visibility-hidden').addClass('fade-in-animation');
             break;
         case 'load-buy-dentacoin-gif':
             if(basic.isInViewport($('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img')))    {
-                $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr("src", $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr('data-gif')+'?'+new Date().getTime()).addClass('active');
+                $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr("src", $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr('data-gif')+'?'+new Date().getTime()).on('load', function()    {
+                    $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').addClass('active');
+                });
             }else {
-                $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr("src", $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr('data-svg')+'?'+new Date().getTime()).addClass('active');
+                $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr("src", $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr('data-svg')+'?'+new Date().getTime()).on('load', function()    {
+                    $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').addClass('active');
+                });
             }
+            //description fade-in animation
             $('.homepage-container .buy-dentacoin .between-sections-description').removeClass('visibility-hidden').addClass('fade-in-animation');
             break;
         case 'load-roadmap-gif':
-            $('.homepage-container .roadmap-timeline img').attr("src", $('.homepage-container .roadmap-timeline img').attr('data-gif')+'?'+new Date().getTime()).addClass('active');
+            if(basic.isInViewport($('.homepage-container .roadmap-timeline img')))    {
+                $('.homepage-container .roadmap-timeline img').attr("src", $('.homepage-container .roadmap-timeline img').attr('data-gif')+'?'+new Date().getTime()).on('load', function()    {
+                    $('.homepage-container .roadmap-timeline img').addClass('active');
+                });
+            }else {
+                $('.homepage-container .roadmap-timeline img').attr("src", $('.homepage-container .roadmap-timeline img').attr('data-svg')+'?'+new Date().getTime()).on('load', function()    {
+                    $('.homepage-container .roadmap-timeline img').addClass('active');
+                });
+            }
+            for(let i = 0, len = $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').length; i < len; i+=1)   {
+                $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').eq(i).addClass('fade-in-animation-'+(i+1));
+            }
             break;
         case 'fade-in-transaction-with-dcn':
             $('.homepage-container .below-buy-dentacoin .between-sections-description').removeClass('visibility-hidden').addClass('fade-in-animation');
@@ -435,6 +464,8 @@ function callActionOnLastTailFinish(action)    {
             drawLine('sixth', 'horizontal', ['seventh'], ['vertical']);
     }
 }
+
+// ==================== PAGES ====================
 
 //HOMEPAGE
 if($('.homepage-container').length > 0) {
@@ -507,7 +538,7 @@ if($('.homepage-container').length > 0) {
         slidesToShow: 3,
         arrows: false,
         autoplay: true,
-        autoplaySpeed: 4000
+        autoplaySpeed: 6000
     });
 
     //on click make slide active
@@ -516,21 +547,27 @@ if($('.homepage-container').length > 0) {
     });
 }
 
-//if on refresh page our scrollTop is more than 0 we check in which section we are
-/*function checkInWhichSectionWeAre() {
-    //HOMEPAGE
-    if($('.homepage-container').length > 0) {
-        var current_screen_middle_scroll = $(window).scrollTop() + $(window).height() / 2;
-        for (let i = 0, len = $('.fullpage-section').length; i < len; i += 1) {
-            var section = $('.fullpage-section').eq(i);
-            if (current_screen_middle_scroll > section.offset().top && current_screen_middle_scroll < section.offset().top + section.height()) {
-                scrollToSectionAnimation(section.attr('data-section'));
-                return false;
-            }
-        }
-        $('body').attr('data-current', 'rest-data');
+//TESTIMONIALS
+if($('.testimonials-container').length > 0) {
+    //load random default avatar for testimonial givers without avatar
+    var testimonial_icons_listing_page = ['avatar-icon-1.svg', 'avatar-icon-2.svg'];
+    for(let i = 0; i < $('.list .single .image.no-avatar').length; i+=1)  {
+        $('.list .single .image.no-avatar').eq(i).css({'background-image' : 'url(/assets/images/'+testimonial_icons_listing_page[Math.floor(Math.random()*testimonial_icons_listing_page.length)]+')'});
     }
-}*/
+
+    $('svg.svg-with-lines').height($(document).height());
+
+    //LINE GOING UNDER TESTIMONIAL AVATARS
+    function testimonialAvatarsLine()   {
+        $('line.first').attr('x1', $('.testimonials-container .list .single .first-dot').offset().left + $('.testimonials-container .list .single .first-dot').width() / 2);
+        $('line.first').attr('x2', $('.testimonials-container .list .single .last-dot').offset().left + $('.testimonials-container .list .single .last-dot').width() / 2);
+        $('line.first').attr('y1', $('.testimonials-container .list .single .first-dot').offset().top);
+        $('line.first').attr('y2', $('.testimonials-container .list .single .last-dot').offset().top);
+    }
+    testimonialAvatarsLine();
+}
+
+// ==================== /PAGES ====================
 
 //checking if submitted email is valid
 function newsletterRegisterValidation() {

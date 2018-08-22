@@ -22,12 +22,20 @@ body{
     outline: transparent none;
 }
 
-.bold{
+.bold {
     font-weight: bold;
 }
 
-.no-gutter{
-    padding: 0;
+.no-gutter {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.no-gutter-xs {
+    @include breakpoint($xs)    {
+        padding-right: 0;
+        padding-left: 0;
+    }
 }
 
 .inline-block {
@@ -128,7 +136,7 @@ svg.svg-with-lines {
     display: none;
 }
 
-body.home {
+body.home, body.testimonials {
     svg.svg-with-lines {
         display: block;
         position: absolute;
@@ -138,6 +146,9 @@ body.home {
         line {
             stroke-width: 2px;
             stroke: black;
+        }
+        @include breakpoint($sm-down)   {
+            display: none;
         }
     }
 }
@@ -153,6 +164,9 @@ body.home {
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
+    @include breakpoint($xs)    {
+        font-size: 22px;
+    }
 }
 
 .section-subtitle {
@@ -181,4 +195,49 @@ body.home {
 
 .visibility-visible {
     visibility: visible;
+}
+
+.pagination-container {
+    font-size: 0;
+    text-align: center;
+    ul {
+        li {
+            font-size: 16px;
+            text-align: center;
+            background-color: white;
+            border: 2px solid black;
+            color: $light_gray;
+            font-family: 'Calibri-Bold';
+            margin: 0 8px;
+            @include rounded(50%);
+            @include simple_transition(.3s);
+            a {
+                width: 30px;
+                line-height: 30px;
+                height: 30px;
+                display: block;
+                color: $light_gray;
+                @include simple_transition(.3s);
+            }
+            &.current, &:hover {
+                background-color: black;
+                color: white;
+                a {
+                    color: white;
+                }
+            }
+            &.arrow {
+                background-color: transparent;
+                border: 0;
+                color: $light_gray;
+                font-size: 21px;
+                line-height: 30px;
+                a {
+                    &:hover {
+                        color: $light_gray;
+                    }
+                }
+            }
+        }
+    }
 }

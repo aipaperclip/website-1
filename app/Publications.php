@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publications extends Model
 {
-    public function media() {
+    protected function media() {
         return $this->belongsTo('App\Media');
     }
 }

@@ -8,15 +8,19 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function getView()   {
+    protected function getView()   {
         return view("pages/homepage", ['testimonials' => $this->getFeaturedTestimonials(), 'publications' => $this->getPublications()]);
     }
 
-    public function getPublications()  {
+    protected function getPublications()  {
         return Publications::all()->sortBy('order_id');
     }
 
-    public function getFeaturedTestimonials()  {
-        return UserExpressions::where(array('featured' => 1))->get()->sortBy('order_id');
+    protected function getFeaturedTestimonials()  {
+        if($this->isMobile())  {
+            return UserExpressions::where(array('visible_mobile' => 1))->get()->sortBy('order_id');
+        }else {
+            return UserExpressions::where(array('featured' => 1))->get()->sortBy('order_id');
+        }
     }
 }

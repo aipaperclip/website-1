@@ -84,11 +84,29 @@
           transform: rotate($degrees);
 }
 
-@mixin animation($duration, $animation) {
+@mixin animation($delay, $duration, $animation) {
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: $delay;
     -webkit-animation-duration: $duration;
     -webkit-animation-name: $animation;
+    -moz-animation-delay: $delay;
     -moz-animation-duration: $duration;
     -moz-animation-name: $animation;
+    animation-delay: $delay;
     animation-duration: $duration;
     animation-name: $animation;
+    -o-animation-delay: $delay;
+    -o-animation-duration: $duration;
+    -o-animation-name: $animation;
+}
+
+@mixin clear_transform()    {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
 }

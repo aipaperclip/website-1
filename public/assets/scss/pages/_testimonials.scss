@@ -3,5 +3,44 @@
     padding-bottom: 100px;
     .section-title {
         font-size: 44px;
+        padding-bottom: 70px;
+    }
+    .list {
+        .single {
+            padding-bottom: 70px;
+            color: $light_gray;
+            .image {
+                width: 80px;
+                height: 80px;
+                position: relative;
+                border: 3px solid black;
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-color: white;
+                @include rounded(50%);
+                .dot {
+                    font-size: 16px;
+                    @include vertical-horizontal-align(absolute);
+                }
+            }
+            .content {
+                width: calc(100% - 80px);
+                font-size: 16px;
+                padding-left: 25px;
+                .description {
+                    padding-bottom: 15px;
+                }
+                .name_job {
+                    font-family: 'Calibri-Bold';
+                }
+                .location {
+                    i {
+                        padding-right: 5px;
+                        color: $solid_gray;
+                    }
+                }
+            }
+        }
     }
 }

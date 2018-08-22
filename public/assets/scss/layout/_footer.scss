@@ -1,4 +1,5 @@
 footer {
+    border-top: 2px solid $solid_gray;
     .section-title {
         padding-top: 30px;
     }
@@ -31,6 +32,7 @@ footer {
                 label {
                     width: calc(100% - 20px);
                     font-size: 14px;
+                    cursor: pointer;
                     a {
                         text-decoration: underline;
                     }
@@ -85,6 +87,20 @@ footer {
         color: $light_gray;
         a {
             text-decoration: underline;
+        }
+    }
+}
+
+body.home {
+    footer {
+        border: 0;
+    }
+}
+
+body.class-404 {
+    footer {
+        .section-title, .newsletter-register{
+            display: none;
         }
     }
 }

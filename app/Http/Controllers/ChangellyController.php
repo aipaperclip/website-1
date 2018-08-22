@@ -6,9 +6,9 @@ use App\Publications;
 use App\UserExpressions;
 use Illuminate\Http\Request;
 
-class PressCenterController extends Controller
+class ChangellyController extends Controller
 {
     protected function getView()   {
-        return view("pages/press-center");
+        return view('pages/changelly');
     }
 }

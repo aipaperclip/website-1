@@ -46,12 +46,112 @@
   to {
     opacity: 1; } }
 .fade-in-animation {
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0s;
   -webkit-animation-duration: 1s;
   -webkit-animation-name: fadeIn;
+  -moz-animation-delay: 0s;
   -moz-animation-duration: 1s;
   -moz-animation-name: fadeIn;
+  animation-delay: 0s;
   animation-duration: 1s;
-  animation-name: fadeIn; }
+  animation-name: fadeIn;
+  -o-animation-delay: 0s;
+  -o-animation-duration: 1s;
+  -o-animation-name: fadeIn; }
+
+.fade-in-animation-1 {
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.442s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-delay: 0.442s;
+  -moz-animation-duration: 1s;
+  -moz-animation-name: fadeIn;
+  animation-delay: 0.442s;
+  animation-duration: 1s;
+  animation-name: fadeIn;
+  -o-animation-delay: 0.442s;
+  -o-animation-duration: 1s;
+  -o-animation-name: fadeIn; }
+
+.fade-in-animation-2 {
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.884s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-delay: 0.884s;
+  -moz-animation-duration: 1s;
+  -moz-animation-name: fadeIn;
+  animation-delay: 0.884s;
+  animation-duration: 1s;
+  animation-name: fadeIn;
+  -o-animation-delay: 0.884s;
+  -o-animation-duration: 1s;
+  -o-animation-name: fadeIn; }
+
+.fade-in-animation-3 {
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 1.326s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-delay: 1.326s;
+  -moz-animation-duration: 1s;
+  -moz-animation-name: fadeIn;
+  animation-delay: 1.326s;
+  animation-duration: 1s;
+  animation-name: fadeIn;
+  -o-animation-delay: 1.326s;
+  -o-animation-duration: 1s;
+  -o-animation-name: fadeIn; }
+
+.fade-in-animation-4 {
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 1.786s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-delay: 1.786s;
+  -moz-animation-duration: 1s;
+  -moz-animation-name: fadeIn;
+  animation-delay: 1.786s;
+  animation-duration: 1s;
+  animation-name: fadeIn;
+  -o-animation-delay: 1.786s;
+  -o-animation-duration: 1s;
+  -o-animation-name: fadeIn; }
+
+.fade-in-animation-5 {
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 2.21s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-delay: 2.21s;
+  -moz-animation-duration: 1s;
+  -moz-animation-name: fadeIn;
+  animation-delay: 2.21s;
+  animation-duration: 1s;
+  animation-name: fadeIn;
+  -o-animation-delay: 2.21s;
+  -o-animation-duration: 1s;
+  -o-animation-name: fadeIn; }
 
 @media screen and (max-width: 400px) {
   .col-xxs-12 {
@@ -329,7 +429,13 @@ body {
   font-weight: bold; }
 
 .no-gutter {
-  padding: 0; }
+  padding-right: 0;
+  padding-left: 0; }
+
+@media screen and (max-width: 767px) {
+  .no-gutter-xs {
+    padding-right: 0;
+    padding-left: 0; } }
 
 .inline-block {
   display: inline-block;
@@ -436,15 +542,18 @@ img {
 svg.svg-with-lines {
   display: none; }
 
-body.home svg.svg-with-lines {
+body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines {
   display: block;
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0; }
-  body.home svg.svg-with-lines line {
+  body.home svg.svg-with-lines line, body.testimonials svg.svg-with-lines line {
     stroke-width: 2px;
     stroke: black; }
+  @media screen and (max-width: 991px) {
+    body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines {
+      display: none; } }
 
 .custom-dot {
   display: inline-block;
@@ -456,6 +565,9 @@ body.home svg.svg-with-lines {
   font-weight: bold;
   text-align: center;
   text-transform: uppercase; }
+  @media screen and (max-width: 767px) {
+    .section-title {
+      font-size: 22px; } }
 
 .section-subtitle {
   color: black;
@@ -478,6 +590,51 @@ body.home svg.svg-with-lines {
 .visibility-visible {
   visibility: visible; }
 
+.pagination-container {
+  font-size: 0;
+  text-align: center; }
+  .pagination-container ul li {
+    font-size: 16px;
+    text-align: center;
+    background-color: white;
+    border: 2px solid black;
+    color: #3e3e3e;
+    font-family: 'Calibri-Bold';
+    margin: 0 8px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s; }
+    .pagination-container ul li a {
+      width: 30px;
+      line-height: 30px;
+      height: 30px;
+      display: block;
+      color: #3e3e3e;
+      -webkit-transition: 0.3s;
+      -moz-transition: 0.3s;
+      -o-transition: 0.3s;
+      -ms-transition: 0.3s;
+      transition: 0.3s; }
+    .pagination-container ul li.current, .pagination-container ul li:hover {
+      background-color: black;
+      color: white; }
+      .pagination-container ul li.current a, .pagination-container ul li:hover a {
+        color: white; }
+    .pagination-container ul li.arrow {
+      background-color: transparent;
+      border: 0;
+      color: #3e3e3e;
+      font-size: 21px;
+      line-height: 30px; }
+      .pagination-container ul li.arrow a:hover {
+        color: #3e3e3e; }
+
 header {
   padding-top: 30px; }
   header .logo-container img {
@@ -490,74 +647,86 @@ body.home header {
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%); }
+  @media screen and (max-width: 767px) {
+    body.home header {
+      width: 100%; } }
 
-footer .section-title {
-  padding-top: 30px; }
-footer .newsletter-register {
-  padding-top: 50px;
-  padding-bottom: 30px; }
-  footer .newsletter-register form .form-row {
-    padding-top: 10px; }
-    footer .newsletter-register form .form-row input[type='email'] {
-      width: 70%;
-      font-size: 20px;
-      padding: 5px 10px;
-      border-top: 1px solid #aaaaaa;
-      border-bottom: 1px solid #aaaaaa;
-      border-left: 1px solid #aaaaaa;
-      border-right: 0;
-      -webkit-border-radius: 4px 0 0 4px;
-      -moz-border-radius: 4px 0 0 4px;
-      -ms-border-radius: 4px 0 0 4px;
-      border-radius: 4px 0 0 4px; }
-    footer .newsletter-register form .form-row input[type='submit'] {
-      width: 30%;
-      font-size: 20px;
-      background-color: #aaaaaa;
-      border: 1px solid #aaaaaa;
-      -webkit-border-radius: 0 4px 4px 0;
-      -moz-border-radius: 0 4px 4px 0;
-      -ms-border-radius: 0 4px 4px 0;
-      border-radius: 0 4px 4px 0; }
-    footer .newsletter-register form .form-row .checkbox-wrapper {
-      width: 20px; }
-    footer .newsletter-register form .form-row label {
-      width: calc(100% - 20px);
-      font-size: 14px; }
-      footer .newsletter-register form .form-row label a {
-        text-decoration: underline; }
-  footer .newsletter-register form.not-valid input[type='email'], footer .newsletter-register form.not-valid input[type='submit'] {
-    border-color: red;
-    border-width: 2px; }
-  footer .newsletter-register form.not-valid .alert {
-    margin-top: 5px;
-    margin-bottom: 10px; }
-footer .socials {
-  text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px; }
-  footer .socials ul li {
-    padding: 0 10px; }
-    footer .socials ul li img {
-      width: 25px; }
-footer .menu {
-  text-align: center;
-  padding-bottom: 30px; }
-  footer .menu ul li {
-    padding: 0 20px; }
-    footer .menu ul li a {
-      color: #3e3e3e;
-      font-size: 20px;
-      font-weight: bold; }
-      footer .menu ul li a:hover {
-        text-decoration: underline; }
-footer .all-rights {
-  text-align: center;
-  padding-bottom: 70px;
-  font-size: 14px;
-  color: #3e3e3e; }
-  footer .all-rights a {
-    text-decoration: underline; }
+footer {
+  border-top: 2px solid #aaaaaa; }
+  footer .section-title {
+    padding-top: 30px; }
+  footer .newsletter-register {
+    padding-top: 50px;
+    padding-bottom: 30px; }
+    footer .newsletter-register form .form-row {
+      padding-top: 10px; }
+      footer .newsletter-register form .form-row input[type='email'] {
+        width: 70%;
+        font-size: 20px;
+        padding: 5px 10px;
+        border-top: 1px solid #aaaaaa;
+        border-bottom: 1px solid #aaaaaa;
+        border-left: 1px solid #aaaaaa;
+        border-right: 0;
+        -webkit-border-radius: 4px 0 0 4px;
+        -moz-border-radius: 4px 0 0 4px;
+        -ms-border-radius: 4px 0 0 4px;
+        border-radius: 4px 0 0 4px; }
+      footer .newsletter-register form .form-row input[type='submit'] {
+        width: 30%;
+        font-size: 20px;
+        background-color: #aaaaaa;
+        border: 1px solid #aaaaaa;
+        -webkit-border-radius: 0 4px 4px 0;
+        -moz-border-radius: 0 4px 4px 0;
+        -ms-border-radius: 0 4px 4px 0;
+        border-radius: 0 4px 4px 0; }
+      footer .newsletter-register form .form-row .checkbox-wrapper {
+        width: 20px; }
+      footer .newsletter-register form .form-row label {
+        width: calc(100% - 20px);
+        font-size: 14px;
+        cursor: pointer; }
+        footer .newsletter-register form .form-row label a {
+          text-decoration: underline; }
+    footer .newsletter-register form.not-valid input[type='email'], footer .newsletter-register form.not-valid input[type='submit'] {
+      border-color: red;
+      border-width: 2px; }
+    footer .newsletter-register form.not-valid .alert {
+      margin-top: 5px;
+      margin-bottom: 10px; }
+  footer .socials {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px; }
+    footer .socials ul li {
+      padding: 0 10px; }
+      footer .socials ul li img {
+        width: 25px; }
+  footer .menu {
+    text-align: center;
+    padding-bottom: 30px; }
+    footer .menu ul li {
+      padding: 0 20px; }
+      footer .menu ul li a {
+        color: #3e3e3e;
+        font-size: 20px;
+        font-weight: bold; }
+        footer .menu ul li a:hover {
+          text-decoration: underline; }
+  footer .all-rights {
+    text-align: center;
+    padding-bottom: 70px;
+    font-size: 14px;
+    color: #3e3e3e; }
+    footer .all-rights a {
+      text-decoration: underline; }
+
+body.home footer {
+  border: 0; }
+
+body.class-404 footer .section-title, body.class-404 footer .newsletter-register {
+  display: none; }
 
 .homepage-container .intro {
   padding-top: 30px;
@@ -609,6 +778,23 @@ footer .all-rights {
         .homepage-container .intro .bg-wrapper .content-wrapper .description.italic {
           font-size: 18px;
           font-style: italic; }
+      @media screen and (max-width: 991px) {
+        .homepage-container .intro .bg-wrapper .content-wrapper {
+          position: static;
+          -webkit-transform: none;
+          -ms-transform: none;
+          transform: none; } }
+      @media screen and (max-width: 767px) {
+        .homepage-container .intro .bg-wrapper .content-wrapper {
+          text-align: center; }
+          .homepage-container .intro .bg-wrapper .content-wrapper .title {
+            font-size: 45px;
+            line-height: normal; }
+          .homepage-container .intro .bg-wrapper .content-wrapper .subtitle {
+            line-height: normal;
+            font-size: 20px; }
+          .homepage-container .intro .bg-wrapper .content-wrapper .description.italic {
+            font-size: 16px; } }
     .homepage-container .intro .bg-wrapper .video {
       padding-top: 20px; }
       .homepage-container .intro .bg-wrapper .video .play-btn {
@@ -628,6 +814,18 @@ footer .all-rights {
           cursor: pointer; }
           .homepage-container .intro .bg-wrapper .video .video-wrapper figure.close-video img {
             width: 14px; }
+      @media screen and (max-width: 991px) {
+        .homepage-container .intro .bg-wrapper .video {
+          padding-bottom: 30px; } }
+      @media screen and (max-width: 767px) {
+        .homepage-container .intro .bg-wrapper .video {
+          width: 90%;
+          margin: 0 auto; }
+          .homepage-container .intro .bg-wrapper .video .video-wrapper figure.close-video {
+            right: -20px; } }
+    @media screen and (max-width: 767px) {
+      .homepage-container .intro .bg-wrapper {
+        background-position: left bottom; } }
 .homepage-container .dentacoin-ecosystem {
   background-image: url("/assets/images/dentacoin-ecosystem-background.jpg");
   background-position: center center;
@@ -672,6 +870,36 @@ footer .all-rights {
         color: white;
         font-size: 18px;
         padding-top: 15px; }
+  @media screen and (max-width: 991px) {
+    .homepage-container .dentacoin-ecosystem .list {
+      position: static;
+      -webkit-transform: none;
+      -moz-transform: none;
+      -ms-transform: none;
+      -o-transform: none;
+      transform: none; } }
+  @media screen and (max-width: 767px) {
+    .homepage-container .dentacoin-ecosystem .btn-container {
+      display: none; }
+    .homepage-container .dentacoin-ecosystem .rotated-text {
+      position: static;
+      -webkit-transform: none;
+      -moz-transform: none;
+      -ms-transform: none;
+      -o-transform: none;
+      transform: none; }
+      .homepage-container .dentacoin-ecosystem .rotated-text span {
+        text-align: center;
+        font-size: 22px;
+        padding-top: 15px;
+        padding-bottom: 20px;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none; }
+    .homepage-container .dentacoin-ecosystem .list figure figcaption {
+      font-size: 16px; } }
 .homepage-container .successful-practices .dots {
   height: 80px; }
   .homepage-container .successful-practices .dots .first-dot-wrapper {
@@ -711,7 +939,8 @@ footer .all-rights {
   padding-top: 30px;
   padding-bottom: 70px; }
 .homepage-container .successful-practices .content figure {
-  padding-right: 0; }
+  padding-right: 0;
+  order: 1; }
   .homepage-container .successful-practices .content figure .fourth-dot {
     position: absolute;
     bottom: 0;
@@ -720,22 +949,61 @@ footer .all-rights {
     position: absolute;
     bottom: 0;
     right: 0; }
-  .homepage-container .successful-practices .content figure img {
+  .homepage-container .successful-practices .content figure img.desktop-gif {
     visibility: hidden; }
-    .homepage-container .successful-practices .content figure img.active {
-      visibility: visible; }
-.homepage-container .successful-practices .content .section-subtitle {
-  line-height: 34px;
-  padding-bottom: 15px; }
-.homepage-container .successful-practices .content .description {
-  font-size: 16px;
-  line-height: 18px; }
-.homepage-container .successful-practices .content .btn-container {
-  padding-top: 30px; }
-  .homepage-container .successful-practices .content .btn-container .white-blue-rounded-btn {
-    font-size: 18px; }
+  .homepage-container .successful-practices .content figure img.active {
+    visibility: visible; }
+  .homepage-container .successful-practices .content figure img.mobile-gif {
+    display: none;
+    margin: 0 auto;
+    width: 70%; }
+.homepage-container .successful-practices .content .content-container {
+  order: 2; }
+  .homepage-container .successful-practices .content .content-container .section-subtitle {
+    line-height: 34px;
+    padding-bottom: 15px; }
+  .homepage-container .successful-practices .content .content-container .description {
+    font-size: 16px;
+    line-height: 18px; }
+  .homepage-container .successful-practices .content .content-container .btn-container {
+    padding-top: 30px; }
+    .homepage-container .successful-practices .content .content-container .btn-container .white-blue-rounded-btn {
+      font-size: 18px; }
+@media screen and (max-width: 991px) {
+  .homepage-container .successful-practices {
+    border-bottom: 2px solid black; }
+    .homepage-container .successful-practices .section-title {
+      padding-bottom: 40px; }
+    .homepage-container .successful-practices .content {
+      display: block; }
+      .homepage-container .successful-practices .content figure {
+        padding-top: 50px;
+        padding-right: 15px;
+        text-align: center; }
+        .homepage-container .successful-practices .content figure img.desktop-gif {
+          display: none; }
+        .homepage-container .successful-practices .content figure img.mobile-gif {
+          display: block; }
+      .homepage-container .successful-practices .content .content-container {
+        text-align: center; } }
+@media screen and (max-width: 767px) {
+  .homepage-container .successful-practices .section-title {
+    padding-top: 15px;
+    padding-bottom: 20px; }
+  .homepage-container .successful-practices .content .content-container .section-subtitle {
+    font-size: 18px;
+    padding: 0 10% 15px;
+    line-height: normal; } }
+.homepage-container .below-successful-practices .mobile-title {
+  display: none;
+  padding-top: 15px; }
+  .homepage-container .below-successful-practices .mobile-title figure img {
+    width: 40px; }
+  .homepage-container .below-successful-practices .mobile-title .section-title {
+    padding-bottom: 20px; }
 .homepage-container .below-successful-practices .cells {
   font-size: 0;
+  order: 1;
   text-align: center; }
   .homepage-container .below-successful-practices .cells .between-sections-description {
     width: 40%;
@@ -743,7 +1011,8 @@ footer .all-rights {
     text-align: left; }
 .homepage-container .below-successful-practices .description-over-line {
   text-align: center;
-  padding-top: 100px; }
+  padding-top: 100px;
+  order: 2; }
   .homepage-container .below-successful-practices .description-over-line .wrapper {
     position: relative;
     padding-right: 15px; }
@@ -773,6 +1042,47 @@ footer .all-rights {
         color: #333333;
         vertical-align: middle;
         padding: 0 5px; }
+@media screen and (max-width: 991px) {
+  .homepage-container .below-successful-practices .mobile-title {
+    display: block; }
+  .homepage-container .below-successful-practices .flex {
+    display: block; }
+    .homepage-container .below-successful-practices .flex .visibility-hidden {
+      visibility: visible; }
+    .homepage-container .below-successful-practices .flex .description-over-line {
+      padding-top: 10px;
+      padding-bottom: 20px;
+      border-top: 1px solid black;
+      border-right: 1px solid black;
+      border-left: 1px solid black; }
+      .homepage-container .below-successful-practices .flex .description-over-line .wrapper {
+        padding-right: 0; }
+        .homepage-container .below-successful-practices .flex .description-over-line .wrapper .description {
+          padding: 0; }
+          .homepage-container .below-successful-practices .flex .description-over-line .wrapper .description .wrapper {
+            padding-right: 0; }
+            .homepage-container .below-successful-practices .flex .description-over-line .wrapper .description .wrapper span {
+              display: block;
+              padding: 0; }
+    .homepage-container .below-successful-practices .flex .cells {
+      display: flex; }
+      .homepage-container .below-successful-practices .flex .cells .between-sections-description {
+        width: 50%;
+        border: 1px solid black;
+        padding-top: 10px;
+        text-align: center;
+        padding-bottom: 15px; }
+        .homepage-container .below-successful-practices .flex .cells .between-sections-description .description {
+          padding: 0 10px; } }
+@media screen and (max-width: 767px) {
+  .homepage-container .below-successful-practices .flex .description-over-line .wrapper .description .wrapper {
+    font-size: 12px; }
+    .homepage-container .below-successful-practices .flex .description-over-line .wrapper .description .wrapper span {
+      font-size: 26px; }
+  .homepage-container .below-successful-practices .flex .cells .between-sections-description .title {
+    font-size: 26px; }
+  .homepage-container .below-successful-practices .flex .cells .between-sections-description .description {
+    font-size: 12px; } }
 .homepage-container .testimonials .upper-empty-space {
   height: 200px;
   position: relative; }
@@ -903,6 +1213,9 @@ footer .all-rights {
     position: absolute;
     bottom: 0;
     left: 15px; }
+  @media screen and (max-width: 991px) {
+    .homepage-container .testimonials .below-expressions {
+      display: none; } }
 .homepage-container .buy-dentacoin .logo .logo-over-line {
   background-color: white;
   padding: 0 20px;
@@ -1097,8 +1410,18 @@ footer .all-rights {
     position: absolute;
     right: 2px;
     bottom: 0; }
+.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell {
+  width: 18%;
+  padding-top: 5px;
+  margin: 0 1%;
+  font-size: 14px;
+  opacity: 0; }
+  .homepage-container .roadmap-timeline .roadmap-content .roadmap-cell > div {
+    padding-bottom: 5px; }
+    .homepage-container .roadmap-timeline .roadmap-content .roadmap-cell > div i {
+      padding-right: 5px; }
 .homepage-container .below-roadmap-timeline .wrapper {
-  padding-top: 200px; }
+  padding-top: 150px; }
   .homepage-container .below-roadmap-timeline .wrapper .figure-wrapper {
     position: relative; }
     .homepage-container .below-roadmap-timeline .wrapper .figure-wrapper .first-dot {
@@ -1125,7 +1448,6 @@ footer .all-rights {
 
 .container-404 {
   padding-bottom: 100px;
-  border-bottom: 2px solid #aaaaaa;
   background-image: url("/assets/images/dentacoin-symbol-background.png");
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -1136,7 +1458,7 @@ footer .all-rights {
   .container-404 .ops {
     font-size: 26px; }
   .container-404 .homepage-link {
-    font-size: 32px;
+    font-size: 30px;
     padding-top: 20px;
     font-family: 'Calibri-Bold'; }
     .container-404 .homepage-link a {
@@ -1182,6 +1504,49 @@ footer .all-rights {
   padding-top: 30px;
   padding-bottom: 100px; }
   .testimonials-container .section-title {
-    font-size: 44px; }
+    font-size: 44px;
+    padding-bottom: 70px; }
+  .testimonials-container .list .single {
+    padding-bottom: 70px;
+    color: #3e3e3e; }
+    .testimonials-container .list .single .image {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      border: 3px solid black;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: white;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      border-radius: 50%; }
+      .testimonials-container .list .single .image .dot {
+        font-size: 16px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); }
+    .testimonials-container .list .single .content {
+      width: calc(100% - 80px);
+      font-size: 16px;
+      padding-left: 25px; }
+      .testimonials-container .list .single .content .description {
+        padding-bottom: 15px; }
+      .testimonials-container .list .single .content .name_job {
+        font-family: 'Calibri-Bold'; }
+      .testimonials-container .list .single .content .location i {
+        padding-right: 5px;
+        color: #aaaaaa; }
+
+.changelly-container {
+  padding-top: 50px; }
+  .changelly-container iframe.changelly {
+    border: 0;
+    width: 100%;
+    height: 450px; }
 
 /*# sourceMappingURL=style.css.map */

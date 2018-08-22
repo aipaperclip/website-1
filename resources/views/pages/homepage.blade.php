@@ -54,36 +54,36 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                         <div class="container-fluid">
-                            <div class="row">
-                                <figure class="col-xs-3">
+                            <div class="row fs-0">
+                                <figure class="col-md-3 col-xs-6 inline-block-top">
                                     <img src="{{URL::asset('assets/images/dentacare.svg') }}"/>
                                     <figcaption>Dentacare</figcaption>
                                 </figure>
-                                <figure class="col-xs-3">
+                                <figure class="col-md-3 col-xs-6 inline-block-top">
                                     <img src="{{URL::asset('assets/images/trusted-reviews.svg') }}"/>
                                     <figcaption>Trusted Reviews</figcaption>
                                 </figure>
-                                <figure class="col-xs-3">
+                                <figure class="col-md-3 col-xs-6 inline-block-top">
                                     <img src="{{URL::asset('assets/images/dentavox-app-icon.svg') }}"/>
                                     <figcaption>Denta Vox</figcaption>
                                 </figure>
-                                <figure class="col-xs-3">
+                                <figure class="col-md-3 col-xs-6 inline-block-top">
                                     <img src="{{URL::asset('assets/images/coming-soon-app-icon.svg') }}"/>
                                     <figcaption>Assurance</figcaption>
                                 </figure>
-                                <figure class="col-xs-3">
+                                <figure class="col-md-3 col-xs-6 inline-block-top">
                                     <img src="{{URL::asset('assets/images/partner-network-app-icon.svg') }}"/>
                                     <figcaption>Partner Network</figcaption>
                                 </figure>
-                                <figure class="col-xs-3">
+                                <figure class="col-md-3 col-xs-6 inline-block-top">
                                     <img src="{{URL::asset('assets/images/wallet-app-icon.svg') }}"/>
                                     <figcaption>Wallet</figcaption>
                                 </figure>
-                                <figure class="col-xs-3">
+                                <figure class="col-md-3 col-xs-6 inline-block-top">
                                     <img src="{{URL::asset('assets/images/blog-app-icon.svg') }}"/>
                                     <figcaption>Dentacoin Blog</figcaption>
                                 </figure>
-                                <figure class="col-xs-3">
+                                <figure class="col-md-3 col-xs-6 inline-block-top">
                                     <img src="{{URL::asset('assets/images/coming-soon-app-icon.svg') }}"/>
                                     <figcaption>Health Database</figcaption>
                                 </figure>
@@ -112,24 +112,36 @@
                 <div class="row">
                     <h2 class="col-xs-12 section-title">Building Successful Patient-Driven Dental Practices</h2>
                 </div>
-                <div class="row content">
-                    <figure class="col-xs-12 col-sm-5">
-                        <div class="fourth-dot inline-block">&nbsp;</div>
-                        <div class="fifth-dot inline-block">&nbsp;</div>
-                        <img src="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}" data-svg="{{URL::asset('assets/images/chair.svg') }}" data-gif="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}" class="refresh-image"/>
-                    </figure>
-                    <div class="col-xs-12 col-sm-5 col-sm-offset-2">
+                <div class="row content flex">
+                    <div class="col-xs-12 col-md-5 col-md-offset-2 content-container">
                         <h2 class="section-subtitle">Moving From Sick Care to Preventive Care</h2>
                         <div class="description">The new gen of DCN dentists brings patients back into focus by implementing smart, Blockchain-based software solutions and an industry-specific cryptocurrency.</div>
                         <div class="btn-container"><a href="" class="white-blue-rounded-btn">I’M A DENTIST</a></div>
                     </div>
+                    <figure class="col-xs-12 col-md-5">
+                        <div class="fourth-dot inline-block">&nbsp;</div>
+                        <div class="fifth-dot inline-block">&nbsp;</div>
+                        <img src="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}" data-svg="{{URL::asset('assets/images/chair.svg') }}" data-gif="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}" class="refresh-image desktop-gif"/>
+                        <img src="{{URL::asset('assets/images/chair-mobile.gif') }}" class="mobile-gif"/>
+                    </figure>
                 </div>
             </div>
         </div>
         <div class="below-successful-practices">
             <div class="container">
-                <div class="row">
-                    <div class="col-xs-5 cells">
+                <div class="row mobile-title text-center">
+                    <figure class="col-xs-12"><img src="{{URL::asset('assets/images/logo.svg') }}"/></figure>
+                    <div class="col-xs-12 section-title">GLOBAL DENTACOIN NETWORK</div>
+                </div>
+                <div class="row flex">
+                    <div class="col-md-7 col-xs-8 col-xs-offset-2 col-md-offset-0 description-over-line">
+                        <div class="wrapper">
+                            <div class="first-dot inline-block">&nbsp;</div>
+                            <div class="second-dot inline-block">&nbsp;</div>
+                            <div class="description inline-block"><div class="wrapper visibility-hidden">Dental practices, labs, shops in <span>16 Countries</span> accept payments in Dentacoin</div></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-5 cells no-gutter-xs">
                         <div class="between-sections-description visibility-hidden inline-block-top">
                             <div class="title">60K+</div>
                             <div class="description">Users of the Dentacoin tools</div>
@@ -137,13 +149,6 @@
                         <div class="between-sections-description visibility-hidden inline-block-top">
                             <div class="title">4K+</div>
                             <div class="description">Dentists in the Dentacoin Ecosystem</div>
-                        </div>
-                    </div>
-                    <div class="col-xs-7 description-over-line">
-                        <div class="wrapper">
-                            <div class="first-dot inline-block">&nbsp;</div>
-                            <div class="second-dot inline-block">&nbsp;</div>
-                            <div class="description inline-block"><div class="wrapper visibility-hidden">Dental practices, labs, shops in <span>16 Countries</span> accept payments in Dentacoin</div></div>
                         </div>
                     </div>
                 </div>
@@ -174,7 +179,7 @@
                     </div>
                     <div class="col-xs-12 below-expressions">
                         <div class="show-more">
-                            <figure class="inline-block"><a href="{{ route('testimonials') }}"><img src="{{URL::asset('assets/images/plus-solid.svg') }}"/></a></figure>
+                            <figure class="inline-block"><a href="{{ route('testimonials', ['page' => 1]) }}"><img src="{{URL::asset('assets/images/plus-solid.svg') }}"/></a></figure>
                             <p class="inline-block">Show 100 more quotes</p>
                         </div>
                         <div class="third-dot inline-block">&nbsp;</div>
@@ -233,7 +238,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="buy-btn"><a href="" class="white-blue-rounded-btn">BUY DCN</a></div>
+                        <div class="buy-btn"><a href="{{ route('changelly') }}" class="white-blue-rounded-btn">BUY DCN</a></div>
                     </div>
                     <div class="col-xs-5 col-xs-offset-1 gif inline-block-top">
                         <figure>
@@ -324,9 +329,31 @@
                 <div class="row">
                     <div class="col-xs-12 gif">
                         <figure>
-                            <img src="{{URL::asset('assets/images/roadmap.gif') }}" data-gif="{{URL::asset('assets/images/roadmap.gif') }}" class="refresh-image"/>
+                            <img src="{{URL::asset('assets/images/roadmap.gif') }}" data-gif="{{URL::asset('assets/images/roadmap.gif') }}"  data-svg="{{URL::asset('assets/images/roadmap.svg') }}" class="refresh-image"/>
                             <div class="first-dot inline-block">&nbsp;</div>
                         </figure>
+                    </div>
+                    <div class="roadmap-content col-xs-12 fs-0">
+                        <div class="roadmap-cell inline-block-top">
+                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.1 Dentacoin ERC20 Token Released</div>
+                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.2 Dentacoin Foundation Established</div>
+                        </div>
+                        <div class="roadmap-cell inline-block-top">
+                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.3 Initial Public Presale (16.2 Bill DCN, 8 000 Contributors)</div>
+                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.4 Trusted Reviews Release</div>
+                        </div>
+                        <div class="roadmap-cell inline-block-top">
+                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.5 Initial Coin Offering (17.9 Bill DCN, 10 000 Contributors)</div>
+                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.6 DentaVox Release</div>
+                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.7 DentaCare Mobile App</div>
+                        </div>
+                        <div class="roadmap-cell inline-block-top">
+                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.8 Dentacoin Integrared Hub Release</div>
+                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.9 Dentacoin Assurance</div>
+                        </div>
+                        <div class="roadmap-cell inline-block-top">
+                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.9 Denta Health Database</div>
+                        </div>
                     </div>
                 </div>
             </div>

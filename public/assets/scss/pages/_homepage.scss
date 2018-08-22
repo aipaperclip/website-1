@@ -49,6 +49,28 @@
                         font-style: italic;
                     }
                 }
+                @include breakpoint($sm-down)   {
+                    position: static;
+                    -webkit-transform: none;
+                    -ms-transform: none;
+                    transform: none;
+                }
+                @include breakpoint($xs)    {
+                    text-align: center;
+                    .title {
+                        font-size: 45px;
+                        line-height: normal;
+                    }
+                    .subtitle {
+                        line-height: normal;
+                        font-size: 20px;
+                    }
+                    .description {
+                        &.italic {
+                            font-size: 16px;
+                        }
+                    }
+                }
             }
             .video {
                 padding-top: 20px;
@@ -75,6 +97,21 @@
                         }
                     }
                 }
+                @include breakpoint($sm-down)   {
+                    padding-bottom: 30px;
+                }
+                @include breakpoint($xs)    {
+                    width: 90%;
+                    margin: 0 auto;
+                    .video-wrapper {
+                        figure.close-video {
+                            right: -20px;
+                        }
+                    }
+                }
+            }
+            @include breakpoint($xs)    {
+                background-position: left bottom;
             }
         }
     }
@@ -115,6 +152,35 @@
                     color: white;
                     font-size: 18px;
                     padding-top: 15px;
+                }
+            }
+        }
+        @include breakpoint($sm-down)   {
+            .list {
+                position: static;
+                @include clear_transform();
+            }
+        }
+        @include breakpoint($xs)    {
+            .btn-container {
+                display: none;
+            }
+            .rotated-text {
+                position: static;
+                @include clear_transform();
+                span {
+                    text-align: center;
+                    font-size: 22px;
+                    padding-top: 15px;
+                    padding-bottom: 20px;
+                    @include clear_transform();
+                }
+            }
+            .list {
+                figure {
+                    figcaption {
+                        font-size: 16px;
+                    }
                 }
             }
         }
@@ -170,6 +236,7 @@
         .content {
             figure {
                 padding-right: 0;
+                order: 1;
                 .fourth-dot {
                     position: absolute;
                     bottom: 0;
@@ -181,31 +248,92 @@
                     right: 0;
                 }
                 img {
-                    visibility: hidden;
+                    &.desktop-gif {
+                        visibility: hidden;
+                    }
                     &.active {
                         visibility: visible;
                     }
+                    &.mobile-gif {
+                        display: none;
+                        margin: 0 auto;
+                        width: 70%;
+                    }
                 }
             }
-            .section-subtitle {
-                line-height: 34px;
-                padding-bottom: 15px;
+            .content-container {
+                order: 2;
+                .section-subtitle {
+                    line-height: 34px;
+                    padding-bottom: 15px;
+                }
+                .description {
+                    font-size: 16px;
+                    line-height: 18px;
+                }
+                .btn-container {
+                    padding-top: 30px;
+                    .white-blue-rounded-btn {
+                        font-size: 18px;
+                    }
+                }
             }
-            .description {
-                font-size: 16px;
-                line-height: 18px;
+        }
+        @include breakpoint($sm-down)    {
+            border-bottom: 2px solid black;
+            .section-title {
+                padding-bottom: 40px;
             }
-            .btn-container {
-                padding-top: 30px;
-                .white-blue-rounded-btn {
-                    font-size: 18px;
+            .content {
+                display: block;
+                figure {
+                    padding-top: 50px;
+                    padding-right: 15px;
+                    text-align: center;
+                    img.desktop-gif {
+                        display: none;
+                    }
+                    img.mobile-gif {
+                        display: block;
+                    }
+                }
+                .content-container {
+                    text-align: center;
+                }
+            }
+        }
+        @include breakpoint($xs)    {
+            .section-title {
+                padding-top: 15px;
+                padding-bottom: 20px;
+            }
+            .content {
+                .content-container {
+                    .section-subtitle {
+                        font-size: 18px;
+                        padding: 0 10% 15px;
+                        line-height: normal;
+                    }
                 }
             }
         }
     }
     .below-successful-practices {
+        .mobile-title {
+            display: none;
+            padding-top: 15px;
+            figure {
+                img {
+                    width: 40px;
+                }
+            }
+            .section-title {
+                padding-bottom: 20px;
+            }
+        }
         .cells {
             font-size: 0;
+            order: 1;
             text-align: center;
             .between-sections-description {
                 width: 40%;
@@ -216,6 +344,7 @@
         .description-over-line {
             text-align: center;
             padding-top: 100px;
+            order: 2;
             .wrapper {
                 position: relative;
                 padding-right: 15px;
@@ -239,6 +368,76 @@
                         color: $dark_gray;
                         vertical-align: middle;
                         padding: 0 5px;
+                    }
+                }
+            }
+        }
+        @include breakpoint($sm-down) {
+            .mobile-title {
+                display: block;
+            }
+            .flex {
+                display: block;
+                .visibility-hidden {
+                    visibility: visible;
+                }
+                .description-over-line {
+                    padding-top: 10px;
+                    padding-bottom: 20px;
+                    border-top: 1px solid black;
+                    border-right: 1px solid black;
+                    border-left: 1px solid black;
+                    .wrapper {
+                        padding-right: 0;
+                        .description {
+                            padding: 0;
+                            .wrapper {
+                                padding-right: 0;
+                                span {
+                                    display: block;
+                                    padding: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                .cells {
+                    display: flex;
+                    .between-sections-description {
+                        width: 50%;
+                        border: 1px solid black;
+                        padding-top: 10px;
+                        text-align: center;
+                        padding-bottom: 15px;
+                        .description {
+                            padding: 0 10px;
+                        }
+                    }
+                }
+            }
+        }
+        @include breakpoint($xs) {
+            .flex {
+                .description-over-line {
+                    .wrapper {
+                        .description {
+                            .wrapper {
+                                font-size: 12px;
+                                span {
+                                    font-size: 26px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .cells {
+                    .between-sections-description {
+                        .title {
+                            font-size: 26px;
+                        }
+                        .description {
+                            font-size: 12px;
+                        }
                     }
                 }
             }
@@ -380,6 +579,9 @@
                 position: absolute;
                 bottom: 0;
                 left: 15px;
+            }
+            @include breakpoint($sm-down)    {
+                display: none;
             }
         }
     }
@@ -656,10 +858,25 @@
                 }
             }
         }
+        .roadmap-content {
+            .roadmap-cell {
+                width: 18%;
+                padding-top: 5px;
+                margin: 0 1%;
+                font-size: 14px;
+                opacity: 0;
+                > div {
+                    padding-bottom: 5px;
+                    i {
+                        padding-right: 5px;
+                    }
+                }
+            }
+        }
     }
     .below-roadmap-timeline {
         .wrapper {
-            padding-top: 200px;
+            padding-top: 150px;
             .figure-wrapper {
                 position: relative;
                 .first-dot {

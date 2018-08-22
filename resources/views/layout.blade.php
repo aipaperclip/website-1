@@ -2,10 +2,20 @@
 <html>
 <head>
     <title>Dentacoin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="shortcut icon" href="{{URL::asset('assets/images/favicon.png') }}" type="image/x-icon" />
+    <meta name="description" content="Description" />
+    <meta name="keywords" content="Keywords" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta property="og:url" content=""/>
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+
     <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 </head>
-<body data-current="one" class="@if(Route::current()) {{Route::current()->getName()}} @endif" lang="en">
+<body data-current="one" class="@if(Route::current()) {{Route::current()->getName()}} @else class-404 @endif" lang="en">
     <svg class="svg-with-lines">
         <line class="first" x1="0" y1="0" x2="0" y2="0"/>
         <line class="second" x1="0" y1="0" x2="0" y2="0"/>
@@ -77,7 +87,7 @@
             <div class="row menu">
                 <nav class="col-xs-12">
                     <ul>
-                        <li class="inline-block"><a target="_blank" href="">Press Center</a></li>
+                        {{--<li class="inline-block"><a target="_blank" href="">Press Center</a></li>--}}
                         <li class="inline-block"><a target="_blank" href="https://blog.dentacoin.com/">Blog</a></li>
                         <li class="inline-block"><a target="_blank" href="https://dentacoin.com/web/white-paper/Whitepaper-en1.pdf">Whitepaper</a></li>
                         <li class="inline-block"><a target="_blank" href="https://dentists.dentacoin.com/">For dentist</a></li>
