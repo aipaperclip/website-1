@@ -522,7 +522,10 @@
                             <span>OkHTTP as a HTTP client: &nbsp;</span><a href="http://square.github.io/okhttp/"><span>http://square.github.io/okhttp/</span></a>
                         </li>
                         <li>
-                            <span>Gson - Java serialization/deserialization library: &nbsp;</span><a href="https://github.com/google/gson"><span>https://github.com/google/gson</span><span><br class="kix-line-break"></span></a><span>Easy image - Gallery picker </span><a href="https://github.com/jkwiecien/EasyImage"><span>https://github.com/jkwiecien/EasyImage</span></a>
+                            <span>Gson - Java serialization/deserialization library: &nbsp;</span><a href="https://github.com/google/gson"><span>https://github.com/google/gson</span><span><br class="kix-line-break"></span></a>
+                        </li>
+                        <li>
+                            <span>Easy image - Gallery picker </span><a href="https://github.com/jkwiecien/EasyImage"><span>https://github.com/jkwiecien/EasyImage</span></a>
                         </li>
                         <li>
                             <span>Image cropping Android Image Cropper: </span><a href="https://github.com/ArthurHub/Android-Image-Cropper"><span>https://github.com/ArthurHub/Android-Image-Cropper</span></a>

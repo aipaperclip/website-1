@@ -1,8 +1,15 @@
 .changelly-container {
     padding-top: 50px;
-    iframe.changelly {
-        border: 0;
-        width: 100%;
-        height: 450px;
+    .iframe-wrapper {
+        overflow-x: auto;
+        iframe.changelly {
+            border: 0;
+            width: 100%;
+            height: 450px;
+            min-width: 600px;
+        }
+    }
+    @include breakpoint($sm-down)   {
+        padding-top: 20px;
     }
 }

@@ -49,6 +49,12 @@ footer {
                 }
             }
         }
+        @include breakpoint($sm-down)   {
+            padding-top: 0;
+        }
+        @include breakpoint($xs)    {
+            padding-bottom: 20px;
+        }
     }
     .socials {
         text-align: center;
@@ -59,6 +65,23 @@ footer {
                 padding: 0 10px;
                 img {
                     width: 25px;
+                }
+            }
+        }
+        @include breakpoint($sm-down)   {
+            ul {
+                li {
+                    padding: 0 10px 10px;
+                }
+            }
+        }
+        @include breakpoint($xs)   {
+            padding-bottom: 20px;
+            padding-top: 20px;
+            ul {
+                font-size: 0;
+                li {
+                    width: 20%;
                 }
             }
         }
@@ -79,6 +102,9 @@ footer {
                 }
             }
         }
+        @include breakpoint($xs)    {
+            padding-bottom: 20px;
+        }
     }
     .all-rights {
         text-align: center;
@@ -87,6 +113,9 @@ footer {
         color: $light_gray;
         a {
             text-decoration: underline;
+        }
+        @include breakpoint($xs)    {
+            padding-bottom: 50px;
         }
     }
 }

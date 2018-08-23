@@ -12,8 +12,12 @@ class UserExpressionsController extends Controller
     const POSTS_PER_PAGE = 8;
 
     protected function getView($page)   {
+        $pages_count = $this->getPagesCount();
         //if $page more than the pagescount redirect 404
-        return view('pages/testimonials', ['testimonials' => $this->getTestimonials($page), 'pages' => $this->getPagesCount(), 'page' => $page]);
+        if((int)$page > $pages_count || (int)$page < 1)  {
+            return abort(404);
+        }
+        return view('pages/testimonials', ['testimonials' => $this->getTestimonials($page), 'pages' => $pages_count, 'page' => $page]);
     }
 
     protected function getTestimonials($page = null)  {

@@ -43,4 +43,27 @@
             }
         }
     }
+    @include breakpoint($xs)    {
+        padding-bottom: 50px;
+        .section-title {
+            font-size: 30px;
+            padding-bottom: 30px;
+        }
+        .list {
+            .single {
+                padding-bottom: 50px;
+                .image {
+                    display: block;
+                    margin: 0 auto;
+                }
+                .content {
+                    padding-top: 15px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    text-align: center;
+                    width: 100%;
+                }
+            }
+        }
+    }
 }

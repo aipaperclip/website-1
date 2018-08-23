@@ -478,7 +478,7 @@ if($('.homepage-container').length > 0) {
         }, {
             duration: 500,
             complete: function () {
-                $(this).closest('.video-wrapper').addClass('visibility-hidden');
+                $(this).closest('.video-wrapper').hide();
                 $(this).closest('.video').find('.play-btn').slideDown(500, function() {
                     $(this).bind("click", openVideo);
                 });
@@ -488,7 +488,7 @@ if($('.homepage-container').length > 0) {
 
     function openVideo()    {
         $(this).slideUp(500);
-        $(this).unbind("click", openVideo).closest('.video').find('.video-wrapper').removeClass('visibility-hidden').animate({
+        $(this).unbind("click", openVideo).closest('.video').find('.video-wrapper').show().animate({
             width: "100%"
         }, 500);
     }
@@ -538,8 +538,35 @@ if($('.homepage-container').length > 0) {
         slidesToShow: 3,
         arrows: false,
         autoplay: true,
-        autoplaySpeed: 6000
+        autoplaySpeed: 6000,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: true,
+                    centerPadding: '200px',
+                }
+            },{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: true,
+                    centerPadding: '50px'
+                }
+            }
+        ]
     });
+
+    /*$('.homepage-container .awards-and-publications .publications-slider').on("afterChange", function (){
+        var slider_height = 0;
+        for(let i = 0, len = $('.publications-slider .single-slide').length; i < len; i+=1) {
+            if($('.publications-slider .single-slide').eq(i).height() > slider_height) {
+                slider_height = $('.publications-slider .single-slide').eq(i).height();
+            }
+        }
+        $('.homepage-container .awards-and-publications .publications-slider').height(slider_height + 50);
+    });*/
 
     //on click make slide active
     $('.homepage-container .awards-and-publications .publications-slider .single-slide').on("click", function (){

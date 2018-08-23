@@ -12,7 +12,6 @@
         font-size: 26px;
     }
     .homepage-link {
-        font-size: 30px;
         padding-top: 20px;
         font-family: 'Calibri-Bold';
         a {
@@ -20,6 +19,20 @@
             @include rounded(4px);
             &:hover {
                 border: 2px solid $light_blue;
+            }
+        }
+    }
+    @include breakpoint($xs)    {
+        padding-bottom: 50px;
+        figure {
+            padding-top: 30px;
+        }
+        .ops {
+            font-size: 18px;
+        }
+        .homepage-link {
+            a {
+                font-size: 18px;
             }
         }
     }

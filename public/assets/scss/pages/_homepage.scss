@@ -82,6 +82,7 @@
                     }
                 }
                 .video-wrapper {
+                    display: none;
                     width: 60px;
                     position: relative;
                     video {
@@ -98,7 +99,10 @@
                     }
                 }
                 @include breakpoint($sm-down)   {
-                    padding-bottom: 30px;
+                    text-align: center;
+                    .video-wrapper {
+                        padding-bottom: 30px;
+                    }
                 }
                 @include breakpoint($xs)    {
                     width: 90%;
@@ -248,13 +252,13 @@
                     right: 0;
                 }
                 img {
-                    &.desktop-gif {
+                    &.desktop-image {
                         visibility: hidden;
                     }
                     &.active {
                         visibility: visible;
                     }
-                    &.mobile-gif {
+                    &.mobile-image {
                         display: none;
                         margin: 0 auto;
                         width: 70%;
@@ -280,9 +284,9 @@
             }
         }
         @include breakpoint($sm-down)    {
-            border-bottom: 2px solid black;
             .section-title {
                 padding-bottom: 40px;
+                padding-top: 10px;
             }
             .content {
                 display: block;
@@ -290,10 +294,10 @@
                     padding-top: 50px;
                     padding-right: 15px;
                     text-align: center;
-                    img.desktop-gif {
+                    img.desktop-image {
                         display: none;
                     }
-                    img.mobile-gif {
+                    img.mobile-image {
                         display: block;
                     }
                 }
@@ -301,10 +305,20 @@
                     text-align: center;
                 }
             }
+            .dots {
+                height: auto;
+                .logo-over-line {
+                    position: static;
+                    text-align: center;
+                    @include clear_transform();
+                    img {
+                        margin-top: 15px;
+                    }
+                }
+            }
         }
-        @include breakpoint($xs)    {
+        @include breakpoint($xs)     {
             .section-title {
-                padding-top: 15px;
                 padding-bottom: 20px;
             }
             .content {
@@ -321,10 +335,10 @@
     .below-successful-practices {
         .mobile-title {
             display: none;
-            padding-top: 15px;
             figure {
                 img {
                     width: 40px;
+                    margin-top: 15px;
                 }
             }
             .section-title {
@@ -373,6 +387,7 @@
             }
         }
         @include breakpoint($sm-down) {
+            border-top: 2px solid black;
             .mobile-title {
                 display: block;
             }
@@ -467,6 +482,9 @@
                 width: 30px;
                 margin: 0 5px;
                 position: relative;
+                @include breakpoint($md-only)   {
+                    width: 25px;
+                }
                 .circle {
                     width: 25px;
                     height: 25px;
@@ -531,6 +549,19 @@
                     }
                     .text {
                         display: block;
+                        .name_job {
+                            font-family: 'Calibri-Bold';
+                        }
+                        .location {
+                            i {
+                                padding-right: 5px;
+                                color: $solid_gray;
+                            }
+                        }
+                    }
+                    @include breakpoint($md-only)   {
+                        width: 70px;
+                        margin: 0 5px;
                     }
                 }
                 &.not-active {
@@ -582,6 +613,76 @@
             }
             @include breakpoint($sm-down)    {
                 display: none;
+            }
+        }
+        @include breakpoint($sm-down)   {
+            .expressions {
+                margin-top: 0;
+                padding-top: 30px;
+                padding-bottom: 20px;
+                @include clear_transform();
+                .circle-wrapper {
+                    .mobile-vertical-line-30 {
+                        margin: 0 auto 15px;
+                    }
+                    &:first-child {
+                        .mobile-vertical-line-30 {
+                            display: none;
+                        }
+                    }
+                    &.active {
+                        width: 100%;
+                        margin: 0;
+                        .text {
+                            position: relative;
+                            width: 100%;
+                            left: auto;
+                            text-align: center;
+                            padding-top: 10px;
+                            padding-bottom: 20px;
+                            @include clear_transform();
+                            .start {
+                                display: none;
+                            }
+                            .name_job_location {
+                                .end {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .see-more {
+                padding-bottom: 50px;
+                a {
+                    font-size: 18px;
+                }
+            }
+            .token-holders-transactions {
+                display: flex;
+                .between-sections-description {
+                    width: 50%;
+                    border: 1px solid black;
+                    padding-top: 10px;
+                    text-align: center;
+                    padding-bottom: 15px;
+                }
+            }
+            .upper-empty-space {
+                display: none;
+            }
+        }
+        @include breakpoint($xs)    {
+            .token-holders-transactions {
+                .between-sections-description {
+                    .title {
+                        font-size: 26px;
+                    }
+                    .description {
+                        font-size: 12px;
+                    }
+                }
             }
         }
     }
@@ -673,6 +774,9 @@
                     position: relative;
                     img {
                         visibility: hidden;
+                        &.mobile-image {
+                            display: none;
+                        }
                         &.active {
                             visibility: visible;
                         }
@@ -702,6 +806,71 @@
             }
             .buy-btn {
                 padding-top: 40px;
+            }
+        }
+        @include breakpoint($sm-down)   {
+            border-bottom: 2px solid black;
+            .logo {
+                .logo-over-line {
+                    position: static;
+                    text-align: center;
+                    @include clear_transform();
+                    img {
+                        margin-top: 15px;
+                    }
+                }
+            }
+            .section-title {
+                padding-top: 10px;
+                padding-bottom: 0;
+            }
+            .wallet-app-and-gif {
+                display: block;
+                .wallet-app {
+                    text-align: center;
+                    .exchange-platforms-and-wallets {
+                        .exchange-method {
+                            text-align: left;
+                            width: 40%;
+                        }
+                    }
+                    .buy-btn {
+                        padding-top: 40px;
+                    }
+                }
+                .gif {
+                    figure {
+                        padding-top: 50px;
+                        img.mobile-image {
+                            display: block;
+                            visibility: visible;
+                            width: 50%;
+                            margin: 0 auto;
+                        }
+                        img.desktop-image {
+                            display: none;
+                        }
+                    }
+                    .between-sections-description {
+                        display: none;
+                    }
+                }
+            }
+        }
+        @include breakpoint($xs) {
+            .wallet-app-and-gif {
+                .wallet-app {
+                    .section-subtitle {
+                        font-size: 20px;
+                        padding-bottom: 5px;
+                    }
+                    .exchange-platforms-and-wallets {
+                        .exchange-method {
+                            width: 80%;
+                            padding-bottom: 10px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -738,6 +907,23 @@
             padding-left: 40px;
             padding-right: 40px;
         }
+        @include breakpoint($sm-down)   {
+            .container {
+                padding-bottom: 0;
+                padding-top: 0;
+                .logo-over-line {
+                    position: static;
+                    text-align: center;
+                    @include clear_transform();
+                    img {
+                        margin-top: 15px;
+                    }
+                }
+            }
+            .between-sections-description {
+                display: none;
+            }
+        }
     }
     .awards-and-publications {
         .section-title {
@@ -757,7 +943,6 @@
                 bottom: 0;
                 right: 15px;
             }
-
             .logo-over-line {
                 position: absolute;
                 padding: 0 20px;
@@ -772,7 +957,7 @@
                 }
             }
             .publications-slider {
-                height: 400px;
+                height: 450px;
                 padding-left: 20px;
                 padding-right: 20px;
                 .slick-track {
@@ -788,13 +973,24 @@
                     cursor: -webkit-grab;
                     cursor: grab;
                     figure {
+                        padding: 0 20px;
                         img {
                             margin: 0 auto;
                         }
                     }
-                    .description {
-                        padding: 30px 30px;
+                    .headline {
                         display: none;
+                        padding-top: 10px;
+                        padding-right: 25px;
+                        padding-left: 25px;
+                        text-align: center;
+                        line-height: 18px;
+                        font-family: 'Calibri-Bold';
+                    }
+                    .description {
+                        padding: 10px 25px;
+                        display: none;
+                        line-height: 18px;
                     }
                     .btn-container {
                         font-weight: bold;
@@ -813,9 +1009,70 @@
                     &.slick-current {
                         border-left: 2px solid black;
                         border-right: 2px solid black;
-                        .description, .btn-container {
+                        .description, .btn-container, .headline {
                             display: block;
                             font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+        @include breakpoint($sm-down)   {
+            .section-title {
+                padding-top: 10px;
+                padding-bottom: 30px;
+            }
+            .awards {
+                padding-bottom: 70px;
+            }
+            .no-gutter-sm-down {
+                padding-left: 0;
+                padding-right: 0;
+                .publications-slider-wrapper {
+                    .publications-slider {
+                        height: auto;
+                        padding-left: 0;
+                        padding-right: 0;
+                        padding-bottom: 70px;
+                        border-bottom: 2px solid black;
+                    }
+                    .logo-over-line {
+                        position: static;
+                        text-align: center;
+                        @include clear_transform();
+                        img {
+                            margin-top: 15px;
+                        }
+                    }
+                }
+            }
+        }
+        @include breakpoint($xs)   {
+            .awards {
+                padding-bottom: 40px;
+                figure {
+                    padding-bottom: 25px;
+                }
+            }
+            .no-gutter-sm-down {
+                padding-left: 15px;
+                padding-right: 15px;
+                .publications-slider-wrapper {
+                    .publications-slider {
+                        .single-slide {
+                            .wrapper {
+                                figure {
+                                    padding: 0 10px;
+                                }
+                                .description {
+                                    padding: 10px;
+                                    font-size: 12px;
+                                }
+                                .headline {
+                                    padding-left: 10px;
+                                    padding-right: 10px;
+                                }
+                            }
                         }
                     }
                 }
@@ -836,6 +1093,12 @@
                 position: absolute;
                 bottom: 0;
                 left: 15px;
+            }
+        }
+        @include breakpoint($sm-down) {
+            .container {
+                padding-top: 10px;
+                padding-bottom: 30px;
             }
         }
     }
@@ -873,6 +1136,42 @@
                 }
             }
         }
+        @include breakpoint($sm-down)   {
+            padding-bottom: 40px;
+            border-bottom: 2px solid black;
+            .gif {
+                figure {
+                    img.desktop-image {
+                        display: none;
+                    }
+                }
+            }
+            .roadmap-content {
+                text-align: center;
+                .roadmap-cell {
+                    text-align: left;
+                    width: 30%;
+                    min-width: 280px;
+                    display: block;
+                    margin: 0 auto;
+                    opacity: 1;
+                    .mobile-icon {
+                        text-align: center;
+                        padding-bottom: 10px;
+                        img {
+                            width: 80px;
+                        }
+                    }
+                }
+            }
+        }
+        @include breakpoint($xs)    {
+            .roadmap-content {
+                .roadmap-cell {
+                    width: 100%;
+                }
+            }
+        }
     }
     .below-roadmap-timeline {
         .wrapper {
@@ -897,6 +1196,16 @@
                     }
                     img {
                         width: 40px;
+                    }
+                }
+            }
+        }
+        @include breakpoint($sm-down)   {
+            .wrapper {
+                padding-top: 0;
+                .logo-over-line {
+                    img {
+                        margin-top: 15px;
                     }
                 }
             }

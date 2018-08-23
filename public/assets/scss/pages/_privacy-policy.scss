@@ -35,4 +35,18 @@
             list-style: disc inside none;
         }
     }
+    @include breakpoint($xs)    {
+        padding-top: 30px;
+        padding-bottom: 50px;
+        .section-title {
+            font-size: 32px;
+        }
+        .section-subtitle {
+            font-size: 20px;
+            padding-bottom: 30px;
+        }
+        a {
+            word-break: break-all;
+        }
+    }
 }

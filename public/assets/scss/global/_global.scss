@@ -58,6 +58,15 @@ body{
     display: flex;
 }
 
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
 .nowrap{
     white-space: nowrap;
 }
@@ -129,6 +138,9 @@ img {
         color: $light_blue;
         background-color: white;
         border: 2px solid $light_blue;
+    }
+    @include breakpoint($sm-down)   {
+        padding: 10px 32px;
     }
 }
 
@@ -239,5 +251,55 @@ body.home, body.testimonials {
                 }
             }
         }
+    }
+    @include breakpoint($xs)    {
+        ul {
+            li {
+                margin: 0 3px;
+                a {
+                    width: 20px;
+                    line-height: 20px;
+                    height: 20px;
+                }
+                &.arrow {
+                    font-size: 16px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+}
+
+@include breakpoint($sm-down)   {
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+
+    ::-webkit-scrollbar:vertical {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar:horizontal {
+        height: 12px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, .5);
+        border-radius: 10px;
+        border: 2px solid white;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: white;
+        @include rounded(10px);
+    }
+}
+
+@for $i from 10 through 80 {
+    .mobile-vertical-line-#{$i} {
+        width: 2px;
+        height: 0px + $i;
+        background: black;
+        margin: 0 auto;
     }
 }
