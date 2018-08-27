@@ -152,11 +152,18 @@
             figure {
                 padding-bottom: 25px;
                 text-align: center;
+                cursor: pointer;
                 figcaption {
                     color: white;
                     font-size: 18px;
                     padding-top: 15px;
                 }
+            }
+        }
+        @include breakpoint($lg-up) {
+            .list {
+                width: 100%;
+                max-width: 1500px;
             }
         }
         @include breakpoint($sm-down)   {
@@ -529,10 +536,12 @@
                     .end {
                         display: inline-block;
                         margin-left: 5px;
+                        img {
+                            vertical-align: bottom;
+                        }
                     }
                     .name_job_location {
                         padding-top: 5px;
-                        font-style: italic;
                         line-height: 16px;
                     }
                 }
@@ -572,6 +581,20 @@
                             background-position: center center;
                             background-size: 70% 70%;
                             background-repeat: no-repeat;
+                        }
+                    }
+                }
+            }
+            @include breakpoint($lg-up) {
+                .circle-wrapper {
+                    .text {
+                        width: 300px;
+                    }
+                    &.active {
+                        width: 100px;
+                        .circle {
+                            width: 100px;
+                            height: 100px;
                         }
                     }
                 }
@@ -1012,6 +1035,13 @@
                         .description, .btn-container, .headline {
                             display: block;
                             font-size: 16px;
+                        }
+                    }
+                    @include breakpoint($lg-up) {
+                        figure {
+                            img {
+                                max-width: 250px;
+                            }
                         }
                     }
                 }

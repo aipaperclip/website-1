@@ -174,6 +174,8 @@ body {
   color: #1d1d1d; }
   body.overflow-hidden {
     overflow: hidden; }
+  body.modal-open {
+    overflow: hidden; }
 
 .fs-0 {
   font-size: 0px !important; }
@@ -1103,6 +1105,53 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines {
   background: black;
   margin: 0 auto; }
 
+@media screen and (min-width: 1399px) {
+  .container {
+    width: 95%;
+    max-width: 1700px; } }
+.bootbox.application-popup .modal-dialog {
+  margin-top: 0;
+  width: 70%;
+  max-width: 900px; }
+  .bootbox.application-popup .modal-dialog .modal-content {
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    border-radius: 25px; }
+  .bootbox.application-popup .modal-dialog .container-fluid {
+    padding-top: 50px;
+    padding-bottom: 50px; }
+    .bootbox.application-popup .modal-dialog .container-fluid .content {
+      padding: 0 30px; }
+      .bootbox.application-popup .modal-dialog .container-fluid .content .logo {
+        width: 50%; }
+      .bootbox.application-popup .modal-dialog .container-fluid .content .title {
+        font-size: 32px;
+        font-family: 'Calibri-Bold';
+        padding-top: 20px;
+        padding-bottom: 20px; }
+      .bootbox.application-popup .modal-dialog .container-fluid .content .description {
+        line-height: 20px;
+        font-size: 16px; }
+    .bootbox.application-popup .modal-dialog .container-fluid .gif img {
+      -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+      -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2); }
+@media screen and (max-width: 991px) {
+  .bootbox.application-popup .modal-dialog {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto; } }
+@media screen and (max-width: 767px) {
+  .bootbox.application-popup .modal-dialog .container-fluid .content .logo {
+    margin: 0 auto; }
+  .bootbox.application-popup .modal-dialog .container-fluid .gif {
+    display: none; } }
+
+.modal-backdrop.in {
+  opacity: .3; }
+
 header {
   padding-top: 30px; }
   header .logo-container img {
@@ -1202,6 +1251,12 @@ footer {
     @media screen and (max-width: 767px) {
       footer .menu {
         padding-bottom: 20px; } }
+  footer .media-inquiries {
+    text-align: center;
+    padding-bottom: 15px;
+    font-family: 'Calibri-Bold'; }
+    footer .media-inquiries a {
+      text-decoration: underline; }
   footer .all-rights {
     text-align: center;
     padding-bottom: 70px;
@@ -1359,11 +1414,16 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     transform: translate(-50%, -50%); }
     .homepage-container .dentacoin-ecosystem .list figure {
       padding-bottom: 25px;
-      text-align: center; }
+      text-align: center;
+      cursor: pointer; }
       .homepage-container .dentacoin-ecosystem .list figure figcaption {
         color: white;
         font-size: 18px;
         padding-top: 15px; }
+  @media screen and (min-width: 1399px) {
+    .homepage-container .dentacoin-ecosystem .list {
+      width: 100%;
+      max-width: 1500px; } }
   @media screen and (max-width: 991px) {
     .homepage-container .dentacoin-ecosystem .list {
       position: static;
@@ -1666,9 +1726,10 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       .homepage-container .testimonials .expressions .circle-wrapper .text .end {
         display: inline-block;
         margin-left: 5px; }
+        .homepage-container .testimonials .expressions .circle-wrapper .text .end img {
+          vertical-align: bottom; }
       .homepage-container .testimonials .expressions .circle-wrapper .text .name_job_location {
         padding-top: 5px;
-        font-style: italic;
         line-height: 16px; }
     .homepage-container .testimonials .expressions .circle-wrapper.active {
       width: 80px;
@@ -1696,6 +1757,14 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       background-position: center center;
       background-size: 70% 70%;
       background-repeat: no-repeat; }
+  @media screen and (min-width: 1399px) {
+    .homepage-container .testimonials .expressions .circle-wrapper .text {
+      width: 300px; }
+    .homepage-container .testimonials .expressions .circle-wrapper.active {
+      width: 100px; }
+      .homepage-container .testimonials .expressions .circle-wrapper.active .circle {
+        width: 100px;
+        height: 100px; } }
 .homepage-container .testimonials .below-expressions {
   padding-top: 300px; }
   .homepage-container .testimonials .below-expressions .show-more {
@@ -2028,6 +2097,9 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .description, .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .btn-container, .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .headline {
           display: block;
           font-size: 16px; }
+      @media screen and (min-width: 1399px) {
+        .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide figure img {
+          max-width: 250px; } }
 @media screen and (max-width: 991px) {
   .homepage-container .awards-and-publications .section-title {
     padding-top: 10px;
@@ -2168,15 +2240,15 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   background-repeat: no-repeat;
   background-size: contain; }
   .container-404 figure {
-    padding-top: 50px;
+    padding-top: 70px;
     padding-bottom: 50px; }
   .container-404 .ops {
-    font-size: 26px; }
+    font-size: 20px; }
   .container-404 .homepage-link {
     padding-top: 20px;
     font-family: 'Calibri-Bold'; }
     .container-404 .homepage-link a {
-      font-size: 32px;
+      font-size: 18px;
       -webkit-border-radius: 4px;
       -moz-border-radius: 4px;
       -ms-border-radius: 4px;
@@ -2191,7 +2263,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       .container-404 .ops {
         font-size: 18px; }
       .container-404 .homepage-link a {
-        font-size: 18px; } }
+        font-size: 14px; } }
 
 .privacy-policy-container {
   padding-top: 50px;
@@ -2294,7 +2366,9 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           width: 100%; } }
 
 .changelly-container {
-  padding-top: 50px; }
+  padding-top: 30px; }
+  .changelly-container .section-title {
+    padding-bottom: 20px; }
   .changelly-container .iframe-wrapper {
     overflow-x: auto; }
     .changelly-container .iframe-wrapper iframe.changelly {

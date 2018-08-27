@@ -5,6 +5,9 @@ body{
     &.overflow-hidden {
         overflow: hidden;
     }
+    &.modal-open {
+        overflow: hidden;
+    }
 }
 
 @for $i from 0 through 80 {
@@ -302,4 +305,78 @@ body.home, body.testimonials {
         background: black;
         margin: 0 auto;
     }
+}
+
+@include breakpoint($lg-up) {
+    .container {
+        width: 95%;
+        max-width: 1700px;
+    }
+}
+
+.bootbox {
+    &.application-popup {
+        .modal-dialog {
+            margin-top: 0;
+            .modal-content {
+                @include rounded(25px);
+            }
+            width: 70%;
+            max-width: 900px;
+            .container-fluid {
+                padding-top: 50px;
+                padding-bottom: 50px;
+                .content {
+                    padding: 0 30px;
+                    .logo {
+                        width: 50%;
+                    }
+                    .title {
+                        font-size: 32px;
+                        font-family: 'Calibri-Bold';
+                        padding-top: 20px;
+                        padding-bottom: 20px;
+                    }
+                    .description {
+                        line-height: 20px;
+                        font-size: 16px;
+                    }
+                }
+                .gif {
+                    img {
+                        @include box-shadow(0 2px 6px 0 rgba(0,0,0,.2));
+                    }
+                }
+            }
+        }
+    }
+    @include breakpoint($sm-down)    {
+        &.application-popup {
+            .modal-dialog {
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+    @include breakpoint($xs)    {
+        &.application-popup {
+            .modal-dialog {
+                .container-fluid {
+                    .content {
+                        .logo {
+                            margin: 0 auto;
+                        }
+                    }
+                    .gif {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.modal-backdrop.in {
+    opacity: .3;
 }

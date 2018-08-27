@@ -1,5 +1,8 @@
 .changelly-container {
-    padding-top: 50px;
+    padding-top: 30px;
+    .section-title {
+        padding-bottom: 20px;
+    }
     .iframe-wrapper {
         overflow-x: auto;
         iframe.changelly {

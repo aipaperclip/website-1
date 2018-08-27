@@ -3,12 +3,14 @@ $xs: ( max:  767px );
 $sm: ( min:  768px);
 $md: ( min:  992px);
 $lg: ( min: 1200px );
+$lgl: ( min: 1400px );
 $sm-only: ( min: map-get($sm, min), max: map-get($md, min) - 1 );
 $sm-only-landscape-only: ( min: map-get($sm, min), max: map-get($md, min) - 1, orientation: "landscape");
 $md-only: ( min: map-get($md, min), max: map-get($lg, min) - 1 );
 $md-down: ( max: map-get($lg, min) - 1 );
 $sm-down: ( max: map-get($md, min) - 1 );
 $sm-up: ( min: map-get($md, min) - 1 );
+$lg-up: ( min: map-get($lgl, min) - 1 );
 
 @mixin breakpoint($map) {
   $query: "";

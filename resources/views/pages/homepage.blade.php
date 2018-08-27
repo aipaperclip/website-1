@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section("content")
     <div class="homepage-container">
         <div class="intro fullpage-section one" data-section="one">
@@ -60,38 +59,14 @@
                     <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                         <div class="container-fluid">
                             <div class="row fs-0">
-                                <figure class="col-md-3 col-xs-6 inline-block-top">
-                                    <img src="{{URL::asset('assets/images/dentacare.svg') }}"/>
-                                    <figcaption>Dentacare</figcaption>
-                                </figure>
-                                <figure class="col-md-3 col-xs-6 inline-block-top">
-                                    <img src="{{URL::asset('assets/images/trusted-reviews.svg') }}"/>
-                                    <figcaption>Trusted Reviews</figcaption>
-                                </figure>
-                                <figure class="col-md-3 col-xs-6 inline-block-top">
-                                    <img src="{{URL::asset('assets/images/dentavox-app-icon.svg') }}"/>
-                                    <figcaption>Denta Vox</figcaption>
-                                </figure>
-                                <figure class="col-md-3 col-xs-6 inline-block-top">
-                                    <img src="{{URL::asset('assets/images/coming-soon-app-icon.svg') }}"/>
-                                    <figcaption>Assurance</figcaption>
-                                </figure>
-                                <figure class="col-md-3 col-xs-6 inline-block-top">
-                                    <img src="{{URL::asset('assets/images/partner-network-app-icon.svg') }}"/>
-                                    <figcaption>Partner Network</figcaption>
-                                </figure>
-                                <figure class="col-md-3 col-xs-6 inline-block-top">
-                                    <img src="{{URL::asset('assets/images/wallet-app-icon.svg') }}"/>
-                                    <figcaption>Wallet</figcaption>
-                                </figure>
-                                <figure class="col-md-3 col-xs-6 inline-block-top">
-                                    <img src="{{URL::asset('assets/images/blog-app-icon.svg') }}"/>
-                                    <figcaption>Dentacoin Blog</figcaption>
-                                </figure>
-                                <figure class="col-md-3 col-xs-6 inline-block-top">
-                                    <img src="{{URL::asset('assets/images/coming-soon-app-icon.svg') }}"/>
-                                    <figcaption>Health Database</figcaption>
-                                </figure>
+                                @foreach($applications as $application)
+                                    <figure class="col-md-3 col-xs-6 inline-block-top single-application" @if($application->media) data-image="{{URL::asset('assets/uploads/'.$application->media->name) }}" @endif @if($application->text) data-description="{!! $application->text !!}" @endif>
+                                        @if($application->logo)
+                                            <img src="{{URL::asset('assets/uploads/'.$application->logo->name) }}"/>
+                                        @endif
+                                        <figcaption>{{$application->title}}</figcaption>
+                                    </figure>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -123,7 +98,7 @@
                 <div class="row content flex">
                     <div class="col-xs-12 col-md-5 col-md-offset-2 content-container">
                         <h2 class="section-subtitle">Moving From Sick Care to Preventive Care</h2>
-                        <div class="description">The new gen of DCN dentists brings patients back into focus by implementing smart, Blockchain-based software solutions and an industry-specific cryptocurrency.</div>
+                        <div class="description">The new generation of Dentacoin dentists brings patients back into focus by promoting intelligent prevention, implementing dedicated Blockchain-based software solutions and using an industry-specific cryptocurrency.</div>
                         <div class="btn-container"><a href="https://dentists.dentacoin.com/" target="
 " class="white-blue-rounded-btn">I’M A DENTIST</a></div>
                     </div>
@@ -189,12 +164,13 @@
                                 <div class="text">
                                     <figure class="start"><img src="{{URL::asset('assets/images/quotes-start.svg') }}"/></figure>
                                     {{$testimonial->text}}
+                                    <figure class="end"><img src="{{URL::asset('assets/images/quotes-end.svg') }}"/></figure>
                                     <div class="name_job_location">
                                         @if(!empty($testimonial->name_job))
                                             <div class="name_job">{!! $testimonial->name_job !!} @if(empty($testimonial->location)) <figure class="end"><img src="{{URL::asset('assets/images/quotes-end.svg') }}"/></figure> @endif</div>
                                         @endif
                                         @if(!empty($testimonial->location))
-                                            <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>{!! $testimonial->location !!} <figure class="end"><img src="{{URL::asset('assets/images/quotes-end.svg') }}"/></figure></div>
+                                            <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>{!! $testimonial->location !!}</div>
                                         @endif
                                     </div>
                                 </div>
@@ -240,13 +216,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h2 class="col-xs-12 section-title">BUY DENTACOIN</h2>
+                    <h2 class="col-xs-12 section-title">BUY & STORE DENTACOIN</h2>
                 </div>
                 <div class="row wallet-app-and-gif">
                     <div class="fifth-dot inline-block">&nbsp;</div>
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1 wallet-app inline-block-top">
-                        <h2 class="section-subtitle">Dentacoin Wallet App</h2>
-                        <div class="description">Buying, storing and transfering Dentacoin (DCN) has never been easier. Use our Dentacoin Wallet Application on mobile or desktop!</div>
+                        <h2 class="section-subtitle">Available Options</h2>
+                        <div class="description">Dentacoin (DCN) is available for purchase with a card through Changelly, as well as against 100+ other cryptocurrencies. It is also supported by trusted exchange platforms and wallets listed below:</div>
                         <div class="exchange-platforms-and-wallets">
                             <div class="exchange-platforms exchange-method inline-block-top">
                                 <div class="title"><div class="icon inline-block"></div><span class="inline-block">Exchange Platforms</span></div>
@@ -280,7 +256,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="buy-btn"><a href="{{ route('changelly') }}" class="white-blue-rounded-btn">BUY DCN</a></div>
+                        <div class="buy-btn"><a href="{{ route('changelly') }}" class="white-blue-rounded-btn">Buy with Changelly</a></div>
                     </div>
                     <div class="col-xs-12 col-md-5 col-md-offset-1 gif inline-block-top">
                         <figure>

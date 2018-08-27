@@ -7,6 +7,7 @@ var intervals_arr = [];
 var stoppers = [];
 const draw_line_interval = 10;
 const draw_line_increment = 10;
+const border_width = 2;
 
 $(document).ready(function() {
     //HOMEPAGE
@@ -21,6 +22,7 @@ $(document).ready(function() {
         $('svg.svg-with-lines').height($(document).height());
         setLinesDots();
         drawLine('first', 'vertical');
+
     }
 });
 
@@ -30,6 +32,8 @@ $(window).on('beforeunload', function() {
         $(window).scrollTop(0);
     }
 });
+
+$('body').bind('mousewheel', onMousewheel);
 
 jQuery(window).on("load", function()   {
 
@@ -59,7 +63,28 @@ jQuery(window).on('scroll', function()  {
     checkIfLineIsReadyToBeCreated('twentieth', 'horizontal');
 });
 
-$(window).on('wheel', onMousewheel);
+//$(window).on('wheel', onMousewheel);
+
+
+function onMousewheel(e)    {
+    if($('.homepage-container').length > 0 && !isMobile && !$('body').hasClass('modal-open')) {
+        if (e.originalEvent.wheelDelta < 0) {
+            //scroll down
+            if ($('body').attr('data-current') == 'one') {
+                scrollToSectionAnimation('two', null, true);
+            } else if ($('body').attr('data-current') == 'two') {
+                scrollToSectionAnimation('rest-data', true);
+            }
+        } else {
+            //scroll up
+            if ($('body').attr('data-current') == 'two') {
+                scrollToSectionAnimation('one', null, null, true);
+            } else if ($(window).scrollTop() < $('.fullpage-section.two').offset().top + $('.fullpage-section.two').outerHeight() && $('body').attr('data-current') == 'rest-data') {
+                scrollToSectionAnimation('two', null, true);
+            }
+        }
+    }
+}
 
 function scrollToSectionAnimation(to_become_current, full_height, clear_dots, draw_first) {
     //doing this check, because IE 11 not support ES6
@@ -76,9 +101,10 @@ function scrollToSectionAnimation(to_become_current, full_height, clear_dots, dr
     }else {
         scroll_obj.scrollTop = $('.fullpage-section.'+to_become_current).offset().top;
     }
-    $(window).unbind('wheel');
-    jQuery('html, body').animate(scroll_obj, 500).promise().then(function() {
-        $(window).on('wheel', onMousewheel);
+    $('body').unbind('mousewheel', onMousewheel);
+    //$(window).unbind('wheel', onMousewheel);
+    jQuery('html, body').stop().animate(scroll_obj, 500).promise().then(function() {
+        $('body').bind('mousewheel', onMousewheel);
         if(clear_dots != null)  {
             refreshingMainDots();
         }else if(draw_first != null)  {
@@ -88,26 +114,22 @@ function scrollToSectionAnimation(to_become_current, full_height, clear_dots, dr
     $('body').attr('data-current', to_become_current);
 }
 
+/*
 function onMousewheel(event) {
     //HOMEPAGE
-    if($('.homepage-container').length > 0 && !isMobile) {
+    if($('.homepage-container').length > 0 && !isMobile && !$('body').hasClass('modal-open')) {
         if(event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
             //up
-            if($('body').attr('data-current') == 'two') {
-                scrollToSectionAnimation('one', null, null, true);
-            }else if($(window).scrollTop() < $('.fullpage-section.two').offset().top + $('.fullpage-section.two').outerHeight() && $('body').attr('data-current') == 'rest-data') {
-                scrollToSectionAnimation('two', null, true);
-            }
+            console.log('up');
+
         }else {
             //down
-            if($('body').attr('data-current') == 'one') {
-                scrollToSectionAnimation('two', null, true);
-            }else if($('body').attr('data-current') == 'two') {
-                scrollToSectionAnimation('rest-data', true);
-            }
+            console.log('down');
+
         }
     }
 }
+*/
 
 function setLinesDots(resize)    {
     //doing this check, because IE 11 not support ES6
@@ -142,13 +164,13 @@ function setLinesDots(resize)    {
     $('line.fourth').attr('max-y2', $('.successful-practices .fourth-dot').offset().top + $('.successful-practices .fourth-dot').height());
 
     //FIFTH LINE
-    $('line.fifth').attr('x1', $('.successful-practices .fifth-dot').offset().left + $('.successful-practices .fifth-dot').width());
+    $('line.fifth').attr('x1', $('.successful-practices .fifth-dot').offset().left + border_width);
     $('line.fifth').attr('y1', $('.successful-practices .fifth-dot').offset().top + $('.successful-practices .fifth-dot').height());
-    $('line.fifth').attr('x2', $('.below-successful-practices .first-dot').offset().left);
+    $('line.fifth').attr('x2', $('.below-successful-practices .first-dot').offset().left - $('.below-successful-practices .first-dot').width() + border_width);
     $('line.fifth').attr('max-y2', $('.below-successful-practices .first-dot').offset().top + $('.below-successful-practices .first-dot').height() / 2);
 
     //SIXTH LINE
-    $('line.sixth').attr('x1', $('.below-successful-practices .first-dot').offset().left);
+    $('line.sixth').attr('x1', $('.below-successful-practices .first-dot').offset().left - border_width);
     $('line.sixth').attr('y1', $('.below-successful-practices .first-dot').offset().top + $('.below-successful-practices .first-dot').height() / 2);
     $('line.sixth').attr('y2', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2);
     $('line.sixth').attr('max-x2', $('.below-successful-practices .second-dot').offset().left + $('.below-successful-practices .second-dot').width());
@@ -184,9 +206,9 @@ function setLinesDots(resize)    {
     $('line.eleventh').attr('max-y2', $('.buy-dentacoin .second-dot').offset().top + $('.buy-dentacoin .second-dot').height());
 
     //TWELFTH LINE
-    $('line.twelfth').attr('x1', $('.buy-dentacoin .third-dot').offset().left);
-    $('line.twelfth').attr('y1', $('.buy-dentacoin .third-dot').offset().top + $('.buy-dentacoin .third-dot').height());
-    $('line.twelfth').attr('x2', $('.buy-dentacoin .fourth-dot').offset().left);
+    $('line.twelfth').attr('x1', $('.buy-dentacoin .third-dot').offset().left + border_width / border_width);
+    $('line.twelfth').attr('y1', $('.buy-dentacoin .third-dot').offset().top + $('.buy-dentacoin .third-dot').height() - border_width / border_width);
+    $('line.twelfth').attr('x2', $('.buy-dentacoin .fourth-dot').offset().left + border_width / border_width);
     $('line.twelfth').attr('max-y2', $('.buy-dentacoin .fourth-dot').offset().top + $('.buy-dentacoin .fourth-dot').height());
 
     //THIRTEENTH LINE
@@ -220,10 +242,18 @@ function setLinesDots(resize)    {
     $('line.seventeenth').attr('max-x2', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width());
 
     //EIGHTEENTH LINE
-    $('line.eighteenth').attr('x1', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width());
     $('line.eighteenth').attr('y1', $('.roadmap .first-dot').offset().top);
-    $('line.eighteenth').attr('x2', $('.roadmap .second-dot').offset().left + $('.roadmap .second-dot').width());
     $('line.eighteenth').attr('max-y2', $('.roadmap .second-dot').offset().top + $('.roadmap .second-dot').height());
+    $('body').addClass('overflow-hidden');
+    if($(window).width() < 1600)    {
+        $('body').removeClass('overflow-hidden');
+        $('line.eighteenth').attr('x1', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width());
+        $('line.eighteenth').attr('x2', $('.roadmap .second-dot').offset().left + $('.roadmap .second-dot').width());
+    }else {
+        $('body').removeClass('overflow-hidden');
+        $('line.eighteenth').attr('x1', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width() + 1);
+        $('line.eighteenth').attr('x2', $('.roadmap .second-dot').offset().left + $('.roadmap .second-dot').width() + 1);
+    }
 
     //NINETEENTH LINE
     $('line.nineteenth').attr('x1', $('.roadmap-timeline .first-dot').offset().left + $('.roadmap-timeline .first-dot').width());
@@ -266,13 +296,13 @@ function setLinesDots(resize)    {
         $('line.third').attr('x2', $('.successful-practices .second-dot').offset().left).attr('fresh-x2', $('.successful-practices .second-dot').offset().left);
         $('line.fourth').attr('y2', $('.successful-practices .third-dot').offset().top).attr('fresh-y2', $('.successful-practices .third-dot').offset().top);
         $('line.fifth').attr('y2', $('.successful-practices .fifth-dot').offset().top + $('.successful-practices .fifth-dot').height()).attr('fresh-y2', $('.successful-practices .fifth-dot').offset().top + $('.successful-practices .fifth-dot').height());
-        $('line.sixth').attr('x2', $('.below-successful-practices .first-dot').offset().left).attr('fresh-x2', $('.below-successful-practices .first-dot').offset().left);
+        $('line.sixth').attr('x2', $('.below-successful-practices .first-dot').offset().left - border_width).attr('fresh-x2', $('.below-successful-practices .first-dot').offset().left - border_width);
         $('line.seventh').attr('y2', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2).attr('fresh-y2', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2);
         $('line.eighth').attr('x2', $('.testimonials .first-dot').offset().left + $('.testimonials .first-dot').width()).attr('fresh-x2', $('.testimonials .first-dot').offset().left + $('.testimonials .first-dot').width());
         $('line.ninth').attr('y2', $('.testimonials .second-dot').offset().top + $('.testimonials .second-dot').height() / 2).attr('fresh-y2', $('.testimonials .second-dot').offset().top + $('.testimonials .second-dot').height() / 2);
         $('line.tenth').attr('x2', $('.testimonials .third-dot').offset().left).attr('fresh-x2', $('.testimonials .third-dot').offset().left);
         $('line.eleventh').attr('y2', $('.buy-dentacoin .first-dot').offset().top).attr('fresh-y2', $('.buy-dentacoin .first-dot').offset().top);
-        $('line.twelfth').attr('y2', $('.buy-dentacoin .third-dot').offset().top + $('.buy-dentacoin .third-dot').height()).attr('fresh-y2', $('.buy-dentacoin .third-dot').offset().top + $('.buy-dentacoin .third-dot').height());
+        $('line.twelfth').attr('y2', $('.buy-dentacoin .third-dot').offset().top + $('.buy-dentacoin .third-dot').height() - 1).attr('fresh-y2', $('.buy-dentacoin .third-dot').offset().top + $('.buy-dentacoin .third-dot').height() - 1);
         $('line.thirteenth').attr('x2', $('.buy-dentacoin .fourth-dot').offset().left).attr('fresh-x2', $('.buy-dentacoin .fourth-dot').offset().left);
         $('line.fourteenth').attr('y2', $('.buy-dentacoin .fifth-dot').offset().top).attr('fresh-y2', $('.buy-dentacoin .fifth-dot').offset().top);
         $('line.fifteenth').attr('x2', $('.below-buy-dentacoin .first-dot').offset().left).attr('fresh-x2', $('.below-buy-dentacoin .first-dot').offset().left);
@@ -494,7 +524,14 @@ if($('.homepage-container').length > 0) {
     }
     // ===== /first section video logic =====
 
-    //logic for open testimonials and close the ones that are too near to the current opening one
+    //logic for open application popup
+    $('.single-application').click(function()   {
+        var this_btn = $(this);
+        var html = '<div class="container-fluid"><div class="row"><figure class="col-sm-6 gif"><img src="'+this_btn.attr('data-image')+'?'+new Date().getTime()+'"/></figure><div class="col-sm-6 col-xs-12 content"><figure class="logo"><img src="'+this_btn.find('img').attr('src')+'"/></figure><div class="title">'+this_btn.find('figcaption').html()+'</div><div class="description">'+this_btn.attr('data-description')+'</div> </div></div></div>';
+        basic.showDialog(html, 'application-popup');
+    });
+
+    //logic for open testimonials and close the ones that are too near to the current opening one (TESTIMONIALS)
     $('.homepage-container .testimonials .circle-wrapper').click(function()   {
         $(this).addClass('active').removeClass('not-active');
         var this_text = $(this).find('.text');

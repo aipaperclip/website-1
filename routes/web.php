@@ -23,3 +23,5 @@ Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-
 Route::get('/testimonials/page/{page}', 'UserExpressionsController@getView')->name('testimonials');
 
 Route::get('/changelly', 'ChangellyController@getView')->name('changelly');
+
+Route::get('/sitemap', 'Controller@getSitemap')->name('sitemap');

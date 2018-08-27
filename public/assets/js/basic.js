@@ -147,7 +147,9 @@ var basic = {
         bootbox.hideAll();
     },
     verticalAlignModal: function(message) {
-
+        $("body .modal-dialog").each(function(){
+            $(this).css("margin-top", Math.max(20, ($(window).height() - $(this).height()) / 2));
+        })
     },
     request: {
         initialize: false,
