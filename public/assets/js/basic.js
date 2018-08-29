@@ -152,8 +152,8 @@ var basic = {
         bootbox.hideAll();
     },
     verticalAlignModal: function(message, dialog) {
-        $("body .modal-dialog").css("margin-top", Math.max(20, ($(window).height() - this_dialog.height()) / 2));
-        $("body .modal-dialog .gif img").on('load', function()   { 
+        $("body .modal-dialog").css("margin-top", Math.max(20, ($(window).height() - $("body .modal-dialog").height()) / 2));
+        $("body .modal-dialog .gif img").on('load', function()   {
             console.log('asd');
         });
         //$(this).find('.gif img').on('load', function()   {
