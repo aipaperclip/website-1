@@ -154,13 +154,14 @@ var basic = {
     verticalAlignModal: function(message, dialog) {
         $("body .modal-dialog").each(function(){
             var this_dialog = $(this);
-            $(this).find('.gif img').on('load', function()   {
-                this_dialog.css("margin-top", Math.max(20, ($(window).height() - this_dialog.height()) / 2));
-                $('.bootbox.modal').removeClass('visibility-hidden');
-                $('.bootbox.modal a').addClass('visibility-visible-important');
-                $('.modal-backdrop').removeClass('visibility-hidden');
-                $('body').removeClass('overflow-visible').removeClass('padding-right-0');
-            });
+            this_dialog.css("margin-top", Math.max(20, ($(window).height() - this_dialog.height()) / 2));
+            //$(this).find('.gif img').on('load', function()   {
+            //    this_dialog.css("margin-top", Math.max(20, ($(window).height() - this_dialog.height()) / 2));
+            //    $('.bootbox.modal').removeClass('visibility-hidden');
+            //    $('.bootbox.modal a').addClass('visibility-visible-important');
+            //    $('.modal-backdrop').removeClass('visibility-hidden');
+            //    $('body').removeClass('overflow-visible').removeClass('padding-right-0');
+            //});
         })
     },
     request: {
