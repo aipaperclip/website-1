@@ -1116,73 +1116,78 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines {
   .container {
     width: 95%;
     max-width: 1700px; } }
-.bootbox.application-popup a.white-blue-rounded-btn {
-  visibility: hidden; }
-.bootbox.application-popup .modal-dialog {
-  margin-top: 0;
-  width: 70%;
-  max-width: 900px; }
-  .bootbox.application-popup .modal-dialog .modal-content {
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    border-radius: 25px; }
-  .bootbox.application-popup .modal-dialog .container-fluid {
-    padding-top: 50px;
-    padding-bottom: 50px; }
-    .bootbox.application-popup .modal-dialog .container-fluid .content {
-      padding: 0 30px; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .logo {
-        width: 40%; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .title {
-        font-size: 32px;
-        font-family: 'Calibri-Bold';
-        padding-top: 20px;
-        padding-bottom: 10px; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .description {
-        line-height: 20px;
-        font-size: 16px; }
-        .bootbox.application-popup .modal-dialog .container-fluid .content .description p {
-          padding-bottom: 10px; }
-          .bootbox.application-popup .modal-dialog .container-fluid .content .description p a {
-            margin-top: 10px;
-            display: inline-block; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html .extra-title {
-        font-family: 'Calibri-Bold';
-        font-size: 20px;
-        padding-bottom: 10px;
-        padding-top: 20px; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html ul li {
-        padding-bottom: 5px;
-        list-style: disc inside none; }
-        .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html ul li a {
-          text-decoration: underline; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html .see-all {
-        padding-top: 15px; }
-    .bootbox.application-popup .modal-dialog .container-fluid .gif img {
-      -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
-      -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
-      -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
-      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2); }
-@media screen and (max-width: 991px) {
+.bootbox {
+  display: flex !important;
+  align-items: center;
+  justify-content: center; }
+  .bootbox.application-popup a.white-blue-rounded-btn {
+    visibility: hidden; }
   .bootbox.application-popup .modal-dialog {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto; } }
-@media screen and (max-width: 767px) {
-  .bootbox a.white-blue-rounded-btn {
-    font-size: 14px;
-    padding: 10px 0;
-    width: 100%;
-    max-width: 200px;
-    display: block;
-    text-align: center; }
-  .bootbox.application-popup .modal-dialog .container-fluid .content {
-    padding: 0; }
-    .bootbox.application-popup .modal-dialog .container-fluid .content .logo {
-      margin: 0 auto; }
-  .bootbox.application-popup .modal-dialog .container-fluid .gif {
-    display: none; } }
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 70%;
+    max-width: 900px; }
+    .bootbox.application-popup .modal-dialog .modal-content {
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      -ms-border-radius: 25px;
+      border-radius: 25px; }
+    .bootbox.application-popup .modal-dialog .container-fluid {
+      padding-top: 50px;
+      padding-bottom: 50px; }
+      .bootbox.application-popup .modal-dialog .container-fluid .content {
+        padding: 0 30px; }
+        .bootbox.application-popup .modal-dialog .container-fluid .content .logo {
+          width: 40%; }
+        .bootbox.application-popup .modal-dialog .container-fluid .content .title {
+          font-size: 32px;
+          font-family: 'Calibri-Bold';
+          padding-top: 20px;
+          padding-bottom: 10px; }
+        .bootbox.application-popup .modal-dialog .container-fluid .content .description {
+          line-height: 20px;
+          font-size: 16px; }
+          .bootbox.application-popup .modal-dialog .container-fluid .content .description p {
+            padding-bottom: 10px; }
+            .bootbox.application-popup .modal-dialog .container-fluid .content .description p a {
+              margin-top: 10px;
+              display: inline-block; }
+        .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html .extra-title {
+          font-family: 'Calibri-Bold';
+          font-size: 20px;
+          padding-bottom: 10px;
+          padding-top: 20px; }
+        .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html ul li {
+          padding-bottom: 5px;
+          list-style: disc inside none; }
+          .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html ul li a {
+            text-decoration: underline; }
+        .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html .see-all {
+          padding-top: 15px; }
+      .bootbox.application-popup .modal-dialog .container-fluid .gif img {
+        -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+        -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2); }
+  @media screen and (max-width: 991px) {
+    .bootbox.application-popup .modal-dialog {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto; } }
+  @media screen and (max-width: 767px) {
+    .bootbox a.white-blue-rounded-btn {
+      font-size: 14px;
+      padding: 10px 0;
+      width: 100%;
+      max-width: 200px;
+      display: block;
+      text-align: center; }
+    .bootbox.application-popup .modal-dialog .container-fluid .content {
+      padding: 0; }
+      .bootbox.application-popup .modal-dialog .container-fluid .content .logo {
+        margin: 0 auto; }
+    .bootbox.application-popup .modal-dialog .container-fluid .gif {
+      display: none; } }
 
 .modal-backdrop.in {
   opacity: .3; }

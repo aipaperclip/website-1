@@ -139,26 +139,11 @@ var basic = {
         });
         dialog.on('shown.bs.modal', function(){
             basic.fixZIndexBackdrop();
-            basic.verticalAlignModal();
         });
-
         dialog.modal('show');
-        $('.bootbox.modal').addClass('visibility-hidden');
-        $('.modal-backdrop').addClass('visibility-hidden');
-        $('body').addClass('overflow-visible').addClass('padding-right-0');
-
     },
     closeDialog: function (){
         bootbox.hideAll();
-    },
-    verticalAlignModal: function(message, dialog) {
-        $("body .modal-dialog .gif img").ready(function()   {
-            $("body .modal-dialog").css("margin-top", Math.max(20, ($(window).height() - $("body .modal-dialog").height()) / 2));
-            $('.bootbox.modal').removeClass('visibility-hidden');
-            $('.bootbox.modal a').addClass('visibility-visible-important');
-            $('.modal-backdrop').removeClass('visibility-hidden');
-            $('body').removeClass('overflow-visible').removeClass('padding-right-0');
-        });
     },
     request: {
         initialize: false,

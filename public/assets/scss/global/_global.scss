@@ -325,12 +325,16 @@ body.home, body.testimonials {
 }
 
 .bootbox {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
     &.application-popup {
         a.white-blue-rounded-btn {
             visibility: hidden;
         }
         .modal-dialog {
-            margin-top: 0;
+            margin-top: 10px;
+            margin-bottom: 10px;
             .modal-content {
                 @include rounded(25px);
             }
