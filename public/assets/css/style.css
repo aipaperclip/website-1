@@ -1120,11 +1120,9 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines {
   display: flex !important;
   align-items: center;
   justify-content: center; }
-  .bootbox.application-popup a.white-blue-rounded-btn {
-    visibility: hidden; }
   .bootbox.application-popup .modal-dialog {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     width: 70%;
     max-width: 900px; }
     .bootbox.application-popup .modal-dialog .modal-content {
