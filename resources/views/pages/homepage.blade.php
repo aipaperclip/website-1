@@ -60,7 +60,7 @@
                         <div class="container-fluid">
                             <div class="row fs-0">
                                 @foreach($applications as $application)
-                                    <figure class="col-md-3 col-xs-4 inline-block-top single-application" @if($application->media) data-image="{{URL::asset('assets/uploads/'.$application->media->name) }}" @endif  @if($application->popup_logo) data-popup-logo="{{URL::asset('assets/uploads/'.$application->popup_logo->name) }}" @endif @if($application->text) data-description="{{ json_encode($application->text) }}" @endif @if($application->slug == 'blog') data-articles="{{json_encode($latest_blog_articles)}}" @endif>
+                                    <figure class="col-md-3 col-xs-4 inline-block-top single-application" @if($application->media) data-image="{{URL::asset('assets/uploads/'.$application->media->name) }}" @endif  @if($application->popup_logo) data-popup-logo="{{URL::asset('assets/uploads/'.$application->popup_logo->name) }}" @endif @if($application->text) data-description="{{ json_encode($application->text) }}" @endif  @if($application->slug == 'blog') data-articles="{{json_encode($latest_blog_articles)}}" @endif>
                                         @if($application->logo)
                                             <img src="{{URL::asset('assets/uploads/'.$application->logo->name) }}"/>
                                         @endif
