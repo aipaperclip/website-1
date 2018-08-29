@@ -143,9 +143,9 @@ var basic = {
         });
 
         dialog.modal('show');
-        $('.bootbox.modal').addClass('visibility-hidden');
-        $('.modal-backdrop').addClass('visibility-hidden');
-        $('body').addClass('overflow-visible').addClass('padding-right-0');
+        //$('.bootbox.modal').addClass('visibility-hidden');
+        //$('.modal-backdrop').addClass('visibility-hidden');
+        //$('body').addClass('overflow-visible').addClass('padding-right-0');
 
     },
     closeDialog: function (){
