@@ -156,6 +156,9 @@ var basic = {
         $("body .modal-dialog .gif img").on('load', function()   {
             console.log('asd');
         });
+        $("body .modal-dialog .gif img").ready(function()   {
+            console.log('asd123');
+        });
         //$(this).find('.gif img').on('load', function()   {
         //    this_dialog.css("margin-top", Math.max(20, ($(window).height() - this_dialog.height()) / 2));
         //    $('.bootbox.modal').removeClass('visibility-hidden');
