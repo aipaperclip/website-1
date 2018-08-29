@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     font-family: Calibri, sans-serif;
     color: $main_color;
@@ -325,13 +325,15 @@ body.home, body.testimonials {
 }
 
 .bootbox {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
+    @include breakpoint($sm-up) {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
     &.application-popup {
         .modal-dialog {
             margin-top: 30px;
-            margin-bottom: 30px;    
+            margin-bottom: 30px;
             .modal-content {
                 @include rounded(25px);
             }

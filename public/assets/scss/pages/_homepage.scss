@@ -51,9 +51,7 @@
                 }
                 @include breakpoint($sm-down)   {
                     position: static;
-                    -webkit-transform: none;
-                    -ms-transform: none;
-                    transform: none;
+                    @include clear_transform(); 
                 }
                 @include breakpoint($xs)    {
                     text-align: center;
