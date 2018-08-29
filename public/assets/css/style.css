@@ -174,6 +174,10 @@ body {
   color: #1d1d1d; }
   body.overflow-hidden {
     overflow: hidden; }
+  body.overflow-visible {
+    overflow: visible !important; }
+  body.padding-right-0 {
+    padding-right: 0 !important; }
   body.modal-open {
     overflow: hidden; }
 
@@ -602,6 +606,9 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines {
 
 .visibility-visible {
   visibility: visible; }
+
+.visibility-visible-important {
+  visibility: visible !important; }
 
 .pagination-container {
   font-size: 0;
@@ -1109,6 +1116,8 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines {
   .container {
     width: 95%;
     max-width: 1700px; } }
+.bootbox.application-popup a.white-blue-rounded-btn {
+  visibility: hidden; }
 .bootbox.application-popup .modal-dialog {
   margin-top: 0;
   width: 70%;
@@ -1124,15 +1133,32 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines {
     .bootbox.application-popup .modal-dialog .container-fluid .content {
       padding: 0 30px; }
       .bootbox.application-popup .modal-dialog .container-fluid .content .logo {
-        width: 50%; }
+        width: 40%; }
       .bootbox.application-popup .modal-dialog .container-fluid .content .title {
         font-size: 32px;
         font-family: 'Calibri-Bold';
         padding-top: 20px;
-        padding-bottom: 20px; }
+        padding-bottom: 10px; }
       .bootbox.application-popup .modal-dialog .container-fluid .content .description {
         line-height: 20px;
         font-size: 16px; }
+        .bootbox.application-popup .modal-dialog .container-fluid .content .description p {
+          padding-bottom: 10px; }
+          .bootbox.application-popup .modal-dialog .container-fluid .content .description p a {
+            margin-top: 10px;
+            display: inline-block; }
+      .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html .extra-title {
+        font-family: 'Calibri-Bold';
+        font-size: 20px;
+        padding-bottom: 10px;
+        padding-top: 20px; }
+      .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html ul li {
+        padding-bottom: 5px;
+        list-style: disc inside none; }
+        .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html ul li a {
+          text-decoration: underline; }
+      .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html .see-all {
+        padding-top: 15px; }
     .bootbox.application-popup .modal-dialog .container-fluid .gif img {
       -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
       -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
@@ -1144,13 +1170,45 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines {
     margin-left: auto;
     margin-right: auto; } }
 @media screen and (max-width: 767px) {
-  .bootbox.application-popup .modal-dialog .container-fluid .content .logo {
-    margin: 0 auto; }
+  .bootbox a.white-blue-rounded-btn {
+    font-size: 14px;
+    padding: 10px 0;
+    width: 100%;
+    max-width: 200px;
+    display: block;
+    text-align: center; }
+  .bootbox.application-popup .modal-dialog .container-fluid .content {
+    padding: 0; }
+    .bootbox.application-popup .modal-dialog .container-fluid .content .logo {
+      margin: 0 auto; }
   .bootbox.application-popup .modal-dialog .container-fluid .gif {
     display: none; } }
 
 .modal-backdrop.in {
   opacity: .3; }
+
+.bootstrap-select {
+  width: 100% !important; }
+  .bootstrap-select button.btn {
+    box-shadow: none !important;
+    background-position: center right 15px;
+    background-repeat: no-repeat; }
+    .bootstrap-select button.btn:focus {
+      outline: none !important; }
+  .bootstrap-select .dropdown-menu {
+    margin: 0; }
+    .bootstrap-select .dropdown-menu.open {
+      border: 1px solid #679dca; }
+    .bootstrap-select .dropdown-menu li {
+      border-bottom: 1px solid #679dca; }
+      .bootstrap-select .dropdown-menu li a {
+        outline: none !important; }
+        .bootstrap-select .dropdown-menu li a:focus {
+          outline: none !important; }
+      .bootstrap-select .dropdown-menu li.selected a {
+        font-family: "Calibri-Bold"; }
+      .bootstrap-select .dropdown-menu li:last-child {
+        border: 0; }
 
 header {
   padding-top: 30px; }
@@ -1214,10 +1272,10 @@ footer {
       margin-bottom: 10px; }
     @media screen and (max-width: 991px) {
       footer .newsletter-register {
-        padding-top: 0; } }
+        padding-top: 10px; } }
     @media screen and (max-width: 767px) {
       footer .newsletter-register {
-        padding-bottom: 20px; } }
+        padding-bottom: 10px; } }
   footer .socials {
     text-align: center;
     padding-top: 30px;
@@ -1250,7 +1308,13 @@ footer {
           text-decoration: underline; }
     @media screen and (max-width: 767px) {
       footer .menu {
-        padding-bottom: 20px; } }
+        padding-bottom: 20px; }
+        footer .menu ul li {
+          padding: 3px 10px; }
+          footer .menu ul li a {
+            font-size: 14px; }
+          footer .menu ul li.separator {
+            padding: 3px 0; } }
   footer .media-inquiries {
     text-align: center;
     padding-bottom: 15px;
@@ -1423,7 +1487,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   @media screen and (min-width: 1399px) {
     .homepage-container .dentacoin-ecosystem .list {
       width: 100%;
-      max-width: 1500px; } }
+      max-width: 1300px; } }
   @media screen and (max-width: 991px) {
     .homepage-container .dentacoin-ecosystem .list {
       position: static;
@@ -1452,8 +1516,12 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         -ms-transform: none;
         -o-transform: none;
         transform: none; }
-    .homepage-container .dentacoin-ecosystem .list figure figcaption {
-      font-size: 16px; } }
+    .homepage-container .dentacoin-ecosystem .list figure {
+      padding: 0 10px 15px; }
+      .homepage-container .dentacoin-ecosystem .list figure figcaption {
+        padding-top: 10px;
+        font-size: 14px;
+        line-height: 16px; } }
 .homepage-container .successful-practices .dots {
   height: 80px; }
   .homepage-container .successful-practices .dots .first-dot-wrapper {
@@ -2379,5 +2447,78 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   @media screen and (max-width: 991px) {
     .changelly-container {
       padding-top: 20px; } }
+
+.partner-network-container {
+  padding-top: 30px; }
+  .partner-network-container .section-title {
+    padding-bottom: 20px; }
+  .partner-network-container .filter {
+    padding-bottom: 40px; }
+    .partner-network-container .filter .wrapper {
+      max-width: 250px;
+      width: 90%;
+      margin: 0 auto;
+      text-align: left; }
+      .partner-network-container .filter .wrapper .title {
+        font-family: 'Calibri-Bold';
+        font-size: 20px; }
+  .partner-network-container .map-canvas {
+    position: relative;
+    overflow: hidden;
+    height: 450px; }
+  .partner-network-container .list-with-locations {
+    padding-top: 50px;
+    padding-bottom: 100px; }
+    .partner-network-container .list-with-locations .section-title {
+      padding-top: 30px; }
+    .partner-network-container .list-with-locations .section-subtitle {
+      font-size: 30px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #3e3e3e;
+      cursor: pointer; }
+      .partner-network-container .list-with-locations .section-subtitle span {
+        width: calc(100% - 25px);
+        vertical-align: middle;
+        display: inline-block; }
+      .partner-network-container .list-with-locations .section-subtitle i {
+        font-size: 24px;
+        width: 25px;
+        text-align: right;
+        padding-right: 5px;
+        vertical-align: middle;
+        display: inline-block;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -o-transition: 0.3s;
+        -ms-transition: 0.3s;
+        transition: 0.3s; }
+        .partner-network-container .list-with-locations .section-subtitle i.active {
+          -webkit-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          -o-transform: rotate(90deg);
+          transform: rotate(90deg); }
+    .partner-network-container .list-with-locations .clinics {
+      display: none;
+      padding-left: 20px;
+      padding-right: 20px; }
+      .partner-network-container .list-with-locations .clinics .clinic-title {
+        font-size: 20px;
+        text-align: left;
+        padding-top: 15px;
+        padding-bottom: 5px; }
+      .partner-network-container .list-with-locations .clinics .clinic-link {
+        text-decoration: underline;
+        font-size: 16px;
+        padding-bottom: 5px; }
+      .partner-network-container .list-with-locations .clinics .locations ul li {
+        padding-bottom: 5px;
+        list-style: disc inside none;
+        font-size: 16px; }
+  @media screen and (max-width: 767px) {
+    .partner-network-container .list-with-locations .section-subtitle {
+      font-size: 20px; }
+    .partner-network-container a {
+      word-break: break-all; } }
 
 /*# sourceMappingURL=style.css.map */

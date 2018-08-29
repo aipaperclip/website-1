@@ -5,6 +5,12 @@ body{
     &.overflow-hidden {
         overflow: hidden;
     }
+    &.overflow-visible {
+        overflow: visible !important;
+    }
+    &.padding-right-0 {
+        padding-right: 0 !important;
+    }
     &.modal-open {
         overflow: hidden;
     }
@@ -212,6 +218,10 @@ body.home, body.testimonials {
     visibility: visible;
 }
 
+.visibility-visible-important {
+    visibility: visible !important;
+}
+
 .pagination-container {
     font-size: 0;
     text-align: center;
@@ -316,6 +326,9 @@ body.home, body.testimonials {
 
 .bootbox {
     &.application-popup {
+        a.white-blue-rounded-btn {
+            visibility: hidden;
+        }
         .modal-dialog {
             margin-top: 0;
             .modal-content {
@@ -329,17 +342,44 @@ body.home, body.testimonials {
                 .content {
                     padding: 0 30px;
                     .logo {
-                        width: 50%;
+                        width: 40%;
                     }
                     .title {
                         font-size: 32px;
                         font-family: 'Calibri-Bold';
                         padding-top: 20px;
-                        padding-bottom: 20px;
+                        padding-bottom: 10px;
                     }
                     .description {
                         line-height: 20px;
                         font-size: 16px;
+                        p {
+                            padding-bottom: 10px;
+                            a {
+                                margin-top: 10px;
+                                display: inline-block;
+                            }
+                        }
+                    }
+                    .extra-html {
+                        .extra-title {
+                            font-family: 'Calibri-Bold';
+                            font-size: 20px;
+                            padding-bottom: 10px;
+                            padding-top: 20px;
+                        }
+                        ul {
+                            li {
+                                padding-bottom: 5px;
+                                list-style: disc inside none;
+                                a {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                        .see-all {
+                            padding-top: 15px;
+                        }
                     }
                 }
                 .gif {
@@ -360,10 +400,19 @@ body.home, body.testimonials {
         }
     }
     @include breakpoint($xs)    {
+        a.white-blue-rounded-btn {
+            font-size: 14px;
+            padding: 10px 0;
+            width: 100%;
+            max-width: 200px;
+            display: block;
+            text-align: center;
+        }
         &.application-popup {
             .modal-dialog {
                 .container-fluid {
                     .content {
+                        padding: 0;
                         .logo {
                             margin: 0 auto;
                         }
@@ -379,4 +428,39 @@ body.home, body.testimonials {
 
 .modal-backdrop.in {
     opacity: .3;
+}
+
+.bootstrap-select {
+    width: 100% !important;
+    button.btn {
+        box-shadow: none !important;
+        background-position: center right 15px;
+        background-repeat: no-repeat;
+        &:focus {
+            outline: none !important;
+        }
+    }
+    .dropdown-menu {
+        margin: 0;
+        &.open {
+            border: 1px solid $light_blue;
+        }
+        li {
+            border-bottom: 1px solid $light_blue;
+            a {
+                outline: none !important;
+                &:focus {
+                    outline: none !important;
+                }
+            }
+            &.selected {
+                a {
+                    font-family: "Calibri-Bold";
+                }
+            }
+            &:last-child {
+                border: 0;
+            }
+        }
+    }
 }

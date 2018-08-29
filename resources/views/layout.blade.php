@@ -14,6 +14,9 @@
 
     <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <script>
+        var HOME_URL = '{{ route("home") }}';
+    </script>
 </head>
 <body data-current="one" class="@if(Route::current()) {{Route::current()->getName()}} @else class-404 @endif" lang="en">
     <svg class="svg-with-lines">
@@ -45,15 +48,13 @@
             </figure>
         </div>
     </header>
-    <section>@yield("content")</section>
+    <main>@yield("content")</main>
     <footer>
         <div class="container">
             <div class="row">
                 <h2 class="col-xs-12 section-title">JOIN DENTACOIN COMMUNITY</h2>
             </div>
-            @if(isset($mobile) && !$mobile)
-                @include('partials.newsletter-registration')
-            @endif
+            @include('partials.newsletter-registration')
             <div class="row socials">
                 <div class="col-xs-12">
                     <ul>
@@ -73,17 +74,14 @@
             <div class="row menu">
                 <nav class="col-xs-12">
                     <ul>
-                        {{--<li class="inline-block"><a target="_blank" href="">Press Center</a></li>--}}
                         <li class="inline-block"><a target="_blank" href="https://blog.dentacoin.com/">Blog</a></li>
+                        <li class="inline-block separator">|</li>
                         <li class="inline-block"><a target="_blank" href="https://dentacoin.com/web/white-paper/Whitepaper-en1.pdf">Whitepaper</a></li>
-                        <li class="inline-block"><a target="_blank" href="https://dentists.dentacoin.com/">For dentist</a></li>
+                        <li class="inline-block separator">|</li>
                         <li class="inline-block"><a target="_blank" href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
                     </ul>
                 </nav>
             </div>
-            @if(isset($mobile) && $mobile)
-                @include('partials.newsletter-registration')
-            @endif
             <div class="row media-inquiries">
                 <div class="col-xs-12">
                     For media inquiries, please contact us at <a href="mailto:press@dentacoin.com">press@dentacoin.com</a>
@@ -92,7 +90,7 @@
             <div class="row all-rights">
                 <div class="col-xs-12">
                     <div>© 2018 Dentacoin Foundation. All rights reserved. </div>
-                    <div>Wim Duisenbergplantsoen 31, 6221 SE Maastricht, The Netherlands</div>
+                    {{--<div>Wim Duisenbergplantsoen 31, 6221 SE Maastricht, The Netherlands</div>--}}
                     <div><a href="https://dentacoin.com/docs/Dentacoin%20foundation.pdf" target="_blank">Verify Dentacoin Foundation</a></div>
                 </div>
             </div>
@@ -104,6 +102,10 @@
         /*]]>*/</script>
     <!-- End of Zendesk Widget script -->
     <script src="/assets/js/basic.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
+    @yield("script_block")
+    <script src="/assets/js/markerclusterer-v2.js"></script>
+    <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/index.js"></script>
 </body>
 </html>

@@ -12,14 +12,15 @@
   "devDependencies": {
     "admin-lte": "^2.3.3",
     "axios": "^0.16.2",
+    "bootbox.js": "^4.3.0",
     "bootstrap": "^3.3.7",
+    "bootstrap-select": "^1.13.2",
     "cross-env": "^5.0.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.1.1",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
-    "vue": "^2.1.10",
     "slick-carousel": "^1.8.1",
-    "bootbox.js": "^4.3.0"
+    "vue": "^2.1.10"
   }
 }

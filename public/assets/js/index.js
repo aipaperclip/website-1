@@ -527,7 +527,16 @@ if($('.homepage-container').length > 0) {
     //logic for open application popup
     $('.single-application').click(function()   {
         var this_btn = $(this);
-        var html = '<div class="container-fluid"><div class="row"><figure class="col-sm-6 gif"><img src="'+this_btn.attr('data-image')+'?'+new Date().getTime()+'"/></figure><div class="col-sm-6 col-xs-12 content"><figure class="logo"><img src="'+this_btn.find('img').attr('src')+'"/></figure><div class="title">'+this_btn.find('figcaption').html()+'</div><div class="description">'+this_btn.attr('data-description')+'</div> </div></div></div>';
+        var extra_html = '';
+        if(this_btn.attr('data-articles') != undefined)    {
+            extra_html+='<div class="extra-html"><div class="extra-title">Latest Blog articles:</div><ul>';
+            var articles_arr = $.parseJSON(this_btn.attr('data-articles'));
+            for(let i = 0, len = articles_arr.length; i < len; i+=1)    {
+                extra_html+='<li class="link"><a href="https://blog.dentacoin.com/'+articles_arr[i]['post_name']+'" target="_blank">'+articles_arr[i]['post_title']+'</a></li>';
+            }
+            extra_html+='</ul><div class="see-all"><a href="https://blog.dentacoin.com/" class="white-blue-rounded-btn" target="_blank">GO TO ALL</a></div></div>';
+        }
+        var html = '<div class="container-fluid"><div class="row"><figure class="col-sm-6 gif"><img src="'+this_btn.attr('data-image')+'?'+new Date().getTime()+'"/></figure><div class="col-sm-6 col-xs-12 content"><figure class="logo"><img src="'+this_btn.attr('data-popup-logo')+'"/></figure><div class="title">'+this_btn.find('figcaption').html()+'</div><div class="description">'+$.parseJSON(this_btn.attr('data-description'))+'</div>'+extra_html+'</div></div></div>';
         basic.showDialog(html, 'application-popup');
     });
 
@@ -631,6 +640,33 @@ if($('.testimonials-container').length > 0) {
     testimonialAvatarsLine();
 }
 
+//PARTNER NETWORK
+if($('body').hasClass('partner-network')) {
+    initMap();
+
+    //filtering google map by location type
+    $('.partner-network-container .filter select').on('change', function()  {
+        if($(this).val() != '') {
+            initMap(true);
+        }else {
+            initMap();
+        }
+    });
+
+    //logic for show/hide locations
+    $('.partner-network-container .list-with-locations .subtype-title').click(function()    {
+        if(!$(this).hasClass('opened'))  {
+            $('.partner-network-container .list-with-locations .clinics').slideUp(300);
+            $('.partner-network-container .list-with-locations .subtype-title').removeClass('opened').find('i').removeClass('active');
+            $(this).next().slideDown(300);
+            $(this).addClass('opened').find('i').addClass('active');
+        }else {
+            $('.partner-network-container .list-with-locations .clinics').slideUp(300);
+            $('.partner-network-container .list-with-locations .subtype-title').removeClass('opened').find('i').removeClass('active');
+        }
+    });
+}
+
 // ==================== /PAGES ====================
 
 //checking if submitted email is valid
@@ -661,3 +697,28 @@ function newsletterRegisterValidation() {
     });
 }
 newsletterRegisterValidation();
+
+function stopMaliciousInspect()  {
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    document.onkeydown = function(e) {
+        if(event.keyCode == 123) {
+            return false;
+        }
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+            return false;
+        }
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+            return false;
+        }
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+            return false;
+        }
+        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            return false;
+        }
+    }
+}
+//stopMaliciousInspect();

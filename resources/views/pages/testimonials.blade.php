@@ -1,7 +1,7 @@
 @extends("layout")
 
 @section("content")
-    <div class="testimonials-container">
+    <section class="testimonials-container">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 section-title">Dentacoin Network Speaking</div>
@@ -37,5 +37,5 @@
                 <div class="col-xs-12">@include('partials.pagination')</div>
             </div>
         </div>
-    </div>
+    </section>
 @endsection

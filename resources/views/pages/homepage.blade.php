@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
     <div class="homepage-container">
-        <div class="intro fullpage-section one" data-section="one">
+        <section class="intro fullpage-section one" data-section="one">
             <div class="bg-wrapper">
                 <div class="container">
                     <div class="row">
@@ -42,8 +42,8 @@
                     <div class="wrapper"><span class="second-dot custom-dot">&nbsp;</span></div>
                 </div>
             </div>
-        </div>
-        <div class="dentacoin-ecosystem fullpage-section two" data-section="two">
+        </section>
+        <section class="dentacoin-ecosystem fullpage-section two" data-section="two">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 btn-container">
@@ -60,7 +60,7 @@
                         <div class="container-fluid">
                             <div class="row fs-0">
                                 @foreach($applications as $application)
-                                    <figure class="col-md-3 col-xs-6 inline-block-top single-application" @if($application->media) data-image="{{URL::asset('assets/uploads/'.$application->media->name) }}" @endif @if($application->text) data-description="{!! $application->text !!}" @endif>
+                                    <figure class="col-md-3 col-xs-4 inline-block-top single-application" @if($application->media) data-image="{{URL::asset('assets/uploads/'.$application->media->name) }}" @endif  @if($application->popup_logo) data-popup-logo="{{URL::asset('assets/uploads/'.$application->popup_logo->name) }}" @endif @if($application->text) data-description="{{ json_encode($application->text) }}" @endif @if($application->slug == 'blog') data-articles="{{json_encode($latest_blog_articles)}}" @endif>
                                         @if($application->logo)
                                             <img src="{{URL::asset('assets/uploads/'.$application->logo->name) }}"/>
                                         @endif
@@ -72,8 +72,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="successful-practices rest-data">
+        </section>
+        <section class="successful-practices rest-data">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 dots">
@@ -110,8 +110,8 @@
                     </figure>
                 </div>
             </div>
-        </div>
-        <div class="below-successful-practices">
+        </section>
+        <section class="below-successful-practices">
             <div class="container">
                 <div class="row mobile-title text-center">
                     <figure class="col-xs-12">
@@ -142,8 +142,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="testimonials">
+        </section>
+        <section class="testimonials">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 upper-empty-space">
@@ -201,8 +201,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="buy-dentacoin">
+        </section>
+        <section class="buy-dentacoin">
             <div class="container">
                 <div class="row logo">
                     <figure class="logo-over-line">
@@ -256,7 +256,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="buy-btn"><a href="{{ route('changelly') }}" class="white-blue-rounded-btn">Buy with Changelly</a></div>
+                        <div class="buy-btn"><a href="{{ route('changelly') }}" class="white-blue-rounded-btn">BUY WITH CHANGELLY</a></div>
                     </div>
                     <div class="col-xs-12 col-md-5 col-md-offset-1 gif inline-block-top">
                         <figure>
@@ -273,8 +273,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="below-buy-dentacoin">
+        </section>
+        <section class="below-buy-dentacoin">
             <div class="container">
                 <figure class="logo-over-line">
                     @if($mobile)
@@ -293,8 +293,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="awards-and-publications">
+        </section>
+        <section class="awards-and-publications">
             <div class="container">
                 <div class="row">
                     <h2 class="col-xs-12 section-title">AWARDS & PUBLICATIONS</h2>
@@ -343,8 +343,8 @@
                     </figure>
                 </div>
             </div>
-        </div>
-        <div class="roadmap">
+        </section>
+        <section class="roadmap">
             <div class="container">
                 <div class="first-dot inline-block">&nbsp;</div>
                 <div class="second-dot inline-block">&nbsp;</div>
@@ -352,8 +352,8 @@
                     <div class="col-xs-12 section-title">ROADMAP</div>
                 </div>
             </div>
-        </div>
-        <div class="roadmap-timeline">
+        </section>
+        <section class="roadmap-timeline">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 gif">
@@ -411,8 +411,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="below-roadmap-timeline">
+        </section>
+        <section class="below-roadmap-timeline">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 wrapper text-center">
@@ -429,6 +429,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 @endsection

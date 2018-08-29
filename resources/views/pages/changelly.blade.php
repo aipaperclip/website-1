@@ -1,7 +1,7 @@
 @extends("layout")
 
 @section("content")
-    <div class="changelly-container fs-0">
+    <section class="changelly-container fs-0">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 section-title">Buy Dentacoin</div>
@@ -22,5 +22,5 @@
                 };
             </script>
         </div>
-    </div>
+    </section>
 @endsection

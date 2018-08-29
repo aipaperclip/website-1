@@ -18,6 +18,7 @@ mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'node_modules/font-awesome/css/font-awesome.min.css',
     'node_modules/slick-carousel/slick/slick.css',
+    'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
 ], 'public/dist/css/front-libs-style.css');
 
 mix.scripts([
@@ -25,6 +26,7 @@ mix.scripts([
     'node_modules/bootstrap/dist/js/bootstrap.min.js',
     'node_modules/bootbox.js/bootbox.min.js',
     'node_modules/slick-carousel/slick/slick.min.js',
+    'node_modules/bootstrap-select/dist/js/bootstrap-select.min.js',
 ], 'public/dist/js/front-libs-script.js');
 /* ===== /PUBLIC =====*/
 

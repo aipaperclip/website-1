@@ -138,17 +138,29 @@ var basic = {
             basic.fixBodyModal();
         });
         dialog.on('shown.bs.modal', function(){
-            basic.verticalAlignModal();
             basic.fixZIndexBackdrop();
+            basic.verticalAlignModal();
         });
+
         dialog.modal('show');
+        $('.bootbox.modal').addClass('visibility-hidden');
+        $('.modal-backdrop').addClass('visibility-hidden');
+        $('body').addClass('overflow-visible').addClass('padding-right-0');
+
     },
     closeDialog: function (){
         bootbox.hideAll();
     },
-    verticalAlignModal: function(message) {
+    verticalAlignModal: function(message, dialog) {
         $("body .modal-dialog").each(function(){
-            $(this).css("margin-top", Math.max(20, ($(window).height() - $(this).height()) / 2));
+            var this_dialog = $(this);
+            $(this).find('.gif img').on('load', function()   {
+                this_dialog.css("margin-top", Math.max(20, ($(window).height() - this_dialog.height()) / 2));
+                $('.bootbox.modal').removeClass('visibility-hidden');
+                $('.bootbox.modal a').addClass('visibility-visible-important');
+                $('.modal-backdrop').removeClass('visibility-hidden');
+                $('body').removeClass('overflow-visible').removeClass('padding-right-0');
+            });
         })
     },
     request: {

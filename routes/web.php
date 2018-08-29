@@ -24,4 +24,6 @@ Route::get('/testimonials/page/{page}', 'UserExpressionsController@getView')->na
 
 Route::get('/changelly', 'ChangellyController@getView')->name('changelly');
 
+Route::get('/partner-network', 'PartnerNetworkController@getView')->name('partner-network');
+
 Route::get('/sitemap', 'Controller@getSitemap')->name('sitemap');

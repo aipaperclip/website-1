@@ -50,10 +50,10 @@ footer {
             }
         }
         @include breakpoint($sm-down)   {
-            padding-top: 0;
+            padding-top: 10px;
         }
         @include breakpoint($xs)    {
-            padding-bottom: 20px;
+            padding-bottom: 10px;
         }
     }
     .socials {
@@ -104,6 +104,17 @@ footer {
         }
         @include breakpoint($xs)    {
             padding-bottom: 20px;
+            ul {
+                li {
+                    padding: 3px 10px;
+                    a {
+                        font-size: 14px;
+                    }
+                    &.separator {
+                        padding: 3px 0;
+                    }
+                }
+            }
         }
     }
     .media-inquiries {
