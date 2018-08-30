@@ -15,7 +15,8 @@
     @endif
     <meta property="og:image" content="{{URL::asset('assets/uploads/dentacoin-facebook-thumb.jpg') }}"/>
     <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-style.css">
+    {{--<link rel="stylesheet" type="text/css" href="/assets/css/style.css">--}}
     <script>
         var HOME_URL = '{{ route("home") }}';
     </script>
@@ -104,11 +105,12 @@
     <script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(e){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var e=this.createElement("script");n&&(this.domain=n),e.id="js-iframe-async",e.src="https://assets.zendesk.com/embeddable_framework/main.js",this.t=+new Date,this.zendeskHost="dentacoin.zendesk.com",this.zEQueue=a,this.body.appendChild(e)},o.write('<body onload="document._l();">'),o.close()}();
         /*]]>*/</script>
     <!-- End of Zendesk Widget script -->
-    <script src="/assets/js/basic.js"></script>
+    {{--<script src="/assets/js/basic.js"></script>--}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
     @yield("script_block")
-    <script src="/assets/js/markerclusterer-v2.js"></script>
-    <script src="/assets/js/google-map.js"></script>
-    <script src="/assets/js/index.js"></script>
+    <script src="/dist/js/front-script.js"></script>
+{{--<script src="/assets/js/markerclusterer-v2.js"></script>
+<script src="/assets/js/google-map.js"></script>
+<script src="/assets/js/index.js"></script>--}}
 </body>
 </html>

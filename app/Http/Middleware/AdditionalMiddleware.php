@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App;
-use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\Controller;
 
 class AdditionalMiddleware
 {
@@ -16,17 +16,7 @@ class AdditionalMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next) {
-        //if($request->route()->parameters()['lang'] != "admin-access")  {
-        //    return $next($request);
-        //}else {
-        //    $admin_controller = new MainController();
-        //    if($admin_controller->checkLogin()) {
-        //        //LOGGED
-        //        return response($admin_controller->getView());
-        //    }else {
-        //        //NOT LOGGED
-        //        return response($admin_controller->getAdminAccess());
-        //    }
-        //}
+        $response = (new App\Http\Controllers\Controller())->minifyHtml($next($request));
+        return $response;
     }
 }

@@ -413,7 +413,12 @@ body.home, body.testimonials {
         }
         &.application-popup {
             .modal-dialog {
+                .modal-content {
+                    @include rounded(6px);
+                }
                 .container-fluid {
+                    padding-top: 20px;
+                    padding-bottom: 20px;
                     .content {
                         padding: 0;
                         .logo {
