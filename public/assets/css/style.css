@@ -1780,7 +1780,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       transition: 0.3s; }
       .homepage-container .testimonials .expressions .circle-wrapper .circle .background {
         background-position: center center;
-        background-size: 100% 100%;
+        background-size: cover;
         background-repeat: no-repeat;
         position: absolute;
         z-index: 5;
