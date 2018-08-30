@@ -16,7 +16,7 @@ mix.disableSuccessNotifications();
 /* ===== PUBLIC =====*/
 mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
-    'node_modules/font-awesome/css/font-awesome.min.css',
+    'public/assets/libs/font-awesome/css/font-awesome.min.css',
     'node_modules/slick-carousel/slick/slick.css',
     'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
 ], 'public/dist/css/front-libs-style.css');
