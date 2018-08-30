@@ -1219,16 +1219,18 @@ header {
   header .logo-container img {
     width: 40px; }
 
-body.home header {
-  top: 0;
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%); }
-  @media screen and (max-width: 767px) {
-    body.home header {
-      width: 100%; } }
+body.home {
+  overflow-x: hidden; }
+  body.home header {
+    top: 0;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%); }
+    @media screen and (max-width: 767px) {
+      body.home header {
+        width: 100%; } }
 
 footer {
   border-top: 2px solid #aaaaaa; }
@@ -1503,27 +1505,28 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       -o-transform: none;
       transform: none; } }
   @media screen and (max-width: 767px) {
-    .homepage-container .dentacoin-ecosystem .btn-container {
-      display: none; }
-    .homepage-container .dentacoin-ecosystem .rotated-text {
-      position: static;
-      -webkit-transform: none;
-      -moz-transform: none;
-      -ms-transform: none;
-      -o-transform: none;
-      transform: none; }
-      .homepage-container .dentacoin-ecosystem .rotated-text span {
-        text-align: center;
-        font-size: 22px;
-        padding-top: 15px;
-        padding-bottom: 20px;
+    .homepage-container .dentacoin-ecosystem {
+      padding-top: 30px;
+      padding-bottom: 30px; }
+      .homepage-container .dentacoin-ecosystem .btn-container {
+        display: none; }
+      .homepage-container .dentacoin-ecosystem .rotated-text {
+        position: static;
         -webkit-transform: none;
         -moz-transform: none;
         -ms-transform: none;
         -o-transform: none;
         transform: none; }
-    .homepage-container .dentacoin-ecosystem .list figure {
-      padding: 0 10px 15px; }
+        .homepage-container .dentacoin-ecosystem .rotated-text span {
+          text-align: center;
+          font-size: 22px;
+          padding-top: 15px;
+          padding-bottom: 20px;
+          -webkit-transform: none;
+          -moz-transform: none;
+          -ms-transform: none;
+          -o-transform: none;
+          transform: none; }
       .homepage-container .dentacoin-ecosystem .list figure figcaption {
         padding-top: 10px;
         font-size: 14px;
@@ -1751,7 +1754,11 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       height: 25px;
       border: 3px solid black;
       margin: 0 auto;
-      background-color: white;
+      background-color: black;
+      background-image: url("/assets/images/no-active-avatar-hover.svg") !important;
+      background-position: center center;
+      background-size: 70% 70%;
+      background-repeat: no-repeat;
       cursor: pointer;
       position: relative;
       -webkit-border-radius: 50%;
@@ -1811,7 +1818,9 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       .homepage-container .testimonials .expressions .circle-wrapper.active .circle {
         margin: 0 auto;
         width: 70px;
-        height: 70px; }
+        height: 70px;
+        background-image: none !important;
+        background-color: white !important; }
         .homepage-container .testimonials .expressions .circle-wrapper.active .circle .background {
           opacity: 1; }
       .homepage-container .testimonials .expressions .circle-wrapper.active .text {
@@ -1825,12 +1834,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         .homepage-container .testimonials .expressions .circle-wrapper.active {
           width: 70px;
           margin: 0 5px; } }
-    .homepage-container .testimonials .expressions .circle-wrapper.not-active .circle:hover {
-      background-color: black;
-      background-image: url("/assets/images/no-active-avatar-hover.svg") !important;
-      background-position: center center;
-      background-size: 70% 70%;
-      background-repeat: no-repeat; }
   @media screen and (min-width: 1399px) {
     .homepage-container .testimonials .expressions .circle-wrapper .text {
       width: 300px; }

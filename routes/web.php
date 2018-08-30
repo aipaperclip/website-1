@@ -14,7 +14,7 @@
 
 Route::get("/", "HomeController@getView")->name('home');
 
-Route::get('/publications', 'HomeController@getPublications')->name('publications');
+//Route::get('/publications', 'HomeController@getPublications')->name('publications');
 
 Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
 

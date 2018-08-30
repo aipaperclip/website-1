@@ -256,13 +256,12 @@ function initMap(filter) {
         ];
 
         var mapOptions = {
-            zoom: zoom,
-            scrollwheel: scrollwheel,
+            zoom: zoom,/*
+            scrollwheel: scrollwheel,*/
             zoomControl: zoomcontrol,
             draggable: draggable,
             center: new google.maps.LatLng(dataLat, dataLng),
             mapTypeId: mapType,
-            gestureHandling: 'greedy',
             styles: styles,
             minZoom: 1
         };

@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                    <h2 class="text-center section-title">Privacy Policy</h2>
+                    <h1 class="text-center section-title">Privacy Policy</h1>
                     <h4 class="text-center section-subtitle">Effective Date: May 25, 2018</h4>
                     <p class="offset-top-50"> This Privacy Policy applies to the Dentacoin B.V. owned and operated applications, websites and its subdomains (“Sites and Applications”). Dentacoin B.V. (“Dentacoin” “we,” or “us”) knows that you care how information about you is used, stored, and shared.</p>
                     <p>This Privacy Policy explains what personal data of yours will be collected by us when you access the Sites and Applications, how the data will be used, and how you can control the collection, correction and/or deletion of data.</p>

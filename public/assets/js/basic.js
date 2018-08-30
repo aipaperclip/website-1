@@ -113,7 +113,8 @@ var basic = {
             "message": message,
             "animate": false,
             "show": false,
-            "className": class_name
+            "className": class_name,
+            "onEscape": function() { console.log("Escape!"); }
         }
         if(dialog_type == "confirm" && params!=undefined && params.buttons == undefined){
             atrs.buttons = {

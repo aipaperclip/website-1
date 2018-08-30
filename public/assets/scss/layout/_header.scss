@@ -8,6 +8,7 @@ header {
 }
 
 body.home {
+    overflow-x: hidden;
     header {
         top: 0;
         @include horizontal-align(absolute);

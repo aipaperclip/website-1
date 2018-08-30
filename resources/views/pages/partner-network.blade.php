@@ -3,7 +3,7 @@
     <section class="partner-network-container">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 section-title">Partner Network</div>
+                <h1 class="col-xs-12 section-title">Partner Network</h1>
             </div>
             <div class="row filter">
                 <div class="col-xs-12 text-center">
@@ -24,7 +24,7 @@
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                     @foreach($list_locations_with_subtypes_types as $key=>$type)
                         <div class="single-type">
-                            <div class="type-title section-title">{{$key}}</div>
+                            <h2 class="type-title section-title">{{$key}}</h2>
                             <div class="subtypes">
                                 @foreach($type as $subkey=>$subtype)
                                     <div class="subtype-title section-subtitle"><span>{{$subkey}}</span><i class="fa fa-caret-right"></i></div>

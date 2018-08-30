@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dentacoin</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <link rel="shortcut icon" href="{{URL::asset('assets/images/favicon.png') }}" type="image/x-icon" />
-    <meta name="description" content="Description" />
-    <meta name="keywords" content="Keywords" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:url" content=""/>
-    <meta property="og:title" content=""/>
-    <meta property="og:image" content=""/>
-
+    @if(!empty($meta_data))
+        <title>{{$meta_data->title}}</title>
+        <meta name="description" content="{{$meta_data->description}}" />
+        <meta name="keywords" content="{{$meta_data->keywords}}" />
+        <meta property="og:url" content="{{Request::url()}}"/>
+        <meta property="og:title" content="{{$meta_data->social_title}}"/>
+        <meta property="og:description" content="{{$meta_data->social_description}}"/>
+    @endif
+    <meta property="og:image" content="{{URL::asset('assets/uploads/dentacoin-facebook-thumb.jpg') }}"/>
     <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <script>
@@ -19,7 +21,7 @@
     </script>
 </head>
 <body data-current="one" class="@if(Route::current()) {{Route::current()->getName()}} @else class-404 @endif" lang="en">
-    <svg class="svg-with-lines">
+<svg class="svg-with-lines">
         <line class="first" x1="0" y1="0" x2="0" y2="0"/>
         <line class="second" x1="0" y1="0" x2="0" y2="0"/>
         <line class="third" x1="0" y1="0" x2="0" y2="0"/>
@@ -43,8 +45,8 @@
     </svg>
     <header class="container">
         <div class="row">
-            <figure class="col-xs-12 logo-container">
-                <a href="{{ route('home') }}"><img src="{{URL::asset('assets/images/logo.svg') }}"/></a>
+            <figure itemscope="" itemtype="http://schema.org/Organization" class="col-xs-12 logo-container">
+                <a itemprop="url"  href="{{ route('home') }}"><img src="{{URL::asset('assets/images/logo.svg') }}" itemprop="logo" alt="Dentacoin logo"/></a>
             </figure>
         </div>
     </header>
@@ -56,29 +58,30 @@
             </div>
             @include('partials.newsletter-registration')
             <div class="row socials">
-                <div class="col-xs-12">
+                <div class="col-xs-12" itemscope="" itemtype="http://schema.org/Organization">
+                    <link itemprop="url" href="{{ route('home') }}">
                     <ul>
-                        <li class="inline-block"><a target="_blank" href="admin@dentacoin.com"><figure><img src="{{URL::asset('assets/images/mail-icon.svg') }}"/></figure></a></li>
-                        <li class="inline-block"><a target="_blank" href="https://t.me/dentacoin"><figure><img src="{{URL::asset('assets/images/iconmonstr-telegram.svg') }}"/></figure></a></li>
-                        <li class="inline-block"><a target="_blank" href="https://www.facebook.com/dentacoin/"><figure><img src="{{URL::asset('assets/images/facebook.svg') }}"/></figure></a></li>
-                        <li class="inline-block"><a target="_blank" href="https://twitter.com/dentacoin"><figure><img src="{{URL::asset('assets/images/twitter.svg') }}"/></figure></a></li>
-                        <li class="inline-block"><a target="_blank" href="https://www.instagram.com/dentacoin_official/"><figure><img src="{{URL::asset('assets/images/instagram.svg') }}"/></figure></a></li>
-                        <li class="inline-block"><a target="_blank" href="https://www.youtube.com/dentacoin"><figure><img src="{{URL::asset('assets/images/youtube-play-button.svg') }}"/></figure></a></li>
-                        <li class="inline-block"><a target="_blank" href="https://github.com/Dentacoin"><figure><img src="{{URL::asset('assets/images/github.svg') }}"/></figure></a></li>
-                        <li class="inline-block"><a target="_blank" href="https://www.reddit.com/r/Dentacoin/"><figure><img src="{{URL::asset('assets/images/reddit.svg') }}"/></figure></a></li>
-                        <li class="inline-block"><a target="_blank" href="https://medium.com/@dentacoin/"><figure><img src="{{URL::asset('assets/images/medium-m.svg') }}"/></figure></a></li>
-                        <li class="inline-block"><a target="_blank" href="https://steemit.com/@dentacoin"><figure><img src="{{URL::asset('assets/images/steemit.svg') }}"/></figure></a></li>
+                        <li class="inline-block"><a itemprop="sameAs" target="_blank" href="mailto:admin@dentacoin.com"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/mail-icon.svg') }}" itemprop="contentUrl"/></figure></a></li>
+                        <li class="inline-block"><a itemprop="sameAs" target="_blank" href="https://t.me/dentacoin"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/iconmonstr-telegram.svg') }}" itemprop="contentUrl"/></figure></a></li>
+                        <li class="inline-block"><a itemprop="sameAs" target="_blank" href="https://www.facebook.com/dentacoin/"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/facebook.svg') }}" itemprop="contentUrl"/></figure></a></li>
+                        <li class="inline-block"><a itemprop="sameAs" target="_blank" href="https://twitter.com/dentacoin"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/twitter.svg') }}" itemprop="contentUrl"/></figure></a></li>
+                        <li class="inline-block"><a itemprop="sameAs" target="_blank" href="https://www.instagram.com/dentacoin_official/"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/instagram.svg') }}" itemprop="contentUrl"/></figure></a></li>
+                        <li class="inline-block"><a itemprop="sameAs" target="_blank" href="https://www.youtube.com/dentacoin"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/youtube-play-button.svg') }}" itemprop="contentUrl"/></figure></a></li>
+                        <li class="inline-block"><a itemprop="sameAs" target="_blank" href="https://github.com/Dentacoin"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/github.svg') }}" itemprop="contentUrl"/></figure></a></li>
+                        <li class="inline-block"><a itemprop="sameAs" target="_blank" href="https://www.reddit.com/r/Dentacoin/"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/reddit.svg') }}" itemprop="contentUrl"/></figure></a></li>
+                        <li class="inline-block"><a itemprop="sameAs" target="_blank" href="https://medium.com/@dentacoin/"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/medium-m.svg') }}" itemprop="contentUrl"/></figure></a></li>
+                        <li class="inline-block"><a itemprop="sameAs" target="_blank" href="https://steemit.com/@dentacoin"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/steemit.svg') }}" itemprop="contentUrl"/></figure></a></li>
                     </ul>
                 </div>
             </div>
             <div class="row menu">
                 <nav class="col-xs-12">
-                    <ul>
-                        <li class="inline-block"><a target="_blank" href="https://blog.dentacoin.com/">Blog</a></li>
+                    <ul itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+                        <li class="inline-block"><a target="_blank" itemprop="url" href="https://blog.dentacoin.com/"><span itemprop="name">Blog</span></a></li>
                         <li class="inline-block separator">|</li>
-                        <li class="inline-block"><a target="_blank" href="https://dentacoin.com/web/white-paper/Whitepaper-en1.pdf">Whitepaper</a></li>
+                        <li class="inline-block"><a target="_blank" itemprop="url" href="https://dentacoin.com/web/white-paper/Whitepaper-en1.pdf"><span itemprop="name">Whitepaper</span></a></li>
                         <li class="inline-block separator">|</li>
-                        <li class="inline-block"><a target="_blank" href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
+                        <li class="inline-block"><a target="_blank" itemprop="url" href="{{ route('privacy-policy') }}"><span itemprop="name">Privacy Policy</span></a></li>
                     </ul>
                 </nav>
             </div>

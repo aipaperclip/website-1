@@ -4,7 +4,7 @@
     <section class="changelly-container fs-0">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 section-title">Buy Dentacoin</div>
+                <h1 class="col-xs-12 section-title">Buy Dentacoin</h1>
             </div>
         </div>
         <div class="iframe-wrapper">

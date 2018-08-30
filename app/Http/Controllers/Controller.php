@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PageMetaData;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -10,6 +11,7 @@ use Jenssegers\Agent\Agent;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Route;
 
 
 class Controller extends BaseController
@@ -18,13 +20,16 @@ class Controller extends BaseController
 
     public function __construct() {
         View::share('mobile', $this->isMobile());
+        View::share('meta_data', $this->getMetaData());
+    }
+
+    protected function getMetaData()    {
+        return PageMetaData::where(array('slug' => Route::getCurrentRoute()->getName()))->get()->first();
     }
 
     protected function isMobile()   {
         return (new Agent())->isMobile();
     }
-
-
 
     protected function getSitemap() {
         $sitemap = App::make("sitemap");
@@ -35,7 +40,17 @@ class Controller extends BaseController
         // check if there is cached sitemap and build new only if is not
         //if(!$sitemap->isCached())  {
         // add item to the sitemap (url, date, priority, freq)
-        $sitemap->add(URL::to('/bg'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
+
+        $sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
+        //$sitemap->add(URL::to('publications'), '2012-08-25T20:10:00+02:00', '0.6', 'weekly');
+        $sitemap->add(URL::to('privacy-policy'), '2012-08-25T20:10:00+02:00', '0.4', 'monthly');
+        $sitemap->add(URL::to('changelly'), '2012-08-25T20:10:00+02:00', '1.0', 'monthly');
+        $sitemap->add(URL::to('partner-network'), '2012-08-25T20:10:00+02:00', '8.0', 'daily');
+
+        //getting all pagination pages for testimonials
+        for($i = 1, $length = (new UserExpressionsController())->getPagesCount(); $i <= $length; $i+=1) {
+            $sitemap->add(URL::to('testimonials/page/'.$i), '2012-08-25T20:10:00+02:00', '8.0', 'daily');
+        }
 
         // get all posts from db
         //$posts = DB::table('posts')->orderBy('created_at', 'desc')->get();

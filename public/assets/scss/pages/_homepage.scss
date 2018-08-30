@@ -51,7 +51,7 @@
                 }
                 @include breakpoint($sm-down)   {
                     position: static;
-                    @include clear_transform(); 
+                    @include clear_transform();
                 }
                 @include breakpoint($xs)    {
                     text-align: center;
@@ -171,6 +171,8 @@
             }
         }
         @include breakpoint($xs)    {
+            padding-top: 30px;
+            padding-bottom: 30px;
             .btn-container {
                 display: none;
             }
@@ -187,7 +189,6 @@
             }
             .list {
                 figure {
-                    padding: 0 10px 15px;
                     figcaption {
                         padding-top: 10px;
                         font-size: 14px;
@@ -498,7 +499,11 @@
                     height: 25px;
                     border: 3px solid black;
                     margin: 0 auto;
-                    background-color: white;
+                    background-color: black;
+                    background-image: url('/assets/images/no-active-avatar-hover.svg') !important;
+                    background-position: center center;
+                    background-size: 70% 70%;
+                    background-repeat: no-repeat;
                     cursor: pointer;
                     position: relative;
                     @include rounded(50%);
@@ -553,6 +558,8 @@
                         margin: 0 auto;
                         width: 70px;
                         height: 70px;
+                        background-image: none !important;
+                        background-color: white !important;
                         .background {
                             opacity: 1;
                         }
@@ -572,17 +579,6 @@
                     @include breakpoint($md-only)   {
                         width: 70px;
                         margin: 0 5px;
-                    }
-                }
-                &.not-active {
-                    .circle {
-                        &:hover {
-                            background-color: black;
-                            background-image: url('/assets/images/no-active-avatar-hover.svg') !important;
-                            background-position: center center;
-                            background-size: 70% 70%;
-                            background-repeat: no-repeat;
-                        }
                     }
                 }
             }
