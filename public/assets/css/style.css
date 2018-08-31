@@ -1816,17 +1816,18 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
-    .homepage-container .dentacoin-ecosystem .list button:focus {
-      outline: 5px auto white;
-      outline-offset: -2px; }
-    .homepage-container .dentacoin-ecosystem .list button figure {
-      padding-bottom: 25px;
-      text-align: center;
-      cursor: pointer; }
-      .homepage-container .dentacoin-ecosystem .list button figure figcaption {
-        color: white;
-        font-size: 18px;
-        padding-top: 15px; }
+    .homepage-container .dentacoin-ecosystem .list button {
+      margin-bottom: 25px; }
+      .homepage-container .dentacoin-ecosystem .list button:focus {
+        outline: 5px auto white;
+        outline-offset: -2px; }
+      .homepage-container .dentacoin-ecosystem .list button figure {
+        text-align: center;
+        cursor: pointer; }
+        .homepage-container .dentacoin-ecosystem .list button figure figcaption {
+          color: white;
+          font-size: 18px;
+          padding-top: 15px; }
   @media screen and (min-width: 1399px) {
     .homepage-container .dentacoin-ecosystem .list {
       width: 100%;

@@ -587,12 +587,12 @@
         .list {
             @include vertical-horizontal-align(absolute);
             button {
+                margin-bottom: 25px;
                 &:focus {
                     outline: 5px auto white;
                     outline-offset: -2px;
                 }
                 figure {
-                    padding-bottom: 25px;
                     text-align: center;
                     cursor: pointer;
                     figcaption {
