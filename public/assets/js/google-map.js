@@ -275,7 +275,7 @@ function initMap(filter) {
         var markers_arr = [];
 
         if(map_locations.length > 1) {
-            for(let i = 0, len = map_locations.length; i < len; i+=1) {
+            for(var i = 0, len = map_locations.length; i < len; i+=1) {
                 if(filter != null && map_locations[i].location_type_id != $('.partner-network-container .filter select option:selected').val())  {
                     continue;
                 }

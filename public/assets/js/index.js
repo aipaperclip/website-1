@@ -299,7 +299,7 @@ function setLinesDots(resize)    {
 function refreshingMainDots()   {
     stoppers = [];
     //refresh dots
-    for(let i = 0, len = $('svg.svg-with-lines line').length; i < len; i+=1)    {
+    for(var i = 0, len = $('svg.svg-with-lines line').length; i < len; i+=1)    {
         if($('svg.svg-with-lines line').eq(i).attr('fresh-x2') != undefined)   {
             $('svg.svg-with-lines line').eq(i).attr('x2', $('svg.svg-with-lines line').eq(i).attr('fresh-x2'));
         }else if($('svg.svg-with-lines line').eq(i).attr('fresh-y2') != undefined)   {
@@ -308,7 +308,7 @@ function refreshingMainDots()   {
     }
 
     //clear intervals
-    for(let item in intervals_arr) {
+    for(var item in intervals_arr) {
         clearInterval(intervals_arr[item]);
     }
     intervals_arr = [];
@@ -319,7 +319,7 @@ function refreshingMainDots()   {
     //bring back gifs texts to their starting position
     $('.between-sections-description').addClass('visibility-hidden').removeClass('fade-in-animation');
     $('.below-successful-practices .description-over-line .description .wrapper').addClass('visibility-hidden').removeClass('fade-in-animation');
-    for(let i = 0, len = $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').length; i < len; i+=1)   {
+    for(var i = 0, len = $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').length; i < len; i+=1)   {
         $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').eq(i).removeClass('fade-in-animation-'+(i+1));
     }
 }
@@ -465,7 +465,7 @@ function callActionOnLastTailFinish(action)    {
                     $('.homepage-container .roadmap-timeline img').addClass('active');
                 });
             }
-            for(let i = 0, len = $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').length; i < len; i+=1)   {
+            for(var i = 0, len = $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').length; i < len; i+=1)   {
                 $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').eq(i).addClass('fade-in-animation-'+(i+1));
             }
             break;
@@ -523,7 +523,7 @@ if($('.homepage-container').length > 0) {
         if(this_btn.attr('data-articles') != undefined)    {
             extra_html+='<div class="extra-html"><div class="extra-title">Latest Blog articles:</div><ul>';
             var articles_arr = $.parseJSON(this_btn.attr('data-articles'));
-            for(let i = 0, len = articles_arr.length; i < len; i+=1)    {
+            for(var i = 0, len = articles_arr.length; i < len; i+=1)    {
                 extra_html+='<li class="link"><a href="https://blog.dentacoin.com/'+articles_arr[i]['post_name']+'" target="_blank">'+articles_arr[i]['post_title']+'</a></li>';
             }
             extra_html+='</ul><div class="see-all"><a href="https://blog.dentacoin.com/" class="white-blue-rounded-btn" target="_blank">GO TO ALL</a></div></div>';
@@ -537,7 +537,7 @@ if($('.homepage-container').length > 0) {
         $(this).addClass('active').removeClass('not-active');
         var this_text = $(this).find('.text');
         var text_width = 250;
-        for(let i = 0; i < $('.homepage-container .testimonials .circle-wrapper.active').length; i+=1)  {
+        for(var i = 0; i < $('.homepage-container .testimonials .circle-wrapper.active').length; i+=1)  {
             var current_active_testimonial = $('.homepage-container .testimonials .circle-wrapper.active').eq(i);
             if(!current_active_testimonial.is($(this))) {
                 if(current_active_testimonial.find('.text').offset().left > this_text.offset().left)   {
@@ -555,7 +555,7 @@ if($('.homepage-container').length > 0) {
 
     //load random default avatar for testimonial givers without avatar
     var testimonial_icons = ['avatar-icon-1.svg', 'avatar-icon-2.svg'];
-    for(let i = 0; i < $('.homepage-container .testimonials .circle-wrapper.no-image').length; i+=1)  {
+    for(var i = 0; i < $('.homepage-container .testimonials .circle-wrapper.no-image').length; i+=1)  {
         $('.homepage-container .testimonials .circle-wrapper.no-image').eq(i).find('.circle .background').css({'background-image' : 'url(/assets/images/'+testimonial_icons[Math.floor(Math.random()*testimonial_icons.length)]+')'});
     }
 
@@ -600,7 +600,7 @@ if($('.homepage-container').length > 0) {
 
     /*$('.homepage-container .awards-and-publications .publications-slider').on("afterChange", function (){
         var slider_height = 0;
-        for(let i = 0, len = $('.publications-slider .single-slide').length; i < len; i+=1) {
+        for(var i = 0, len = $('.publications-slider .single-slide').length; i < len; i+=1) {
             if($('.publications-slider .single-slide').eq(i).height() > slider_height) {
                 slider_height = $('.publications-slider .single-slide').eq(i).height();
             }
@@ -618,7 +618,7 @@ if($('.homepage-container').length > 0) {
 if($('.testimonials-container').length > 0) {
     //load random default avatar for testimonial givers without avatar
     var testimonial_icons_listing_page = ['avatar-icon-1.svg', 'avatar-icon-2.svg'];
-    for(let i = 0; i < $('.list .single .image.no-avatar').length; i+=1)  {
+    for(var i = 0; i < $('.list .single .image.no-avatar').length; i+=1)  {
         $('.list .single .image.no-avatar').eq(i).css({'background-image' : 'url(/assets/images/'+testimonial_icons_listing_page[Math.floor(Math.random()*testimonial_icons_listing_page.length)]+')'});
     }
 
@@ -685,7 +685,7 @@ function newsletterRegisterValidation() {
         if(errors.length > 0)   {
             event.preventDefault();
             this_form.addClass('not-valid').find('.alert').remove();
-            for(let i = 0, len = errors.length; i < len; i+=1)  {
+            for(var i = 0, len = errors.length; i < len; i+=1)  {
                 this_form.append('<div class="alert alert-danger">'+errors[i]+'</div>');
             }
         }else {
