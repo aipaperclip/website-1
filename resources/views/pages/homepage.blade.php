@@ -106,14 +106,13 @@
                     <div class="col-xs-12 col-md-5 col-md-offset-2 content-container">
                         <h2 class="section-subtitle">Moving From Sick Care to Preventive Care</h2>
                         <div class="description">The new generation of Dentacoin dentists brings patients back into focus by promoting intelligent prevention, implementing dedicated Blockchain-based software solutions and using an industry-specific cryptocurrency.</div>
-                        <div class="btn-container"><a href="https://dentists.dentacoin.com/" target="
-" class="white-blue-rounded-btn">I’M A DENTIST</a></div>
+                        <div class="btn-container"><a href="https://dentists.dentacoin.com/" target="_blank" class="white-blue-rounded-btn">I’M A DENTIST</a></div>
                     </div>
                     <figure class="col-xs-12 col-md-5" itemscope="" itemtype="http://schema.org/ImageObject">
                         <div class="fourth-dot inline-block">&nbsp;</div>
                         <div class="fifth-dot inline-block">&nbsp;</div>
                         <img src="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}" data-svg="{{URL::asset('assets/images/chair.svg') }}" data-gif="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}" class="refresh-image desktop-image" itemprop="contentUrl"/>
-                        <img src="{{URL::asset('assets/images/chair-mobile.gif') }}" class="mobile-image" itemprop="contentUrl"/>
+                        <img src="{{URL::asset('assets/images/chair-mobile.svg') }}" class="mobile-image" itemprop="contentUrl"/>
                     </figure>
                 </div>
             </div>
@@ -168,19 +167,19 @@
                                     <div class="mobile-vertical-line-30"></div>
                                 @endif
                                 <div class="circle"><div class="background" @if($testimonial->media) style="background-image: url({{URL::asset('assets/uploads/'.$testimonial->media->name) }})" @endif></div></div>
-                                <div class="text">
+                                <article class="text">
                                     <figure class="start" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quotes-start.svg') }}" itemprop="contentUrl"/></figure>
                                     {{$testimonial->text}}
                                     <figure class="end" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quotes-end.svg') }}" itemprop="contentUrl"/></figure>
                                     <div class="name_job_location">
                                         @if(!empty($testimonial->name_job))
-                                            <div class="name_job">{!! $testimonial->name_job !!} @if(empty($testimonial->location)) <figure class="end" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quotes-end.svg') }}" itemprop="contentUrl"/></figure> @endif</div>
+                                            <div class="name_job">{!! $testimonial->name_job !!}</div>
                                         @endif
                                         @if(!empty($testimonial->location))
                                             <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>{!! $testimonial->location !!}</div>
                                         @endif
                                     </div>
-                                </div>
+                                </article>
                             </div>
                         @endforeach
                     </div>

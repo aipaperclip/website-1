@@ -11,7 +11,10 @@
                 @php($i = 0)
                 @foreach($testimonials as $testimonial)
                     @php($i = $i + 1)
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 single fs-0">
+                    <article class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 single fs-0">
+                        @if($first)
+                            <div class="mobile-vertical-line-30"></div>
+                        @endif
                         <div class="inline-block-top image @if(empty($testimonial->media)) no-avatar @endif" @if(!empty($testimonial->media)) style="background-image: url({{URL::asset('assets/uploads/'.$testimonial->media->name) }})" @endif>
                             @if(!$first)
                                 <div class="inline-block dot first-dot">&nbsp;</div>
@@ -22,7 +25,11 @@
                             @endif
                         </div>
                         <div class="inline-block-top content">
-                            <div class="description">{!! $testimonial->text !!}</div>
+                            <div class="description">
+                                <figure class="start" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quotes-start.svg') }}" itemprop="contentUrl"/></figure>
+                                {!! $testimonial->text !!}
+                                <figure class="end" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quotes-end.svg') }}" itemprop="contentUrl"/></figure>
+                            </div>
                             @if(!empty($testimonial->name_job))
                                 <div class="name_job">{!! $testimonial->name_job !!}</div>
                             @endif
@@ -30,7 +37,7 @@
                                 <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>{!! $testimonial->location !!}</div>
                             @endif
                         </div>
-                    </div>
+                    </article>
                 @endforeach
             </div>
             <div class="row">

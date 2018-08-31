@@ -5,6 +5,7 @@
     }
     .iframe-wrapper {
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
         iframe.changelly {
             border: 0;
             width: 100%;

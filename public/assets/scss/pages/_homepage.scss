@@ -1,4 +1,481 @@
 .homepage-container {
+    &.mobile {
+        .intro {
+            .bg-wrapper {
+                .content-wrapper {
+                    position: static;
+                    @include clear_transform();
+                }
+                .video {
+                    text-align: center;
+                    .video-wrapper {
+                        padding-bottom: 30px;
+                    }
+                }
+            }
+            @include breakpoint($xs)    {
+                .bg-wrapper {
+                    background-position: left bottom;
+                    .content-wrapper {
+                        text-align: center;
+                        .title {
+                            font-size: 45px;
+                            line-height: normal;
+                        }
+                        .subtitle {
+                            line-height: normal;
+                            font-size: 20px;
+                        }
+                        .description {
+                            &.italic {
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                    .video {
+                        width: 90%;
+                        margin: 0 auto;
+                        .video-wrapper {
+                            figure.close-video {
+                                right: -20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .dentacoin-ecosystem {
+            .list {
+                position: static;
+                @include clear_transform();
+            }
+            @include breakpoint($xs)    {
+                padding-top: 15px;
+                padding-bottom: 30px;
+                .btn-container {
+                    display: none;
+                }
+                .rotated-text {
+                    position: static;
+                    @include clear_transform();
+                    span {
+                        text-align: center;
+                        font-size: 22px;
+                        padding-top: 15px;
+                        padding-bottom: 30px;
+                        @include clear_transform();
+                    }
+                }
+                .list {
+                    figure {
+                        figcaption {
+                            padding-top: 10px;
+                            font-size: 14px;
+                            line-height: 16px;
+                        }
+                    }
+                }
+            }
+        }
+        .successful-practices {
+            .section-title {
+                padding-bottom: 40px;
+                padding-top: 10px;
+            }
+            .content {
+                display: block;
+                figure {
+                    padding-top: 50px;
+                    padding-right: 15px;
+                    text-align: center;
+                    img.desktop-image {
+                        display: none;
+                    }
+                    img.mobile-image {
+                        display: block;
+                    }
+                }
+                .content-container {
+                    text-align: center;
+                }
+            }
+            .dots {
+                height: auto;
+                .logo-over-line {
+                    position: static;
+                    text-align: center;
+                    @include clear_transform();
+                    img {
+                        margin-top: 15px;
+                    }
+                }
+            }
+            @include breakpoint($xs)     {
+                .section-title {
+                    padding-bottom: 20px;
+                }
+                .content {
+                    .content-container {
+                        .section-subtitle {
+                            font-size: 18px;
+                            padding: 0 10% 15px;
+                            line-height: normal;
+                        }
+                    }
+                }
+            }
+        }
+        .below-successful-practices {
+            border-top: 2px solid black;
+            .mobile-title {
+                display: block;
+                .section-title {
+                    padding-top: 10px;
+                }
+            }
+            .flex {
+                display: block;
+                .visibility-hidden {
+                    visibility: visible;
+                }
+                .description-over-line {
+                    padding-top: 10px;
+                    padding-bottom: 20px;
+                    border-top: 1px solid black;
+                    border-right: 1px solid black;
+                    border-left: 1px solid black;
+                    .wrapper {
+                        padding-right: 0;
+                        .description {
+                            padding: 0;
+                            .wrapper {
+                                padding-right: 0;
+                                span {
+                                    display: block;
+                                    padding: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                .cells {
+                    display: flex;
+                    .between-sections-description {
+                        width: 50%;
+                        border: 1px solid black;
+                        padding-top: 10px;
+                        text-align: center;
+                        padding-bottom: 15px;
+                        .description {
+                            padding: 0 10px;
+                        }
+                    }
+                }
+            }
+            @include breakpoint($xs) {
+                .flex {
+                    .description-over-line {
+                        .wrapper {
+                            .description {
+                                .wrapper {
+                                    font-size: 12px;
+                                    span {
+                                        font-size: 26px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .cells {
+                        .between-sections-description {
+                            .title {
+                                font-size: 26px;
+                            }
+                            .description {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .testimonials {
+            .below-expressions {
+                display: none;
+            }
+            .expressions {
+                margin-top: 0;
+                padding-top: 30px;
+                padding-bottom: 20px;
+                @include clear_transform();
+                .circle-wrapper {
+                    .text {
+                        .start {
+                            position: static;
+                            display: inline-block;
+                            margin-right: 5px;
+                            img {
+                                vertical-align: top;
+                            }
+                        }
+                    }
+                    .mobile-vertical-line-30 {
+                        margin: 0 auto 15px;
+                    }
+                    &:first-child {
+                        .mobile-vertical-line-30 {
+                            display: none;
+                        }
+                    }
+                    &.active {
+                        width: 100%;
+                        margin: 0;
+                        .text {
+                            position: relative;
+                            width: 100%;
+                            left: auto;
+                            text-align: center;
+                            padding-top: 10px;
+                            padding-bottom: 20px;
+                            @include clear_transform();
+                            .name_job_location {
+                                .end {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .see-more {
+                padding-bottom: 50px;
+                a {
+                    font-size: 18px;
+                }
+            }
+            .token-holders-transactions {
+                display: flex;
+                .between-sections-description {
+                    width: 50%;
+                    border: 1px solid black;
+                    padding-top: 10px;
+                    text-align: center;
+                    padding-bottom: 15px;
+                }
+            }
+            .upper-empty-space {
+                display: none;
+            }
+            @include breakpoint($xs)    {
+                .token-holders-transactions {
+                    .between-sections-description {
+                        .title {
+                            font-size: 26px;
+                        }
+                        .description {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+        .buy-dentacoin {
+            border-bottom: 2px solid black;
+            .logo {
+                .logo-over-line {
+                    position: static;
+                    text-align: center;
+                    @include clear_transform();
+                    img {
+                        margin-top: 15px;
+                    }
+                }
+            }
+            .section-title {
+                padding-top: 10px;
+                padding-bottom: 0;
+            }
+            .wallet-app-and-gif {
+                display: block;
+                .wallet-app {
+                    text-align: center;
+                    .exchange-platforms-and-wallets {
+                        .exchange-method {
+                            text-align: left;
+                            width: 40%;
+                        }
+                    }
+                    .buy-btn {
+                        padding-top: 40px;
+                    }
+                }
+                .gif {
+                    figure {
+                        padding-top: 50px;
+                        img.mobile-image {
+                            display: block;
+                            visibility: visible;
+                            width: 50%;
+                            margin: 0 auto;
+                        }
+                        img.desktop-image {
+                            display: none;
+                        }
+                    }
+                    .between-sections-description {
+                        display: none;
+                    }
+                }
+            }
+            @include breakpoint($xs) {
+                .wallet-app-and-gif {
+                    .wallet-app {
+                        .section-subtitle {
+                            font-size: 20px;
+                            padding-bottom: 5px;
+                        }
+                        .exchange-platforms-and-wallets {
+                            .exchange-method {
+                                width: 80%;
+                                padding-bottom: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .below-buy-dentacoin {
+            .container {
+                padding-bottom: 0;
+                padding-top: 0;
+                .logo-over-line {
+                    position: static;
+                    text-align: center;
+                    @include clear_transform();
+                    img {
+                        margin-top: 15px;
+                    }
+                }
+            }
+            .between-sections-description {
+                display: none;
+            }
+        }
+        .awards-and-publications {
+            .section-title {
+                padding-top: 10px;
+                padding-bottom: 30px;
+            }
+            .awards {
+                padding-bottom: 70px;
+            }
+            .no-gutter-sm-down {
+                padding-left: 0;
+                padding-right: 0;
+                .publications-slider-wrapper {
+                    .publications-slider {
+                        height: auto;
+                        padding-left: 0;
+                        padding-right: 0;
+                        padding-bottom: 70px;
+                        border-bottom: 2px solid black;
+                    }
+                    .logo-over-line {
+                        position: static;
+                        text-align: center;
+                        @include clear_transform();
+                        img {
+                            margin-top: 15px;
+                        }
+                    }
+                }
+            }
+            @include breakpoint($xs)   {
+                .awards {
+                    padding-bottom: 40px;
+                    figure {
+                        padding-bottom: 25px;
+                    }
+                }
+                .no-gutter-sm-down {
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    .publications-slider-wrapper {
+                        .publications-slider {
+                            .single-slide {
+                                .wrapper {
+                                    figure {
+                                        padding: 0 10px;
+                                    }
+                                    .description {
+                                        padding: 10px;
+                                        font-size: 12px;
+                                    }
+                                    .headline {
+                                        padding-left: 10px;
+                                        padding-right: 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .roadmap {
+            .container {
+                padding-top: 10px;
+                padding-bottom: 30px;
+            }
+        }
+        .roadmap-timeline {
+            padding-bottom: 40px;
+            border-bottom: 2px solid black;
+            .gif {
+                figure {
+                    img.desktop-image {
+                        display: none;
+                    }
+                }
+            }
+            .roadmap-content {
+                text-align: center;
+                .roadmap-cell {
+                    text-align: left;
+                    width: 30%;
+                    min-width: 280px;
+                    display: block;
+                    margin: 0 auto;
+                    opacity: 1;
+                    .mobile-icon {
+                        text-align: center;
+                        padding-bottom: 10px;
+                        img {
+                            width: 80px;
+                        }
+                    }
+                }
+            }
+            @include breakpoint($xs)    {
+                .roadmap-content {
+                    .roadmap-cell {
+                        width: 80%;
+                        min-width: auto;
+                    }
+                }
+            }
+        }
+        .below-roadmap-timeline {
+            .wrapper {
+                padding-top: 0;
+                .logo-over-line {
+                    img {
+                        margin-top: 15px;
+                    }
+                }
+            }
+        }
+    }
     .intro {
         padding-top: 30px;
         position: relative;
@@ -49,26 +526,6 @@
                         font-style: italic;
                     }
                 }
-                @include breakpoint($sm-down)   {
-                    position: static;
-                    @include clear_transform();
-                }
-                @include breakpoint($xs)    {
-                    text-align: center;
-                    .title {
-                        font-size: 45px;
-                        line-height: normal;
-                    }
-                    .subtitle {
-                        line-height: normal;
-                        font-size: 20px;
-                    }
-                    .description {
-                        &.italic {
-                            font-size: 16px;
-                        }
-                    }
-                }
             }
             .video {
                 padding-top: 20px;
@@ -96,24 +553,6 @@
                         }
                     }
                 }
-                @include breakpoint($sm-down)   {
-                    text-align: center;
-                    .video-wrapper {
-                        padding-bottom: 30px;
-                    }
-                }
-                @include breakpoint($xs)    {
-                    width: 90%;
-                    margin: 0 auto;
-                    .video-wrapper {
-                        figure.close-video {
-                            right: -20px;
-                        }
-                    }
-                }
-            }
-            @include breakpoint($xs)    {
-                background-position: left bottom;
             }
         }
     }
@@ -162,39 +601,6 @@
             .list {
                 width: 100%;
                 max-width: 1300px;
-            }
-        }
-        @include breakpoint($sm-down)   {
-            .list {
-                position: static;
-                @include clear_transform();
-            }
-        }
-        @include breakpoint($xs)    {
-            padding-top: 15px;
-            padding-bottom: 30px;
-            .btn-container {
-                display: none;
-            }
-            .rotated-text {
-                position: static;
-                @include clear_transform();
-                span {
-                    text-align: center;
-                    font-size: 22px;
-                    padding-top: 15px;
-                    padding-bottom: 30px;
-                    @include clear_transform();
-                }
-            }
-            .list {
-                figure {
-                    figcaption {
-                        padding-top: 10px;
-                        font-size: 14px;
-                        line-height: 16px;
-                    }
-                }
             }
         }
     }
@@ -292,51 +698,10 @@
                 }
             }
         }
-        @include breakpoint($sm-down)    {
-            .section-title {
-                padding-bottom: 40px;
-                padding-top: 10px;
-            }
-            .content {
-                display: block;
-                figure {
-                    padding-top: 50px;
-                    padding-right: 15px;
-                    text-align: center;
-                    img.desktop-image {
-                        display: none;
-                    }
-                    img.mobile-image {
-                        display: block;
-                    }
-                }
-                .content-container {
-                    text-align: center;
-                }
-            }
-            .dots {
-                height: auto;
-                .logo-over-line {
-                    position: static;
-                    text-align: center;
-                    @include clear_transform();
-                    img {
-                        margin-top: 15px;
-                    }
-                }
-            }
-        }
-        @include breakpoint($xs)     {
-            .section-title {
-                padding-bottom: 20px;
-            }
+        @include breakpoint($lg-up) {
             .content {
                 .content-container {
-                    .section-subtitle {
-                        font-size: 18px;
-                        padding: 0 10% 15px;
-                        line-height: normal;
-                    }
+                    padding-right: 10%;
                 }
             }
         }
@@ -395,77 +760,6 @@
                 }
             }
         }
-        @include breakpoint($sm-down) {
-            border-top: 2px solid black;
-            .mobile-title {
-                display: block;
-            }
-            .flex {
-                display: block;
-                .visibility-hidden {
-                    visibility: visible;
-                }
-                .description-over-line {
-                    padding-top: 10px;
-                    padding-bottom: 20px;
-                    border-top: 1px solid black;
-                    border-right: 1px solid black;
-                    border-left: 1px solid black;
-                    .wrapper {
-                        padding-right: 0;
-                        .description {
-                            padding: 0;
-                            .wrapper {
-                                padding-right: 0;
-                                span {
-                                    display: block;
-                                    padding: 0;
-                                }
-                            }
-                        }
-                    }
-                }
-                .cells {
-                    display: flex;
-                    .between-sections-description {
-                        width: 50%;
-                        border: 1px solid black;
-                        padding-top: 10px;
-                        text-align: center;
-                        padding-bottom: 15px;
-                        .description {
-                            padding: 0 10px;
-                        }
-                    }
-                }
-            }
-        }
-        @include breakpoint($xs) {
-            .flex {
-                .description-over-line {
-                    .wrapper {
-                        .description {
-                            .wrapper {
-                                font-size: 12px;
-                                span {
-                                    font-size: 26px;
-                                }
-                            }
-                        }
-                    }
-                }
-                .cells {
-                    .between-sections-description {
-                        .title {
-                            font-size: 26px;
-                        }
-                        .description {
-                            font-size: 12px;
-                        }
-                    }
-                }
-            }
-        }
     }
     .testimonials {
         .upper-empty-space {
@@ -499,7 +793,7 @@
                     height: 25px;
                     border: 3px solid black;
                     margin: 0 auto;
-                    background-color: black;
+                    background-color: white;
                     background-image: url('/assets/images/no-active-avatar-hover.svg') !important;
                     background-position: center center;
                     background-size: 70% 70%;
@@ -510,7 +804,7 @@
                     @include simple_transition(.3s);
                     .background {
                         background-position: center center;
-                        background-size: cover; 
+                        background-size: cover;
                         background-repeat: no-repeat;
                         position: absolute;
                         z-index: 5;
@@ -559,7 +853,6 @@
                         width: 70px;
                         height: 70px;
                         background-image: none !important;
-                        background-color: white !important;
                         .background {
                             opacity: 1;
                         }
@@ -585,7 +878,7 @@
             @include breakpoint($lg-up) {
                 .circle-wrapper {
                     .text {
-                        width: 300px;
+                        width: 290px;
                     }
                     &.active {
                         width: 100px;
@@ -630,79 +923,6 @@
                 position: absolute;
                 bottom: 0;
                 left: 15px;
-            }
-            @include breakpoint($sm-down)    {
-                display: none;
-            }
-        }
-        @include breakpoint($sm-down)   {
-            .expressions {
-                margin-top: 0;
-                padding-top: 30px;
-                padding-bottom: 20px;
-                @include clear_transform();
-                .circle-wrapper {
-                    .mobile-vertical-line-30 {
-                        margin: 0 auto 15px;
-                    }
-                    &:first-child {
-                        .mobile-vertical-line-30 {
-                            display: none;
-                        }
-                    }
-                    &.active {
-                        width: 100%;
-                        margin: 0;
-                        .text {
-                            position: relative;
-                            width: 100%;
-                            left: auto;
-                            text-align: center;
-                            padding-top: 10px;
-                            padding-bottom: 20px;
-                            @include clear_transform();
-                            .start {
-                                display: none;
-                            }
-                            .name_job_location {
-                                .end {
-                                    display: none;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            .see-more {
-                padding-bottom: 50px;
-                a {
-                    font-size: 18px;
-                }
-            }
-            .token-holders-transactions {
-                display: flex;
-                .between-sections-description {
-                    width: 50%;
-                    border: 1px solid black;
-                    padding-top: 10px;
-                    text-align: center;
-                    padding-bottom: 15px;
-                }
-            }
-            .upper-empty-space {
-                display: none;
-            }
-        }
-        @include breakpoint($xs)    {
-            .token-holders-transactions {
-                .between-sections-description {
-                    .title {
-                        font-size: 26px;
-                    }
-                    .description {
-                        font-size: 12px;
-                    }
-                }
             }
         }
     }
@@ -773,6 +993,10 @@
                             display: none;
                             li {
                                 list-style: disc inside none;
+                                @include simple_transition(.3s);
+                                &:hover {
+                                    font-family: 'Calibri-Bold';
+                                }
                             }
                         }
                         &.active {
@@ -828,71 +1052,6 @@
                 padding-top: 40px;
             }
         }
-        @include breakpoint($sm-down)   {
-            border-bottom: 2px solid black;
-            .logo {
-                .logo-over-line {
-                    position: static;
-                    text-align: center;
-                    @include clear_transform();
-                    img {
-                        margin-top: 15px;
-                    }
-                }
-            }
-            .section-title {
-                padding-top: 10px;
-                padding-bottom: 0;
-            }
-            .wallet-app-and-gif {
-                display: block;
-                .wallet-app {
-                    text-align: center;
-                    .exchange-platforms-and-wallets {
-                        .exchange-method {
-                            text-align: left;
-                            width: 40%;
-                        }
-                    }
-                    .buy-btn {
-                        padding-top: 40px;
-                    }
-                }
-                .gif {
-                    figure {
-                        padding-top: 50px;
-                        img.mobile-image {
-                            display: block;
-                            visibility: visible;
-                            width: 50%;
-                            margin: 0 auto;
-                        }
-                        img.desktop-image {
-                            display: none;
-                        }
-                    }
-                    .between-sections-description {
-                        display: none;
-                    }
-                }
-            }
-        }
-        @include breakpoint($xs) {
-            .wallet-app-and-gif {
-                .wallet-app {
-                    .section-subtitle {
-                        font-size: 20px;
-                        padding-bottom: 5px;
-                    }
-                    .exchange-platforms-and-wallets {
-                        .exchange-method {
-                            width: 80%;
-                            padding-bottom: 10px;
-                        }
-                    }
-                }
-            }
-        }
     }
     .below-buy-dentacoin {
         .container {
@@ -926,23 +1085,6 @@
         .between-sections-description {
             padding-left: 40px;
             padding-right: 40px;
-        }
-        @include breakpoint($sm-down)   {
-            .container {
-                padding-bottom: 0;
-                padding-top: 0;
-                .logo-over-line {
-                    position: static;
-                    text-align: center;
-                    @include clear_transform();
-                    img {
-                        margin-top: 15px;
-                    }
-                }
-            }
-            .between-sections-description {
-                display: none;
-            }
         }
     }
     .awards-and-publications {
@@ -1044,67 +1186,6 @@
                 }
             }
         }
-        @include breakpoint($sm-down)   {
-            .section-title {
-                padding-top: 10px;
-                padding-bottom: 30px;
-            }
-            .awards {
-                padding-bottom: 70px;
-            }
-            .no-gutter-sm-down {
-                padding-left: 0;
-                padding-right: 0;
-                .publications-slider-wrapper {
-                    .publications-slider {
-                        height: auto;
-                        padding-left: 0;
-                        padding-right: 0;
-                        padding-bottom: 70px;
-                        border-bottom: 2px solid black;
-                    }
-                    .logo-over-line {
-                        position: static;
-                        text-align: center;
-                        @include clear_transform();
-                        img {
-                            margin-top: 15px;
-                        }
-                    }
-                }
-            }
-        }
-        @include breakpoint($xs)   {
-            .awards {
-                padding-bottom: 40px;
-                figure {
-                    padding-bottom: 25px;
-                }
-            }
-            .no-gutter-sm-down {
-                padding-left: 15px;
-                padding-right: 15px;
-                .publications-slider-wrapper {
-                    .publications-slider {
-                        .single-slide {
-                            .wrapper {
-                                figure {
-                                    padding: 0 10px;
-                                }
-                                .description {
-                                    padding: 10px;
-                                    font-size: 12px;
-                                }
-                                .headline {
-                                    padding-left: 10px;
-                                    padding-right: 10px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
     .roadmap {
         .container {
@@ -1120,12 +1201,6 @@
                 position: absolute;
                 bottom: 0;
                 left: 15px;
-            }
-        }
-        @include breakpoint($sm-down) {
-            .container {
-                padding-top: 10px;
-                padding-bottom: 30px;
             }
         }
     }
@@ -1163,42 +1238,6 @@
                 }
             }
         }
-        @include breakpoint($sm-down)   {
-            padding-bottom: 40px;
-            border-bottom: 2px solid black;
-            .gif {
-                figure {
-                    img.desktop-image {
-                        display: none;
-                    }
-                }
-            }
-            .roadmap-content {
-                text-align: center;
-                .roadmap-cell {
-                    text-align: left;
-                    width: 30%;
-                    min-width: 280px;
-                    display: block;
-                    margin: 0 auto;
-                    opacity: 1;
-                    .mobile-icon {
-                        text-align: center;
-                        padding-bottom: 10px;
-                        img {
-                            width: 80px;
-                        }
-                    }
-                }
-            }
-        }
-        @include breakpoint($xs)    {
-            .roadmap-content {
-                .roadmap-cell {
-                    width: 100%;
-                }
-            }
-        }
     }
     .below-roadmap-timeline {
         .wrapper {
@@ -1223,16 +1262,6 @@
                     }
                     img {
                         width: 40px;
-                    }
-                }
-            }
-        }
-        @include breakpoint($sm-down)   {
-            .wrapper {
-                padding-top: 0;
-                .logo-over-line {
-                    img {
-                        margin-top: 15px;
                     }
                 }
             }

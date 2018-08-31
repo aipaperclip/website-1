@@ -464,7 +464,11 @@ body {
   vertical-align: bottom; }
 
 .flex {
-  display: flex; }
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox; }
 
 .clearfix:after {
   visibility: hidden;
@@ -1116,6 +1120,10 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines {
   .container {
     width: 95%;
     max-width: 1700px; } }
+.bootbox .bootbox-close-button {
+  font-size: 28px;
+  margin-top: -5px !important;
+  margin-right: 5px; }
 @media screen and (min-width: 991px) {
   .bootbox {
     display: flex !important;
@@ -1178,9 +1186,11 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines {
     font-size: 14px;
     padding: 10px 0;
     width: 100%;
-    max-width: 200px;
+    max-width: 220px;
     display: block;
     text-align: center; }
+  .bootbox .bootbox-close-button {
+    font-size: 32px; }
   .bootbox.application-popup .modal-dialog .modal-content {
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -1191,8 +1201,6 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines {
     padding-bottom: 20px; }
     .bootbox.application-popup .modal-dialog .container-fluid .content {
       padding: 0; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .logo {
-        margin: 0 auto; }
     .bootbox.application-popup .modal-dialog .container-fluid .gif {
       display: none; } }
 
@@ -1352,6 +1360,331 @@ body.home footer {
 body.class-404 footer .section-title, body.class-404 footer .newsletter-register {
   display: none; }
 
+.homepage-container.mobile .intro .bg-wrapper .content-wrapper {
+  position: static;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none; }
+.homepage-container.mobile .intro .bg-wrapper .video {
+  text-align: center; }
+  .homepage-container.mobile .intro .bg-wrapper .video .video-wrapper {
+    padding-bottom: 30px; }
+@media screen and (max-width: 767px) {
+  .homepage-container.mobile .intro .bg-wrapper {
+    background-position: left bottom; }
+    .homepage-container.mobile .intro .bg-wrapper .content-wrapper {
+      text-align: center; }
+      .homepage-container.mobile .intro .bg-wrapper .content-wrapper .title {
+        font-size: 45px;
+        line-height: normal; }
+      .homepage-container.mobile .intro .bg-wrapper .content-wrapper .subtitle {
+        line-height: normal;
+        font-size: 20px; }
+      .homepage-container.mobile .intro .bg-wrapper .content-wrapper .description.italic {
+        font-size: 16px; }
+    .homepage-container.mobile .intro .bg-wrapper .video {
+      width: 90%;
+      margin: 0 auto; }
+      .homepage-container.mobile .intro .bg-wrapper .video .video-wrapper figure.close-video {
+        right: -20px; } }
+.homepage-container.mobile .dentacoin-ecosystem .list {
+  position: static;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none; }
+@media screen and (max-width: 767px) {
+  .homepage-container.mobile .dentacoin-ecosystem {
+    padding-top: 15px;
+    padding-bottom: 30px; }
+    .homepage-container.mobile .dentacoin-ecosystem .btn-container {
+      display: none; }
+    .homepage-container.mobile .dentacoin-ecosystem .rotated-text {
+      position: static;
+      -webkit-transform: none;
+      -moz-transform: none;
+      -ms-transform: none;
+      -o-transform: none;
+      transform: none; }
+      .homepage-container.mobile .dentacoin-ecosystem .rotated-text span {
+        text-align: center;
+        font-size: 22px;
+        padding-top: 15px;
+        padding-bottom: 30px;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none; }
+    .homepage-container.mobile .dentacoin-ecosystem .list figure figcaption {
+      padding-top: 10px;
+      font-size: 14px;
+      line-height: 16px; } }
+.homepage-container.mobile .successful-practices .section-title {
+  padding-bottom: 40px;
+  padding-top: 10px; }
+.homepage-container.mobile .successful-practices .content {
+  display: block; }
+  .homepage-container.mobile .successful-practices .content figure {
+    padding-top: 50px;
+    padding-right: 15px;
+    text-align: center; }
+    .homepage-container.mobile .successful-practices .content figure img.desktop-image {
+      display: none; }
+    .homepage-container.mobile .successful-practices .content figure img.mobile-image {
+      display: block; }
+  .homepage-container.mobile .successful-practices .content .content-container {
+    text-align: center; }
+.homepage-container.mobile .successful-practices .dots {
+  height: auto; }
+  .homepage-container.mobile .successful-practices .dots .logo-over-line {
+    position: static;
+    text-align: center;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none; }
+    .homepage-container.mobile .successful-practices .dots .logo-over-line img {
+      margin-top: 15px; }
+@media screen and (max-width: 767px) {
+  .homepage-container.mobile .successful-practices .section-title {
+    padding-bottom: 20px; }
+  .homepage-container.mobile .successful-practices .content .content-container .section-subtitle {
+    font-size: 18px;
+    padding: 0 10% 15px;
+    line-height: normal; } }
+.homepage-container.mobile .below-successful-practices {
+  border-top: 2px solid black; }
+  .homepage-container.mobile .below-successful-practices .mobile-title {
+    display: block; }
+    .homepage-container.mobile .below-successful-practices .mobile-title .section-title {
+      padding-top: 10px; }
+  .homepage-container.mobile .below-successful-practices .flex {
+    display: block; }
+    .homepage-container.mobile .below-successful-practices .flex .visibility-hidden {
+      visibility: visible; }
+    .homepage-container.mobile .below-successful-practices .flex .description-over-line {
+      padding-top: 10px;
+      padding-bottom: 20px;
+      border-top: 1px solid black;
+      border-right: 1px solid black;
+      border-left: 1px solid black; }
+      .homepage-container.mobile .below-successful-practices .flex .description-over-line .wrapper {
+        padding-right: 0; }
+        .homepage-container.mobile .below-successful-practices .flex .description-over-line .wrapper .description {
+          padding: 0; }
+          .homepage-container.mobile .below-successful-practices .flex .description-over-line .wrapper .description .wrapper {
+            padding-right: 0; }
+            .homepage-container.mobile .below-successful-practices .flex .description-over-line .wrapper .description .wrapper span {
+              display: block;
+              padding: 0; }
+    .homepage-container.mobile .below-successful-practices .flex .cells {
+      display: flex; }
+      .homepage-container.mobile .below-successful-practices .flex .cells .between-sections-description {
+        width: 50%;
+        border: 1px solid black;
+        padding-top: 10px;
+        text-align: center;
+        padding-bottom: 15px; }
+        .homepage-container.mobile .below-successful-practices .flex .cells .between-sections-description .description {
+          padding: 0 10px; }
+  @media screen and (max-width: 767px) {
+    .homepage-container.mobile .below-successful-practices .flex .description-over-line .wrapper .description .wrapper {
+      font-size: 12px; }
+      .homepage-container.mobile .below-successful-practices .flex .description-over-line .wrapper .description .wrapper span {
+        font-size: 26px; }
+    .homepage-container.mobile .below-successful-practices .flex .cells .between-sections-description .title {
+      font-size: 26px; }
+    .homepage-container.mobile .below-successful-practices .flex .cells .between-sections-description .description {
+      font-size: 12px; } }
+.homepage-container.mobile .testimonials .below-expressions {
+  display: none; }
+.homepage-container.mobile .testimonials .expressions {
+  margin-top: 0;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none; }
+  .homepage-container.mobile .testimonials .expressions .circle-wrapper .text .start {
+    position: static;
+    display: inline-block;
+    margin-right: 5px; }
+    .homepage-container.mobile .testimonials .expressions .circle-wrapper .text .start img {
+      vertical-align: top; }
+  .homepage-container.mobile .testimonials .expressions .circle-wrapper .mobile-vertical-line-30 {
+    margin: 0 auto 15px; }
+  .homepage-container.mobile .testimonials .expressions .circle-wrapper:first-child .mobile-vertical-line-30 {
+    display: none; }
+  .homepage-container.mobile .testimonials .expressions .circle-wrapper.active {
+    width: 100%;
+    margin: 0; }
+    .homepage-container.mobile .testimonials .expressions .circle-wrapper.active .text {
+      position: relative;
+      width: 100%;
+      left: auto;
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 20px;
+      -webkit-transform: none;
+      -moz-transform: none;
+      -ms-transform: none;
+      -o-transform: none;
+      transform: none; }
+      .homepage-container.mobile .testimonials .expressions .circle-wrapper.active .text .name_job_location .end {
+        display: none; }
+.homepage-container.mobile .testimonials .see-more {
+  padding-bottom: 50px; }
+  .homepage-container.mobile .testimonials .see-more a {
+    font-size: 18px; }
+.homepage-container.mobile .testimonials .token-holders-transactions {
+  display: flex; }
+  .homepage-container.mobile .testimonials .token-holders-transactions .between-sections-description {
+    width: 50%;
+    border: 1px solid black;
+    padding-top: 10px;
+    text-align: center;
+    padding-bottom: 15px; }
+.homepage-container.mobile .testimonials .upper-empty-space {
+  display: none; }
+@media screen and (max-width: 767px) {
+  .homepage-container.mobile .testimonials .token-holders-transactions .between-sections-description .title {
+    font-size: 26px; }
+  .homepage-container.mobile .testimonials .token-holders-transactions .between-sections-description .description {
+    font-size: 12px; } }
+.homepage-container.mobile .buy-dentacoin {
+  border-bottom: 2px solid black; }
+  .homepage-container.mobile .buy-dentacoin .logo .logo-over-line {
+    position: static;
+    text-align: center;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none; }
+    .homepage-container.mobile .buy-dentacoin .logo .logo-over-line img {
+      margin-top: 15px; }
+  .homepage-container.mobile .buy-dentacoin .section-title {
+    padding-top: 10px;
+    padding-bottom: 0; }
+  .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif {
+    display: block; }
+    .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .wallet-app {
+      text-align: center; }
+      .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-method {
+        text-align: left;
+        width: 40%; }
+      .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .wallet-app .buy-btn {
+        padding-top: 40px; }
+    .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .gif figure {
+      padding-top: 50px; }
+      .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .gif figure img.mobile-image {
+        display: block;
+        visibility: visible;
+        width: 50%;
+        margin: 0 auto; }
+      .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .gif figure img.desktop-image {
+        display: none; }
+    .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .gif .between-sections-description {
+      display: none; }
+  @media screen and (max-width: 767px) {
+    .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .wallet-app .section-subtitle {
+      font-size: 20px;
+      padding-bottom: 5px; }
+    .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-method {
+      width: 80%;
+      padding-bottom: 10px; } }
+.homepage-container.mobile .below-buy-dentacoin .container {
+  padding-bottom: 0;
+  padding-top: 0; }
+  .homepage-container.mobile .below-buy-dentacoin .container .logo-over-line {
+    position: static;
+    text-align: center;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none; }
+    .homepage-container.mobile .below-buy-dentacoin .container .logo-over-line img {
+      margin-top: 15px; }
+.homepage-container.mobile .below-buy-dentacoin .between-sections-description {
+  display: none; }
+.homepage-container.mobile .awards-and-publications .section-title {
+  padding-top: 10px;
+  padding-bottom: 30px; }
+.homepage-container.mobile .awards-and-publications .awards {
+  padding-bottom: 70px; }
+.homepage-container.mobile .awards-and-publications .no-gutter-sm-down {
+  padding-left: 0;
+  padding-right: 0; }
+  .homepage-container.mobile .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .publications-slider {
+    height: auto;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 70px;
+    border-bottom: 2px solid black; }
+  .homepage-container.mobile .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .logo-over-line {
+    position: static;
+    text-align: center;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none; }
+    .homepage-container.mobile .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .logo-over-line img {
+      margin-top: 15px; }
+@media screen and (max-width: 767px) {
+  .homepage-container.mobile .awards-and-publications .awards {
+    padding-bottom: 40px; }
+    .homepage-container.mobile .awards-and-publications .awards figure {
+      padding-bottom: 25px; }
+  .homepage-container.mobile .awards-and-publications .no-gutter-sm-down {
+    padding-left: 15px;
+    padding-right: 15px; }
+    .homepage-container.mobile .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .publications-slider .single-slide .wrapper figure {
+      padding: 0 10px; }
+    .homepage-container.mobile .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .publications-slider .single-slide .wrapper .description {
+      padding: 10px;
+      font-size: 12px; }
+    .homepage-container.mobile .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .publications-slider .single-slide .wrapper .headline {
+      padding-left: 10px;
+      padding-right: 10px; } }
+.homepage-container.mobile .roadmap .container {
+  padding-top: 10px;
+  padding-bottom: 30px; }
+.homepage-container.mobile .roadmap-timeline {
+  padding-bottom: 40px;
+  border-bottom: 2px solid black; }
+  .homepage-container.mobile .roadmap-timeline .gif figure img.desktop-image {
+    display: none; }
+  .homepage-container.mobile .roadmap-timeline .roadmap-content {
+    text-align: center; }
+    .homepage-container.mobile .roadmap-timeline .roadmap-content .roadmap-cell {
+      text-align: left;
+      width: 30%;
+      min-width: 280px;
+      display: block;
+      margin: 0 auto;
+      opacity: 1; }
+      .homepage-container.mobile .roadmap-timeline .roadmap-content .roadmap-cell .mobile-icon {
+        text-align: center;
+        padding-bottom: 10px; }
+        .homepage-container.mobile .roadmap-timeline .roadmap-content .roadmap-cell .mobile-icon img {
+          width: 80px; }
+  @media screen and (max-width: 767px) {
+    .homepage-container.mobile .roadmap-timeline .roadmap-content .roadmap-cell {
+      width: 80%;
+      min-width: auto; } }
+.homepage-container.mobile .below-roadmap-timeline .wrapper {
+  padding-top: 0; }
+  .homepage-container.mobile .below-roadmap-timeline .wrapper .logo-over-line img {
+    margin-top: 15px; }
 .homepage-container .intro {
   padding-top: 30px;
   position: relative; }
@@ -1402,25 +1735,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         .homepage-container .intro .bg-wrapper .content-wrapper .description.italic {
           font-size: 18px;
           font-style: italic; }
-      @media screen and (max-width: 991px) {
-        .homepage-container .intro .bg-wrapper .content-wrapper {
-          position: static;
-          -webkit-transform: none;
-          -moz-transform: none;
-          -ms-transform: none;
-          -o-transform: none;
-          transform: none; } }
-      @media screen and (max-width: 767px) {
-        .homepage-container .intro .bg-wrapper .content-wrapper {
-          text-align: center; }
-          .homepage-container .intro .bg-wrapper .content-wrapper .title {
-            font-size: 45px;
-            line-height: normal; }
-          .homepage-container .intro .bg-wrapper .content-wrapper .subtitle {
-            line-height: normal;
-            font-size: 20px; }
-          .homepage-container .intro .bg-wrapper .content-wrapper .description.italic {
-            font-size: 16px; } }
     .homepage-container .intro .bg-wrapper .video {
       padding-top: 20px; }
       .homepage-container .intro .bg-wrapper .video .play-btn {
@@ -1441,20 +1755,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           cursor: pointer; }
           .homepage-container .intro .bg-wrapper .video .video-wrapper figure.close-video img {
             width: 14px; }
-      @media screen and (max-width: 991px) {
-        .homepage-container .intro .bg-wrapper .video {
-          text-align: center; }
-          .homepage-container .intro .bg-wrapper .video .video-wrapper {
-            padding-bottom: 30px; } }
-      @media screen and (max-width: 767px) {
-        .homepage-container .intro .bg-wrapper .video {
-          width: 90%;
-          margin: 0 auto; }
-          .homepage-container .intro .bg-wrapper .video .video-wrapper figure.close-video {
-            right: -20px; } }
-    @media screen and (max-width: 767px) {
-      .homepage-container .intro .bg-wrapper {
-        background-position: left bottom; } }
 .homepage-container .dentacoin-ecosystem {
   background-image: url("/assets/images/dentacoin-ecosystem-background.jpg");
   background-position: center center;
@@ -1504,41 +1804,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     .homepage-container .dentacoin-ecosystem .list {
       width: 100%;
       max-width: 1300px; } }
-  @media screen and (max-width: 991px) {
-    .homepage-container .dentacoin-ecosystem .list {
-      position: static;
-      -webkit-transform: none;
-      -moz-transform: none;
-      -ms-transform: none;
-      -o-transform: none;
-      transform: none; } }
-  @media screen and (max-width: 767px) {
-    .homepage-container .dentacoin-ecosystem {
-      padding-top: 15px;
-      padding-bottom: 30px; }
-      .homepage-container .dentacoin-ecosystem .btn-container {
-        display: none; }
-      .homepage-container .dentacoin-ecosystem .rotated-text {
-        position: static;
-        -webkit-transform: none;
-        -moz-transform: none;
-        -ms-transform: none;
-        -o-transform: none;
-        transform: none; }
-        .homepage-container .dentacoin-ecosystem .rotated-text span {
-          text-align: center;
-          font-size: 22px;
-          padding-top: 15px;
-          padding-bottom: 30px;
-          -webkit-transform: none;
-          -moz-transform: none;
-          -ms-transform: none;
-          -o-transform: none;
-          transform: none; }
-      .homepage-container .dentacoin-ecosystem .list figure figcaption {
-        padding-top: 10px;
-        font-size: 14px;
-        line-height: 16px; } }
 .homepage-container .successful-practices .dots {
   height: 80px; }
   .homepage-container .successful-practices .dots .first-dot-wrapper {
@@ -1608,41 +1873,9 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     padding-top: 30px; }
     .homepage-container .successful-practices .content .content-container .btn-container .white-blue-rounded-btn {
       font-size: 18px; }
-@media screen and (max-width: 991px) {
-  .homepage-container .successful-practices .section-title {
-    padding-bottom: 40px;
-    padding-top: 10px; }
-  .homepage-container .successful-practices .content {
-    display: block; }
-    .homepage-container .successful-practices .content figure {
-      padding-top: 50px;
-      padding-right: 15px;
-      text-align: center; }
-      .homepage-container .successful-practices .content figure img.desktop-image {
-        display: none; }
-      .homepage-container .successful-practices .content figure img.mobile-image {
-        display: block; }
-    .homepage-container .successful-practices .content .content-container {
-      text-align: center; }
-  .homepage-container .successful-practices .dots {
-    height: auto; }
-    .homepage-container .successful-practices .dots .logo-over-line {
-      position: static;
-      text-align: center;
-      -webkit-transform: none;
-      -moz-transform: none;
-      -ms-transform: none;
-      -o-transform: none;
-      transform: none; }
-      .homepage-container .successful-practices .dots .logo-over-line img {
-        margin-top: 15px; } }
-@media screen and (max-width: 767px) {
-  .homepage-container .successful-practices .section-title {
-    padding-bottom: 20px; }
-  .homepage-container .successful-practices .content .content-container .section-subtitle {
-    font-size: 18px;
-    padding: 0 10% 15px;
-    line-height: normal; } }
+@media screen and (min-width: 1399px) {
+  .homepage-container .successful-practices .content .content-container {
+    padding-right: 10%; } }
 .homepage-container .below-successful-practices .mobile-title {
   display: none; }
   .homepage-container .below-successful-practices .mobile-title figure img {
@@ -1691,49 +1924,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         color: #333333;
         vertical-align: middle;
         padding: 0 5px; }
-@media screen and (max-width: 991px) {
-  .homepage-container .below-successful-practices {
-    border-top: 2px solid black; }
-    .homepage-container .below-successful-practices .mobile-title {
-      display: block; }
-    .homepage-container .below-successful-practices .flex {
-      display: block; }
-      .homepage-container .below-successful-practices .flex .visibility-hidden {
-        visibility: visible; }
-      .homepage-container .below-successful-practices .flex .description-over-line {
-        padding-top: 10px;
-        padding-bottom: 20px;
-        border-top: 1px solid black;
-        border-right: 1px solid black;
-        border-left: 1px solid black; }
-        .homepage-container .below-successful-practices .flex .description-over-line .wrapper {
-          padding-right: 0; }
-          .homepage-container .below-successful-practices .flex .description-over-line .wrapper .description {
-            padding: 0; }
-            .homepage-container .below-successful-practices .flex .description-over-line .wrapper .description .wrapper {
-              padding-right: 0; }
-              .homepage-container .below-successful-practices .flex .description-over-line .wrapper .description .wrapper span {
-                display: block;
-                padding: 0; }
-      .homepage-container .below-successful-practices .flex .cells {
-        display: flex; }
-        .homepage-container .below-successful-practices .flex .cells .between-sections-description {
-          width: 50%;
-          border: 1px solid black;
-          padding-top: 10px;
-          text-align: center;
-          padding-bottom: 15px; }
-          .homepage-container .below-successful-practices .flex .cells .between-sections-description .description {
-            padding: 0 10px; } }
-@media screen and (max-width: 767px) {
-  .homepage-container .below-successful-practices .flex .description-over-line .wrapper .description .wrapper {
-    font-size: 12px; }
-    .homepage-container .below-successful-practices .flex .description-over-line .wrapper .description .wrapper span {
-      font-size: 26px; }
-  .homepage-container .below-successful-practices .flex .cells .between-sections-description .title {
-    font-size: 26px; }
-  .homepage-container .below-successful-practices .flex .cells .between-sections-description .description {
-    font-size: 12px; } }
 .homepage-container .testimonials .upper-empty-space {
   height: 200px;
   position: relative; }
@@ -1762,7 +1952,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       height: 25px;
       border: 3px solid black;
       margin: 0 auto;
-      background-color: black;
+      background-color: white;
       background-image: url("/assets/images/no-active-avatar-hover.svg") !important;
       background-position: center center;
       background-size: 70% 70%;
@@ -1827,8 +2017,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         margin: 0 auto;
         width: 70px;
         height: 70px;
-        background-image: none !important;
-        background-color: white !important; }
+        background-image: none !important; }
         .homepage-container .testimonials .expressions .circle-wrapper.active .circle .background {
           opacity: 1; }
       .homepage-container .testimonials .expressions .circle-wrapper.active .text {
@@ -1844,7 +2033,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           margin: 0 5px; } }
   @media screen and (min-width: 1399px) {
     .homepage-container .testimonials .expressions .circle-wrapper .text {
-      width: 300px; }
+      width: 290px; }
     .homepage-container .testimonials .expressions .circle-wrapper.active {
       width: 100px; }
       .homepage-container .testimonials .expressions .circle-wrapper.active .circle {
@@ -1885,61 +2074,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     position: absolute;
     bottom: 0;
     left: 15px; }
-  @media screen and (max-width: 991px) {
-    .homepage-container .testimonials .below-expressions {
-      display: none; } }
-@media screen and (max-width: 991px) {
-  .homepage-container .testimonials .expressions {
-    margin-top: 0;
-    padding-top: 30px;
-    padding-bottom: 20px;
-    -webkit-transform: none;
-    -moz-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none; }
-    .homepage-container .testimonials .expressions .circle-wrapper .mobile-vertical-line-30 {
-      margin: 0 auto 15px; }
-    .homepage-container .testimonials .expressions .circle-wrapper:first-child .mobile-vertical-line-30 {
-      display: none; }
-    .homepage-container .testimonials .expressions .circle-wrapper.active {
-      width: 100%;
-      margin: 0; }
-      .homepage-container .testimonials .expressions .circle-wrapper.active .text {
-        position: relative;
-        width: 100%;
-        left: auto;
-        text-align: center;
-        padding-top: 10px;
-        padding-bottom: 20px;
-        -webkit-transform: none;
-        -moz-transform: none;
-        -ms-transform: none;
-        -o-transform: none;
-        transform: none; }
-        .homepage-container .testimonials .expressions .circle-wrapper.active .text .start {
-          display: none; }
-        .homepage-container .testimonials .expressions .circle-wrapper.active .text .name_job_location .end {
-          display: none; }
-  .homepage-container .testimonials .see-more {
-    padding-bottom: 50px; }
-    .homepage-container .testimonials .see-more a {
-      font-size: 18px; }
-  .homepage-container .testimonials .token-holders-transactions {
-    display: flex; }
-    .homepage-container .testimonials .token-holders-transactions .between-sections-description {
-      width: 50%;
-      border: 1px solid black;
-      padding-top: 10px;
-      text-align: center;
-      padding-bottom: 15px; }
-  .homepage-container .testimonials .upper-empty-space {
-    display: none; } }
-@media screen and (max-width: 767px) {
-  .homepage-container .testimonials .token-holders-transactions .between-sections-description .title {
-    font-size: 26px; }
-  .homepage-container .testimonials .token-holders-transactions .between-sections-description .description {
-    font-size: 12px; } }
 .homepage-container .buy-dentacoin .logo .logo-over-line {
   background-color: white;
   padding: 0 20px;
@@ -1993,7 +2127,14 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list {
           display: none; }
           .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list li, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list li {
-            list-style: disc inside none; }
+            list-style: disc inside none;
+            -webkit-transition: 0.3s;
+            -moz-transition: 0.3s;
+            -o-transition: 0.3s;
+            -ms-transition: 0.3s;
+            transition: 0.3s; }
+            .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list li:hover, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list li:hover {
+              font-family: 'Calibri-Bold'; }
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms.active .title .icon, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets.active .title .icon {
           background-image: url("/assets/images/minus-black-background-bordered.svg"); }
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms.active .title span, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets.active .title span {
@@ -2026,49 +2167,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       font-size: 16px; }
   .homepage-container .buy-dentacoin .wallet-app-and-gif .buy-btn {
     padding-top: 40px; }
-@media screen and (max-width: 991px) {
-  .homepage-container .buy-dentacoin {
-    border-bottom: 2px solid black; }
-    .homepage-container .buy-dentacoin .logo .logo-over-line {
-      position: static;
-      text-align: center;
-      -webkit-transform: none;
-      -moz-transform: none;
-      -ms-transform: none;
-      -o-transform: none;
-      transform: none; }
-      .homepage-container .buy-dentacoin .logo .logo-over-line img {
-        margin-top: 15px; }
-    .homepage-container .buy-dentacoin .section-title {
-      padding-top: 10px;
-      padding-bottom: 0; }
-    .homepage-container .buy-dentacoin .wallet-app-and-gif {
-      display: block; }
-      .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app {
-        text-align: center; }
-        .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-method {
-          text-align: left;
-          width: 40%; }
-        .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .buy-btn {
-          padding-top: 40px; }
-      .homepage-container .buy-dentacoin .wallet-app-and-gif .gif figure {
-        padding-top: 50px; }
-        .homepage-container .buy-dentacoin .wallet-app-and-gif .gif figure img.mobile-image {
-          display: block;
-          visibility: visible;
-          width: 50%;
-          margin: 0 auto; }
-        .homepage-container .buy-dentacoin .wallet-app-and-gif .gif figure img.desktop-image {
-          display: none; }
-      .homepage-container .buy-dentacoin .wallet-app-and-gif .gif .between-sections-description {
-        display: none; } }
-@media screen and (max-width: 767px) {
-  .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .section-subtitle {
-    font-size: 20px;
-    padding-bottom: 5px; }
-  .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-method {
-    width: 80%;
-    padding-bottom: 10px; } }
 .homepage-container .below-buy-dentacoin .container {
   position: relative;
   padding-top: 60px;
@@ -2095,22 +2193,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
 .homepage-container .below-buy-dentacoin .between-sections-description {
   padding-left: 40px;
   padding-right: 40px; }
-@media screen and (max-width: 991px) {
-  .homepage-container .below-buy-dentacoin .container {
-    padding-bottom: 0;
-    padding-top: 0; }
-    .homepage-container .below-buy-dentacoin .container .logo-over-line {
-      position: static;
-      text-align: center;
-      -webkit-transform: none;
-      -moz-transform: none;
-      -ms-transform: none;
-      -o-transform: none;
-      transform: none; }
-      .homepage-container .below-buy-dentacoin .container .logo-over-line img {
-        margin-top: 15px; }
-  .homepage-container .below-buy-dentacoin .between-sections-description {
-    display: none; } }
 .homepage-container .awards-and-publications .section-title {
   padding-top: 40px;
   padding-bottom: 60px; }
@@ -2185,47 +2267,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       @media screen and (min-width: 1399px) {
         .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide figure img {
           max-width: 250px; } }
-@media screen and (max-width: 991px) {
-  .homepage-container .awards-and-publications .section-title {
-    padding-top: 10px;
-    padding-bottom: 30px; }
-  .homepage-container .awards-and-publications .awards {
-    padding-bottom: 70px; }
-  .homepage-container .awards-and-publications .no-gutter-sm-down {
-    padding-left: 0;
-    padding-right: 0; }
-    .homepage-container .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .publications-slider {
-      height: auto;
-      padding-left: 0;
-      padding-right: 0;
-      padding-bottom: 70px;
-      border-bottom: 2px solid black; }
-    .homepage-container .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .logo-over-line {
-      position: static;
-      text-align: center;
-      -webkit-transform: none;
-      -moz-transform: none;
-      -ms-transform: none;
-      -o-transform: none;
-      transform: none; }
-      .homepage-container .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .logo-over-line img {
-        margin-top: 15px; } }
-@media screen and (max-width: 767px) {
-  .homepage-container .awards-and-publications .awards {
-    padding-bottom: 40px; }
-    .homepage-container .awards-and-publications .awards figure {
-      padding-bottom: 25px; }
-  .homepage-container .awards-and-publications .no-gutter-sm-down {
-    padding-left: 15px;
-    padding-right: 15px; }
-    .homepage-container .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .publications-slider .single-slide .wrapper figure {
-      padding: 0 10px; }
-    .homepage-container .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .publications-slider .single-slide .wrapper .description {
-      padding: 10px;
-      font-size: 12px; }
-    .homepage-container .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .publications-slider .single-slide .wrapper .headline {
-      padding-left: 10px;
-      padding-right: 10px; } }
 .homepage-container .roadmap .container {
   padding-top: 40px;
   padding-bottom: 150px;
@@ -2238,10 +2279,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     position: absolute;
     bottom: 0;
     left: 15px; }
-@media screen and (max-width: 991px) {
-  .homepage-container .roadmap .container {
-    padding-top: 10px;
-    padding-bottom: 30px; } }
 .homepage-container .roadmap-timeline .gif figure {
   padding-left: 2px;
   padding-right: 1px;
@@ -2264,29 +2301,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     padding-bottom: 5px; }
     .homepage-container .roadmap-timeline .roadmap-content .roadmap-cell > div i {
       padding-right: 5px; }
-@media screen and (max-width: 991px) {
-  .homepage-container .roadmap-timeline {
-    padding-bottom: 40px;
-    border-bottom: 2px solid black; }
-    .homepage-container .roadmap-timeline .gif figure img.desktop-image {
-      display: none; }
-    .homepage-container .roadmap-timeline .roadmap-content {
-      text-align: center; }
-      .homepage-container .roadmap-timeline .roadmap-content .roadmap-cell {
-        text-align: left;
-        width: 30%;
-        min-width: 280px;
-        display: block;
-        margin: 0 auto;
-        opacity: 1; }
-        .homepage-container .roadmap-timeline .roadmap-content .roadmap-cell .mobile-icon {
-          text-align: center;
-          padding-bottom: 10px; }
-          .homepage-container .roadmap-timeline .roadmap-content .roadmap-cell .mobile-icon img {
-            width: 80px; } }
-@media screen and (max-width: 767px) {
-  .homepage-container .roadmap-timeline .roadmap-content .roadmap-cell {
-    width: 100%; } }
 .homepage-container .below-roadmap-timeline .wrapper {
   padding-top: 150px; }
   .homepage-container .below-roadmap-timeline .wrapper .figure-wrapper {
@@ -2312,11 +2326,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         transform: translate(-50%, -50%); }
       .homepage-container .below-roadmap-timeline .wrapper .figure-wrapper .logo-over-line img {
         width: 40px; }
-@media screen and (max-width: 991px) {
-  .homepage-container .below-roadmap-timeline .wrapper {
-    padding-top: 0; }
-    .homepage-container .below-roadmap-timeline .wrapper .logo-over-line img {
-      margin-top: 15px; } }
 
 .container-404 {
   padding-bottom: 100px;
@@ -2400,6 +2409,8 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   .testimonials-container .list .single {
     padding-bottom: 70px;
     color: #3e3e3e; }
+    .testimonials-container .list .single .mobile-vertical-line-30 {
+      display: none; }
     .testimonials-container .list .single .image {
       width: 80px;
       height: 80px;
@@ -2426,12 +2437,33 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       font-size: 16px;
       padding-left: 25px; }
       .testimonials-container .list .single .content .description {
-        padding-bottom: 15px; }
+        padding-bottom: 15px;
+        position: relative;
+        padding-left: 15px; }
+        .testimonials-container .list .single .content .description .start, .testimonials-container .list .single .content .description .end {
+          width: 10px; }
+        .testimonials-container .list .single .content .description .start {
+          left: 0;
+          position: absolute; }
+          .testimonials-container .list .single .content .description .start img {
+            vertical-align: top; }
+        .testimonials-container .list .single .content .description .end {
+          display: inline-block;
+          margin-left: 5px; }
+          .testimonials-container .list .single .content .description .end img {
+            vertical-align: bottom; }
       .testimonials-container .list .single .content .name_job {
         font-family: 'Calibri-Bold'; }
       .testimonials-container .list .single .content .location i {
         padding-right: 5px;
         color: #aaaaaa; }
+  @media screen and (max-width: 991px) {
+    .testimonials-container .list .single .content .description {
+      padding-left: 0; }
+      .testimonials-container .list .single .content .description .start {
+        position: static;
+        display: inline-block;
+        margin-right: 5px; } }
   @media screen and (max-width: 767px) {
     .testimonials-container {
       padding-bottom: 50px; }
@@ -2439,7 +2471,10 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         font-size: 30px;
         padding-bottom: 30px; }
       .testimonials-container .list .single {
-        padding-bottom: 50px; }
+        padding-bottom: 15px; }
+        .testimonials-container .list .single .mobile-vertical-line-30 {
+          margin: 0 auto 15px;
+          display: block; }
         .testimonials-container .list .single .image {
           display: block;
           margin: 0 auto; }
@@ -2455,7 +2490,8 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   .changelly-container .section-title {
     padding-bottom: 20px; }
   .changelly-container .iframe-wrapper {
-    overflow-x: auto; }
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; }
     .changelly-container .iframe-wrapper iframe.changelly {
       border: 0;
       width: 100%;

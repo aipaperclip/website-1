@@ -35,11 +35,11 @@ $(window).on('beforeunload', function() {
 
 $('body').bind('wheel', onMousewheel);
 
-jQuery(window).on("load", function()   {
+$(window).on("load", function()   {
 
 });
 
-jQuery(window).on('resize', function(){
+$(window).on('resize', function(){
     //HOMEPAGE
     if($('.homepage-container').length > 0 && !isMobile) {
         setLinesDots(true);
@@ -50,7 +50,7 @@ jQuery(window).on('resize', function(){
     }
 });
 
-jQuery(window).on('scroll', function()  {
+$(window).on('scroll', function()  {
     checkIfLineIsReadyToBeCreated('second', 'vertical', ['third', 'fourth'], ['horizontal', 'vertical'], 'load-successful-practices-gif');
     checkIfLineIsReadyToBeCreated('fifth', 'vertical', [], [], 'call-sixth-and-animation');
     checkIfLineIsReadyToBeCreated('eighth', 'horizontal', ['ninth'], ['vertical']);
@@ -102,7 +102,7 @@ function scrollToSectionAnimation(to_become_current, full_height, clear_dots, dr
     }
     $('body').unbind('wheel', onMousewheel);
     //$(window).unbind('wheel', onMousewheel);
-    jQuery('html, body').stop().animate(scroll_obj, 500).promise().then(function() {
+    $('html, body').stop().animate(scroll_obj, 500).promise().then(function() {
         $('body').bind('wheel', onMousewheel);
         if(clear_dots != null)  {
             refreshingMainDots();
@@ -481,6 +481,16 @@ function callActionOnLastTailFinish(action)    {
 
 //HOMEPAGE
 if($('.homepage-container').length > 0) {
+    if(isMobile)    {
+        $('.homepage-container').addClass('mobile');
+        $('.homepage-container.mobile .successful-practices .content .content-container').removeClass('col-md-5 col-md-offset-2').addClass('col-md-12');
+        $('.homepage-container.mobile .successful-practices .content figure').removeClass('col-md-5').addClass('col-md-10 col-md-offset-1');
+        $('.homepage-container.mobile .below-successful-practices .flex .description-over-line').removeClass('col-md-7 col-md-offset-0').addClass('col-md-8 col-md-offset-2');
+        $('.homepage-container.mobile .below-successful-practices .flex .cells').removeClass('col-md-5');
+        $('.homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .wallet-app').removeClass('col-md-5 col-md-offset-1');
+        $('.homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .gif').removeClass('col-md-5 col-md-offset-1').addClass('col-sm-10 col-sm-offset-1');
+    }
+
     // ===== first section video logic =====
     $('.homepage-container .intro .bg-wrapper .video .play-btn').bind("click", openVideo);
     $('.homepage-container .intro .bg-wrapper .video .video-wrapper figure.close-video').click(function()   {
@@ -554,7 +564,9 @@ if($('.homepage-container').length > 0) {
         if($(this).closest('.exchange-method').hasClass('active'))  {
             $(this).closest('.exchange-method').removeClass('active').find('.list').slideUp(300);
         }else {
-            $('.homepage-container .exchange-platforms-and-wallets .exchange-method').removeClass('active').find('.list').slideUp(300);
+            if(isMobile)    {
+                $('.homepage-container .exchange-platforms-and-wallets .exchange-method').removeClass('active').find('.list').slideUp(300);
+            }
             $(this).closest('.exchange-method').addClass('active').find('.list').slideDown(300);
         }
     });
@@ -637,11 +649,17 @@ if($('body').hasClass('partner-network')) {
 
     //logic for show/hide locations
     $('.partner-network-container .list-with-locations .subtype-title').click(function()    {
-        if(!$(this).hasClass('opened'))  {
+        var this_title = $(this);
+        if(!this_title.hasClass('opened'))  {
             $('.partner-network-container .list-with-locations .clinics').slideUp(300);
             $('.partner-network-container .list-with-locations .subtype-title').removeClass('opened').find('i').removeClass('active');
-            $(this).next().slideDown(300);
-            $(this).addClass('opened').find('i').addClass('active');
+            this_title.addClass('opened').find('i').addClass('active');
+            this_title.next().slideDown({
+                duration: 300,
+                complete: function()    {
+                    $('html, body').animate({'scrollTop': this_title.offset().top - this_title.outerHeight()}, 300);
+                }
+            });
         }else {
             $('.partner-network-container .list-with-locations .clinics').slideUp(300);
             $('.partner-network-container .list-with-locations .subtype-title').removeClass('opened').find('i').removeClass('active');
@@ -710,8 +728,9 @@ function hidePopupOnBackdropClick() {
         var classname = event.target.className;
         classname = classname.replace(/ /g, '.');
 
-        if(classname && !$('.' + classname).parents('.modal-dialog').length)
+        if(classname && !$('.' + classname).parents('.modal-dialog').length) {
             bootbox.hideAll();
+        }
     });
 }
 hidePopupOnBackdropClick();

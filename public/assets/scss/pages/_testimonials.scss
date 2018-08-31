@@ -9,6 +9,9 @@
         .single {
             padding-bottom: 70px;
             color: $light_gray;
+            .mobile-vertical-line-30 {
+                display: none;
+            }
             .image {
                 width: 80px;
                 height: 80px;
@@ -30,6 +33,25 @@
                 padding-left: 25px;
                 .description {
                     padding-bottom: 15px;
+                    position: relative;
+                    padding-left: 15px;
+                    .start, .end {
+                        width: 10px;
+                    }
+                    .start {
+                        left: 0;
+                        position: absolute;
+                        img {
+                            vertical-align: top;
+                        }
+                    }
+                    .end {
+                        display: inline-block;
+                        margin-left: 5px;
+                        img {
+                            vertical-align: bottom;
+                        }
+                    }
                 }
                 .name_job {
                     font-family: 'Calibri-Bold';
@@ -43,6 +65,22 @@
             }
         }
     }
+    @include breakpoint($sm-down)    {
+        .list {
+            .single {
+                .content {
+                    .description {
+                        padding-left: 0;
+                        .start {
+                            position: static;
+                            display: inline-block;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
     @include breakpoint($xs)    {
         padding-bottom: 50px;
         .section-title {
@@ -51,7 +89,11 @@
         }
         .list {
             .single {
-                padding-bottom: 50px;
+                padding-bottom: 15px;
+                .mobile-vertical-line-30 {
+                    margin: 0 auto 15px;
+                    display: block;
+                }
                 .image {
                     display: block;
                     margin: 0 auto;
