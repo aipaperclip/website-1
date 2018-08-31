@@ -1,8 +1,5 @@
-
 var markerCluster;
 function initMap(filter) {
-    console.log(filter);
-    console.log('ahah');
     if(filter === undefined) {
         filter = null;
     }
@@ -285,26 +282,38 @@ function initMap(filter) {
                     lng: map_locations[i].lng,
                     map: map,
                     icon: map_locations[i].marker_icon,
-                    i: i
+                    clinic_name: map_locations[i].clinic_name,
                 };
+                if(map_locations[i].clinic_media != undefined)    {
+                    marker_options.clinic_media = map_locations[i].clinic_media;
+                }
+                if(map_locations[i].clinic_media_alt != undefined)    {
+                    marker_options.clinic_media_alt = map_locations[i].clinic_media_alt;
+                }
+                if(map_locations[i].clinic_link != undefined)    {
+                    marker_options.clinic_link = map_locations[i].clinic_link;
+                }
                 markers_arr[i] = new google.maps.Marker(marker_options);
 
                 google.maps.event.addListener(markers_arr[i], 'click', function () {
                     map.panTo(this.getPosition());
-                    map.setZoom(20);
+                    map.setZoom(18);
 
                     if(infowindow != null){
                         infowindow.close();
                     }
 
                     var content = '<div>';
-
-                    if(map_locations[i].clinic_media != undefined)    {
-                        content+='<figure style="padding-bottom: 10px;"><img src="'+map_locations[i].clinic_media+'" width="100"/></figure>';
+                    if(this.clinic_media != undefined)    {
+                        content+='<figure style="padding-bottom: 10px;"><img src="'+this.clinic_media+'" ';
+                        if(this.clinic_media_alt != undefined)  {
+                            content+=' alt="'+this.clinic_media_alt+'"';
+                        }
+                        content+=' width="100"/></figure>';
                     }
-                    content+='<strong>Name: </strong>'+map_locations[i].clinic_name+'</div><div><strong>Address: </strong>'+map_locations[i].address+'</div>';
-                    if(map_locations[i].clinic_link != '')    {
-                        content+='<div><strong>Website: </strong><a href="'+map_locations[i].clinic_link+'" target="_blank">'+map_locations[i].clinic_link+'</a></div>';
+                    content+='<strong>Name: </strong>'+this.clinic_name+'</div><div><strong>Address: </strong>'+this.address+'</div>';
+                    if(this.clinic_link != '')    {
+                        content+='<div><strong>Website: </strong><a href="'+this.clinic_link+'" target="_blank">'+this.clinic_link+'</a></div>';
                     }
 
                     infowindow = new google.maps.InfoWindow({

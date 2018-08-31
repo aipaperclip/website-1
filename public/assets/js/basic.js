@@ -102,20 +102,27 @@ var basic = {
     showConfirm: function(message, class_name, params) {
         basic.realShowDialog(message, "confirm", class_name, params);
     },
-    showDialog: function(message, class_name) {
-        basic.realShowDialog(message, "dialog", class_name);
+    showDialog: function(message, class_name, type) {
+        if(type === undefined){
+            type = null;
+        }
+        basic.realShowDialog(message, "dialog", class_name, null, type);
     },
-    realShowDialog: function(message, dialog_type, class_name, params) {
-        if (class_name === undefined){
+    realShowDialog: function(message, dialog_type, class_name, params, type) {
+        if(class_name === undefined){
             class_name = "";
         }
+        if(type === undefined){
+            type = null;
+        }
+
         var atrs = {
             "message": message,
             "animate": false,
             "show": false,
-            "className": class_name,
-            "onEscape": function() { console.log("Escape!"); }
-        }
+            "className": class_name
+        };
+
         if(dialog_type == "confirm" && params!=undefined && params.buttons == undefined){
             atrs.buttons = {
                 confirm: {
@@ -137,6 +144,9 @@ var basic = {
         var dialog = eval("bootbox." + dialog_type)(atrs);
         dialog.on('hidden.bs.modal', function(){
             basic.fixBodyModal();
+            if(type != null)    {
+                $('.single-application figure[data-slug="'+type+'"]').parent().focus();
+            }
         });
         dialog.on('shown.bs.modal', function(){
             basic.fixZIndexBackdrop();

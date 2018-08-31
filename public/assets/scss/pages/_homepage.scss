@@ -36,7 +36,7 @@
                         width: 90%;
                         margin: 0 auto;
                         .video-wrapper {
-                            figure.close-video {
+                            .close-video {
                                 right: -20px;
                             }
                         }
@@ -489,7 +489,7 @@
                 text-align: right;
                 .btn-and-line {
                     text-align: center;
-                    width: 90px; 
+                    width: 90px;
                     a {
                         display: block;
                     }
@@ -543,7 +543,7 @@
                     video {
                         width: 100%;
                     }
-                    figure.close-video {
+                    .close-video {
                         position: absolute;
                         top: 0;
                         right: -25px;
@@ -586,14 +586,20 @@
         }
         .list {
             @include vertical-horizontal-align(absolute);
-            figure {
-                padding-bottom: 25px;
-                text-align: center;
-                cursor: pointer;
-                figcaption {
-                    color: white;
-                    font-size: 18px;
-                    padding-top: 15px;
+            button {
+                &:focus {
+                    outline: 5px auto white;
+                    outline-offset: -2px;
+                }
+                figure {
+                    padding-bottom: 25px;
+                    text-align: center;
+                    cursor: pointer;
+                    figcaption {
+                        color: white;
+                        font-size: 18px;
+                        padding-top: 15px;
+                    }
                 }
             }
         }

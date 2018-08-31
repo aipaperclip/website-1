@@ -15,7 +15,10 @@
                         @if($first)
                             <div class="mobile-vertical-line-30"></div>
                         @endif
-                        <div class="inline-block-top image @if(empty($testimonial->media)) no-avatar @endif" @if(!empty($testimonial->media)) style="background-image: url({{URL::asset('assets/uploads/'.$testimonial->media->name) }})" @endif>
+                        <figure class="inline-block-top image @if(empty($testimonial->media)) no-avatar @endif" @if(!empty($testimonial->media)) itemscope="" itemtype="http://schema.org/ImageObject" @endif>
+                            @if(!empty($testimonial->media))
+                                <img src="{{URL::asset('assets/uploads/'.$testimonial->media->name) }}" @if(!empty($testimonial->media->alt)) alt="{{$testimonial->media->alt}}" itemprop="contentUrl" @endif/>
+                            @endif
                             @if(!$first)
                                 <div class="inline-block dot first-dot">&nbsp;</div>
                                 @php($first = true)
@@ -23,12 +26,12 @@
                             @if($i == count($testimonials))
                                 <div class="inline-block dot last-dot">&nbsp;</div>
                             @endif
-                        </div>
+                        </figure>
                         <div class="inline-block-top content">
                             <div class="description">
-                                <figure class="start" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quotes-start.svg') }}" itemprop="contentUrl"/></figure>
+                                <figure class="start" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quote-left.svg') }}" alt="Quote left" itemprop="contentUrl"/></figure>
                                 {!! $testimonial->text !!}
-                                <figure class="end" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quotes-end.svg') }}" itemprop="contentUrl"/></figure>
+                                <figure class="end" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quote-right.svg') }}" alt="Quote right" itemprop="contentUrl"/></figure>
                             </div>
                             @if(!empty($testimonial->name_job))
                                 <div class="name_job">{!! $testimonial->name_job !!}</div>

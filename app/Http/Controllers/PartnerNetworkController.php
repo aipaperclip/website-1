@@ -44,7 +44,7 @@ class PartnerNetworkController extends Controller
             ->leftJoin('location_types', 'map_locations.type_id', '=', 'location_types.id')
             ->leftJoin('media as marker_media', 'location_types.media_id', '=', 'marker_media.id')
             ->leftJoin('media as clinic_media', 'clinics.media_id', '=', 'clinic_media.id')
-            ->select('map_locations.*', 'clinics.name as clinic_name', 'clinics.link as clinic_link', 'location_types.id as location_type_id', 'marker_media.name as marker_icon', 'clinic_media.name as clinic_media')
+            ->select('map_locations.*', 'clinics.name as clinic_name', 'clinics.link as clinic_link', 'location_types.id as location_type_id', 'marker_media.name as marker_icon', 'clinic_media.name as clinic_media', 'clinic_media.alt as clinic_media_alt')
             ->get()->toArray();
     }
 

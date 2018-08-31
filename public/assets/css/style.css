@@ -181,6 +181,18 @@ body {
   body.modal-open {
     overflow: hidden; }
 
+button, input[type='submit'] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit; }
+  button:focus, input[type='submit']:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+
 .fs-0 {
   font-size: 0px !important; }
 
@@ -423,6 +435,9 @@ body {
 
 .fs-80 {
   font-size: 80px !important; }
+
+.slick-slider .slick-slide:focus {
+  outline: -webkit-focus-ring-color auto 5px; }
 
 * {
   outline: none;
@@ -1396,7 +1411,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     .homepage-container.mobile .intro .bg-wrapper .video {
       width: 90%;
       margin: 0 auto; }
-      .homepage-container.mobile .intro .bg-wrapper .video .video-wrapper figure.close-video {
+      .homepage-container.mobile .intro .bg-wrapper .video .video-wrapper .close-video {
         right: -20px; } }
 .homepage-container.mobile .dentacoin-ecosystem .list {
   position: static;
@@ -1757,12 +1772,12 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         position: relative; }
         .homepage-container .intro .bg-wrapper .video .video-wrapper video {
           width: 100%; }
-        .homepage-container .intro .bg-wrapper .video .video-wrapper figure.close-video {
+        .homepage-container .intro .bg-wrapper .video .video-wrapper .close-video {
           position: absolute;
           top: 0;
           right: -25px;
           cursor: pointer; }
-          .homepage-container .intro .bg-wrapper .video .video-wrapper figure.close-video img {
+          .homepage-container .intro .bg-wrapper .video .video-wrapper .close-video img {
             width: 14px; }
 .homepage-container .dentacoin-ecosystem {
   background-image: url("/assets/images/dentacoin-ecosystem-background.jpg");
@@ -1801,11 +1816,14 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
-    .homepage-container .dentacoin-ecosystem .list figure {
+    .homepage-container .dentacoin-ecosystem .list button:focus {
+      outline: 5px auto white;
+      outline-offset: -2px; }
+    .homepage-container .dentacoin-ecosystem .list button figure {
       padding-bottom: 25px;
       text-align: center;
       cursor: pointer; }
-      .homepage-container .dentacoin-ecosystem .list figure figcaption {
+      .homepage-container .dentacoin-ecosystem .list button figure figcaption {
         color: white;
         font-size: 18px;
         padding-top: 15px; }
@@ -2429,12 +2447,21 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       background-size: cover;
       background-repeat: no-repeat;
       background-color: white;
+      position: relative;
+      overflow: hidden;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
       -ms-border-radius: 50%;
       border-radius: 50%; }
       .testimonials-container .list .single .image .dot {
         font-size: 16px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); }
+      .testimonials-container .list .single .image img {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -2539,7 +2566,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       padding-bottom: 8px;
       border-bottom: 1px solid #3e3e3e;
       cursor: pointer; }
-      .partner-network-container .list-with-locations .section-subtitle span {
+      .partner-network-container .list-with-locations .section-subtitle button {
         width: calc(100% - 25px);
         vertical-align: middle;
         display: inline-block; }

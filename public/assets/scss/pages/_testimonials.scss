@@ -21,9 +21,14 @@
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-color: white;
+                position: relative;
+                overflow: hidden;
                 @include rounded(50%);
                 .dot {
                     font-size: 16px;
+                    @include vertical-horizontal-align(absolute);
+                }
+                img {
                     @include vertical-horizontal-align(absolute);
                 }
             }

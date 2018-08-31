@@ -27,7 +27,7 @@
                             <h2 class="type-title section-title">{{$key}}</h2>
                             <div class="subtypes">
                                 @foreach($type as $subkey=>$subtype)
-                                    <div class="subtype-title section-subtitle"><span>{{$subkey}}</span><i class="fa fa-caret-right"></i></div>
+                                    <div class="subtype-title section-subtitle"><button>{{$subkey}}</button><i class="fa fa-caret-right"></i></div>
                                     <div class="clinics">
                                         @foreach($subtype as $clinic)
                                             <div class="clinic-title section-title">{{$clinic['name']}}</div>
@@ -67,6 +67,7 @@
             };
             @if(!empty($location->clinic_media))
                 temp_obj['clinic_media'] = '{{URL::asset('assets/uploads/'.$location->clinic_media)}}';
+                temp_obj['clinic_media_alt'] = '{{$location->clinic_media_alt}}';
             @endif
             map_locations.push(temp_obj);
         @endforeach

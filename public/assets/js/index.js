@@ -332,7 +332,9 @@ function checkIfLineIsReadyToBeCreated(el, position, tail, tail_position, action
             action = null;
         }
         //checking if element offset top passed the viewport middle vertically and if it has been executed before
-        if ($(window).height() / 2 + $(window).scrollTop() > $('line.' + el).offset().top) {
+        //if($(window).height() / 2 + $(window).scrollTop() > $('line.' + el).offset().top) {
+        //CHANGED $('line.' + el).offset().top to $('line.' + el).attr('y1') because offset() not working in Safari
+        if($(window).height() / 2 + $(window).scrollTop() > $('line.' + el).attr('y1')) {
             //checking if it's not the first line and if the line before the current one is executed
             if ($('line.' + el).index() - 1 > -1/* && $('line').eq($('line.' + el).index() - 1).attr('executed') == 'true'*/) {
                 drawLine(el, position, tail, tail_position, action);
@@ -493,7 +495,7 @@ if($('.homepage-container').length > 0) {
 
     // ===== first section video logic =====
     $('.homepage-container .intro .bg-wrapper .video .play-btn').bind("click", openVideo);
-    $('.homepage-container .intro .bg-wrapper .video .video-wrapper figure.close-video').click(function()   {
+    $('.homepage-container .intro .bg-wrapper .video .video-wrapper .close-video').click(function()   {
         $(this).closest('.video-wrapper').find('video').get(0).pause();
         $(this).closest('.video-wrapper').animate({
             width: "60px"
@@ -502,7 +504,7 @@ if($('.homepage-container').length > 0) {
             complete: function () {
                 $(this).closest('.video-wrapper').hide();
                 $(this).closest('.video').find('.play-btn').slideDown(500, function() {
-                    $(this).bind("click", openVideo);
+                    $(this).bind("click", openVideo).focus();
                 });
             }
         });
@@ -518,7 +520,7 @@ if($('.homepage-container').length > 0) {
 
     //logic for open application popup
     $('.single-application').click(function()   {
-        var this_btn = $(this);
+        var this_btn = $(this).find('.wrapper');
         var extra_html = '';
         if(this_btn.attr('data-articles') != undefined)    {
             extra_html+='<div class="extra-html"><div class="extra-title">Latest Blog articles:</div><ul>';
@@ -528,8 +530,8 @@ if($('.homepage-container').length > 0) {
             }
             extra_html+='</ul><div class="see-all"><a href="https://blog.dentacoin.com/" class="white-blue-rounded-btn" target="_blank">GO TO ALL</a></div></div>';
         }
-        var html = '<div class="container-fluid"><div class="row"><figure class="col-sm-6 gif"><img src="'+this_btn.attr('data-image')+'?'+new Date().getTime()+'"/></figure><div class="col-sm-6 col-xs-12 content"><figure class="logo"><img src="'+this_btn.attr('data-popup-logo')+'"/></figure><div class="title">'+this_btn.find('figcaption').html()+'</div><div class="description">'+$.parseJSON(this_btn.attr('data-description'))+'</div>'+extra_html+'</div></div></div>';
-        basic.showDialog(html, 'application-popup');
+        var html = '<div class="container-fluid"><div class="row"><figure class="col-sm-6 gif"><img src="'+this_btn.attr('data-image')+'?'+new Date().getTime()+'" alt="'+this_btn.attr('data-image-alt')+'"/></figure><div class="col-sm-6 col-xs-12 content"><figure class="logo"><img src="'+this_btn.attr('data-popup-logo')+'" alt="'+this_btn.attr('data-popup-logo-alt')+'"/></figure><div class="title">'+this_btn.find('figcaption').html()+'</div><div class="description">'+$.parseJSON(this_btn.attr('data-description'))+'</div>'+extra_html+'</div></div></div>';
+        basic.showDialog(html, 'application-popup', this_btn.attr('data-slug'));
     });
 
     //logic for open testimonials and close the ones that are too near to the current opening one (TESTIMONIALS)
@@ -579,6 +581,7 @@ if($('.homepage-container').length > 0) {
         arrows: false,
         autoplay: true,
         autoplaySpeed: 6000,
+        accessibility: true,
         responsive: [
             {
                 breakpoint: 992,
@@ -598,19 +601,17 @@ if($('.homepage-container').length > 0) {
         ]
     });
 
-    /*$('.homepage-container .awards-and-publications .publications-slider').on("afterChange", function (){
-        var slider_height = 0;
-        for(var i = 0, len = $('.publications-slider .single-slide').length; i < len; i+=1) {
-            if($('.publications-slider .single-slide').eq(i).height() > slider_height) {
-                slider_height = $('.publications-slider .single-slide').eq(i).height();
-            }
-        }
-        $('.homepage-container .awards-and-publications .publications-slider').height(slider_height + 50);
-    });*/
-
     //on click make slide active
     $('.homepage-container .awards-and-publications .publications-slider .single-slide').on("click", function (){
         $('.homepage-container .awards-and-publications .publications-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
+    });
+
+    $('.homepage-container .awards-and-publications .publications-slider .single-slide').keypress(function (e) {
+        if (e.key === ' ' || e.key === 'Spacebar' || e.which === 13) {
+            // ' ' is standard, 'Spacebar' was used by IE9 and Firefox < 37
+            e.preventDefault();
+            $('.homepage-container .awards-and-publications .publications-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
+        }
     });
 }
 
@@ -721,7 +722,7 @@ function stopMaliciousInspect()  {
         }
     }
 }
-//stopMaliciousInspect();
+stopMaliciousInspect();
 
 function hidePopupOnBackdropClick() {
     $(document).on('click', '.bootbox', function(){
