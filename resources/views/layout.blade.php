@@ -44,7 +44,7 @@
         gtag('config', 'UA-97167262-1');
     </script>
 </head>
-<body data-current="one" class="@if(Route::current()) {{Route::current()->getName()}} @else class-404 @endif">
+<body data-current="one" class="@if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif">
 <svg class="svg-with-lines">
         <line class="first" x1="0" y1="0" x2="0" y2="0"/>
         <line class="second" x1="0" y1="0" x2="0" y2="0"/>
