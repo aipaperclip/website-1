@@ -2,7 +2,7 @@
 var markerCluster;
 function initMap(filter) {
     console.log(filter);
-    console.log('ahah'); 
+    console.log('ahah');
     if(filter === undefined) {
         filter = null;
     }
@@ -274,8 +274,8 @@ function initMap(filter) {
         var infowindow;
         var markers_arr = [];
 
-        if(Object.keys(map_locations).length > 1) {
-            for(let i = 0, len = Object.keys(map_locations).length; i < len; i+=1) {
+        if(map_locations.length > 1) {
+            for(let i = 0, len = map_locations.length; i < len; i+=1) {
                 if(filter != null && map_locations[i].location_type_id != $('.partner-network-container .filter select option:selected').val())  {
                     continue;
                 }
