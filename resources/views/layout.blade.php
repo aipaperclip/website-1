@@ -70,7 +70,7 @@
     <header class="container">
         <div class="row">
             <figure itemscope="" itemtype="http://schema.org/Organization" class="col-xs-12 logo-container">
-                <a itemprop="url" href="{{ route('home') }}" @if(Route::current()->getName() == "home") tabindex="=-1" @endif><img src="{{URL::asset('assets/images/logo.svg') }}" itemprop="logo" alt="Dentacoin logo"/></a>
+                <a itemprop="url" href="{{ route('home') }}" @if(!empty(Route::current())) @if(Route::current()->getName() == "home") tabindex="=-1" @endif @endif><img src="{{URL::asset('assets/images/logo.svg') }}" itemprop="logo" alt="Dentacoin logo"/></a>
             </figure>
         </div>
     </header>
