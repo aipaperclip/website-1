@@ -1,6 +1,8 @@
 
 var markerCluster;
 function initMap(filter) {
+    console.log(filter);
+    console.log('ahah'); 
     if(filter === undefined) {
         filter = null;
     }
