@@ -1707,7 +1707,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       text-align: right; }
       .homepage-container .intro .bg-wrapper .btn-container .btn-and-line {
         text-align: center;
-        min-width: 90px; }
+        width: 90px; }
         .homepage-container .intro .bg-wrapper .btn-container .btn-and-line a {
           display: block; }
     .homepage-container .intro .bg-wrapper .second-dot-parent {
