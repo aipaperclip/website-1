@@ -37,6 +37,16 @@ footer {
                         text-decoration: underline;
                     }
                 }
+                @include breakpoint($xs)    {
+                    input[type='email'] {
+                        width: 65%;
+                        font-size: 16px;
+                        font-family: 'Calibri-Bold'; 
+                    }
+                    input[type='submit'] {
+                        width: 35%;
+                    }
+                }
             }
             &.not-valid {
                 input[type='email'], input[type='submit'] {

@@ -1286,6 +1286,13 @@ footer {
         cursor: pointer; }
         footer .newsletter-register form .form-row label a {
           text-decoration: underline; }
+      @media screen and (max-width: 767px) {
+        footer .newsletter-register form .form-row input[type='email'] {
+          width: 65%;
+          font-size: 16px;
+          font-family: 'Calibri-Bold'; }
+        footer .newsletter-register form .form-row input[type='submit'] {
+          width: 35%; } }
     footer .newsletter-register form.not-valid input[type='email'], footer .newsletter-register form.not-valid input[type='submit'] {
       border-color: red;
       border-width: 2px; }
