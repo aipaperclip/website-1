@@ -9,21 +9,9 @@ const draw_line_interval = 10;
 const draw_line_increment = 10;
 const border_width = 2;
 
+
 $(document).ready(function() {
-    //HOMEPAGE
-    if($('.homepage-container').length > 0 && !isMobile) {
-        //set all fullpage sections with window height
-        $('.fullpage-section').outerHeight($(window).height());
 
-        //center vertically the 'show more' button in testimonials section
-        $('.homepage-container .testimonials .below-expressions .show-more').css({'top' : 'calc(50% - '+$('.homepage-container .testimonials .expressions').height()/2+'px)'});
-
-        //drawing lines logic
-        $('svg.svg-with-lines').height($(document).height());
-        setLinesDots();
-        drawLine('first', 'vertical');
-
-    }
 });
 
 $(window).on('beforeunload', function() {
@@ -484,13 +472,27 @@ function callActionOnLastTailFinish(action)    {
 //HOMEPAGE
 if($('.homepage-container').length > 0) {
     if(isMobile)    {
-        $('.homepage-container').addClass('mobile');
         $('.homepage-container.mobile .successful-practices .content .content-container').removeClass('col-md-5 col-md-offset-2').addClass('col-md-12');
         $('.homepage-container.mobile .successful-practices .content figure').removeClass('col-md-5').addClass('col-md-10 col-md-offset-1');
         $('.homepage-container.mobile .below-successful-practices .flex .description-over-line').removeClass('col-md-7 col-md-offset-0').addClass('col-md-8 col-md-offset-2');
         $('.homepage-container.mobile .below-successful-practices .flex .cells').removeClass('col-md-5');
         $('.homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .wallet-app').removeClass('col-md-5 col-md-offset-1');
         $('.homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .gif').removeClass('col-md-5 col-md-offset-1').addClass('col-sm-10 col-sm-offset-1');
+    }else {
+        //set all fullpage sections with window height
+        for(var i = 0, len = $('.fullpage-section').length; i < len; i+=1)  {
+            if($('.fullpage-section').eq(i).outerHeight() != $(window).height())    {
+                $('.fullpage-section').outerHeight($(window).height());
+            }
+        }
+
+        //center vertically the 'show more' button in testimonials section
+        $('.homepage-container .testimonials .below-expressions .show-more').css({'top' : 'calc(50% - '+$('.homepage-container .testimonials .expressions').height()/2+'px)'});
+
+        //drawing lines logic
+        $('svg.svg-with-lines').height($(document).height());
+        setLinesDots();
+        drawLine('first', 'vertical');
     }
 
     // ===== first section video logic =====

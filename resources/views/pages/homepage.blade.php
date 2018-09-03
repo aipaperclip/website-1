@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-    <div class="homepage-container">
+    <div class="homepage-container @if($mobile) mobile @endif">
         <section class="intro fullpage-section one" data-section="one">
             <div class="bg-wrapper">
                 <div class="container">
@@ -414,7 +414,7 @@
                                     <img src="{{URL::asset('assets/images/roadmap-circle-2018.svg') }}" itemprop="contentUrl" alt="Roadmap 2018"/>
                                 </figure>
                             @endif
-                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.8 Dentacoin Integrared Hub Release</div>
+                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.8 Dentacoin Integrated Hub Release</div>
                             <div>- V.0.9 Dentacoin Assurance</div>
                         </div>
                         <div class="roadmap-cell inline-block-top">

@@ -1384,6 +1384,10 @@ body.home footer {
 body.class-404 footer .section-title, body.class-404 footer .newsletter-register {
   display: none; }
 
+.homepage-container .fullpage-section {
+  height: 100vh; }
+.homepage-container.mobile .fullpage-section {
+  height: auto; }
 .homepage-container.mobile .intro .bg-wrapper .content-wrapper {
   position: static;
   -webkit-transform: none;
