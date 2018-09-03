@@ -10,7 +10,7 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "admin-lte": "^2.3.3",
+    "admin-lte": "2.3.1",
     "axios": "^0.16.2",
     "bootbox.js": "^4.3.0",
     "bootstrap": "^3.3.7",
@@ -22,6 +22,13 @@
     "lodash": "^4.17.4",
     "slick-carousel": "^1.8.1",
     "vue": "^2.1.10",
-    "webpack-obfuscator": "^0.18.0"
+    "webpack-obfuscator": "^0.18.0",
+    "ckeditor-full": "^4.7.3",
+    "datatables.net": "^1.10.19",
+    "datatables.net-rowreorder": "^1.2.3",
+    "datatables.net-rowreorder-bs": "^1.2.3"
+  },
+  "dependencies": {
+    "uglify-es": "github:mishoo/UglifyJS2#harmony"
   }
 }

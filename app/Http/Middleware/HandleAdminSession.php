@@ -16,10 +16,11 @@ class HandleAdminSession
      */
     public function handle($request, Closure $next) {
         $admin_controller = new MainController();
-        if(!$admin_controller->checkLogin() && empty($request->input('username')) && empty($request->input('password'))) {
+        if(!$admin_controller->checkLogin() && !array_key_exists('username', $request->input()) && !array_key_exists('password', $request->input())) {
             //NOT LOGGED AND NOT TRYING TO LOG IN
             return response($admin_controller->getAdminAccess());
         }
         return $next($request);
     }
+
 }

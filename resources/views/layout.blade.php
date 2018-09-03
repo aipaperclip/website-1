@@ -118,7 +118,7 @@
                 <div class="col-xs-12">
                     <div>© 2018 Dentacoin Foundation. All rights reserved. </div>
                     {{--<div>Wim Duisenbergplantsoen 31, 6221 SE Maastricht, The Netherlands</div>--}}
-                    <div><a href="https://dentacoin.com/docs/Dentacoin%20foundation.pdf" target="_blank">Verify Dentacoin Foundation</a></div>
+                    <div><a href="{{URL::asset('assets/docs/dentacoin-foundation.pdf') }}" target="_blank">Verify Dentacoin Foundation</a></div>
                 </div>
             </div>
         </div>

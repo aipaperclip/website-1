@@ -7,6 +7,9 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
+// define some usefull variables
+include_once '../bootstrap.php';
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader

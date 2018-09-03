@@ -16,6 +16,7 @@ class AdditionalMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next) {
+        $params = $request->route()->parameters();
         $response = (new App\Http\Controllers\Controller())->minifyHtml($next($request));
         return $response;
     }
