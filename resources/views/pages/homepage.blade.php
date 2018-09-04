@@ -18,7 +18,7 @@
                         <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                             <h1 class="title">DENTACOIN</h1>
                             <h3 class="subtitle">The Blockchain Solution for the Global Dental Industry</h3>
-                            <div class="description italic">“Sick Care is the plaque of the century. <br> <b>4106 dentists</b> are shifting the paradigm towards a Health system that Cares.”</div>
+                            <div class="description italic">“Sick Care is the plaque of the century. <br> <b>4,000+ dentists</b> are shifting the paradigm towards a Health system that Cares.”</div>
                             <div class="description">Secure Blockchain infrastructure, patient-centered care and intelligent prevention used jointly to improve long-term health, reduce costs and pain and ensure mutual benefits.</div>
                             <div class="video">
                                 <figure itemscope="" itemtype="http://schema.org/ImageObject">

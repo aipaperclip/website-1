@@ -582,7 +582,7 @@ if($('.homepage-container').length > 0) {
         slidesToShow: 3,
         arrows: false,
         autoplay: true,
-        autoplaySpeed: 6000,
+        autoplaySpeed: 8000,
         accessibility: true,
         responsive: [
             {
