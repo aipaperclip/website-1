@@ -223,7 +223,8 @@
 body {
   margin: 0;
   font-family: Calibri, sans-serif;
-  color: #1d1d1d; }
+  color: #1d1d1d;
+  position: relative; }
   body.overflow-hidden {
     overflow: hidden; }
   body.overflow-visible {

@@ -11,7 +11,7 @@ const border_width = 2;
 
 
 $(document).ready(function() {
-    console.log($(document).height(), 'ready');
+
 });
 
 $(window).on('beforeunload', function() {
@@ -492,10 +492,6 @@ if($('.homepage-container').length > 0) {
 
         //center vertically the 'show more' button in testimonials section
         $('.homepage-container .testimonials .below-expressions .show-more').css({'top' : 'calc(50% - '+$('.homepage-container .testimonials .expressions').height()/2+'px)'});
-
-        //drawing lines logic
-        $('svg.svg-with-lines').height($(document).height());
-        console.log($(document).height(), 'pages');
     }
 
     // ===== first section video logic =====

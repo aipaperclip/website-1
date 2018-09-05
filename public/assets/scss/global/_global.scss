@@ -2,6 +2,7 @@ body {
     margin: 0;
     font-family: Calibri, sans-serif;
     color: $main_color;
+    position: relative;
     &.overflow-hidden {
         overflow: hidden;
     }
