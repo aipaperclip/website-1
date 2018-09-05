@@ -11,7 +11,7 @@ const border_width = 2;
 
 
 $(document).ready(function() {
-
+    console.log($(document).height(), 'ready');
 });
 
 $(window).on('beforeunload', function() {
@@ -495,6 +495,7 @@ if($('.homepage-container').length > 0) {
 
         //drawing lines logic
         $('svg.svg-with-lines').height($(document).height());
+        console.log($(document).height(), 'pages');
     }
 
     // ===== first section video logic =====
