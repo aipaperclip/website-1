@@ -24,7 +24,11 @@ $(window).on('beforeunload', function() {
 $('body').bind('wheel', onMousewheel);
 
 $(window).on("load", function()   {
-
+    if($('.homepage-container').length > 0 && !isMobile) {
+        console.log("Don't touch the code. Or do ... ¯\\_(ツ)_/¯");
+        setLinesDots();
+        drawLine('first', 'vertical');
+    }
 });
 
 $(window).on('resize', function(){
@@ -491,8 +495,6 @@ if($('.homepage-container').length > 0) {
 
         //drawing lines logic
         $('svg.svg-with-lines').height($(document).height());
-        setLinesDots();
-        drawLine('first', 'vertical');
     }
 
     // ===== first section video logic =====
