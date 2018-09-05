@@ -32,4 +32,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('sitemap.xml', 'Controller@getSitemap')->name('sitemap');
 
+    Route::get('google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
+
 });

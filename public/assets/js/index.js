@@ -638,7 +638,7 @@ if($('.testimonials-container').length > 0) {
 }
 
 //PARTNER NETWORK
-if($('body').hasClass('partner-network')) {
+if($('body').hasClass('partner-network') || $('body').hasClass('google-map-iframe')) {
     initMap();
 
     //filtering google map by location type

@@ -51,17 +51,21 @@
   -o-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   -webkit-animation-delay: 0s;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-name: fadeIn;
   -moz-animation-delay: 0s;
-  -moz-animation-duration: 1s;
-  -moz-animation-name: fadeIn;
   animation-delay: 0s;
-  animation-duration: 1s;
-  animation-name: fadeIn;
   -o-animation-delay: 0s;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -o-animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
   -o-animation-duration: 1s;
-  -o-animation-name: fadeIn; }
+  -o-animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  animation-timing-function: ease; }
 
 .fade-in-animation-1 {
   -webkit-animation-fill-mode: forwards;
@@ -69,17 +73,21 @@
   -o-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   -webkit-animation-delay: 0.442s;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-name: fadeIn;
   -moz-animation-delay: 0.442s;
-  -moz-animation-duration: 1s;
-  -moz-animation-name: fadeIn;
   animation-delay: 0.442s;
-  animation-duration: 1s;
-  animation-name: fadeIn;
   -o-animation-delay: 0.442s;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -o-animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
   -o-animation-duration: 1s;
-  -o-animation-name: fadeIn; }
+  -o-animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  animation-timing-function: ease; }
 
 .fade-in-animation-2 {
   -webkit-animation-fill-mode: forwards;
@@ -87,17 +95,21 @@
   -o-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   -webkit-animation-delay: 0.884s;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-name: fadeIn;
   -moz-animation-delay: 0.884s;
-  -moz-animation-duration: 1s;
-  -moz-animation-name: fadeIn;
   animation-delay: 0.884s;
-  animation-duration: 1s;
-  animation-name: fadeIn;
   -o-animation-delay: 0.884s;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -o-animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
   -o-animation-duration: 1s;
-  -o-animation-name: fadeIn; }
+  -o-animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  animation-timing-function: ease; }
 
 .fade-in-animation-3 {
   -webkit-animation-fill-mode: forwards;
@@ -105,17 +117,21 @@
   -o-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   -webkit-animation-delay: 1.326s;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-name: fadeIn;
   -moz-animation-delay: 1.326s;
-  -moz-animation-duration: 1s;
-  -moz-animation-name: fadeIn;
   animation-delay: 1.326s;
-  animation-duration: 1s;
-  animation-name: fadeIn;
   -o-animation-delay: 1.326s;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -o-animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
   -o-animation-duration: 1s;
-  -o-animation-name: fadeIn; }
+  -o-animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  animation-timing-function: ease; }
 
 .fade-in-animation-4 {
   -webkit-animation-fill-mode: forwards;
@@ -123,17 +139,21 @@
   -o-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   -webkit-animation-delay: 1.786s;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-name: fadeIn;
   -moz-animation-delay: 1.786s;
-  -moz-animation-duration: 1s;
-  -moz-animation-name: fadeIn;
   animation-delay: 1.786s;
-  animation-duration: 1s;
-  animation-name: fadeIn;
   -o-animation-delay: 1.786s;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -o-animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
   -o-animation-duration: 1s;
-  -o-animation-name: fadeIn; }
+  -o-animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  animation-timing-function: ease; }
 
 .fade-in-animation-5 {
   -webkit-animation-fill-mode: forwards;
@@ -141,18 +161,50 @@
   -o-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   -webkit-animation-delay: 2.21s;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-name: fadeIn;
   -moz-animation-delay: 2.21s;
-  -moz-animation-duration: 1s;
-  -moz-animation-name: fadeIn;
   animation-delay: 2.21s;
-  animation-duration: 1s;
-  animation-name: fadeIn;
   -o-animation-delay: 2.21s;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -o-animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
   -o-animation-duration: 1s;
-  -o-animation-name: fadeIn; }
+  -o-animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  animation-timing-function: ease; }
 
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 @media screen and (max-width: 400px) {
   .col-xxs-12 {
     width: 100%; }
@@ -2137,7 +2189,14 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       padding-top: 20px; }
     .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .description {
       color: #3e3e3e;
-      padding-bottom: 20px; }
+      padding-bottom: 10px; }
+    .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .fading-text {
+      padding-bottom: 10px;
+      font-family: 'Calibri-Bold';
+      -webkit-animation: flickerAnimation 1s infinite;
+      -moz-animation: flickerAnimation 1s infinite;
+      -o-animation: flickerAnimation 1s infinite;
+      animation: flickerAnimation 1s infinite; }
     .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets {
       font-size: 0; }
       .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets {

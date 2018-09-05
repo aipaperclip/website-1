@@ -95,4 +95,8 @@ class Controller extends BaseController
         ini_set('zlib.output_compression', 'On'); // If you like to enable GZip, too!
         return $response;
     }
+
+    protected function getGoogleMapIframe() {
+        return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations()]);
+    }
 }

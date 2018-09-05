@@ -32,13 +32,12 @@ class PartnerNetworkController extends Controller
                         'link' => $clinic->link
                     );
                 }
-
             }
         }
         return view('pages/partner-network', ['locations' => $this->getLocations(), 'location_types' => $this->getLocationTypes(), 'list_locations_with_subtypes_types' => $list_locations_with_subtypes_types]);
     }
 
-    protected function getLocations()   {
+    public function getLocations()   {
         return DB::table('map_locations')
             ->leftJoin('clinics', 'map_locations.clinic_id', '=', 'clinics.id')
             ->leftJoin('location_types', 'map_locations.type_id', '=', 'location_types.id')

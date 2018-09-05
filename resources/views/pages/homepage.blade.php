@@ -237,7 +237,8 @@
                     <div class="fifth-dot inline-block">&nbsp;</div>
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1 wallet-app inline-block-top">
                         <h2 class="section-subtitle">Available Options</h2>
-                        <div class="description">Dentacoin (DCN) is available for purchase with a card through Changelly, as well as against 100+ other cryptocurrencies. It is also supported by trusted exchange platforms and wallets listed below:</div>
+                        <div class="description">Dentacoin (DCN)is available for purchase with a card through Changelly, as well as against 100+ other cryptocurrencies. It is also supported by trusted exchange platforms and wallets listed below:</div>
+                        <div class="fading-text">Upcoming listing on LATOKEN. Stay tuned!</div>
                         <div class="exchange-platforms-and-wallets">
                             <div class="exchange-platforms exchange-method inline-block-top">
                                 <button class="title"><div class="icon inline-block"></div><span class="inline-block">Exchange Platforms</span></button>

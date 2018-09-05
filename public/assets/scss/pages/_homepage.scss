@@ -979,7 +979,15 @@
                 }
                 .description {
                     color: $light_gray;
-                    padding-bottom: 20px;
+                    padding-bottom: 10px;
+                }
+                .fading-text {
+                    padding-bottom: 10px;
+                    font-family: 'Calibri-Bold';
+                    -webkit-animation: flickerAnimation 1s infinite;
+                    -moz-animation: flickerAnimation 1s infinite;
+                    -o-animation: flickerAnimation 1s infinite;
+                    animation: flickerAnimation 1s infinite;
                 }
                 .exchange-platforms-and-wallets {
                     font-size: 0;
