@@ -178,9 +178,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\AgentServiceProvider::class,
-        Roumen\Sitemap\SitemapServiceProvider::class
-
-
+        Roumen\Sitemap\SitemapServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class
     ],
 
     /*
@@ -231,7 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'Captcha' => Mews\Captcha\Facades\Captcha::class
     ],
 
 ];

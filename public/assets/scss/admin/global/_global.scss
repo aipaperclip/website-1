@@ -24,33 +24,52 @@ body {
     display: inline-block; float: none; vertical-align: bottom;
 }
 
+.flex {
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+}
+
 input[type='text'] {
     padding: 5px;
     width: 100%;
 }
 
-.form-wrapper {
-    width: 100%;
-    background-color: white;
-    padding: 25px;
+.form-container {
     margin-top: 200px;
-    form {
-        .form-row {
-            padding-bottom: 10px;
-            input[type='text'], input[type='password'] {
-                border: 1px solid #d2d6de;
-                color: #333;
-                padding: 6px 12px;
-                width: 100%;
-            }
-            &.submit {
-                padding-bottom: 0;
-                padding-top: 10px;
-                input[type='submit'] {
-                    color: white;
-                    background-color: #21bef4;
-                    padding: 8px 20px;
-                    border: 0;
+    .wrapper {
+        background-color: white;
+        padding: 25px;
+        form {
+            .form-row {
+                padding-bottom: 10px;
+                input[type='text'], input[type='password'] {
+                    border: 1px solid #d2d6de;
+                    color: #333;
+                    padding: 6px 12px;
+                    width: 100%;
+                }
+                &.captcha {
+                    justify-content: center;
+                    .refresh-captcha {
+                        font-size: 20px;
+                        color: white;
+                        background-color: #21bef4;
+                        border: 0;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                    }
+                }
+                &.submit {
+                    padding-bottom: 0;
+                    padding-top: 10px;
+                    input[type='submit'] {
+                        color: white;
+                        background-color: #21bef4;
+                        padding: 8px 20px;
+                        border: 0;
+                    }
                 }
             }
         }
@@ -110,8 +129,12 @@ header.main-header {
             .btn-container {
                 padding-top: 15px;
             }
-            label {
-                display: block;
+            select {
+                width: 100%;
+                padding: 7px;
+            }
+            label.inline-block {
+                cursor: pointer;
             }
         }
     }

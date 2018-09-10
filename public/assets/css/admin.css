@@ -363,30 +363,45 @@ body {
   float: none;
   vertical-align: bottom; }
 
+.flex {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox; }
+
 input[type='text'] {
   padding: 5px;
   width: 100%; }
 
-.form-wrapper {
-  width: 100%;
-  background-color: white;
-  padding: 25px;
+.form-container {
   margin-top: 200px; }
-  .form-wrapper form .form-row {
-    padding-bottom: 10px; }
-    .form-wrapper form .form-row input[type='text'], .form-wrapper form .form-row input[type='password'] {
-      border: 1px solid #d2d6de;
-      color: #333;
-      padding: 6px 12px;
-      width: 100%; }
-    .form-wrapper form .form-row.submit {
-      padding-bottom: 0;
-      padding-top: 10px; }
-      .form-wrapper form .form-row.submit input[type='submit'] {
-        color: white;
-        background-color: #21bef4;
-        padding: 8px 20px;
-        border: 0; }
+  .form-container .wrapper {
+    background-color: white;
+    padding: 25px; }
+    .form-container .wrapper form .form-row {
+      padding-bottom: 10px; }
+      .form-container .wrapper form .form-row input[type='text'], .form-container .wrapper form .form-row input[type='password'] {
+        border: 1px solid #d2d6de;
+        color: #333;
+        padding: 6px 12px;
+        width: 100%; }
+      .form-container .wrapper form .form-row.captcha {
+        justify-content: center; }
+        .form-container .wrapper form .form-row.captcha .refresh-captcha {
+          font-size: 20px;
+          color: white;
+          background-color: #21bef4;
+          border: 0;
+          padding-left: 10px;
+          padding-right: 10px; }
+      .form-container .wrapper form .form-row.submit {
+        padding-bottom: 0;
+        padding-top: 10px; }
+        .form-container .wrapper form .form-row.submit input[type='submit'] {
+          color: white;
+          background-color: #21bef4;
+          padding: 8px 20px;
+          border: 0; }
 
 .alerts-wrapper {
   padding-bottom: 15px; }
@@ -424,8 +439,11 @@ header.main-header nav:before, header.main-header nav:after {
       text-align: left; }
     .content-wrapper section.content form .btn-container {
       padding-top: 15px; }
-    .content-wrapper section.content form label {
-      display: block; }
+    .content-wrapper section.content form select {
+      width: 100%;
+      padding: 7px; }
+    .content-wrapper section.content form label.inline-block {
+      cursor: pointer; }
 
 .btn {
   background-color: #3c8dbc !important;

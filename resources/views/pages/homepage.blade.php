@@ -243,32 +243,17 @@
                             <div class="exchange-platforms exchange-method inline-block-top">
                                 <button class="title"><div class="icon inline-block"></div><span class="inline-block">Exchange Platforms</span></button>
                                 <ul class="list">
-                                    <li><a href="https://hitbtc.com/DCN-to-BTC" target="_blank">HitBTC</a></li>
-                                    <li><a href="https://www.cryptopia.co.nz/Exchange/?market=DCN_BTC" target="_blank">Cryptopia</a></li>
-                                    <li><a href="https://www.coinexchange.io/market/DCN/BTC" target="_blank">CoinExchange</a></li>
-                                    <li><a href="https://mercatox.com/exchange/DCN/BTC" target="_blank">Mercatox</a></li>
-                                    <li><a href="https://upcoin.com/trade/DCN-BTC" target="_blank">UPcoin</a></li>
-                                    <li><a href="https://idex.market/eth/dcn" target="_blank">IDEX</a></li>
-                                    <li><a href="https://etherdelta.com/#DCN-ETH" target="_blank">EtherDelta</a></li>
-                                    <li><a href="https://www.buyucoin.com/trade?currency=dcn" target="_blank">BuyUcoin</a></li>
-                                    <li><a href="https://www.koinok.com/exchange/DCN-INR" target="_blank">KoinOK</a></li>
-                                    <li><a href="https://godex.io/" target="_blank">Godex</a></li>
-                                    <li><a href="https://easyrabbit.net/" target="_blank">EasyRabit</a></li>
-                                    <li><a href="https://changenow.io/" target="_blank">ChangeNOW</a></li>
+                                    @foreach($exchange_platforms as $exchange_platform)
+                                        <li><a href="{{$exchange_platform->link}}" target="_blank">{{$exchange_platform->title}}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="wallets exchange-method inline-block-top">
                                 <button class="title"><div class="icon inline-block"></div><span class="inline-block">Wallets</span></button>
                                 <ul class="list">
-                                    <li><a href="https://jaxx.io/" target="_blank">Jaxx</a></li>
-                                    <li><a href="https://mycrypto.com/account" target="_blank">MyCrypto</a></li>
-                                    <li><a href="https://www.myetherwallet.com/" target="_blank">MyEtherWallet</a></li>
-                                    <li><a href="https://metamask.io/" target="_blank">MetaMask</a></li>
-                                    <li><a href="https://token.im/" target="_blank">imToken</a></li>
-                                    <li><a href="https://coinomi.com/" target="_blank">Coinomi</a></li>
-                                    <li><a href="https://www.exodus.io/" target="_blank">Exodus</a></li>
-                                    <li><a href="https://lumiwallet.com/?pid=Tokenreferral&c=token&af_sub1=DCNE" target="_blank">Lumi Wallet</a></li>
-                                    <li><a href="https://atomicwallet.io/" target="_blank">Atomic Wallet</a></li>
+                                    @foreach($wallets as $wallet)
+                                        <li><a href="{{$wallet->link}}" target="_blank">{{$wallet->title}}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -343,6 +328,10 @@
                                     @if(!empty($publication->media))
                                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                             <img src="{{URL::asset('assets/uploads/' . $publication->media->name)}}" itemprop="contentUrl" @if(!empty($publication->media->alt)) alt="{{$publication->media->alt}}" @endif/>
+                                        </figure>
+                                    @else
+                                        <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                            <img src="{{URL::asset('assets/images/logo.svg') }}" width="100" itemprop="contentUrl" alt="Dentacoin logo"/>
                                         </figure>
                                     @endif
                                     <div class="headline">{{$publication->headline}}</div>

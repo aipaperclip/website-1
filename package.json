@@ -27,6 +27,7 @@
     "datatables.net": "^1.10.19",
     "datatables.net-rowreorder": "^1.2.3",
     "datatables.net-rowreorder-bs": "^1.2.3"
+
   },
   "dependencies": {
     "uglify-es": "github:mishoo/UglifyJS2#harmony"

@@ -65,6 +65,10 @@ class Controller extends BaseController
         return $sitemap->render('xml');
     }
 
+    protected function transliterate($str) {
+        return str_replace(['а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п', 'р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я',' ','_'], ['a','b','v','g','d','e','io','zh','z','i','y','k','l','m','n','o','p', 'r','s','t','u','f','h','ts','ch','sh','sht','a','i','y','e','yu','ya','-','-'], mb_strtolower($str));
+    }
+
     public function minifyHtml($response)   {
         $buffer = $response->getContent();
         if(strpos($buffer,'<pre>') !== false)

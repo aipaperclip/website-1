@@ -266,7 +266,7 @@ var basic = {
         return elementBottom > viewportTop && elementTop < viewportBottom;
     }
 };
-jQuery(window).on("load", function()   {
+jQuery(window).on('load', function()   {
 
 });
 
@@ -280,30 +280,29 @@ jQuery(document).ready(function()   {
     initDataTable();
 });
 
-jQuery(window).on("scroll", function () {
+jQuery(window).on('scroll', function () {
 
 });
 
 function initDataTable()    {
-    if($("table.table.table-without-reorder").length > 0) {
-        $("table.table.table-without-reorder").DataTable();
+    if($('table.table.table-without-reorder').length > 0) {
+        $('table.table.table-without-reorder').DataTable();
     }
-    if($("table.table.table-with-reorder").length > 0) {
-        var table = $("table.table.table-with-reorder").DataTable({
+    if($('table.table.table-with-reorder').length > 0) {
+        var table = $('table.table.table-with-reorder').DataTable({
             rowReorder: true
         });
-        $("table.table.table-with-reorder").addClass('sortable');
+        $('table.table.table-with-reorder').addClass('sortable');
         table.on('row-reorder', function(e, diff, edit) {
             var order_object = {};
             for(let i = 0, len = diff.length; i < len; i+=1) {
-                order_object[$(diff[i].node).data("id")] = diff[i].newPosition;
+                order_object[$(diff[i].node).data('id')] = diff[i].newPosition;
             }
-
             $.ajax({
-                type: "POST",
-                url: SITE_URL + "/homepage/update-order",
+                type: 'POST',
+                url: SITE_URL + '/'+$('table.table.table-with-reorder').attr('data-action')+'/update-order',
                 data: {
-                    "order_object" : order_object
+                    'order_object' : order_object
                 },
                 dataType: 'json',
                 success: function (response) {
@@ -340,8 +339,8 @@ function openMedia(id, close_btn)    {
         close_btn = false;
     }
     $.ajax({
-        type: "POST",
-        url: SITE_URL + "/open-media",
+        type: 'POST',
+        url: SITE_URL + '/open-media',
         dataType: 'json',
         success: function (response) {
             if(response.success) {
@@ -376,3 +375,38 @@ function removeImage()  {
     }
 }
 removeImage();
+
+if($('.save-image-alts').length > 0)    {
+    $('.save-image-alts').click(function()  {
+        var alts_object = {};
+        for(let i = 0, len = $('.media-table tbody tr').length; i < len; i+=1)  {
+            alts_object[$('.media-table tbody tr').eq(i).attr('data-id')] = $('.media-table tbody tr').eq(i).find('.alt-attribute').val().trim();
+        }
+        $.ajax({
+            type: 'POST',
+            url: SITE_URL + '/media/update-media-alts',
+            data: {
+                'alts_object' : alts_object
+            },
+            dataType: 'json',
+            success: function (response) {
+                if(response.success)    {
+                    basic.showAlert(response.success);
+                }
+            }
+        });
+    });
+}
+
+if($('.refresh-captcha').length > 0)    {
+    $('.refresh-captcha').click(function()  {
+        $.ajax({
+            type: 'GET',
+            url: '/refresh-captcha',
+            dataType: 'json',
+            success: function (response) {
+                $('.login.form-container .captcha.form-row span').html(response.captcha);
+            }
+        });
+    });
+}

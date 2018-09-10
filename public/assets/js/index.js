@@ -55,11 +55,9 @@ $(window).on('scroll', function()  {
     checkIfLineIsReadyToBeCreated('twentieth', 'horizontal');
 });
 
-//$(window).on('wheel', onMousewheel);
-
 function onMousewheel(event)    {
     if($('.homepage-container').length > 0 && !isMobile && !$('body').hasClass('modal-open')) {
-        if(event.originalEvent.deltaY < 0){
+        if(event.originalEvent.deltaY < 0)  {
             //scroll up
             if($('body').attr('data-current') == 'two') {
                 scrollToSectionAnimation('one', null, null, true);
@@ -93,7 +91,6 @@ function scrollToSectionAnimation(to_become_current, full_height, clear_dots, dr
         scroll_obj.scrollTop = $('.fullpage-section.'+to_become_current).offset().top;
     }
     $('body').unbind('wheel', onMousewheel);
-    //$(window).unbind('wheel', onMousewheel);
     $('html, body').stop().animate(scroll_obj, 500).promise().then(function() {
         $('body').bind('wheel', onMousewheel);
         if(clear_dots != null)  {
@@ -723,7 +720,7 @@ function stopMaliciousInspect()  {
         }
     }
 }
-stopMaliciousInspect();
+//stopMaliciousInspect();
 
 function hidePopupOnBackdropClick() {
     $(document).on('click', '.bootbox', function(){
