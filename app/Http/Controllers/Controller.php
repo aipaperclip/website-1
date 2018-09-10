@@ -45,7 +45,7 @@ class Controller extends BaseController
         //$sitemap->add(URL::to('publications'), '2012-08-25T20:10:00+02:00', '0.6', 'weekly');
         $sitemap->add(URL::to('privacy-policy'), '2012-08-25T20:10:00+02:00', '0.4', 'monthly');
         $sitemap->add(URL::to('changelly'), '2012-08-25T20:10:00+02:00', '1.0', 'monthly');
-        $sitemap->add(URL::to('partner-network'), '2012-08-25T20:10:00+02:00', '8.0', 'daily');
+        $sitemap->add(URL::to('partner-network'), '2012-08-25T20:10:00+02:00', '0.8', 'daily');
 
         //getting all pagination pages for testimonials
         for($i = 1, $length = (new UserExpressionsController())->getPagesCount(); $i <= $length; $i+=1) {
