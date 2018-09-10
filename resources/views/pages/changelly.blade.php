@@ -4,7 +4,7 @@
     <section class="changelly-container fs-0">
         <div class="container">
             <div class="row">
-                <h1 class="col-xs-12 section-title">Buy Dentacoin</h1>
+                <h1 class="col-xs-12 section-title">{{ $meta_data->page_title }}</h1>
             </div>
         </div>
         <div class="iframe-wrapper">

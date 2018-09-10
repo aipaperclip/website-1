@@ -9,6 +9,6 @@ use Illuminate\Http\Request;
 class PrivacyPolicyController extends Controller
 {
     protected function getView()   {
-        return view("pages/privacy-policy");
+        return view('pages/privacy-policy');
     }
 }

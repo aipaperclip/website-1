@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\PageMetaData;
+use App\PagesHtmlSection;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -19,12 +21,24 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function __construct() {
-        View::share('mobile', $this->isMobile());
-        View::share('meta_data', $this->getMetaData());
+        if(Route::getCurrentRoute()->getPrefix() == '/')    {
+            View::share('mobile', $this->isMobile());
+            View::share('meta_data', $this->getMetaData());
+            View::share('titles', $this->getDbTitles());
+            View::share('sections', $this->getDbSections());
+        }
     }
 
     protected function getMetaData()    {
         return PageMetaData::where(array('slug' => Route::getCurrentRoute()->getName()))->get()->first();
+    }
+
+    protected function getDbTitles()    {
+        return PagesHtmlSection::where(array('page_id' => $this->getMetaData()->id, 'type' => 'title'))->get()->all();
+    }
+
+    protected function getDbSections()    {
+        return PagesHtmlSection::where(array('page_id' => $this->getMetaData()->id, 'type' => 'section'))->get()->all();
     }
 
     protected function isMobile()   {
@@ -71,8 +85,7 @@ class Controller extends BaseController
 
     public function minifyHtml($response)   {
         $buffer = $response->getContent();
-        if(strpos($buffer,'<pre>') !== false)
-        {
+        if(strpos($buffer,'<pre>') !== false) {
             $replace = array(
                 '/<!--[^\[](.*?)[^\]]-->/s' => '',
                 "/<\?php/"                  => '<?php ',
@@ -82,8 +95,7 @@ class Controller extends BaseController
                 "/>\n\s+</"                 => '><',
             );
         }
-        else
-        {
+        else {
             $replace = array(
                 '/<!--[^\[](.*?)[^\]]-->/s' => '',
                 "/<\?php/"                  => '<?php ',

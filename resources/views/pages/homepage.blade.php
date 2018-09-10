@@ -16,10 +16,8 @@
                 <div class="container content-wrapper">
                     <div class="row">
                         <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                            <h1 class="title">DENTACOIN</h1>
-                            <h3 class="subtitle">The Blockchain Solution for the Global Dental Industry</h3>
-                            <div class="description italic">“Sick Care is the plaque of the century. <br> <b>4,000+ dentists</b> are shifting the paradigm towards a Health system that Cares.”</div>
-                            <div class="description">Secure Blockchain infrastructure, patient-centered care and intelligent prevention used jointly to improve long-term health, reduce costs and pain and ensure mutual benefits.</div>
+                            <h1 class="title">{{ $meta_data->page_title }}</h1>
+                            {!! $sections[0]->html !!}
                             <div class="video">
                                 <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                     <button class="play-btn">
@@ -67,7 +65,7 @@
                     </div>
                 </div>
             </div>
-            <h3 class="rotated-text"><span>DENTACOIN ECOSYSTEM</span></h3>
+            <h3 class="rotated-text"><span>{!! $titles[0]->html !!}</span></h3>
             <div class="container list">
                 <div class="row">
                     <div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -109,13 +107,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h2 class="col-xs-12 section-title">Building Successful Patient-Driven Dental Practices</h2>
+                    <h2 class="col-xs-12 section-title">{!! $titles[1]->html !!}</h2>
                 </div>
                 <div class="row content flex">
                     <div class="col-xs-12 col-md-5 col-md-offset-2 content-container">
-                        <h2 class="section-subtitle">Moving From Sick Care to Preventive Care</h2>
-                        <div class="description">The new generation of Dentacoin dentists brings patients back into focus by promoting intelligent prevention, implementing dedicated Blockchain-based software solutions and using an industry-specific cryptocurrency.</div>
-                        <div class="btn-container"><a href="https://dentists.dentacoin.com/" target="_blank" class="white-blue-rounded-btn">I’M A DENTIST</a></div>
+                        {!! $sections[1]->html !!}
                     </div>
                     <figure class="col-xs-12 col-md-5" itemscope="" itemtype="http://schema.org/ImageObject">
                         <div class="fourth-dot inline-block">&nbsp;</div>
@@ -135,25 +131,18 @@
                         @endif
                         <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
                     </figure>
-                    <div class="col-xs-12 section-title">GLOBAL DENTACOIN NETWORK</div>
+                    <div class="col-xs-12 section-title">{!! $titles[5]->html !!}</div>
                 </div>
                 <div class="row flex">
                     <div class="col-md-7 col-xs-8 col-xs-offset-2 col-md-offset-0 description-over-line">
                         <div class="wrapper">
                             <div class="first-dot inline-block">&nbsp;</div>
                             <div class="second-dot inline-block">&nbsp;</div>
-                            <div class="description inline-block"><div class="wrapper visibility-hidden">Dental practices, labs, shops in <span>16 Countries</span> accept payments in Dentacoin</div></div>
+                            <div class="description inline-block"><div class="wrapper visibility-hidden">{!! $sections[2]->html !!}</div></div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-5 cells no-gutter-xs">
-                        <div class="between-sections-description visibility-hidden inline-block-top">
-                            <div class="title">60K+</div>
-                            <div class="description">Users of the Dentacoin tools</div>
-                        </div>
-                        <div class="between-sections-description visibility-hidden inline-block-top">
-                            <div class="title">4K+</div>
-                            <div class="description">Dentists in the Dentacoin Ecosystem</div>
-                        </div>
+                        {!! $sections[3]->html !!}
                     </div>
                 </div>
             </div>
@@ -198,19 +187,17 @@
                         </div>
                         <div class="col-xs-12 token-holders-transactions no-gutter-xs fs-0">
                             <div class="between-sections-description inline-block-top">
-                                <div class="title">32K+</div>
-                                <div class="description">Dentacoin (DCN) <br> Token Holders Globally</div>
+                                {!! $sections[6]->html !!}
                             </div>
                             <div class="between-sections-description inline-block-top">
-                                <div class="title">140K+</div>
-                                <div class="description">Transactions With Dentacoin (DCN) Tokens</div>
+                                {!! $sections[7]->html !!}
                             </div>
                         </div>
                     @endif
                     <div class="col-xs-12 below-expressions">
                         <div class="show-more">
                             <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="{{ route('testimonials', ['page' => 1]) }}"><img src="{{URL::asset('assets/images/plus-solid.svg') }}" itemprop="contentUrl" alt="Plus icon"/></a></figure>
-                            <p class="inline-block">Show 100 more quotes</p>
+                            <p class="inline-block">{!! $sections[4]->html !!}</p>
                         </div>
                         <div class="third-dot inline-block">&nbsp;</div>
                     </div>
@@ -231,14 +218,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h2 class="col-xs-12 section-title">BUY & STORE DENTACOIN</h2>
+                    <h2 class="col-xs-12 section-title">{!! $titles[2]->html !!}</h2>
                 </div>
                 <div class="row wallet-app-and-gif">
                     <div class="fifth-dot inline-block">&nbsp;</div>
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1 wallet-app inline-block-top">
-                        <h2 class="section-subtitle">Available Options</h2>
-                        <div class="description">Dentacoin (DCN)is available for purchase with a card through Changelly, as well as against 100+ other cryptocurrencies. It is also supported by trusted exchange platforms and wallets listed below:</div>
-                        <div class="fading-text">Upcoming listing on LATOKEN. Stay tuned!</div>
+                        {!! $sections[5]->html !!}
                         <div class="exchange-platforms-and-wallets">
                             <div class="exchange-platforms exchange-method inline-block-top">
                                 <button class="title"><div class="icon inline-block"></div><span class="inline-block">Exchange Platforms</span></button>
@@ -267,8 +252,7 @@
                             <div class="third-dot inline-block">&nbsp;</div>
                         </figure>
                         <div class="between-sections-description visibility-hidden">
-                            <div class="title">32K+</div>
-                            <div class="description">Dentacoin (DCN) <br> Token Holders Globally</div>
+                            {!! $sections[6]->html !!}
                             <div class="fourth-dot inline-block">&nbsp;</div>
                         </div>
                     </div>
@@ -288,8 +272,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="between-sections-description visibility-hidden">
-                            <div class="title">140K+</div>
-                            <div class="description">Transactions With Dentacoin (DCN) Tokens</div>
+                            {!! $sections[7]->html !!}
                         </div>
                     </div>
                 </div>
@@ -298,7 +281,7 @@
         <section class="awards-and-publications">
             <div class="container">
                 <div class="row">
-                    <h2 class="col-xs-12 section-title">AWARDS & PUBLICATIONS</h2>
+                    <h2 class="col-xs-12 section-title">{!! $titles[3]->html !!}</h2>
                 </div>
                 <div class="row awards">
                     <h2 class="col-xs-12 col-sm-10 col-sm-offset-1">
@@ -356,7 +339,7 @@
                 <div class="first-dot inline-block">&nbsp;</div>
                 <div class="second-dot inline-block">&nbsp;</div>
                 <div class="row">
-                    <div class="col-xs-12 section-title">ROADMAP</div>
+                    <div class="col-xs-12 section-title">{!! $titles[4]->html !!}</div>
                 </div>
             </div>
         </section>
@@ -376,8 +359,7 @@
                                     <img src="{{URL::asset('assets/images/roadmap-circle-2017-quarter-1.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 1"/>
                                 </figure>
                             @endif
-                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.1 Dentacoin ERC20 Token Released</div>
-                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.2 Dentacoin Foundation Established</div>
+                            {!! $sections[8]->html !!}
                         </div>
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
@@ -385,8 +367,7 @@
                                     <img src="{{URL::asset('assets/images/roadmap-circle-2017-quarter-3.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 3"/>
                                 </figure>
                             @endif
-                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.3 Initial Public Presale (16.2 Bill DCN, 8 000 Contributors)</div>
-                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.4 Trusted Reviews Release</div>
+                            {!! $sections[9]->html !!}
                         </div>
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
@@ -394,9 +375,7 @@
                                     <img src="{{URL::asset('assets/images/roadmap-circle-2017-quarter-4.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 4"/>
                                 </figure>
                             @endif
-                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.5 Initial Coin Offering (17.9 Bill DCN, 10 000 Contributors)</div>
-                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.6 DentaVox Release</div>
-                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.7 DentaCare Mobile App</div>
+                            {!! $sections[10]->html !!}
                         </div>
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
@@ -404,8 +383,7 @@
                                     <img src="{{URL::asset('assets/images/roadmap-circle-2018.svg') }}" itemprop="contentUrl" alt="Roadmap 2018"/>
                                 </figure>
                             @endif
-                            <div><i class="fa fa-check-circle" aria-hidden="true"></i>V.0.8 Dentacoin Integrated Hub Release</div>
-                            <div>- V.0.9 Dentacoin Assurance</div>
+                            {!! $sections[11]->html !!}
                         </div>
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
@@ -413,7 +391,7 @@
                                     <img src="{{URL::asset('assets/images/roadmap-circle-2019.svg') }}" itemprop="contentUrl" alt="Roadmap 2019"/>
                                 </figure>
                             @endif
-                            <div>- V.0.9 Denta Health Database</div>
+                            {!! $sections[12]->html !!}
                         </div>
                     </div>
                 </div>
