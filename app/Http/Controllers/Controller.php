@@ -49,7 +49,7 @@ class Controller extends BaseController
 
         //getting all pagination pages for testimonials
         for($i = 1, $length = (new UserExpressionsController())->getPagesCount(); $i <= $length; $i+=1) {
-            $sitemap->add(URL::to('testimonials/page/'.$i), '2012-08-25T20:10:00+02:00', '8.0', 'daily');
+            $sitemap->add(URL::to('testimonials/page/'.$i), '2012-08-25T20:10:00+02:00', '0.8', 'daily');
         }
 
         // get all posts from db
