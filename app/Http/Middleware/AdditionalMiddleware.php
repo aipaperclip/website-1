@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
 
 class AdditionalMiddleware
 {
@@ -17,7 +18,11 @@ class AdditionalMiddleware
      */
     public function handle($request, Closure $next) {
         $params = $request->route()->parameters();
-        $response = (new App\Http\Controllers\Controller())->minifyHtml($next($request));
-        return $response;
+        if(Route::getCurrentRoute()->getName() != 'sitemap')    {
+            return (new App\Http\Controllers\Controller())->minifyHtml($next($request));
+        }else {
+            return $next($request);
+
+        }
     }
 }
