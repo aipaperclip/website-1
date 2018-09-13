@@ -18,7 +18,7 @@ class HomeController extends Controller
     }
 
     protected function getPublications()  {
-        return Publications::all()->sortBy('order_id');
+        return Publications::where(array('featured' => 1))->get()->sortBy('order_id');
     }
 
     protected function getApplications()  {

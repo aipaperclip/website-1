@@ -324,6 +324,9 @@
                             </div>
                         @endforeach
                     </div>
+                    <div class="see-all-publications text-center">
+                        <a href="{{route('press-center', ['page' => 1])}}" class="white-blue-rounded-btn">SEE ALL</a>
+                    </div>
                     @if($mobile) <div class="clearfix"></div> @endif
                     <figure class="logo-over-line" itemscope="" itemtype="http://schema.org/ImageObject">
                         @if($mobile)

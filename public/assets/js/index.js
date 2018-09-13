@@ -1,7 +1,4 @@
-var isMobile = false; //initiate as false
-// device detection
-if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
-    || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0, 4))) isMobile = true;
+basic.init();
 
 var intervals_arr = [];
 var stoppers = [];
@@ -9,14 +6,13 @@ const draw_line_interval = 10;
 const draw_line_increment = 10;
 const border_width = 2;
 
-
 $(document).ready(function() {
 
 });
 
 $(window).on('beforeunload', function() {
     //HOMEPAGE
-    if($('.homepage-container').length > 0 && !isMobile) {
+    if($('body').hasClass('home') && !basic.isMobile()) {
         $(window).scrollTop(0);
     }
 });
@@ -24,7 +20,7 @@ $(window).on('beforeunload', function() {
 $('body').bind('wheel', onMousewheel);
 
 $(window).on("load", function()   {
-    if($('.homepage-container').length > 0 && !isMobile) {
+    if($('body').hasClass('home') && !basic.isMobile()) {
         console.log("Don't touch the code. Or do ... ¯\\_(ツ)_/¯");
         setLinesDots();
         drawLine('first', 'vertical');
@@ -33,12 +29,16 @@ $(window).on("load", function()   {
 
 $(window).on('resize', function(){
     //HOMEPAGE
-    if($('.homepage-container').length > 0 && !isMobile) {
+    if($('body').hasClass('home') && !basic.isMobile()) {
         setLinesDots(true);
     }
     //TESTIMONIALS
-    if($('.testimonials-container').length > 0) {
-        testimonialAvatarsLine();
+    if($('body').hasClass('testimonials')) {
+        initListingPageLine();
+    }
+    //PRESS CENTER
+    if($('body').hasClass('press-center')) {
+        initListingPageLine();
     }
 });
 
@@ -56,7 +56,7 @@ $(window).on('scroll', function()  {
 });
 
 function onMousewheel(event)    {
-    if($('.homepage-container').length > 0 && !isMobile && !$('body').hasClass('modal-open')) {
+    if($('body').hasClass('home') && !basic.isMobile() && !$('body').hasClass('modal-open')) {
         if(event.originalEvent.deltaY < 0)  {
             //scroll up
             if($('body').attr('data-current') == 'two') {
@@ -315,7 +315,7 @@ function refreshingMainDots()   {
 
 function checkIfLineIsReadyToBeCreated(el, position, tail, tail_position, action) {
     //HOMEPAGE
-    if($('.homepage-container').length > 0 && !isMobile) {
+    if($('body').hasClass('home') && !basic.isMobile()) {
         //doing this check, because IE 11 not support ES6
         if (action === undefined) {
             action = null;
@@ -471,8 +471,8 @@ function callActionOnLastTailFinish(action)    {
 // ==================== PAGES ====================
 
 //HOMEPAGE
-if($('.homepage-container').length > 0) {
-    if(isMobile)    {
+if($('body').hasClass('home')) {
+    if(basic.isMobile())    {
         $('.homepage-container.mobile .successful-practices .content .content-container').removeClass('col-md-5 col-md-offset-2').addClass('col-md-12');
         $('.homepage-container.mobile .successful-practices .content figure').removeClass('col-md-5').addClass('col-md-10 col-md-offset-1');
         $('.homepage-container.mobile .below-successful-practices .flex .description-over-line').removeClass('col-md-7 col-md-offset-0').addClass('col-md-8 col-md-offset-2');
@@ -564,7 +564,7 @@ if($('.homepage-container').length > 0) {
         if($(this).closest('.exchange-method').hasClass('active'))  {
             $(this).closest('.exchange-method').removeClass('active').find('.list').slideUp(300);
         }else {
-            if(isMobile)    {
+            if(basic.isMobile())    {
                 $('.homepage-container .exchange-platforms-and-wallets .exchange-method').removeClass('active').find('.list').slideUp(300);
             }
             $(this).closest('.exchange-method').addClass('active').find('.list').slideDown(300);
@@ -582,7 +582,7 @@ if($('.homepage-container').length > 0) {
         accessibility: true,
         responsive: [
             {
-                breakpoint: 992,
+                breakpoint: 1200,
                 settings: {
                     slidesToShow: 1,
                     centerMode: true,
@@ -608,13 +608,13 @@ if($('.homepage-container').length > 0) {
         if (e.key === ' ' || e.key === 'Spacebar' || e.which === 13) {
             // ' ' is standard, 'Spacebar' was used by IE9 and Firefox < 37
             e.preventDefault();
-            $('.homepage-container .awards-and-publications .publications-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
+            $('.homepage-container .ainitListingPageLinewards-and-publications .publications-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
         }
     });
 }
 
 //TESTIMONIALS
-if($('.testimonials-container').length > 0) {
+if($('body').hasClass('testimonials')) {
     //load random default avatar for testimonial givers without avatar
     var testimonial_icons_listing_page = ['avatar-icon-1.svg', 'avatar-icon-2.svg'];
     for(var i = 0; i < $('.list .single .image.no-avatar').length; i+=1)  {
@@ -624,13 +624,7 @@ if($('.testimonials-container').length > 0) {
     $('svg.svg-with-lines').height($(document).height());
 
     //LINE GOING UNDER TESTIMONIAL AVATARS
-    function testimonialAvatarsLine()   {
-        $('line.first').attr('x1', $('.testimonials-container .list .single .first-dot').offset().left + $('.testimonials-container .list .single .first-dot').width() / 2);
-        $('line.first').attr('x2', $('.testimonials-container .list .single .last-dot').offset().left + $('.testimonials-container .list .single .last-dot').width() / 2);
-        $('line.first').attr('y1', $('.testimonials-container .list .single .first-dot').offset().top);
-        $('line.first').attr('y2', $('.testimonials-container .list .single .last-dot').offset().top);
-    }
-    testimonialAvatarsLine();
+    initListingPageLine();
 }
 
 //PARTNER NETWORK
@@ -664,6 +658,131 @@ if($('body').hasClass('partner-network') || $('body').hasClass('google-map-ifram
             $('.partner-network-container .list-with-locations .subtype-title').removeClass('opened').find('i').removeClass('active');
         }
     });
+}
+
+//PRESS CENTER
+if($('body').hasClass('press-center')) {
+    initListingPageLine();
+
+    if($('.open-form').length > 0)  {
+        $('.open-form').click(function()    {
+            $.ajax({
+                type: 'POST',
+                url: HOME_URL + '/press-center-popup',
+                dataType: 'json',
+                success: function (response) {
+                    if(response.success)    {
+                        basic.closeDialog();
+                        basic.showDialog(response.success, 'media-inquries', 'media-inquries');
+                        var required_inputs = [];
+                        for(var i = 0, len = $('.required').length; i < len; i+=1)  {
+                            required_inputs.push($('.required').eq(i).attr('name'));
+                        }
+                        required_inputs.push('answer');
+                        $('.selectpicker').selectpicker('refresh');
+
+                        $('select[name="reason"]').on('change', function()    {
+                            $('.waiting-for-action').html('');
+                            if($(this).find('option:selected').attr('data-action') == 'newsletter-register')  {
+                                $('.waiting-for-action').html('<input type="hidden" name="answer" value="Manual email register to newletter receivers list."/>');
+                            }else if($(this).find('option:selected').attr('data-action') == 'long-text')  {
+                                $('.waiting-for-action').html('<div class="popup-row"><textarea placeholder="'+$(this).find('option:selected').attr('data-title')+'" rows="3" name="answer" maxlength="3000"></textarea></div>');
+                            }else if($(this).find('option:selected').attr('data-action') == 'long-text-and-attachments')  {
+                                $('.waiting-for-action').html('<textarea placeholder="'+$(this).find('option:selected').attr('data-title')+'" rows="3" name="answer" class="padding-bottom-10" maxlength="3000"></textarea></div><div class="popup-row text-center-xs"><div class="upload-file inline-block-top" id="media-package" data-label="Attach file (media package):"><input type="file" name="media-package" class="inputfile inputfile-1 hide-input" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx"><button type="button"></button></div><div class="upload-file inline-block-top" id="individual-offer" data-label="Attach file (individual offer, if present):"><input type="file" class="inputfile inputfile-1 hide-input" name="individual-offer" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx"><button type="button"></button></div>');
+                                styleContactFormUploadBtn();
+
+                                //ADD CUSTOM EVENTS ON ENTER OR SPACE CLICK FOR accessibility
+                                $('#media-package button').keypress(function(event){
+                                    if(event.keyCode == 13 || event.keyCode == 0 || event.keyCode == 32){
+                                        document.getElementById('file-media-package').click();
+                                    }
+                                });
+                                $('#individual-offer button').keypress(function(event){
+                                    if(event.keyCode == 13 || event.keyCode == 0 || event.keyCode == 32){
+                                        document.getElementById('file-individual-offer').click();
+                                    }
+                                });
+                            }
+                        });
+
+                        $('.bootbox.media-inquries').on('submit', function(event)    {
+                            var errors = [];
+                            for(var i = 0, len = required_inputs.length; i < len; i+=1) {
+                                if(required_inputs[i] == 'answer')  {
+                                    if($('[name="'+required_inputs[i]+'"]').length > 0) {
+                                        if($('[name="'+required_inputs[i]+'"]').val().trim() == '') {
+                                            errors.push('<strong>Reason for contract extra field</strong> is required.');
+                                        }
+                                    }else {
+                                        errors.push('<strong>Reason for contract extra field</strong> is required.');
+                                    }
+                                }else {
+                                    if($('[name="'+required_inputs[i]+'"]').length > 0) {
+                                        if($('[name="'+required_inputs[i]+'"]').val().trim() == '')    {
+                                            if($('[name="'+required_inputs[i]+'"]').is('input'))    {
+                                                errors.push('<strong>'+$('[name="'+required_inputs[i]+'"]').attr('placeholder')+'</strong> is required.');
+                                            }else if($('[name="'+required_inputs[i]+'"]').is('select')) {
+                                                errors.push('<strong>'+$('[name="'+required_inputs[i]+'"]').attr('title')+'</strong> is required.');
+                                            }
+                                        }
+                                    }else {
+                                        window.location.reload();
+                                    }
+                                }
+                            }
+
+                            if(errors.length > 0) {
+                                event.preventDefault();
+                                var errors_html = '';
+                                for(var y = 0, len = errors.length; y < len; y+=1)  {
+                                    errors_html+='<div class="alert alert-danger">'+errors[y]+'</div>';
+                                }
+                                $('.errors.popup-row').html(errors_html);
+                            }
+                        });
+                    }
+                }
+            });
+        });
+    }
+}
+
+function styleContactFormUploadBtn()    {
+    jQuery(".upload-file").each(function(key, form){
+        var this_file_btn_parent = jQuery(this);
+        var current_form_id = this_file_btn_parent.prop("id");
+        jQuery(this).find("input").attr("id","file-"+current_form_id);
+        jQuery(this).find("button").append("<label for='file-"+current_form_id+"'><span class='white-blue-rounded-btn'>"+this_file_btn_parent.attr('data-label')+"</span></label>");
+
+        var inputs = document.querySelectorAll('.inputfile');
+        Array.prototype.forEach.call( inputs, function( input ) {
+            var label    = input.nextElementSibling,
+                labelVal = label.innerHTML;
+
+            input.addEventListener('change', function(e) {
+                var fileName = '';
+                if(this.files && this.files.length > 1)
+                    fileName = ( this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
+                else
+                    fileName = e.target.value.split('\\').pop();
+
+                if(fileName)
+                    label.querySelector('span').innerHTML = fileName;
+                else
+                    label.innerHTML = labelVal;
+            });
+            // Firefox bug fix
+            input.addEventListener('focus', function(){ input.classList.add('has-focus'); });
+            input.addEventListener('blur', function(){ input.classList.remove('has-focus'); });
+        });
+    });
+}
+
+function initListingPageLine()   {
+    $('line.first').attr('x1', $('.list .single .first-dot').offset().left + $('.list .single .first-dot').width() / 2);
+    $('line.first').attr('x2', $('.list .single .last-dot').offset().left + $('.list .single .last-dot').width() / 2);
+    $('line.first').attr('y1', $('.list .single .first-dot').offset().top);
+    $('line.first').attr('y2', $('.list .single .last-dot').offset().top);
 }
 
 // ==================== /PAGES ====================
@@ -720,7 +839,7 @@ function stopMaliciousInspect()  {
         }
     }
 }
-stopMaliciousInspect();
+//stopMaliciousInspect();
 
 function hidePopupOnBackdropClick() {
     $(document).on('click', '.bootbox', function(){

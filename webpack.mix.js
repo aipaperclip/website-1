@@ -40,14 +40,16 @@ mix.babel([
 /* ===== /PUBLIC =====*/
 
 /* ===== ADMIN =====*/
-/*mix.scripts([
+mix.scripts([
     'node_modules/jquery/dist/jquery.min.js',
     'node_modules/bootstrap/dist/js/bootstrap.min.js',
     'node_modules/bootbox.js/bootbox.min.js',
     'node_modules/datatables.net/js/jquery.dataTables.min.js',
     'node_modules/datatables.net-rowreorder/js/dataTables.rowReorder.min.js',
     'public/assets/libs/ckeditor-full/ckeditor.js',
-    'node_modules/admin-lte/dist/js/app.min.js'
+    'node_modules/admin-lte/dist/js/app.min.js',
+    'node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+    'node_modules/bootstrap-select/dist/js/bootstrap-select.min.js',
 ], 'public/dist/js/admin-libs-script.js');
 
 mix.scripts([
@@ -62,7 +64,9 @@ mix.styles([
     'node_modules/admin-lte/dist/css/AdminLTE.min.css',
     'node_modules/datatables.net-rowreorder-bs/css/rowReorder.bootstrap.min.css',
     'node_modules/admin-lte/dist/css/skins/_all-skins.min.css',
-], 'public/dist/css/admin-libs-style.css');*/
+    'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
+    'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
+], 'public/dist/css/admin-libs-style.css');
 
 /* ===== /ADMIN =====*/
 

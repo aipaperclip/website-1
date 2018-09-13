@@ -22,7 +22,7 @@ function initMap(filter) {
             dataZoomcontrol = $this.data('zoomcontrol'),
             dataTitle = $this.data('title');
 
-        if(isMobile)    {
+        if(basic.isMobile())    {
             var dataZoom = 2;
         }else {
             var dataZoom = 0;
@@ -286,6 +286,9 @@ function initMap(filter) {
                 };
                 if(map_locations[i].clinic_media != undefined)    {
                     marker_options.clinic_media = map_locations[i].clinic_media;
+                }
+                if(map_locations[i].address != undefined)    {
+                    marker_options.address = map_locations[i].address;
                 }
                 if(map_locations[i].clinic_media_alt != undefined)    {
                     marker_options.clinic_media_alt = map_locations[i].clinic_media_alt;

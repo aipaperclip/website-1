@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\SocialsController;
 use App\PageMetaData;
 use App\PagesHtmlSection;
-use Illuminate\Http\Request;
+use Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -14,23 +15,31 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
+use App\Social;
 
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    const POSTS_PER_PAGE = 8;
+
     public function __construct() {
-        if(Route::getCurrentRoute()->getPrefix() == '/')    {
+        if(Route::getCurrentRoute()->getPrefix() == '/' && !Request::isMethod('post'))    {
             View::share('mobile', $this->isMobile());
             View::share('meta_data', $this->getMetaData());
             View::share('titles', $this->getDbTitles());
             View::share('sections', $this->getDbSections());
+            View::share('socials', $this->getFooterSocials());
         }
     }
 
     protected function getMetaData()    {
         return PageMetaData::where(array('slug' => Route::getCurrentRoute()->getName()))->get()->first();
+    }
+
+    protected function getFooterSocials()    {
+        return Social::all()->sortBy('order_id');
     }
 
     protected function getDbTitles()    {

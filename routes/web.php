@@ -18,7 +18,11 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
 
-//Route::get('/press-center', 'PressCenterController@getView')->name('press-center');
+    Route::get('press-center/page/{page}', 'PressCenterController@getView')->name('press-center');
+
+    Route::post('press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
+
+    Route::post('submit-media-inquiries', 'PressCenterController@submitMediaInquiries')->name('submit-media-inquiries');
 
     Route::get('testimonials/page/{page}', 'UserExpressionsController@getView')->name('testimonials');
 

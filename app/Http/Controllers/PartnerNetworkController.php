@@ -52,7 +52,7 @@ class PartnerNetworkController extends Controller
     }
 
     protected function getLocationSubtypesForType($id)   {
-        return LocationSubtype::where(array('type_id' => $id))->get();
+        return LocationSubtype::where(array('type_id' => $id))->get()->sortBy('order_id');
     }
 
     protected function getClinicsBySubtype($id)   {

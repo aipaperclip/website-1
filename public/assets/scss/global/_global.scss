@@ -17,6 +17,12 @@ body {
     }
 }
 
+@for $i from 0 through 100 {
+    .padding-bottom-#{$i} {
+        padding-bottom-: 0px + $i!important;
+    }
+}
+
 button, input[type='submit'] {
     background: none;
     color: inherit;
@@ -29,6 +35,10 @@ button, input[type='submit'] {
         outline: 5px auto -webkit-focus-ring-color;
         outline-offset: -2px;
     }
+}
+
+input[type='file'].hide-input {
+    display: none;
 }
 
 @for $i from 0 through 80 {
@@ -67,6 +77,13 @@ button, input[type='submit'] {
     @include breakpoint($xs)    {
         padding-right: 0;
         padding-left: 0;
+    }
+}
+
+.gutter-xs-5 {
+    @include breakpoint($xs)    {
+        padding-right: 5px;
+        padding-left: 5px;
     }
 }
 
@@ -160,13 +177,14 @@ img {
     }
 }
 
-.white-blue-rounded-btn {
+.white-blue-rounded-btn, input[type='submit'].white-blue-rounded-btn {
     background-color: $light_blue;
     color: white;
     font-size: 16px;
     padding: 8px 24px;
     font-weight: bold;
     border: 2px solid white;
+    cursor: pointer;
     @include rounded(4px);
     @include simple_transition(.3s);
     &:hover {
@@ -179,11 +197,17 @@ img {
     }
 }
 
+.text-center-xs {
+    @include breakpoint($xs)    {
+        text-align: center;
+    }
+}
+
 svg.svg-with-lines {
     display: none;
 }
 
-body.home, body.testimonials {
+body.home, body.testimonials, body.press-center {
     svg.svg-with-lines {
         display: block;
         position: absolute;
@@ -194,7 +218,20 @@ body.home, body.testimonials {
             stroke-width: 2px;
             stroke: black;
         }
+    }
+}
+
+body.home {
+    svg.svg-with-lines {
         @include breakpoint($sm-down)   {
+            display: none;
+        }
+    }
+}
+
+body.testimonials, body.press-center {
+    svg.svg-with-lines {
+        @include breakpoint($xs)   {
             display: none;
         }
     }
@@ -289,6 +326,16 @@ body.home, body.testimonials {
                     }
                 }
             }
+            &.dots {
+                border: 0;
+                &:hover {
+                    background-color: white;
+                    color: black;
+                    a {
+                        color: black;
+                    }
+                }
+            }
         }
     }
     @include breakpoint($xs)    {
@@ -296,13 +343,16 @@ body.home, body.testimonials {
             li {
                 margin: 0 3px;
                 a {
-                    width: 20px;
-                    line-height: 20px;
-                    height: 20px;
+                    width: 17px;
+                    line-height: 17px;
+                    height: 17px;
+                    font-size: 14px;
                 }
                 &.arrow {
-                    font-size: 16px;
                     line-height: 20px;
+                    i {
+                        font-size: 14px;
+                    }
                 }
             }
         }
@@ -463,6 +513,81 @@ body.home, body.testimonials {
             }
         }
     }
+    &.media-inquries {
+        padding-bottom: 20px;
+        .modal-dialog {
+            width: 95%;
+            max-width: 800px;
+        }
+        .section-title {
+            padding-bottom: 20px;
+        }
+        .popup-body {
+            padding: 0 10%;
+            input[type='text'], .bootstrap-select > button, textarea {
+                width: 100%;
+                padding: 15px 20px;
+                border: 0;
+                @include rounded(4px);
+                @include box-shadow(-2px 2px 6px 0 rgba(0, 0, 0, 0.2));
+                @include simple_transition(.3s);
+                &:focus {
+                    @include box-shadow(-2px 2px 6px 0 $light_blue);
+                }
+            }
+            .popup-row {
+                padding-bottom: 10px;
+                .alert {
+                    padding: 5px 10px;
+                    margin-bottom: 5px;
+                }
+                .bootstrap-select > button {
+                    &:hover, &:visited, &:active, &:focus {
+                        background-color: white;
+                    }
+                }
+                .filter-option-inner-inner {
+                    color: $dark_gray;
+                }
+                &.submit {
+                    padding-bottom: 0;
+                    padding-top: 10px;
+                    input[type='submit'].white-blue-rounded-btn {
+                        padding: 8px 45px;
+                    }
+                }
+            }
+            .waiting-for-action {
+                .upload-file {
+                    label {
+                        margin-bottom: 0;
+                    }
+                    .white-blue-rounded-btn {
+                        display: inline-block;
+                    }
+                }
+            }
+            ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color: $dark_gray;
+                opacity: 1; /* Firefox */
+            }
+
+            :-ms-input-placeholder { /* Internet Explorer 10-11 */
+                color: $dark_gray;
+            }
+
+            ::-ms-input-placeholder { /* Microsoft Edge */
+                color: $dark_gray;
+            }
+        }
+    }
+    @include breakpoint($xs)    {
+        &.media-inquries {
+            .popup-body {
+                padding: 0;
+            }
+        }
+    }
 }
 
 .modal-backdrop.in {
@@ -472,7 +597,6 @@ body.home, body.testimonials {
 .bootstrap-select {
     width: 100% !important;
     button.btn {
-        box-shadow: none !important;
         background-position: center right 15px;
         background-repeat: no-repeat;
         &:focus {
@@ -480,6 +604,8 @@ body.home, body.testimonials {
         }
     }
     .dropdown-menu {
+        min-width: auto !important;
+        width: 100%;
         margin: 0;
         &.open {
             border: 1px solid $light_blue;

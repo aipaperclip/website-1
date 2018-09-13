@@ -44,7 +44,7 @@
                 @endforeach
             </div>
             <div class="row">
-                <div class="col-xs-12">@include('partials.pagination')</div>
+                <div class="col-xs-12 gutter-xs-5">@include('partials.pagination')</div>
             </div>
         </div>
     </section>

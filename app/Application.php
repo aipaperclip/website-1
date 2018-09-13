@@ -8,9 +8,11 @@ class Application extends Model {
     protected function logo() {
         return $this->belongsTo('App\Media');
     }
+
     protected function media() {
         return $this->belongsTo('App\Media');
     }
+
     protected function popup_logo() {
         return $this->belongsTo('App\Media');
     }

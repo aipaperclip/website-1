@@ -9,4 +9,8 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.uiColor = '#AADC6E';
     config.allowedContent = true;
     config.autoParagraph = false;
+    config.font_defaultLabel = 'Calibri';
 };
+
+CKEDITOR.dtd.$removeEmpty['i'] = false;
+CKEDITOR.dtd.$removeEmpty['span'] = false;

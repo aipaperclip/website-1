@@ -1139,7 +1139,7 @@
                 }
             }
             .publications-slider {
-                height: 450px;
+                height: 380px;
                 padding-left: 20px;
                 padding-right: 20px;
                 .slick-track {
@@ -1158,6 +1158,7 @@
                         padding: 0 20px;
                         img {
                             margin: 0 auto;
+                            width: 100%;
                         }
                     }
                     .headline {
@@ -1204,6 +1205,9 @@
                         }
                     }
                 }
+            }
+            .see-all-publications {
+                padding-bottom: 70px;
             }
         }
     }

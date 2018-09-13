@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Input;
 
 class UserExpressionsController extends Controller
 {
-    const POSTS_PER_PAGE = 8;
-
     protected function getView($page)   {
         $pages_count = $this->getPagesCount();
         //if $page more than the pagescount redirect 404

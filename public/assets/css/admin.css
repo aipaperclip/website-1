@@ -369,7 +369,7 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox; }
 
-input[type='text'] {
+input[type='text'], input[type='number'] {
   padding: 5px;
   width: 100%; }
 
@@ -510,6 +510,14 @@ body.media {
   font-size: 32px;
   font-family: 'Calibri-Bold';
   padding-top: 20px; }
+
+.add-edit-location-map {
+  position: relative;
+  overflow: hidden;
+  height: 350px; }
+
+body.add-location select[name="subtype"] option, body.add-location select[name="clinic"] option, body.edit-location select[name="subtype"] option, body.edit-location select[name="clinic"] option {
+  display: none; }
 
 .media-container form {
   padding-bottom: 30px; }
