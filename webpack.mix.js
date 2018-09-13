@@ -40,7 +40,7 @@ mix.babel([
 /* ===== /PUBLIC =====*/
 
 /* ===== ADMIN =====*/
-mix.scripts([
+/*mix.scripts([
     'node_modules/jquery/dist/jquery.min.js',
     'node_modules/bootstrap/dist/js/bootstrap.min.js',
     'node_modules/bootbox.js/bootbox.min.js',
@@ -66,7 +66,7 @@ mix.styles([
     'node_modules/admin-lte/dist/css/skins/_all-skins.min.css',
     'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
     'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
-], 'public/dist/css/admin-libs-style.css');
+], 'public/dist/css/admin-libs-style.css');*/
 
 /* ===== /ADMIN =====*/
 

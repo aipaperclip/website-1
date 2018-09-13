@@ -141,7 +141,11 @@ var basic = {
         dialog.on('hidden.bs.modal', function(){
             basic.fixBodyModal();
             if(type != null)    {
-                $('.single-application figure[data-slug="'+type+'"]').parent().focus();
+                if(type == 'media-inquries')    {
+                    $('.press-center-container .subtitle .open-form').focus();
+                }else {
+                    $('.single-application figure[data-slug="'+type+'"]').parent().focus();
+                }
             }
         });
         dialog.on('shown.bs.modal', function(){
@@ -371,6 +375,7 @@ function openMedia(id, close_btn)    {
                 basic.showDialog(response.success, 'media-popup');
                 initDataTable();
                 $('table.table.table-without-reorder.media-table').attr('data-id-in-action', id).attr('data-close-btn', close_btn);
+                saveImageAltsEvent();
                 useMediaEvent(id, close_btn);
             }
         }
@@ -407,27 +412,30 @@ function removeImage()  {
 removeImage();
 
 //saving image alts on media listing pages
-if($('.save-image-alts').length > 0)    {
-    $('.save-image-alts').click(function()  {
-        var alts_object = {};
-        for(let i = 0, len = $('.media-table tbody tr').length; i < len; i+=1)  {
-            alts_object[$('.media-table tbody tr').eq(i).attr('data-id')] = $('.media-table tbody tr').eq(i).find('.alt-attribute').val().trim();
-        }
-        $.ajax({
-            type: 'POST',
-            url: SITE_URL + '/media/update-media-alts',
-            data: {
-                'alts_object' : alts_object
-            },
-            dataType: 'json',
-            success: function (response) {
-                if(response.success)    {
-                    basic.showAlert(response.success);
-                }
+function saveImageAltsEvent()   {
+    if($('.save-image-alts').length > 0)    {
+        $('.save-image-alts').click(function()  {
+            var alts_object = {};
+            for(let i = 0, len = $('.media-table tbody tr').length; i < len; i+=1)  {
+                alts_object[$('.media-table tbody tr').eq(i).attr('data-id')] = $('.media-table tbody tr').eq(i).find('.alt-attribute').val().trim();
             }
+            $.ajax({
+                type: 'POST',
+                url: SITE_URL + '/media/update-media-alts',
+                data: {
+                    'alts_object' : alts_object
+                },
+                dataType: 'json',
+                success: function (response) {
+                    if(response.success)    {
+                        basic.showAlert(response.success);
+                    }
+                }
+            });
         });
-    });
+    }
 }
+saveImageAltsEvent();
 
 //refreshing captcha on trying to log in admin
 if($('.refresh-captcha').length > 0)    {
