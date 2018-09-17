@@ -160,6 +160,8 @@ class Controller extends BaseController
                     $params['dental_practices'] = $node->nodeValue;
                 }
             }
+            var_dump($params);
+            die();
         }
         return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations()]);
     }
