@@ -152,6 +152,7 @@ class Controller extends BaseController
         if($page) {
             $dom = new \DOMDocument();
             @$dom->loadhtml($page);
+            var_dump($dom);
             $nodeList = $dom->getElementsByTagName('b');
             var_dump($nodeList);
             foreach($nodeList as $node) {
