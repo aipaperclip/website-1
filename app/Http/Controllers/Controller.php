@@ -151,9 +151,7 @@ class Controller extends BaseController
         $page = @file_get_contents($url);
         if($page) {
             $dom = new \DOMDocument();
-            $internalErrors = libxml_use_internal_errors(true);
-            $dom->loadhtml($page);
-            libxml_use_internal_errors($internalErrors);
+            @$dom->loadhtml($page);
             $nodeList = $dom->getElementsByTagName('b');
             var_dump($nodeList);
             foreach($nodeList as $node) {
