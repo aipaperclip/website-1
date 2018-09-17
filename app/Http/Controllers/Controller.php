@@ -158,7 +158,7 @@ class Controller extends BaseController
             $xpath = new \DomXPath($dom);
             $nodeList = $xpath->query("//b[@class='second']");
             $node = $nodeList->item(0);
-            var_dump($node);
+            var_dump($nodeList);
             die();
             $params['dental_practices'] = $node->nodeValue;
         }
