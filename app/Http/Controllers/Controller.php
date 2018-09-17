@@ -154,14 +154,14 @@ class Controller extends BaseController
             $internalErrors = libxml_use_internal_errors(true);
             $dom->loadhtml($page);
             libxml_use_internal_errors($internalErrors);
-            $nodeList = $dom->getElementsByTagName("b");
+            $nodeList = $dom->getElementsByTagName('b');
+            var_dump($nodeList);
             foreach($nodeList as $node) {
-                if($node->getAttribute("class") == 'second')    {
-                    $params['dental_practices'] = $node->nodeValue;
+                if($node->getAttribute('class') == 'second')    {
+                    var_dump($node->nodeValue);
+                    die();
                 }
             }
-            var_dump($params);
-            die();
         }
         return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations()]);
     }
