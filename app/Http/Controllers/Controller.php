@@ -162,6 +162,7 @@ class Controller extends BaseController
                     die();
                 }
             }
+            die();
         }
         return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations()]);
     }
