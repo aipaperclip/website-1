@@ -37,6 +37,116 @@
 
   .col-xxs-2 {
     width: 16.67%; } }
+.white-black-btn {
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  padding: 6px 15px;
+  font-weight: bold;
+  border: 2px solid black;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .white-black-btn:hover {
+    color: black;
+    background-color: white; }
+
+.white-blue-btn {
+  background-color: #679dca;
+  color: white;
+  font-size: 16px;
+  padding: 6px 15px;
+  font-weight: bold;
+  border: 2px solid white;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .white-blue-btn:hover {
+    color: #679dca;
+    background-color: white; }
+
+.white-blue-rounded-btn, input[type='submit'].white-blue-rounded-btn {
+  background-color: #679dca;
+  color: white;
+  font-size: 16px;
+  padding: 8px 24px;
+  font-weight: bold;
+  border: 2px solid white;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .white-blue-rounded-btn:hover, input[type='submit'].white-blue-rounded-btn:hover {
+    color: #679dca;
+    background-color: white;
+    border: 2px solid #679dca; }
+  @media screen and (max-width: 991px) {
+    .white-blue-rounded-btn, input[type='submit'].white-blue-rounded-btn {
+      padding: 10px 32px; } }
+
+.section-title {
+  color: #333333;
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase; }
+  @media screen and (max-width: 767px) {
+    .section-title {
+      font-size: 22px; } }
+
+.section-title-no-text-center {
+  color: #333333;
+  font-size: 35px;
+  font-weight: bold;
+  text-transform: uppercase; }
+  @media screen and (max-width: 767px) {
+    .section-title-no-text-center {
+      font-size: 22px; } }
+
+.section-subtitle {
+  color: black;
+  font-size: 35px;
+  font-weight: bold; }
+
+.section-subtitle-uppercase {
+  color: black;
+  font-size: 35px;
+  font-weight: bold;
+  text-transform: uppercase; }
+
+.paragraph-text {
+  color: #3e3e3e;
+  font-size: 16px; }
+
+.main-color {
+  color: #1d1d1d; }
+
+.dark-gray {
+  color: #333333; }
+
+.light-blue {
+  color: #679dca; }
+
+.light-gray {
+  color: #3e3e3e; }
+
+.solid-gray {
+  color: #aaaaaa; }
+
 body {
   background-color: #222d32; }
 

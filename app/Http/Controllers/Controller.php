@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Admin\SocialsController;
 use App\Media;
+use App\MenuElement;
 use App\PageMetaData;
 use App\PagesHtmlSection;
+use App\Section;
+use Illuminate\Support\Facades\DB;
 use Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -32,7 +35,14 @@ class Controller extends BaseController
             View::share('titles', $this->getDbTitles());
             View::share('sections', $this->getDbSections());
             View::share('socials', $this->getFooterSocials());
+            View::share('footer_menu', $this->getFooterMenu());
+            View::share('footer_data', $this->getFooterData());
         }
+    }
+
+    protected function getFooterData()  {
+        $footer_section_id = Section::where(array('slug' => 'footer'))->get()->first()->id;
+        return PagesHtmlSection::where(array('section_id' => $footer_section_id))->get()->sortBy('order_id')->toArray();
     }
 
     protected function getMetaData()    {
@@ -41,6 +51,10 @@ class Controller extends BaseController
 
     protected function getFooterSocials()    {
         return Social::all()->sortBy('order_id');
+    }
+
+    protected function getFooterMenu()    {
+        return MenuElement::all()->sortBy('order_id');
     }
 
     protected function getDbTitles()    {
@@ -133,6 +147,21 @@ class Controller extends BaseController
     }
 
     protected function getGoogleMapIframe() {
+        $url = 'https://reviews.dentacoin.com/';
+        $page = @file_get_contents($url);
+        if($page) {
+            $dom = new \DOMDocument();
+            $internalErrors = libxml_use_internal_errors(true);
+            $dom->loadhtml($page);
+            var_dump($dom);
+            libxml_use_internal_errors($internalErrors);
+            $xpath = new \DomXPath($dom);
+            $nodeList = $xpath->query("//b[@class='second']");
+            $node = $nodeList->item(0);
+            var_dump($node);
+            die();
+            $params['dental_practices'] = $node->nodeValue;
+        }
         return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations()]);
     }
 }

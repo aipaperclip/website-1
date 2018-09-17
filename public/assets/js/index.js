@@ -731,7 +731,7 @@ if($('body').hasClass('press-center')) {
                             }
                         });
 
-                        $('.bootbox.media-inquries').on('submit', function(event)    {
+                        $('.bootbox.media-inquries form').on('submit', function(event)    {
                             var errors = [];
                             for(var i = 0, len = required_inputs.length; i < len; i+=1) {
                                 if(required_inputs[i] == 'answer')  {
@@ -755,6 +755,10 @@ if($('body').hasClass('press-center')) {
                                         window.location.reload();
                                     }
                                 }
+                            }
+
+                            if(!$('#agree-with-privacy-policy-popup').is(':checked'))   {
+                                errors.push($('#agree-with-privacy-policy-popup').closest('.checkbox-row').attr('data-valid-message'));
                             }
 
                             if(errors.length > 0) {
@@ -865,7 +869,7 @@ function stopMaliciousInspect()  {
         }
     }
 }
-stopMaliciousInspect();
+//stopMaliciousInspect();
 
 function hidePopupOnBackdropClick() {
     $(document).on('click', '.bootbox', function(){

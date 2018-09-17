@@ -276,6 +276,10 @@
         <div class="waiting-for-action">
 
         </div>
+        <div class="popup-row fs-0 checkbox-row" data-valid-message="Please agree with our Privacy Policy.">
+            <div class="inline-block-top checkbox-wrapper"><input type="checkbox" id="agree-with-privacy-policy-popup" aria-required="true"/></div>
+            <label for="agree-with-privacy-policy-popup" class="inline-block-top">{!! $footer_data[2]['html'] !!}</label>
+        </div>
         <div class="popup-row submit text-center">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <input type="submit" value="SEND" class="white-blue-rounded-btn"/>
