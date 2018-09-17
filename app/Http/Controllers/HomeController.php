@@ -19,6 +19,7 @@ class HomeController extends Controller
         $url = 'https://reviews.dentacoin.com/';
         header('Content-type: text/plain');
         $html = file_get_contents($url);
+        print_r($html);
         $sep1 = strpos($html, '<b class="second">');
         var_dump($sep1);
         die();
