@@ -17,7 +17,6 @@ class HomeController extends Controller
         $params = ['applications' => $this->getApplications(), 'testimonials' => $this->getFeaturedTestimonials(), 'publications' => $this->getPublications(), 'latest_blog_articles' => $latest_blog_articles, 'exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'wallets' => (new AvailableBuyingOptionsController())->getWallets()];
         $url = 'https://reviews.dentacoin.com/';
         $html = file_get_contents($url);
-        var_dump($html);
         $sep1 = explode('<b class="second">', $html);
         $set2 = explode("</b>", $sep1[1]);
         var_dump($set2);die();
