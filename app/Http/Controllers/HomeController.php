@@ -23,6 +23,8 @@ class HomeController extends Controller
         header('Content-type: text/html');
 
         $params['dental_practices'] = substr($html, $sep1 + 18, 4);
+        var_dump($params['dental_practices']);
+        die();
 
         return view("pages/homepage", $params);
     }
