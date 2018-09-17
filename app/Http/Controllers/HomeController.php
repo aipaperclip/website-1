@@ -20,9 +20,9 @@ class HomeController extends Controller
         header('Content-type: text/plain');
         $html = file_get_contents($url);
         $sep1 = explode('<b class="second">', $html);
-        var_dump($sep1);
+        $set2 = explode("</b>", $sep1[0]);
+        var_dump($set2);
         die();
-        $set2 = explode("</b>", $sep1[1]);
         header('Content-type: text/html');
 
         $params['dental_practices'] = $set2[0];
