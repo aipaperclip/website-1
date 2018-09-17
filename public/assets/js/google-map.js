@@ -270,11 +270,15 @@ function initMap(filter) {
         markerCluster = new MarkerClusterer(map);
         var infowindow;
         var markers_arr = [];
-
         if(map_locations.length > 1) {
             for(var i = 0, len = map_locations.length; i < len; i+=1) {
-                if(filter != null && map_locations[i].location_type_id != $('.partner-network-container .filter select option:selected').val())  {
-                    continue;
+                if(!$('body').hasClass('google-map-iframe'))    {
+                    if(filter != null && map_locations[i].location_type_id != $('.partner-network-container .filter select.types option:selected').val())  {
+                        continue;
+                    }
+                    if($('.partner-network-container .filter select.locations option:selected').val() != '' && map_locations[i].id != $('.partner-network-container .filter select.locations option:selected').val())  {
+                        continue;
+                    }
                 }
                 var marker_options = {
                     position: new google.maps.LatLng(map_locations[i].lat, map_locations[i].lng),
@@ -284,6 +288,7 @@ function initMap(filter) {
                     icon: map_locations[i].marker_icon,
                     clinic_name: map_locations[i].clinic_name,
                 };
+
                 if(map_locations[i].clinic_media != undefined)    {
                     marker_options.clinic_media = map_locations[i].clinic_media;
                 }

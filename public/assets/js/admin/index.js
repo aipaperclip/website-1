@@ -75,16 +75,22 @@ function addHTMLEditor(){
 }
 
 //opening media popup with all the images in the DB
-function openMedia(id, close_btn)    {
+function openMedia(id, close_btn, type)    {
     if(id === undefined) {
         id = null;
     }
     if(close_btn === undefined) {
         close_btn = false;
     }
+    if(type === undefined) {
+        type = null;
+    }
     $.ajax({
         type: 'POST',
         url: SITE_URL + '/media/open',
+        data: {
+            'type' : type
+        },
         dataType: 'json',
         success: function (response) {
             if(response.success) {

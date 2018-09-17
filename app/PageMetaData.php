@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageMetaData extends Model
 {
-    //
+    protected function media() {
+        return $this->belongsTo('App\Media');
+    }
 }

@@ -537,21 +537,6 @@ body {
 .padding-bottom-100 {
   padding-bottom-: 100px !important; }
 
-button, input[type='submit'] {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit; }
-  button:focus, input[type='submit']:focus {
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px; }
-
-input[type='file'].hide-input {
-  display: none; }
-
 .fs-0 {
   font-size: 0px !important; }
 
@@ -794,6 +779,21 @@ input[type='file'].hide-input {
 
 .fs-80 {
   font-size: 80px !important; }
+
+button, input[type='submit'] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit; }
+  button:focus, input[type='submit']:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+
+input[type='file'].hide-input {
+  display: none; }
 
 .slick-slider .slick-slide:focus {
   outline: -webkit-focus-ring-color auto 5px; }
@@ -2101,8 +2101,10 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     height: auto;
     padding-left: 0;
     padding-right: 0;
-    padding-bottom: 70px;
-    border-bottom: 2px solid black; }
+    padding-bottom: 70px; }
+  .homepage-container.mobile .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .see-all-publications {
+    border-bottom: 2px solid black;
+    padding-bottom: 50px; }
   .homepage-container.mobile .awards-and-publications .no-gutter-sm-down .publications-slider-wrapper .logo-over-line {
     position: static;
     text-align: center;
@@ -2610,7 +2612,8 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms .title span, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets .title span {
             padding-left: 5px; }
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list {
-          display: none; }
+          display: none;
+          line-height: 20px; }
           .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list li, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list li {
             list-style: disc inside none;
             -webkit-transition: 0.3s;
@@ -2723,7 +2726,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           width: 100%; }
       .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide .headline {
         display: none;
-        padding-top: 10px;
+        padding-top: 5px;
         padding-right: 25px;
         padding-left: 25px;
         text-align: center;
@@ -2747,12 +2750,21 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current {
         border-left: 2px solid black;
         border-right: 2px solid black; }
-        .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .description, .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .btn-container, .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .headline {
+        .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .btn-container, .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .headline {
           display: block;
           font-size: 16px; }
-      @media screen and (min-width: 1399px) {
-        .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide figure img {
-          max-width: 250px; } }
+        .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .description {
+          display: block;
+          font-size: 14px; }
+    @media screen and (max-width: 1450px) {
+      .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide figure img {
+        max-width: 250px; } }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider {
+        height: 300px; } }
+    @media screen and (max-width: 991px) {
+      .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider {
+        height: auto; } }
   .homepage-container .awards-and-publications .publications-slider-wrapper .see-all-publications {
     padding-bottom: 70px; }
 .homepage-container .roadmap .container {
@@ -3073,6 +3085,9 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       .partner-network-container .filter .wrapper .title {
         font-family: 'Calibri-Bold';
         font-size: 20px; }
+      @media screen and (max-width: 767px) {
+        .partner-network-container .filter .wrapper .bootstrap-select.locations {
+          padding-top: 15px; } }
   .partner-network-container .map-canvas {
     position: relative;
     overflow: hidden;

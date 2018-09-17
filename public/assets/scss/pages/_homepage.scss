@@ -384,7 +384,10 @@
                         padding-left: 0;
                         padding-right: 0;
                         padding-bottom: 70px;
+                    }
+                    .see-all-publications {
                         border-bottom: 2px solid black;
+                        padding-bottom: 50px;
                     }
                     .logo-over-line {
                         position: static;
@@ -1011,6 +1014,7 @@
                         }
                         ul.list {
                             display: none;
+                            line-height: 20px;
                             li {
                                 list-style: disc inside none;
                                 @include simple_transition(.3s);
@@ -1163,7 +1167,7 @@
                     }
                     .headline {
                         display: none;
-                        padding-top: 10px;
+                        padding-top: 5px;
                         padding-right: 25px;
                         padding-left: 25px;
                         text-align: center;
@@ -1192,18 +1196,30 @@
                     &.slick-current {
                         border-left: 2px solid black;
                         border-right: 2px solid black;
-                        .description, .btn-container, .headline {
+                        .btn-container, .headline {
                             display: block;
                             font-size: 16px;
                         }
+                        .description {
+                            display: block;
+                            font-size: 14px;
+                        }
                     }
-                    @include breakpoint($lg-up) {
+                }
+                @include breakpoint($max-lgl)   {
+                    .single-slide {
                         figure {
                             img {
                                 max-width: 250px;
                             }
                         }
                     }
+                }
+                @include breakpoint($md-only)   {
+                    height: 300px;
+                }
+                @include breakpoint($sm-down)   {
+                    height: auto;
                 }
             }
             .see-all-publications {

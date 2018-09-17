@@ -3,6 +3,7 @@
         var map_locations = [];
                 @foreach($locations as $location)
         var temp_obj = {
+                'id' : '{{$location->id}}',
                 'address' : '{{$location->address}}',
                 'lat' : '{{$location->lat}}',
                 'lng' : '{{$location->lng}}',

@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 });
 
-$(window).on('beforeunload', function() {
+$(window).on('load', function() {
     //HOMEPAGE
     if($('body').hasClass('home') && !basic.isMobile()) {
         $(window).scrollTop(0);
@@ -611,6 +611,19 @@ if($('body').hasClass('home')) {
             $('.homepage-container .ainitListingPageLinewards-and-publications .publications-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
         }
     });
+
+    function introDentistsNumberCounter()   {
+        if($('.dental_practices').length > 0 && $('.dental_practices').html().trim() != '' && $('.intro b.counter span').length > 0) {
+            $({someValue: 0}).animate({someValue: parseInt($('.dental_practices').html().trim())}, {
+                duration: 5000,
+                easing:'swing', // can be anything
+                step: function() {
+                    $('.intro b.counter span').text(Math.round(this.someValue));
+                }
+            });
+        }
+    }
+    introDentistsNumberCounter();
 }
 
 //TESTIMONIALS
@@ -633,9 +646,22 @@ if($('body').hasClass('partner-network') || $('body').hasClass('google-map-ifram
 
     //filtering google map by location type
     $('.partner-network-container .filter select').on('change', function()  {
-        if($(this).val() != '') {
+        var types_val = '';
+        if($(this).is('.types'))    {
+            types_val = $(this).val();
+        }
+        $('select.locations option').removeClass('hidden');
+        if(types_val != '') {
+            for(var i = 0, len = $('select.locations option').length; i < len; i+=1)   {
+                if($('select.locations option').eq(i).attr('data-type-id') != '' && $('select.locations option').eq(i).attr('data-type-id') != types_val) {
+                    $('select.locations option').eq(i).addClass('hidden');
+                }
+            }
+            $('.selectpicker').selectpicker('refresh');
+            $('.bootstrap-select.locations .dropdown-menu li a.hidden').parent().hide();
             initMap(true);
         }else {
+            $('.selectpicker').selectpicker('refresh');
             initMap();
         }
     });

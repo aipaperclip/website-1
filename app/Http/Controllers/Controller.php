@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Admin\SocialsController;
+use App\Media;
 use App\PageMetaData;
 use App\PagesHtmlSection;
 use Request;
@@ -43,11 +44,21 @@ class Controller extends BaseController
     }
 
     protected function getDbTitles()    {
-        return PagesHtmlSection::where(array('page_id' => $this->getMetaData()->id, 'type' => 'title'))->get()->all();
+        $meta_data = $this->getMetaData();
+        if(!empty($meta_data)) {
+            return PagesHtmlSection::where(array('page_id' => $meta_data->id, 'type' => 'title'))->get()->all();
+        }else {
+            return null;
+        }
     }
 
     protected function getDbSections()    {
-        return PagesHtmlSection::where(array('page_id' => $this->getMetaData()->id, 'type' => 'section'))->get()->all();
+        $meta_data = $this->getMetaData();
+        if(!empty($meta_data)) {
+            return PagesHtmlSection::where(array('page_id' => $this->getMetaData()->id, 'type' => 'section'))->get()->all();
+        }else {
+            return null;
+        }
     }
 
     protected function isMobile()   {

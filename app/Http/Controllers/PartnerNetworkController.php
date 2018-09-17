@@ -34,7 +34,7 @@ class PartnerNetworkController extends Controller
                 }
             }
         }
-        return view('pages/partner-network', ['locations' => $this->getLocations(), 'location_types' => $this->getLocationTypes(), 'list_locations_with_subtypes_types' => $list_locations_with_subtypes_types]);
+        return view('pages/partner-network', ['locations' => $this->getLocations(), 'location_types' => $this->getLocationTypes(), 'locations_select' => $this->getAllLocations(), 'list_locations_with_subtypes_types' => $list_locations_with_subtypes_types]);
     }
 
     public function getLocations()   {
@@ -49,6 +49,10 @@ class PartnerNetworkController extends Controller
 
     protected function getLocationTypes()   {
         return LocationType::all();
+    }
+
+    protected function getAllLocations()   {
+        return MapLocation::all();
     }
 
     protected function getLocationSubtypesForType($id)   {

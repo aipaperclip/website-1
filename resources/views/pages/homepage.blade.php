@@ -1,5 +1,8 @@
 @extends("layout")
 @section("content")
+    @if(!empty($dental_practices))
+        <div class="dental_practices hidden">{{$dental_practices}}</div>
+    @endif
     <div class="homepage-container @if($mobile) mobile @endif">
         <section class="intro fullpage-section one" data-section="one">
             <div class="bg-wrapper">

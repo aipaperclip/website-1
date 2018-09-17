@@ -23,6 +23,12 @@ body {
     }
 }
 
+@for $i from 0 through 80 {
+    .fs-#{$i} {
+        font-size: 0px + $i!important;
+    }
+}
+
 button, input[type='submit'] {
     background: none;
     color: inherit;
@@ -40,13 +46,6 @@ button, input[type='submit'] {
 input[type='file'].hide-input {
     display: none;
 }
-
-@for $i from 0 through 80 {
-    .fs-#{$i} {
-        font-size: 0px + $i!important;
-    }
-}
-
 .slick-slider {
     .slick-slide {
         &:focus {
