@@ -153,14 +153,13 @@ class Controller extends BaseController
             $dom = new \DOMDocument();
             $internalErrors = libxml_use_internal_errors(true);
             $dom->loadhtml($page);
-            var_dump($dom);
             libxml_use_internal_errors($internalErrors);
-            $xpath = new \DomXPath($dom);
-            $nodeList = $xpath->query("//b[@class='second']");
-            $node = $nodeList->item(0);
-            var_dump($nodeList);
-            die();
-            $params['dental_practices'] = $node->nodeValue;
+            $nodeList = $dom->getElementsByTagName("b");
+            foreach($nodeList as $node) {
+                if($node->getAttribute("class") == 'second')    {
+                    $params['dental_practices'] = $node->nodeValue;
+                }
+            }
         }
         return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations()]);
     }
