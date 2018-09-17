@@ -15,11 +15,14 @@ class HomeController extends Controller
     protected function getView()   {
         $latest_blog_articles = DB::connection('mysql2')->select(DB::raw("SELECT `post_title`, `post_name` from dIf_posts WHERE post_status = 'publish' AND post_type = 'post' ORDER BY `post_date` DESC LIMIT 0, 5"));
         $params = ['applications' => $this->getApplications(), 'testimonials' => $this->getFeaturedTestimonials(), 'publications' => $this->getPublications(), 'latest_blog_articles' => $latest_blog_articles, 'exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'wallets' => (new AvailableBuyingOptionsController())->getWallets()];
-        //$url = 'https://reviews.dentacoin.com/';
-        //$html = file_get_contents($url);
-        //$sep1 = explode('<b class="second">', $html);
-        //var_dump($sep1);die()
-        //$set2 = explode("</b>", $sep1[1]);;
+
+        $url = 'https://reviews.dentacoin.com/';
+        $html = file_get_contents($url);
+        $sep1 = explode('<b class="second">', $html);
+        $set2 = explode("</b>", $sep1[1]);
+        header('Content-type: text/html');
+
+        $params['dental_practices'] = $set2[0];
 
         return view("pages/homepage", $params);
     }
