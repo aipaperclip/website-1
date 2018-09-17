@@ -20,6 +20,8 @@ class HomeController extends Controller
         header('Content-type: text/plain');
         $html = file_get_contents($url);
         $sep1 = strpos($html, '<b class="second">');
+        var_dump($sep1);
+        die();
         header('Content-type: text/html');
 
         $params['dental_practices'] = substr($html, $sep1 + 18, 4);
