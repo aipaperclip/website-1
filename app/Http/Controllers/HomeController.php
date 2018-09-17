@@ -18,6 +18,8 @@ class HomeController extends Controller
         $url = 'https://reviews.dentacoin.com/';
         $html = file_get_contents($url);
         preg_match_all('/[^>]class=["\']second[\'"]*>(.*?)<\//', $html, $matches,PREG_PATTERN_ORDER);
+        var_dump($matches);
+        die();
         $params['dental_practices'] = $matches[1][0];
 
         return view("pages/homepage", $params);
