@@ -25,6 +25,8 @@ class HomeController extends Controller
             $xpath = new \DomXPath($dom);
             $nodeList = $xpath->query("//b[@class='second']");
             $node = $nodeList->item(0);
+            var_dump($node);
+            die();
             $params['dental_practices'] = $node->nodeValue;
         }
         return view("pages/homepage", $params);
