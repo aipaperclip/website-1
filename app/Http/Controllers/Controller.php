@@ -147,22 +147,6 @@ class Controller extends BaseController
     }
 
     protected function getGoogleMapIframe() {
-        $url = 'https://reviews.dentacoin.com/';
-        $page = @file_get_contents($url);
-        if($page) {
-            $dom = new \DOMDocument();
-            @$dom->loadhtml($page);
-            var_dump($dom);
-            $nodeList = $dom->getElementsByTagName('b');
-            var_dump($nodeList);
-            foreach($nodeList as $node) {
-                if($node->getAttribute('class') == 'second')    {
-                    var_dump($node->nodeValue);
-                    die();
-                }
-            }
-            die();
-        }
         return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations()]);
     }
 }

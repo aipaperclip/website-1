@@ -869,7 +869,7 @@ function stopMaliciousInspect()  {
         }
     }
 }
-//stopMaliciousInspect();
+stopMaliciousInspect();
 
 function hidePopupOnBackdropClick() {
     $(document).on('click', '.bootbox', function(){
