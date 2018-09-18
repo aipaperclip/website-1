@@ -1,12 +1,12 @@
 .partner-network-container {
     padding-top: 30px;
     .section-title {
-        padding-bottom: 20px;
+        padding-bottom: 30px;
     }
     .filter {
         padding-bottom: 40px;
         .wrapper {
-            max-width: 250px;
+            max-width: 300px;
             width: 90%;
             margin: 0 auto;
             text-align: left;
@@ -14,10 +14,8 @@
                 font-family: 'Calibri-Bold';
                 font-size: 20px;
             }
-            @include breakpoint($xs)    {
-                .bootstrap-select.locations {
-                    padding-top: 15px;
-                }
+            .bootstrap-select.locations {
+                padding-top: 15px;
             }
         }
     }
@@ -31,9 +29,10 @@
         padding-bottom: 100px;
         .section-title {
             padding-top: 30px;
+            text-align: left;
         }
         .section-subtitle {
-            font-size: 30px;
+            font-size: 26px;
             padding-top: 8px;
             padding-bottom: 8px;
             border-bottom: 1px solid $light_gray;
@@ -81,6 +80,12 @@
                     }
                 }
             }
+        }
+        .single-type {
+            &:first-child {
+                padding-top: 0;
+            }
+            padding-top: 50px;
         }
     }
     @include breakpoint($xs)    {

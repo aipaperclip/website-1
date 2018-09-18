@@ -69,13 +69,50 @@ function initDataTable()    {
 function addHTMLEditor(){
     if($('.ckeditor-init').length > 0)   {
         $('.ckeditor-init').each(function() {
-            CKEDITOR.replace($(this).attr('id'));
+            var options = $.extend({
+                    height: 200,
+                    allowedContent: true,
+                    disallowedContent: 'script',
+                    contentsCss : ['/dist/css/front-libs-style.css']
+                }, {on: {
+                        pluginsLoaded: function() {
+                            var editor = this,
+                                config = editor.config;
+                            config.removeButtons = 'Image';
+
+                            //registering command to call the callery
+                            editor.addCommand("openGalleryCommand", {
+                                exec:function() {
+                                    openMedia(null, null, null, editor);
+                                }
+                            });
+
+                            //adding button to the ckeditor which interrupts with command
+                            editor.ui.addButton("GalleryButton", {
+                                label: "Gallery",
+                                command: "openGalleryCommand",
+                                toolbar: "insert",
+                                icon: "/assets/images/logo.svg"
+                            });
+                        }, instanceReady: function() {
+                            // Use line breaks for block elements, tables, and lists.
+                            var dtd = CKEDITOR.dtd;
+                            for ( var e in CKEDITOR.tools.extend( {}, dtd.$nonBodyContent, dtd.$block, dtd.$listItem, dtd.$tableContent ) ) {
+                                this.dataProcessor.writer.setRules( e, {
+                                    indent: true,
+                                });
+                            }
+                        }
+                    }},
+                options);
+            CKEDITOR.replace($(this).attr('id'), options);
         });
     }
 }
 
 //opening media popup with all the images in the DB
-function openMedia(id, close_btn, type)    {
+function openMedia(id, close_btn, type, editor)    {
+    var data = {};
     if(id === undefined) {
         id = null;
     }
@@ -84,13 +121,16 @@ function openMedia(id, close_btn, type)    {
     }
     if(type === undefined) {
         type = null;
+    }else {
+        data['type'] = type;
+    }
+    if(editor === undefined) {
+        editor = null;
     }
     $.ajax({
         type: 'POST',
         url: SITE_URL + '/media/open',
-        data: {
-            'type' : type
-        },
+        data: data,
         dataType: 'json',
         success: function (response) {
             if(response.success) {
@@ -98,37 +138,46 @@ function openMedia(id, close_btn, type)    {
                 initDataTable();
                 $('table.table.table-without-reorder.media-table').attr('data-id-in-action', id).attr('data-close-btn', close_btn);
                 saveImageAltsEvent();
-                useMediaEvent(id, close_btn, type);
+                useMediaEvent(id, close_btn, editor);
             }
         }
     });
 }
 
 //on click append image to post before saving the post
-function useMediaEvent(id, close_btn, type) {
+function useMediaEvent(id, close_btn, editor) {
     $('.media-popup .use-media').click(function()   {
-        if(type == 'file')  {
-            if(id != null)	{
-                $('.media[data-id="'+id+'"] .image-visualization').html('<a href="'+$(this).closest('tr').attr('data-src')+'">'+$(this).closest('tr').attr('data-src')+'</a>');
-                $('.media[data-id="'+id+'"] input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
-                $('.media[data-id="'+id+'"] input.hidden-input-url').val($(this).closest('tr').attr('data-src'));
-            }else {
-                $('.image-visualization').html('<a href="'+$(this).closest('tr').attr('data-src')+'">'+$(this).closest('tr').attr('data-src')+'</a>');
-                $('input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
-                $('input.hidden-input-url').val($(this).closest('tr').attr('data-src'));
+        var type = $(this).attr('data-type');
+        if(editor != null)  {
+            if(type == 'file') {
+                editor.insertHtml('<a href="'+$(this).closest('tr').attr('data-src')+'">'+$(this).closest('tr').attr('data-src')+'</a>');
+            }else if(type == 'image')   {
+                editor.insertHtml('<img class="small-image" src="'+$(this).closest('tr').attr('data-src')+'"/>');
             }
-        }else if(type == 'image')    {
-            if(id != null)	{
-                $('.media[data-id="'+id+'"] .image-visualization').html('<img class="small-image" src="'+$(this).closest('tr').attr('data-src')+'"/>');
-                $('.media[data-id="'+id+'"] input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
-            }else {
-                $('.image-visualization').html('<img class="small-image" src="'+$(this).closest('tr').attr('data-src')+'"/>');
-                $('input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
+        }else {
+            if(type == 'file')  {
+                if(id != null)	{
+                    $('.media[data-id="'+id+'"] .image-visualization').html('<a href="'+$(this).closest('tr').attr('data-src')+'">'+$(this).closest('tr').attr('data-src')+'</a>');
+                    $('.media[data-id="'+id+'"] input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
+                    $('.media[data-id="'+id+'"] input.hidden-input-url').val($(this).closest('tr').attr('data-src'));
+                }else {
+                    $('.image-visualization').html('<a href="'+$(this).closest('tr').attr('data-src')+'">'+$(this).closest('tr').attr('data-src')+'</a>');
+                    $('input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
+                    $('input.hidden-input-url').val($(this).closest('tr').attr('data-src'));
+                }
+            }else if(type == 'image')    {
+                if(id != null)	{
+                    $('.media[data-id="'+id+'"] .image-visualization').html('<img class="small-image" src="'+$(this).closest('tr').attr('data-src')+'"/>');
+                    $('.media[data-id="'+id+'"] input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
+                }else {
+                    $('.image-visualization').html('<img class="small-image" src="'+$(this).closest('tr').attr('data-src')+'"/>');
+                    $('input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
+                }
             }
-        }
-        if(close_btn) {
-            $('.image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
-            removeImage();
+            if(close_btn) {
+                $('.image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
+                removeImage();
+            }
         }
         basic.closeDialog();
     });

@@ -613,8 +613,8 @@ if($('body').hasClass('home')) {
     });
 
     function introDentistsNumberCounter()   {
-        if($('.dental_practices').length > 0 && $('.dental_practices').html().trim() != '' && $('.intro b.counter span').length > 0) {
-            $({someValue: 0}).animate({someValue: parseInt($('.dental_practices').html().trim())}, {
+        if($('.intro b.counter span').length > 0) {
+            $({someValue: 0}).animate({someValue: parseInt($('.intro b.counter').attr('data-number'))}, {
                 duration: 5000,
                 easing:'swing', // can be anything
                 step: function() {

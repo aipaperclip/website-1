@@ -6,20 +6,20 @@
                 <h1 class="col-xs-12 section-title">{{ $meta_data->page_title }}</h1>
             </div>
             <div class="row filter">
-                <div class="col-xs-12 col-sm-6 text-center">
+                <div class="col-xs-12 text-center">
                     <div class="wrapper">
                         <select class="selectpicker types" data-live-search="true">
-                            <option value="">Show All Types</option>
+                            <option value="">Show All Partners</option>
                             @foreach($location_types as $location_type)
                                 <option value="{{$location_type->id}}">{{$location_type->name}}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 text-center">
+                <div class="col-xs-12 text-center">
                     <div class="wrapper">
                         <select class="selectpicker locations" data-live-search="true">
-                            <option value="">Show All Locations</option>
+                            <option value="">Search by Name or Location</option>
                             @foreach($locations_select as $location)
                                 <option value="{{$location->id}}" data-type-id="{{$location->type_id}}">{{$location->address}}</option>
                             @endforeach
