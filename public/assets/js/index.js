@@ -614,20 +614,20 @@ if($('body').hasClass('home')) {
 
     function introDentistsNumberCounter()   {
         if($('.intro b.counter span').length > 0) {
-            $({someValue: 0}).animate({someValue: parseInt($('.intro b.counter').attr('data-number'))}, {
+            $('.intro b.counter span').prop('Counter', 0).animate({
+                Counter: parseInt($('.intro b.counter').attr('data-number'))
+            }, {
                 duration: 5000,
-                easing:'swing', // can be anything
-                step: function() {
-                    $('.intro b.counter span').text(Math.round(this.someValue));
+                easing: 'swing',
+                step: function(now) {
+                    $(this).text(Math.ceil(now));
                 }
             });
         }
     }
     introDentistsNumberCounter();
-}
-
-//TESTIMONIALS
-if($('body').hasClass('testimonials')) {
+}else if($('body').hasClass('testimonials')) {
+    //TESTIMONIALS
     //load random default avatar for testimonial givers without avatar
     var testimonial_icons_listing_page = ['avatar-icon-1.svg', 'avatar-icon-2.svg'];
     for(var i = 0; i < $('.list .single .image.no-avatar').length; i+=1)  {
@@ -638,10 +638,8 @@ if($('body').hasClass('testimonials')) {
 
     //LINE GOING UNDER TESTIMONIAL AVATARS
     initListingPageLine();
-}
-
-//PARTNER NETWORK
-if($('body').hasClass('partner-network') || $('body').hasClass('google-map-iframe')) {
+}else if($('body').hasClass('partner-network') || $('body').hasClass('google-map-iframe')) {
+    //PARTNER NETWORK
     initMap();
 
     //filtering google map by location type
@@ -684,10 +682,9 @@ if($('body').hasClass('partner-network') || $('body').hasClass('google-map-ifram
             $('.partner-network-container .list-with-locations .subtype-title').removeClass('opened').find('i').removeClass('active');
         }
     });
-}
+}else if($('body').hasClass('press-center')) {
+    //PRESS CENTER
 
-//PRESS CENTER
-if($('body').hasClass('press-center')) {
     initListingPageLine();
 
     if($('.open-form').length > 0)  {
@@ -775,6 +772,35 @@ if($('body').hasClass('press-center')) {
             });
         });
     }
+}else if($('body').hasClass('team')) {
+    //TEAM
+
+    //init slider for advisors
+    $('.team-container .advisors .advisors-slider').slick({
+        slidesToShow: 3,
+        autoplay: true,
+        autoplaySpeed: 8000,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2
+                }
+            }, {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    adaptiveHeight: true
+                }
+            }
+        ]
+    });
+
+    //bind click event for show more advisors
+    $('.team-container .more-advisors .read-more a').click(function()   {
+        $(this).closest('.more-advisors').find('.list').slideDown(300);
+        $(this).closest('.read-more').slideUp(300);
+    });
 }
 
 function styleContactFormUploadBtn()    {

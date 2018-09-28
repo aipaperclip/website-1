@@ -1,3 +1,11 @@
+body.home {
+    @include breakpoint($xs)    {
+        .modal-backdrop.in {
+            background-color: white;
+            opacity: 1;
+        }
+    }
+}
 .homepage-container {
     .fullpage-section {
         height: 100vh;

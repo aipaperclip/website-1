@@ -335,6 +335,9 @@ body.testimonials, body.press-center {
 }
 
 .bootbox {
+    .close {
+        opacity: .5;
+    }
     .bootbox-close-button {
         font-size: 28px;
         margin-top: -5px !important;
@@ -430,8 +433,11 @@ body.testimonials, body.press-center {
             font-size: 32px;
         }
         &.application-popup {
+            text-align: center;
             .modal-dialog {
                 .modal-content {
+                    border: 0;
+                    @include box-shadow(none);
                     @include rounded(6px);
                 }
                 .container-fluid {
@@ -439,6 +445,12 @@ body.testimonials, body.press-center {
                     padding-bottom: 20px;
                     .content {
                         padding: 0;
+                        .logo {
+                            margin: 0 auto;
+                        }
+                        .description {
+                            text-align: left;
+                        }
                     }
                     .gif {
                         display: none;
@@ -574,5 +586,42 @@ body.testimonials, body.press-center {
                 border: 0;
             }
         }
+    }
+}
+
+.slider-with-arrows {
+    .slick-prev {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: url(/assets/images/left-arrow.png);
+        background-size: auto 100%;
+        z-index: 3;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        display: block;
+        font-size: 0;
+        border: 0;
+        cursor: pointer;
+    }
+    .slick-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        background: url(/assets/images/right-arrow.png);
+        background-size: auto 100%;
+        z-index: 3;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        display: block;
+        font-size: 0;
+        border: 0;
+        cursor: pointer;
     }
 }

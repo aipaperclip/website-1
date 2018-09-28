@@ -57,6 +57,26 @@
     color: black;
     background-color: white; }
 
+.black-white-btn {
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  padding: 6px 15px;
+  font-weight: bold;
+  border: 2px solid black;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .black-white-btn:hover {
+    color: white;
+    background-color: black; }
+
 .white-blue-btn {
   background-color: #679dca;
   color: white;
@@ -883,5 +903,8 @@ body.add-location select[name="subtype"] option, body.add-location select[name="
     padding-bottom: 15px; }
 .media-container .sorting_1 {
   cursor: auto; }
+
+.media-table .btn {
+  margin-top: 5px; }
 
 /*# sourceMappingURL=admin.css.map */

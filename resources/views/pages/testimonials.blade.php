@@ -13,7 +13,7 @@
                     @php($i = $i + 1)
                     <article class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 single fs-0">
                         @if($first)
-                            <div class="mobile-vertical-line-30"></div>
+                            <div class="desktop mobile-vertical-line-30"></div>
                         @endif
                         <figure class="inline-block-top image @if(empty($testimonial->media)) no-avatar @endif" @if(!empty($testimonial->media)) itemscope="" itemtype="http://schema.org/ImageObject" @endif>
                             @if(!empty($testimonial->media))

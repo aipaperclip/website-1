@@ -1,0 +1,220 @@
+.team-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    .team {
+        .list {
+            padding-top: 50px;
+            padding-bottom: 25px;
+            .single {
+                padding-bottom: 20px;
+                .image-and-socials {
+                    width: 150px;
+                    figure {
+                        img {
+                            border: 3px solid black;
+                            @include rounded(50%);
+                        }
+                    }
+                    .socials {
+                        text-align: center;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        a {
+                            font-size: 20px;
+                            color: $light_blue;
+                            padding: 0 3px;
+                        }
+                    }
+                }
+                .content {
+                    width: calc(100% - 150px);
+                    font-size: 16px;
+                    padding-left: 25px;
+                    .name {
+                        font-family: 'Calibri-Bold';
+                        font-size: 24px;
+                        color: $dark_gray;
+                    }
+                    .position {
+                        color: $dark_gray;
+                        font-family: 'OpenSans-SemiBold';
+                    }
+                    .separator {
+                        height: 1px;
+                        background-color: #d7d7d7;
+                        width: 150px;
+                        display: block;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                    }
+                }
+                .mobile.mobile-vertical-line-50 {
+                    display: none;
+                }
+                &:last-child {
+                    .image-and-socials {
+                        .desktop.mobile-vertical-line-50 {
+                            display: none;
+                        }
+                    }
+                    .mobile.mobile-vertical-line-50 {
+                        display: none;
+                    }
+                }
+            }
+        }
+        @include breakpoint($xs)    {
+            .list {
+                padding-top: 30px;
+                .single {
+                    text-align: center;
+                    .image-and-socials {
+                        width: 100%;
+                        .desktop.mobile-vertical-line-50 {
+                            display: none;
+                        }
+                    }
+                    .content {
+                        padding-left: 0;
+                        width: 100%;
+                        .name {
+                            font-size: 20px;
+                        }
+                        .position {
+                            font-size: 14px;
+                        }
+                        .separator {
+                            margin: 10px auto;
+                        }
+                        .description {
+                            padding-bottom: 30px;
+                        }
+                    }
+                    .mobile.mobile-vertical-line-50 {
+                        display: block;
+                    }
+                    &:last-child {
+                        .content {
+                            .description {
+                                padding-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .advisors {
+        padding-top: 45px;
+        border-top: 1px solid #777;
+        .advisors-slider {
+            padding-top: 50px;
+            padding-bottom: 50px;
+            .single {
+                text-align: center;
+                padding-left: 30px;
+                padding-right: 30px;
+                figure {
+                    width: 150px;
+                    margin: 0 auto;
+                    img {
+                        border: 3px solid black;
+                        @include rounded(50%);
+                    }
+                }
+                .name {
+                    font-family: 'Calibri-Bold';
+                    font-size: 24px;
+                    color: $dark_gray;
+                }
+                .position {
+                    color: $dark_gray;
+                    font-family: 'OpenSans-SemiBold';
+                }
+                .separator {
+                    height: 1px;
+                    background-color: #d7d7d7;
+                    width: 150px;
+                    margin: 0 auto;
+                    display: block;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+                .socials {
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    a {
+                        font-size: 20px;
+                        color: $light_blue;
+                        padding: 0 3px;
+                    }
+                }
+            }
+        }
+    }
+    .more-advisors {
+        .read-more {
+            padding-bottom: 30px;
+            .black-line {
+                height: 3px;
+                background-color: black;
+                position: relative;
+                a.text {
+                    font-family: 'Calibri-Bold';
+                    font-size: 24px;
+                    color: $dark_gray;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    background-color: white;
+                    @include vertical-horizontal-align(absolute);
+                }
+            }
+        }
+        .list {
+            display: none;
+            .single {
+                text-align: center;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                figure {
+                    width: 70px;
+                    margin: 0 auto;
+                    img {
+                        border: 3px solid black;
+                        @include rounded(50%);
+                    }
+                }
+                .name {
+                    font-family: 'Calibri-Bold';
+                    font-size: 24px;
+                    color: $dark_gray;
+                }
+                .position {
+                    color: $dark_gray;
+                    font-family: 'OpenSans-SemiBold';
+                }
+            }
+        }
+        @include breakpoint($xs)    {
+            .read-more {
+                .black-line {
+                    background-color: white;
+                    a.text {
+                        background-color: white;
+                        color: black;
+                        font-size: 20px;
+                        padding: 6px 15px;
+                        font-weight: bold;
+                        border: 2px solid black;
+                        @include rounded(4px);
+                        @include simple_transition(.3s);
+                        &:hover {
+                            color: white;
+                            background-color: black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
