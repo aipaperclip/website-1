@@ -91,13 +91,19 @@ class Controller extends BaseController
 
         $sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
         //$sitemap->add(URL::to('publications'), '2012-08-25T20:10:00+02:00', '0.6', 'weekly');
-        $sitemap->add(URL::to('privacy-policy'), '2012-08-25T20:10:00+02:00', '0.4', 'monthly');
-        $sitemap->add(URL::to('changelly'), '2012-08-25T20:10:00+02:00', '1.0', 'monthly');
-        $sitemap->add(URL::to('partner-network'), '2012-08-25T20:10:00+02:00', '0.8', 'daily');
+        $sitemap->add(URL::to('privacy-policy'), '2017-02-25T20:10:00+02:00', '0.4', 'monthly');
+        $sitemap->add(URL::to('changelly'), '2017-08-25T20:10:00+02:00', '1.0', 'monthly');
+        $sitemap->add(URL::to('partner-network'), '2017-08-25T20:10:00+02:00', '0.8', 'daily');
+        $sitemap->add(URL::to('team'), '2017-08-25T20:10:00+02:00', '0.9', 'weekly');
 
         //getting all pagination pages for testimonials
         for($i = 1, $length = (new UserExpressionsController())->getPagesCount(); $i <= $length; $i+=1) {
-            $sitemap->add(URL::to('testimonials/page/'.$i), '2012-08-25T20:10:00+02:00', '0.8', 'daily');
+            $sitemap->add(URL::to('testimonials/page/'.$i), '2018-08-25T20:10:00+02:00', '0.7', 'daily');
+        }
+
+        //getting all pagination pages for press-center
+        for($i = 1, $length = (new PressCenterController())->getPagesCount(); $i <= $length; $i+=1) {
+            $sitemap->add(URL::to('press-center/page/'.$i), '2018-08-25T20:10:00+02:00', '0.7', 'daily');
         }
 
         // get all posts from db
