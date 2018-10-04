@@ -82,7 +82,7 @@
         <div class="container">
             @if(isset($footer_data))
                 <div class="row">
-                    <h2 class="col-xs-12 section-title">{{$footer_data[0]['html']}}</h2>
+                    <h2 class="col-xs-12 section-title">{!! $footer_data[0]['html'] !!}</h2>
                 </div>
                 @include('partials.newsletter-registration')
             @endif
