@@ -1828,7 +1828,7 @@ footer {
       padding-top: 10px; }
       footer .newsletter-register form .form-row input[type='email'] {
         width: 70%;
-        font-size: 20px;
+        font-size: 16px;
         padding: 5px 10px;
         border-top: 1px solid #aaaaaa;
         border-bottom: 1px solid #aaaaaa;
@@ -1840,7 +1840,7 @@ footer {
         border-radius: 4px 0 0 4px; }
       footer .newsletter-register form .form-row input[type='submit'] {
         width: 30%;
-        font-size: 20px;
+        font-size: 16px;
         background-color: #aaaaaa;
         border: 1px solid #aaaaaa;
         -webkit-border-radius: 0 4px 4px 0;
