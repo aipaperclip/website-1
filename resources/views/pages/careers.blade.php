@@ -4,7 +4,7 @@
     <section class="careers-container">
         <div class="container">
             <div class="row">
-                <h1 class="col-xs-12 section-title">DENTACOIN CAREERS</h1>
+                <h1 class="col-xs-12 section-title">{{ $meta_data->page_title }}</h1>
             </div>
             <div class="row join-our-team fs-0">
                 <div class="col-xs-12 col-sm-6 inline-block image">
@@ -15,9 +15,9 @@
                     </figure>
                 </div>
                 <div class="col-xs-12 col-sm-6 inline-block text">
-                    <div class="section-subtitle">Join Our Team</div>
-                    <div class="description">Eager to join Dentacoin Foundation in its quest to reshape the global dental industry? In line with the fast global expansion of our project, we are looking for bright individuals who are fascinated by new technologies, able to work in a demanding work environment and passionate to deliver solutions with a global impact!</div>
-                    <div class="btn-container"><a href="javascript:void(0)" class="white-blue-rounded-btn">SEE OPEN JOB POSITIONS</a></div>
+                    <div class="section-subtitle">{{$titles[0]->html}}</div>
+                    <div class="description">{!! $sections[0]->html !!}</div>
+                    <div class="btn-container"><a href="javascript:void(0)" class="white-blue-rounded-btn">{{$sections[1]->html}}</a></div>
                 </div>
             </div>
             @include('partials.benefits')
@@ -31,7 +31,7 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <h1 class="col-xs-12 section-title">OPEN JOB POSITIONS</h1>
+                    <h1 class="col-xs-12 section-title">{{$titles[1]->html}}</h1>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
                         </div>
                     @endforeach
                 @else
-                    <div class="col-xs-12 no-results">No open positions at this moment.</div>
+                    <div class="col-xs-12 no-results">{!! $sections[2]->html !!}</div>
                 @endif
             </div>
         </div>

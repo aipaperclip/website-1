@@ -45,7 +45,7 @@
             </div>
             <div class="container skills-list">
                 <div class="row">
-                    <h2 class="col-xs-12 section-title">SKILLS NEEDED</h2>
+                    <h2 class="col-xs-12 section-title">{{$titles[2]->html}}</h2>
                 </div>
                 <div class="row list">
                     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 col-xs-12">
@@ -80,7 +80,7 @@
         </div>
         <div class="apply-for-position container">
             <div class="row title">
-                <h2 class="col-xs-12 section-title">APPLY FOR THIS POSITION</h2>
+                <h2 class="col-xs-12 section-title">{{$titles[3]->html}}</h2>
             </div>
             <div class="row form">
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
@@ -122,7 +122,7 @@
                             <input type="text" name="portfolio" placeholder="Portfolio link" maxlength="500"/>
                         </div>
                         <div class="form-row privacy-policy" data-valid-message="Please agree with our Privacy Policy.">
-                            <input type="checkbox" id="privacy-policy"/><label for="privacy-policy">I have read and agree with <a href="{{route('privacy-policy')}}" target="_blank">Privacy Policy</a></label>
+                            <input type="checkbox" id="privacy-policy"/><label for="privacy-policy">{!! $sections[3]->html !!}</label>
                         </div>
                         <div class="form-row text-center submit">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">

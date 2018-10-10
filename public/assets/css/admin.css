@@ -118,6 +118,30 @@
     .white-blue-rounded-btn, input[type='submit'].white-blue-rounded-btn {
       padding: 10px 32px; } }
 
+.blue-white-rounded-btn, input[type='submit'].blue-white-rounded-btn {
+  background-color: white;
+  color: #679dca;
+  border: 2px solid #679dca;
+  font-size: 16px;
+  padding: 8px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .blue-white-rounded-btn:hover, input[type='submit'].blue-white-rounded-btn:hover {
+    color: white;
+    background-color: #679dca; }
+  @media screen and (max-width: 991px) {
+    .blue-white-rounded-btn, input[type='submit'].blue-white-rounded-btn {
+      padding: 10px 32px; } }
+
 .section-title {
   color: #333333;
   font-size: 35px;

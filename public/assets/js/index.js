@@ -883,7 +883,11 @@ function styleContactFormUploadBtn(load_filename_to_other_el)    {
         var this_file_btn_parent = jQuery(this);
         var current_form_id = this_file_btn_parent.prop("id");
         jQuery(this).find("input").attr("id","file-"+current_form_id);
-        jQuery(this).find("button").append("<label for='file-"+current_form_id+"'><span class='white-blue-rounded-btn'>"+this_file_btn_parent.attr('data-label')+"</span></label>");
+        if(load_filename_to_other_el){
+            jQuery(this).find("button").append("<label for='file-"+current_form_id+"'><span class='blue-white-rounded-btn'>"+this_file_btn_parent.attr('data-label')+"</span></label>");
+        }else {
+            jQuery(this).find("button").append("<label for='file-"+current_form_id+"'><span class='white-blue-rounded-btn'>"+this_file_btn_parent.attr('data-label')+"</span></label>");
+        }
 
         var inputs = document.querySelectorAll('.inputfile');
         Array.prototype.forEach.call( inputs, function( input ) {

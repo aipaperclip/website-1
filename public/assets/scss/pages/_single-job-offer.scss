@@ -64,6 +64,7 @@
     .back-btn {
         padding-bottom: 15px;
         font-size: 16px;
+        padding-left: 30px;
         a {
             &:hover {
                 text-decoration: underline;
@@ -109,6 +110,7 @@
             text-align: right;
             img {
                 width: 70%;
+                opacity: .1;
             }
         }
         .job-description {
@@ -125,6 +127,7 @@
                     vertical-align: middle;
                     img {
                         width: 14px;
+                        opacity: 1;
                     }
                 }
                 span {
@@ -134,10 +137,12 @@
             }
             .remote-work {
                 padding-bottom: 25px;
+                padding-top: 5px;
             }
             .description {
                 font-size: 16px;
                 line-height: 24px;
+                font-weight: 300;
             }
         }
     }
@@ -273,6 +278,7 @@
     @include breakpoint($sm-only)   {
         .back-btn {
             font-size: 22px;
+            padding-left: 0;
         }
         .job-offer-info {
             figure {
@@ -285,6 +291,7 @@
     @include breakpoint($xs)   {
         .back-btn {
             font-size: 22px;
+            padding-left: 0;
         }
         .job-offer-info {
             figure {
@@ -323,6 +330,7 @@
     @include breakpoint($xxs)    {
         .back-btn {
             font-size: 22px;
+            padding-left: 0;
         }
         .apply-for-position {
             .form {

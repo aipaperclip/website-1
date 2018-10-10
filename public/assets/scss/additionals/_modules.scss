@@ -62,6 +62,25 @@
     }
 }
 
+.blue-white-rounded-btn, input[type='submit'].blue-white-rounded-btn {
+    background-color: white;
+    color: $light_blue;
+    border: 2px solid $light_blue;
+    font-size: 16px;
+    padding: 8px 24px; 
+    font-weight: bold;
+    cursor: pointer;
+    @include rounded(4px);
+    @include simple_transition(.3s);
+    &:hover {
+        color: white;
+        background-color: $light_blue;
+    }
+    @include breakpoint($sm-down)   {
+        padding: 10px 32px;
+    }
+}
+
 .section-title {
     color: $dark_gray;
     font-size: 35px;
