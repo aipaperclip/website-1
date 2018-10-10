@@ -14,8 +14,6 @@
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
     Route::get('/', 'HomeController@getView')->name('home');
 
-//Route::get('publications', 'HomeController@getPublications')->name('publications');
-
     Route::get('privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
 
     Route::get('press-center/page/{page}', 'PressCenterController@getView')->name('press-center');
@@ -32,7 +30,54 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('team', 'TeamMembersController@getView')->name('team');
 
+    Route::get('careers/{slug?}', function($slug = null)    {
+        if(empty($slug))   {
+            return (new \App\Http\Controllers\CareersController())->getView();
+        }else {
+            return (new \App\Http\Controllers\CareersController())->getSingleView($slug);
+        }
+    })->name('careers');
+
+    Route::post('submit-apply-position', 'CareersController@submitApplyPosition')->name('submit-apply-position');
+
     Route::get('sitemap.xml', 'Controller@getSitemap')->name('sitemap');
 
     Route::get('google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
+
+    //redirecting old urls to homepage with popups opening
+    Route::get('dentacare-mobile-app-intro', function() {
+        return Redirect::to('/?application=dentacare-mobile-app-intro');
+    });
+
+    Route::get('trusted-reviews-intro', function() {
+        return Redirect::to('/?application=trusted-reviews-intro');
+    });
+
+    Route::get('trusted-reviews', function() {
+        return Redirect::to('/?application=trusted-reviews-intro');
+    });
+
+    Route::get('dentavox-market-research-intro', function() {
+        return Redirect::to('/?application=dentavox-market-research-intro');
+    });
+
+    Route::get('assurance-intro', function() {
+        return Redirect::to('/?application=assurance-intro');
+    });
+
+    Route::get('health-database-intro', function() {
+        return Redirect::to('/?application=health-database-intro');
+    });
+
+    Route::get('wallet-dapp-intro', function() {
+        return Redirect::to('/?application=wallet-dapp-intro');
+    });
+
+    Route::get('blog-intro', function() {
+        return Redirect::to('/?application=blog-intro');
+    });
+
+    Route::get('partner-network-intro', function() {
+        return Redirect::to('/?application=partner-network-intro');
+    });
 });

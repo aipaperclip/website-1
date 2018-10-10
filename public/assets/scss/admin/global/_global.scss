@@ -253,3 +253,35 @@ body.add-location, body.edit-location {
         }
     }
 }
+
+body.add-job-offer, body.edit-job-offer {
+    .skills-body {
+        .single-skill {
+            padding: 5px 10px;
+            color: #333;
+            font-weight: bold;
+            border: 1px solid #ccc;
+            background: #fafafa;
+            background: -webkit-linear-gradient(top, #fafafa 0%, #eee 100%);
+            background: -moz-linear-gradient(top, #fafafa 0%, #eee 100%);
+            background: linear-gradient(top, #fafafa 0%, #eee 100%);
+            cursor: move;
+            margin-bottom: 5px;
+            font-size: 0;
+            @include rounded(3px);
+            .skill-text {
+                width: calc(100% - 30px);
+                display: inline-block;
+                vertical-align: top;
+                font-size: 13px;
+            }
+            .skill-action {
+                width: 30px;
+                text-align: right;
+                display: inline-block;
+                vertical-align: top;
+                font-size: 14px;
+            }
+        }
+    }
+}

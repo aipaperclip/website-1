@@ -1,5 +1,7 @@
 basic.init();
 
+checkIfCookie();
+
 var intervals_arr = [];
 var stoppers = [];
 const draw_line_interval = 10;
@@ -13,7 +15,7 @@ $(document).ready(function() {
 $(window).on('load', function() {
     //HOMEPAGE
     if($('body').hasClass('home') && !basic.isMobile()) {
-        $(window).scrollTop(0);
+        //$(window).scrollTop(0);
     }
 });
 
@@ -39,6 +41,10 @@ $(window).on('resize', function(){
     //PRESS CENTER
     if($('body').hasClass('press-center')) {
         initListingPageLine();
+    }
+    //CAREERS
+    if($('body.careers.draw-careers-lines').length > 0) {
+        initCareersLines();
     }
 });
 
@@ -491,6 +497,15 @@ if($('body').hasClass('home')) {
         $('.homepage-container .testimonials .below-expressions .show-more').css({'top' : 'calc(50% - '+$('.homepage-container .testimonials .expressions').height()/2+'px)'});
     }
 
+    var current_url = new URL(window.location.href);
+    if(current_url.searchParams.get('application') != null) {
+        scrollToSectionAnimation('two', null, true);
+
+        setTimeout(function()   {
+            $('.dentacoin-ecosystem .single-application figure[data-slug="'+current_url.searchParams.get('application')+'"]').click();
+        }, 500)
+    }
+
     // ===== first section video logic =====
     $('.homepage-container .intro .bg-wrapper .video .play-btn').bind("click", openVideo);
     $('.homepage-container .intro .bg-wrapper .video .video-wrapper .close-video').click(function()   {
@@ -801,9 +816,69 @@ if($('body').hasClass('home')) {
         $(this).closest('.more-advisors').find('.list').slideDown(300);
         $(this).closest('.read-more').slideUp(300);
     });
+}else if($('body.careers.draw-careers-lines').length > 0) {
+    //init lines
+    initCareersLines();
+
+    $('.join-our-team .text .btn-container a').click(function()  {
+        $('html, body').animate({'scrollTop': $('.open-job-positions-title .logo-over-line').offset().top}, 300);
+    });
+}else if($('body.careers').length > 0) {
+    //init buttons style
+    styleContactFormUploadBtn(true);
+
+    var required_inputs = [];
+    for(var i = 0, len = $('.required').length; i < len; i+=1)  {
+        required_inputs.push($('.required').eq(i).attr('name'));
+    }
+
+    //handle apply from submission
+    $('.apply-for-position form').on('submit', function()   {
+        var this_form = $(this);
+        var errors = [];
+        for(var i = 0, len = required_inputs.length; i < len; i+=1) {
+            if($('[name="'+required_inputs[i]+'"]').length > 0) {
+                if($('[name="'+required_inputs[i]+'"]').val().trim() == '') {
+                    errors.push('<strong>'+$('[name="'+required_inputs[i]+'"]').attr('placeholder')+'</strong> is required.');
+                }
+            }else {
+                window.location.reload();
+            }
+        }
+
+        if(!this_form.find('.privacy-policy #privacy-policy').is(':checked'))   {
+            errors.push(this_form.find('.privacy-policy').attr('data-valid-message'));
+        }
+
+        if(errors.length > 0) {
+            event.preventDefault();
+            var errors_html = '';
+            for(var y = 0, len = errors.length; y < len; y+=1)  {
+                errors_html+='<div class="alert alert-danger">'+errors[y]+'</div>';
+            }
+            $('.errors.form-row').html(errors_html);
+        }
+    });
 }
 
-function styleContactFormUploadBtn()    {
+function initCareersLines() {
+    //FIRST LINE
+    $('line.first').attr('x1', $('header .first-dot').offset().left);
+    $('line.first').attr('y1', $('header .first-dot').offset().top);
+    $('line.first').attr('x2', $('.join-our-team .second-dot').offset().left);
+    $('line.first').attr('y2', $('.join-our-team .second-dot').offset().top + $('.join-our-team .second-dot').height() - 1);
+
+    //SECOND LINE
+    $('line.second').attr('x1', $('.join-our-team .second-dot').offset().left);
+    $('line.second').attr('y1', $('.join-our-team .second-dot').offset().top + $('.join-our-team .second-dot').height() - 1);
+    $('line.second').attr('x2', $('.join-our-team .third-dot').offset().left);
+    $('line.second').attr('y2', $('.join-our-team .third-dot').offset().top + $('.join-our-team .third-dot').height() - 1);
+}
+
+function styleContactFormUploadBtn(load_filename_to_other_el)    {
+    if(load_filename_to_other_el === undefined) {
+        load_filename_to_other_el = null;
+    }
     jQuery(".upload-file").each(function(key, form){
         var this_file_btn_parent = jQuery(this);
         var current_form_id = this_file_btn_parent.prop("id");
@@ -822,10 +897,15 @@ function styleContactFormUploadBtn()    {
                 else
                     fileName = e.target.value.split('\\').pop();
 
-                if(fileName)
-                    label.querySelector('span').innerHTML = fileName;
-                else
+                if(fileName) {
+                    if(load_filename_to_other_el)    {
+                        $(this).closest('.form-row').find('.file-name').html('<i class="fa fa-file-text-o" aria-hidden="true"></i>' + fileName);
+                    }else {
+                        label.querySelector('span').innerHTML = fileName;
+                    }
+                }else{
                     label.innerHTML = labelVal;
+                }
             });
             // Firefox bug fix
             input.addEventListener('focus', function(){ input.classList.add('has-focus'); });
@@ -908,3 +988,36 @@ function hidePopupOnBackdropClick() {
     });
 }
 hidePopupOnBackdropClick();
+
+function generateUrl(str)  {
+    var str_arr = str.split("");
+    var cyr = [
+        'Ð°','Ð±','Ð²','Ð³','Ð´','Ðµ','Ñ‘','Ð¶','Ð·','Ð¸','Ð¹','Ðº','Ð»','Ð¼','Ð½','Ð¾','Ð¿',
+        'Ñ€','Ñ','Ñ‚','Ñƒ','Ñ„','Ñ…','Ñ†','Ñ‡','Ñˆ','Ñ‰','ÑŠ','Ñ‹','ÑŒ','Ñ','ÑŽ','Ñ',
+        'Ð','Ð‘','Ð’','Ð“','Ð”','Ð•','Ð','Ð–','Ð—','Ð˜','Ð™','Ðš','Ð›','Ðœ','Ð','Ðž','ÐŸ',
+        'Ð ','Ð¡','Ð¢','Ð£','Ð¤','Ð¥','Ð¦','Ð§','Ð¨','Ð©','Ðª','Ð«','Ð¬','Ð­','Ð®','Ð¯',' '
+    ];
+    var lat = [
+        'a','b','v','g','d','e','io','zh','z','i','y','k','l','m','n','o','p',
+        'r','s','t','u','f','h','ts','ch','sh','sht','a','i','y','e','yu','ya',
+        'A','B','V','G','D','E','Io','Zh','Z','I','Y','K','L','M','N','O','P',
+        'R','S','T','U','F','H','Ts','Ch','Sh','Sht','A','I','Y','e','Yu','Ya','-'
+    ];
+    for(var i = 0; i < str_arr.length; i+=1)  {
+        for(var y = 0; y < cyr.length; y+=1)    {
+            if(str_arr[i] == cyr[y])    {
+                str_arr[i] = lat[y];
+            }
+        }
+    }
+    return str_arr.join("").toLowerCase();
+}
+
+function checkIfCookie()    {
+    if($('.privacy-policy-cookie').length > 0)  {
+        $('.privacy-policy-cookie .accept').click(function()    {
+            basic.cookies.set('privacy_policy', 1);
+            $('.privacy-policy-cookie').hide();
+        });
+    }
+}

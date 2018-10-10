@@ -37,6 +37,7 @@ class Controller extends BaseController
             View::share('socials', $this->getFooterSocials());
             View::share('footer_menu', $this->getFooterMenu());
             View::share('footer_data', $this->getFooterData());
+            View::share('privacy_policy_cookie', $this->checkIfPrivacyPolicyCookie());
         }
     }
 
@@ -72,6 +73,15 @@ class Controller extends BaseController
             return PagesHtmlSection::where(array('page_id' => $this->getMetaData()->id, 'type' => 'section'))->get()->all();
         }else {
             return null;
+        }
+    }
+
+    protected function checkIfPrivacyPolicyCookie()    {
+        $bool = empty($_COOKIE['privacy_policy']);
+        if($bool) {
+            return true;
+        }else {
+            return false;
         }
     }
 

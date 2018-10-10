@@ -599,3 +599,39 @@ if($('.add-edit-menu-element select[name="type"]').length > 0) {
         });
     });
 }
+
+//init job offer slug creation on title type
+if($('body').hasClass('add-job-offer'))    {
+    $('body.add-job-offer input[name="title"]').on('input', function() {
+        $('body.add-job-offer input[name="slug"]').val(generateUrl($(this).val().trim()));
+    });
+
+    initSkillsLogic();
+}
+
+if($('body').hasClass('edit-job-offer'))    {
+    initSkillsLogic();
+}
+
+function initSkillsLogic()  {
+    $('.skills-body').sortable();
+
+    bindSingleSkillActions();
+
+    $('.skills-section .btn-container button').click(function() {
+        if($(this).closest('.btn-container').find('input[type="text"]').val().trim() == '') {
+            alert('Please enter skill in the field.');
+            return false;
+        }else {
+            $('.skills-section .skills-body').append('<div class="single-skill"><div class="skill-text">'+$(this).closest('.btn-container').find('input[type="text"]').val().trim()+'<input type="hidden" name="skills[]" value="'+$(this).closest('.btn-container').find('input[type="text"]').val().trim()+'"/></div><div class="skill-action"><a href="javascript:void(0);" class="remove-skill"><i class="fa fa-times" aria-hidden="true"></i></a></div></div>');
+            bindSingleSkillActions();
+            $(this).closest('.btn-container').find('input[type="text"]').val('');
+        }
+    });
+}
+
+function bindSingleSkillActions()   {
+    $('.skills-body .single-skill .skill-action .remove-skill').click(function()    {
+        $(this).closest('.single-skill').remove();
+    });
+}

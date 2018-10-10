@@ -1,0 +1,142 @@
+.careers-container {
+    padding-bottom: 50px;
+    .section-title {
+        font-size: 44px;
+        padding-bottom: 10px;
+    }
+    .join-our-team {
+        padding-top: 50px;
+        padding-bottom: 70px;
+        .image {
+            text-align: right;
+            padding-right: 50px;
+            .second-dot {
+                position: absolute;
+                bottom: 0;
+                left: 35px;
+            }
+            figure {
+                width: 60%;
+                float: right;
+                position: relative;
+                .third-dot {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+        }
+        .text {
+            padding-left: 50px;
+            padding-bottom: 40px;
+            .description {
+                font-size: 16px;
+                width: 70%;
+                line-height: 24px;
+                padidng-top: 25px;
+                padding-bottom: 35px;
+            }
+        }
+    }
+    .open-job-positions-title {
+        padding-top: 40px;
+        .logo-over-line {
+            position: relative;
+            text-align: center;
+            figure {
+                display: inline-block;
+                padding-left: 20px;
+                padding-right: 20px;
+                background-color: white;
+                img {
+                    width: 40px;
+                }
+            }
+            .border-behind-logo {
+                width: 100%;
+                height: 2px;
+                background-color: black;
+                z-index: -1;
+                @include vertical-align(absolute);
+            }
+        }
+        .section-title {
+            padding-bottom: 60px;
+            padding-top: 20px;
+        }
+    }
+    .open-job-positions {
+        text-align: center;
+        .single {
+            .wrapper {
+                width: 100%;
+                max-width: 200px;
+                margin: 0 auto;
+                padding-bottom: 70px;
+                figure {
+                    figcaption {
+                        padding-top: 15px;
+                        font-size: 20px;
+                    }
+                }
+                .border {
+                    width: 100%;
+                    height: 1px;
+                    background-color: black;
+                    margin-top: 15px;
+                    margin-bottom: 40px;
+                }
+                .btn-container {
+                    a {
+                        padding: 14px 50px;
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+    @include breakpoint($sm-only)   {
+        .join-our-team {
+            .image {
+                padding-right: 15px;
+                figure {
+                    width: 70%;
+                }
+            }
+            .text {
+                padding-left: 15px;
+                .description {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    @include breakpoint($xs)   {
+        padding-top: 20px;
+        padding-bottom: 0;
+        .section-title {
+            font-size: 26px;
+        }
+        .join-our-team {
+            padding-bottom: 0;
+            .image {
+                padding-right: 15px;
+                figure {
+                    width: 60%;
+                    float: none;
+                    margin: 0 auto;
+                }
+            }
+            .text {
+                padding-left: 15px;
+                padding-top: 20px;
+                .section-subtitle, .btn-container {
+                    text-align: center;
+                }
+                .description {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

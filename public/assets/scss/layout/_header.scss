@@ -1,8 +1,18 @@
 header {
     padding-top: 30px;
     .logo-container {
-        img {
-            width: 40px;
+        a {
+            position: relative;
+            .first-dot {
+                display: none;
+                &.careers-dot {
+                    display: block;
+                    @include vertical-horizontal-align(absolute);
+                }
+            }
+            img {
+                width: 40px;
+            }
         }
     }
 }

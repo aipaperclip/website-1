@@ -50,13 +50,13 @@ mix.babel([
     'node_modules/admin-lte/dist/js/app.min.js',
     'node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
     'node_modules/bootstrap-select/dist/js/bootstrap-select.min.js',
+    'public/assets/libs/jquery-ui/jquery-ui.js',
 ], 'public/dist/js/admin-libs-script.js');
 
 mix.scripts([
     'public/assets/js/basic.js',
     'public/assets/js/admin/index.js'
 ], 'public/dist/js/admin-script.js');
-
 
 mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
@@ -66,8 +66,7 @@ mix.styles([
     'node_modules/admin-lte/dist/css/skins/_all-skins.min.css',
     'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
     'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
-    'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
+    'public/assets/libs/jquery-ui/jquery-ui.css',
 ], 'public/dist/css/admin-libs-style.css');*/
-
 /* ===== /ADMIN =====*/
 
