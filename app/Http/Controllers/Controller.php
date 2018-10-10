@@ -99,12 +99,13 @@ class Controller extends BaseController
         //if(!$sitemap->isCached())  {
         // add item to the sitemap (url, date, priority, freq)
 
-        $sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
+        $sitemap->add(URL::to('/'), '2018-08-25T20:10:00+02:00', '1.0', 'daily');
         //$sitemap->add(URL::to('publications'), '2012-08-25T20:10:00+02:00', '0.6', 'weekly');
-        $sitemap->add(URL::to('privacy-policy'), '2017-02-25T20:10:00+02:00', '0.4', 'monthly');
-        $sitemap->add(URL::to('changelly'), '2017-08-25T20:10:00+02:00', '1.0', 'monthly');
-        $sitemap->add(URL::to('partner-network'), '2017-08-25T20:10:00+02:00', '0.8', 'daily');
-        $sitemap->add(URL::to('team'), '2017-08-25T20:10:00+02:00', '0.9', 'weekly');
+        $sitemap->add(URL::to('privacy-policy'), '2018-02-25T20:10:00+02:00', '0.4', 'monthly');
+        $sitemap->add(URL::to('changelly'), '2018-08-25T20:10:00+02:00', '1.0', 'monthly');
+        $sitemap->add(URL::to('partner-network'), '2018-08-25T20:10:00+02:00', '0.8', 'daily');
+        $sitemap->add(URL::to('team'), '2018-09-25T20:10:00+02:00', '0.9', 'weekly');
+        $sitemap->add(URL::to('careers'), '2018-10-10T20:10:00+02:00', '1', 'daily');
 
         //getting all pagination pages for testimonials
         for($i = 1, $length = (new UserExpressionsController())->getPagesCount(); $i <= $length; $i+=1) {
@@ -114,6 +115,11 @@ class Controller extends BaseController
         //getting all pagination pages for press-center
         for($i = 1, $length = (new PressCenterController())->getPagesCount(); $i <= $length; $i+=1) {
             $sitemap->add(URL::to('press-center/page/'.$i), '2018-08-25T20:10:00+02:00', '0.7', 'daily');
+        }
+
+        //getting all pagination pages for press-center
+        foreach((new \App\Http\Controllers\Admin\CareersController())->getAllJobOffers() as $career)    {
+            $sitemap->add(URL::to('careers/'.$career->slug), '2018-10-10T20:10:00+02:00', '0.5', 'weekly');
         }
 
         // get all posts from db

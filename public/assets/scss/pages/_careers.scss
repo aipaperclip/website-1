@@ -67,6 +67,11 @@
     }
     .open-job-positions {
         text-align: center;
+        .no-results {
+            padding-top: 20px;
+            padding-bottom: 50px;
+            font-size: 22px;
+        }
         .single {
             .wrapper {
                 width: 100%;

@@ -37,7 +37,7 @@
         </div>
         <div class="container">
             <div class="row open-job-positions fs-0">
-                @if(!empty($job_offers))
+                @if(sizeof($job_offers) > 0)
                     @foreach($job_offers as $job_offer)
                         <div class="col-xs-12 col-sm-4 single inline-block-top">
                             <div class="wrapper">
@@ -52,6 +52,8 @@
                             </div>
                         </div>
                     @endforeach
+                @else
+                    <div class="col-xs-12 no-results">No open positions at this moment.</div>
                 @endif
             </div>
         </div>

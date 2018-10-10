@@ -3577,6 +3577,10 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       padding-top: 20px; }
   .careers-container .open-job-positions {
     text-align: center; }
+    .careers-container .open-job-positions .no-results {
+      padding-top: 20px;
+      padding-bottom: 50px;
+      font-size: 22px; }
     .careers-container .open-job-positions .single .wrapper {
       width: 100%;
       max-width: 200px;
