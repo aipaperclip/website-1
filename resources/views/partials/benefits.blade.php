@@ -1,7 +1,7 @@
 @if(!empty($benefits))
     @if(!empty($title))
         <div class="row">
-            <h2 class="col-xs-12 section-title">BENEFITS AT DENTACOIN</h2>
+            <h2 class="col-xs-12 section-title">{{$titles[4]->html}}</h2>
         </div>
     @endif
     <div class="row benefits fs-0">
