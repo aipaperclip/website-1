@@ -15,6 +15,8 @@
         <meta property="og:description" content="{{$job_offer->social_description}}"/>
         @if(!empty($job_offer->social_media))
             <meta property="og:image" content="{{URL::asset('assets/uploads/'.$job_offer->social_media->name)}}"/>
+            <meta property="og:image:width" content="1200"/>
+            <meta property="og:image:height" content="630"/>
         @endif
     @elseif(!empty($meta_data))
         <title>{{$meta_data->title}}</title>
@@ -25,6 +27,8 @@
         <meta property="og:description" content="{{$meta_data->social_description}}"/>
         @if(!empty($meta_data->media))
             <meta property="og:image" content="{{URL::asset('assets/uploads/'.$meta_data->media->name)}}"/>
+            <meta property="og:image:width" content="1200"/>
+            <meta property="og:image:height" content="630"/>
         @endif
     @endif
     @if(!empty(Route::current()) && Route::current()->getName() == 'home')
