@@ -53,7 +53,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return Redirect::to('/?application=trusted-reviews-intro');
     });
 
-    Route::get('trusted-reviews', function() {
+    Route::get('trusted-reviews-platform', function() {
         return Redirect::to('/?application=trusted-reviews-intro');
     });
 
