@@ -656,7 +656,16 @@ body.testimonials, body.press-center {
             right: 0;
         }
     }
-    @include breakpoint($sm-only) {
+    @include breakpoint($lgl) {
+        .single {
+            figure {
+                figcaption {
+                    width: 50%;
+                }
+            }
+        }
+    }
+    @include breakpoint($sm-down) {
         .single {
             padding-bottom: 30px;
             figure {

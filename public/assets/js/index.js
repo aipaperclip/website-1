@@ -857,6 +857,7 @@ if($('body').hasClass('home')) {
                 errors_html+='<div class="alert alert-danger">'+errors[y]+'</div>';
             }
             $('.errors.form-row').html(errors_html);
+            $('html, body').animate({'scrollTop': $('.below-apply-for-position').offset().top}, 300);
         }
     });
 }

@@ -16,8 +16,13 @@
                         @include('admin.partials.success')
                     </div>
                 </div>
-                <div class="row back-btn">
-                    <div class="col-xs-12"><a href="{{route('careers')}}">< back</a></div>
+                <div class="row fs-0 back-btn-socials">
+                    <div class="col-xs-6 back-btn inline-block"><a href="{{route('careers')}}">< back</a></div>
+                    <div class="col-xs-6 socials inline-block">
+                        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{route('careers', ['slug' => $job_offer->slug])}}&title={{$job_offer->title}}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                        <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u={{route('careers', ['slug' => $job_offer->slug])}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a target="_blank" href="https://twitter.com/intent/tweet?url={{route('careers', ['slug' => $job_offer->slug])}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </div>
                 </div>
                 <div class="row job-offer-info">
                     <figure class="col-xs-12 col-sm-4 col-md-6 col-lg-5 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
@@ -72,7 +77,7 @@
         <div class="container benefits-container">
             @include('partials.benefits', ['title' => true])
         </div>
-        <div class="logo-over-line">
+        <div class="logo-over-line below-apply-for-position">
             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                 <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
             </figure>

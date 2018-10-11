@@ -61,14 +61,22 @@
             }
         }
     }
-    .back-btn {
-        padding-bottom: 15px;
-        font-size: 16px;
-        padding-left: 30px;
-        a {
-            &:hover {
-                text-decoration: underline;
+    .back-btn-socials {
+        padding-bottom: 20px;
+        .back-btn {
+            font-size: 16px;
+            padding-left: 45px;
+            a {
+                &:hover {
+                    text-decoration: underline;
+                }
             }
+        }
+        .socials {
+            text-align: right;
+            font-size: 25px;
+            color: black;
+            padding-right: 45px;
         }
     }
     .errors {
@@ -278,7 +286,7 @@
     @include breakpoint($sm-only)   {
         .back-btn {
             font-size: 22px;
-            padding-left: 0;
+            padding-left: 15px;
         }
         .job-offer-info {
             figure {
@@ -291,7 +299,7 @@
     @include breakpoint($xs)   {
         .back-btn {
             font-size: 22px;
-            padding-left: 0;
+            padding-left: 15px;
         }
         .job-offer-info {
             figure {
@@ -330,7 +338,7 @@
     @include breakpoint($xxs)    {
         .back-btn {
             font-size: 22px;
-            padding-left: 0;
+            padding-left: 15px;
         }
         .apply-for-position {
             .form {

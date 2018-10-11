@@ -1695,7 +1695,10 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
       left: 0; }
     .benefits .custom-border.right-border {
       right: 0; }
-  @media screen and (min-width: 768px) and (max-width: 991px) {
+  @media screen and (min-width: 1400px) {
+    .benefits .single figure figcaption {
+      width: 50%; } }
+  @media screen and (max-width: 991px) {
     .benefits .single {
       padding-bottom: 30px; }
       .benefits .single figure figcaption {
@@ -3716,12 +3719,18 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       @media screen and (max-width: 991px) {
         .single-job-offer-container .arrows-container figure.custom-arrow {
           display: none; } }
-  .single-job-offer-container .back-btn {
-    padding-bottom: 15px;
-    font-size: 16px;
-    padding-left: 30px; }
-    .single-job-offer-container .back-btn a:hover {
-      text-decoration: underline; }
+  .single-job-offer-container .back-btn-socials {
+    padding-bottom: 20px; }
+    .single-job-offer-container .back-btn-socials .back-btn {
+      font-size: 16px;
+      padding-left: 45px; }
+      .single-job-offer-container .back-btn-socials .back-btn a:hover {
+        text-decoration: underline; }
+    .single-job-offer-container .back-btn-socials .socials {
+      text-align: right;
+      font-size: 25px;
+      color: black;
+      padding-right: 45px; }
   .single-job-offer-container .errors .alert {
     font-size: 18px;
     padding: 5px;
@@ -3888,13 +3897,13 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   @media screen and (min-width: 768px) and (max-width: 991px) {
     .single-job-offer-container .back-btn {
       font-size: 22px;
-      padding-left: 0; }
+      padding-left: 15px; }
     .single-job-offer-container .job-offer-info figure img {
       width: 100%; } }
   @media screen and (max-width: 767px) {
     .single-job-offer-container .back-btn {
       font-size: 22px;
-      padding-left: 0; }
+      padding-left: 15px; }
     .single-job-offer-container .job-offer-info figure {
       padding-bottom: 20px;
       text-align: center; }
@@ -3914,7 +3923,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   @media screen and (max-width: 400px) {
     .single-job-offer-container .back-btn {
       font-size: 22px;
-      padding-left: 0; }
+      padding-left: 15px; }
     .single-job-offer-container .apply-for-position .form .form-row.button-row .upload-file {
       max-width: none; } }
 
