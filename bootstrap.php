@@ -8,4 +8,5 @@ define('ROOT', realpath(dirname(__FILE__)) . DS);
 define('UPLOADS', ROOT . 'public' . DS . 'assets' . DS . 'uploads' . DS);
 define('UPLOADS_FRONT_END', DS . 'assets' . DS . 'uploads' . DS);
 define('EMAIL_RECEIVER', 'press@dentacoin.com');
+define('JOB_APPLIES_EMAIL_RECEIVER', 'donika.kraeva@dentacoin.com');
 define('MAX_UPL_SIZE', 2097152);
