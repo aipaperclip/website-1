@@ -1023,6 +1023,30 @@ body.home {
                         ul.list {
                             display: none;
                             line-height: 20px;
+                            height: 300px;
+                            overflow-y: auto;
+                            ::-webkit-scrollbar {
+                                -webkit-appearance: none;
+                            }
+
+                            ::-webkit-scrollbar:vertical {
+                                width: 12px;
+                            }
+
+                            ::-webkit-scrollbar:horizontal {
+                                height: 12px;
+                            }
+
+                            ::-webkit-scrollbar-thumb {
+                                background-color: rgba(0, 0, 0, .5);
+                                border-radius: 10px;
+                                border: 2px solid white;
+                            }
+
+                            ::-webkit-scrollbar-track {
+                                background-color: white;
+                                @include rounded(10px);
+                            }
                             li {
                                 list-style: disc inside none;
                                 @include simple_transition(.3s);
