@@ -26,6 +26,10 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     //Route::get('changelly', 'ChangellyController@getView')->name('changelly');
 
+    Route::get('changelly', function() {
+        return Redirect::to('https://wallet.dentacoin.com/buy');
+    });
+
     Route::get('partner-network', 'PartnerNetworkController@getView')->name('partner-network');
 
     Route::get('team', 'TeamMembersController@getView')->name('team');
