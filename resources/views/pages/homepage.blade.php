@@ -242,7 +242,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="buy-btn"><a href="https://wallet.dentacoin.com/buy" target="_blank" class="white-blue-rounded-btn">BUY WITH CHANGELLY</a></div>
+                        <div class="buy-btn"><a href="https://wallet.dentacoin.com/buy" target="_blank" class="white-blue-rounded-btn">BUY WITH A CARD</a></div>
                     </div>
                     <div class="col-xs-12 col-md-5 col-md-offset-1 gif inline-block-top">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
