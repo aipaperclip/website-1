@@ -27,14 +27,17 @@ class CareersController extends Controller
         $this->validate($request, [
             'user-name' => 'required|max:100',
             'email' => 'required|max:100',
-            'phone' => 'required|max:50'
+            'phone' => 'required|max:50',
+            'captcha' => 'required|captcha|max:5'
         ], [
             'user-name.required' => 'Name is required.',
             'user-name.max' => 'Name must be with maximum length of 100 symbols.',
             'email.required' => 'Email is required.',
             'email.max' => 'Email must be with maximum length of 100 symbols.',
             'phone.required' => 'Phone is required.',
-            'phone.max' => 'Phone must be with maximum length of 50 symbols.'
+            'phone.max' => 'Phone must be with maximum length of 50 symbols.',
+            'captcha.required' => 'Captcha is required.',
+            'captcha.captcha' => 'Please type the code from the captcha image.'
         ]);
 
         $data = $request->input();

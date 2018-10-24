@@ -126,6 +126,19 @@
                         <div class="form-row">
                             <input type="text" name="portfolio" placeholder="Portfolio link" maxlength="500"/>
                         </div>
+                        <div class="form-row fs-0 captcha-parent">
+                            <div class="inline-block fs-14 width-50">
+                                <input type="text" name="captcha" id="captcha" placeholder="Enter captcha" maxlength="5" class="required"/>
+                            </div>
+                            <div class="inline-block width-50">
+                                <div class="captcha-container flex">
+                                    <span>{!! captcha_img() !!}</span>
+                                    <button type="button" class="refresh-captcha">
+                                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-row privacy-policy" data-valid-message="Please agree with our Privacy Policy.">
                             <input type="checkbox" id="privacy-policy"/><label for="privacy-policy">{!! $sections[3]->html !!}</label>
                         </div>

@@ -49,7 +49,8 @@ class PressCenterController extends Controller
             'media' => 'required|max:100',
             'country' => 'required|max:300',
             'reason' => 'required|max:500',
-            'answer' => 'required|max:3000'
+            'answer' => 'required|max:3000',
+            'captcha' => 'required|captcha|max:5'
         ], [
             'sender-name.required' => 'Name is required.',
             'sender-name.max' => 'Name must be with maximum length of 100 symbols.',
@@ -63,6 +64,8 @@ class PressCenterController extends Controller
             'reason.max' => 'Reason for contact must be with maximum length of 500 symbols.',
             'answer.required' => 'Answer is required and maximum length of 3000 symbols.',
             'answer.max' => 'Answer must be with maximum length of 3000 symbols.',
+            'captcha.required' => 'Captcha is required.',
+            'captcha.captcha' => 'Please type the code from the captcha image.'
         ]);
 
         $data = $request->input();

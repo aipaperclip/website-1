@@ -782,15 +782,6 @@ input[type='text'], input[type='number'] {
         color: #333;
         padding: 6px 12px;
         width: 100%; }
-      .form-container .wrapper form .form-row.captcha {
-        justify-content: center; }
-        .form-container .wrapper form .form-row.captcha .refresh-captcha {
-          font-size: 20px;
-          color: white;
-          background-color: #21bef4;
-          border: 0;
-          padding-left: 10px;
-          padding-right: 10px; }
       .form-container .wrapper form .form-row.submit {
         padding-bottom: 0;
         padding-top: 10px; }
@@ -943,6 +934,16 @@ body.add-job-offer .skills-body .single-skill, body.edit-job-offer .skills-body 
     display: inline-block;
     vertical-align: top;
     font-size: 14px; }
+
+.captcha-container {
+  justify-content: center; }
+  .captcha-container .refresh-captcha {
+    font-size: 20px;
+    color: white;
+    background-color: #21bef4;
+    border: 0;
+    padding-left: 10px;
+    padding-right: 10px; }
 
 .media-container form {
   padding-bottom: 30px; }

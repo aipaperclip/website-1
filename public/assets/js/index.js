@@ -712,6 +712,9 @@ if($('body').hasClass('home')) {
                     if(response.success)    {
                         basic.closeDialog();
                         basic.showDialog(response.success, 'media-inquries', 'media-inquries');
+                        initCaptchaRefreshEvent();
+
+
                         var required_inputs = [];
                         for(var i = 0, len = $('.required').length; i < len; i+=1)  {
                             required_inputs.push($('.required').eq(i).attr('name'));
@@ -1026,3 +1029,20 @@ function checkIfCookie()    {
         });
     }
 }
+
+function initCaptchaRefreshEvent()  {
+//refreshing captcha on trying to log in admin
+    if($('.refresh-captcha').length > 0)    {
+        $('.refresh-captcha').click(function()  {
+            $.ajax({
+                type: 'GET',
+                url: '/refresh-captcha',
+                dataType: 'json',
+                success: function (response) {
+                    $('.captcha-container span').html(response.captcha);
+                }
+            });
+        });
+    }
+} 
+initCaptchaRefreshEvent();

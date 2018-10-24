@@ -475,10 +475,10 @@ body.testimonials, body.press-center {
                 padding: 15px 20px;
                 border: 0;
                 @include rounded(4px);
-                @include box-shadow(-2px 2px 6px 0 rgba(0, 0, 0, 0.2));
+                @include box-shadow(0px 2px 10px 0 rgba(0, 0, 0, 0.2));
                 @include simple_transition(.3s);
                 &:focus {
-                    @include box-shadow(-2px 2px 6px 0 $light_blue);
+                    @include box-shadow(0px 2px 10px 0 $light_blue);
                 }
             }
             .popup-row {
@@ -515,6 +515,20 @@ body.testimonials, body.press-center {
                         }
                     }
                 }
+                &.captcha-parent {
+                    .width-50 {
+                        width: 50%;
+                        .captcha-container {
+                            text-align: center;
+                        }
+                        @include breakpoint($xs)    {
+                            width: 100%;
+                            .captcha-container {
+                                padding-top: 10px;
+                            }
+                        }
+                    }
+                } 
             }
             .waiting-for-action {
                 .upload-file {
@@ -714,5 +728,17 @@ body.testimonials, body.press-center {
             font-size: 16px;
             padding: 10px 0;
         }
+    }
+}
+
+.captcha-container {
+    justify-content: center;
+    .refresh-captcha {
+        font-size: 20px;
+        color: white;
+        background-color: #21bef4;
+        border: 0;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }

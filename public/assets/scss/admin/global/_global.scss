@@ -56,17 +56,6 @@ input[type='text'], input[type='number'] {
                     padding: 6px 12px;
                     width: 100%;
                 }
-                &.captcha {
-                    justify-content: center;
-                    .refresh-captcha {
-                        font-size: 20px;
-                        color: white;
-                        background-color: #21bef4;
-                        border: 0;
-                        padding-left: 10px;
-                        padding-right: 10px;
-                    }
-                }
                 &.submit {
                     padding-bottom: 0;
                     padding-top: 10px;
@@ -283,5 +272,17 @@ body.add-job-offer, body.edit-job-offer {
                 font-size: 14px;
             }
         }
+    }
+}
+
+.captcha-container {
+    justify-content: center;
+    .refresh-captcha {
+        font-size: 20px;
+        color: white;
+        background-color: #21bef4;
+        border: 0;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }

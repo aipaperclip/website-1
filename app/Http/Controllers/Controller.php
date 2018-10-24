@@ -171,4 +171,8 @@ class Controller extends BaseController
     protected function getGoogleMapIframe() {
         return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations()]);
     }
+
+    protected function refreshCaptcha() {
+        return response()->json(['captcha' => captcha_img()]);
+    }
 }

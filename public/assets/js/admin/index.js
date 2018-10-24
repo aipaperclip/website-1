@@ -228,7 +228,7 @@ if($('.refresh-captcha').length > 0)    {
             url: '/refresh-captcha',
             dataType: 'json',
             success: function (response) {
-                $('.login.form-container .captcha.form-row span').html(response.captcha);
+                $('.captcha-container span').html(response.captcha);
             }
         });
     });

@@ -276,6 +276,19 @@
         <div class="waiting-for-action">
 
         </div>
+        <div class="popup-row fs-0 captcha-parent">
+            <div class="inline-block fs-14 width-50">
+                <input type="text" name="captcha" id="captcha" placeholder="Enter captcha" maxlength="5" class="required"/>
+            </div>
+            <div class="inline-block width-50">
+                <div class="captcha-container flex">
+                    <span>{!! captcha_img() !!}</span>
+                    <button type="button" class="refresh-captcha">
+                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="popup-row fs-0 checkbox-row" data-valid-message="Please agree with our Privacy Policy.">
             <div class="inline-block-top checkbox-wrapper"><input type="checkbox" id="agree-with-privacy-policy-popup" aria-required="true"/></div>
             <label for="agree-with-privacy-policy-popup" class="inline-block-top">{!! $footer_data[2]['html'] !!}</label>
