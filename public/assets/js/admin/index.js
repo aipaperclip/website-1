@@ -607,10 +607,14 @@ if($('body').hasClass('add-job-offer'))    {
     });
 
     initSkillsLogic();
+
+    bindDontSubmitFormOnEnter();
 }
 
 if($('body').hasClass('edit-job-offer'))    {
     initSkillsLogic();
+
+    bindDontSubmitFormOnEnter();
 }
 
 function initSkillsLogic()  {
@@ -619,19 +623,38 @@ function initSkillsLogic()  {
     bindSingleSkillActions();
 
     $('.skills-section .btn-container button').click(function() {
-        if($(this).closest('.btn-container').find('input[type="text"]').val().trim() == '') {
-            alert('Please enter skill in the field.');
-            return false;
-        }else {
-            $('.skills-section .skills-body').append('<div class="single-skill"><div class="skill-text">'+$(this).closest('.btn-container').find('input[type="text"]').val().trim()+'<input type="hidden" name="skills[]" value="'+$(this).closest('.btn-container').find('input[type="text"]').val().trim()+'"/></div><div class="skill-action"><a href="javascript:void(0);" class="remove-skill"><i class="fa fa-times" aria-hidden="true"></i></a></div></div>');
-            bindSingleSkillActions();
-            $(this).closest('.btn-container').find('input[type="text"]').val('');
-        }
+        addSkillFromInput();
     });
+}
+
+function addSkillFromInput() {
+    if($('.skills-section input[type="text"]').val().trim() == '') {
+        alert('Please enter skill in the field.');
+        return false;
+    }else {
+        $('.skills-section .skills-body').append('<div class="single-skill"><div class="skill-text">'+$('.skills-section input[type="text"]').val().trim()+'<input type="hidden" name="skills[]" value="'+$('.skills-section input[type="text"]').val().trim()+'"/></div><div class="skill-action"><a href="javascript:void(0);" class="remove-skill"><i class="fa fa-times" aria-hidden="true"></i></a></div></div>');
+        bindSingleSkillActions();
+        $('.skills-section input[type="text"]').val('');
+    }
 }
 
 function bindSingleSkillActions()   {
     $('.skills-body .single-skill .skill-action .remove-skill').click(function()    {
         $(this).closest('.single-skill').remove();
+    });
+}
+
+function bindDontSubmitFormOnEnter()    {
+    $('form').keydown(function(event){
+        if(event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    $('.skills-section input[type="text"]').keydown(function(event){
+        if(event.keyCode == 13) {
+            addSkillFromInput();
+        }
     });
 }

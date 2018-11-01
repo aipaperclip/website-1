@@ -20,9 +20,9 @@
                     <div class="btn-container"><a href="javascript:void(0)" class="white-blue-rounded-btn">{{$sections[1]->html}}</a></div>
                 </div>
             </div>
-            @include('partials.benefits')
+            @include('partials.benefits', ['borders' => true])
             <div class="row open-job-positions-title">
-                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
                     <div class="logo-over-line">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
@@ -32,27 +32,31 @@
                     <h2 class="col-xs-12 section-title">{{$titles[1]->html}}</h2>
                 </div>
             </div>
-            <div class="row open-job-positions fs-0">
+            <div class="row open-job-positions">
+                <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
                 @if(sizeof($job_offers) > 0)
-                    @foreach($job_offers as $job_offer)
-                        <div class="col-xs-12 col-sm-4 single inline-block-top">
-                            <div class="wrapper">
-                                <a href="{{route('careers', ['slug' => $job_offer->slug])}}">
-                                    <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="{{URL::asset('assets/uploads/'.$job_offer->media->name) }}" alt="{{$job_offer->media->alt}}" itemprop="contentUrl"/>
-                                        <figcaption>{{$job_offer->title}}</figcaption>
-                                    </figure>
-                                </a>
-                                <div class="border"></div>
-                                <div class="btn-container">
-                                    <a href="{{route('careers', ['slug' => $job_offer->slug])}}" class="white-blue-rounded-btn">APPLY</a>
+                    <div class="row fs-0">
+                        @foreach($job_offers as $job_offer)
+                            <div class="col-xs-12 col-sm-4 single inline-block-top">
+                                <div class="wrapper">
+                                    <a href="{{route('careers', ['slug' => $job_offer->slug])}}">
+                                        <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                            <img src="{{URL::asset('assets/uploads/'.$job_offer->media->name) }}" alt="{{$job_offer->media->alt}}" itemprop="contentUrl"/>
+                                            <figcaption>{{$job_offer->title}}</figcaption>
+                                        </figure>
+                                    </a>
+                                    <div class="border"></div>
+                                    <div class="btn-container">
+                                        <a href="{{route('careers', ['slug' => $job_offer->slug])}}" class="white-blue-rounded-btn">APPLY</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 @else
                     <div class="col-xs-12 no-results">{!! $sections[2]->html !!}</div>
                 @endif
+                </div>
             </div>
         </div>
     </section>

@@ -175,4 +175,13 @@ class Controller extends BaseController
     protected function refreshCaptcha() {
         return response()->json(['captcha' => captcha_img()]);
     }
+
+    protected function handleApiEndpoints($slug) {
+        $additional_data = (new Admin\MainController())->getAdditionalData($slug);
+        if(!empty($additional_data))    {
+            return '{"'.$slug.'":"'.$additional_data->data.'"}';
+        }else {
+            return abort(404);
+        }
+    }
 }

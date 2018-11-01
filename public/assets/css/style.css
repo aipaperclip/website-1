@@ -3419,6 +3419,9 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           -moz-border-radius: 50%;
           -ms-border-radius: 50%;
           border-radius: 50%; }
+          @media screen and (max-width: 767px) {
+            .team-container .team .list .single .image-and-socials figure img {
+              max-width: 150px; } }
         .team-container .team .list .single .image-and-socials .socials {
           text-align: center;
           padding-top: 10px;
@@ -3690,6 +3693,8 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         .careers-container .join-our-team .text {
           padding-left: 15px;
           padding-top: 20px; }
+          .careers-container .join-our-team .text .section-subtitle {
+            font-size: 26px; }
           .careers-container .join-our-team .text .section-subtitle, .careers-container .join-our-team .text .btn-container {
             text-align: center; }
           .careers-container .join-our-team .text .description {
@@ -3905,7 +3910,8 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         font-size: 14px;
         color: #8c8c8c;
         width: calc(100% - 140px);
-        padding-left: 10px; }
+        padding-left: 10px;
+        font-weight: 300; }
         .single-job-offer-container .apply-for-position .form .form-row.button-row .file-text .file-name {
           padding-top: 5px; }
           .single-job-offer-container .apply-for-position .form .form-row.button-row .file-text .file-name i {

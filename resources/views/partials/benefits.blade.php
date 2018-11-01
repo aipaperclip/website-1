@@ -5,7 +5,7 @@
         </div>
     @endif
     <div class="row benefits fs-0">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 wrapper">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 wrapper">
             <div class="row">
                 @foreach($benefits as $benefit)
                     <div class="col-xs-12 col-sm-3 single inline-block-top text-center">
@@ -17,7 +17,9 @@
                 @endforeach
             </div>
         </div>
-        <div class="left-border custom-border"></div>
-        <div class="right-border custom-border"></div>
+        @if(!empty($borders))
+            <div class="left-border custom-border"></div>
+            <div class="right-border custom-border"></div>
+        @endif
     </div>
 @endif

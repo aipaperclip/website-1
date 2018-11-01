@@ -42,13 +42,17 @@
             </div>
         </div>
         @if(!empty(unserialize($job_offer->skills)))
-            <div class="logo-over-line">
-                <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                    <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
-                </figure>
-                <div class="border-behind-logo"></div>
-            </div>
             <div class="container skills-list">
+                <div class="row">
+                    <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                        <div class="logo-over-line">
+                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
+                            </figure>
+                            <div class="border-behind-logo"></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <h2 class="col-xs-12 section-title">{{$titles[2]->html}}</h2>
                 </div>
@@ -68,22 +72,32 @@
                 </div>
             </div>
         @endif
-        <div class="logo-over-line">
-            <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
-            </figure>
-            <div class="border-behind-logo"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="logo-over-line">
+                        <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                            <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
+                        </figure>
+                        <div class="border-behind-logo"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="container benefits-container">
             @include('partials.benefits', ['title' => true])
         </div>
-        <div class="logo-over-line below-apply-for-position">
-            <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
-            </figure>
-            <div class="border-behind-logo"></div>
-        </div>
         <div class="apply-for-position container">
+            <div class="row">
+                <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                    <div class="logo-over-line below-apply-for-position">
+                        <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                            <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
+                        </figure>
+                        <div class="border-behind-logo"></div>
+                    </div>
+                </div>
+            </div>
             <div class="row title">
                 <h2 class="col-xs-12 section-title">{{$titles[3]->html}}</h2>
             </div>

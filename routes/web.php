@@ -26,6 +26,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('testimonials/page/{page}', 'UserExpressionsController@getView')->name('testimonials');
 
+    Route::get('api-endpoints/{slug}', 'Controller@handleApiEndpoints')->name('api-endpoints');
+
     //Route::get('changelly', 'ChangellyController@getView')->name('changelly');
 
     Route::get('changelly', function() {
