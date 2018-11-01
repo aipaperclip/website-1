@@ -1681,19 +1681,20 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
 .benefits {
   padding-top: 50px;
   padding-bottom: 50px;
+  margin: 0 25px;
   position: relative; }
-  .benefits .single {
+  .benefits .wrapper .single {
     padding-bottom: 50px; }
-    .benefits .single figure img {
+    .benefits .wrapper .single figure img {
       width: 80px; }
-    .benefits .single figure figcaption {
+    .benefits .wrapper .single figure figcaption {
       padding-top: 15px;
       font-size: 16px;
-      width: 70%;
+      width: 90%;
       margin: 0 auto; }
   .benefits .custom-border {
     height: 65%;
-    width: 1px;
+    width: 2px;
     background-color: black;
     position: absolute;
     top: 50%;
@@ -1704,18 +1705,15 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
       left: 0; }
     .benefits .custom-border.right-border {
       right: 0; }
-  @media screen and (min-width: 1400px) {
-    .benefits .single figure figcaption {
-      width: 50%; } }
   @media screen and (max-width: 991px) {
-    .benefits .single {
+    .benefits .wrapper .single {
       padding-bottom: 30px; }
-      .benefits .single figure figcaption {
+      .benefits .wrapper .single figure figcaption {
         width: 100%; } }
   @media screen and (max-width: 767px) {
     .benefits {
       padding-bottom: 0; }
-      .benefits .single {
+      .benefits .wrapper .single {
         padding-bottom: 30px; }
       .benefits .custom-border {
         display: none; } }
@@ -3583,7 +3581,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           background-color: black; } }
 
 .careers-container {
-  padding-bottom: 50px; }
+  padding-bottom: 100px; }
   .careers-container .section-title {
     font-size: 44px;
     padding-bottom: 10px; }
@@ -3651,9 +3649,12 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       max-width: 200px;
       margin: 0 auto;
       padding-bottom: 70px; }
+      .careers-container .open-job-positions .single .wrapper figure img {
+        width: 70%; }
       .careers-container .open-job-positions .single .wrapper figure figcaption {
         padding-top: 15px;
-        font-size: 20px; }
+        font-size: 20px;
+        color: #1d1d1d !important; }
       .careers-container .open-job-positions .single .wrapper .border {
         width: 100%;
         height: 1px;

@@ -643,24 +643,27 @@ body.testimonials, body.press-center {
 .benefits {
     padding-top: 50px;
     padding-bottom: 50px;
+    margin: 0 25px;
     position: relative;
-    .single {
-        padding-bottom: 50px;
-        figure {
-            img {
-                width: 80px;
-            }
-            figcaption {
-                padding-top: 15px;
-                font-size: 16px;
-                width: 70%;
-                margin: 0 auto;
+    .wrapper {
+        .single {
+            padding-bottom: 50px;
+            figure {
+                img {
+                    width: 80px;
+                }
+                figcaption {
+                    padding-top: 15px;
+                    font-size: 16px;
+                    width: 90%;
+                    margin: 0 auto;
+                }
             }
         }
     }
     .custom-border {
         height: 65%;
-        width: 1px;
+        width: 2px;
         background-color: black;
         @include vertical-align(absolute);
         &.left-border {
@@ -670,29 +673,24 @@ body.testimonials, body.press-center {
             right: 0;
         }
     }
-    @include breakpoint($lgl) {
-        .single {
-            figure {
-                figcaption {
-                    width: 50%;
-                }
-            }
-        }
-    }
     @include breakpoint($sm-down) {
-        .single {
-            padding-bottom: 30px;
-            figure {
-                figcaption {
-                    width: 100%;
+        .wrapper {
+            .single {
+                padding-bottom: 30px;
+                figure {
+                    figcaption {
+                        width: 100%;
+                    }
                 }
             }
         }
     }
     @include breakpoint($xs)    {
         padding-bottom: 0;
-        .single {
-            padding-bottom: 30px;
+        .wrapper {
+            .single {
+                padding-bottom: 30px;
+            }
         }
         .custom-border {
             display: none;
