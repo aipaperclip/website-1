@@ -177,9 +177,9 @@ class Controller extends BaseController
     }
 
     protected function handleApiEndpoints($slug) {
-        $additional_data = (new Admin\MainController())->getAdditionalData($slug);
+        $additional_data = (new Admin\MainController())->getApiEndpoint($slug);
         if(!empty($additional_data))    {
-            return '{"'.$slug.'":"'.$additional_data->data.'"}';
+            return $additional_data->data;
         }else {
             return abort(404);
         }

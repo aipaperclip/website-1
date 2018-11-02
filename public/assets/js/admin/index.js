@@ -17,6 +17,40 @@ jQuery(window).on('scroll', function () {
 
 });
 
+
+// ============================== PAGES ==============================
+//init job offer slug creation on title type
+if($('body').hasClass('add-job-offer'))    {
+    $('body.add-job-offer input[name="title"]').on('input', function() {
+        $('body.add-job-offer input[name="slug"]').val(generateUrl($(this).val().trim()));
+    });
+
+    initSkillsLogic();
+
+    bindDontSubmitFormOnEnter();
+}else if($('body').hasClass('edit-job-offer'))    {
+    initSkillsLogic();
+
+    bindDontSubmitFormOnEnter();
+}else if($('body').hasClass('additionals')) {
+    $('.box.api-endpoints .remove-box').unbind().click(function()   {
+        $(this).closest('.custom-box').remove();
+    });
+
+    $('.box.api-endpoints .add-new-api-endpoint').click(function() {
+        if($('.box.api-endpoints .new-api-endpoint-name').val().trim() == '' || $('.box.api-endpoints .new-api-endpoint-value').val().trim() == '') {
+            basic.showAlert('Please enter name and value for API Endpoint.');
+        }else {
+            $('.box.api-endpoints .appending-body').append('<div class="box"><div class="box-header with-border"><h3 class="box-title">'+$('.box.api-endpoints .new-api-endpoint-name').val().trim()+'</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="form-group"><input type="text" class="form-control" name="api-endpoints['+generateUrl($('.box.api-endpoints .new-api-endpoint-name').val().trim())+'][data]" placeholder="Enter circulating supply" value="'+$('.box.api-endpoints .new-api-endpoint-value').val().trim()+'"><input type="hidden" class="form-control" name="api-endpoints['+generateUrl($('.box.api-endpoints .new-api-endpoint-name').val().trim())+'][name]" placeholder="Enter circulating supply" value="'+$('.box.api-endpoints .new-api-endpoint-name').val().trim()+'"></div></div></div>');
+            $('.box.api-endpoints .new-api-endpoint-name').val('');
+            $('.box.api-endpoints .new-api-endpoint-value').val('');
+            $('.box.api-endpoints .remove-box').unbind().click(function()   {
+                $(this).closest('.custom-box').remove();
+            });
+        }
+    });
+}
+
 function initDataTable()    {
     if($('table.table.table-without-reorder').length > 0) {
         if($('table.table.table-without-reorder').hasClass('media-table'))  {
@@ -598,23 +632,6 @@ if($('.add-edit-menu-element select[name="type"]').length > 0) {
             }
         });
     });
-}
-
-//init job offer slug creation on title type
-if($('body').hasClass('add-job-offer'))    {
-    $('body.add-job-offer input[name="title"]').on('input', function() {
-        $('body.add-job-offer input[name="slug"]').val(generateUrl($(this).val().trim()));
-    });
-
-    initSkillsLogic();
-
-    bindDontSubmitFormOnEnter();
-}
-
-if($('body').hasClass('edit-job-offer'))    {
-    initSkillsLogic();
-
-    bindDontSubmitFormOnEnter();
 }
 
 function initSkillsLogic()  {

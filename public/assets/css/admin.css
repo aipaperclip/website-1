@@ -945,6 +945,24 @@ body.add-job-offer .skills-body .single-skill, body.edit-job-offer .skills-body 
     padding-left: 10px;
     padding-right: 10px; }
 
+body.additionals .box.api-endpoints .margin-bottom-10 {
+  margin-bottom: 10px; }
+body.additionals .box.api-endpoints .box-title.primary-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+  padding: 10px 10px 0; }
+body.additionals .box.api-endpoints .box-header {
+  padding: 5px 10px; }
+  body.additionals .box.api-endpoints .box-header .btn-box-tool {
+    padding: 0;
+    width: 20px; }
+  body.additionals .box.api-endpoints .box-header .box-title {
+    font-weight: bold;
+    font-size: 16px; }
+body.additionals .box.api-endpoints a {
+  text-decoration: underline; }
+
 .media-container form {
   padding-bottom: 30px; }
   .media-container form .single-row .subtitle {
@@ -961,4 +979,3 @@ body.add-job-offer .skills-body .single-skill, body.edit-job-offer .skills-body 
   margin-top: 5px; }
 
 /*# sourceMappingURL=admin.css.map */
-
