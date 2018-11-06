@@ -79,8 +79,7 @@ class CareersController extends Controller
 
         //submit email
         Mail::send(array(), array(), function($message) use ($data, $body, $files) {
-            $message->to(JOB_APPLIES_EMAIL_RECEIVER)->subject('New apply from Dentacoin Careers page - '.$data['post-title'])->from($data['email'])->setBody($body, 'text/html');
-
+            $message->to(JOB_APPLIES_EMAIL_RECEIVER)->subject('New apply from Dentacoin Careers page - '.$data['post-title'])->from($data['email'], $data['user-name'])->replyTo($data['email'], $data['user-name'])->setBody($body, 'text/html');
             if(sizeof($files > 0)) {
                 foreach($files as $file) {
                     $message->attach($file->getRealPath(), array(

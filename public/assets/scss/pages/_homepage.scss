@@ -536,7 +536,7 @@ body.home {
                 }
                 .description {
                     font-size: 16px;
-                    padding-top: 20px;
+                    padding-top: 10px;
                     line-height: 18px;
                     &.italic {
                         font-size: 18px;
@@ -545,7 +545,7 @@ body.home {
                 }
             }
             .video {
-                padding-top: 20px;
+                padding-top: 10px;
                 .play-btn {
                     display: inline-block;
                     img {
@@ -840,6 +840,7 @@ body.home {
                 .text {
                     display: none;
                     width: 250px;
+                    font-size: 16px;
                     text-align: left;
                     padding-top: 15px;
                     padding-left: 20px;
@@ -1049,6 +1050,9 @@ body.home {
                                 &:hover {
                                     font-family: 'Calibri-Bold';
                                 }
+                            }
+                            @include breakpoint($md-only)    {
+                                height: 200px;
                             }
                         }
                         &.active {

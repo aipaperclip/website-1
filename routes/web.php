@@ -14,29 +14,28 @@
 Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captcha');
 
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
+
+    //======================================= PAGES ========================================
+
     Route::get('/', 'HomeController@getView')->name('home');
 
     Route::get('privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
 
     Route::get('press-center/page/{page}', 'PressCenterController@getView')->name('press-center');
 
-    Route::post('press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
-
-    Route::post('submit-media-inquiries', 'PressCenterController@submitMediaInquiries')->name('submit-media-inquiries');
-
     Route::get('testimonials/page/{page}', 'UserExpressionsController@getView')->name('testimonials');
 
     Route::get('api-endpoints/{slug}', 'Controller@handleApiEndpoints')->name('api-endpoints');
 
-    //Route::get('changelly', 'ChangellyController@getView')->name('changelly');
-
-    Route::get('changelly', function() {
-        return Redirect::to('https://wallet.dentacoin.com/buy');
-    });
-
     Route::get('partner-network', 'PartnerNetworkController@getView')->name('partner-network');
 
     Route::get('team', 'TeamMembersController@getView')->name('team');
+
+    Route::get('sitemap.xml', 'Controller@getSitemap')->name('sitemap');
+
+    Route::get('google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
+
+    //Route::get('changelly', 'ChangellyController@getView')->name('changelly');
 
     Route::get('careers/{slug?}', function($slug = null)    {
         if(empty($slug))   {
@@ -46,11 +45,23 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         }
     })->name('careers');
 
+    //Route::get('corporate-design/{slug}', 'CorporateDesignController@getView')->name('corporate-design');
+//
+    //Route::get('corporate-identity', 'CorporateIdentityController@getView')->name('corporate-identity');
+
+    //======================================= AJAX ========================================
+
+    Route::post('press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
+
+    Route::post('submit-media-inquiries', 'PressCenterController@submitMediaInquiries')->name('submit-media-inquiries');
+
     Route::post('submit-apply-position', 'CareersController@submitApplyPosition')->name('submit-apply-position');
 
-    Route::get('sitemap.xml', 'Controller@getSitemap')->name('sitemap');
+    //======================================= REDIRECTS ========================================
 
-    Route::get('google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
+    Route::get('changelly', function() {
+        return Redirect::to('https://wallet.dentacoin.com/buy');
+    });
 
     //redirecting old urls to homepage with popups opening
     Route::get('dentacare-mobile-app-intro', function() {

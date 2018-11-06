@@ -7,6 +7,7 @@ use App\Publications;
 use App\UserExpressions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Config;
 
 class PressCenterController extends Controller
 {
@@ -102,7 +103,9 @@ class PressCenterController extends Controller
 
         //submit email
         Mail::send(array(), array(), function($message) use ($data, $body, $files) {
-            $message->to(EMAIL_RECEIVER)->subject($data['reason'])->from($data['email'])->setBody($body, 'text/html');
+            $message->to(EMAIL_RECEIVER)->subject($data['reason']);
+            $message->from($data['email'], $data['sender-name'])->replyTo($data['email'], $data['sender-name']);
+            $message->setBody($body, 'text/html');
 
             if(sizeof($files > 0)) {
                 foreach($files as $file) {

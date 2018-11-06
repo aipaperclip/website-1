@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 102.5 76.2" style="enable-background:new 0 0 102.5 76.2;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#B4B4B4;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#B4B4B4;stroke-linecap:round;stroke-miterlimit:10;}
+</style>
+<g>
+	<g>
+		<path class="st0" d="M90.6,74.7V13.9c0-0.6,0.5-1,1-1h9.4c0.6,0,1,0.4,1,1v60.8c0,0.6-0.4,1-1,1h-9.4
+			C91.1,75.7,90.6,75.2,90.6,74.7z"/>
+		<line class="st1" x1="98.1" y1="23.6" x2="101.6" y2="23.6"/>
+		<line class="st1" x1="98.1" y1="31" x2="101.6" y2="31"/>
+		<line class="st1" x1="98.1" y1="38.4" x2="101.6" y2="38.4"/>
+		<line class="st1" x1="98.1" y1="45.8" x2="101.6" y2="45.8"/>
+		<line class="st1" x1="98.1" y1="53.2" x2="101.6" y2="53.2"/>
+		<line class="st1" x1="98.1" y1="60.6" x2="101.6" y2="60.6"/>
+		<line class="st1" x1="98.1" y1="68" x2="101.6" y2="68"/>
+		<line class="st1" x1="99.7" y1="27.3" x2="101.6" y2="27.3"/>
+		<line class="st1" x1="99.7" y1="34.7" x2="101.6" y2="34.7"/>
+		<line class="st1" x1="99.7" y1="42.1" x2="101.6" y2="42.1"/>
+		<line class="st1" x1="99.7" y1="49.5" x2="101.6" y2="49.5"/>
+		<line class="st1" x1="99.7" y1="56.9" x2="101.6" y2="56.9"/>
+		<line class="st1" x1="99.7" y1="64.3" x2="101.6" y2="64.3"/>
+		<circle class="st0" cx="96.1" cy="17.8" r="1.8"/>
+	</g>
+	<g>
+		
+			<rect x="62.5" y="26.9" transform="matrix(0.9998 -1.797925e-02 1.797925e-02 0.9998 -0.8735 1.1788)" class="st0" width="5.2" height="44.6"/>
+		
+			<rect x="62.9" y="69" transform="matrix(0.9998 -1.797925e-02 1.797925e-02 0.9998 -1.2531 1.1884)" class="st0" width="5.2" height="2.6"/>
+		<path class="st0" d="M68.1,71.4v0.2v1.5c0,1.4-1.1,2.6-2.5,2.6l0,0c-1.4,0-2.6-1.1-2.6-2.5v-1.5v-0.2L68.1,71.4z"/>
+		<path class="st0" d="M64.4,19.7l2.9,6.8c0.1,0.2-0.1,0.4-0.5,0.3h-4.1c-0.3,0-0.7,0-0.6-0.3L64.4,19.7z"/>
+		<line class="st0" x1="63.4" y1="23.2" x2="65.6" y2="23.2"/>
+	</g>
+	<g>
+		<path class="st0" d="M79,75.6c0,0-4.6-0.2-3.8-5.5V32.9c0,0,0.6-2.6-2.2-5.1c0,0-1.4-1.1-1.3-5.2v-0.8h7.1"/>
+		<path class="st0" d="M78.9,21.7H86v0.8c0.1,4.1-1.3,5.2-1.3,5.2c-2.8,2.6-2.2,5.1-2.2,5.1V70c0.8,5.4-3.6,5.6-3.6,5.6"/>
+		<rect x="71.8" y="12.9" class="st0" width="14.1" height="9"/>
+		<rect x="71.8" y="0.5" class="st0" width="14.1" height="12.4"/>
+		<line class="st0" x1="76.1" y1="0.5" x2="76.1" y2="12.9"/>
+		<line class="st0" x1="81.3" y1="0.5" x2="81.3" y2="12.9"/>
+	</g>
+	<g>
+		<polygon class="st1" points="1.2,75.6 56.1,75.6 56.1,20.7 28.7,48.1 		"/>
+		<polygon class="st1" points="24,65.2 46.6,65.2 46.6,42.7 35.3,54 		"/>
+		<line class="st1" x1="56.1" y1="29.9" x2="53.5" y2="29.9"/>
+		<line class="st1" x1="56.1" y1="36.5" x2="53.5" y2="36.5"/>
+		<line class="st1" x1="56.1" y1="43.1" x2="53.5" y2="43.1"/>
+		<line class="st1" x1="56.1" y1="49.7" x2="53.5" y2="49.7"/>
+		<line class="st1" x1="56.1" y1="56.3" x2="53.5" y2="56.3"/>
+		<line class="st1" x1="56.1" y1="62.9" x2="53.5" y2="62.9"/>
+		<line class="st1" x1="56.1" y1="69.5" x2="53.5" y2="69.5"/>
+	</g>
+</g>
+<circle class="st0" cx="78.9" cy="71.4" r="1.2"/>
+</svg>

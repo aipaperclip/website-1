@@ -1,0 +1,121 @@
+.corporate-identity-container {
+    .first-section {
+        .page-h1-title {
+            padding-top: 30px;
+            padding-bottom: 50px;
+        }
+        .row.flex {
+            align-items: center;
+            figure {
+                order: 1;
+            }
+            .description {
+                order: 2;
+                font-size: 18px;
+                padding-left: 50px;
+                color: $light_gray;
+                font-family: "Calibri Light";
+                .section-subtitle {
+                    font-family: 'Calibri-Bold';
+                }
+            }
+        }
+    }
+    .single-section {
+        padding-top: 25px;
+        padding-bottom: 50px;
+        &:nth-child(even) {
+            background-color: #eeeeee;
+        }
+    }
+    .single-section-title {
+        font-size: 35px;
+        padding-left: 60px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        background-image: url('/assets/images/dots-bullets.svg');
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: 50px auto;
+    }
+    .single-section-description {
+        font-size: 18px;
+        .white-dark-blue-btn {
+            font-size: 18px;
+        }
+        a {
+            text-decoration: underline;
+            color: $dark_blue;
+        }
+    }
+    .chain {
+        text-align: center;
+        background-image: url('/assets/images/tools-icons-chain.svg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-bottom: 50px;
+        margin-top: 15px;
+        a {
+            width: 100px;
+            height: 100px;
+            margin: 0 15px;
+            figure {
+                position: relative;
+                .hidden-image {
+                    width: 0;
+                    height: 0;
+                    @include vertical-horizontal-align(absolute);
+                    @include simple_transition(.3s);
+                }
+                &:hover {
+                    .hidden-image {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+    @include breakpoint($sm-down)   {
+        .first-section {
+            .page-h1-title {
+                padding-bottom: 30px;
+            }
+            .row.flex {
+                display: block;
+                .description {
+                    padding-left: 15px;
+                    padding-bottom: 30px;
+                    .section-subtitle {
+                        font-size: 26px;
+                    }
+                }
+                figure {
+                    text-align: center;
+                }
+            }
+        }
+    }
+    @include breakpoint($xs)    {
+        .single-section {
+            figure {
+                padding-bottom: 15px;
+            }
+        }
+        .single-section-title {
+            padding-left: 55px;
+            font-size: 22px;
+            background-size: 35px auto;
+            background-position: left 15px center;
+            margin-bottom: 10px;
+        }
+        .chain {
+            background-image: none;
+            a {
+                display: block;
+                margin: 0 auto 20px;
+            }
+        }
+    }
+}

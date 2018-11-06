@@ -740,3 +740,55 @@ body.testimonials, body.press-center {
         padding-right: 10px;
     }
 }
+
+.download-logo-section {
+    background-color: #eeeeee;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    figure {
+        width: 100px;
+    }
+    p.description {
+        width: calc(100% - 300px);
+        font-size: 16px;
+        font-family: "Calibri Light";
+        padding-left: 25px;
+        strong {
+            font-family: "Calibri-Bold";
+            display: block;
+        }
+        a {
+            color: $dark_blue;
+            font-family: "Calibri-Bold";
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    .btn-container {
+        font-size: 18px;
+        width: 200px;
+        text-align: right;
+        i {
+            padding-right: 5px;
+        }
+    }
+    @include breakpoint($xs)    {
+        padding-bottom: 50px;
+        figure {
+            display: block;
+            margin: 0 auto 15px;
+        }
+        p.description {
+            width: 100%;
+            display: block;
+            padding-bottom: 20px;
+            padding-left: 0;
+        }
+        .btn-container {
+            width: 100%;
+            display: block;
+            text-align: left;
+        }
+    }
+}

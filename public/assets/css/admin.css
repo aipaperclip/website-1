@@ -22,6 +22,12 @@
   src: url("/assets/fonts/Calibri Bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Calibri Bold.woff2") format("woff2"), url("/assets/fonts/Calibri Bold.woff") format("woff"), url("/assets/fonts/Calibri Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: "Calibri Light";
+  src: url("../fonts/calibril.eot");
+  src: url("../fonts/calibril.eot?#iefix") format("embedded-opentype"), url("../fonts/calibril.woff2") format("woff2"), url("../fonts/calibril.woff") format("woff"), url("../fonts/calibril.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
 @media screen and (max-width: 400px) {
   .col-xxs-12 {
     width: 100%; }
@@ -37,6 +43,28 @@
 
   .col-xxs-2 {
     width: 16.67%; } }
+.white-dark-blue-btn {
+  background-color: #041e42;
+  color: white !important;
+  font-size: 16px;
+  padding: 6px 15px;
+  font-weight: bold;
+  border: 2px solid #041e42;
+  text-decoration: none !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .white-dark-blue-btn:hover {
+    color: #041e42 !important;
+    background-color: white;
+    text-decoration: none !important; }
+
 .white-black-btn {
   background-color: black;
   color: white;
@@ -151,6 +179,16 @@
   @media screen and (max-width: 767px) {
     .section-title {
       font-size: 22px; } }
+
+.page-h1-title {
+  color: #333333;
+  font-size: 44px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase; }
+  @media screen and (max-width: 767px) {
+    .page-h1-title {
+      font-size: 32px; } }
 
 .section-title-no-text-center {
   color: #333333;

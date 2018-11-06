@@ -107,7 +107,7 @@ function addHTMLEditor(){
                     height: 200,
                     allowedContent: true,
                     disallowedContent: 'script',
-                    contentsCss : ['/dist/css/front-libs-style.css']
+                    contentsCss : ['/dist/css/front-libs-style.css', '/assets/css/style.css']
                 }, {on: {
                         pluginsLoaded: function() {
                             var editor = this,
@@ -140,6 +140,7 @@ function addHTMLEditor(){
                     }},
                 options);
             CKEDITOR.replace($(this).attr('id'), options);
+            //CKEDITOR.addCss('body{background:blue;}');
         });
     }
 }

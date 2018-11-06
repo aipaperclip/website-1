@@ -4,7 +4,7 @@
     <section class="team-container">
         <div class="container team">
             <div class="row">
-                <h2 class="col-xs-12 section-title">{{ $titles[0]->html }}</h2>
+                <h2 class="col-xs-12 page-h1-title">{{ $titles[0]->html }}</h2>
             </div>
             <div class="row list">
                 @php($first = false)

@@ -9,7 +9,10 @@ const draw_line_increment = 10;
 const border_width = 2;
 
 $(document).ready(function() {
-
+    if($('body.careers.draw-careers-lines').length > 0 || $('body.corporate-design.draw-careers-lines').length > 0) {
+        //init lines
+        drawHeaderToFirstSectionLine();
+    }
 });
 
 $(window).on('load', function() {
@@ -43,8 +46,8 @@ $(window).on('resize', function(){
         initListingPageLine();
     }
     //CAREERS
-    if($('body.careers.draw-careers-lines').length > 0) {
-        initCareersLines();
+    if($('body.careers.draw-careers-lines').length > 0 || $('body.corporate-design.draw-careers-lines').length > 0) {
+        drawHeaderToFirstSectionLine();
     }
 });
 
@@ -820,9 +823,6 @@ if($('body').hasClass('home')) {
         $(this).closest('.read-more').slideUp(300);
     });
 }else if($('body.careers.draw-careers-lines').length > 0) {
-    //init lines
-    initCareersLines();
-
     $('.join-our-team .text .btn-container a').click(function()  {
         $('html, body').animate({'scrollTop': $('.open-job-positions-title .logo-over-line').offset().top}, 300);
     });
@@ -865,18 +865,19 @@ if($('body').hasClass('home')) {
     });
 }
 
-function initCareersLines() {
+function drawHeaderToFirstSectionLine() {
+    console.log("H@H@H@HH@");
     //FIRST LINE
     $('line.first').attr('x1', $('header .first-dot').offset().left);
     $('line.first').attr('y1', $('header .first-dot').offset().top);
-    $('line.first').attr('x2', $('.join-our-team .second-dot').offset().left);
-    $('line.first').attr('y2', $('.join-our-team .second-dot').offset().top + $('.join-our-team .second-dot').height() - 1);
+    $('line.first').attr('x2', $('.second-dot').offset().left);
+    $('line.first').attr('y2', $('.second-dot').offset().top + $('.second-dot').height() - 1);
 
     //SECOND LINE
-    $('line.second').attr('x1', $('.join-our-team .second-dot').offset().left);
-    $('line.second').attr('y1', $('.join-our-team .second-dot').offset().top + $('.join-our-team .second-dot').height() - 1);
-    $('line.second').attr('x2', $('.join-our-team .third-dot').offset().left);
-    $('line.second').attr('y2', $('.join-our-team .third-dot').offset().top + $('.join-our-team .third-dot').height() - 1);
+    $('line.second').attr('x1', $('.second-dot').offset().left);
+    $('line.second').attr('y1', $('.second-dot').offset().top + $('.second-dot').height() - 1);
+    $('line.second').attr('x2', $('.third-dot').offset().left);
+    $('line.second').attr('y2', $('.third-dot').offset().top + $('.third-dot').height() - 1);
 }
 
 function styleContactFormUploadBtn(load_filename_to_other_el)    {

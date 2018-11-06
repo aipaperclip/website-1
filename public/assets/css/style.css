@@ -22,6 +22,12 @@
   src: url("/assets/fonts/Calibri Bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Calibri Bold.woff2") format("woff2"), url("/assets/fonts/Calibri Bold.woff") format("woff"), url("/assets/fonts/Calibri Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: "Calibri Light";
+  src: url("../fonts/calibril.eot");
+  src: url("../fonts/calibril.eot?#iefix") format("embedded-opentype"), url("../fonts/calibril.woff2") format("woff2"), url("../fonts/calibril.woff") format("woff"), url("../fonts/calibril.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
 @keyframes fadeIn {
   from {
     opacity: 0; }
@@ -1754,6 +1760,69 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
     padding-left: 10px;
     padding-right: 10px; }
 
+.download-logo-section {
+  background-color: #eeeeee;
+  padding-top: 30px;
+  padding-bottom: 30px; }
+  .download-logo-section figure {
+    width: 100px; }
+  .download-logo-section p.description {
+    width: calc(100% - 300px);
+    font-size: 16px;
+    font-family: "Calibri Light";
+    padding-left: 25px; }
+    .download-logo-section p.description strong {
+      font-family: "Calibri-Bold";
+      display: block; }
+    .download-logo-section p.description a {
+      color: #041e42;
+      font-family: "Calibri-Bold"; }
+      .download-logo-section p.description a:hover {
+        text-decoration: underline; }
+  .download-logo-section .btn-container {
+    font-size: 18px;
+    width: 200px;
+    text-align: right; }
+    .download-logo-section .btn-container i {
+      padding-right: 5px; }
+  @media screen and (max-width: 767px) {
+    .download-logo-section {
+      padding-bottom: 50px; }
+      .download-logo-section figure {
+        display: block;
+        margin: 0 auto 15px; }
+      .download-logo-section p.description {
+        width: 100%;
+        display: block;
+        padding-bottom: 20px;
+        padding-left: 0; }
+      .download-logo-section .btn-container {
+        width: 100%;
+        display: block;
+        text-align: left; } }
+
+.white-dark-blue-btn {
+  background-color: #041e42;
+  color: white !important;
+  font-size: 16px;
+  padding: 6px 15px;
+  font-weight: bold;
+  border: 2px solid #041e42;
+  text-decoration: none !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .white-dark-blue-btn:hover {
+    color: #041e42 !important;
+    background-color: white;
+    text-decoration: none !important; }
+
 .white-black-btn {
   background-color: black;
   color: white;
@@ -1869,6 +1938,16 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
     .section-title {
       font-size: 22px; } }
 
+.page-h1-title {
+  color: #333333;
+  font-size: 44px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase; }
+  @media screen and (max-width: 767px) {
+    .page-h1-title {
+      font-size: 32px; } }
+
 .section-title-no-text-center {
   color: #333333;
   font-size: 35px;
@@ -1914,7 +1993,7 @@ header {
     position: relative; }
     header .logo-container a .first-dot {
       display: none; }
-      header .logo-container a .first-dot.careers-dot {
+      header .logo-container a .first-dot.logo-dot {
         display: block;
         position: absolute;
         top: 50%;
@@ -2440,13 +2519,13 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         line-height: 25px; }
       .homepage-container .intro .bg-wrapper .content-wrapper .description {
         font-size: 16px;
-        padding-top: 20px;
+        padding-top: 10px;
         line-height: 18px; }
         .homepage-container .intro .bg-wrapper .content-wrapper .description.italic {
           font-size: 18px;
           font-style: italic; }
     .homepage-container .intro .bg-wrapper .video {
-      padding-top: 20px; }
+      padding-top: 10px; }
       .homepage-container .intro .bg-wrapper .video .play-btn {
         display: inline-block; }
         .homepage-container .intro .bg-wrapper .video .play-btn img {
@@ -2698,6 +2777,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     .homepage-container .testimonials .expressions .circle-wrapper .text {
       display: none;
       width: 250px;
+      font-size: 16px;
       text-align: left;
       padding-top: 15px;
       padding-left: 20px;
@@ -2875,6 +2955,9 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
             transition: 0.3s; }
             .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list li:hover, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list li:hover {
               font-family: 'Calibri-Bold'; }
+          @media screen and (min-width: 992px) and (max-width: 1199px) {
+            .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list {
+              height: 200px; } }
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms.active .title .icon, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets.active .title .icon {
           background-image: url("/assets/images/minus-black-background-bordered.svg"); }
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms.active .title span, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets.active .title span {
@@ -3115,7 +3198,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   padding-top: 50px;
   padding-bottom: 70px; }
   .privacy-policy-container .section-title {
-    font-size: 44px;
     padding-bottom: 10px; }
   .privacy-policy-container .section-subtitle {
     padding-bottom: 50px; }
@@ -3216,8 +3298,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
 .testimonials-container {
   padding-top: 30px;
   padding-bottom: 100px; }
-  .testimonials-container .section-title {
-    font-size: 44px;
+  .testimonials-container .page-h1-title {
     padding-bottom: 70px; }
   .testimonials-container .list .single {
     padding-bottom: 70px;
@@ -3288,7 +3369,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   @media screen and (max-width: 767px) {
     .testimonials-container {
       padding-bottom: 50px; }
-      .testimonials-container .section-title {
+      .testimonials-container .page-h1-title {
         font-size: 30px;
         padding-bottom: 30px; }
       .testimonials-container .list .single {
@@ -3585,12 +3666,10 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
 
 .careers-container {
   padding-bottom: 100px; }
-  .careers-container .section-title {
-    font-size: 44px;
-    padding-bottom: 10px; }
+  .careers-container .page-h1-title {
+    padding-bottom: 50px; }
   .careers-container .join-our-team {
-    padding-top: 50px;
-    padding-bottom: 70px; }
+    padding-bottom: 50px; }
     .careers-container .join-our-team .image {
       text-align: right;
       padding-right: 50px; }
@@ -3680,7 +3759,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     .careers-container {
       padding-top: 20px;
       padding-bottom: 0; }
-      .careers-container .section-title {
+      .careers-container .page-h1-title {
         font-size: 26px; }
       .careers-container .join-our-team {
         padding-bottom: 0; }
@@ -3979,5 +4058,130 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       padding-left: 15px; }
     .single-job-offer-container .apply-for-position .form .form-row.button-row .upload-file {
       max-width: none; } }
+
+.corporate-identity-container .first-section .page-h1-title {
+  padding-top: 30px;
+  padding-bottom: 50px; }
+.corporate-identity-container .first-section .row.flex {
+  align-items: center; }
+  .corporate-identity-container .first-section .row.flex figure {
+    order: 1; }
+  .corporate-identity-container .first-section .row.flex .description {
+    order: 2;
+    font-size: 18px;
+    padding-left: 50px;
+    color: #3e3e3e;
+    font-family: "Calibri Light"; }
+    .corporate-identity-container .first-section .row.flex .description .section-subtitle {
+      font-family: 'Calibri-Bold'; }
+.corporate-identity-container .single-section {
+  padding-top: 25px;
+  padding-bottom: 50px; }
+  .corporate-identity-container .single-section:nth-child(even) {
+    background-color: #eeeeee; }
+.corporate-identity-container .single-section-title {
+  font-size: 35px;
+  padding-left: 60px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  background-image: url("/assets/images/dots-bullets.svg");
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 50px auto; }
+.corporate-identity-container .single-section-description {
+  font-size: 18px; }
+  .corporate-identity-container .single-section-description .white-dark-blue-btn {
+    font-size: 18px; }
+  .corporate-identity-container .single-section-description a {
+    text-decoration: underline;
+    color: #041e42; }
+.corporate-identity-container .chain {
+  text-align: center;
+  background-image: url("/assets/images/tools-icons-chain.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 50px;
+  margin-top: 15px; }
+  .corporate-identity-container .chain a {
+    width: 100px;
+    height: 100px;
+    margin: 0 15px; }
+    .corporate-identity-container .chain a figure {
+      position: relative; }
+      .corporate-identity-container .chain a figure .hidden-image {
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -o-transition: 0.3s;
+        -ms-transition: 0.3s;
+        transition: 0.3s; }
+      .corporate-identity-container .chain a figure:hover .hidden-image {
+        width: 100%;
+        height: 100%; }
+@media screen and (max-width: 991px) {
+  .corporate-identity-container .first-section .page-h1-title {
+    padding-bottom: 30px; }
+  .corporate-identity-container .first-section .row.flex {
+    display: block; }
+    .corporate-identity-container .first-section .row.flex .description {
+      padding-left: 15px;
+      padding-bottom: 30px; }
+      .corporate-identity-container .first-section .row.flex .description .section-subtitle {
+        font-size: 26px; }
+    .corporate-identity-container .first-section .row.flex figure {
+      text-align: center; } }
+@media screen and (max-width: 767px) {
+  .corporate-identity-container .single-section figure {
+    padding-bottom: 15px; }
+  .corporate-identity-container .single-section-title {
+    padding-left: 55px;
+    font-size: 22px;
+    background-size: 35px auto;
+    background-position: left 15px center;
+    margin-bottom: 10px; }
+  .corporate-identity-container .chain {
+    background-image: none; }
+    .corporate-identity-container .chain a {
+      display: block;
+      margin: 0 auto 20px; } }
+
+.corporate-design-container .page-h1-title {
+  padding-bottom: 10px; }
+.corporate-design-container .image-and-text {
+  padding-top: 50px;
+  padding-bottom: 70px; }
+  .corporate-design-container .image-and-text .image {
+    text-align: right;
+    padding-right: 50px; }
+    .corporate-design-container .image-and-text .image .second-dot {
+      position: absolute;
+      bottom: 0;
+      left: 35px; }
+    .corporate-design-container .image-and-text .image figure {
+      width: 60%;
+      float: right;
+      position: relative; }
+      .corporate-design-container .image-and-text .image figure .third-dot {
+        position: absolute;
+        bottom: 0;
+        left: 0; }
+  .corporate-design-container .image-and-text .text {
+    padding-left: 50px;
+    padding-bottom: 40px; }
+    .corporate-design-container .image-and-text .text .description {
+      font-size: 16px;
+      width: 70%;
+      line-height: 24px;
+      padding-bottom: 35px; }
+    .corporate-design-container .image-and-text .text .btn-container a {
+      padding: 14px 24px; }
 
 /*# sourceMappingURL=style.css.map */

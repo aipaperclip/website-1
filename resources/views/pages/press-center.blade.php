@@ -4,7 +4,7 @@
     <div class="press-center-container">
         <div class="container">
             <div class="row">
-                <h1 class="col-xs-12 section-title">{{ $meta_data->page_title }}</h1>
+                <h1 class="col-xs-12 page-h1-title">{{ $meta_data->page_title }}</h1>
             </div>
             <div class="row">
                 @if(!empty($sections))

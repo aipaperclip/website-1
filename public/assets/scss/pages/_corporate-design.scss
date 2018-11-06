@@ -1,0 +1,43 @@
+.corporate-design-container {
+    .page-h1-title {
+        padding-bottom: 10px;
+    }
+    .image-and-text {
+        padding-top: 50px;
+        padding-bottom: 70px;
+        .image {
+            text-align: right;
+            padding-right: 50px;
+            .second-dot {
+                position: absolute;
+                bottom: 0;
+                left: 35px;
+            }
+            figure {
+                width: 60%;
+                float: right;
+                position: relative;
+                .third-dot {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+        }
+        .text {
+            padding-left: 50px;
+            padding-bottom: 40px;
+            .description {
+                font-size: 16px;
+                width: 70%;
+                line-height: 24px;
+                padding-bottom: 35px;
+            }
+            .btn-container {
+                a {
+                    padding: 14px 24px;
+                }
+            }
+        }
+    }
+}

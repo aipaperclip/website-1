@@ -1,3 +1,20 @@
+.white-dark-blue-btn {
+    background-color: $dark_blue;
+    color: white !important;;
+    font-size: 16px;
+    padding: 6px 15px;
+    font-weight: bold;
+    border: 2px solid $dark_blue;
+    text-decoration: none !important;
+    @include rounded(4px);
+    @include simple_transition(.3s);
+    &:hover {
+        color: $dark_blue !important;
+        background-color: white;
+        text-decoration: none !important;
+    }
+}
+
 .white-black-btn {
     background-color: black;
     color: white;
@@ -89,6 +106,17 @@
     text-transform: uppercase;
     @include breakpoint($xs)    {
         font-size: 22px;
+    }
+}
+
+.page-h1-title {
+    color: $dark_gray;
+    font-size: 44px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    @include breakpoint($xs)    {
+        font-size: 32px;
     }
 }
 

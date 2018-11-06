@@ -5,7 +5,7 @@ header {
             position: relative;
             .first-dot {
                 display: none;
-                &.careers-dot {
+                &.logo-dot {
                     display: block;
                     @include vertical-horizontal-align(absolute);
                 }
