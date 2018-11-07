@@ -117,6 +117,14 @@ body {
     }
 }
 
+@for $i from 0 through 150 {
+    @include breakpoint($xs)    {
+        .fs-xs-#{$i} {
+            font-size: 0px + $i!important;
+        }
+    }
+}
+
 @for $i from 0 through 80 {
     .line-height-#{$i} {
         line-height: 0px + $i!important;
