@@ -117,6 +117,12 @@ body {
     }
 }
 
+@for $i from 0 through 80 {
+    .line-height-#{$i} {
+        line-height: 0px + $i!important;
+    }
+}
+
 .hide-xs {
     @include breakpoint($xs)    {
         display: none !important;

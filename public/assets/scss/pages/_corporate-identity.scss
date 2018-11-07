@@ -97,6 +97,16 @@
                 }
             }
         }
+        .chain {
+            margin-bottom: 10px;
+            background-image: none;
+            figure {
+                width: 33.3%;
+                a {
+                    margin: 0 auto 20px;
+                }
+            }
+        }
     }
     @include breakpoint($xs)    {
         .single-section {
@@ -110,16 +120,6 @@
             background-size: 35px auto;
             background-position: left 15px center;
             margin-bottom: 10px;
-        }
-        .chain {
-            margin-bottom: 10px;
-            background-image: none;
-            figure {
-                width: 33.3%;
-                a {
-                    margin: 0 auto 20px;
-                }
-            }
         }
     }
 }
