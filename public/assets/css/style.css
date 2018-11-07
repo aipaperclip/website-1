@@ -24,8 +24,8 @@
   font-style: normal; }
 @font-face {
   font-family: "Calibri Light";
-  src: url("../fonts/calibril.eot");
-  src: url("../fonts/calibril.eot?#iefix") format("embedded-opentype"), url("../fonts/calibril.woff2") format("woff2"), url("../fonts/calibril.woff") format("woff"), url("../fonts/calibril.ttf") format("truetype");
+  src: url("/assets/fonts/calibril.eot");
+  src: url("/assets/fonts/calibril.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/calibril.woff2") format("woff2"), url("/assets/fonts/calibril.woff") format("woff"), url("/assets/fonts/calibril.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 .calibri-bold {
