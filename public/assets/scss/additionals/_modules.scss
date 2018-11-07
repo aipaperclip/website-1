@@ -15,6 +15,23 @@
     }
 }
 
+.dark-blue-white-btn {
+    background-color: white;
+    color: $dark_blue;
+    font-size: 16px;
+    padding: 6px 15px;
+    font-weight: bold;
+    border: 2px solid $dark_blue;
+    text-decoration: none;
+    @include rounded(4px);
+    @include simple_transition(.3s);
+    &:hover {
+        color: white;
+        background-color: $dark_blue;
+        text-decoration: none;
+    }
+}
+
 .white-black-btn {
     background-color: black;
     color: white;

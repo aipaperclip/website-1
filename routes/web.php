@@ -45,9 +45,9 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         }
     })->name('careers');
 
-    //Route::get('corporate-design/{slug}', 'CorporateDesignController@getView')->name('corporate-design');
-//
-    //Route::get('corporate-identity', 'CorporateIdentityController@getView')->name('corporate-identity');
+    Route::get('corporate-design/{slug}', 'CorporateDesignController@getView')->name('corporate-design');
+
+    Route::get('corporate-identity', 'CorporateIdentityController@getView')->name('corporate-identity');
 
     //======================================= AJAX ========================================
 
@@ -98,5 +98,9 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('partner-network-intro', function() {
         return Redirect::to('/?application=partner-network-intro');
+    });
+
+    Route::get('corporate-design', function() {
+        return Redirect::to('/corporate-design/one-line-logo');
     });
 });

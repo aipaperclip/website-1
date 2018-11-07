@@ -3,9 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\URL;
 
 class Media extends Model   {
     function getLink()  {
-        return UPLOADS_FRONT_END . $this->name;
+        return \URL::to('') . UPLOADS_FRONT_END . $this->name;
     }
 }

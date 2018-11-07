@@ -9,7 +9,15 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.uiColor = '#AADC6E';
     config.allowedContent = true;
     config.autoParagraph = false;
+    config.image_prefillDimensions  = false;
     config.font_defaultLabel = 'Calibri';
+
+
+    let ckeditor_font_sizes = "";
+    for(let i = 0; i < 80; i+=1)    {
+        ckeditor_font_sizes+= i + "/" + i + "px;";
+    }
+    config.fontSize_sizes = ckeditor_font_sizes;
 };
 
 CKEDITOR.dtd.$removeEmpty['i'] = false;

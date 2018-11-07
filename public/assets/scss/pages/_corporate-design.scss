@@ -1,6 +1,9 @@
 .corporate-design-container {
     .page-h1-title {
         padding-bottom: 10px;
+        @include breakpoint($xs)    {
+            font-size: 24px;
+        }
     }
     .image-and-text {
         padding-top: 50px;
@@ -14,7 +17,7 @@
                 left: 35px;
             }
             figure {
-                width: 60%;
+                width: 70%;
                 float: right;
                 position: relative;
                 .third-dot {
@@ -26,7 +29,6 @@
         }
         .text {
             padding-left: 50px;
-            padding-bottom: 40px;
             .description {
                 font-size: 16px;
                 width: 70%;
@@ -38,6 +40,168 @@
                     padding: 14px 24px;
                 }
             }
+        }
+        @include breakpoint($sm-down)   {
+            .image {
+                padding-right: 15px;
+                figure {
+                    width: 80%;
+                }
+            }
+            .text {
+                padding-left: 15px;
+                .description {
+                    width: 100%;
+                }
+            }
+        }
+        @include breakpoint($xs)    {
+            padding-bottom: 0;
+            .image {
+                figure {
+                    width: 65%;
+                    float: none;
+                    margin: 0 auto;
+                }
+            }
+            .text {
+                padding-top: 20px;
+                .section-subtitle {
+                    font-size: 24px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .page-navigation {
+        text-align: center;
+        padding-top: 40px;
+        .single-col {
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-bottom: 40px;
+            position: relative;
+            .nav-to-bottom-second-dot {
+                bottom: 0;
+                @include horizontal-align(absolute);
+            }
+            a {
+                padding-top: 9px;
+                padding-bottom: 9px;
+                width: 100%;
+                display: block;
+                position: relative;
+                &.active {
+                    color: white;
+                    background-color: $dark_blue;
+                }
+                .nav-to-bottom-first-dot {
+                    bottom: 0;
+                    @include horizontal-align(absolute);
+                }
+            }
+            @include breakpoint($xs)    {
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-bottom: 15px;
+            }
+        }
+    }
+    .slug-content {
+        .padding-right-left-md-50 {
+            @include breakpoint($md-down)   {
+                padding-left: 50px !important;
+                padding-right: 50px !important;
+            }
+            @include breakpoint($xs)    {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+        }
+        .gutter-sm-down {
+            @include breakpoint($sm-down) {
+                padding-left: 15px !important;
+                padding-right: 15px !important
+            }
+        }
+        .black-background {
+            background-color: black;
+            color: white;
+        }
+        .dark-blue-color {
+            color: #041e42;
+        }
+        .red-color {
+            color: #b30007;
+        }
+        .nav-to-bottom-third-dot {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .section-subtitle {
+            padding-top: 30px;
+            @include breakpoint($xs)    {
+                padding-top: 10px;
+            }
+        }
+    }
+    .clickable-squares-row {
+        font-size: 0;
+        .square {
+            height: 120px;
+            width: 120px;
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            color: $main_color;
+            .content {
+                display: none;
+                font-size: 16px;
+            }
+            &.border {
+                border: 1px solid black;
+            }
+            &.active {
+                height: 200px;
+                width: 200px;
+                z-index: 10;
+                @include box-shadow(0 2px 15px 0 rgba(0, 0, 0, 0.5));
+                .content {
+                    display: block;
+                    text-align: center;
+                    width: calc(100% - 15px);
+                    @include vertical-horizontal-align(absolute);
+                    figure {
+                        padding-bottom: 5px;
+                        img {
+                            width: 40px;
+                        }
+                    }
+                }
+            }
+            @include breakpoint($lgl)    {
+                height: 140px;
+                width: 140px;
+            }
+            @include breakpoint($sm-down) {
+                height: 100px;
+                width: 100px;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+        &.white-color {
+            .square {
+                color: white;
+            }
+        }
+    }
+    .last-section {
+        .nav-to-bottom-fourth-dot {
+            position: absolute;
+            top: 0;
+            left: 35px;
         }
     }
 }

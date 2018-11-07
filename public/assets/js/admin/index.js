@@ -104,7 +104,7 @@ function addHTMLEditor(){
     if($('.ckeditor-init').length > 0)   {
         $('.ckeditor-init').each(function() {
             var options = $.extend({
-                    height: 200,
+                    height: 350,
                     allowedContent: true,
                     disallowedContent: 'script',
                     contentsCss : ['/dist/css/front-libs-style.css', '/assets/css/style.css']

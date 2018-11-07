@@ -32,6 +32,8 @@ class Controller extends BaseController
         if(Route::getCurrentRoute()->getPrefix() == '/' && !Request::isMethod('post'))    {
             View::share('mobile', $this->isMobile());
             View::share('meta_data', $this->getMetaData());
+            View::share('parent_titles', $this->getParentDbTitles());
+            View::share('parent_sections', $this->getParentDbSections());
             View::share('titles', $this->getDbTitles());
             View::share('sections', $this->getDbSections());
             View::share('socials', $this->getFooterSocials());
@@ -47,7 +49,33 @@ class Controller extends BaseController
     }
 
     protected function getMetaData()    {
+        if(Route::getCurrentRoute()->getName() == 'corporate-design') {
+            //getting meta data for children pages
+            return PageMetaData::where(array('slug' => Route::getCurrentRoute()->parameters['slug']))->get()->first();
+        }
         return PageMetaData::where(array('slug' => Route::getCurrentRoute()->getName()))->get()->first();
+    }
+
+    protected function getParentDbTitles()    {
+        if(!empty(Route::getCurrentRoute()->parameters['slug'])) {
+            $current_page = PageMetaData::where(array('slug' => Route::getCurrentRoute()->parameters['slug']))->get()->first();
+            if(!empty($current_page->parent)) {
+                return PagesHtmlSection::where(array('page_id' => $current_page->parent->id, 'type' => 'title'))->get()->all();
+            }
+        }else {
+            return null;
+        }
+    }
+
+    protected function getParentDbSections()    {
+        if(!empty(Route::getCurrentRoute()->parameters['slug'])) {
+            $current_page = PageMetaData::where(array('slug' => Route::getCurrentRoute()->parameters['slug']))->get()->first();
+            if(!empty($current_page->parent)) {
+                return PagesHtmlSection::where(array('page_id' => $current_page->parent->id, 'type' => 'section'))->get()->all();
+            }
+        }else {
+            return null;
+        }
     }
 
     protected function getFooterSocials()    {

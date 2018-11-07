@@ -3,8 +3,13 @@
     <div class="corporate-identity-container">
         <section class="container first-section">
             <div class="row">
-                <div class="col-xs-12 page-h1-title">CORPORATE IDENTITY</div>
+                <div class="col-xs-12 page-h1-title">{{ $meta_data->page_title }}</div>
             </div>
+        </section>
+    </div>
+    {!! $sections[0]->html !!}
+    {{--<div class="corporate-identity-container">
+        <section class="container first-section">
             <div class="row fs-0 flex">
                 <div class="col-xs-12 col-md-8 description inline-block">
                     <h3 class="section-subtitle">Dental health is suffering on a global level:</h3><br>
@@ -13,7 +18,7 @@
                     <span style="font-weight: 700;font-family: 'Calibri-Bold';">Dentacoin offers a global solution to this global pain.</span>
                 </div>
                 <figure class="col-xs-12 col-md-4 inline-block text-right" itemscope="" itemtype="http://schema.org/ImageObject">
-                    <img src="{{URL::asset('assets/images/dentist-tools.png') }}" alt="Dentist tools" itemprop="contentUrl"/>
+                    <img src="/assets/images/dentist-tools.png" alt="Dentist tools" itemprop="contentUrl"/>
                 </figure>
             </div>
         </section>
@@ -100,36 +105,36 @@
             <div class="container-fluid chain">
                 <div class="row">
                     <div class="col-xs-12 no-gutter">
-                        <a href="https://reviews.dentacoin.com/" target="_blank" class="inline-block">
-                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
+                            <a href="https://reviews.dentacoin.com/" target="_blank">
                                 <img src="/assets/images/trusted-reviews-chain-icon.svg" alt="Trusted reviews logo" itemprop="contentUrl"/>
                                 <img src="/assets/images/tools-link-icon.svg" class="hidden-image" alt="" itemprop="contentUrl"/>
-                            </figure>
-                        </a>
-                        <a href="https://dentavox.dentacoin.com/" target="_blank" class="inline-block">
-                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                            </a>
+                        </figure>
+                        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
+                            <a href="https://dentavox.dentacoin.com/" target="_blank">
                                 <img src="/assets/images/dentavox-chain-icon.svg" alt="Dentavox logo" itemprop="contentUrl"/>
                                 <img src="/assets/images/tools-link-icon.svg" class="hidden-image" alt="" itemprop="contentUrl"/>
-                            </figure>
-                        </a>
-                        <a href="https://dentacare.dentacoin.com/" target="_blank" class="inline-block">
-                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                            </a>
+                        </figure>
+                        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
+                            <a href="https://dentacare.dentacoin.com/" target="_blank">
                                 <img src="/assets/images/dentacare-chain-icon.svg" alt="Dentacare logo" itemprop="contentUrl"/>
                                 <img src="/assets/images/tools-link-icon.svg" class="hidden-image" alt="" itemprop="contentUrl"/>
-                            </figure>
-                        </a>
-                        <a href="javascript:void(0)" target="_blank" class="inline-block">
-                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                            </a>
+                        </figure>
+                        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
+                            <a href="javascript:void(0)" target="_blank">
                                 <img src="/assets/images/assurance-chain-icon.svg" alt="Assurance logo" itemprop="contentUrl"/>
                                 <img src="/assets/images/coming-soon-tools.svg" class="hidden-image" alt="" itemprop="contentUrl"/>
-                            </figure>
-                        </a>
-                        <a href="javascript:void(0)" target="_blank" class="inline-block">
-                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                            </a>
+                        </figure>
+                        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
+                            <a href="javascript:void(0)" target="_blank">
                                 <img src="/assets/images/health-database-chain-icon.svg" alt="Health database logo" itemprop="contentUrl"/>
                                 <img src="/assets/images/coming-soon-tools.svg" class="hidden-image" alt="" itemprop="contentUrl"/>
-                            </figure>
-                        </a>
+                            </a>
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -145,6 +150,5 @@
                 </div>
             </div>
         </section>
-        @include('partials.download-logo')
-    </div>
+    </div>--}}
 @endsection
