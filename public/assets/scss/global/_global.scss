@@ -103,9 +103,29 @@ body {
     }
 }
 
+@for $i from 0 through 15 * 2 {
+    @include breakpoint($xs)    {
+        .max-width-xs-#{$i * 10} {
+            max-width: 0px + $i * 10!important;
+        }
+    }
+}
+
 @for $i from 0 through 150 {
     .fs-#{$i} {
         font-size: 0px + $i!important;
+    }
+}
+
+.hide-xs {
+    @include breakpoint($xs)    {
+        display: none !important;
+    }
+}
+
+.text-center-xs {
+    @include breakpoint($xs)    {
+        text-align: center !important;
     }
 }
 
@@ -242,12 +262,6 @@ img {
     height: auto;
 }
 
-.text-center-xs {
-    @include breakpoint($xs)    {
-        text-align: center;
-    }
-}
-
 svg.svg-with-lines {
     display: none;
 }
@@ -269,12 +283,7 @@ body.home, body.testimonials, body.press-center, body.careers.allow-draw-lines, 
 body.corporate-design.allow-draw-lines {
     @include breakpoint($xs)    {
         svg.svg-with-lines {
-            line {
-                display: none;
-                &.first, &.second {
-                    display: block;
-                }
-            }
+            display: none;
         }
     }
 }

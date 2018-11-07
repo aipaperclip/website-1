@@ -1,7 +1,7 @@
 <?php
 
 // define short code for DIRECTORY_SEPARATOR
-define('DS', DIRECTORY_SEPARATOR);
+define('DS', '/');
 // define base directory for project
 define('ROOT', realpath(dirname(__FILE__)) . DS);
 // define uploads directory

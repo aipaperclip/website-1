@@ -1,5 +1,6 @@
 .corporate-design-container {
     .page-h1-title {
+        padding-top: 30px;
         padding-bottom: 10px;
         @include breakpoint($xs)    {
             font-size: 24px;
@@ -57,6 +58,7 @@
         }
         @include breakpoint($xs)    {
             padding-bottom: 0;
+            padding-top: 30px;
             .image {
                 figure {
                     width: 65%;
@@ -185,8 +187,8 @@
                 width: 140px;
             }
             @include breakpoint($sm-down) {
-                height: 100px;
-                width: 100px;
+                height: 125px;
+                width: 125px;
                 display: block;
                 margin: 0 auto;
             }
