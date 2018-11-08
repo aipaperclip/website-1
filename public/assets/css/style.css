@@ -6743,10 +6743,9 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%); }
-        .corporate-design-container .clickable-squares-row .square.active .content figure {
-          padding-bottom: 5px; }
-          .corporate-design-container .clickable-squares-row .square.active .content figure img {
-            width: 40px; }
+        .corporate-design-container .clickable-squares-row .square.active .content img {
+          width: 40px;
+          margin-bottom: 5px; }
     @media screen and (min-width: 1400px) {
       .corporate-design-container .clickable-squares-row .square {
         height: 140px;
