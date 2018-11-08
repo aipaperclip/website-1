@@ -67,6 +67,7 @@
     color: white;
     font-size: 16px;
     padding: 6px 15px;
+    display: inline-block;
     font-weight: bold;
     border: 2px solid white;
     @include simple_transition(.3s);
@@ -79,8 +80,9 @@
 .white-blue-rounded-btn, input[type='submit'].white-blue-rounded-btn {
     background-color: $light_blue;
     color: white;
-    font-size: 16px;
-    padding: 8px 24px;
+    font-size: 20px;
+    display: inline-block;
+    padding: 12px 24px;
     font-weight: bold;
     border: 2px solid white;
     cursor: pointer;
@@ -100,8 +102,9 @@
     background-color: white;
     color: $light_blue;
     border: 2px solid $light_blue;
-    font-size: 16px;
-    padding: 8px 24px; 
+    font-size: 20px;
+    display: inline-block;
+    padding: 12px 24px; 
     font-weight: bold;
     cursor: pointer;
     @include rounded(4px);
@@ -118,6 +121,7 @@
 .section-title {
     color: $dark_gray;
     font-size: 35px;
+    font-family: "Lato-Bold";
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
@@ -129,7 +133,7 @@
 .page-h1-title {
     color: $dark_gray;
     font-size: 44px;
-    font-weight: bold;
+    font-family: "Lato-Bold";
     text-align: center;
     text-transform: uppercase;
     @include breakpoint($xs)    {
@@ -150,7 +154,7 @@
 .section-subtitle {
     color: black;
     font-size: 35px;
-    font-weight: bold;
+    font-family: "Lato-Bold";
 }
 
 .section-subtitle-uppercase {
@@ -158,6 +162,12 @@
     font-size: 35px;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+.section-description {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 10px;
 }
 
 .paragraph-text {

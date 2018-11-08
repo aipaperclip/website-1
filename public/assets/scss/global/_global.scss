@@ -131,6 +131,10 @@ body {
     }
 }
 
+.italic {
+    font-style: italic;
+}
+
 .hide-xs {
     @include breakpoint($xs)    {
         display: none !important;

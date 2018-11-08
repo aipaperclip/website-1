@@ -28,11 +28,20 @@
   src: url("/assets/fonts/calibril.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/calibril.woff2") format("woff2"), url("/assets/fonts/calibril.woff") format("woff"), url("/assets/fonts/calibril.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: "Lato-Bold";
+  src: url("/assets/fonts/Lato-Bold.eot");
+  src: url("/assets/fonts/Lato-Bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Lato-Bold.woff2") format("woff2"), url("/assets/fonts/Lato-Bold.woff") format("woff"), url("/assets/fonts/Lato-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
 .calibri-bold {
   font-family: "Calibri-Bold"; }
 
 .calibri-light {
   font-family: "Calibri Light"; }
+
+.lato-bold {
+  font-family: "Lato-Bold"; }
 
 @keyframes fadeIn {
   from {
@@ -3183,6 +3192,9 @@ body {
 .line-height-80 {
   line-height: 80px !important; }
 
+.italic {
+  font-style: italic; }
+
 @media screen and (max-width: 767px) {
   .hide-xs {
     display: none !important; } }
@@ -4305,6 +4317,7 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
   color: white;
   font-size: 16px;
   padding: 6px 15px;
+  display: inline-block;
   font-weight: bold;
   border: 2px solid white;
   -webkit-transition: 0.3s;
@@ -4319,8 +4332,9 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
 .white-blue-rounded-btn, input[type='submit'].white-blue-rounded-btn {
   background-color: #679dca;
   color: white;
-  font-size: 16px;
-  padding: 8px 24px;
+  font-size: 20px;
+  display: inline-block;
+  padding: 12px 24px;
   font-weight: bold;
   border: 2px solid white;
   cursor: pointer;
@@ -4345,8 +4359,9 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
   background-color: white;
   color: #679dca;
   border: 2px solid #679dca;
-  font-size: 16px;
-  padding: 8px 24px;
+  font-size: 20px;
+  display: inline-block;
+  padding: 12px 24px;
   font-weight: bold;
   cursor: pointer;
   -webkit-border-radius: 4px;
@@ -4368,6 +4383,7 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
 .section-title {
   color: #333333;
   font-size: 35px;
+  font-family: "Lato-Bold";
   font-weight: bold;
   text-align: center;
   text-transform: uppercase; }
@@ -4378,7 +4394,7 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
 .page-h1-title {
   color: #333333;
   font-size: 44px;
-  font-weight: bold;
+  font-family: "Lato-Bold";
   text-align: center;
   text-transform: uppercase; }
   @media screen and (max-width: 767px) {
@@ -4397,13 +4413,18 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
 .section-subtitle {
   color: black;
   font-size: 35px;
-  font-weight: bold; }
+  font-family: "Lato-Bold"; }
 
 .section-subtitle-uppercase {
   color: black;
   font-size: 35px;
   font-weight: bold;
   text-transform: uppercase; }
+
+.section-description {
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 10px; }
 
 .paragraph-text {
   color: #3e3e3e;
@@ -4722,7 +4743,8 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       .homepage-container.mobile .below-successful-practices .flex .description-over-line .wrapper .description .wrapper span {
         font-size: 26px; }
     .homepage-container.mobile .below-successful-practices .flex .cells .between-sections-description .title {
-      font-size: 26px; }
+      font-size: 26px;
+      font-family: "Lato-Bold"; }
     .homepage-container.mobile .below-successful-practices .flex .cells .between-sections-description .description {
       font-size: 12px; } }
 .homepage-container.mobile .testimonials .below-expressions {
@@ -4779,7 +4801,8 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   display: none; }
 @media screen and (max-width: 767px) {
   .homepage-container.mobile .testimonials .token-holders-transactions .between-sections-description .title {
-    font-size: 26px; }
+    font-size: 26px;
+    font-family: "Lato-Bold"; }
   .homepage-container.mobile .testimonials .token-holders-transactions .between-sections-description .description {
     font-size: 12px; } }
 .homepage-container.mobile .buy-dentacoin {
@@ -4948,19 +4971,12 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       transform: translate(-50%, -50%); }
       .homepage-container .intro .bg-wrapper .content-wrapper .title {
         font-size: 70px;
-        font-weight: bold;
+        font-family: "Lato-Bold";
         line-height: 70px; }
       .homepage-container .intro .bg-wrapper .content-wrapper .subtitle {
         font-size: 30px;
         font-weight: bold;
         line-height: 25px; }
-      .homepage-container .intro .bg-wrapper .content-wrapper .description {
-        font-size: 16px;
-        padding-top: 10px;
-        line-height: 18px; }
-        .homepage-container .intro .bg-wrapper .content-wrapper .description.italic {
-          font-size: 18px;
-          font-style: italic; }
     .homepage-container .intro .bg-wrapper .video {
       padding-top: 10px; }
       .homepage-container .intro .bg-wrapper .video .play-btn {
@@ -5101,8 +5117,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     line-height: 18px; }
   .homepage-container .successful-practices .content .content-container .btn-container {
     padding-top: 30px; }
-    .homepage-container .successful-practices .content .content-container .btn-container .white-blue-rounded-btn {
-      font-size: 18px; }
 @media screen and (min-width: 1399px) {
   .homepage-container .successful-practices .content .content-container {
     padding-right: 10%; } }
@@ -5143,8 +5157,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       -ms-transform: translateY(-50%);
       transform: translateY(-50%); }
     .homepage-container .below-successful-practices .description-over-line .wrapper .description {
-      font-size: 16px;
-      font-weight: bold;
       color: #333333;
       padding: 0 5px;
       background: white; }
@@ -5524,10 +5536,11 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         border-right: 2px solid black; }
         .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .btn-container, .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .headline {
           display: block;
-          font-size: 16px; }
+          font-size: 18px;
+          padding-top: 10px; }
         .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide.slick-current .description {
           display: block;
-          font-size: 14px; }
+          font-size: 16px; }
     @media screen and (max-width: 1450px) {
       .homepage-container .awards-and-publications .publications-slider-wrapper .publications-slider .single-slide figure img {
         max-width: 250px; } }
@@ -5709,14 +5722,14 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         text-align: center;
         font-size: 16px;
         padding-top: 5px; }
-    .press-center-container .list .single .content {
+    .press-center-container .list .single .section-description {
       width: calc(100% - 100px);
       padding-left: 20px; }
-      .press-center-container .list .single .content .title {
-        font-family: 'Calibri-Bold';
+      .press-center-container .list .single .section-description .title {
+        font-family: "Lato-Bold";
         padding-bottom: 5px;
         font-size: 18px; }
-      .press-center-container .list .single .content .read-more {
+      .press-center-container .list .single .section-description .read-more {
         font-family: 'Calibri-Bold';
         color: #679dca; }
   @media screen and (max-width: 767px) {
@@ -5775,24 +5788,23 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       width: calc(100% - 80px);
       font-size: 16px;
       padding-left: 25px; }
-      .testimonials-container .list .single .content .description {
-        padding-bottom: 15px;
+      .testimonials-container .list .single .content .section-description {
         position: relative;
         padding-left: 15px; }
-        .testimonials-container .list .single .content .description .start, .testimonials-container .list .single .content .description .end {
+        .testimonials-container .list .single .content .section-description .start, .testimonials-container .list .single .content .section-description .end {
           width: 10px; }
-        .testimonials-container .list .single .content .description .start {
+        .testimonials-container .list .single .content .section-description .start {
           left: 0;
           position: absolute; }
-          .testimonials-container .list .single .content .description .start img {
+          .testimonials-container .list .single .content .section-description .start img {
             vertical-align: top; }
-        .testimonials-container .list .single .content .description .end {
+        .testimonials-container .list .single .content .section-description .end {
           display: inline-block;
           margin-left: 5px; }
-          .testimonials-container .list .single .content .description .end img {
+          .testimonials-container .list .single .content .section-description .end img {
             vertical-align: bottom; }
       .testimonials-container .list .single .content .name_job {
-        font-family: 'Calibri-Bold'; }
+        font-family: "Lato-Bold"; }
       .testimonials-container .list .single .content .location i {
         padding-right: 5px;
         color: #aaaaaa; }
@@ -6126,9 +6138,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       padding-left: 50px;
       padding-bottom: 40px; }
       .careers-container .join-our-team .text .description {
-        font-size: 16px;
         width: 70%;
-        line-height: 24px;
         padding-bottom: 35px; }
       .careers-container .join-our-team .text .btn-container a {
         padding: 14px 24px; }
@@ -6503,13 +6513,12 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   align-items: center; }
   .corporate-identity-container .first-section .row.flex figure {
     order: 1; }
-  .corporate-identity-container .first-section .row.flex .description {
+  .corporate-identity-container .first-section .row.flex .section-description {
     order: 2;
-    font-size: 18px;
     padding-left: 50px;
     color: #3e3e3e;
     font-family: "Calibri Light"; }
-    .corporate-identity-container .first-section .row.flex .description .section-subtitle {
+    .corporate-identity-container .first-section .row.flex .section-description .section-subtitle {
       font-family: 'Calibri-Bold'; }
 .corporate-identity-container .single-section {
   padding-top: 25px;

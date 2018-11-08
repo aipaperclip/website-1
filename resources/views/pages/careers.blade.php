@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 inline-block text">
                     <div class="section-subtitle">{{$titles[0]->html}}</div>
-                    <div class="description">{!! $sections[0]->html !!}</div>
+                    <div class="section-description">{!! $sections[0]->html !!}</div>
                     <div class="btn-container"><a href="javascript:void(0)" class="white-blue-rounded-btn">{{$sections[1]->html}}</a></div>
                 </div>
             </div>

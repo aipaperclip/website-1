@@ -204,6 +204,7 @@ body.home {
                         .between-sections-description {
                             .title {
                                 font-size: 26px;
+                                font-family: "Lato-Bold";
                             }
                             .description {
                                 font-size: 12px;
@@ -285,6 +286,7 @@ body.home {
                     .between-sections-description {
                         .title {
                             font-size: 26px;
+                            font-family: "Lato-Bold";
                         }
                         .description {
                             font-size: 12px;
@@ -526,22 +528,13 @@ body.home {
                 @include vertical-horizontal-align(absolute);
                 .title {
                     font-size: 70px;
-                    font-weight: bold;
+                    font-family: "Lato-Bold";
                     line-height: 70px;
                 }
                 .subtitle {
                     font-size: 30px;
                     font-weight: bold;
                     line-height: 25px;
-                }
-                .description {
-                    font-size: 16px;
-                    padding-top: 10px;
-                    line-height: 18px;
-                    &.italic {
-                        font-size: 18px;
-                        font-style: italic;
-                    }
                 }
             }
             .video {
@@ -715,9 +708,6 @@ body.home {
                 }
                 .btn-container {
                     padding-top: 30px;
-                    .white-blue-rounded-btn {
-                        font-size: 18px;
-                    }
                 }
             }
         }
@@ -768,8 +758,6 @@ body.home {
                     @include vertical-align(absolute);
                 }
                 .description {
-                    font-size: 16px;
-                    font-weight: bold;
                     color: $dark_gray;
                     padding: 0 5px;
                     background: white;
@@ -1230,11 +1218,12 @@ body.home {
                         border-right: 2px solid black;
                         .btn-container, .headline {
                             display: block;
-                            font-size: 16px;
+                            font-size: 18px;
+                            padding-top: 10px;
                         }
                         .description {
                             display: block;
-                            font-size: 14px;
+                            font-size: 16px;
                         }
                     }
                 }

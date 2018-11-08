@@ -28,7 +28,7 @@
                             @endif
                         </figure>
                         <div class="inline-block-top content">
-                            <div class="description">
+                            <div class="section-description">
                                 <figure class="start" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quote-left.svg') }}" alt="Quote left" itemprop="contentUrl"/></figure>
                                 {!! $testimonial->text !!}
                                 <figure class="end" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quote-right.svg') }}" alt="Quote right" itemprop="contentUrl"/></figure>

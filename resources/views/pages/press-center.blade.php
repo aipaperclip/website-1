@@ -40,7 +40,7 @@
                                 <div class="inline-block dot last-dot">&nbsp;</div>
                             @endif
                         </div>
-                        <div class="inline-block-top content fs-16">
+                        <div class="inline-block-top section-description">
                             <div class="title">{{ $post->headline }}</div>
                             {!! $post->text !!}<a href="{{ $post->link }}" class="read-more" target="_blank">... read more</a>
                         </div>

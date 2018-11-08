@@ -34,8 +34,7 @@
                 width: calc(100% - 80px);
                 font-size: 16px;
                 padding-left: 25px;
-                .description {
-                    padding-bottom: 15px;
+                .section-description {
                     position: relative;
                     padding-left: 15px;
                     .start, .end {
@@ -57,7 +56,7 @@
                     }
                 }
                 .name_job {
-                    font-family: 'Calibri-Bold';
+                    font-family: "Lato-Bold";
                 }
                 .location {
                     i {

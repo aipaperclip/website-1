@@ -529,6 +529,7 @@ if($('body').hasClass('home')) {
                 $(this).closest('.video-wrapper').hide();
                 $(this).closest('.video').find('.play-btn').slideDown(500, function() {
                     $(this).bind("click", openVideo).focus();
+                    $('.homepage-container .intro .bg-wrapper .section-description').show();
                 });
             }
         });
@@ -539,6 +540,7 @@ if($('body').hasClass('home')) {
         $(this).unbind("click", openVideo).closest('.video').find('.video-wrapper').show().animate({
             width: "100%"
         }, 500);
+        $('.homepage-container .intro .bg-wrapper .section-description').hide();
     }
     // ===== /first section video logic =====
 
