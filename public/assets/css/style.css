@@ -5857,17 +5857,20 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   .partner-network-container .section-title {
     padding-bottom: 30px; }
   .partner-network-container .filter {
-    padding-bottom: 40px; }
+    padding-bottom: 40px;
+    padding-top: 30px; }
     .partner-network-container .filter .wrapper {
       max-width: 300px;
       width: 90%;
-      margin: 0 auto;
       text-align: left; }
-      .partner-network-container .filter .wrapper .title {
-        font-family: 'Calibri-Bold';
-        font-size: 20px; }
-      .partner-network-container .filter .wrapper .bootstrap-select.locations {
-        padding-top: 15px; }
+      .partner-network-container .filter .wrapper.first {
+        float: right; }
+      @media screen and (max-width: 767px) {
+        .partner-network-container .filter .wrapper {
+          margin: 0 auto; }
+          .partner-network-container .filter .wrapper.first {
+            float: none;
+            padding-bottom: 15px; } }
   .partner-network-container .map-canvas {
     position: relative;
     overflow: hidden;

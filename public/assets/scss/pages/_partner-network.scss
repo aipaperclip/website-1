@@ -5,17 +5,20 @@
     }
     .filter {
         padding-bottom: 40px;
+        padding-top: 30px;
         .wrapper {
             max-width: 300px;
             width: 90%;
-            margin: 0 auto;
             text-align: left;
-            .title {
-                font-family: 'Calibri-Bold';
-                font-size: 20px;
+            &.first {
+                float: right;
             }
-            .bootstrap-select.locations {
-                padding-top: 15px;
+            @include breakpoint($xs) {
+                margin: 0 auto;
+                &.first {
+                    float: none;
+                    padding-bottom: 15px;
+                }
             }
         }
     }

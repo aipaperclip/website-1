@@ -6,8 +6,8 @@
                 <h1 class="col-xs-12 page-h1-title">{{ $meta_data->page_title }}</h1>
             </div>
             <div class="row filter">
-                <div class="col-xs-12 text-center">
-                    <div class="wrapper">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="wrapper first">
                         <select class="selectpicker types" data-live-search="true">
                             <option value="">Show All Partners</option>
                             @foreach($location_types as $location_type)
@@ -16,7 +16,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-xs-12 text-center">
+                <div class="col-xs-12 col-sm-6">
                     <div class="wrapper">
                         <select class="selectpicker locations" data-live-search="true">
                             <option value="">Search by Name or Location</option>

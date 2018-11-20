@@ -47,11 +47,11 @@ class PartnerNetworkController extends Controller
             ->get()->toArray();
     }
 
-    protected function getLocationTypes()   {
+    public function getLocationTypes()   {
         return LocationType::all();
     }
 
-    protected function getAllLocations()   {
+    public function getAllLocations()   {
         return MapLocation::all();
     }
 

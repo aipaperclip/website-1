@@ -197,7 +197,7 @@ class Controller extends BaseController
     }
 
     protected function getGoogleMapIframe() {
-        return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations()]);
+        return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations(), 'location_types' => (new PartnerNetworkController())->getLocationTypes(), 'locations_select' => (new PartnerNetworkController())->getAllLocations()]);
     }
 
     protected function refreshCaptcha() {
