@@ -520,7 +520,7 @@ if($('body').hasClass('home')) {
     // ===== first section video logic =====
     $('.homepage-container .intro .bg-wrapper .video .play-btn').bind("click", openVideo);
     $('.homepage-container .intro .bg-wrapper .video .video-wrapper .close-video').click(function()   {
-        $(this).closest('.video-wrapper').find('video').get(0).pause();
+        $(this).closest('.video-wrapper').find('video').get(0).pause();data-valid-message
         $(this).closest('.video-wrapper').animate({
             width: "60px"
         }, {
@@ -969,24 +969,24 @@ function newsletterRegisterValidation() {
         var this_form = $(this);
         var errors = [];
         if(!basic.validateEmail(this_form.find('input[type="email"]').val().trim()))    {
-            this_form.addClass('not-valid').append('<div class="alert alert-danger">'+this_form.find('input[type="email"]').closest('.form-row').attr('data-valid-email-message')+'</div>');
+            this_form.addClass('not-valid')/*.append('<div class="alert alert-danger">'+this_form.find('input[type="email"]').closest('.form-row').attr('data-valid-email-message')+'</div>')*/;
             errors.push(this_form.find('input[type="email"]').closest('.form-row').attr('data-valid-email-message'));
         }
-        if(!this_form.find('#agree-with-privacy-policy').is(':checked'))  {
+        /*if(!this_form.find('#agree-with-privacy-policy').is(':checked'))  {
             errors.push(this_form.find('#agree-with-privacy-policy').closest('.form-row').attr('data-valid-message'));
-        }
+        }*/
 
         if(errors.length > 0)   {
             event.preventDefault();
-            this_form.addClass('not-valid').find('.alert').remove();
-            for(var i = 0, len = errors.length; i < len; i+=1)  {
+            this_form.addClass('not-valid')/*.find('.alert').remove()*/;
+            /*for(var i = 0, len = errors.length; i < len; i+=1)  {
                 this_form.append('<div class="alert alert-danger">'+errors[i]+'</div>');
-            }
+            }*/
         }else {
-            this_form.removeClass('not-valid').find('.alert').remove();
+            this_form.removeClass('not-valid')/*.find('.alert').remove()*/;
             //this_form.find('input[type="email"]').val('');
             //this_form.find('#agree-with-privacy-policy').prop('checked', false);
-            this_form.append('<div class="alert alert-success">'+this_form.attr('data-success-message')+'</div>');
+            //this_form.append('<div class="alert alert-success">'+this_form.attr('data-success-message')+'</div>');
         }
     });
 }

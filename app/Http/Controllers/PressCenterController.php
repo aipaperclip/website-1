@@ -26,7 +26,7 @@ class PressCenterController extends Controller
         }else {
             $offset = 0;
         }
-        return Publications::offset($offset)->limit(self::POSTS_PER_PAGE)->get()->sortBy('order_id');
+        return Publications::orderBy('order_id')->skip($offset)->take(self::POSTS_PER_PAGE)->get();
     }
 
     protected function getPublications()   {

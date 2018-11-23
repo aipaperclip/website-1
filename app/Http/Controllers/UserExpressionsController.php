@@ -24,7 +24,7 @@ class UserExpressionsController extends Controller
         }else {
             $offset = 0;
         }
-        return UserExpressions::offset($offset)->limit(self::POSTS_PER_PAGE)->get()->sortBy('order_id');
+        return UserExpressions::orderBy('order_id')->skip($offset)->take(self::POSTS_PER_PAGE)->get();
     }
 
     protected function getAllTestimonials()  {

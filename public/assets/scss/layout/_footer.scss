@@ -19,7 +19,7 @@ footer {
                     border-right: 0;
                     @include rounded(4px 0 0 4px);
                 }
-                input[type='submit'] {
+                button[type='submit'] {
                     width: 30%;
                     font-size: 16px;
                     background-color: $solid_gray;
@@ -43,7 +43,7 @@ footer {
                         font-size: 16px;
                         font-family: 'Calibri-Bold';
                     }
-                    input[type='submit'] {
+                    button[type='submit'] {
                         width: 35%;
                         font-size: 16px;
                         font-family: 'Calibri-Bold';
@@ -51,7 +51,7 @@ footer {
                 }
             }
             &.not-valid {
-                input[type='email'], input[type='submit'] {
+                input[type='email'], button[type='submit'] {
                     border-color: red;
                     border-width: 2px;
                 }

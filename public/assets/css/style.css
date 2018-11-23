@@ -4228,6 +4228,10 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
         display: block;
         text-align: left; } }
 
+iframe.zEWidget-launcher {
+  left: 0;
+  right: auto !important; }
+
 .white-dark-blue-btn {
   background-color: #041e42;
   color: white !important;
@@ -4496,7 +4500,7 @@ footer {
         -moz-border-radius: 4px 0 0 4px;
         -ms-border-radius: 4px 0 0 4px;
         border-radius: 4px 0 0 4px; }
-      footer .newsletter-register form .form-row input[type='submit'] {
+      footer .newsletter-register form .form-row button[type='submit'] {
         width: 30%;
         font-size: 16px;
         background-color: #aaaaaa;
@@ -4518,11 +4522,11 @@ footer {
           width: 65%;
           font-size: 16px;
           font-family: 'Calibri-Bold'; }
-        footer .newsletter-register form .form-row input[type='submit'] {
+        footer .newsletter-register form .form-row button[type='submit'] {
           width: 35%;
           font-size: 16px;
           font-family: 'Calibri-Bold'; } }
-    footer .newsletter-register form.not-valid input[type='email'], footer .newsletter-register form.not-valid input[type='submit'] {
+    footer .newsletter-register form.not-valid input[type='email'], footer .newsletter-register form.not-valid button[type='submit'] {
       border-color: red;
       border-width: 2px; }
     footer .newsletter-register form.not-valid .alert {
@@ -5741,7 +5745,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       .press-center-container .list .single .image {
         display: block;
         margin: 0 auto; }
-      .press-center-container .list .single .content {
+      .press-center-container .list .single .section-description {
         padding-left: 0;
         width: 100%; } }
 
