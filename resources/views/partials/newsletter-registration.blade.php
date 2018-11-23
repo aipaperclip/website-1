@@ -1,4 +1,3 @@
-{{--
 <div class="row newsletter-register">
     <div class="">
         <form action="//dentacoin.us15.list-manage.com/subscribe/post?u=2db886e44db15e869246f6964&amp;id=6906b05278" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" target="_blank" data-success-message="Thank you for signing up!">
@@ -14,8 +13,8 @@
         </form>
     </div>
 </div>
---}}
 
+{{--
 <div class="email-octopus-form-wrapper row newsletter-register">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
         <p class="email-octopus-success-message"></p>
@@ -38,3 +37,4 @@
         </form>
     </div>
 </div>
+--}}

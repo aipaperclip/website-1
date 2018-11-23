@@ -4500,7 +4500,7 @@ footer {
         -moz-border-radius: 4px 0 0 4px;
         -ms-border-radius: 4px 0 0 4px;
         border-radius: 4px 0 0 4px; }
-      footer .newsletter-register form .form-row button[type='submit'] {
+      footer .newsletter-register form .form-row input[type='submit'] {
         width: 30%;
         font-size: 16px;
         background-color: #aaaaaa;
@@ -4522,11 +4522,11 @@ footer {
           width: 65%;
           font-size: 16px;
           font-family: 'Calibri-Bold'; }
-        footer .newsletter-register form .form-row button[type='submit'] {
+        footer .newsletter-register form .form-row input[type='submit'] {
           width: 35%;
           font-size: 16px;
           font-family: 'Calibri-Bold'; } }
-    footer .newsletter-register form.not-valid input[type='email'], footer .newsletter-register form.not-valid button[type='submit'] {
+    footer .newsletter-register form.not-valid input[type='email'], footer .newsletter-register form.not-valid input[type='submit'] {
       border-color: red;
       border-width: 2px; }
     footer .newsletter-register form.not-valid .alert {
