@@ -205,11 +205,21 @@ class Controller extends BaseController
     }
 
     protected function handleApiEndpoints($slug) {
-        $additional_data = (new Admin\MainController())->getApiEndpoint($slug);
-        if(!empty($additional_data))    {
-            return $additional_data->data;
-        }else {
-            return abort(404);
+        switch ($slug) {
+            case 'socials-data':
+                $socials = DB::connection('mysql')->table('socials')->leftJoin('media', 'socials.media_id', '=', 'media.id')->select('socials.*', 'media.name as media_name', 'media.alt as media_alt')->orderByRaw('socials.order_id ASC')->get()->toArray();
+                foreach($socials as $social) {
+                    $social->media_name = route('home') . UPLOADS_FRONT_END . $social->media_name;
+                }
+                return json_encode($socials);
+        break;
+            default:
+                $additional_data = (new Admin\MainController())->getApiEndpoint($slug);
+                if(!empty($additional_data))    {
+                    return $additional_data->data;
+                }else {
+                    return abort(404);
+                }
         }
     }
 }
