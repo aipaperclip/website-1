@@ -78,7 +78,7 @@
 }
 
 .white-blue-rounded-btn, input[type='submit'].white-blue-rounded-btn {
-    background-color: $light_blue;
+    background-color: $dark_blue;
     color: white;
     font-size: 20px;
     display: inline-block;
@@ -86,12 +86,12 @@
     font-weight: bold;
     border: 2px solid white;
     cursor: pointer;
-    @include rounded(4px);
+    @include rounded(12px);
     @include simple_transition(.3s);
     &:hover {
-        color: $light_blue;
-        background-color: white;
+        background-color: $light_blue;
         border: 2px solid $light_blue;
+        color: white;
     }
     @include breakpoint($sm-down)   {
         padding: 10px 32px;

@@ -34,6 +34,12 @@
   src: url("/assets/fonts/Lato-Bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Lato-Bold.woff2") format("woff2"), url("/assets/fonts/Lato-Bold.woff") format("woff"), url("/assets/fonts/Lato-Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: "Lato-Black";
+  src: url("/assets/fonts/Lato-Black.eot");
+  src: url("/assets/fonts/Lato-Black.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Lato-Black.woff2") format("woff2"), url("/assets/fonts/Lato-Black.woff") format("woff"), url("/assets/fonts/Lato-Black.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
 .calibri-bold {
   font-family: "Calibri-Bold"; }
 
@@ -42,6 +48,9 @@
 
 .lato-bold {
   font-family: "Lato-Bold"; }
+
+.lato-black {
+  font-family: "Lato-Black"; }
 
 @keyframes fadeIn {
   from {
@@ -4195,7 +4204,7 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
     width: 100px; }
   .download-logo-section p.description {
     width: calc(100% - 300px);
-    font-size: 16px;
+    font-size: 18px;
     font-family: "Calibri Light";
     padding-left: 25px; }
     .download-logo-section p.description strong {
@@ -4212,6 +4221,9 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
     text-align: right; }
     .download-logo-section .btn-container i {
       padding-right: 5px; }
+  @media screen and (max-width: 991px) {
+    .download-logo-section p.description {
+      font-size: 16px; } }
   @media screen and (max-width: 767px) {
     .download-logo-section {
       padding-bottom: 50px; }
@@ -4334,7 +4346,7 @@ iframe.zEWidget-launcher {
     background-color: white; }
 
 .white-blue-rounded-btn, input[type='submit'].white-blue-rounded-btn {
-  background-color: #679dca;
+  background-color: #041e42;
   color: white;
   font-size: 20px;
   display: inline-block;
@@ -4342,19 +4354,19 @@ iframe.zEWidget-launcher {
   font-weight: bold;
   border: 2px solid white;
   cursor: pointer;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  border-radius: 12px;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s; }
   .white-blue-rounded-btn:hover, input[type='submit'].white-blue-rounded-btn:hover {
-    color: #679dca;
-    background-color: white;
-    border: 2px solid #679dca; }
+    background-color: #679dca;
+    border: 2px solid #679dca;
+    color: white; }
   @media screen and (max-width: 991px) {
     .white-blue-rounded-btn, input[type='submit'].white-blue-rounded-btn {
       padding: 10px 32px; } }
@@ -4975,7 +4987,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       transform: translate(-50%, -50%); }
       .homepage-container .intro .bg-wrapper .content-wrapper .title {
         font-size: 70px;
-        font-family: "Lato-Bold";
         line-height: 70px; }
       .homepage-container .intro .bg-wrapper .content-wrapper .subtitle {
         font-size: 30px;

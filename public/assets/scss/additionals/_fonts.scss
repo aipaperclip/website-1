@@ -64,6 +64,17 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Lato-Black";
+    src: url("/assets/fonts/Lato-Black.eot");
+    src: url("/assets/fonts/Lato-Black.eot?#iefix") format("embedded-opentype"),
+    url("/assets/fonts/Lato-Black.woff2") format("woff2"),
+    url("/assets/fonts/Lato-Black.woff") format("woff"),
+    url("/assets/fonts/Lato-Black.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 .calibri-bold {
     font-family: "Calibri-Bold";
 }
@@ -74,4 +85,8 @@
 
 .lato-bold {
     font-family: "Lato-Bold";
+}
+
+.lato-black {
+    font-family: "Lato-Black";
 }

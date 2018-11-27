@@ -8,11 +8,11 @@
         </section>
     </div>
     {!! $parent_sections[0]->html !!}
-    <div class="corporate-design-container">
+    <div class="corporate-design-container" id="scroll-to-content">
         <section class="page-navigation container">
             <nav class="row">
                 <div class="col-xs-12 col-sm-3 inline-block single-col">
-                    <a href="{{route('corporate-design', ['slug' => 'round-logo'])}}" class="dark-blue-white-btn @if(request()->route()->parameters['slug'] == 'round-logo') active @endif">
+                    <a href="{{route('corporate-design', ['slug' => 'round-logo'])}}#scroll-to-content" class="dark-blue-white-btn @if(request()->route()->parameters['slug'] == 'round-logo') active @endif">
                         ROUND LOGO
                         @if(request()->route()->parameters['slug'] == 'round-logo')
                             <div class="nav-to-bottom-first-dot fs-16 inline-block">&nbsp;</div>
@@ -23,7 +23,7 @@
                     @endif
                 </div>
                 <div class="col-xs-12 col-sm-3 inline-block single-col">
-                    <a href="{{route('corporate-design', ['slug' => 'one-line-logo'])}}" class="dark-blue-white-btn @if(request()->route()->parameters['slug'] == 'one-line-logo') active @endif">ONE-LINE LOGO
+                    <a href="{{route('corporate-design', ['slug' => 'one-line-logo'])}}#scroll-to-content" class="dark-blue-white-btn @if(request()->route()->parameters['slug'] == 'one-line-logo') active @endif">ONE-LINE LOGO
                         @if(request()->route()->parameters['slug'] == 'one-line-logo')
                             <div class="nav-to-bottom-first-dot fs-16 inline-block">&nbsp;</div>
                         @endif
@@ -33,7 +33,7 @@
                     @endif
                 </div>
                 <div class="col-xs-12 col-sm-3 inline-block single-col">
-                    <a href="{{route('corporate-design', ['slug' => 'two-line-logo'])}}" class="dark-blue-white-btn @if(request()->route()->parameters['slug'] == 'two-line-logo') active @endif">TWO-LINE LOGO
+                    <a href="{{route('corporate-design', ['slug' => 'two-line-logo'])}}#scroll-to-content" class="dark-blue-white-btn @if(request()->route()->parameters['slug'] == 'two-line-logo') active @endif">TWO-LINE LOGO
                         @if(request()->route()->parameters['slug'] == 'two-line-logo')
                             <div class="nav-to-bottom-first-dot fs-16 inline-block">&nbsp;</div>
                         @endif

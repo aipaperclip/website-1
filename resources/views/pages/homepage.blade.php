@@ -16,7 +16,7 @@
                 <div class="container content-wrapper">
                     <div class="row">
                         <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                            <h1 class="title">{{ $meta_data->page_title }}</h1>
+                            <h1 class="title lato-black">{{ $meta_data->page_title }}</h1>
                             {!! $sections[0]->html !!}
                             <div class="video">
                                 <figure itemscope="" itemtype="http://schema.org/ImageObject">
@@ -287,14 +287,17 @@
                     <h2 class="col-xs-12 col-sm-10 col-sm-offset-1">
                         <div class="container-fluid">
                             <div class="row fs-0">
-                                <figure class="col-xs-12 col-sm-4 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
+                                <figure class="col-xs-12 col-sm-3 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                                     <a href="https://www.cv-magazine.com/2018-forging-a-dental-renaissance" target="_blank"><img src="{{URL::asset('assets/images/corporate-excellence-awards-2018.jpg') }}" itemprop="contentUrl" alt="Corporate excellence awards 2018"/></a>
                                 </figure>
-                                <figure class="col-xs-12 col-sm-4 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
+                                <figure class="col-xs-12 col-sm-3 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                                     <a href="https://blockchain.cioreview.com/vendor/2017/dentacoin" target="_blank"><img src="{{URL::asset('assets/images/20-most-promising-blockchain-technology-solution.jpg') }}" itemprop="contentUrl" alt="20 most promising blockchain technology solutions"/></a>
                                 </figure>
-                                <figure class="col-xs-12 col-sm-4 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
+                                <figure class="col-xs-12 col-sm-3 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                                     <a href="https://thesiliconreview.com/magazines/improving-dental-care-worldwide-and-making-it-affordable-through-utilizing-the-blockchain-advantages-dentacoin-foundation/" target="_blank"><img src="{{URL::asset('assets/images/50-most-valuable-brands-of-the-year.jpg') }}" itemprop="contentUrl" alt="50 most valuable brands of the year"/></a>
+                                </figure>
+                                <figure class="col-xs-12 col-sm-3 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
+                                    <a href="https://www.insightssuccess.com/dentacoin-foundation-introducing-blockchain-solutions-for-dental-industry/" target="_blank"><img src="{{URL::asset('assets/images/most-disruptive-innovation.png') }}" itemprop="contentUrl" alt="50 most valuable brands of the year"/></a>
                                 </figure>
                             </div>
                         </div>

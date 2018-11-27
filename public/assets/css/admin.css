@@ -34,6 +34,12 @@
   src: url("/assets/fonts/Lato-Bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Lato-Bold.woff2") format("woff2"), url("/assets/fonts/Lato-Bold.woff") format("woff"), url("/assets/fonts/Lato-Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: "Lato-Black";
+  src: url("/assets/fonts/Lato-Black.eot");
+  src: url("/assets/fonts/Lato-Black.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Lato-Black.woff2") format("woff2"), url("/assets/fonts/Lato-Black.woff") format("woff"), url("/assets/fonts/Lato-Black.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
 .calibri-bold {
   font-family: "Calibri-Bold"; }
 
@@ -42,6 +48,9 @@
 
 .lato-bold {
   font-family: "Lato-Bold"; }
+
+.lato-black {
+  font-family: "Lato-Black"; }
 
 @media screen and (max-width: 400px) {
   .col-xxs-12 {
@@ -196,7 +205,7 @@
     background-color: white; }
 
 .white-blue-rounded-btn, input[type='submit'].white-blue-rounded-btn {
-  background-color: #679dca;
+  background-color: #041e42;
   color: white;
   font-size: 20px;
   display: inline-block;
@@ -204,19 +213,19 @@
   font-weight: bold;
   border: 2px solid white;
   cursor: pointer;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  border-radius: 12px;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s; }
   .white-blue-rounded-btn:hover, input[type='submit'].white-blue-rounded-btn:hover {
-    color: #679dca;
-    background-color: white;
-    border: 2px solid #679dca; }
+    background-color: #679dca;
+    border: 2px solid #679dca;
+    color: white; }
   @media screen and (max-width: 991px) {
     .white-blue-rounded-btn, input[type='submit'].white-blue-rounded-btn {
       padding: 10px 32px; } }
