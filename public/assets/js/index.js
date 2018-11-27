@@ -671,7 +671,7 @@ if($('body').hasClass('home')) {
     initMap();
 
     //filtering google map by location type
-    $('.partner-network-container .filter select').on('change', function()  {
+    $('.filter select').on('change', function()  {
         var types_val = '';
         if($(this).is('.types'))    {
             types_val = $(this).val();
