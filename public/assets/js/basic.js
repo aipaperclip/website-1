@@ -3,7 +3,7 @@ var basic = {
         alert: null
     },
     init: function(opt) {
-        basic.addCsrfTokenToAllAjax();
+        //basic.addCsrfTokenToAllAjax();
     },
     cookies: {
         set: function(name, value) {
@@ -274,11 +274,11 @@ var basic = {
         }
         return isMobile;
     },
-    addCsrfTokenToAllAjax: function ()    {
+    /*addCsrfTokenToAllAjax: function ()    {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-    }
+    }*/
 };

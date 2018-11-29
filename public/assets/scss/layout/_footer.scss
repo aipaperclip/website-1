@@ -6,6 +6,18 @@ footer {
     .newsletter-register {
         padding-top: 50px;
         padding-bottom: 30px;
+        .email-octopus-success-message {
+            color: #3c763d;
+            font-size: 18px;
+            text-align: center;
+            font-family: 'Calibri-Bold';
+        }
+        .email-octopus-error-message {
+            color: red;
+            font-size: 18px;
+            text-align: center;
+            font-family: 'Calibri-Bold';
+        }
         form {
             .form-row {
                 padding-top: 10px;

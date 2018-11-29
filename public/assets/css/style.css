@@ -4498,6 +4498,16 @@ footer {
   footer .newsletter-register {
     padding-top: 50px;
     padding-bottom: 30px; }
+    footer .newsletter-register .email-octopus-success-message {
+      color: #3c763d;
+      font-size: 18px;
+      text-align: center;
+      font-family: 'Calibri-Bold'; }
+    footer .newsletter-register .email-octopus-error-message {
+      color: red;
+      font-size: 18px;
+      text-align: center;
+      font-family: 'Calibri-Bold'; }
     footer .newsletter-register form .form-row {
       padding-top: 10px; }
       footer .newsletter-register form .form-row input[type='email'] {

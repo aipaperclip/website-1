@@ -964,7 +964,7 @@ function initListingPageLine()   {
 // ==================== /PAGES ====================
 
 //checking if submitted email is valid
-function newsletterRegisterValidation() {
+/*function newsletterRegisterValidation() {
     $('.newsletter-register form').on('submit', function(event)  {
         var this_form = $(this);
         var errors = [];
@@ -972,9 +972,9 @@ function newsletterRegisterValidation() {
             this_form.addClass('not-valid').append('<div class="alert alert-danger">'+this_form.find('input[type="email"]').closest('.form-row').attr('data-valid-email-message')+'</div>');
             errors.push(this_form.find('input[type="email"]').closest('.form-row').attr('data-valid-email-message'));
         }
-        if(!this_form.find('#agree-with-privacy-policy').is(':checked'))  {
+        /!*if(!this_form.find('#agree-with-privacy-policy').is(':checked'))  {
             errors.push(this_form.find('#agree-with-privacy-policy').closest('.form-row').attr('data-valid-message'));
-        }
+        }*!/
 
         if(errors.length > 0)   {
             event.preventDefault();
@@ -990,7 +990,7 @@ function newsletterRegisterValidation() {
         }
     });
 }
-newsletterRegisterValidation();
+newsletterRegisterValidation();*/
 
 function stopMaliciousInspect()  {
     document.addEventListener('contextmenu', function(e) {

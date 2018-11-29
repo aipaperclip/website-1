@@ -2,3 +2,48 @@
         emailOctopus.onError($form,emailOctopus.unknownErrorMessage);},ajaxSubmit:function($form){$form.find(':submit').attr('disabled',true);$.post($form.attr('action'),$form.serialize()).done(function(response){emailOctopus.ajaxSuccess($form,response);}).fail(function(textStatus){emailOctopus.ajaxError($form,textStatus);});},onError:function($form,message){$form.siblings('.email-octopus-error-message').empty().text(message);$form.find(':submit').removeAttr('disabled');if(window.grecaptcha){window.grecaptcha.reset();}},submit:function($form){$form.siblings('.email-octopus-error-message').empty();if(emailOctopus.isBotPost($form)){emailOctopus.onError($form,emailOctopus.botSubmissionErrorMessage);}else if(!emailOctopus.hasEmailAddressBeenEntered($form)){emailOctopus.onError($form,emailOctopus.missingEmailAddressMessage);}else if(!emailOctopus.isEmailAddressValid($form)){emailOctopus.onError($form,emailOctopus.invalidEmailAddressMessage);}else if(emailOctopus.consentRequired($form)){emailOctopus.onError($form,emailOctopus.consentRequiredMessage);}else{emailOctopus.ajaxSubmit($form);}}};if(window.location.href.indexOf('eoDebug=1')!==-1){var src='https://emailoctopus.com/bundles/emailoctopuslist/js/1.3/debug.js';var formAction=document.querySelector('.email-octopus-form').action;if(formAction){var a=document.createElement('a');a.href=formAction;src=a.protocol+'//'+a.hostname+'/bundles/emailoctopuslist/js/1.3/debug.js';}
     var scr=document.createElement('script');var head=document.head||document.getElementsByTagName('head')[0];scr.src=src;scr.async=false;scr.defer=false;head.insertBefore(scr,head.firstChild);}
     $('.email-octopus-form:not(.bound)').submit(function(event){event.stopPropagation();event.preventDefault();emailOctopus.submit($(this));return false;}).addClass('bound');})(window.jQuery);
+
+//RECAPTCHA
+
+(function ($) {
+    var $form = $('.email-octopus-form');
+
+    /**
+     * First, we need to find the submit button of the form and give it an ID
+     * if it does not have one, so reCAPTCHA can bind to it later.
+     */
+    var button = $form.find('[type="submit"]');
+
+    if (button.attr('id') === undefined) {
+        button.attr('id', 'email-octopus-form-submit');
+    }
+
+    /**
+     * We then set the success callback for reCAPTCHA to use - this simply
+     * clears any error messages that might have been added by reCAPTCHA,
+     * and dispatches the form submit event.
+     */
+    window.onReCaptchaSuccess = function () {
+        $('.recaptcha-error-message').remove();
+        $('.recaptcha-error').removeClass();
+        $('.email-octopus-form').submit();
+    };
+
+    /**
+     * Finally, we create our reCAPTCHA script and div elements, and append them to the form.
+     */
+    var script = '<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=en" defer async></script>';
+
+    var div =[
+        '<div class="g-recaptcha"',
+        '   data-theme="light"',
+        '   data-size="invisible"',
+        '   data-type="image"',
+        '   data-sitekey="' + $form.data('sitekey') + '"',
+        '   data-callback="onReCaptchaSuccess"',
+        '   data-bind="' + button.attr('id') + '">',
+        '</div>',
+    ].join('\n');
+
+    $form.append(div).append(script);
+})(window.jQuery);
