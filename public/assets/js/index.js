@@ -721,6 +721,9 @@ if($('body').hasClass('home')) {
                 type: 'POST',
                 url: HOME_URL + '/press-center-popup',
                 dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 success: function (response) {
                     if(response.success)    {
                         basic.closeDialog();
@@ -1070,6 +1073,9 @@ function initCaptchaRefreshEvent()  {
                 type: 'GET',
                 url: '/refresh-captcha',
                 dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 success: function (response) {
                     $('.captcha-container span').html(response.captcha);
                 }
