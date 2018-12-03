@@ -1084,3 +1084,10 @@ function initCaptchaRefreshEvent()  {
     }
 }
 initCaptchaRefreshEvent();
+
+//init close fixed bottom banner event
+if($('.bottom-fixed-banner .close-btn').length > 0) {
+    $('.bottom-fixed-banner .close-btn').click(function() {
+        $('.bottom-fixed-banner').hide();
+    });
+}

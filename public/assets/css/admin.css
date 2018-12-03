@@ -255,6 +255,54 @@
     .blue-white-rounded-btn, input[type='submit'].blue-white-rounded-btn {
       padding: 10px 32px; } }
 
+.white-dark-blue-btn {
+  font-size: 20px;
+  color: white;
+  background-color: #041e42;
+  padding: 10px 20px;
+  font-family: 'Calibri-Bold';
+  border: 2px solid #041e42;
+  display: inline-block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .white-dark-blue-btn:hover {
+    color: #041e42;
+    background-color: white; }
+  .white-dark-blue-btn:focus {
+    color: white; }
+
+.dark-blue-white-btn {
+  font-size: 20px;
+  color: #041e42;
+  background-color: white;
+  padding: 10px 20px;
+  font-family: 'Calibri-Bold';
+  border: 2px solid white;
+  display: inline-block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .dark-blue-white-btn:hover {
+    color: white;
+    background-color: #041e42; }
+  .dark-blue-white-btn:focus {
+    color: #041e42; }
+  .dark-blue-white-btn.blue-border {
+    border: 2px solid #041e42; }
+
 .section-title {
   color: #333333;
   font-size: 35px;

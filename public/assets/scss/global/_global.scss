@@ -937,3 +937,26 @@ iframe.zEWidget-launcher {
     left: 0;
     right: auto !important;
 }
+
+.bottom-fixed-banner {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 1000000;
+    .close-btn {
+        top: 0;
+        right: 15px;
+        background-color: white;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        font-size: 20px;
+        @include rounded(50%);
+        @include box-shadow(0 0px 10px 0 rgba(0, 0, 0, 0.5));
+        @include breakpoint($xs) {
+            top: 35%;
+        }
+    }
+}
