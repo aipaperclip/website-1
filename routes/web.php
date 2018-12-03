@@ -59,8 +59,12 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     //======================================= REDIRECTS ========================================
 
+    Route::get('privacy', function() {
+        return Redirect::to('//dentacoin.com/privacy-policy');
+    });
+
     Route::get('changelly', function() {
-        return Redirect::to('https://wallet.dentacoin.com/buy');
+        return Redirect::to('//wallet.dentacoin.com/buy');
     });
 
     //redirecting old urls to homepage with popups opening
