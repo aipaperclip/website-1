@@ -945,7 +945,7 @@ iframe.zEWidget-launcher {
     left: 0;
     z-index: 1000000;
     .close-btn {
-        top: 0;
+        top: 35%;
         right: 15px;
         background-color: white;
         position: absolute;
@@ -956,7 +956,6 @@ iframe.zEWidget-launcher {
         @include rounded(50%);
         @include box-shadow(0 0px 10px 0 rgba(0, 0, 0, 0.5));
         @include breakpoint($xs) {
-            top: 35%;
         }
     }
 }

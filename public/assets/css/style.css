@@ -4251,7 +4251,7 @@ iframe.zEWidget-launcher {
   left: 0;
   z-index: 1000000; }
   .bottom-fixed-banner .close-btn {
-    top: 0;
+    top: 35%;
     right: 15px;
     background-color: white;
     position: absolute;
@@ -4267,9 +4267,6 @@ iframe.zEWidget-launcher {
     -moz-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5);
     -ms-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5);
     box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5); }
-    @media screen and (max-width: 767px) {
-      .bottom-fixed-banner .close-btn {
-        top: 35%; } }
 
 .white-dark-blue-btn {
   background-color: #041e42;
