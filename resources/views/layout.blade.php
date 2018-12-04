@@ -114,7 +114,7 @@
         </div>
     </header>
     <main>@yield("content")</main>
-    <footer>
+    <footer class="padding-bottom-150">
         <div class="container">
             @if(!empty(Route::current()) && Route::current()->getName() != 'careers' && Route::current()->getName() != 'corporate-identity' && Route::current()->getName() != 'corporate-design')
                 @if(isset($footer_data))
