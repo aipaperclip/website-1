@@ -1,5 +1,6 @@
 footer {
     border-top: 2px solid $solid_gray;
+    padding-bottom: 12%;
     .section-title {
         padding-top: 30px;
     }
@@ -160,6 +161,9 @@ footer {
         @include breakpoint($xs)    {
             padding-bottom: 50px;
         }
+    }
+    @include breakpoint($xs) {
+        padding-bottom: 200px;
     }
 }
 

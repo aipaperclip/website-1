@@ -4564,7 +4564,8 @@ body.home {
         width: 100%; } }
 
 footer {
-  border-top: 2px solid #aaaaaa; }
+  border-top: 2px solid #aaaaaa;
+  padding-bottom: 12%; }
   footer .section-title {
     padding-top: 30px; }
   footer .newsletter-register {
@@ -4687,6 +4688,9 @@ footer {
     @media screen and (max-width: 767px) {
       footer .all-rights {
         padding-bottom: 50px; } }
+  @media screen and (max-width: 767px) {
+    footer {
+      padding-bottom: 200px; } }
 
 body.home footer {
   border: 0; }
