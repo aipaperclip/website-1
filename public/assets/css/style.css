@@ -4160,31 +4160,50 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
       .benefits .custom-border {
         display: none; } }
 
-.privacy-policy-cookie {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: rgba(10, 10, 10, 0.7);
-  color: white;
+.bottom-fixed-container {
   position: fixed;
   width: 100%;
   bottom: 0;
   left: 0;
-  z-index: 999999;
-  font-size: 0; }
-  .privacy-policy-cookie .text {
-    font-size: 16px;
-    width: calc(100% - 100px); }
-    .privacy-policy-cookie .text .link {
-      color: #679dca;
-      font-weight: bold;
-      text-decoration: underline; }
-  .privacy-policy-cookie .button {
-    width: 100px; }
-    .privacy-policy-cookie .button a {
-      display: block;
-      text-align: center;
+  z-index: 1000000; }
+  .bottom-fixed-container .banner .close-btn {
+    top: 35%;
+    right: 15px;
+    background-color: white;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 20px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5);
+    -ms-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5); }
+  .bottom-fixed-container .privacy-policy-cookie {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgba(10, 10, 10, 0.7);
+    color: white;
+    width: 100%;
+    font-size: 0; }
+    .bottom-fixed-container .privacy-policy-cookie .text {
       font-size: 16px;
-      padding: 10px 0; }
+      width: calc(100% - 100px); }
+      .bottom-fixed-container .privacy-policy-cookie .text .link {
+        color: #679dca;
+        font-weight: bold;
+        text-decoration: underline; }
+    .bottom-fixed-container .privacy-policy-cookie .button {
+      width: 100px; }
+      .bottom-fixed-container .privacy-policy-cookie .button a {
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        padding: 10px 0; }
 
 .captcha-container {
   justify-content: center; }
@@ -4243,30 +4262,6 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
 iframe.zEWidget-launcher {
   left: 0;
   right: auto !important; }
-
-.bottom-fixed-banner {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  z-index: 1000000; }
-  .bottom-fixed-banner .close-btn {
-    top: 35%;
-    right: 15px;
-    background-color: white;
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    line-height: 25px;
-    font-size: 20px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    border-radius: 50%;
-    -webkit-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5);
-    -ms-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.5); }
 
 .white-dark-blue-btn {
   background-color: #041e42;
