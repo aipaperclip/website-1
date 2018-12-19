@@ -63,6 +63,8 @@ Partner Testimonials: https://dentacoin.com/testimonials/page/1
 
 Dentacoin Blog: https://blog.dentacoin.com/ 
 
+Dentists: https://dentists.dentacoin.com/ 
+
 
 ## Contact us
 
