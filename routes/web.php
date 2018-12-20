@@ -67,6 +67,10 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return Redirect::to('//wallet.dentacoin.com/buy');
     });
 
+    Route::get('wallet', function() {
+        return Redirect::to('//wallet.dentacoin.com/');
+    });
+
     //redirecting old urls to homepage with popups opening
     Route::get('dentacare-mobile-app-intro', function() {
         return Redirect::to('/?application=dentacare-mobile-app-intro');
