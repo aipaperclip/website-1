@@ -543,6 +543,11 @@ body.testimonials, body.press-center {
                         @include box-shadow(0 2px 6px 0 rgba(0,0,0,.2));
                     }
                 }
+                .video {
+                    video {
+                        width: 100%;
+                    }
+                }
             }
         }
     }
@@ -587,7 +592,7 @@ body.testimonials, body.press-center {
                             text-align: left;
                         }
                     }
-                    .gif {
+                    .gif, .video {
                         display: none;
                     }
                 }
@@ -838,7 +843,7 @@ body.testimonials, body.press-center {
     width: 100%;
     bottom: 0;
     left: 0;
-    z-index: 1000000;
+    z-index: 1035;
     .banner {
         .close-btn {
             top: 35%;
