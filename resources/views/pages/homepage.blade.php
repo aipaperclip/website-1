@@ -422,5 +422,4 @@
             </div>
         </section>
     </div>
-    {{var_dump($latest_blog_articles)}}
 @endsection
