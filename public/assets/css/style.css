@@ -40,6 +40,12 @@
   src: url("/assets/fonts/Lato-Black.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Lato-Black.woff2") format("woff2"), url("/assets/fonts/Lato-Black.woff") format("woff"), url("/assets/fonts/Lato-Black.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: "Calibri-Regular";
+  src: url("/assets/fonts/Calibri.eot");
+  src: url("/assets/fonts/Calibri.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Calibri.woff2") format("woff2"), url("/assets/fonts/Calibri.woff") format("woff"), url("/assets/fonts/Calibri.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
 .calibri-bold {
   font-family: "Calibri-Bold"; }
 
@@ -288,7 +294,7 @@
 
 body {
   margin: 0;
-  font-family: Calibri, sans-serif;
+  font-family: "Calibri-Regular";
   color: #1d1d1d;
   position: relative; }
   body.overflow-hidden {
@@ -4654,9 +4660,11 @@ footer {
     padding-bottom: 30px; }
     footer .menu ul li {
       padding: 0 20px; }
+      footer .menu ul li.separator {
+        padding: 0 5px; }
       footer .menu ul li a {
         color: #3e3e3e;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: bold; }
         footer .menu ul li a:hover {
           text-decoration: underline; }

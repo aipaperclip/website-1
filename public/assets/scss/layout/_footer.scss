@@ -117,9 +117,12 @@ footer {
         ul {
             li {
                 padding: 0 20px;
+                &.separator {
+                    padding: 0 5px;
+                }
                 a {
                     color: $light_gray;
-                    font-size: 20px;
+                    font-size: 18px;
                     font-weight: bold;
                     &:hover {
                         text-decoration: underline;
