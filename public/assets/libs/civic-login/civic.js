@@ -1,11 +1,11 @@
 (async function() {
-    await $.getScript('/assets/libs/civic-login/civic-config.js', function() {});
+    await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-config.js', function() {});
 
     //load civic lib CSS
-    $('head').append('<link rel="stylesheet" type="text/css" href="/assets/libs/civic-login/civic/civic.min.css"/>"/>');
+    $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css"/>"/>');
 
     //load civic lib JS
-    await $.getScript('/assets/libs/civic-login/civic/civic.min.js', function() {});
+    await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js', function() {});
 
     var civic_custom_btn;
     //init civic
