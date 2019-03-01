@@ -12,9 +12,9 @@
     var civicSip = new civic.sip({appId: civic_config.app_id});
 
     //bind click event for the civic button
-    $('body').on('click', '.civic-custom-btn', function(){
+    $('body').on('click', '.civic-custom-kyc-btn', function(){
         civic_custom_btn = $(this);
-        customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.');
+        customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-kyc-btn was clicked.');
 
         civicSip.signup({
             style: 'popup',
