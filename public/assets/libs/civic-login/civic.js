@@ -1,15 +1,11 @@
-const civic_config = {
-    app_id: 'rkvErCDdf',
-    url_exchange_token_for_data: 'https://dentacoin.net/civic',
-    platform: 'civic'
-};
-
 (async function() {
+    await $.getScript('/assets/libs/civic-login/civic-config.js', function() {});
+
     //load civic lib CSS
-    $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css"/>"/>');
+    $('head').append('<link rel="stylesheet" type="text/css" href="/assets/libs/civic-login/civic/civic.min.css"/>"/>');
 
     //load civic lib JS
-    await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js', function() {});
+    await $.getScript('/assets/libs/civic-login/civic/civic.min.js', function() {});
 
     var civic_custom_btn;
     //init civic
@@ -87,7 +83,6 @@ const civic_config = {
                 customCivicEvent('noCivicApiConnection', 'Request to Civic NodeJS API failed while exchanging token for data.');
             }
         });
-
     });
 
     civicSip.on('user-cancelled', function (event) {
