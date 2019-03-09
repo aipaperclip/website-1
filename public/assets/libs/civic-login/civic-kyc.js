@@ -26,7 +26,6 @@
     civicSip.on('auth-code-received', function (event) {
         var jwtToken = event.response;
         customCivicEvent('receivedKYCCivicToken', 'Received civic token successfully.', jwtToken);
-        console.log(jwtToken, 'KYC jwtToken');
     });
 
     civicSip.on('user-cancelled', function (event) {

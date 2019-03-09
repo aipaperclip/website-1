@@ -63,6 +63,10 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return Redirect::to('//dentacoin.com/privacy-policy');
     });
 
+    Route::get('privacypolicy', function() {
+        return Redirect::to('//dentacoin.com/privacy-policy');
+    });
+
     Route::get('changelly', function() {
         return Redirect::to('//wallet.dentacoin.com/buy');
     });
