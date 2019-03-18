@@ -3076,10 +3076,3 @@ function initCaptchaRefreshEvent() {
     }
 }
 initCaptchaRefreshEvent();
-
-//init close fixed bottom banner event
-if ($('.bottom-fixed-container .banner .close-btn').length > 0) {
-    $('.bottom-fixed-container .banner .close-btn').click(function () {
-        $('.bottom-fixed-container .banner').hide();
-    });
-}

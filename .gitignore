@@ -7,6 +7,7 @@
 /.vagrant
 /.env
 /.htaccess
+/public/assets/videos/dentacoin-explainer-video.mp4
 Homestead.json
 Homestead.yaml
 npm-debug.log

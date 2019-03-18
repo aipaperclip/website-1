@@ -35,8 +35,9 @@
                                     </figure>
                                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject">
                                         <video controls>
-                                            <source src="{{URL::asset('assets/videos/dentacoin-introduction.mp4') }}" type="video/mp4">
-                                            <track src="{{URL::asset('assets/videos/dentacoin-introduction.vtt') }}" kind="captions" srclang="en" label="English" default="">
+                                            <source src="{{URL::asset('assets/videos/dentacoin-explainer-video.mp4') }}" type="video/mp4">
+                                            {{--<source src="{{URL::asset('assets/videos/dentacoin-introduction.mp4') }}" type="video/mp4">
+                                            <track src="{{URL::asset('assets/videos/dentacoin-introduction.vtt') }}" kind="captions" srclang="en" label="English" default="">--}}
                                             Your browser does not support HTML5 video.
                                         </video>
                                         <meta itemprop="name" content="Dentacoin Introduction Video">
