@@ -75,7 +75,7 @@
                                     <button class="col-md-3 col-xs-4 inline-block-top single-application">
                                         <figure class="wrapper" @if($application->media) data-image="{{URL::asset('assets/uploads/'.$application->media->name) }}" data-image-alt="@if($application->media->alt){{$application->media->alt}}@endif" data-image-type="{{$application->media->type}}" @endif @if($application->popup_logo) data-popup-logo="{{URL::asset('assets/uploads/'.$application->popup_logo->name) }}" data-popup-logo-alt="@if($application->popup_logo->alt){{$application->popup_logo->alt}}@endif" @endif @if($application->text) data-title="{{$application->title}}" data-upload-date="{{$application->media->created_at->format('c')}}" data-description="{{ json_encode($application->text) }}" @endif  @if($application->slug == 'blog-intro') data-articles="{{json_encode($latest_blog_articles)}}" @endif itemscope="" data-slug="{{$application->slug}}" itemtype="http://schema.org/ImageObject">
                                             @if($application->logo)
-                                                <img src="{{URL::asset('assets/uploads/'.$application->logo->name) }}" itemprop="contentUrl" @if(!empty($application->logo->alt)) alt="{{$application->logo->alt}}" @endif/>
+                                                <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/uploads/'.$application->logo->name) }}" itemprop="contentUrl" @if(!empty($application->logo->alt)) alt="{{$application->logo->alt}}" @endif/>
                                             @endif
                                             <figcaption>{{$application->title}}</figcaption>
                                         </figure>
@@ -102,7 +102,7 @@
                             @if($mobile)
                                 <div class="mobile-vertical-line-50"></div>
                             @endif
-                            <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
+                            <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
                         </figure>
                     </div>
                 </div>
@@ -116,8 +116,8 @@
                     <figure class="col-xs-12 col-md-5" itemscope="" itemtype="http://schema.org/ImageObject">
                         <div class="fourth-dot inline-block">&nbsp;</div>
                         <div class="fifth-dot inline-block">&nbsp;</div>
-                        <img src="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}" data-svg="{{URL::asset('assets/images/chair.svg') }}" data-gif="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}" alt="Dental chair icon" class="refresh-image desktop-image" itemprop="contentUrl"/>
-                        <img src="{{URL::asset('assets/images/chair-mobile.svg') }}" alt="Dental chair icon" class="mobile-image" itemprop="contentUrl"/>
+                        <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}" data-svg="{{URL::asset('assets/images/chair.svg') }}" data-gif="{{URL::asset('assets/images/animation-chair-left-to-right-smooth.gif') }}" alt="Dental chair icon" class="refresh-image desktop-image" itemprop="contentUrl"/>
+                        <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/chair-mobile.svg') }}" alt="Dental chair icon" class="mobile-image" itemprop="contentUrl"/>
                     </figure>
                 </div>
             </div>
@@ -129,7 +129,7 @@
                         @if($mobile)
                             <div class="mobile-vertical-line-50"></div>
                         @endif
-                        <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
+                        <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
                     </figure>
                     <div class="col-xs-12 section-title">{!! $titles[5]->html !!}</div>
                 </div>
@@ -166,9 +166,9 @@
                                 @endif
                                 <div class="circle"><div class="background" @if($testimonial->media) style="background-image: url({{URL::asset('assets/uploads/'.$testimonial->media->name) }})" @endif></div></div>
                                 <article class="text">
-                                    <figure class="start" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quote-left.svg') }}" alt="Quote left" itemprop="contentUrl"/></figure>
+                                    <figure class="start" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/quote-left.svg') }}" alt="Quote left" itemprop="contentUrl"/></figure>
                                     {{$testimonial->text}}
-                                    <figure class="end" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/quote-right.svg') }}" alt="Quote right" itemprop="contentUrl"/></figure>
+                                    <figure class="end" itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/quote-right.svg') }}" alt="Quote right" itemprop="contentUrl"/></figure>
                                     <div class="name_job_location">
                                         @if(!empty($testimonial->name_job))
                                             <div class="name_job">{!! $testimonial->name_job !!}</div>
@@ -196,7 +196,7 @@
                     @endif
                     <div class="col-xs-12 below-expressions">
                         <div class="show-more">
-                            <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="{{ route('testimonials', ['page' => 1]) }}"><img src="{{URL::asset('assets/images/plus-solid.svg') }}" itemprop="contentUrl" alt="Plus icon"/></a></figure>
+                            <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="{{ route('testimonials', ['page' => 1]) }}"><img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/plus-solid.svg') }}" itemprop="contentUrl" alt="Plus icon"/></a></figure>
                             <p class="inline-block">{!! $sections[4]->html !!}</p>
                         </div>
                         <div class="third-dot inline-block">&nbsp;</div>
@@ -211,7 +211,7 @@
                         @if($mobile)
                             <div class="mobile-vertical-line-50"></div>
                         @endif
-                        <img src="{{URL::asset('assets/images/logo.svg') }}" itemprop="contentUrl" alt="Dentacoin section logo"/>
+                        <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/logo.svg') }}" itemprop="contentUrl" alt="Dentacoin section logo"/>
                     </figure>
                     <div class="col-xs-12">
                         <div class="first-dot inline-block">&nbsp;</div>
@@ -246,8 +246,8 @@
                     </div>
                     <div class="col-xs-12 col-md-5 col-md-offset-1 gif inline-block-top">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                            <img src="{{URL::asset('assets/images/animation-hand-with-credit-card.gif') }}" data-svg="{{URL::asset('assets/images/hand-with-credit-card.svg') }}" data-gif="{{URL::asset('assets/images/animation-hand-with-credit-card.gif') }}" alt="Hand holding credit card icon" class="refresh-image desktop-image" itemprop="contentUrl"/>
-                            <img src="{{URL::asset('assets/images/hand-with-credit-card-mobile.svg') }}" alt="Hand holding credit card icon" class="mobile-image" itemprop="contentUrl"/>
+                            <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/animation-hand-with-credit-card.gif') }}" data-svg="{{URL::asset('assets/images/hand-with-credit-card.svg') }}" data-gif="{{URL::asset('assets/images/animation-hand-with-credit-card.gif') }}" alt="Hand holding credit card icon" class="refresh-image desktop-image" itemprop="contentUrl"/>
+                            <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/hand-with-credit-card-mobile.svg') }}" alt="Hand holding credit card icon" class="mobile-image" itemprop="contentUrl"/>
                             <div class="second-dot inline-block">&nbsp;</div>
                             <div class="third-dot inline-block">&nbsp;</div>
                         </figure>
@@ -265,7 +265,7 @@
                     @if($mobile)
                         <div class="mobile-vertical-line-50"></div>
                     @endif
-                    <img src="{{URL::asset('assets/images/logo.svg') }}" itemprop="contentUrl" alt="Dentacoin section logo"/>
+                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/logo.svg') }}" itemprop="contentUrl" alt="Dentacoin section logo"/>
                 </figure>
                 <div class="first-dot inline-block">&nbsp;</div>
                 <div class="second-dot inline-block">&nbsp;</div>
@@ -288,16 +288,16 @@
                         <div class="container-fluid">
                             <div class="row fs-0">
                                 <figure class="col-xs-12 col-sm-3 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <a href="https://www.cv-magazine.com/2018-forging-a-dental-renaissance" target="_blank"><img src="{{URL::asset('assets/images/corporate-excellence-awards-2018.jpg') }}" itemprop="contentUrl" alt="Corporate excellence awards 2018"/></a>
+                                    <a href="https://www.cv-magazine.com/2018-forging-a-dental-renaissance" target="_blank"><img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/corporate-excellence-awards-2018.jpg') }}" itemprop="contentUrl" alt="Corporate excellence awards 2018"/></a>
                                 </figure>
                                 <figure class="col-xs-12 col-sm-3 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <a href="https://blockchain.cioreview.com/vendor/2017/dentacoin" target="_blank"><img src="{{URL::asset('assets/images/20-most-promising-blockchain-technology-solution.jpg') }}" itemprop="contentUrl" alt="20 most promising blockchain technology solutions"/></a>
+                                    <a href="https://blockchain.cioreview.com/vendor/2017/dentacoin" target="_blank"><img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/20-most-promising-blockchain-technology-solution.jpg') }}" itemprop="contentUrl" alt="20 most promising blockchain technology solutions"/></a>
                                 </figure>
                                 <figure class="col-xs-12 col-sm-3 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <a href="https://thesiliconreview.com/magazines/improving-dental-care-worldwide-and-making-it-affordable-through-utilizing-the-blockchain-advantages-dentacoin-foundation/" target="_blank"><img src="{{URL::asset('assets/images/50-most-valuable-brands-of-the-year.jpg') }}" itemprop="contentUrl" alt="50 most valuable brands of the year"/></a>
+                                    <a href="https://thesiliconreview.com/magazines/improving-dental-care-worldwide-and-making-it-affordable-through-utilizing-the-blockchain-advantages-dentacoin-foundation/" target="_blank"><img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/50-most-valuable-brands-of-the-year.jpg') }}" itemprop="contentUrl" alt="50 most valuable brands of the year"/></a>
                                 </figure>
                                 <figure class="col-xs-12 col-sm-3 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <a href="https://www.insightssuccess.com/dentacoin-foundation-introducing-blockchain-solutions-for-dental-industry/" target="_blank"><img src="{{URL::asset('assets/images/most-disruptive-innovation.png') }}" itemprop="contentUrl" alt="50 most valuable brands of the year"/></a>
+                                    <a href="https://www.insightssuccess.com/dentacoin-foundation-introducing-blockchain-solutions-for-dental-industry/" target="_blank"><img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/most-disruptive-innovation.png') }}" itemprop="contentUrl" alt="50 most valuable brands of the year"/></a>
                                 </figure>
                             </div>
                         </div>
@@ -313,11 +313,11 @@
                                 <div class="wrapper">
                                     @if(!empty($publication->media))
                                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                            <img src="{{URL::asset('assets/uploads/' . $publication->media->name)}}" itemprop="contentUrl" @if(!empty($publication->media->alt)) alt="{{$publication->media->alt}}" @endif/>
+                                            <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/uploads/' . $publication->media->name)}}" itemprop="contentUrl" @if(!empty($publication->media->alt)) alt="{{$publication->media->alt}}" @endif/>
                                         </figure>
                                     @else
                                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                            <img src="{{URL::asset('assets/images/logo.svg') }}" width="100" itemprop="contentUrl" alt="Dentacoin logo"/>
+                                            <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/logo.svg') }}" width="100" itemprop="contentUrl" alt="Dentacoin logo"/>
                                         </figure>
                                     @endif
                                     <div class="headline">{{$publication->headline}}</div>
@@ -335,7 +335,7 @@
                         @if($mobile)
                             <div class="mobile-vertical-line-50"></div>
                         @endif
-                        <img src="{{URL::asset('assets/images/logo.svg') }}" itemprop="contentUrl" alt="Dentacoin section logo"/>
+                        <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/logo.svg') }}" itemprop="contentUrl" alt="Dentacoin section logo"/>
                     </figure>
                 </div>
             </div>
@@ -354,7 +354,7 @@
                 <div class="row">
                     <div class="col-xs-12 gif">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                            <img src="{{URL::asset('assets/images/roadmap.gif') }}" data-gif="{{URL::asset('assets/images/roadmap.gif') }}"  data-svg="{{URL::asset('assets/images/roadmap.svg') }}" class="refresh-image desktop-image" itemprop="contentUrl" alt="Roadmap timeline"/>
+                            <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap.gif') }}" data-gif="{{URL::asset('assets/images/roadmap.gif') }}"  data-svg="{{URL::asset('assets/images/roadmap.svg') }}" class="refresh-image desktop-image" itemprop="contentUrl" alt="Roadmap timeline"/>
                             <div class="first-dot inline-block">&nbsp;</div>
                         </figure>
                     </div>
@@ -362,7 +362,7 @@
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
                                 <figure class="mobile-icon" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="{{URL::asset('assets/images/roadmap-circle-2017-quarter-1.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 1"/>
+                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2017-quarter-1.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 1"/>
                                 </figure>
                             @endif
                             {!! $sections[8]->html !!}
@@ -370,7 +370,7 @@
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
                                 <figure class="mobile-icon" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="{{URL::asset('assets/images/roadmap-circle-2017-quarter-3.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 3"/>
+                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2017-quarter-3.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 3"/>
                                 </figure>
                             @endif
                             {!! $sections[9]->html !!}
@@ -378,7 +378,7 @@
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
                                 <figure class="mobile-icon" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="{{URL::asset('assets/images/roadmap-circle-2017-quarter-4.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 4"/>
+                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2017-quarter-4.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 4"/>
                                 </figure>
                             @endif
                             {!! $sections[10]->html !!}
@@ -386,7 +386,7 @@
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
                                 <figure class="mobile-icon" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="{{URL::asset('assets/images/roadmap-circle-2018.svg') }}" itemprop="contentUrl" alt="Roadmap 2018"/>
+                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2018.svg') }}" itemprop="contentUrl" alt="Roadmap 2018"/>
                                 </figure>
                             @endif
                             {!! $sections[11]->html !!}
@@ -394,7 +394,7 @@
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
                                 <figure class="mobile-icon" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="{{URL::asset('assets/images/roadmap-circle-2019.svg') }}" itemprop="contentUrl" alt="Roadmap 2019"/>
+                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2019.svg') }}" itemprop="contentUrl" alt="Roadmap 2019"/>
                                 </figure>
                             @endif
                             {!! $sections[12]->html !!}
@@ -413,7 +413,7 @@
                                 @if($mobile)
                                     <div class="mobile-vertical-line-50"></div>
                                 @endif
-                                <img src="{{URL::asset('assets/images/logo.svg') }}" itemprop="contentUrl" alt="Dentacoin section logo"/>
+                                <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/logo.svg') }}" itemprop="contentUrl" alt="Dentacoin section logo"/>
                                 <div class="second-dot inline-block">&nbsp;</div>
                             </figure>
                         </div>

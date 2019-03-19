@@ -2,6 +2,10 @@ basic.init();
 
 checkIfCookie();
 
+for(var i = 0, len = $('img[data-defer-src]').length; i < len; i+=1) {
+    $('img[data-defer-src]').eq(i).attr('src', $('img[data-defer-src]').eq(i).attr('data-defer-src'));
+}
+
 var intervals_arr = [];
 var stoppers = [];
 const draw_line_interval = 10;

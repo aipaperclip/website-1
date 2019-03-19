@@ -10,4 +10,5 @@ define('UPLOADS_FRONT_END', DS . 'assets' . DS . 'uploads' . DS);
 define('EMAIL_RECEIVER', 'press@dentacoin.com');
 define('JOB_APPLIES_EMAIL_RECEIVER', 'donika.kraeva@dentacoin.com');
 define('MAX_UPL_SIZE', 52428800);
+define('DEFAULT_IMG_ON_LOAD', 'data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=');
 
