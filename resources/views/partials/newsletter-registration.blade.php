@@ -32,7 +32,7 @@
             </div>
             <div class="email-octopus-form-row-hp" aria-hidden="true">
                 <!-- Do not remove this field, otherwise you risk bot sign-ups -->
-                <input type="text" name="hp398a309b-ef00-11e8-a3c9-06b79b628af2" tabindex="-1" autocomplete="nope"/>
+                <input type="hidden" name="hp398a309b-ef00-11e8-a3c9-06b79b628af2" tabindex="-1" autocomplete="nope"/>
             </div>
         </form>
     </div>
