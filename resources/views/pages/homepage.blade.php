@@ -42,9 +42,8 @@
                                         </video>
                                         <meta itemprop="name" content="Dentacoin Introduction Video">
                                         <meta itemprop="description" content="Explainer video: Dentacoin, the Blockchain Solution for the Global Dentistry">
-                                        <meta itemprop="uploadDate" content="2017-03-20T08:00:00+08:00">
-                                        <link itemprop="thumbnailUrl" href="{{URL::asset('assets/uploads/dentacoin-video-thumb.jpg') }}">
-                                        <link itemprop="contentURL" href="{{URL::asset('assets/videos/dentacoin-introduction.mp4') }}">
+                                        <meta itemprop="uploadDate" content="2019-03-19T08:00:00+08:00">
+                                        <link itemprop="contentURL" href="{{URL::asset('assets/videos/dentacoin-explainer-video.mp4') }}">
                                     </div>
                                 </div>
                             </div>
