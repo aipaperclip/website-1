@@ -13,7 +13,6 @@ mix.disableSuccessNotifications();
 
 /* ===== PUBLIC =====*/
 mix.styles([
-    'public/assets/libs/emailoctopus/emailoctopus.css',
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'public/assets/libs/font-awesome/css/font-awesome.min.css',
     'node_modules/slick-carousel/slick/slick.css',
