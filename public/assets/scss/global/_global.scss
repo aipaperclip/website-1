@@ -844,25 +844,6 @@ body.testimonials, body.press-center {
     bottom: 0;
     left: 0;
     z-index: 2000000005!important;
-    .banner {
-        .close-btn {
-            top: 0;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-            right: 15px;
-            background-color: white;
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            line-height: 25px;
-            font-size: 20px;
-            @include rounded(50%);
-            @include box-shadow(0 0px 10px 0 rgba(0, 0, 0, 0.5));
-            @include breakpoint($xs) {
-            }
-        }
-    }
     .privacy-policy-cookie {
         padding-top: 20px;
         padding-bottom: 20px;

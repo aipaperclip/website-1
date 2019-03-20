@@ -443,9 +443,10 @@ function callActionOnLastTailFinish(action)    {
     switch(action) {
         case 'load-successful-practices-gif':
             if(basic.isInViewport($('.homepage-container .successful-practices .content figure img')))    {
-                $('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-gif')+'?'+new Date().getTime()).on('load', function()    {
+                /*$('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-gif')+'?'+new Date().getTime()).on('load', function()    {
                     $('.homepage-container .successful-practices .content figure img').addClass('active');
-                });
+                });*/
+
             }else {
                 $('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-svg')+'?'+new Date().getTime()).on('load', function()    {
                     $('.homepage-container .successful-practices .content figure img').addClass('active');
