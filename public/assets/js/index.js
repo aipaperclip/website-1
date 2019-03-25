@@ -20,6 +20,8 @@ $(document).ready(function() {
         drawNavToBottomSectionLine();
     }
 
+    console.log('document ready');
+
     //fix chat bottom position
     if($('body > [style="display: block !important;"]').length) {
         if($('body > [style="display: block !important;"]').attr('id') != undefined) {
