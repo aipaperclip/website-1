@@ -20,23 +20,22 @@ $(document).ready(function() {
         drawNavToBottomSectionLine();
     }
 
-    console.log('document ready');
+    setTimeout(function() {
+        //fix chat bottom position
+        if($('body > [style="display: block !important;"]').length) {
+            if($('body > [style="display: block !important;"]').attr('id') != undefined) {
+                var parent_id = $('body > [style="display: block !important;"]').attr('id');
 
-    //fix chat bottom position
-    if($('body > [style="display: block !important;"]').length) {
-        if($('body > [style="display: block !important;"]').attr('id') != undefined) {
-            var parent_id = $('body > [style="display: block !important;"]').attr('id');
-
-            $('#' + parent_id).attr('style', $('#' + parent_id).attr('style') + 'left:20px !important;right:auto !important;');
-            $('#' + parent_id).children().eq(1).attr('style', $('#' + parent_id).children().eq(1).attr('style') + 'left:20px !important;right:auto !important;');
+                $('#' + parent_id).attr('style', $('#' + parent_id).attr('style') + 'left:20px !important;right:auto !important;');
+                $('#' + parent_id).children().eq(1).attr('style', $('#' + parent_id).children().eq(1).attr('style') + 'left:20px !important;right:auto !important;');
+            }
         }
-    }
 
-    if($('#tawkchat-container').length) {
-        $('#tawkchat-container').attr('style', $('#tawkchat-container').attr('style') + 'height: 100% !important;width: 100% !important;');
-        $('#tawkchat-container').children().eq(0).attr('style', $('#tawkchat-container').children().eq(0).attr('style') + 'left:10px !important;right:auto !important;');
-
-    }
+        if($('#tawkchat-container').length) {
+            $('#tawkchat-container').attr('style', $('#tawkchat-container').attr('style') + 'height: 100% !important;width: 100% !important;');
+            $('#tawkchat-container').children().eq(0).attr('style', $('#tawkchat-container').children().eq(0).attr('style') + 'left:10px !important;right:auto !important;');
+        }
+    }, 2000);
 });
 
 $(window).on('load', function() {
