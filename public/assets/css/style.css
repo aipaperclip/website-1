@@ -4262,6 +4262,10 @@ iframe.zEWidget-launcher {
   left: 0;
   right: auto !important; }
 
+body > [style="display: block !important;"], body > iframe[title="chat widget"][scrolling="no"][frameborder="0"] {
+  left: 20px !important;
+  right: auto !important; }
+
 .white-dark-blue-btn {
   background-color: #041e42;
   color: white !important;
@@ -4558,8 +4562,7 @@ body.home {
         width: 100%; } }
 
 footer {
-  border-top: 2px solid #aaaaaa;
-  padding-bottom: 12%; }
+  border-top: 2px solid #aaaaaa; }
   footer .section-title {
     padding-top: 30px; }
   footer .newsletter-register {

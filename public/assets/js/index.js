@@ -2,8 +2,11 @@ basic.init();
 
 checkIfCookie();
 
-for(var i = 0, len = $('img[data-defer-src]').length; i < len; i+=1) {
-    $('img[data-defer-src]').eq(i).attr('src', $('img[data-defer-src]').eq(i).attr('data-defer-src'));
+//load images after website load
+if($('img[data-defer-src]').length) {
+    for(var i = 0, len = $('img[data-defer-src]').length; i < len; i+=1) {
+        $('img[data-defer-src]').eq(i).attr('src', $('img[data-defer-src]').eq(i).attr('data-defer-src'));
+    }
 }
 
 var intervals_arr = [];
@@ -15,6 +18,22 @@ const border_width = 2;
 $(document).ready(function() {
     if($('body.corporate-design.allow-draw-lines').length > 0) {
         drawNavToBottomSectionLine();
+    }
+
+    //fix chat bottom position
+    if($('body > [style="display: block !important;"]').length) {
+        if($('body > [style="display: block !important;"]').attr('id') != undefined) {
+            var parent_id = $('body > [style="display: block !important;"]').attr('id');
+
+            $('#' + parent_id).attr('style', $('#' + parent_id).attr('style') + 'left:20px !important;right:auto !important;');
+            $('#' + parent_id).children().eq(1).attr('style', $('#' + parent_id).children().eq(1).attr('style') + 'left:20px !important;right:auto !important;');
+        }
+    }
+
+    if($('#tawkchat-container').length) {
+        $('#tawkchat-container').attr('style', $('#tawkchat-container').attr('style') + 'height: 100% !important;width: 100% !important;');
+        $('#tawkchat-container').children().eq(0).attr('style', $('#tawkchat-container').children().eq(0).attr('style') + 'left:10px !important;right:auto !important;');
+
     }
 });
 
@@ -443,9 +462,9 @@ function callActionOnLastTailFinish(action)    {
     switch(action) {
         case 'load-successful-practices-gif':
             if(basic.isInViewport($('.homepage-container .successful-practices .content figure img')))    {
-                /*$('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-gif')+'?'+new Date().getTime()).on('load', function()    {
+                $('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-gif')+'?'+new Date().getTime()).on('load', function()    {
                     $('.homepage-container .successful-practices .content figure img').addClass('active');
-                });*/
+                });
 
             }else {
                 $('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-svg')+'?'+new Date().getTime()).on('load', function()    {
