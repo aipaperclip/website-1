@@ -21,7 +21,7 @@
                         <select class="selectpicker locations" data-live-search="true">
                             <option value="">Search by Name or Location</option>
                             @foreach($locations_select as $location)
-                                <option value="{{$location->id}}" data-type-id="{{$location->type_id}}">{{$location->address}}</option>
+                                <option value="{{$location->id}}" data-type-id="{{$location->type_id}}">{{$location->clinic->name}} - {{$location->address}}</option>
                             @endforeach
                         </select>
                     </div>
