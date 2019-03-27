@@ -22,7 +22,7 @@
                     <input type="hidden" name="b_61ace7d2b009198ca373cb213_993df5967d" tabindex="-1" value="">
                     <div class="clear btn-container"><input type="submit" value="Sign Up" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
                 </div>
-                <div class="checkbox-row"><input type="checkbox" required id="newsletter-privacy-policy"/><label>I agree with <a href="/privacy-policy" target="_blank">Privacy Policy</a></label></div>
+                <div class="checkbox-row"><input type="checkbox" required id="newsletter-privacy-policy"/><label for="newsletter-privacy-policy">I agree with <a href="/privacy-policy" target="_blank">Privacy Policy</a></label></div>
             </form>
         </div>
     </div>
