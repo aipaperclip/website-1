@@ -4567,63 +4567,106 @@ footer {
     padding-top: 30px; }
   footer .newsletter-register {
     padding-top: 50px;
-    padding-bottom: 30px; }
-    footer .newsletter-register .email-octopus-success-message {
-      color: #3c763d;
-      font-size: 18px;
-      text-align: center;
-      font-family: 'Calibri-Bold'; }
-    footer .newsletter-register .email-octopus-error-message {
-      color: red;
-      font-size: 18px;
-      text-align: center;
-      font-family: 'Calibri-Bold'; }
-    footer .newsletter-register form .form-row {
-      padding-top: 10px; }
-      footer .newsletter-register form .form-row input[type='email'] {
-        width: 70%;
-        font-size: 16px;
-        padding: 5px 10px;
-        border-top: 1px solid #aaaaaa;
-        border-bottom: 1px solid #aaaaaa;
-        border-left: 1px solid #aaaaaa;
-        border-right: 0;
+    padding-bottom: 30px;
+    /*.email-octopus-success-message {
+        color: #3c763d;
+        font-size: 18px;
+        text-align: center;
+        font-family: 'Calibri-Bold';
+    }
+    .email-octopus-error-message {
+        color: red;
+        font-size: 18px;
+        text-align: center;
+        font-family: 'Calibri-Bold';
+    }
+    form {
+        .form-row {
+            padding-top: 10px;
+            input[type='email'] {
+                width: 70%;
+                font-size: 16px;
+                padding: 5px 10px;
+                border-top: 1px solid $solid_gray;
+                border-bottom: 1px solid $solid_gray;
+                border-left: 1px solid $solid_gray;
+                border-right: 0;
+                @include rounded(4px 0 0 4px);
+            }
+            button[type='submit'] {
+                width: 30%;
+                font-size: 16px;
+                background-color: $solid_gray;
+                border: 1px solid $solid_gray;;
+                @include rounded(0 4px 4px 0);
+            }
+            .checkbox-wrapper {
+                width: 20px;
+            }
+            label {
+                width: calc(100% - 20px);
+                font-size: 14px;
+                cursor: pointer;
+                a {
+                    text-decoration: underline;
+                }
+            }
+            @include breakpoint($xs)    {
+                input[type='email'] {
+                    width: 65%;
+                    font-size: 16px;
+                    font-family: 'Calibri-Bold';
+                }
+                button[type='submit'] {
+                    width: 35%;
+                    font-size: 16px;
+                    font-family: 'Calibri-Bold';
+                }
+            }
+        }
+        &.not-valid {
+            input[type='email'], button[type='submit'] {
+                border-color: red;
+                border-width: 2px;
+            }
+            .alert {
+                margin-top: 5px;
+                margin-bottom: 10px;
+            }
+        }
+    }*/ }
+    footer .newsletter-register #mc_embed_signup_scroll {
+      max-width: 300px;
+      margin: 0 auto;
+      font-size: 0; }
+      footer .newsletter-register #mc_embed_signup_scroll input[type='email'] {
+        width: calc(100% - 100px);
+        display: inline-block;
+        vertical-align: middle;
+        height: 40px;
+        font-size: 18px;
+        border: 1px solid #aaaaaa;
+        padding: 0 5px;
         -webkit-border-radius: 4px 0 0 4px;
         -moz-border-radius: 4px 0 0 4px;
         -ms-border-radius: 4px 0 0 4px;
         border-radius: 4px 0 0 4px; }
-      footer .newsletter-register form .form-row button[type='submit'] {
-        width: 30%;
-        font-size: 16px;
-        background-color: #aaaaaa;
-        border: 1px solid #aaaaaa;
-        -webkit-border-radius: 0 4px 4px 0;
-        -moz-border-radius: 0 4px 4px 0;
-        -ms-border-radius: 0 4px 4px 0;
-        border-radius: 0 4px 4px 0; }
-      footer .newsletter-register form .form-row .checkbox-wrapper {
-        width: 20px; }
-      footer .newsletter-register form .form-row label {
-        width: calc(100% - 20px);
-        font-size: 14px;
-        cursor: pointer; }
-        footer .newsletter-register form .form-row label a {
-          text-decoration: underline; }
-      @media screen and (max-width: 767px) {
-        footer .newsletter-register form .form-row input[type='email'] {
-          width: 65%;
-          font-size: 16px;
-          font-family: 'Calibri-Bold'; }
-        footer .newsletter-register form .form-row button[type='submit'] {
-          width: 35%;
-          font-size: 16px;
-          font-family: 'Calibri-Bold'; } }
-    footer .newsletter-register form.not-valid input[type='email'], footer .newsletter-register form.not-valid button[type='submit'] {
-      border-color: red;
-      border-width: 2px; }
-    footer .newsletter-register form.not-valid .alert {
-      margin-top: 5px;
-      margin-bottom: 10px; }
+      footer .newsletter-register #mc_embed_signup_scroll .btn-container {
+        width: 100px;
+        display: inline-block;
+        vertical-align: middle; }
+        footer .newsletter-register #mc_embed_signup_scroll .btn-container input[type='submit'] {
+          height: 40px;
+          font-size: 18px;
+          background-color: #aaaaaa;
+          display: block;
+          width: 100%;
+          border: 0;
+          color: black;
+          -webkit-border-radius: 0 4px 4px 0;
+          -moz-border-radius: 0 4px 4px 0;
+          -ms-border-radius: 0 4px 4px 0;
+          border-radius: 0 4px 4px 0; }
     @media screen and (max-width: 991px) {
       footer .newsletter-register {
         padding-top: 10px; } }

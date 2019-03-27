@@ -14,6 +14,20 @@
     </div>
 </div>--}}
 
+<div class="row newsletter-register">
+    <div class="col-xs-12 text-center padding-top-50">
+        <div id="mc_embed_signup">
+            <form action="https://dentacoin.us16.list-manage.com/subscribe/post?u=61ace7d2b009198ca373cb213&amp;id=993df5967d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div id="mc_embed_signup_scroll">
+                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                    <input type="hidden" name="b_61ace7d2b009198ca373cb213_993df5967d" tabindex="-1" value="">
+                    <div class="clear btn-container"><input type="submit" value="Sign Up" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>{{--
+
 <div class="email-octopus-form-wrapper row newsletter-register">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
         <p class="email-octopus-success-message"></p>
@@ -37,3 +51,4 @@
         </form>
     </div>
 </div>
+--}}
