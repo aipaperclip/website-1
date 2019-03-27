@@ -4667,6 +4667,21 @@ footer {
           -moz-border-radius: 0 4px 4px 0;
           -ms-border-radius: 0 4px 4px 0;
           border-radius: 0 4px 4px 0; }
+    footer .newsletter-register .checkbox-row {
+      padding-top: 10px;
+      text-align: left;
+      max-width: 300px;
+      margin: 0 auto; }
+      footer .newsletter-register .checkbox-row input[type='checkbox'] {
+        vertical-align: middle;
+        margin: 0; }
+      footer .newsletter-register .checkbox-row label {
+        font-size: 16px;
+        margin: 0;
+        vertical-align: middle;
+        padding-left: 10px; }
+        footer .newsletter-register .checkbox-row label a {
+          text-decoration: underline; }
     @media screen and (max-width: 991px) {
       footer .newsletter-register {
         padding-top: 10px; } }

@@ -36,6 +36,25 @@ footer {
                 }
             }
         }
+        .checkbox-row {
+            padding-top: 10px;
+            text-align: left;
+            max-width: 300px;
+            margin: 0 auto;
+            input[type='checkbox'] {
+                vertical-align: middle;
+                margin: 0;
+            }
+            label {
+                font-size: 16px;
+                margin: 0;
+                vertical-align: middle;
+                padding-left: 10px;
+                a {
+                    text-decoration: underline;
+                }
+            }
+        }
         /*.email-octopus-success-message {
             color: #3c763d;
             font-size: 18px;
