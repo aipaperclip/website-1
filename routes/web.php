@@ -13,8 +13,6 @@
 
 Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captcha');
 
-Route::get('/sitemap', 'Controller@getSitemap')->name('sitemap');
-
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
 
     //======================================= PAGES ========================================
@@ -32,6 +30,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::get('partner-network', 'PartnerNetworkController@getView')->name('partner-network');
 
     Route::get('team', 'TeamMembersController@getView')->name('team');
+
+    Route::get('sitemap.xml', 'Controller@getSitemap')->name('sitemap');
 
     Route::get('google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
 
