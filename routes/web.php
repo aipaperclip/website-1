@@ -13,7 +13,7 @@
 
 Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captcha');
 
-Route::get('/sitemap.xml', 'Controller@getSitemap')->name('sitemap');
+Route::get('/sitemap', 'Controller@getSitemap')->name('sitemap');
 
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
 
