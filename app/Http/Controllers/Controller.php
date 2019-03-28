@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\LocationsController;
 use App\Http\Controllers\Admin\SocialsController;
 use App\Media;
 use App\MenuElement;
@@ -201,7 +202,7 @@ class Controller extends BaseController
     }
 
     protected function getGoogleMapIframe() {
-        return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations(), 'location_types' => (new PartnerNetworkController())->getLocationTypes(), 'locations_select' => (new PartnerNetworkController())->getAllLocations()]);
+        return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations(), 'location_types' => (new PartnerNetworkController())->getLocationTypes(), 'locations_select' => (new PartnerNetworkController())->getAllLocations(), 'clinics' => (new LocationsController())->getAllFeaturedClinics()]);
     }
 
     protected function refreshCaptcha() {

@@ -213,9 +213,6 @@ footer {
             padding-bottom: 50px;
         }
     }
-    @include breakpoint($xs) {
-        padding-bottom: 200px;
-    }
 }
 
 body.home {

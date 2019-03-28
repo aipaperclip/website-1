@@ -4745,9 +4745,6 @@ footer {
     @media screen and (max-width: 767px) {
       footer .all-rights {
         padding-bottom: 50px; } }
-  @media screen and (max-width: 767px) {
-    footer {
-      padding-bottom: 200px; } }
 
 body.home footer {
   border: 0; }
@@ -6033,6 +6030,87 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     position: relative;
     overflow: hidden;
     height: 450px; }
+  .partner-network-container .featured-clinics-slider {
+    position: relative;
+    padding-top: 80px; }
+    .partner-network-container .featured-clinics-slider .slick-track {
+      display: flex; }
+    .partner-network-container .featured-clinics-slider .slick-track .slick-slide {
+      display: flex;
+      height: auto;
+      align-items: center;
+      justify-content: center; }
+    .partner-network-container .featured-clinics-slider .single-slide {
+      cursor: -webkit-grab;
+      cursor: grab; }
+      .partner-network-container .featured-clinics-slider .single-slide figure {
+        padding: 0 20px; }
+        .partner-network-container .featured-clinics-slider .single-slide figure img {
+          margin: 0 auto;
+          width: 100%;
+          max-width: 200px;
+          max-height: 200px; }
+      .partner-network-container .featured-clinics-slider .single-slide .headline {
+        display: none;
+        padding-top: 5px;
+        padding-right: 25px;
+        padding-left: 25px;
+        text-align: center;
+        font-size: 26px;
+        font-family: 'Lato-Bold'; }
+        @media screen and (max-width: 767px) {
+          .partner-network-container .featured-clinics-slider .single-slide .headline {
+            padding-right: 10px;
+            padding-left: 10px; } }
+      .partner-network-container .featured-clinics-slider .single-slide .description {
+        padding: 10px 25px;
+        display: none;
+        line-height: 18px; }
+        @media screen and (max-width: 767px) {
+          .partner-network-container .featured-clinics-slider .single-slide .description {
+            padding: 10px; } }
+      .partner-network-container .featured-clinics-slider .single-slide .btn-container {
+        font-weight: bold;
+        text-align: center;
+        display: none;
+        padding-left: 15px;
+        padding-right: 15px; }
+        .partner-network-container .featured-clinics-slider .single-slide .btn-container a {
+          color: white;
+          background-color: #041e42;
+          padding: 7px 12px;
+          display: inline-block;
+          border: 1px solid #041e42;
+          font-size: 20px;
+          font-family: 'Calibri-Bold';
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          -ms-border-radius: 4px;
+          border-radius: 4px;
+          -webkit-transition: 0.3s;
+          -moz-transition: 0.3s;
+          -o-transition: 0.3s;
+          -ms-transition: 0.3s;
+          transition: 0.3s; }
+          .partner-network-container .featured-clinics-slider .single-slide .btn-container a:hover {
+            color: #041e42;
+            background-color: white; }
+      .partner-network-container .featured-clinics-slider .single-slide.slick-current {
+        border-left: 2px solid black;
+        border-right: 2px solid black; }
+        .partner-network-container .featured-clinics-slider .single-slide.slick-current .btn-container, .partner-network-container .featured-clinics-slider .single-slide.slick-current .headline {
+          display: block;
+          padding-top: 10px; }
+        .partner-network-container .featured-clinics-slider .single-slide.slick-current .description {
+          display: block;
+          font-size: 16px; }
+        .partner-network-container .featured-clinics-slider .single-slide.slick-current figure {
+          display: none; }
+          @media screen and (max-width: 1199px) {
+            .partner-network-container .featured-clinics-slider .single-slide.slick-current figure {
+              display: block; }
+              .partner-network-container .featured-clinics-slider .single-slide.slick-current figure img {
+                max-width: 150px; } }
   .partner-network-container .list-with-locations {
     padding-top: 50px;
     padding-bottom: 100px; }

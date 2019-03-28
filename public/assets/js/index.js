@@ -704,6 +704,52 @@ if($('body').hasClass('home')) {
     //PARTNER NETWORK
     initMap();
 
+    if($('.featured-clinics-slider').length) {
+        $('.featured-clinics-slider').slick({
+            centerMode: true,
+            centerPadding: '250px',
+            slidesToShow: 3,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed: 8000,
+            accessibility: true,
+            responsive: [
+                {
+                    breakpoint: 1600,
+                    settings: {
+                        centerPadding: '160px',
+                    }
+                },
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 1,
+                        centerPadding: '200px',
+                    }
+                },{
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        centerPadding: '50px'
+                    }
+                }
+            ]
+        });
+
+        //on click make slide active
+        $('.featured-clinics-slider .single-slide').on("click", function (){
+            $('.featured-clinics-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
+        });
+
+        $('.featured-clinics-slider .single-slide').keypress(function (e) {
+            if (e.key === ' ' || e.key === 'Spacebar' || e.which === 13) {
+                // ' ' is standard, 'Spacebar' was used by IE9 and Firefox < 37
+                e.preventDefault();
+                $('.featured-clinics-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
+            }
+        });
+    }
+
     //filtering google map by location type
     $('.filter select').on('change', function()  {
         var types_val = '';

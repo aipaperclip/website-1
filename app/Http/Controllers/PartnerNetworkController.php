@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Clinic;
+use App\Http\Controllers\Admin\LocationsController;
 use App\LocationSubtype;
 use App\LocationType;
 use App\MapLocation;
@@ -34,7 +35,7 @@ class PartnerNetworkController extends Controller
                 }
             }
         }
-        return view('pages/partner-network', ['locations' => $this->getLocations(), 'location_types' => $this->getLocationTypes(), 'locations_select' => $this->getAllLocations(), 'list_locations_with_subtypes_types' => $list_locations_with_subtypes_types]);
+        return view('pages/partner-network', ['locations' => $this->getLocations(), 'location_types' => $this->getLocationTypes(), 'locations_select' => $this->getAllLocations(), 'list_locations_with_subtypes_types' => $list_locations_with_subtypes_types, 'clinics' => (new LocationsController())->getAllFeaturedClinics()]);
     }
 
     public function getLocations()   {

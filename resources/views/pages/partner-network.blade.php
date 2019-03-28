@@ -29,6 +29,30 @@
             </div>
         </div>
         <div class="map-canvas"></div>
+        @if(!empty($clinics))
+            <div class="featured-clinics-slider">
+                @foreach($clinics as $clinic)
+                    <div class="single-slide">
+                        <div class="wrapper">
+                            @if(!empty($clinic->media))
+                                <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                    <img src="{{URL::asset('assets/uploads/' . $clinic->media->name)}}" itemprop="contentUrl" @if(!empty($clinic->media->alt)) alt="{{$clinic->media->alt}}" @endif/>
+                                </figure>
+                            @else
+                                <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                    <img src="{{URL::asset('assets/images/logo.svg') }}" width="100" itemprop="contentUrl" alt="Dentacoin logo"/>
+                                </figure>
+                            @endif
+                            <div class="headline">{{$clinic->name}}</div>
+                            <div class="description">{!! mb_substr($clinic->text, 0, 250) !!}...</div>
+                            @if(!empty($clinic->link))
+                                <div class="btn-container"><a href="{{ $clinic->link }}" rel="nofollow" target="_blank">READ MORE</a></div>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
         <div class="container list-with-locations">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">

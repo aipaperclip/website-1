@@ -691,3 +691,13 @@ function bindDontSubmitFormOnEnter()    {
         }
     });
 }
+
+if($('.add-edit-clinic').length) {
+    $('.add-edit-clinic #featured').change(function() {
+        if($(this).is(':checked')) {
+            $('.add-edit-clinic .clinic-text').removeClass('hide');
+        } else {
+            $('.add-edit-clinic .clinic-text').addClass('hide');
+        }
+    });
+}
