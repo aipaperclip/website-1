@@ -31,7 +31,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('team', 'TeamMembersController@getView')->name('team');
 
-    Route::get('sitemap.xml', 'Controller@getSitemap')->name('sitemap');
+    Route::get('sitemap', 'Controller@getSitemap')->name('sitemap');
 
     Route::get('google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
 
