@@ -9,6 +9,7 @@ if($('img[data-defer-src]').length) {
     }
 }
 
+var is_mac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
 var intervals_arr = [];
 var stoppers = [];
 const draw_line_interval = 10;
@@ -97,7 +98,7 @@ $(window).on('scroll', function()  {
 });
 
 function onMousewheel(event)    {
-    if($('body').hasClass('home') && !basic.isMobile() && !$('body').hasClass('modal-open')) {
+    if($('body').hasClass('home') && !basic.isMobile() && !$('body').hasClass('modal-open') && !is_mac) {
         if(event.originalEvent.deltaY < 0)  {
             //scroll up
             if($('body').attr('data-current') == 'two') {
