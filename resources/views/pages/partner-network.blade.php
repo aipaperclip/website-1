@@ -45,8 +45,8 @@
                             @endif
                             <div class="headline">{{$clinic->name}}</div>
                             <div class="description">{!! mb_substr($clinic->text, 0, 250) !!}...</div>
-                            @if(!empty($clinic->link))
-                                <div class="btn-container"><a href="{{ $clinic->link }}" rel="nofollow" target="_blank">READ MORE</a></div>
+                            @if(!empty($clinic->featured_link))
+                                <div class="btn-container"><a href="{{ $clinic->featured_link }}" rel="nofollow" target="_blank">READ MORE</a></div>
                             @endif
                         </div>
                     </div>
