@@ -4711,7 +4711,8 @@ footer {
     text-align: center;
     padding-bottom: 30px; }
     footer .menu ul li {
-      padding: 0 20px; }
+      padding: 0 20px;
+      position: relative; }
       footer .menu ul li.separator {
         padding: 0 5px; }
       footer .menu ul li a {
@@ -4720,6 +4721,24 @@ footer {
         font-weight: bold; }
         footer .menu ul li a:hover {
           text-decoration: underline; }
+      footer .menu ul li .submenu {
+        padding: 10px;
+        position: absolute;
+        background-color: white;
+        width: 150px;
+        z-index: 50;
+        left: 0;
+        top: 100%;
+        text-align: left;
+        display: none;
+        -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+        -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); }
+        footer .menu ul li .submenu li {
+          padding: 5px 0; }
+      footer .menu ul li:hover .submenu {
+        display: block; }
     @media screen and (max-width: 767px) {
       footer .menu {
         padding-bottom: 20px; }

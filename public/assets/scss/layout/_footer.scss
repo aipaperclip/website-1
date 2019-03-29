@@ -165,6 +165,7 @@ footer {
         ul {
             li {
                 padding: 0 20px;
+                position: relative;
                 &.separator {
                     padding: 0 5px;
                 }
@@ -174,6 +175,26 @@ footer {
                     font-weight: bold;
                     &:hover {
                         text-decoration: underline;
+                    }
+                }
+                .submenu {
+                    padding: 10px;
+                    position: absolute;
+                    background-color: white;
+                    width: 150px;
+                    z-index: 50;
+                    left: 0;
+                    top: 100%;
+                    text-align: left;
+                    display: none;
+                    @include box-shadow(0 2px 6px 0 rgba(0,0,0,.4));
+                    li {
+                        padding: 5px 0;
+                    }
+                }
+                &:hover {
+                    .submenu {
+                        display: block;
                     }
                 }
             }
