@@ -1,5 +1,4 @@
 @section("script_block")
-    {{var_dump($locations)}}
     <script>
         var map_locations = [];
         console.log(map_locations, 'map_locations');

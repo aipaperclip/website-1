@@ -95,9 +95,9 @@
                                         </div>
                                         <div class="locations">
                                             <ul>
-                                                @php($locations = (new \App\Http\Controllers\PartnerNetworkController())->getLocationsByClinic($clinic->id))
-                                                @if(!empty($locations))
-                                                    @foreach($locations as $location)
+                                                @php($locations_with_out_subtype = (new \App\Http\Controllers\PartnerNetworkController())->getLocationsByClinic($clinic->id))
+                                                @if(!empty($locations_with_out_subtype))
+                                                    @foreach($locations_with_out_subtype as $location)
                                                         <li>{{$location->address}}</li>
                                                     @endforeach
                                                 @endif
