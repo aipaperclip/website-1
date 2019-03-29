@@ -7,12 +7,13 @@
     "require": {
         "php": ">=5.6.4",
         "doctrine/dbal": "^2.5",
+        "fideloper/proxy": "~3.0",
         "jenssegers/agent": "^2.6",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
-        "roumen/sitemap": "^2.6",
-        "mews/captcha": "2.2.0"
+        "mews/captcha": "2.2.0",
+        "roumen/sitemap": "^2.6"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

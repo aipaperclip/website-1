@@ -19,6 +19,17 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
+    Route::get('/test', function() {
+        dd(
+            $_SERVER,
+            request()->getHost(),
+            redirect('/somewhere')->getTargetUrl(),
+            url('anywhere')
+        );
+
+        return 'app server 1';
+    })->name('test');
+
     Route::get('privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
 
     Route::get('press-center/page/{page}', 'PressCenterController@getView')->name('press-center');
