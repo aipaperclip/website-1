@@ -1,6 +1,7 @@
 @section("script_block")
     <script>
         var map_locations = [];
+        console.log(map_locations, 'map_locations');
                 @foreach($locations as $location)
         var temp_obj = {
                 'id' : '{{$location->id}}',
@@ -18,5 +19,6 @@
         @endif
         map_locations.push(temp_obj);
         @endforeach
+        console.log(map_locations, 'map_locations');
     </script>
 @endsection
