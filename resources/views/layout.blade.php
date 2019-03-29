@@ -31,6 +31,7 @@
             <meta property="og:image:height" content="630"/>
         @endif
     @endif
+    <meta name="p:domain_verify" content="dce2e29c27694ac250a2f58e6a8fa551"/>
     @if(!empty(Route::current()) && Route::current()->getName() == 'home')
         <link rel="canonical" href="{{route('home')}}" />
     @endif
