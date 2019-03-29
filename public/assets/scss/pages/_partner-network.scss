@@ -149,10 +149,13 @@
                 }
             }
         }
-        .clinics {
+        .clinics, .clinics-no-subcategory {
             display: none;
             padding-left: 20px;
             padding-right: 20px;
+            &.display-block {
+                display: block;
+            }
             .clinic-title {
                 font-size: 20px;
                 text-align: left;

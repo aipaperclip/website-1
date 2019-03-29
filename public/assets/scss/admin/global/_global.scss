@@ -235,13 +235,13 @@ body.media {
     height: 350px;
 }
 
-body.add-location, body.edit-location {
+/*body.add-location, body.edit-location {
     select[name="subtype"], select[name="clinic"] {
         option {
             display: none;
         }
     }
-}
+}*/
 
 body.add-job-offer, body.edit-job-offer {
     .skills-body {

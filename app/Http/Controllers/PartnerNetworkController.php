@@ -16,26 +16,37 @@ class PartnerNetworkController extends Controller
         //array with types which contains subtypes which contains locations for listing below the google map
         $list_locations_with_subtypes_types = array();
         foreach($this->getLocationTypes() as $type) {
+            $list_locations_with_subtypes_types[$type->name]['subtypes'] = array();
             //types - Laboratories, Suppliers ..
             if(!array_key_exists($type->name, $list_locations_with_subtypes_types))   {
-                $list_locations_with_subtypes_types[$type->name] = array();
+                $list_locations_with_subtypes_types[$type->name]['subtypes'] = array();
             }
-            //subtypes - Continents ..
-            foreach($this->getLocationSubtypesForType($type->id) as $subtype)   {
-                if(!array_key_exists($subtype->name, $list_locations_with_subtypes_types[$type->name]))   {
-                    $list_locations_with_subtypes_types[$type->name][$subtype->name] = array();
+            if(sizeof($this->getLocationSubtypesForType($type->id))) {
+                $list_locations_with_subtypes_types[$type->name]['type'] = 'subcategories';
+                //subtypes - Continents ..
+                foreach($this->getLocationSubtypesForType($type->id) as $subtype)   {
+                    if(!array_key_exists($subtype->name, $list_locations_with_subtypes_types[$type->name]['subtypes']))   {
+                        $list_locations_with_subtypes_types[$type->name]['subtypes'][$subtype->name] = array();
+                    }
+                    //clinics
+                    foreach($this->getClinicsBySubtype($subtype->id) as $clinic)    {
+                        $list_locations_with_subtypes_types[$type->name]['subtypes'][$subtype->name][$clinic->name] = array(
+                            'locations' => $this->getLocationsByClinic($clinic->id),
+                            'name' => $clinic->name,
+                            'link' => $clinic->link
+                        );
+                    }
                 }
-                //clinics
-                foreach($this->getClinicsBySubtype($subtype->id) as $clinic)    {
-                    $list_locations_with_subtypes_types[$type->name][$subtype->name][$clinic->name] = array(
-                        'locations' => $this->getLocationsByClinic($clinic->id),
-                        'name' => $clinic->name,
-                        'link' => $clinic->link
-                    );
-                }
+            } else {
+                $list_locations_with_subtypes_types[$type->name]['type'] = 'no-subcategories';
+                $list_locations_with_subtypes_types[$type->name]['id'] = $type->id;
             }
         }
         return view('pages/partner-network', ['locations' => $this->getLocations(), 'location_types' => $this->getLocationTypes(), 'locations_select' => $this->getAllLocations(), 'list_locations_with_subtypes_types' => $list_locations_with_subtypes_types, 'clinics' => (new LocationsController())->getAllFeaturedClinics()]);
+    }
+
+    public function getClinicsForCategoryWithoutSubcategories($type_id) {
+        return Clinic::where(array('type_id' => $type_id))->get()->all();
     }
 
     public function getLocations()   {
@@ -64,7 +75,7 @@ class PartnerNetworkController extends Controller
         return Clinic::where(array('subtype_id' => $id))->get();
     }
 
-    protected function getLocationsByClinic($id)   {
+    public function getLocationsByClinic($id)   {
         return MapLocation::where(array('clinic_id' => $id))->get();
     }
 }

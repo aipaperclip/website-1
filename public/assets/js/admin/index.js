@@ -318,7 +318,7 @@ function addLocationMap(edit) {
         edit = false;
     }
 
-    $('select[name="subtype"] option[data-type-id="'+$('select[name="type"]').val()+'"]').addClass('show');
+    /*$('select[name="subtype"] option[data-type-id="'+$('select[name="type"]').val()+'"]').addClass('show');
     if(!edit) {
         $('select[name="subtype"]').val($('select[name="subtype"] option:first').val());
     }
@@ -336,7 +336,7 @@ function addLocationMap(edit) {
         $('select[name="clinic"] option').removeClass('show').removeAttr('selected');
         $('select[name="clinic"] option[data-subtype-id="'+$('select[name="subtype"]').val()+'"]').addClass('show');
         $('select[name="clinic"] option.show:first').attr('selected', 'selected');
-    });
+    });*/
 
     Gmap = jQuery('.add-edit-location-map');
     Gmap.each(function () {
@@ -699,5 +699,10 @@ if($('.add-edit-clinic').length) {
         } else {
             $('.add-edit-clinic .clinic-text').addClass('hide');
         }
+    });
+
+    $('select[name="type"]').on('change', function() {
+        $('select[name="subtype"] .subtype-option').addClass('hide');
+        $('select[name="subtype"] .subtype-option[data-type-id="'+$(this).val()+'"]').removeClass('hide');
     });
 }

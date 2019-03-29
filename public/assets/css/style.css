@@ -6169,20 +6169,22 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           -ms-transform: rotate(90deg);
           -o-transform: rotate(90deg);
           transform: rotate(90deg); }
-    .partner-network-container .list-with-locations .clinics {
+    .partner-network-container .list-with-locations .clinics, .partner-network-container .list-with-locations .clinics-no-subcategory {
       display: none;
       padding-left: 20px;
       padding-right: 20px; }
-      .partner-network-container .list-with-locations .clinics .clinic-title {
+      .partner-network-container .list-with-locations .clinics.display-block, .partner-network-container .list-with-locations .clinics-no-subcategory.display-block {
+        display: block; }
+      .partner-network-container .list-with-locations .clinics .clinic-title, .partner-network-container .list-with-locations .clinics-no-subcategory .clinic-title {
         font-size: 20px;
         text-align: left;
         padding-top: 15px;
         padding-bottom: 5px; }
-      .partner-network-container .list-with-locations .clinics .clinic-link {
+      .partner-network-container .list-with-locations .clinics .clinic-link, .partner-network-container .list-with-locations .clinics-no-subcategory .clinic-link {
         text-decoration: underline;
         font-size: 16px;
         padding-bottom: 5px; }
-      .partner-network-container .list-with-locations .clinics .locations ul li {
+      .partner-network-container .list-with-locations .clinics .locations ul li, .partner-network-container .list-with-locations .clinics-no-subcategory .locations ul li {
         padding-bottom: 5px;
         list-style: disc inside none;
         font-size: 16px; }

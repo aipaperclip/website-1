@@ -57,29 +57,56 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                     @foreach($list_locations_with_subtypes_types as $key=>$type)
-                        <div class="single-type">
-                            <h2 class="type-title section-title">{{$key}}</h2>
-                            <div class="subtypes">
-                                @foreach($type as $subkey=>$subtype)
-                                    <div class="subtype-title section-subtitle"><button>{{$subkey}}</button><i class="fa fa-caret-right"></i></div>
-                                    <div class="clinics">
-                                        @foreach($subtype as $clinic)
-                                            <div class="clinic-title section-title">{{$clinic['name']}}</div>
-                                            <div class="clinic-link">
-                                                <a href="{{$clinic['link']}}" target="_blank">{{$clinic['link']}}</a>
-                                            </div>
-                                            <div class="locations">
-                                                <ul>
-                                                    @foreach($clinic['locations'] as $location)
+                        @if($type['type'] == 'subcategories')
+                            <div class="single-type">
+                                <h2 class="type-title section-title">{{$key}}</h2>
+                                <div class="subtypes">
+                                    @foreach($type['subtypes'] as $subkey=>$subtype)
+                                        <div class="subtype-title section-subtitle"><button>{{$subkey}}</button><i class="fa fa-caret-right"></i></div>
+                                        <div class="clinics">
+                                            @foreach($subtype as $clinic)
+                                                <div class="clinic-title section-title">{{$clinic['name']}}</div>
+                                                <div class="clinic-link">
+                                                    <a href="{{$clinic['link']}}" target="_blank">{{$clinic['link']}}</a>
+                                                </div>
+                                                <div class="locations">
+                                                    <ul>
+                                                        @if(!empty($clinic['locations']))
+                                                            @foreach($clinic['locations'] as $location)
+                                                                <li>{{$location->address}}</li>
+                                                            @endforeach
+                                                        @endif
+                                                    </ul>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @elseif($type['type'] == 'no-subcategories')
+                            <div class="single-type">
+                                <h2 class="type-title section-title">{{$key}}</h2>
+                                <div class="clinics-no-subcategory display-block">
+                                    @php($clinics = (new \App\Http\Controllers\PartnerNetworkController())->getClinicsForCategoryWithoutSubcategories($type['id']))
+                                    @foreach($clinics as $clinic)
+                                        <div class="clinic-title section-title">{{$clinic['name']}}</div>
+                                        <div class="clinic-link">
+                                            <a href="{{$clinic['link']}}" target="_blank">{{$clinic['link']}}</a>
+                                        </div>
+                                        <div class="locations">
+                                            <ul>
+                                                @php($locations = (new \App\Http\Controllers\PartnerNetworkController())->getLocationsByClinic($clinic->id))
+                                                @if(!empty($locations))
+                                                    @foreach($locations as $location)
                                                         <li>{{$location->address}}</li>
                                                     @endforeach
-                                                </ul>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                @endforeach
+                                                @endif
+                                            </ul>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
             </div>

@@ -1095,9 +1095,13 @@ body.media {
   overflow: hidden;
   height: 350px; }
 
-body.add-location select[name="subtype"] option, body.add-location select[name="clinic"] option, body.edit-location select[name="subtype"] option, body.edit-location select[name="clinic"] option {
-  display: none; }
-
+/*body.add-location, body.edit-location {
+    select[name="subtype"], select[name="clinic"] {
+        option {
+            display: none;
+        }
+    }
+}*/
 body.add-job-offer .skills-body .single-skill, body.edit-job-offer .skills-body .single-skill {
   padding: 5px 10px;
   color: #333;
