@@ -33,7 +33,7 @@ $(document).ready(function() {
         }
 
         if($('#tawkchat-container').length) {
-            $('#tawkchat-container').attr('style', $('#tawkchat-container').attr('style') + 'height: 100% !important;width: 100% !important;');
+            $('#tawkchat-container').attr('style', $('#tawkchat-container').attr('style') + 'width: 100% !important;');
             $('#tawkchat-container').children().eq(0).attr('style', $('#tawkchat-container').children().eq(0).attr('style') + 'left:10px !important;right:auto !important;');
         }
     }, 2000);
