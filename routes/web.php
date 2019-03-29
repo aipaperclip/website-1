@@ -23,6 +23,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         dd(
             $_SERVER,
             request()->getHost(),
+            request()->getClientIps(),
             redirect('/somewhere')->getTargetUrl(),
             url('anywhere')
         );
