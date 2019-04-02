@@ -221,7 +221,11 @@ class Controller extends BaseController
             case 'testimonials':
                 $testimonials = DB::connection('mysql')->table('user_expressions')->leftJoin('media', 'user_expressions.media_id', '=', 'media.id')->select('user_expressions.*', 'media.name as media_name', 'media.alt as media_alt')->orderByRaw('user_expressions.order_id ASC')->get()->toArray();
                 foreach($testimonials as $testimonial) {
-                    $testimonial->media_name = route('home') . UPLOADS_FRONT_END . $testimonial->media_name;
+                    if(!empty($testimonial->media_name)) {
+                        $testimonial->media_name = route('home') . UPLOADS_FRONT_END . $testimonial->media_name;
+                    } else {
+                        $testimonial->media_name = NULL;
+                    }
                 }
                 return json_encode($testimonials);
                 break;
