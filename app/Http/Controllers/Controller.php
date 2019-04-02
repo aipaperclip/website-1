@@ -217,7 +217,14 @@ class Controller extends BaseController
                     $social->media_name = route('home') . UPLOADS_FRONT_END . $social->media_name;
                 }
                 return json_encode($socials);
-        break;
+                break;
+            case 'testimonials':
+                $testimonials = DB::connection('mysql')->table('user_expressions')->leftJoin('media', 'user_expressions.media_id', '=', 'media.id')->select('user_expressions.*', 'media.name as media_name', 'media.alt as media_alt')->orderByRaw('user_expressions.order_id ASC')->get()->toArray();
+                foreach($testimonials as $testimonial) {
+                    $testimonial->media_name = route('home') . UPLOADS_FRONT_END . $testimonial->media_name;
+                }
+                return json_encode($testimonials);
+                break;
             default:
                 $additional_data = (new Admin\MainController())->getApiEndpoint($slug);
                 if(!empty($additional_data))    {
