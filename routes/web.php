@@ -19,16 +19,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/test', function() {
-        dd(
-            $_SERVER,
-            request()->getHost(),
-            request()->getClientIps(),
-            redirect('/somewhere')->getTargetUrl(),
-            url('anywhere')
-        );
-
-        return 'app server 1';
+    Route::get('/test-bidali', function() {
+        return view('pages/test-bidali-gift-cards', []);
     })->name('test');
 
     Route::get('privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
