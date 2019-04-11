@@ -534,6 +534,15 @@ if($('body').hasClass('home')) {
         $('.homepage-container .testimonials .below-expressions .show-more').css({'top' : 'calc(50% - '+$('.homepage-container .testimonials .expressions').height()/2+'px)'});
     }
 
+    if($('#bidali-init-btn').length) {
+        $('#bidali-init-btn').click(function() {
+            bidaliSdk.Commerce.render({
+                apiKey: 'pk_n6mvpompwzm83egzrz2vnh',
+                paymentCurrencies: ['DCN']
+            });
+        });
+    }
+
     var current_url = new URL(window.location.href);
     if(current_url.searchParams.get('application') != null) {
         scrollToSectionAnimation('two', null, true);

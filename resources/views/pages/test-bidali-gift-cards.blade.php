@@ -13,7 +13,7 @@
     <script type="text/javascript" src="https://commerce.bidali.com/commerce.min.js"></script>
     <script>
         alert('This payment method is still in testing phase, DO NOT purchase anything yet.');
-        $('#bidali-btn').click(function() {
+        $('#bidali-init-btn').click(function() {
             bidaliSdk.Commerce.render({
                 apiKey: 'pk_n6mvpompwzm83egzrz2vnh',
                 paymentCurrencies: ['DCN']
