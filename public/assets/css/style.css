@@ -5018,6 +5018,9 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         display: none; }
     .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .gif .between-sections-description {
       display: none; }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .gif {
+        padding-top: 200px; } }
   @media screen and (max-width: 767px) {
     .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .wallet-app .section-subtitle {
       font-size: 20px;
