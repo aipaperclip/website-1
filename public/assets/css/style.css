@@ -5522,8 +5522,8 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app {
     font-size: 16px; }
     .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .section-subtitle {
-      padding-bottom: 20px;
-      padding-top: 20px; }
+      padding-bottom: 10px;
+      padding-top: 15px; }
     .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .description {
       color: #3e3e3e;
       padding-bottom: 10px; }
@@ -5554,7 +5554,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list {
           display: none;
           line-height: 20px;
-          height: 300px;
+          height: 140px;
           overflow-y: auto; }
           .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list::-webkit-scrollbar, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list::-webkit-scrollbar {
             -webkit-appearance: none; }
@@ -5581,9 +5581,12 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
             transition: 0.3s; }
             .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list li:hover, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list li:hover {
               font-family: 'Calibri-Bold'; }
-          @media screen and (min-width: 992px) and (max-width: 1199px) {
+          @media screen and (max-width: 1450px) {
             .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list {
-              height: 200px; } }
+              height: 220px; } }
+          @media screen and (max-width: 1199px) {
+            .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list {
+              height: 140px; } }
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms.active .title .icon, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets.active .title .icon {
           background-image: url("/assets/images/minus-black-background-bordered.svg"); }
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms.active .title span, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets.active .title span {
