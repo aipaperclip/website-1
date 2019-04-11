@@ -338,9 +338,6 @@ body.home {
                     .between-sections-description {
                         display: none;
                     }
-                    @include breakpoint($md-only) {
-                        padding-top: 200px;    
-                    }
                 }
             }
             @include breakpoint($xs) {
@@ -1089,6 +1086,9 @@ body.home {
                         bottom: 0;
                         font-size: 16px;
                     }
+                }
+                @include breakpoint($md-only) {
+                    padding-top: 200px;
                 }
             }
         }

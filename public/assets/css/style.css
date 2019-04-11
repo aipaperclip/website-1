@@ -5018,9 +5018,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         display: none; }
     .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .gif .between-sections-description {
       display: none; }
-    @media screen and (min-width: 992px) and (max-width: 1199px) {
-      .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .gif {
-        padding-top: 200px; } }
   @media screen and (max-width: 767px) {
     .homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .wallet-app .section-subtitle {
       font-size: 20px;
@@ -5617,6 +5614,9 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       left: 0;
       bottom: 0;
       font-size: 16px; }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .homepage-container .buy-dentacoin .wallet-app-and-gif .gif {
+      padding-top: 200px; } }
 .homepage-container .below-buy-dentacoin .container {
   position: relative;
   padding-top: 60px;
