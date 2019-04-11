@@ -5554,7 +5554,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list {
           display: none;
           line-height: 20px;
-          height: 140px;
+          height: 220px;
           overflow-y: auto; }
           .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list::-webkit-scrollbar, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list::-webkit-scrollbar {
             -webkit-appearance: none; }
@@ -5583,7 +5583,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
               font-family: 'Calibri-Bold'; }
           @media screen and (max-width: 1450px) {
             .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list {
-              height: 220px; } }
+              height: 140px; } }
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms.active .title .icon, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets.active .title .icon {
           background-image: url("/assets/images/minus-black-background-bordered.svg"); }
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms.active .title span, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets.active .title span {

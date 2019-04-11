@@ -1008,7 +1008,7 @@ body.home {
                         ul.list {
                             display: none;
                             line-height: 20px;
-                            height: 140px; 
+                            height: 220px;
                             overflow-y: auto;
                             &::-webkit-scrollbar {
                                 -webkit-appearance: none;
@@ -1033,10 +1033,10 @@ body.home {
                                 @include simple_transition(.3s);
                                 &:hover {
                                     font-family: 'Calibri-Bold';
-                                }
+                                }  
                             }
                             @include breakpoint($max-lgl)    {
-                                height: 220px;
+                                height: 140px;
                             }
                         }
                         &.active {
