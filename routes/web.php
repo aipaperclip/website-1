@@ -112,8 +112,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return Redirect::to('/?application=partner-network-intro');
     });
 
-    Route::get('bidali-voucher', function() {
-        return Redirect::to('/?payment=bidali-voucher');
+    Route::get('bidali-gift-cards', function() {
+        return Redirect::to('/?payment=bidali-gift-cards');
     });
 
     Route::get('corporate-design', function() {

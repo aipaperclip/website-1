@@ -63,7 +63,7 @@ $(window).on('load', function() {
             setTimeout(function()   {
                 $('.dentacoin-ecosystem .single-application figure[data-slug="'+current_url.searchParams.get('application')+'"]').click();
             }, 500)
-        } else if(current_url.searchParams.get('payment') != null && current_url.searchParams.get('payment') == 'bidali-voucher') {
+        } else if(current_url.searchParams.get('payment') != null && current_url.searchParams.get('payment') == 'bidali-gift-cards') {
             $('html').animate({
                 scrollTop: $('.wallet-app-and-gif').offset().top
             }, {
