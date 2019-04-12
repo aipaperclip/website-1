@@ -42,7 +42,9 @@ $(document).ready(function() {
 $(window).on('load', function() {
     //HOMEPAGE
     if($('body').hasClass('home') && !basic.isMobile()) {
-        //$(window).scrollTop(0);
+        console.log("Don't touch the code. Or do ... ¯\\_(ツ)_/¯");
+        setLinesDots();
+        drawLine('first', 'vertical');
     }
 
     if($('body.careers.allow-draw-lines').length > 0) {
@@ -52,17 +54,31 @@ $(window).on('load', function() {
         //init lines
         drawHeaderToFirstSectionLine();
     }
+
+    if($('body').hasClass('home')) {
+        var current_url = new URL(window.location.href);
+        if(current_url.searchParams.get('application') != null) {
+            scrollToSectionAnimation('two', null, true);
+
+            setTimeout(function()   {
+                $('.dentacoin-ecosystem .single-application figure[data-slug="'+current_url.searchParams.get('application')+'"]').click();
+            }, 500)
+        } else if(current_url.searchParams.get('payment') != null && current_url.searchParams.get('payment') == 'bidali-voucher') {
+            $('html').animate({
+                scrollTop: $('.wallet-app-and-gif').offset().top
+            }, {
+                duration: 500,
+                complete: function() {
+                    setTimeout(function() {
+                        $('#bidali-init-btn').click();
+                    }, 1000);
+                }
+            });
+        }
+    }
 });
 
 $('body').bind('wheel', onMousewheel);
-
-$(window).on("load", function()   {
-    if($('body').hasClass('home') && !basic.isMobile()) {
-        console.log("Don't touch the code. Or do ... ¯\\_(ツ)_/¯");
-        setLinesDots();
-        drawLine('first', 'vertical');
-    }
-});
 
 $(window).on('resize', function(){
     if($('body').hasClass('home') && !basic.isMobile()) {
@@ -119,7 +135,7 @@ function onMousewheel(event)    {
 
 function scrollToSectionAnimation(to_become_current, full_height, clear_dots, draw_first) {
     //doing this check, because IE 11 not support ES6
-    if(full_height === undefined) {
+    /*if(full_height === undefined) {
         full_height = null;
     }
     if(clear_dots === undefined) {
@@ -141,7 +157,7 @@ function scrollToSectionAnimation(to_become_current, full_height, clear_dots, dr
             drawLine('first', 'vertical');
         }
     });
-    $('body').attr('data-current', to_become_current);
+    $('body').attr('data-current', to_become_current);*/
 }
 
 function setLinesDots(resize)    {
@@ -541,15 +557,6 @@ if($('body').hasClass('home')) {
                 paymentCurrencies: ['DCN']
             });
         });
-    }
-
-    var current_url = new URL(window.location.href);
-    if(current_url.searchParams.get('application') != null) {
-        scrollToSectionAnimation('two', null, true);
-
-        setTimeout(function()   {
-            $('.dentacoin-ecosystem .single-application figure[data-slug="'+current_url.searchParams.get('application')+'"]').click();
-        }, 500)
     }
 
     // ===== first section video logic =====

@@ -19,10 +19,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/test-bidali', function() {
-        return view('pages/test-bidali-gift-cards', []);
-    })->name('test');
-
     Route::get('privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
 
     Route::get('press-center/page/{page}', 'PressCenterController@getView')->name('press-center');
@@ -114,6 +110,10 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('partner-network-intro', function() {
         return Redirect::to('/?application=partner-network-intro');
+    });
+
+    Route::get('bidali-voucher', function() {
+        return Redirect::to('/?payment=bidali-voucher');
     });
 
     Route::get('corporate-design', function() {
