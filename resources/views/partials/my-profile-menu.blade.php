@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="//dentavox.dentacoin.com" itemprop="url">
+                    <a href="//dentavox.dentacoin.com" target="_blank" itemprop="url">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
                             <img alt="Privacy icon" src="/assets/uploads/dentavox--surveys.svg"/>
                         </figure>
@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="//reviews.dentacoin.com" itemprop="url">
+                    <a href="//reviews.dentacoin.com" target="_blank" itemprop="url">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
                             <img alt="Privacy icon" src="/assets/uploads/trusted-reviews-icon.svg"/>
                         </figure>
@@ -62,7 +62,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="//assurance.dentacoin.com" itemprop="url">
+                    <a href="//assurance.dentacoin.com" target="_blank" itemprop="url">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
                             <img alt="Privacy icon" src="/assets/uploads/assurance.svg"/>
                         </figure>
