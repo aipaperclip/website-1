@@ -291,6 +291,9 @@ var basic = {
         }
         return isMobile;
     },
+    objHasKey: function(object, key) {
+        return object ? hasOwnProperty.call(object, key) : false;
+    }
     /*addCsrfTokenToAllAjax: function ()    {
         $.ajaxSetup({
             headers: {
