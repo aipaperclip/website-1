@@ -112,6 +112,11 @@ class UserController extends Controller {
     }
 
     protected function userLogout(Request $request) {
+        dump(Session::all());
+        dump(session('logged_user'));
+        print_r(Session::all());
+        dump(session('logged_user'));
+        die('asd');
         if($request->session()->has('logged_user'))    {
             $request->session()->forget('logged_user');
         }
