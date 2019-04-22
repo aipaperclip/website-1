@@ -150,6 +150,7 @@
             </figure>
             @if(!(new \App\Http\Controllers\UserController())->checkSession())
                 <div class="col-xs-8 btn-container inline-block">
+                    <a href="//dentists.dentacoin.com" class="inline-block fs-20 margin-right-25 margin-right-xs-10 main-color" target="_blank">For dentists</a>
                     <div class="inline-block btn-and-line">
                         <a href="javascript:void(0)" class="white-black-btn show-login-signin" tabindex="-1">SIGN IN</a>
                         <span class="first-dot custom-dot">&nbsp;</span>
