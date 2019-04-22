@@ -122,7 +122,7 @@ return [
     |
     */
 
-    'cookie' => 'laravel_session',
+    'cookie' => 'dentacoin_session_dev',
 
     /*
     |--------------------------------------------------------------------------
