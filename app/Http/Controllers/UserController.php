@@ -540,11 +540,7 @@ class UserController extends Controller {
         } else {
             session(['logged_user' => $session_arr]);
 
-            if(!empty($request->input('route')) && !empty($request->input('slug'))) {
-                return redirect()->route($request->input('route'), ['slug' => $request->input('slug')]);
-            } else {
-                return redirect()->route('patient-access');
-            }
+            return redirect()->route('home');
         }
     }
 }

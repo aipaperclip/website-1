@@ -1664,7 +1664,7 @@ function apiEventsListeners() {
                 //}
             }
 
-            customJavascriptForm('/patient/authenticate', custom_form_obj, 'post');
+            customJavascriptForm('/patient-login', custom_form_obj, 'post');
         }
     });
 
