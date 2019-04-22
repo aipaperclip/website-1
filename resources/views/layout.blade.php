@@ -151,7 +151,7 @@
             @if(!(new \App\Http\Controllers\UserController())->checkSession())
                 <div class="col-xs-8 btn-container inline-block">
                     <div class="inline-block btn-and-line">
-                        <a href="javascript:void(0)" class="white-black-btn show-login-signin" tabindex="-1">JOIN US</a>
+                        <a href="javascript:void(0)" class="white-black-btn show-login-signin" tabindex="-1">SIGN IN</a>
                         <span class="first-dot custom-dot">&nbsp;</span>
                     </div>
                 </div>
