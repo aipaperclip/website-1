@@ -300,6 +300,9 @@
 .solid_gray-bg {
   background-color: #aaaaaa; }
 
+.color-white {
+  color: white; }
+
 body {
   margin: 0;
   font-family: "Calibri-Regular";
@@ -2066,6 +2069,132 @@ body {
 @media screen and (max-width: 767px) {
   .max-width-xs-300 {
     max-width: 300px !important; } }
+.width-0 {
+  width: 0% !important; }
+
+.width-5 {
+  width: 5% !important; }
+
+.width-10 {
+  width: 10% !important; }
+
+.width-15 {
+  width: 15% !important; }
+
+.width-20 {
+  width: 20% !important; }
+
+.width-25 {
+  width: 25% !important; }
+
+.width-30 {
+  width: 30% !important; }
+
+.width-35 {
+  width: 35% !important; }
+
+.width-40 {
+  width: 40% !important; }
+
+.width-45 {
+  width: 45% !important; }
+
+.width-50 {
+  width: 50% !important; }
+
+.width-55 {
+  width: 55% !important; }
+
+.width-60 {
+  width: 60% !important; }
+
+.width-65 {
+  width: 65% !important; }
+
+.width-70 {
+  width: 70% !important; }
+
+.width-75 {
+  width: 75% !important; }
+
+.width-80 {
+  width: 80% !important; }
+
+.width-85 {
+  width: 85% !important; }
+
+.width-90 {
+  width: 90% !important; }
+
+.width-95 {
+  width: 95% !important; }
+
+.width-100 {
+  width: 100% !important; }
+
+@media screen and (max-width: 767px) {
+  .width-xs-0 {
+    width: 0% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-5 {
+    width: 5% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-10 {
+    width: 10% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-15 {
+    width: 15% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-20 {
+    width: 20% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-25 {
+    width: 25% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-30 {
+    width: 30% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-35 {
+    width: 35% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-40 {
+    width: 40% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-45 {
+    width: 45% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-50 {
+    width: 50% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-55 {
+    width: 55% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-60 {
+    width: 60% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-65 {
+    width: 65% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-70 {
+    width: 70% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-75 {
+    width: 75% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-80 {
+    width: 80% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-85 {
+    width: 85% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-90 {
+    width: 90% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-95 {
+    width: 95% !important; } }
+@media screen and (max-width: 767px) {
+  .width-xs-100 {
+    width: 100% !important; } }
 .fs-0 {
   font-size: 0px !important; }
 
@@ -3337,13 +3466,13 @@ img {
 svg.svg-with-lines {
   display: none; }
 
-body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-center svg.svg-with-lines, body.careers.allow-draw-lines svg.svg-with-lines, body.corporate-design.allow-draw-lines svg.svg-with-lines {
+body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-center svg.svg-with-lines, body.careers.allow-draw-lines svg.svg-with-lines, body.corporate-design.allow-draw-lines svg.svg-with-lines {
   display: block;
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0; }
-  body.home svg.svg-with-lines line, body.testimonials svg.svg-with-lines line, body.press-center svg.svg-with-lines line, body.careers.allow-draw-lines svg.svg-with-lines line, body.corporate-design.allow-draw-lines svg.svg-with-lines line {
+  body.home svg.svg-with-lines line, body.foundation svg.svg-with-lines line, body.testimonials svg.svg-with-lines line, body.press-center svg.svg-with-lines line, body.careers.allow-draw-lines svg.svg-with-lines line, body.corporate-design.allow-draw-lines svg.svg-with-lines line {
     stroke-width: 2px;
     stroke: black; }
 
@@ -3908,60 +4037,210 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
     display: flex !important;
     align-items: center;
     justify-content: center; } }
-.bootbox.application-popup .modal-dialog {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  width: 70%;
-  max-width: 900px; }
-  .bootbox.application-popup .modal-dialog .modal-content {
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    border-radius: 25px; }
-  .bootbox.application-popup .modal-dialog .container-fluid {
-    padding-top: 50px;
-    padding-bottom: 50px; }
-    .bootbox.application-popup .modal-dialog .container-fluid .content {
-      padding: 0 30px; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .logo {
-        width: 40%; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .title {
-        font-size: 32px;
-        font-family: 'Calibri-Bold';
-        padding-top: 20px;
-        padding-bottom: 10px; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .description {
-        line-height: 20px;
-        font-size: 16px; }
-        .bootbox.application-popup .modal-dialog .container-fluid .content .description p {
-          padding-bottom: 10px; }
-          .bootbox.application-popup .modal-dialog .container-fluid .content .description p a {
-            margin-top: 10px;
-            display: inline-block; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html .extra-title {
-        font-family: 'Calibri-Bold';
-        font-size: 20px;
-        padding-bottom: 10px;
-        padding-top: 20px; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html ul li {
-        padding-bottom: 5px;
-        list-style: disc inside none; }
-        .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html ul li a {
-          text-decoration: underline; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content .extra-html .see-all {
-        padding-top: 15px; }
-    .bootbox.application-popup .modal-dialog .container-fluid .gif img {
-      -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
-      -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
-      -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
-      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2); }
-    .bootbox.application-popup .modal-dialog .container-fluid .video video {
-      width: 100%; }
-@media screen and (max-width: 991px) {
-  .bootbox.application-popup .modal-dialog {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto; } }
+.bootbox.login-signin-popup .bootbox-close-button {
+  display: none; }
+.bootbox.login-signin-popup .modal-dialog {
+  width: 95%;
+  max-width: 1000px; }
+  .bootbox.login-signin-popup .modal-dialog .modal-content {
+    background: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    box-shadow: none; }
+    .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body {
+      padding: 0; }
+      .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-header-action a {
+        width: 50%;
+        font-size: 35px;
+        padding: 10px;
+        text-align: center;
+        border-top: 3px solid white;
+        border-left: 3px solid white;
+        border-right: 3px solid white;
+        -webkit-border-radius: 4px 4px 0 0;
+        -moz-border-radius: 4px 4px 0 0;
+        -ms-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0; }
+        .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-header-action a[data-type="patient"] {
+          color: black;
+          background-color: white;
+          border-bottom: 1px solid black; }
+        .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-header-action a[data-type="dentist"] {
+          color: white;
+          background-color: black;
+          border-bottom: 1px solid white; }
+        @media screen and (max-width: 767px) {
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-header-action a {
+            font-size: 20px;
+            padding: 10px 5px; } }
+      .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body {
+        display: flex; }
+        .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist {
+          background: black; }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .call-sign-up {
+            font-family: 'Calibri-Bold';
+            color: white; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .call-sign-up:hover {
+              color: white; }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .popup-half-footer {
+            padding: 30px 0;
+            margin-top: 50px;
+            margin-left: -15%;
+            margin-right: -15%;
+            text-align: center;
+            border-top: 1px solid white;
+            color: white;
+            font-size: 16px; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .popup-half-footer a {
+              font-family: 'Calibri-Bold';
+              color: white;
+              font-size: 16px;
+              text-decoration: underline; }
+            @media screen and (max-width: 767px) {
+              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .popup-half-footer {
+                margin-top: 30px;
+                margin-left: auto;
+                margin-right: auto; } }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step {
+            display: none; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.visible {
+              display: block; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .phone {
+              display: flex;
+              align-items: center; }
+              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .phone .country-code {
+                font-size: 16px;
+                padding-right: 10px;
+                color: white; }
+              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .phone .input-phone {
+                flex: 1; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .pretty {
+              white-space: normal;
+              padding-bottom: 5px; }
+              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .pretty .state {
+                position: relative;
+                color: white; }
+                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .pretty .state i {
+                  left: 1px;
+                  top: 1px;
+                  position: absolute; }
+                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .pretty .state label {
+                  line-height: 20px; }
+                  .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .pretty .state label:before, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .pretty .state label:after {
+                    left: 1px;
+                    top: 1px; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .avatar {
+              padding-right: 20px;
+              width: 50%; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .specializations {
+              width: 50%;
+              color: white; }
+              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .specializations h4 {
+                padding-bottom: 10px; }
+              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .specializations .pretty {
+                margin-bottom: 15px;
+                display: block; }
+                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .specializations .pretty svg.svg {
+                  border-color: #126585 !important; }
+                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .specializations .pretty label {
+                  text-indent: 25px; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .privacy-policy-row svg.svg {
+              border-color: red !important; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .privacy-policy-row label {
+              display: block;
+              white-space: normal;
+              text-indent: 25px; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .privacy-policy-row a {
+              text-decoration: underline;
+              color: white; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .combobox-container .input-group {
+              display: block; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .combobox-container .input-group-addon.dropdown-toggle {
+              display: none; }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .btns-container {
+            font-size: 0; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .btns-container .inline-block {
+              width: 50%; }
+              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .btns-container .inline-block .prev-step {
+                display: none;
+                color: white;
+                font-size: 14px;
+                font-family: 'Calibri Light';
+                border: 0;
+                background: transparent; }
+              @media screen and (max-width: 767px) {
+                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .btns-container .inline-block .next-step {
+                  font-size: 16px;
+                  padding: 10px 0;
+                  width: 100%; } }
+        .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient {
+          background-color: white;
+          color: black; }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .popup-half-footer {
+            padding: 30px 0;
+            margin-top: 80px;
+            margin-left: -15%;
+            margin-right: -15%;
+            text-align: center;
+            border-top: 1px solid white;
+            color: black;
+            font-size: 16px; }
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .popup-half-footer a {
+              font-family: 'Calibri-Bold';
+              color: black;
+              font-size: 20px;
+              text-decoration: underline; }
+            @media screen and (max-width: 767px) {
+              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .popup-half-footer {
+                margin-top: 30px;
+                margin-left: auto;
+                margin-right: auto; } }
+        .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient {
+          width: 50%;
+          padding-top: 50px;
+          border-bottom: 3px solid white;
+          border-left: 3px solid white;
+          border-right: 3px solid white;
+          -webkit-border-radius: 0 0 4px 4px;
+          -moz-border-radius: 0 0 4px 4px;
+          -ms-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px; }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .custom-input, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .custom-input {
+            padding: 7px 12px; }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist h2, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient h2 {
+            font-size: 35px;
+            padding-bottom: 20px;
+            font-family: "Calibri Light"; }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist.patient h2, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient.patient h2 {
+            color: black; }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist.dentist h2, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient.dentist h2 {
+            color: white; }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-register {
+            display: none; }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-login, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-login {
+            width: 70%;
+            margin: 0 auto; }
+            @media screen and (max-width: 767px) {
+              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-login, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-login {
+                width: 90%; } }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist.custom-hide, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient.custom-hide {
+            visibility: hidden; }
+            @media screen and (max-width: 767px) {
+              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist.custom-hide, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient.custom-hide {
+                display: none; } }
+          @media screen and (max-width: 767px) {
+            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient {
+              padding-top: 30px;
+              width: 100%; } }
+.bootbox.popup-html .bootbox-close-button {
+  font-size: 45px;
+  margin-top: -20px;
+  opacity: 1;
+  color: #424242; }
+.bootbox.popup-html .modal-dialog .modal-body .bootbox-body {
+  padding: 0 8%; }
 @media screen and (max-width: 767px) {
   .bootbox a.white-blue-rounded-btn {
     font-size: 14px;
@@ -3971,30 +4250,7 @@ body.home svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-c
     display: block;
     text-align: center; }
   .bootbox .bootbox-close-button {
-    font-size: 32px; }
-  .bootbox.application-popup {
-    text-align: center; }
-    .bootbox.application-popup .modal-dialog .modal-content {
-      border: 0;
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      -ms-box-shadow: none;
-      box-shadow: none;
-      -webkit-border-radius: 6px;
-      -moz-border-radius: 6px;
-      -ms-border-radius: 6px;
-      border-radius: 6px; }
-    .bootbox.application-popup .modal-dialog .container-fluid {
-      padding-top: 20px;
-      padding-bottom: 20px; }
-      .bootbox.application-popup .modal-dialog .container-fluid .content {
-        padding: 0; }
-        .bootbox.application-popup .modal-dialog .container-fluid .content .logo {
-          margin: 0 auto; }
-        .bootbox.application-popup .modal-dialog .container-fluid .content .description {
-          text-align: left; }
-      .bootbox.application-popup .modal-dialog .container-fluid .gif, .bootbox.application-popup .modal-dialog .container-fluid .video {
-        display: none; } }
+    font-size: 32px; } }
 .bootbox.media-inquries {
   padding-bottom: 20px; }
   .bootbox.media-inquries .modal-dialog {
@@ -4266,6 +4522,48 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
   left: 20px !important;
   right: auto !important; }
 
+.pretty.black-style.agree-with input {
+  width: 90px; }
+.pretty.black-style svg.svg {
+  width: 16px !important;
+  height: 16px !important;
+  border: 0 !important;
+  top: 1px !important;
+  left: 1px !important; }
+.pretty.black-style label:before {
+  width: 18px;
+  height: 18px;
+  top: 0;
+  left: 0;
+  border-width: 2px !important; }
+.pretty.black-style label a {
+  text-decoration: underline;
+  font-family: 'Calibri-Bold'; }
+.pretty.black-style input:checked ~ .state.p-success label:after, .pretty.black-style.p-toggle .state.p-success label:after {
+  background-color: black !important;
+  height: 16px;
+  width: 16px;
+  top: 1px;
+  left: 1px; }
+
+.line-crossed-title {
+  position: relative; }
+  .line-crossed-title span {
+    background-color: white;
+    padding-right: 10px; }
+  .line-crossed-title:after {
+    content: '';
+    height: 3px;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); }
+
 .white-dark-blue-btn {
   background-color: #041e42;
   color: white !important;
@@ -4330,7 +4628,7 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
     color: black;
     background-color: white; }
 
-.black-white-btn {
+.black-white-btn, input[type='submit'].black-white-btn {
   background-color: white;
   color: black;
   font-size: 16px;
@@ -4346,9 +4644,10 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s; }
-  .black-white-btn:hover {
+  .black-white-btn:hover, input[type='submit'].black-white-btn:hover {
     color: white;
-    background-color: black; }
+    background-color: black;
+    border: 2px solid white; }
 
 .white-blue-btn {
   background-color: #679dca;
@@ -4466,6 +4765,86 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
   .dark-blue-white-btn.blue-border {
     border: 2px solid #041e42; }
 
+.social-login-btn {
+  background-color: white;
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+  color: black;
+  font-size: 20px;
+  padding: 10px 15px 10px 70px;
+  max-width: 350px;
+  margin: 0 auto;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: 30px auto;
+  background-position: center left 15px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px; }
+  .social-login-btn.civic-custom-btn {
+    background-image: url(/assets/images/civic.svg);
+    border: 1px solid #3bb03f; }
+  .social-login-btn.facebook-custom-btn {
+    background-image: url(/assets/images/facebook.svg);
+    border: 1px solid #3b5999; }
+
+.custom-input {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: white;
+  font-size: 16px;
+  font-family: 'Calibri-Regular';
+  border: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 2px 10px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 2px 10px 0 rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: 0px 2px 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 10px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .custom-input:focus {
+    -webkit-box-shadow: 0px 2px 10px 0 #679dca;
+    -moz-box-shadow: 0px 2px 10px 0 #679dca;
+    -ms-box-shadow: 0px 2px 10px 0 #679dca;
+    box-shadow: 0px 2px 10px 0 #679dca; }
+
+.error-handle, .alert.alert-warning {
+  color: #a94442;
+  background-color: #f2dede;
+  border: 1px solid #a94442;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 14px;
+  padding: 5px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px; }
+  .error-handle.alert.alert-warning, .alert.alert-warning.alert.alert-warning {
+    display: none; }
+
+.alert.alert-notice {
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 14px;
+  padding: 5px;
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  display: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px; }
+
 .section-title {
   color: #333333;
   font-size: 35px;
@@ -4531,6 +4910,76 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
 .solid-gray {
   color: #aaaaaa; }
 
+.module.profile-menu li a {
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  color: #1d1d1d;
+  border-left: 3px solid transparent;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .module.profile-menu li a.active {
+    border-left: 3px solid #041e42;
+    background: #f0f9ff;
+    color: #041e42; }
+  .module.profile-menu li a:hover {
+    border-left: 3px solid #041e42;
+    background: #f0f9ff;
+    color: #041e42; }
+  .module.profile-menu li a figure {
+    padding-right: 10px;
+    padding-left: 10px;
+    vertical-align: middle; }
+    .module.profile-menu li a figure img {
+      width: 20px; }
+  .module.profile-menu li a span {
+    vertical-align: middle; }
+.module.avatar input[type="file"] {
+  display: none; }
+.module.avatar .btn-wrapper {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  margin: 0; }
+  .module.avatar .btn-wrapper label {
+    background-color: #e3e3e3;
+    border: 2px dashed #777777;
+    color: #777777;
+    width: 100%;
+    padding-top: 100%;
+    display: block;
+    position: relative;
+    text-align: center;
+    margin-bottom: 0;
+    cursor: pointer;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat; }
+    .module.avatar .btn-wrapper label .inner {
+      left: 0;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+      .module.avatar .btn-wrapper label .inner i {
+        font-size: 30px; }
+      .module.avatar .btn-wrapper label .inner .inner-label {
+        font-size: 18px;
+        padding: 0 10px; }
+        @media screen and (max-width: 767px) {
+          .module.avatar .btn-wrapper label .inner .inner-label {
+            font-size: 16px; } }
+.module.avatar.register-popup .btn-wrapper label {
+  background-color: black;
+  border: 2px dashed white;
+  color: white; }
+
 header {
   padding-top: 30px; }
   header .logo-container a {
@@ -4547,11 +4996,83 @@ header {
         transform: translate(-50%, -50%); }
     header .logo-container a img {
       width: 40px; }
+  header .btn-container {
+    text-align: right; }
+    header .btn-container .btn-and-line {
+      text-align: center;
+      min-width: 90px; }
+      header .btn-container .btn-and-line a {
+        display: block; }
+  header .show-on-mobile {
+    display: none; }
+    @media screen and (max-width: 991px) {
+      header .show-on-mobile {
+        display: inline-block; } }
+  @media screen and (max-width: 991px) {
+    header .hide-on-mobile {
+      display: none; } }
+  header .logged-user-right-nav > a {
+    font-size: 16px;
+    color: black;
+    display: inline-block;
+    padding: 10px 0; }
+    header .logged-user-right-nav > a span {
+      vertical-align: middle; }
+    header .logged-user-right-nav > a figure {
+      width: 40px;
+      margin-left: 10px;
+      overflow: hidden;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      border-radius: 50%; }
+  header .logged-user-right-nav .hidden-box {
+    display: none;
+    position: absolute;
+    min-width: 350px;
+    max-width: 450px;
+    top: calc(100% - 10px);
+    right: 0;
+    background-color: white;
+    z-index: 50;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.5);
+    -ms-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    border-radius: 15px; }
+    header .logged-user-right-nav .hidden-box .hidden-box-hub {
+      background-image: url("/assets/images/dentacoin-ecosystem-background.jpg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      padding: 30px 50px 15px;
+      text-align: left; }
+    header .logged-user-right-nav .hidden-box .hidden-box-footer {
+      padding-top: 10px;
+      padding-bottom: 10px; }
+      header .logged-user-right-nav .hidden-box .hidden-box-footer .white-blue-rounded-btn {
+        padding: 7px 15px; }
+      header .logged-user-right-nav .hidden-box .hidden-box-footer .logout {
+        font-size: 16px;
+        color: black; }
+        header .logged-user-right-nav .hidden-box .hidden-box-footer .logout i {
+          font-size: 24px;
+          vertical-align: middle;
+          margin-right: 5px; }
+    @media screen and (max-width: 767px) {
+      header .logged-user-right-nav .hidden-box {
+        min-width: 280px; } }
 
 body.home {
   overflow-x: hidden; }
   body.home header {
     top: 0;
+    z-index: 50;
     position: absolute;
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -4560,6 +5081,25 @@ body.home {
     @media screen and (max-width: 767px) {
       body.home header {
         width: 100%; } }
+  body.home.logged-in .logged-user-right-nav > a span {
+    color: white; }
+
+body.foundation {
+  overflow-x: hidden; }
+  body.foundation header {
+    top: 0;
+    z-index: 50;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%); }
+    @media screen and (max-width: 767px) {
+      body.foundation header {
+        width: 100%; } }
+
+body.forgotten-password header, body.password-recover header {
+  padding-bottom: 15px; }
 
 footer {
   border-top: 2px solid #aaaaaa; }
@@ -4770,50 +5310,49 @@ footer {
       footer .all-rights {
         padding-bottom: 50px; } }
 
-body.home footer {
+body.home footer, body.foundation footer {
   border: 0; }
 
 body.class-404 footer .section-title, body.class-404 footer .newsletter-register {
   display: none; }
 
-@media screen and (max-width: 767px) {
-  body.home .modal-backdrop.in {
-    background-color: white;
-    opacity: 1; } }
-
 .homepage-container .fullpage-section {
   height: 100vh; }
 .homepage-container.mobile .fullpage-section {
   height: auto; }
-.homepage-container.mobile .intro .bg-wrapper .content-wrapper {
-  position: static;
-  -webkit-transform: none;
-  -moz-transform: none;
-  -ms-transform: none;
-  -o-transform: none;
-  transform: none; }
-.homepage-container.mobile .intro .bg-wrapper .video {
-  text-align: center; }
-  .homepage-container.mobile .intro .bg-wrapper .video .video-wrapper {
-    padding-bottom: 30px; }
-@media screen and (max-width: 767px) {
-  .homepage-container.mobile .intro .bg-wrapper {
-    background-position: left bottom; }
-    .homepage-container.mobile .intro .bg-wrapper .content-wrapper {
-      text-align: center; }
-      .homepage-container.mobile .intro .bg-wrapper .content-wrapper .title {
-        font-size: 45px;
-        line-height: normal; }
-      .homepage-container.mobile .intro .bg-wrapper .content-wrapper .subtitle {
-        line-height: normal;
-        font-size: 20px; }
-      .homepage-container.mobile .intro .bg-wrapper .content-wrapper .description.italic {
-        font-size: 16px; }
-    .homepage-container.mobile .intro .bg-wrapper .video {
-      width: 90%;
-      margin: 0 auto; }
-      .homepage-container.mobile .intro .bg-wrapper .video .video-wrapper .close-video {
-        right: -20px; } }
+.homepage-container.mobile .intro {
+  padding-top: 100px; }
+  .homepage-container.mobile .intro .bg-wrapper .content-wrapper {
+    position: static;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none; }
+  .homepage-container.mobile .intro .bg-wrapper .video {
+    text-align: center; }
+    .homepage-container.mobile .intro .bg-wrapper .video .video-wrapper {
+      padding-bottom: 30px; }
+  @media screen and (max-width: 767px) {
+    .homepage-container.mobile .intro .bg-wrapper {
+      background-position: left bottom; }
+      .homepage-container.mobile .intro .bg-wrapper .content-wrapper {
+        text-align: center; }
+        .homepage-container.mobile .intro .bg-wrapper .content-wrapper .title {
+          font-size: 45px;
+          line-height: normal; }
+        .homepage-container.mobile .intro .bg-wrapper .content-wrapper .subtitle {
+          line-height: normal;
+          font-size: 20px; }
+        .homepage-container.mobile .intro .bg-wrapper .content-wrapper .description.italic {
+          font-size: 16px; }
+      .homepage-container.mobile .intro .bg-wrapper .video {
+        width: 90%;
+        margin: 0 auto; }
+        .homepage-container.mobile .intro .bg-wrapper .video .video-wrapper .close-video {
+          right: -20px; } }
+.homepage-container.mobile .dentacoin-ecosystem > .row {
+  align-items: stretch; }
 .homepage-container.mobile .dentacoin-ecosystem .list {
   position: static;
   -webkit-transform: none;
@@ -4822,32 +5361,12 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   -o-transform: none;
   transform: none; }
 @media screen and (max-width: 767px) {
-  .homepage-container.mobile .dentacoin-ecosystem {
-    padding-top: 15px;
-    padding-bottom: 30px; }
-    .homepage-container.mobile .dentacoin-ecosystem .btn-container {
-      display: none; }
-    .homepage-container.mobile .dentacoin-ecosystem .rotated-text {
-      position: static;
-      -webkit-transform: none;
-      -moz-transform: none;
-      -ms-transform: none;
-      -o-transform: none;
-      transform: none; }
-      .homepage-container.mobile .dentacoin-ecosystem .rotated-text span {
-        text-align: center;
-        font-size: 22px;
-        padding-top: 15px;
-        padding-bottom: 30px;
-        -webkit-transform: none;
-        -moz-transform: none;
-        -ms-transform: none;
-        -o-transform: none;
-        transform: none; }
-    .homepage-container.mobile .dentacoin-ecosystem .list figure figcaption {
-      padding-top: 10px;
-      font-size: 14px;
-      line-height: 16px; } }
+  .homepage-container.mobile .dentacoin-ecosystem .btn-container {
+    display: none; }
+  .homepage-container.mobile .dentacoin-ecosystem .list figure figcaption {
+    padding-top: 10px;
+    font-size: 14px;
+    line-height: 16px; } }
 .homepage-container.mobile .successful-practices .section-title {
   padding-bottom: 40px;
   padding-top: 10px; }
@@ -5126,13 +5645,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     background-repeat: no-repeat;
     background-size: contain;
     height: 100%; }
-    .homepage-container .intro .bg-wrapper .btn-container {
-      text-align: right; }
-      .homepage-container .intro .bg-wrapper .btn-container .btn-and-line {
-        text-align: center;
-        width: 90px; }
-        .homepage-container .intro .bg-wrapper .btn-container .btn-and-line a {
-          display: block; }
     .homepage-container .intro .bg-wrapper .second-dot-parent {
       text-align: right;
       bottom: 0;
@@ -5180,58 +5692,125 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           .homepage-container .intro .bg-wrapper .video .video-wrapper .close-video img {
             width: 14px; }
 .homepage-container .dentacoin-ecosystem {
-  background-image: url("/assets/images/dentacoin-ecosystem-background.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative; }
-  .homepage-container .dentacoin-ecosystem .btn-container {
-    text-align: right;
-    padding-top: 30px; }
-    .homepage-container .dentacoin-ecosystem .btn-container .btn-and-line {
-      text-align: center;
-      min-width: 90px; }
-      .homepage-container .dentacoin-ecosystem .btn-container .btn-and-line a {
-        display: block; }
-  .homepage-container .dentacoin-ecosystem .rotated-text {
-    color: white;
-    font-weight: bold;
-    font-size: 35px;
-    left: -80px;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%); }
-    .homepage-container .dentacoin-ecosystem .rotated-text span {
-      display: block;
-      -webkit-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-      -o-transform: rotate(-90deg);
-      transform: rotate(-90deg); }
-  .homepage-container .dentacoin-ecosystem .list {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); }
-    .homepage-container .dentacoin-ecosystem .list button {
-      margin-bottom: 25px; }
-      .homepage-container .dentacoin-ecosystem .list button:focus {
-        outline: 5px auto white;
-        outline-offset: -2px; }
-      .homepage-container .dentacoin-ecosystem .list button figure {
-        text-align: center;
-        cursor: pointer; }
-        .homepage-container .dentacoin-ecosystem .list button figure figcaption {
-          color: white;
-          font-size: 18px;
-          padding-top: 15px; }
-  @media screen and (min-width: 1399px) {
-    .homepage-container .dentacoin-ecosystem .list {
+  -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+  -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); }
+  .homepage-container .dentacoin-ecosystem > .row {
+    display: flex;
+    align-items: center; }
+  .homepage-container .dentacoin-ecosystem .apps-list {
+    background-image: url("/assets/images/dentacoin-ecosystem-background.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 50px; }
+    .homepage-container .dentacoin-ecosystem .apps-list .rotated-text {
+      color: white;
+      font-family: 'Calibri-Bold';
+      font-size: 35px; }
+    .homepage-container .dentacoin-ecosystem .apps-list .list {
       width: 100%;
-      max-width: 1300px; } }
+      max-width: 1300px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }
+      .homepage-container .dentacoin-ecosystem .apps-list .list button {
+        margin-bottom: 15px; }
+        .homepage-container .dentacoin-ecosystem .apps-list .list button:focus {
+          outline: 5px auto white;
+          outline-offset: -2px; }
+        .homepage-container .dentacoin-ecosystem .apps-list .list button figure {
+          text-align: center;
+          cursor: pointer; }
+          .homepage-container .dentacoin-ecosystem .apps-list .list button figure img {
+            max-width: 75%;
+            margin: 0 auto; }
+          .homepage-container .dentacoin-ecosystem .apps-list .list button figure figcaption {
+            color: white;
+            font-size: 18px;
+            padding-top: 10px; }
+      @media screen and (max-width: 991px) {
+        .homepage-container .dentacoin-ecosystem .apps-list .list {
+          position: static;
+          -webkit-transform: none;
+          -moz-transform: none;
+          -ms-transform: none;
+          -o-transform: none;
+          transform: none; } }
+    @media screen and (min-width: 1399px) {
+      .homepage-container .dentacoin-ecosystem .apps-list .list {
+        width: 100%;
+        max-width: 1300px; } }
+  .homepage-container .dentacoin-ecosystem .info-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative; }
+    .homepage-container .dentacoin-ecosystem .info-section .close-app {
+      position: absolute;
+      top: 10px;
+      font-size: 26px;
+      right: 25px;
+      display: none; }
+      @media screen and (max-width: 991px) {
+        .homepage-container .dentacoin-ecosystem .info-section .close-app {
+          display: block; } }
+    .homepage-container .dentacoin-ecosystem .info-section .content {
+      padding: 0 30px; }
+      .homepage-container .dentacoin-ecosystem .info-section .content .logo {
+        width: 40%; }
+      .homepage-container .dentacoin-ecosystem .info-section .content .title {
+        font-size: 32px;
+        font-family: 'Calibri-Bold';
+        padding-top: 20px;
+        padding-bottom: 10px; }
+      .homepage-container .dentacoin-ecosystem .info-section .content .description {
+        line-height: 20px;
+        font-size: 16px; }
+        .homepage-container .dentacoin-ecosystem .info-section .content .description p {
+          padding-bottom: 10px; }
+          .homepage-container .dentacoin-ecosystem .info-section .content .description p a {
+            margin-top: 10px;
+            display: inline-block; }
+      .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .extra-title {
+        font-family: 'Calibri-Bold';
+        font-size: 20px;
+        padding-bottom: 10px;
+        padding-top: 20px; }
+      .homepage-container .dentacoin-ecosystem .info-section .content .extra-html ul li {
+        padding-bottom: 5px;
+        list-style: disc inside none; }
+        .homepage-container .dentacoin-ecosystem .info-section .content .extra-html ul li a {
+          text-decoration: underline; }
+      .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .see-all {
+        padding-top: 15px; }
+      @media screen and (max-width: 991px) {
+        .homepage-container .dentacoin-ecosystem .info-section .content .logo {
+          width: 40%;
+          margin: 0 auto; }
+        .homepage-container .dentacoin-ecosystem .info-section .content .title {
+          text-align: center; } }
+    .homepage-container .dentacoin-ecosystem .info-section .gif img {
+      -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+      -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2); }
+    @media screen and (max-width: 767px) {
+      .homepage-container .dentacoin-ecosystem .info-section .gif {
+        display: none; } }
+    .homepage-container .dentacoin-ecosystem .info-section .video video {
+      width: 100%; }
+    @media screen and (max-width: 767px) {
+      .homepage-container .dentacoin-ecosystem .info-section .video {
+        display: none; } }
+    @media screen and (max-width: 991px) {
+      .homepage-container .dentacoin-ecosystem .info-section {
+        display: none; } }
 .homepage-container .successful-practices .dots {
   height: 80px; }
   .homepage-container .successful-practices .dots .first-dot-wrapper {
@@ -5259,12 +5838,14 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   .homepage-container .successful-practices .dots .logo-over-line {
     position: absolute;
     padding: 0 20px;
-    background: white;
+    background-color: white;
     top: 80px;
     left: 50%;
     transform: translate(-50%, -100%);
     -webkit-transform: translate(-50%, -100%);
     -ms-transform: translate(-50%, -100%); }
+    .homepage-container .successful-practices .dots .logo-over-line.no-background {
+      background-color: transparent; }
     .homepage-container .successful-practices .dots .logo-over-line img {
       width: 40px; }
 .homepage-container .successful-practices .section-title {
@@ -7040,5 +7621,305 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   position: absolute;
   top: 0;
   left: 35px; }
+
+.forgotten-and-recover-password-section {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top 0 center;
+  background-image: url(/assets/uploads/logged-patient-no-contracts-background.jpg); }
+  .forgotten-and-recover-password-section form {
+    background-color: white;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+    -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); }
+
+body.logged-in .my-profile-menu {
+  width: 300px;
+  padding: 15px; }
+  body.logged-in .my-profile-menu .wrapper {
+    border: 1px solid #f3f3f3;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    -webkit-box-shadow: 0px 0px 10px 2px #f3f3f3;
+    -moz-box-shadow: 0px 0px 10px 2px #f3f3f3;
+    -ms-box-shadow: 0px 0px 10px 2px #f3f3f3;
+    box-shadow: 0px 0px 10px 2px #f3f3f3; }
+    body.logged-in .my-profile-menu .wrapper .avatar-and-name {
+      padding-left: 15px;
+      padding-right: 15px; }
+      body.logged-in .my-profile-menu .wrapper .avatar-and-name figure {
+        width: 40px;
+        overflow: hidden;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        border-radius: 50%; }
+      body.logged-in .my-profile-menu .wrapper .avatar-and-name .welcome-name {
+        width: calc(100% - 40px);
+        padding-left: 10px; }
+  @media screen and (max-width: 991px) {
+    body.logged-in .my-profile-menu {
+      display: none; } }
+body.logged-in .my-profile-page-content {
+  width: calc(100% - 300px);
+  padding: 15px;
+  font-size: 16px; }
+  body.logged-in .my-profile-page-content .profile-page-title {
+    font-size: 0; }
+    body.logged-in .my-profile-page-content .profile-page-title > figure img {
+      width: 30px; }
+    body.logged-in .my-profile-page-content .profile-page-title h2 {
+      width: calc(100% - 30px);
+      padding-left: 15px; }
+  @media screen and (max-width: 991px) {
+    body.logged-in .my-profile-page-content {
+      width: 100%;
+      padding: 0; } }
+
+.logged-mobile-profile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  z-index: 100005;
+  background-color: rgba(0, 0, 0, 0.6);
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .logged-mobile-profile-menu nav {
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    float: right;
+    padding-top: 35px; }
+    @media screen and (max-width: 991px) {
+      .logged-mobile-profile-menu nav {
+        overflow-y: auto; } }
+  .logged-mobile-profile-menu .close-logged-mobile-profile-menu {
+    position: absolute;
+    top: 10px;
+    font-size: 20px;
+    right: 20px; }
+  .logged-mobile-profile-menu.active {
+    right: 0; }
+
+.dentacoin-ecosystem-section {
+  background-image: url("/assets/images/dentacoin-ecosystem-background.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100vh; }
+  .dentacoin-ecosystem-section .list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    .dentacoin-ecosystem-section .list a {
+      margin-bottom: 25px; }
+      .dentacoin-ecosystem-section .list a:focus {
+        outline: 5px auto white;
+        outline-offset: -2px; }
+      .dentacoin-ecosystem-section .list a figure {
+        text-align: center;
+        cursor: pointer; }
+        .dentacoin-ecosystem-section .list a figure img {
+          max-width: 80%;
+          margin: 0 auto; }
+        .dentacoin-ecosystem-section .list a figure figcaption {
+          color: white;
+          font-size: 22px;
+          padding-top: 15px; }
+  @media screen and (min-width: 1399px) {
+    .dentacoin-ecosystem-section .list {
+      width: 100%;
+      max-width: 1300px; } }
+  @media screen and (max-width: 991px) {
+    .dentacoin-ecosystem-section {
+      height: auto; }
+      .dentacoin-ecosystem-section .list {
+        padding-top: 120px;
+        padding-bottom: 50px;
+        position: static;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none; } }
+  @media screen and (max-width: 767px) {
+    .dentacoin-ecosystem-section .list a figure figcaption {
+      font-size: 20px; } }
+  @media screen and (max-width: 400px) {
+    .dentacoin-ecosystem-section .list a figure figcaption {
+      font-size: 16px; } }
+
+.manage-privacy-container .delete-local-storage-border-bottom {
+  border-bottom: 3px solid black; }
+.manage-privacy-container .delete figure, .manage-privacy-container .download figure, .manage-privacy-container .delete-local-storage figure {
+  width: 100px; }
+.manage-privacy-container .delete .text, .manage-privacy-container .download .text, .manage-privacy-container .delete-local-storage .text {
+  width: calc(100% - 100px);
+  padding-left: 20px; }
+.manage-privacy-container .delete.delete, .manage-privacy-container .download.delete, .manage-privacy-container .delete-local-storage.delete {
+  border-bottom: 3px solid black; }
+@media screen and (max-width: 767px) {
+  .manage-privacy-container .delete, .manage-privacy-container .download, .manage-privacy-container .delete-local-storage {
+    text-align: center; }
+    .manage-privacy-container .delete figure, .manage-privacy-container .download figure, .manage-privacy-container .delete-local-storage figure {
+      margin: 0 auto; }
+    .manage-privacy-container .delete .text, .manage-privacy-container .download .text, .manage-privacy-container .delete-local-storage .text {
+      width: 100%;
+      padding-left: 0;
+      padding-top: 20px;
+      text-align: left; }
+    .manage-privacy-container .delete.delete input[type='submit'], .manage-privacy-container .download.delete input[type='submit'], .manage-privacy-container .delete-local-storage.delete input[type='submit'] {
+      font-size: 16px;
+      padding: 10px 0;
+      text-align: center;
+      width: 100%;
+      max-width: 300px; }
+    .manage-privacy-container .delete.download a, .manage-privacy-container .delete.delete-local-storage a, .manage-privacy-container .download.download a, .manage-privacy-container .download.delete-local-storage a, .manage-privacy-container .delete-local-storage.download a, .manage-privacy-container .delete-local-storage.delete-local-storage a {
+      font-size: 16px;
+      padding: 10px 0;
+      text-align: center;
+      width: 100%;
+      max-width: 300px; } }
+
+section.edit-account form#patient-update-profile .form-row > label {
+  width: 180px;
+  text-align: left;
+  padding-right: 15px; }
+section.edit-account form#patient-update-profile .form-row .checkboxes-container {
+  width: calc(100% - 180px); }
+  section.edit-account form#patient-update-profile .form-row .checkboxes-container .pretty {
+    white-space: normal;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    width: 100%; }
+section.edit-account form#patient-update-profile .form-row .custom-input {
+  width: calc(100% - 180px) !important; }
+section.edit-account form#patient-update-profile .form-row .avatar {
+  width: 150px; }
+@media screen and (max-width: 767px) {
+  section.edit-account form#patient-update-profile .form-row > label {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 0;
+    width: 100%; }
+  section.edit-account form#patient-update-profile .form-row .checkboxes-container, section.edit-account form#patient-update-profile .form-row .custom-input {
+    width: 100% !important; }
+  section.edit-account form#patient-update-profile .form-row select.custom-input.selectpicker {
+    display: none !important; } }
+section.edit-account .custom-input.bootstrap-select {
+  padding: 0; }
+  section.edit-account .custom-input.bootstrap-select > button {
+    border: 0;
+    background-color: white !important;
+    padding: 12px 15px; }
+    section.edit-account .custom-input.bootstrap-select > button .filter-option-inner-inner {
+      font-size: 16px; }
+  section.edit-account .custom-input.bootstrap-select .dropdown-menu {
+    width: 100%; }
+
+.my-profile .my-profile-page-content .current-converted-price .symbol {
+  position: relative;
+  padding-right: 20px;
+  color: #333333; }
+  .my-profile .my-profile-page-content .current-converted-price .symbol span {
+    text-transform: uppercase; }
+  .my-profile .my-profile-page-content .current-converted-price .symbol:after {
+    content: '';
+    right: 0;
+    border-style: solid;
+    border-width: 14px 6px 0 6px;
+    border-color: #616161 transparent transparent transparent;
+    top: 13px;
+    position: absolute; }
+  .my-profile .my-profile-page-content .current-converted-price .symbol .dropdown-hidden-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    right: 0;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 7px 3px rgba(234, 234, 234, 0.9);
+    -moz-box-shadow: 0px 0px 7px 3px rgba(234, 234, 234, 0.9);
+    -ms-box-shadow: 0px 0px 7px 3px rgba(234, 234, 234, 0.9);
+    box-shadow: 0px 0px 7px 3px rgba(234, 234, 234, 0.9); }
+    .my-profile .my-profile-page-content .current-converted-price .symbol .dropdown-hidden-menu li button {
+      background-color: white;
+      border: 0;
+      padding: 0 10px;
+      font-size: 22px;
+      text-transform: uppercase;
+      -webkit-transition: 0.3s;
+      -moz-transition: 0.3s;
+      -o-transition: 0.3s;
+      -ms-transition: 0.3s;
+      transition: 0.3s; }
+      .my-profile .my-profile-page-content .current-converted-price .symbol .dropdown-hidden-menu li button:hover {
+        color: #041e42; }
+  .my-profile .my-profile-page-content .current-converted-price .symbol:hover .dropdown-hidden-menu {
+    display: block; }
+.my-profile .my-profile-page-content button.civic-custom-btn {
+  max-width: 240px;
+  border: 0;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2); }
+.my-profile .my-profile-page-content .missing-dcn-address .custom-input {
+  max-width: 450px; }
+.my-profile .my-profile-page-content .transaction-history-table {
+  width: 100%; }
+.my-profile .table-wrapper .withdraw-table {
+  display: table;
+  width: 100%; }
+  .my-profile .table-wrapper .withdraw-table td, .my-profile .table-wrapper .withdraw-table th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px; }
+@media screen and (max-width: 767px) {
+  .my-profile .table-wrapper {
+    overflow-y: auto; }
+    .my-profile .table-wrapper .withdraw-table {
+      width: 800px; } }
+.my-profile .mobile-slide {
+  display: none;
+  padding-top: 10px; }
+  .my-profile .mobile-slide img {
+    max-width: none; }
+  @media screen and (max-width: 991px) {
+    .my-profile .mobile-slide {
+      display: block; } }
+.my-profile ::-webkit-scrollbar {
+  -webkit-appearance: none; }
+.my-profile ::-webkit-scrollbar:vertical {
+  width: 12px; }
+.my-profile ::-webkit-scrollbar:horizontal {
+  height: 12px; }
+.my-profile ::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: 2px solid white; }
+.my-profile ::-webkit-scrollbar-track {
+  background-color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -111,6 +111,20 @@ body {
     }
 }
 
+@for $i from 0 through 20 {
+    .width-#{$i * 5} {
+        width: 0% + $i * 5!important;
+    }
+}
+
+@for $i from 0 through 20 {
+    @include breakpoint($xs) {
+        .width-xs-#{$i * 5} {
+            width: 0% + $i * 5!important;
+        }
+    }
+}
+
 @for $i from 0 through 150 {
     .fs-#{$i} {
         font-size: 0px + $i!important;
@@ -284,7 +298,7 @@ svg.svg-with-lines {
     display: none;
 }
 
-body.home, body.testimonials, body.press-center, body.careers.allow-draw-lines, body.corporate-design.allow-draw-lines {
+body.home, body.foundation, body.testimonials, body.press-center, body.careers.allow-draw-lines, body.corporate-design.allow-draw-lines {
     svg.svg-with-lines {
         display: block;
         position: absolute;
@@ -483,80 +497,277 @@ body.testimonials, body.press-center {
         align-items: center;
         justify-content: center;
     }
-    &.application-popup {
+    &.login-signin-popup {
+        .bootbox-close-button {
+            display: none;
+        }
         .modal-dialog {
-            margin-top: 30px;
-            margin-bottom: 30px;
+            width: 95%;
+            max-width: 1000px;
             .modal-content {
-                @include rounded(25px);
-            }
-            width: 70%;
-            max-width: 900px;
-            .container-fluid {
-                padding-top: 50px;
-                padding-bottom: 50px;
-                .content {
-                    padding: 0 30px;
-                    .logo {
-                        width: 40%;
-                    }
-                    .title {
-                        font-size: 32px;
-                        font-family: 'Calibri-Bold';
-                        padding-top: 20px;
-                        padding-bottom: 10px;
-                    }
-                    .description {
-                        line-height: 20px;
-                        font-size: 16px;
-                        p {
-                            padding-bottom: 10px;
-                            a {
-                                margin-top: 10px;
-                                display: inline-block;
+                background: transparent;
+                border: 0;
+                @include box-shadow(none);
+                .modal-body {
+                    padding: 0;
+                    .popup-header-action {
+                        a {
+                            width: 50%;
+                            font-size: 35px;
+                            padding: 10px;
+                            text-align: center;
+                            border-top: 3px solid white;
+                            border-left: 3px solid white;
+                            border-right: 3px solid white;
+                            @include rounded(4px 4px 0 0);
+                            &[data-type="patient"] {
+                                color: black;
+                                background-color: white;
+                                border-bottom: 1px solid black;
+                            }
+                            &[data-type="dentist"] {
+                                color: white;
+                                background-color: black;
+                                border-bottom: 1px solid white;
+                            }
+                            @include breakpoint($xs) {
+                                font-size: 20px;
+                                padding: 10px 5px;
                             }
                         }
                     }
-                    .extra-html {
-                        .extra-title {
-                            font-family: 'Calibri-Bold';
-                            font-size: 20px;
-                            padding-bottom: 10px;
-                            padding-top: 20px;
-                        }
-                        ul {
-                            li {
-                                padding-bottom: 5px;
-                                list-style: disc inside none;
+                    .popup-body {
+                        display: flex;
+                        .dentist {
+                            background: black;
+                            .call-sign-up {
+                                font-family: 'Calibri-Bold';
+                                color: white;
+                                &:hover {
+                                    color: white;
+                                }
+                            }
+                            .popup-half-footer {
+                                padding: 30px 0;
+                                margin-top: 50px;
+                                margin-left: -15%;
+                                margin-right: -15%;
+                                text-align: center;
+                                border-top: 1px solid white;
+                                color: white;
+                                font-size: 16px;
                                 a {
+                                    font-family: 'Calibri-Bold';
+                                    color: white;
+                                    font-size: 16px;
                                     text-decoration: underline;
+                                }
+                                @include breakpoint($xs) {
+                                    margin-top: 30px;
+                                    margin-left: auto;
+                                    margin-right: auto;
+                                }
+                            }
+                            .form-register {
+                                .step {
+                                    display: none;
+                                    &.visible {
+                                        display: block;
+                                    }
+                                    &.second {
+                                        .phone {
+                                            display: flex;
+                                            align-items: center;
+                                            .country-code {
+                                                font-size: 16px;
+                                                padding-right: 10px;
+                                                color: white;
+                                            }
+                                            .input-phone {
+                                                flex: 1;
+                                            }
+                                        }
+                                        .pretty {
+                                            white-space: normal;
+                                            padding-bottom: 5px;
+                                            .state {
+                                                position: relative;
+                                                color: white;
+                                                i {
+                                                    left: 1px;
+                                                    top: 1px;
+                                                    position: absolute;
+                                                }
+                                                label {
+                                                    line-height: 20px;
+                                                    &:before, &:after {
+                                                        left: 1px;
+                                                        top: 1px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.third {
+                                        .avatar {
+                                            padding-right: 20px;
+                                            width: 50%;
+                                        }
+                                        .specializations {
+                                            width: 50%;
+                                            color: white;
+                                            h4 {
+                                                padding-bottom: 10px;
+                                            }
+                                            .pretty {
+                                                margin-bottom: 15px;
+                                                display: block;
+                                                svg.svg {
+                                                    border-color: #126585 !important;
+                                                }
+                                                label {
+                                                    text-indent: 25px;
+                                                }
+                                            }
+                                        }
+                                        .privacy-policy-row {
+                                            svg.svg {
+                                                border-color: red !important;
+                                            }
+                                            label {
+                                                display: block;
+                                                white-space: normal;
+                                                text-indent: 25px;
+                                            }
+                                            a {
+                                                text-decoration: underline;
+                                                color: white;
+                                            }
+                                        }
+                                        .combobox-container {
+                                            .input-group {
+                                                display: block;
+                                            }
+                                            .input-group-addon.dropdown-toggle {
+                                                display: none;
+                                            }
+                                        }
+                                    }
+                                }
+                                .btns-container {
+                                    font-size: 0;
+                                    .inline-block {
+                                        width: 50%;
+                                        .prev-step {
+                                            display: none;
+                                            color: white;
+                                            font-size: 14px;
+                                            font-family: 'Calibri Light';
+                                            border: 0;
+                                            background: transparent;
+                                        }
+                                        .next-step {
+                                            @include breakpoint($xs) {
+                                                font-size: 16px;
+                                                padding: 10px 0;
+                                                width: 100%;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
-                        .see-all {
-                            padding-top: 15px;
+                        .patient {
+                            background-color: white;
+                            color: black;
+                            .popup-half-footer {
+                                padding: 30px 0;
+                                margin-top: 80px;
+                                margin-left: -15%;
+                                margin-right: -15%;
+                                text-align: center;
+                                border-top: 1px solid white;
+                                color: black;
+                                font-size: 16px;
+                                a {
+                                    font-family: 'Calibri-Bold';
+                                    color: black;
+                                    font-size: 20px;
+                                    text-decoration: underline;
+                                }
+                                @include breakpoint($xs) {
+                                    margin-top: 30px;
+                                    margin-left: auto;
+                                    margin-right: auto;
+                                }
+                            }
                         }
-                    }
-                }
-                .gif {
-                    img {
-                        @include box-shadow(0 2px 6px 0 rgba(0,0,0,.2));
-                    }
-                }
-                .video {
-                    video {
-                        width: 100%;
+                        .dentist, .patient {
+                            width: 50%;
+                            padding-top: 50px;
+                            border-bottom: 3px solid white;
+                            border-left: 3px solid white;
+                            border-right: 3px solid white;
+                            @include rounded(0 0 4px 4px);
+                            .custom-input {
+                                padding: 7px 12px;
+                            }
+                            h2 {
+                                font-size: 35px;
+                                padding-bottom: 20px;
+                                font-family: "Calibri Light";
+                            }
+                            &.patient {
+                                .form-register {
+
+                                }
+                                h2 {
+                                    color: black;
+                                }
+                            }
+                            &.dentist {
+                                h2 {
+                                    color: white;
+                                }
+                            }
+                            .form-register {
+                                display: none;
+                            }
+                            .form-register, .form-login {
+                                width: 70%;
+                                margin: 0 auto;
+                                @include breakpoint($xs) {
+                                    width: 90%;
+                                }
+                            }
+                            &.custom-hide {
+                                visibility: hidden;
+                                @include breakpoint($xs) {
+                                    display: none;
+                                }
+                            }
+                            @include breakpoint($xs) {
+                                padding-top: 30px;
+                                width: 100%;
+                            }
+                        }
                     }
                 }
             }
         }
     }
-    @include breakpoint($sm-down)    {
-        &.application-popup {
-            .modal-dialog {
-                width: 90%;
-                margin-left: auto;
-                margin-right: auto;
+    &.popup-html {
+        .bootbox-close-button {
+            font-size: 45px;
+            margin-top: -20px;
+            opacity: 1;
+            color: #424242;
+        }
+        .modal-dialog {
+            .modal-body {
+                .bootbox-body {
+                    padding: 0 8%;
+                }
             }
         }
     }
@@ -571,32 +782,6 @@ body.testimonials, body.press-center {
         }
         .bootbox-close-button {
             font-size: 32px;
-        }
-        &.application-popup {
-            text-align: center;
-            .modal-dialog {
-                .modal-content {
-                    border: 0;
-                    @include box-shadow(none);
-                    @include rounded(6px);
-                }
-                .container-fluid {
-                    padding-top: 20px;
-                    padding-bottom: 20px;
-                    .content {
-                        padding: 0;
-                        .logo {
-                            margin: 0 auto;
-                        }
-                        .description {
-                            text-align: left;
-                        }
-                    }
-                    .gif, .video {
-                        display: none;
-                    }
-                }
-            }
         }
     }
     &.media-inquries {
@@ -949,4 +1134,56 @@ iframe.zEWidget-launcher {
 body > [style="display: block !important;"], body > iframe[title="chat widget"][scrolling="no"][frameborder="0"] {
     left: 20px !important;
     right: auto !important;
+}
+
+.pretty.black-style {
+    &.agree-with {
+        input {
+            width: 90px;
+        }
+    }
+    svg.svg {
+        width: 16px !important;
+        height: 16px !important;
+        border: 0 !important;
+        top: 1px !important;
+        left: 1px !important;
+    }
+    label {
+        &:before {
+            width: 18px;
+            height: 18px;
+            top: 0;
+            left: 0;
+            border-width: 2px !important;
+        }
+        a {
+            text-decoration: underline;
+            font-family: 'Calibri-Bold';
+        }
+    }
+    input:checked~.state.p-success label:after, &.p-toggle .state.p-success label:after {
+        background-color: black!important;
+        height: 16px;
+        width: 16px;
+        top: 1px;
+        left: 1px;
+    }
+}
+
+.line-crossed-title {
+    position: relative;
+    span {
+        background-color: white;
+        padding-right: 10px;
+    }
+    &:after {
+        content: '';
+        height: 3px;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        background-color: black;
+        @include vertical-align(absolute);
+    }
 }

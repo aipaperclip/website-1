@@ -3,16 +3,6 @@
     <div class="homepage-container @if($mobile) mobile @endif">
         <section class="intro fullpage-section one" data-section="one">
             <div class="bg-wrapper">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 btn-container">
-                            <div class="inline-block btn-and-line">
-                                <a href="javascript:void(0)" class="white-black-btn visibility-hidden" tabindex="-1">JOIN US</a>
-                                <span class="first-dot custom-dot">&nbsp;</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="container content-wrapper">
                     <div class="row">
                         <div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -55,35 +45,34 @@
                 </div>
             </div>
         </section>
-        <section class="dentacoin-ecosystem fullpage-section two" data-section="two">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 btn-container">
-                        <div class="inline-block btn-and-line">
-                            <a href="" class="white-blue-btn visibility-hidden">JOIN US</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h3 class="rotated-text"><span>{!! $titles[0]->html !!}</span></h3>
-            <div class="container list">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                        <div class="container-fluid">
-                            <div class="row fs-0">
-                                @foreach($applications as $application)
-                                    <button class="col-md-3 col-xs-4 inline-block-top single-application">
-                                        <figure class="wrapper" @if($application->media) data-image="{{URL::asset('assets/uploads/'.$application->media->name) }}" data-image-alt="@if($application->media->alt){{$application->media->alt}}@endif" data-image-type="{{$application->media->type}}" @endif @if($application->popup_logo) data-popup-logo="{{URL::asset('assets/uploads/'.$application->popup_logo->name) }}" data-popup-logo-alt="@if($application->popup_logo->alt){{$application->popup_logo->alt}}@endif" @endif @if($application->text) data-title="{{$application->title}}" data-upload-date="{{$application->media->created_at->format('c')}}" data-description="{{ json_encode($application->text) }}" @endif  @if($application->slug == 'blog-intro') data-articles="{{json_encode($latest_blog_articles)}}" @endif itemscope="" data-slug="{{$application->slug}}" itemtype="http://schema.org/ImageObject">
-                                            @if($application->logo)
-                                                <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/uploads/'.$application->logo->name) }}" itemprop="contentUrl" @if(!empty($application->logo->alt)) alt="{{$application->logo->alt}}" @endif/>
-                                            @endif
-                                            <figcaption>{{$application->title}}</figcaption>
-                                        </figure>
-                                    </button>
-                                @endforeach
+        <section class="dentacoin-ecosystem container-fluid" data-section="two">
+            <div class="row">
+                <div class="apps-list fullpage-section two col-xs-12 col-md-6">
+                    <div class="list">
+                        <div class="row">
+                            <div class="col-xs-12"><h3 class="rotated-text padding-bottom-50 text-center">{!! $titles[0]->html !!}</h3></div>
+                            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                                <div class="container-fluid">
+                                    <div class="row fs-0">
+                                        @foreach($applications as $application)
+                                            <button class="col-xs-4 inline-block-top single-application">
+                                                <figure class="wrapper" @if($application->media) data-image="{{URL::asset('assets/uploads/'.$application->media->name) }}" data-image-alt="@if($application->media->alt){{$application->media->alt}}@endif" data-image-type="{{$application->media->type}}" @endif @if($application->popup_logo) data-popup-logo="{{URL::asset('assets/uploads/'.$application->popup_logo->name) }}" data-popup-logo-alt="@if($application->popup_logo->alt){{$application->popup_logo->alt}}@endif" @endif @if($application->text) data-title="{{$application->title}}" data-upload-date="{{$application->media->created_at->format('c')}}" data-description="{{ json_encode($application->text) }}" @endif  @if($application->slug == 'blog-intro') data-articles="{{json_encode($latest_blog_articles)}}" @endif itemscope="" data-slug="{{$application->slug}}" itemtype="http://schema.org/ImageObject">
+                                                    @if($application->logo)
+                                                        <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/uploads/'.$application->logo->name) }}" itemprop="contentUrl" @if(!empty($application->logo->alt)) alt="{{$application->logo->alt}}" @endif/>
+                                                    @endif
+                                                    <figcaption>{{$application->title}}</figcaption>
+                                                </figure>
+                                            </button>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="info-section col-xs-12 col-md-6">
+                    <a href="javascript:void(0)" class="close-app"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <div class="html-content"></div>
                 </div>
             </div>
         </section>
@@ -98,7 +87,7 @@
                             <div class="second-dot inline-block">&nbsp;</div>
                         </div>
                         <div class="third-dot inline-block">&nbsp;</div>
-                        <figure class="logo-over-line" itemscope="" itemtype="http://schema.org/ImageObject">
+                        <figure class="logo-over-line no-background" itemscope="" itemtype="http://schema.org/ImageObject">
                             @if($mobile)
                                 <div class="mobile-vertical-line-50"></div>
                             @endif
@@ -355,7 +344,7 @@
                 <div class="row">
                     <div class="col-xs-12 gif">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                            <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap.gif') }}" data-gif="{{URL::asset('assets/images/roadmap.gif') }}"  data-svg="{{URL::asset('assets/images/roadmap.svg') }}" class="refresh-image desktop-image" itemprop="contentUrl" alt="Roadmap timeline"/>
+                            <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap.gif') }}" data-gif="{{URL::asset('assets/images/roadmap.gif') }}" data-svg="{{URL::asset('assets/images/roadmap.svg') }}" class="refresh-image desktop-image" itemprop="contentUrl" alt="Roadmap timeline"/>
                             <div class="first-dot inline-block">&nbsp;</div>
                         </figure>
                     </div>

@@ -18,6 +18,7 @@
     "bootstrap-select": "^1.13.2",
     "ckeditor-full": "^4.7.3",
     "cross-env": "^5.0.1",
+    "pretty-checkbox": "^3.0.3",
     "datatables.net": "^1.10.19",
     "datatables.net-rowreorder": "^1.2.3",
     "datatables.net-rowreorder-bs": "^1.2.3",
@@ -27,7 +28,9 @@
     "lodash": "^4.17.4",
     "slick-carousel": "^1.8.1",
     "vue": "^2.1.10",
-    "webpack-obfuscator": "^0.18.0"
+    "webpack-obfuscator": "^0.18.0",
+    "web3": "^1.0.0-beta.36",
+    "truffle-contract": "^3.0.6"
   },
   "dependencies": {
     "uglify-es": "github:mishoo/UglifyJS2#harmony"

@@ -28,6 +28,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     const POSTS_PER_PAGE = 8;
+    const currencies = ['USD', 'EUR', 'GBP', 'RUB', 'INR', 'CNY', 'JPY'];
 
     public function __construct() {
         if(Route::getCurrentRoute()->getPrefix() == '/' && !Request::isMethod('post'))    {
@@ -54,7 +55,12 @@ class Controller extends BaseController
             //getting meta data for children pages
             return PageMetaData::where(array('slug' => Route::getCurrentRoute()->parameters['slug']))->get()->first();
         }
-        return PageMetaData::where(array('slug' => Route::getCurrentRoute()->getName()))->get()->first();
+
+        $slug = Route::getCurrentRoute()->getName();
+        if(Route::getCurrentRoute()->getName() == 'foundation') {
+            $slug = 'home';
+        }
+        return PageMetaData::where(array('slug' => $slug))->get()->first();
     }
 
     protected function getParentDbTitles()    {
@@ -237,5 +243,30 @@ class Controller extends BaseController
                     return abort(404);
                 }
         }
+    }
+
+    protected function clearPostData($data) {
+        foreach($data as &$value) {
+            if(is_string($value)) {
+                $value = trim(strip_tags($value));
+            }
+        }
+        return $data;
+    }
+
+    protected function encrypt($raw_text, $algorithm, $key) {
+        $length = openssl_cipher_iv_length($algorithm);
+        $iv = openssl_random_pseudo_bytes($length);
+        $encrypted = openssl_encrypt($raw_text, $algorithm, $key, OPENSSL_RAW_DATA, $iv);
+        //here we append the $iv to the encrypted, because we will need it for the decryption
+        $encrypted_with_iv = base64_encode($encrypted) . '|' . base64_encode($iv);
+        return $encrypted_with_iv;
+    }
+
+    protected function decrypt($encrypted_text) {
+        list($data, $iv) = explode('|', $encrypted_text);
+        $iv = base64_decode($iv);
+        $raw_text = openssl_decrypt($data, getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'), 0, $iv);
+        return $raw_text;
     }
 }

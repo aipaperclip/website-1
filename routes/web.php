@@ -10,7 +10,6 @@
 | contains the 'web' middleware group. Now create something great!
 |
 */
-
 Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captcha');
 
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
@@ -18,6 +17,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     //======================================= PAGES ========================================
 
     Route::get('/', 'HomeController@getView')->name('home');
+
+    Route::get('foundation', 'HomeController@getNotLoggedHomeView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
 
@@ -35,6 +36,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
 
+    Route::get('/forgotten-password', 'UserController@getForgottenPasswordView')->name('forgotten-password');
+
     //Route::get('changelly', 'ChangellyController@getView')->name('changelly');
 
     Route::get('careers/{slug?}', function($slug = null)    {
@@ -49,6 +52,40 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('corporate-identity', 'CorporateIdentityController@getView')->name('corporate-identity');
 
+    //======================================= LOGIN LOGIC ========================================
+
+    Route::get('/my-profile', 'UserController@getMyProfileView')->middleware('HandleUserSession')->name('my-profile');
+
+    Route::get('/edit-account', 'UserController@getEditAccountView')->middleware('HandleUserSession')->name('edit-account');
+
+    Route::get('/manage-privacy', 'UserController@getManagePrivacyView')->middleware('HandleUserSession')->name('manage-privacy');
+
+    Route::post('/validate-civic-kyc', 'UserController@validateCivicKyc')->middleware('HandleUserSession')->name('validate-civic-kyc');
+
+    Route::post('/delete-my-profile', 'UserController@deleteMyProfile')->middleware('HandleUserSession')->name('delete-my-profile');
+
+    Route::post('/update-account', 'UserController@updateAccount')->middleware('HandleUserSession')->name('update-account');
+
+    Route::post('/add-dcn-address', 'UserController@addDcnAddress')->middleware('HandleUserSession')->name('add-dcn-address');
+
+    Route::get('/user-logout', 'UserController@userLogout')->name('user-logout');
+
+    Route::get('/get-current-user-data', 'UserController@getCurrentUserData')->middleware('HandleUserSession')->name('get-current-user-data');
+
+    Route::post('/withdraw', 'UserController@withdraw')->middleware('HandleUserSession')->name('withdraw');
+
+    Route::post('/dentist-login', 'UserController@dentistLogin')->name('dentist-login');
+
+    Route::post('/dentist-register', 'UserController@dentistRegister')->name('dentist-register');
+
+    Route::post('/patient-login', 'UserController@patientLogin')->name('patient-login');
+
+    Route::get('/forgotten-password', 'UserController@getForgottenPasswordView')->name('forgotten-password');
+
+    Route::post('/password-recover', 'UserController@getRecoverPassword')->name('password-recover');
+
+    Route::post('/download-gdpr-data', 'UserController@downloadGDPRData')->name('download-gdpr-data');
+
     //======================================= AJAX ========================================
 
     Route::post('press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
@@ -56,6 +93,12 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::post('submit-media-inquiries', 'PressCenterController@submitMediaInquiries')->name('submit-media-inquiries');
 
     Route::post('submit-apply-position', 'CareersController@submitApplyPosition')->name('submit-apply-position');
+
+    Route::post('/check-email', 'UserController@checkEmail')->name('check-email');
+
+    Route::post('/check-captcha', 'UserController@checkCaptcha')->name('check-captcha');
+
+    Route::post('/forgotten-password-submit', 'UserController@forgottenPasswordSubmit')->name('forgotten-password-submit');
 
     //======================================= REDIRECTS ========================================
 

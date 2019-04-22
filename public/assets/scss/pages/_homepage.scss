@@ -1,11 +1,3 @@
-body.home {
-    @include breakpoint($xs)    {
-        .modal-backdrop.in {
-            background-color: white;
-            opacity: 1;
-        }
-    }
-}
 .homepage-container {
     .fullpage-section {
         height: 100vh;
@@ -15,6 +7,7 @@ body.home {
             height: auto;
         }
         .intro {
+            padding-top: 100px;
             .bg-wrapper {
                 .content-wrapper {
                     position: static;
@@ -59,26 +52,16 @@ body.home {
             }
         }
         .dentacoin-ecosystem {
+            > .row {
+                align-items: stretch;
+            }
             .list {
                 position: static;
                 @include clear_transform();
             }
             @include breakpoint($xs)    {
-                padding-top: 15px;
-                padding-bottom: 30px;
                 .btn-container {
                     display: none;
-                }
-                .rotated-text {
-                    position: static;
-                    @include clear_transform();
-                    span {
-                        text-align: center;
-                        font-size: 22px;
-                        padding-top: 15px;
-                        padding-bottom: 30px;
-                        @include clear_transform();
-                    }
                 }
                 .list {
                     figure {
@@ -505,16 +488,6 @@ body.home {
             background-repeat: no-repeat;
             background-size: contain;
             height: 100%;
-            .btn-container {
-                text-align: right;
-                .btn-and-line {
-                    text-align: center;
-                    width: 90px;
-                    a {
-                        display: block;
-                    }
-                }
-            }
             .second-dot-parent {
                 text-align: right;
                 bottom: 0;
@@ -567,56 +540,144 @@ body.home {
         }
     }
     .dentacoin-ecosystem {
-        background-image: url('/assets/images/dentacoin-ecosystem-background.jpg');
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-        .btn-container {
-            text-align: right;
-            padding-top: 30px;
-            .btn-and-line {
-                text-align: center;
-                min-width: 90px;
-                a {
-                    display: block;
-                }
-            }
+        @include box-shadow(0 2px 6px 0 rgba(0, 0, 0, 0.4));
+        >.row {
+            display: flex;
+            align-items: center;
         }
-        .rotated-text {
-            color: white;
-            font-weight: bold;
-            font-size: 35px;
-            left: -80px;
-            @include vertical-align(absolute);
-            span {
-                display: block;
-                @include rotate(-90deg);
+        .apps-list {
+            background-image: url('/assets/images/dentacoin-ecosystem-background.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            .rotated-text {
+                color: white;
+                font-family: 'Calibri-Bold';
+                font-size: 35px;
             }
-        }
-        .list {
-            @include vertical-horizontal-align(absolute);
-            button {
-                margin-bottom: 25px;
-                &:focus {
-                    outline: 5px auto white;
-                    outline-offset: -2px;
-                }
-                figure {
-                    text-align: center;
-                    cursor: pointer;
-                    figcaption {
-                        color: white;
-                        font-size: 18px;
-                        padding-top: 15px;
-                    }
-                }
-            }
-        }
-        @include breakpoint($lg-up) {
             .list {
                 width: 100%;
                 max-width: 1300px;
+                @include vertical-horizontal-align(absolute);
+                button {
+                    margin-bottom: 15px;
+                    &:focus {
+                        outline: 5px auto white;
+                        outline-offset: -2px;
+                    }
+                    figure {
+                        text-align: center;
+                        cursor: pointer;
+                        img {
+                            max-width: 75%;
+                            margin: 0 auto;
+                        }
+                        figcaption {
+                            color: white;
+                            font-size: 18px;
+                            padding-top: 10px;
+                        }
+                    }
+                }
+                @include breakpoint($sm-down) {
+                    position: static;
+                    @include clear_transform();
+                }
+            }
+            @include breakpoint($lg-up) {
+                .list {
+                    width: 100%;
+                    max-width: 1300px;
+                }
+            }
+        }
+        .info-section {
+            padding-top: 50px;
+            padding-bottom: 50px;
+            position: relative;
+            .close-app {
+                position: absolute;
+                top: 10px;
+                font-size: 26px;
+                right: 25px;
+                display: none;
+                @include breakpoint($sm-down) {
+                    display: block;
+                }
+            }
+            .content {
+                padding: 0 30px;
+                .logo {
+                    width: 40%;
+                }
+                .title {
+                    font-size: 32px;
+                    font-family: 'Calibri-Bold';
+                    padding-top: 20px;
+                    padding-bottom: 10px;
+                }
+                .description {
+                    line-height: 20px;
+                    font-size: 16px;
+                    p {
+                        padding-bottom: 10px;
+                        a {
+                            margin-top: 10px;
+                            display: inline-block;
+                        }
+                    }
+                }
+                .extra-html {
+                    .extra-title {
+                        font-family: 'Calibri-Bold';
+                        font-size: 20px;
+                        padding-bottom: 10px;
+                        padding-top: 20px;
+                    }
+                    ul {
+                        li {
+                            padding-bottom: 5px;
+                            list-style: disc inside none;
+                            a {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                    .see-all {
+                        padding-top: 15px;
+                    }
+                }
+                @include breakpoint($sm-down) {
+                    .logo {
+                        width: 40%;
+                        margin: 0 auto;
+                    }
+                    .title {
+                        text-align: center;
+                    }
+                }
+            }
+            .gif {
+                img {
+                    @include box-shadow(0 2px 6px 0 rgba(0,0,0,.2));
+                }
+                @include breakpoint($xs) {
+                    display: none;
+                }
+            }
+            .video {
+                video {
+                    width: 100%;
+                }
+                @include breakpoint($xs) {
+                    display: none;
+                }
+            }
+            @include breakpoint($sm-down) {
+                display: none;
             }
         }
     }
@@ -653,12 +714,15 @@ body.home {
             .logo-over-line {
                 position: absolute;
                 padding: 0 20px;
-                background: white;
+                background-color: white;
                 top: 80px;
                 left: 50%;
                 transform: translate(-50%, -100%);
                 -webkit-transform: translate(-50%, -100%);
                 -ms-transform: translate(-50%, -100%);
+                &.no-background {
+                    background-color: transparent;
+                }
                 img {
                     width: 40px;
                 }

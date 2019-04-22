@@ -95,21 +95,24 @@ var basic = {
     showAlert: function(message, class_name) {
         basic.realShowDialog(message, "alert", class_name);
     },
-    showConfirm: function(message, class_name, params) {
-        basic.realShowDialog(message, "confirm", class_name, params);
+    showConfirm: function(message, class_name, params, vertical_center) {
+        basic.realShowDialog(message, "confirm", class_name, params, null, vertical_center);
     },
-    showDialog: function(message, class_name, type) {
+    showDialog: function(message, class_name, type, vertical_center) {
         if(type === undefined){
             type = null;
         }
-        basic.realShowDialog(message, "dialog", class_name, null, type);
+        basic.realShowDialog(message, "dialog", class_name, null, type, vertical_center);
     },
-    realShowDialog: function(message, dialog_type, class_name, params, type) {
+    realShowDialog: function(message, dialog_type, class_name, params, type, vertical_center) {
         if(class_name === undefined){
             class_name = "";
         }
         if(type === undefined){
             type = null;
+        }
+        if(vertical_center === undefined){
+            vertical_center = null;
         }
 
         var atrs = {
@@ -149,9 +152,17 @@ var basic = {
             }
         });
         dialog.on('shown.bs.modal', function(){
+            if(vertical_center != null) {
+                basic.verticalAlignModal();
+            }
             basic.fixZIndexBackdrop();
         });
         dialog.modal('show');
+    },
+    verticalAlignModal: function(message) {
+        $("body .modal-dialog").each(function(){
+            $(this).css("margin-top", Math.max(20, ($(window).height() - $(this).height()) / 2));
+        })
     },
     closeDialog: function (){
         bootbox.hideAll();
@@ -257,6 +268,12 @@ var basic = {
     },
     validateEmail: function(email)   {
         return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+    },
+    validatePhone: function(phone) {
+        return /^[\d\.\-]+$/.test(phone);
+    },
+    validateUrl: function(url)   {
+        return /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(url);
     },
     isInViewport: function(el) {
         var elementTop = $(el).offset().top;

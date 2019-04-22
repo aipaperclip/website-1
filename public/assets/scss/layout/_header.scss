@@ -15,15 +15,122 @@ header {
             }
         }
     }
+    .btn-container {
+        text-align: right;
+        .btn-and-line {
+            text-align: center;
+            min-width: 90px;
+            a {
+                display: block;
+            }
+        }
+    }
+    .show-on-mobile {
+        display: none;
+        @include breakpoint($sm-down) {
+            display: inline-block;
+        }
+    }
+    .hide-on-mobile {
+        @include breakpoint($sm-down) {
+            display: none;
+        }
+    }
+    .logged-user-right-nav {
+        > a {
+            font-size: 16px;
+            color: black;
+            display: inline-block;
+            padding: 10px 0;
+            span {
+                vertical-align: middle;
+            }
+            figure {
+                width: 40px;
+                margin-left: 10px;
+                overflow: hidden;
+                @include rounded(50%);
+            }
+        }
+        .hidden-box {
+            display: none;
+            position: absolute;
+            min-width: 350px;
+            max-width: 450px;
+            top: calc(100% - 10px);
+            right: 0;
+            background-color: white;
+            z-index: 50;
+            overflow: hidden;
+            @include box-shadow(0px 0px 7px 1px rgba(0, 0, 0, 0.5));
+            @include rounded(15px);
+            .hidden-box-hub {
+                background-image: url('/assets/images/dentacoin-ecosystem-background.jpg');
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                padding: 30px 50px 15px;
+                text-align: left;
+            }
+            .hidden-box-footer {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                .white-blue-rounded-btn {
+                    padding: 7px 15px;
+                }
+                .logout {
+                    font-size: 16px;
+                    color: black;
+                    i {
+                        font-size: 24px;
+                        vertical-align: middle;
+                        margin-right: 5px;
+                    }
+                }
+            }
+            @include breakpoint($xs) {
+                min-width: 280px;
+            }
+        }
+    }
 }
 
 body.home {
     overflow-x: hidden;
     header {
         top: 0;
+        z-index: 50;
         @include horizontal-align(absolute);
         @include breakpoint($xs)    {
             width: 100%;
         }
+    }
+    &.logged-in {
+        .logged-user-right-nav {
+            > a {
+                span {
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+body.foundation {
+    overflow-x: hidden;
+    header {
+        top: 0;
+        z-index: 50;
+        @include horizontal-align(absolute);
+        @include breakpoint($xs)    {
+            width: 100%;
+        }
+    }
+}
+
+body.forgotten-password, body.password-recover {
+    header {
+        padding-bottom: 15px;
     }
 }
