@@ -113,6 +113,7 @@ class UserController extends Controller {
 
     protected function userLogout(Request $request) {
         dump(Session::all());
+        dump(session('logged_user'));
         Session::forget('submission');
         print_r(Session::all());
         die('asd');
