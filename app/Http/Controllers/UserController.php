@@ -82,7 +82,7 @@ class UserController extends Controller {
     }
 
     public function checkSession()   {
-        if(!empty(session('logged_user')))    {
+        if(!empty(session('logged_user')) && (session('logged_user')['type'] == 'dentist' || session('logged_user')['type'] == 'patient'))    {
             //LOGGED
             return true;
         }else {
@@ -112,7 +112,15 @@ class UserController extends Controller {
     }
 
     protected function userLogout(Request $request) {
-        Session::forget('logged_user');
+        dump(Session::all());
+        dump(session('logged_user'));
+        print_r(Session::all());
+        dump(session('logged_user'));
+        die('asd');
+        if($request->session()->has('logged_user'))    {
+            $request->session()->forget('logged_user');
+        }
+        //$request->session()->flush();
         return redirect()->route('home');
     }
 
