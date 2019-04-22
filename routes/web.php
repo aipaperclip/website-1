@@ -68,10 +68,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/add-dcn-address', 'UserController@addDcnAddress')->middleware('HandleUserSession')->name('add-dcn-address');
 
-    //Route::get('/user-logout', 'UserController@userLogout')->name('user-logout');
-    Route::get('/user-logout', function() {
-        die("WTF");
-    })->name('user-logout');
+    Route::get('/user-logout', 'UserController@userLogout')->name('user-logout');
 
     Route::get('/get-current-user-data', 'UserController@getCurrentUserData')->middleware('HandleUserSession')->name('get-current-user-data');
 
