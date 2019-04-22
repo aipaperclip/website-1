@@ -19,7 +19,7 @@ class HomeController extends Controller
             return view('pages/logged-user/homepage', $params);
         } else {
             //NOT LOGGED
-            return $this->getNotLoggedHomeView();
+            $this->getNotLoggedHomeView();
         }
     }
 
