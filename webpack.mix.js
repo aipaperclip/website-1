@@ -29,7 +29,8 @@ mix.styles([
     'public/assets/css/style.css',
 ], 'public/dist/css/front-style.css');
 
-/*mix.scripts([
+/*
+mix.scripts([
     'node_modules/jquery/dist/jquery.min.js',
     'public/assets/libs/emailoctopus/emailoctopus.js',
     'public/assets/libs/bidali/bidali-commerce.js',
@@ -40,15 +41,17 @@ mix.styles([
     'node_modules/datatables.net/js/jquery.dataTables.min.js',
     'public/assets/libs/combobox/combobox.js',
     'public/assets/libs/truffle-contract/truffle-contract-compiled.js',
-], 'public/dist/js/front-libs-script.js');*/
+], 'public/dist/js/front-libs-script.js');
+*/
 
 mix.babel([
     'public/assets/js/basic.js',
     'public/assets/js/markerclusterer-v2.js',
     'public/assets/js/google-map.js',
     'public/assets/js/address.js',/*
-    'public/assets/js/index-compiled.js',*/
+    'public/assets/js/index-bundled.js',*/
 ], 'public/dist/js/front-script.js');
+
 /* ===== /PUBLIC =====*/
 
 /* ===== ADMIN =====*/
