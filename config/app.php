@@ -1,5 +1,6 @@
 <?php
-
+var_dump(env('APP_KEY'));
+die();
 return [
 
     /*
