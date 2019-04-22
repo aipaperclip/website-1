@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -111,6 +112,10 @@ class UserController extends Controller {
     }
 
     protected function userLogout(Request $request) {
+        dump(Session::all());
+        Session::forget('submission');
+        print_r(Session::all());
+        die;
         if($request->session()->has('logged_user'))    {
             $request->session()->forget('logged_user');
         }
