@@ -112,7 +112,7 @@ class UserController extends Controller {
     }
 
     protected function userLogout(Request $request) {
-        die('asd');
+        die('asd');/*
         dump(Session::all());
         Session::forget('submission');
         print_r(Session::all());
@@ -121,7 +121,7 @@ class UserController extends Controller {
             $request->session()->forget('logged_user');
         }
         //$request->session()->flush();
-        return redirect()->route('home');
+        return redirect()->route('home');*/
     }
 
     protected function updateAccount(Request $request) {
