@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     protected function getView()   {
+        die('asd');
         if((new UserController())->checkSession()) {
             //LOGGED show hub
             $params = ['applications' => $this->getApplications()];
