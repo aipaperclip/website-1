@@ -111,7 +111,8 @@ class UserController extends Controller {
         }
     }
 
-    protected function userLogout() {
+    protected function userLogout(Request $request) {
+        $request->session()->forget('logged_user');
         return view('pages/temporally-logout');
     }
 
