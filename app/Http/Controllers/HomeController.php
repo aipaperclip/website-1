@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Application;
-use App\AvailableBuyingOption;
 use App\Http\Controllers\Admin\AvailableBuyingOptionsController;
 use App\Publications;
 use App\UserExpressions;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 
 class HomeController extends Controller
 {
