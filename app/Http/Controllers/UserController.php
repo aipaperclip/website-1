@@ -112,8 +112,8 @@ class UserController extends Controller {
     }
 
     protected function userLogout(Request $request) {
-        die('we log out here');
         $request->session()->forget('logged_user');
+        echo 123;
         //$request->session()->flush();
         return redirect()->route('home');
     }
