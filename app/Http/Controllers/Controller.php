@@ -42,6 +42,7 @@ class Controller extends BaseController
             View::share('footer_menu', $this->getFooterMenu());
             View::share('footer_data', $this->getFooterData());
             View::share('privacy_policy_cookie', $this->checkIfPrivacyPolicyCookie());
+            View::share('client_ip', $this->getClientIp());
         }
     }
 
@@ -268,5 +269,24 @@ class Controller extends BaseController
         $iv = base64_decode($iv);
         $raw_text = openssl_decrypt($data, getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'), 0, $iv);
         return $raw_text;
+    }
+
+    protected function getClientIp() {
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+        return $ipaddress;
     }
 }
