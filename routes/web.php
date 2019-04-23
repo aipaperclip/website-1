@@ -15,13 +15,7 @@ Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captc
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
     //======================================= PAGES ========================================
 
-    Route::get('/', function() {
-        if((new \App\Http\Controllers\UserController())->checkSession()) {
-            return redirect()->route('foundation');
-        }
-
-        return (new \App\Http\Controllers\HomeController())->getView();
-    })->name('home');
+    Route::get('/', 'HomeController@getView')->name('home');
 
     Route::get('/hub', 'HomeController@getLoggedView')->middleware('HandleUserSession')->name('hub');
 
