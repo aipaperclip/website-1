@@ -53,11 +53,14 @@ $(document).ready(function($){
     };
 
     initAddressSuggesters = function() {
+        console.log('initAddressSuggesters called');
         prepareMapFunction(function() {
             $('.address-suggester').each( function() {
+                console.log('.address-suggester each');
                 var suggester_container = $(this).closest('.address-suggester-wrapper');
                 suggester_container.find('.country-select').change( function() {
                     var cc = $(this).find('option:selected').val();
+                    console.log(cc, 'cc');
                     GMautocomplete.setComponentRestrictions({
                         'country': cc
                     });
@@ -73,6 +76,7 @@ $(document).ready(function($){
 
                 var input = $(this)[0];
                 var cc = suggester_container.find('.country-select option:selected').val();
+                console.log(cc, 'cc');
                 var options = {
                     componentRestrictions: {
                         country: cc
@@ -94,6 +98,7 @@ $(document).ready(function($){
 
                     var geocoder = new google.maps.Geocoder();
                     var address = $(this).val();
+                    console.log(address, 'address');
                     geocoder.geocode( {
                         'address': address,
                         'region': country_code
