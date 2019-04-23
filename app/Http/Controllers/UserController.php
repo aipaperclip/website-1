@@ -118,6 +118,12 @@ class UserController extends Controller {
         return redirect()->route('home');
     }
 
+    protected function userLogout1(Request $request) {
+        $request->session()->forget('logged_user');
+        //$request->session()->flush();
+        return redirect()->route('home');
+    }
+
     protected function updateAccount(Request $request) {
         $arr_with_required_data = array(
             'full-name' => 'required|max:250',
