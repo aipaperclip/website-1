@@ -5072,9 +5072,9 @@ header {
       header .logged-user-right-nav .hidden-box {
         min-width: 280px; } }
 
-body.home, body.home {
+body.home, body.hub {
   overflow-x: hidden; }
-  body.home header, body.home header {
+  body.home header, body.hub header {
     top: 0;
     z-index: 50;
     position: absolute;
@@ -5083,9 +5083,9 @@ body.home, body.home {
     -ms-transform: translateX(-50%);
     transform: translateX(-50%); }
     @media screen and (max-width: 767px) {
-      body.home header, body.home header {
+      body.home header, body.hub header {
         width: 100%; } }
-  body.home.logged-in .logged-user-right-nav > a span, body.home.logged-in .logged-user-right-nav > a span {
+  body.home.logged-in .logged-user-right-nav > a span, body.hub.logged-in .logged-user-right-nav > a span {
     color: white; }
 
 body.foundation {
