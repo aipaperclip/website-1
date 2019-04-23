@@ -127,7 +127,7 @@
     <header class="container">
         <div class="row fs-0">
             <figure itemscope="" itemtype="http://schema.org/Organization" class="col-xs-4 logo-container inline-block">
-                <a itemprop="url"{{-- @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('foundation') }}"--}} @else  href="{{ route('home') }}"{{-- @endif--}} @if(!empty(Route::current())) @if(Route::current()->getName() == "home") tabindex="=-1" @endif @endif>
+                <a itemprop="url"{{-- @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('foundation') }}" @else--}}  href="{{ route('home') }}"{{-- @endif--}} @if(!empty(Route::current())) @if(Route::current()->getName() == "home") tabindex="=-1" @endif @endif>
                     <img src="@if((new \App\Http\Controllers\UserController())->checkSession() && Route::current()->getName() == 'home') {{URL::asset('assets/images/round-logo-white.svg') }} @else {{URL::asset('assets/images/logo.svg') }} @endif" itemprop="logo" alt="Dentacoin logo"/>
                     @if(!empty(Route::current()))
                         @if(Route::current()->getName() == 'careers' || Route::current()->getName() == 'corporate-design')
