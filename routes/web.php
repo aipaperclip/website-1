@@ -13,28 +13,27 @@
 Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captcha');
 
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
-
     //======================================= PAGES ========================================
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('foundation', 'HomeController@getNotLoggedHomeView')->middleware('HandleUserSession')->name('foundation');
+    Route::get('/foundation', 'HomeController@getNotLoggedHomeView')->middleware('HandleUserSession')->name('foundation');
 
-    Route::get('privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
+    Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
 
-    Route::get('press-center/page/{page}', 'PressCenterController@getView')->name('press-center');
+    Route::get('/press-center/page/{page}', 'PressCenterController@getView')->name('press-center');
 
-    Route::get('testimonials/page/{page}', 'UserExpressionsController@getView')->name('testimonials');
+    Route::get('/testimonials/page/{page}', 'UserExpressionsController@getView')->name('testimonials');
 
-    Route::get('info/{slug}', 'Controller@handleApiEndpoints')->name('api-endpoints');
+    Route::get('/info/{slug}', 'Controller@handleApiEndpoints')->name('api-endpoints');
 
-    Route::get('partner-network', 'PartnerNetworkController@getView')->name('partner-network');
+    Route::get('/partner-network', 'PartnerNetworkController@getView')->name('partner-network');
 
-    Route::get('team', 'TeamMembersController@getView')->name('team');
+    Route::get('/team', 'TeamMembersController@getView')->name('team');
 
-    Route::get('sitemap', 'Controller@getSitemap')->name('sitemap');
+    Route::get('/sitemap', 'Controller@getSitemap')->name('sitemap');
 
-    Route::get('google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
+    Route::get('/google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
 
     Route::get('/forgotten-password', 'UserController@getForgottenPasswordView')->name('forgotten-password');
 
@@ -48,9 +47,9 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         }
     })->name('careers');
 
-    Route::get('corporate-design/{slug}', 'CorporateDesignController@getView')->name('corporate-design');
+    Route::get('/corporate-design/{slug}', 'CorporateDesignController@getView')->name('corporate-design');
 
-    Route::get('corporate-identity', 'CorporateIdentityController@getView')->name('corporate-identity');
+    Route::get('/corporate-identity', 'CorporateIdentityController@getView')->name('corporate-identity');
 
     //======================================= LOGIN LOGIC ========================================
 
@@ -88,11 +87,11 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     //======================================= AJAX ========================================
 
-    Route::post('press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
+    Route::post('/press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
 
-    Route::post('submit-media-inquiries', 'PressCenterController@submitMediaInquiries')->name('submit-media-inquiries');
+    Route::post('/submit-media-inquiries', 'PressCenterController@submitMediaInquiries')->name('submit-media-inquiries');
 
-    Route::post('submit-apply-position', 'CareersController@submitApplyPosition')->name('submit-apply-position');
+    Route::post('/submit-apply-position', 'CareersController@submitApplyPosition')->name('submit-apply-position');
 
     Route::post('/check-email', 'UserController@checkEmail')->name('check-email');
 
