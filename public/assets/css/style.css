@@ -4979,6 +4979,10 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
   background-color: black;
   border: 2px dashed white;
   color: white; }
+.module.suggester-parent .suggester-map-div {
+  height: 200px;
+  display: none;
+  background: transparent; }
 
 header {
   padding-top: 30px; }

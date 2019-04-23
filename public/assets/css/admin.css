@@ -535,6 +535,10 @@
   background-color: black;
   border: 2px dashed white;
   color: white; }
+.module.suggester-parent .suggester-map-div {
+  height: 200px;
+  display: none;
+  background: transparent; }
 
 body {
   background-color: #222d32; }
