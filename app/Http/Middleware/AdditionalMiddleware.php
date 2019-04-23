@@ -19,7 +19,9 @@ class AdditionalMiddleware
         if(!isset($_COOKIE['testing-dev'])) {
             return response(view('pages/maintenance'));
         }
-        $params = $request->route()->parameters();
-        return (new App\Http\Controllers\Controller())->minifyHtml($next($request));
+        //$params = $request->route()->parameters();
+        //return (new App\Http\Controllers\Controller())->minifyHtml($next($request));
+
+        return $next($request);
     }
 }

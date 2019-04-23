@@ -116,7 +116,7 @@ class UserController extends Controller {
         $request->session()->forget('logged_user');
         print_r(session('logged_user'));
 
-        die();
+        die('logged out');
 
         //$request->session()->flush();
         return redirect()->route('home');
