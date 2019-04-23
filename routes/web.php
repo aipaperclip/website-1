@@ -71,6 +71,12 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/user-logout', 'UserController@userLogout')->name('user-logout');
 
+    Route::get('/user-logout1', function(Request $request) {
+        $request->session()->forget('logged_user');
+        //$request->session()->flush();
+        return redirect()->route('home');
+    })->name('user-logout1');
+
     Route::get('/get-current-user-data', 'UserController@getCurrentUserData')->middleware('HandleUserSession')->name('get-current-user-data');
 
     Route::post('/withdraw', 'UserController@withdraw')->middleware('HandleUserSession')->name('withdraw');
