@@ -19,7 +19,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/hub', 'HomeController@getLoggedView')->middleware('HandleUserSession')->name('hub');
 
-    Route::get('/foundation', 'HomeController@getView')->middleware('HandleUserSession')->name('foundation');
+    Route::get('/foundation', 'HomeController@getView')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
 
