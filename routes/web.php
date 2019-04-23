@@ -17,7 +17,9 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/foundation', 'HomeController@getNotLoggedHomeView')->middleware('HandleUserSession')->name('foundation');
+    Route::get('/hub', 'HomeController@getLoggedView')->middleware('HandleUserSession')->name('hub');
+
+    //Route::get('/foundation', 'HomeController@getNotLoggedHomeView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
 
