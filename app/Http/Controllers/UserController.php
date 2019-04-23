@@ -111,17 +111,8 @@ class UserController extends Controller {
         }
     }
 
-    protected function userLogout(Request $request) {
-        $request->session()->forget('logged_user');
-        return 123;
-        //$request->session()->flush();
-        //return redirect()->route('home');
-    }
-
-    protected function userLogout1(Request $request) {
-        $request->session()->forget('logged_user');
-        //$request->session()->flush();
-        return redirect()->route('home');
+    protected function userLogout() {
+        return view('pages/temporally-logout');
     }
 
     protected function updateAccount(Request $request) {
