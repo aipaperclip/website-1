@@ -22,6 +22,12 @@ class AdditionalMiddleware
         //$params = $request->route()->parameters();
         //return (new App\Http\Controllers\Controller())->minifyHtml($next($request));
 
-        return $next($request);
+        $response = $next($request);
+
+        $response->header('Cache-Control', 'no-cache, must-revalidate');
+        // Or whatever you want it to be:
+        // $response->header('Cache-Control', 'max-age=100');
+
+        return $response;
     }
 }
