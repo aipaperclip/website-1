@@ -2166,9 +2166,8 @@ $(document).ready(function ($) {
         } else {
             suggester_container.find('.geoip-hint').show();
         }
-    };
-
-    if ($('.address-suggester').length) {
-        initAddressSuggesters();
-    }
+    }; /*
+       if($('.address-suggester').length) {
+         initAddressSuggesters();
+       }*/
 });
