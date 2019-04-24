@@ -440,7 +440,6 @@
             </div>
         </div>
     @endif
-
     <div class="bottom-fixed-container">
         @if(!empty($privacy_policy_cookie))
             <div class="privacy-policy-cookie">
@@ -454,6 +453,13 @@
                 </div>
             </div>
         @endif
+    </div>
+    <div class="response-layer">
+        <div class="wrapper">
+            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                <img src="/assets/images/loader.gif" class="max-width-160" alt="Loader">
+            </figure>
+        </div>
     </div>
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
