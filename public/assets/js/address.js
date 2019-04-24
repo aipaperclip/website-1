@@ -15,7 +15,7 @@ var prepareMapFunction = function( callback ) {
 $(document).ready(function($){
     setupMap = function(suggester_container, coords) {
         suggester_container.find('.suggester-map-div').show();
-        if( !suggester_container.find('.suggester-map-div').attr('inited') ) {
+        if(!suggester_container.find('.suggester-map-div').attr('inited') ) {
             var profile_address_map = new google.maps.Map( suggester_container.find('.suggester-map-div')[0], {
                 center: coords,
                 zoom: 14,
@@ -71,6 +71,7 @@ $(document).ready(function($){
                         lat: parseFloat(suggester_container.find('.suggester-map-div').attr('lat')),
                         lng: parseFloat(suggester_container.find('.suggester-map-div').attr('lon'))
                     };
+                    console.log(coords, 'coords');
                     setupMap(suggester_container, coords);
                 }
 
@@ -95,6 +96,9 @@ $(document).ready(function($){
                     var suggester_container = $(this).closest('.address-suggester-wrapper');
                     var country_name = suggester_container.find('.country-select option:selected').text();
                     var country_code = suggester_container.find('.country-select option:selected').val();
+
+                    console.log(country_name, 'country_name');
+                    console.log(country_code, 'country_code');
 
                     var geocoder = new google.maps.Geocoder();
                     var address = $(this).val();
