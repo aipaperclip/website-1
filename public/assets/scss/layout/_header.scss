@@ -98,7 +98,7 @@ header {
 
 body.home, body.hub {
     overflow-x: hidden;
-    header { 
+    header {
         top: 0;
         z-index: 50;
         @include horizontal-align(absolute);
