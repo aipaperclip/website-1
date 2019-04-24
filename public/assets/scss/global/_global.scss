@@ -521,14 +521,14 @@ body.testimonials, body.press-center {
                             border-right: 3px solid white;
                             @include rounded(4px 4px 0 0);
                             &[data-type="patient"] {
+                                color: white;
+                                background-color: $dark_blue;
+                                border-bottom: 1px solid white;
+                            }
+                            &[data-type="dentist"] {
                                 color: black;
                                 background-color: white;
                                 border-bottom: 1px solid black;
-                            }
-                            &[data-type="dentist"] {
-                                color: white;
-                                background-color: black;
-                                border-bottom: 1px solid white;
                             }
                             @include breakpoint($xs) {
                                 font-size: 20px;
@@ -539,12 +539,12 @@ body.testimonials, body.press-center {
                     .popup-body {
                         display: flex;
                         .dentist {
-                            background: black;
+                            background: white;
                             .call-sign-up {
                                 font-family: 'Calibri-Bold';
-                                color: white;
+                                color: black;
                                 &:hover {
-                                    color: white;
+                                    color: black;
                                 }
                             }
                             .popup-half-footer {
@@ -553,12 +553,11 @@ body.testimonials, body.press-center {
                                 margin-left: -15%;
                                 margin-right: -15%;
                                 text-align: center;
-                                border-top: 1px solid white;
-                                color: white;
+                                border-top: 1px solid black;
                                 font-size: 16px;
                                 a {
                                     font-family: 'Calibri-Bold';
-                                    color: white;
+                                    color: black;
                                     font-size: 16px;
                                     text-decoration: underline;
                                 }
@@ -678,8 +677,8 @@ body.testimonials, body.press-center {
                             }
                         }
                         .patient {
-                            background-color: white;
-                            color: black;
+                            background-color: $dark_blue;
+                            color: white;
                             .popup-half-footer {
                                 padding: 30px 0;
                                 margin-top: 80px;
@@ -687,11 +686,10 @@ body.testimonials, body.press-center {
                                 margin-right: -15%;
                                 text-align: center;
                                 border-top: 1px solid white;
-                                color: black;
+                                color: white;
                                 font-size: 16px;
                                 a {
                                     font-family: 'Calibri-Bold';
-                                    color: black;
                                     font-size: 20px;
                                     text-decoration: underline;
                                 }
@@ -718,16 +716,13 @@ body.testimonials, body.press-center {
                                 font-family: "Calibri Light";
                             }
                             &.patient {
-                                .form-register {
-
-                                }
                                 h2 {
-                                    color: black;
+                                    color: white;
                                 }
                             }
                             &.dentist {
                                 h2 {
-                                    color: white;
+                                    color: black;
                                 }
                             }
                             .form-register {
@@ -1211,5 +1206,5 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
 }
 
 .pac-container {
-    z-index: 50000;  
+    z-index: 50000;
 }

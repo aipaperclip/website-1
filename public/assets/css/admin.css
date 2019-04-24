@@ -164,7 +164,7 @@
     background-color: #041e42;
     text-decoration: none; }
 
-.white-black-btn {
+.white-black-btn, input[type='submit'].white-black-btn {
   background-color: black;
   color: white;
   font-size: 16px;
@@ -180,7 +180,7 @@
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s; }
-  .white-black-btn:hover {
+  .white-black-btn:hover, input[type='submit'].white-black-btn:hover {
     color: black;
     background-color: white; }
 

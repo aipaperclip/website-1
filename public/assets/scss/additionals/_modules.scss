@@ -32,7 +32,7 @@
     }
 }
 
-.white-black-btn {
+.white-black-btn, input[type='submit'].white-black-btn {
     background-color: black;
     color: white;
     font-size: 16px;

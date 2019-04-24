@@ -243,7 +243,7 @@
                             <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/register" data-platform="assurance" data-type="patient">with Civic</a>
                         </div>
                         <div class="popup-half-footer">
-                            Don't have an account? <a href="javascript:void(0)" class="call-sign-up">Sign up</a>
+                            Don't have an account? <a href="javascript:void(0)" class="call-sign-up color-white">Sign up</a>
                         </div>
                     </div>
                     <div class="form-register">
@@ -262,7 +262,7 @@
                                     <svg class="svg svg-icon" viewBox="0 0 20 20">
                                         <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
                                     </svg>
-                                    <label class="fs-14">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
+                                    <label class="fs-14">I agree with <a href="//dentacoin.com/privacy-policy" class="color-white" target="_blank">Privacy Policy</a></label>
                                 </div>
                             </div>
                         </div>
@@ -283,10 +283,10 @@
                                 <input class="custom-input" name="password" maxlength="50" type="password" placeholder="Password"/>
                             </div>
                             <div class="btn-container text-center">
-                                <input type="submit" value="Log in" class="black-white-btn fs-20"/>
+                                <input type="submit" value="Log in" class="white-black-btn fs-20"/>
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                             </div>
-                            <div class="text-center padding-top-40 color-white fs-16">Don't have an account? <a href="javascript:void(0)" class="call-sign-up fs-20">Sign up</a></div>
+                            <div class="text-center padding-top-40 fs-16">Don't have an account? <a href="javascript:void(0)" class="call-sign-up fs-20">Sign up</a></div>
                         </form>
                         <div class="popup-half-footer">
                             <a href="{{route('forgotten-password')}}">Forgotten password?</a>
@@ -426,7 +426,7 @@
                                     <input type="button" value="< back" class="prev-step"/>
                                 </div>
                                 <div class="inline-block text-right">
-                                    <input type="button" value="Next" class="black-white-btn fs-20 next-step" data-current-step="first"/>
+                                    <input type="button" value="Next" class="white-black-btn fs-20 next-step" data-current-step="first"/>
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 </div>
                             </div>
