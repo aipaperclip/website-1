@@ -159,7 +159,7 @@
     <main>@yield("content")</main>
     <footer>
         <div class="container">
-            @if(!empty(Route::current()) && Route::current()->getName() != 'careers' && Route::current()->getName() != 'corporate-identity' && Route::current()->getName() != 'corporate-design')
+            @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() != 'careers' && Route::current()->getName() != 'corporate-identity' && Route::current()->getName() != 'corporate-design')
                 @if(isset($footer_data))
                     <div class="row">
                         <h2 class="col-xs-12 section-title">{!! $footer_data[0]['html'] !!}</h2>
@@ -226,7 +226,6 @@
             @endif
         </div>
     </footer>
-
     @if(!\App\Http\Controllers\UserController::instance()->checkSession())
         <div class="hidden-login-form hide">
             <div class="fs-0 popup-header-action">
@@ -234,7 +233,7 @@
                 <a href="javascript:void(0)" class="inline-block" data-type="dentist">I'm a Dentist</a>
             </div>
             <div class="fs-0 popup-body">
-                <div class="patient inline-block @if(!empty(Route::current())) @if(Route::current()->getName() == 'home') custom-hide @endif @endif">
+                <div class="patient inline-block">
                     <div class="form-login">
                         <h2>LOG IN</h2>
                         <div class="padding-bottom-10">
@@ -273,7 +272,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="dentist inline-block @if(!empty(Route::current())) @if(Route::current()->getName() != 'home') custom-hide @endif @endif">
+                <div class="dentist inline-block custom-hide">
                     <div class="form-login">
                         <h2>LOG IN</h2>
                         <form method="POST" action="{{ route('dentist-login') }}" id="dentist-login">

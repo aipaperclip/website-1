@@ -1209,3 +1209,7 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
         }
     }
 }
+
+.pac-container {
+    z-index: 50000;  
+}

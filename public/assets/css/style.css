@@ -4588,6 +4588,9 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
       width: 95%;
       margin-bottom: 15px; }
 
+.pac-container {
+  z-index: 50000; }
+
 .white-dark-blue-btn {
   background-color: #041e42;
   color: white !important;
