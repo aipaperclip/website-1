@@ -20,8 +20,6 @@ class AdditionalMiddleware
             return response(view('pages/maintenance'));
         }*/
         //$params = $request->route()->parameters();
-        //return (new App\Http\Controllers\Controller())->minifyHtml($next($request));
-
-        return $next($request);
+        return (new App\Http\Controllers\Controller())->minifyHtml($next($request));
     }
 }
