@@ -15,9 +15,9 @@ Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captc
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
     //======================================= PAGES ========================================
 
-    Route::get('/', 'HomeController@getNotLoggedView')->name('home');
+    Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/foundation', 'HomeController@getLoggedView')->middleware('HandleUserSession')->name('foundation');
+    Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
 
