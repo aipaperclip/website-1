@@ -113,7 +113,7 @@ class UserController extends Controller {
 
     protected function userLogout(Request $request) {
         $request->session()->forget('logged_user');
-        return view('pages/temporally-logout');
+        return redirect()->route('home');
     }
 
     protected function updateAccount(Request $request) {
