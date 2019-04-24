@@ -1,8 +1,5 @@
 @extends("layout")
 @section("content")
-
-    {{var_dump(csrf_token())}}
-    {{var_dump(session()->all())}}
     <div class="homepage-container @if($mobile) mobile @endif">
         <section class="intro fullpage-section one" data-section="one">
             <div class="bg-wrapper">
