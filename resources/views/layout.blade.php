@@ -372,10 +372,10 @@
                             </div>
                             <div class="step third" data-step="third">
                                 <div class="padding-bottom-20 fs-0">
-                                    <div class="inline-block-top avatar register-popup module upload-file">
+                                    <div class="inline-block-top avatar module upload-file">
                                         <input type="file" class="visualise-image inputfile" id="custom-upload-avatar" name="image" accept=".jpg,.png,.jpeg,.svg,.bmp"/>
                                         <div class="btn-wrapper"></div>
-                                        <div class="fs-14 padding-top-5 italic color-white">Max size: 2MB</div>
+                                        <div class="fs-14 padding-top-5 italic">Max size: 2MB</div>
                                     </div>
                                     <div class="inline-block-top specializations">
                                         <h4>Please select your specializations:</h4>
@@ -406,7 +406,7 @@
                                             <input type="text" name="captcha" id="register-captcha" placeholder="Enter captcha" maxlength="5" class="custom-input"/>
                                         </div>
                                     </div>
-                                    <div class="privacy-policy-row color-white">
+                                    <div class="privacy-policy-row  ">
                                         <div class="pretty p-svg p-curve black-style agree-with">
                                             <input type="checkbox" id="privacy-policy-registration"/>
                                             <div class="state p-success">

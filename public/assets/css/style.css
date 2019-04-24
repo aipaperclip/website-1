@@ -4112,7 +4112,7 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .phone .country-code {
                 font-size: 16px;
                 padding-right: 10px;
-                color: white; }
+                color: black; }
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .phone .input-phone {
                 flex: 1; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .pretty {
@@ -4120,7 +4120,7 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
               padding-bottom: 5px; }
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .pretty .state {
                 position: relative;
-                color: white; }
+                color: black; }
                 .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .pretty .state i {
                   left: 1px;
                   top: 1px;
@@ -4135,7 +4135,7 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
               width: 50%; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .specializations {
               width: 50%;
-              color: white; }
+              color: black; }
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .specializations h4 {
                 padding-bottom: 10px; }
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .specializations .pretty {
@@ -4153,7 +4153,7 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
               text-indent: 25px; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .privacy-policy-row a {
               text-decoration: underline;
-              color: white; }
+              color: black; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .combobox-container .input-group {
               display: block; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .combobox-container .input-group-addon.dropdown-toggle {
@@ -5000,10 +5000,6 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
         @media screen and (max-width: 767px) {
           .module.avatar .btn-wrapper label .inner .inner-label {
             font-size: 16px; } }
-.module.avatar.register-popup .btn-wrapper label {
-  background-color: black;
-  border: 2px dashed white;
-  color: white; }
 .module.suggester-parent .suggester-map-div {
   height: 200px;
   display: none;

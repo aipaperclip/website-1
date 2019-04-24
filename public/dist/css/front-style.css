@@ -4064,13 +4064,13 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
         -ms-border-radius: 4px 4px 0 0;
         border-radius: 4px 4px 0 0; }
         .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-header-action a[data-type="patient"] {
+          color: white;
+          background-color: #041e42;
+          border-bottom: 1px solid white; }
+        .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-header-action a[data-type="dentist"] {
           color: black;
           background-color: white;
           border-bottom: 1px solid black; }
-        .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-header-action a[data-type="dentist"] {
-          color: white;
-          background-color: black;
-          border-bottom: 1px solid white; }
         @media screen and (max-width: 767px) {
           .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-header-action a {
             font-size: 20px;
@@ -4078,24 +4078,23 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
       .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body {
         display: flex; }
         .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist {
-          background: black; }
+          background: white; }
           .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .call-sign-up {
             font-family: 'Calibri-Bold';
-            color: white; }
+            color: black; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .call-sign-up:hover {
-              color: white; }
+              color: black; }
           .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .popup-half-footer {
             padding: 30px 0;
             margin-top: 50px;
             margin-left: -15%;
             margin-right: -15%;
             text-align: center;
-            border-top: 1px solid white;
-            color: white;
+            border-top: 1px solid black;
             font-size: 16px; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .popup-half-footer a {
               font-family: 'Calibri-Bold';
-              color: white;
+              color: black;
               font-size: 16px;
               text-decoration: underline; }
             @media screen and (max-width: 767px) {
@@ -4113,7 +4112,7 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .phone .country-code {
                 font-size: 16px;
                 padding-right: 10px;
-                color: white; }
+                color: black; }
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .phone .input-phone {
                 flex: 1; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .pretty {
@@ -4121,7 +4120,7 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
               padding-bottom: 5px; }
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .pretty .state {
                 position: relative;
-                color: white; }
+                color: black; }
                 .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .pretty .state i {
                   left: 1px;
                   top: 1px;
@@ -4136,7 +4135,7 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
               width: 50%; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .specializations {
               width: 50%;
-              color: white; }
+              color: black; }
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .specializations h4 {
                 padding-bottom: 10px; }
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .specializations .pretty {
@@ -4154,7 +4153,7 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
               text-indent: 25px; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .privacy-policy-row a {
               text-decoration: underline;
-              color: white; }
+              color: black; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .combobox-container .input-group {
               display: block; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .combobox-container .input-group-addon.dropdown-toggle {
@@ -4176,8 +4175,8 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
                   padding: 10px 0;
                   width: 100%; } }
         .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient {
-          background-color: white;
-          color: black; }
+          background-color: #041e42;
+          color: white; }
           .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .popup-half-footer {
             padding: 30px 0;
             margin-top: 80px;
@@ -4185,11 +4184,10 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
             margin-right: -15%;
             text-align: center;
             border-top: 1px solid white;
-            color: black;
+            color: white;
             font-size: 16px; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .popup-half-footer a {
               font-family: 'Calibri-Bold';
-              color: black;
               font-size: 20px;
               text-decoration: underline; }
             @media screen and (max-width: 767px) {
@@ -4214,9 +4212,9 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
             padding-bottom: 20px;
             font-family: "Calibri Light"; }
           .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist.patient h2, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient.patient h2 {
-            color: black; }
-          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist.dentist h2, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient.dentist h2 {
             color: white; }
+          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist.dentist h2, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient.dentist h2 {
+            color: black; }
           .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-register {
             display: none; }
           .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-login, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-login {
@@ -4635,7 +4633,7 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
     background-color: #041e42;
     text-decoration: none; }
 
-.white-black-btn {
+.white-black-btn, input[type='submit'].white-black-btn {
   background-color: black;
   color: white;
   font-size: 16px;
@@ -4651,7 +4649,7 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s; }
-  .white-black-btn:hover {
+  .white-black-btn:hover, input[type='submit'].white-black-btn:hover {
     color: black;
     background-color: white; }
 
@@ -5002,10 +5000,6 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
         @media screen and (max-width: 767px) {
           .module.avatar .btn-wrapper label .inner .inner-label {
             font-size: 16px; } }
-.module.avatar.register-popup .btn-wrapper label {
-  background-color: black;
-  border: 2px dashed white;
-  color: white; }
 .module.suggester-parent .suggester-map-div {
   height: 200px;
   display: none;
