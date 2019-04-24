@@ -440,7 +440,7 @@ class UserController extends Controller {
                 ];
 
                 session(['logged_user' => $session_arr]);
-                return redirect()->route('hub');
+                return redirect()->route('home');
             }
         } else {
             return redirect()->route('home')->with(['errors_response' => $api_response['errors']]);
@@ -540,7 +540,7 @@ class UserController extends Controller {
         } else {
             session(['logged_user' => $session_arr]);
 
-            return redirect()->route('hub');
+            return redirect()->route('home');
         }
     }
 }
