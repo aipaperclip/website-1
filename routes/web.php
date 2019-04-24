@@ -17,8 +17,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/home1', 'HomeController@getView1')->name('home1');
-
     Route::get('/hub', 'HomeController@getLoggedView')->middleware('HandleUserSession')->name('hub');
 
     Route::get('/foundation', 'HomeController@getView')->middleware('HandleUserSession')->name('foundation');
