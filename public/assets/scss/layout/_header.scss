@@ -82,6 +82,19 @@ header {
                 position: relative;
                 padding: 30px 50px 15px;
                 text-align: left;
+                .close-btn {
+                    display: none;
+                    a {
+                        color: white;
+                        text-align: right;
+                        span { 
+
+                        }
+                    }
+                    @include breakpoint($xs) {
+                        display: block;
+                    }
+                }
             }
             .hidden-box-footer {
                 padding-top: 10px;
@@ -114,6 +127,7 @@ header {
                 top: 0;
                 height: 100vh;
                 background-color: rgba(0, 0, 0, 0.6);
+                overflow: auto;
                 .up-arrow {
                     display: none;
                 }

@@ -1697,7 +1697,7 @@ async function loggedOrNotLogic() {
     if($('body').hasClass('logged-in')) {
         //IF NOT LOGGED LOGIC
         $('.logged-user-right-nav > a, .logged-user-right-nav .hidden-box').hover(function () {
-            $('.logged-user-right-nav .hidden-box').addClass('show-this'); 
+            $('.logged-user-right-nav .hidden-box').addClass('show-this');
         }, function () {
             $('.logged-user-right-nav .hidden-box').removeClass('show-this');
         });

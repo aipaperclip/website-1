@@ -15,6 +15,9 @@
         @if(!empty(Route::current()))
             @if(Route::current()->getName() != 'home' && (new \App\Http\Controllers\UserController())->checkSession())
                 <div class="hidden-box-hub container-fluid">
+                    <div class="row close-btn">
+                        <div class="col-xs-12"><a href="javascript:void(0)">Close <span>X</span></a></div>
+                    </div>
                     <div class="row">
                         @foreach((new \App\Http\Controllers\HomeController())->getApplications() as $application)
                             <a @if(!empty($application->link)) href="{{$application->link}}" target="_blank" @else href="javascript:alert('Coming soon!');" @endif class="col-md-3 col-xs-4 inline-block-top">
