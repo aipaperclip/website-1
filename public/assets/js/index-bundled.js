@@ -64049,6 +64049,8 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
     var init_apps_interval_slide;
     //logic for open application popup
     $('.single-application').click(function()   {
+        $('.single-application').removeClass('show-shadow');
+        $(this).addClass('show-shadow');
         var this_btn = $(this).find('.wrapper');
         var extra_html = '';
         var media_html = '';
@@ -65153,7 +65155,7 @@ async function loggedOrNotLogic() {
                     $('.logged-user-right-nav .up-arrow').removeClass('show-this');
                 }
             } else {
-                $('.logged-user-right-nav .up-arrow').removeClass('show-this'); 
+                $('.logged-user-right-nav .up-arrow').removeClass('show-this');
             }
         });
 
@@ -65324,7 +65326,7 @@ async function loggedOrNotLogic() {
         }
     } else {
         //IF NOT LOGGED LOGIC
-        if ($('body').hasClass('home')) {
+        if($('body').hasClass('home') || $('body').hasClass('foundation')) {
             $('.info-section .show-login-signin').offset({left: $('header .show-login-signin').offset().left});
         }
     }

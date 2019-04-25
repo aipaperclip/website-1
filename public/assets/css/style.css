@@ -5812,6 +5812,15 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
             color: white;
             font-size: 18px;
             padding-top: 10px; }
+        .homepage-container .dentacoin-ecosystem .apps-list .list button.show-shadow figure img {
+          -webkit-box-shadow: 0 0 12px 3px #c2c2c2;
+          -moz-box-shadow: 0 0 12px 3px #c2c2c2;
+          -ms-box-shadow: 0 0 12px 3px #c2c2c2;
+          box-shadow: 0 0 12px 3px #c2c2c2;
+          -webkit-border-radius: 15px;
+          -moz-border-radius: 15px;
+          -ms-border-radius: 15px;
+          border-radius: 15px; }
       @media screen and (max-width: 991px) {
         .homepage-container .dentacoin-ecosystem .apps-list .list {
           position: static;
