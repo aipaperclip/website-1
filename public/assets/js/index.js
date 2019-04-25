@@ -1695,15 +1695,31 @@ function customJavascriptForm(path, params, method) {
 
 async function loggedOrNotLogic() {
     if($('body').hasClass('logged-in')) {
+        var add_overflow_hidden_on_hidden_box_show = false;
+        $('body').addClass('overflow-hidden');
+        if($(window).width() < 992) {
+            add_overflow_hidden_on_hidden_box_show = true;
+        }
+        $('body').removeClass('overflow-hidden');
+
         //IF NOT LOGGED LOGIC
         $('.logged-user-right-nav > a, .logged-user-right-nav .hidden-box').hover(function () {
             $('.logged-user-right-nav .hidden-box').addClass('show-this');
+            if(add_overflow_hidden_on_hidden_box_show) {
+                $('body').addClass('overflow-hidden');
+            }
         }, function () {
             $('.logged-user-right-nav .hidden-box').removeClass('show-this');
+            if(add_overflow_hidden_on_hidden_box_show) {
+                $('body').removeClass('overflow-hidden');
+            }
         });
 
         $('.logged-user-right-nav .close-btn a').click(function() {
             $('.logged-user-right-nav .hidden-box').removeClass('show-this');
+            if(add_overflow_hidden_on_hidden_box_show) {
+                $('body').removeClass('overflow-hidden');
+            }
         });
 
         if($('.logged-user-hamburger').length) {
