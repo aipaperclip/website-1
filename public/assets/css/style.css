@@ -5053,6 +5053,7 @@ header {
       border-radius: 50%; }
   header .logged-user-right-nav .hidden-box {
     display: none;
+    visibility: hidden;
     position: absolute;
     min-width: 270px;
     max-width: 450px;
@@ -5087,7 +5088,8 @@ header {
       text-align: left; }
     header .logged-user-right-nav .hidden-box .hidden-box-footer {
       padding-top: 10px;
-      padding-bottom: 10px; }
+      padding-bottom: 10px;
+      background: white; }
       header .logged-user-right-nav .hidden-box .hidden-box-footer .white-blue-rounded-btn {
         padding: 7px 15px; }
       header .logged-user-right-nav .hidden-box .hidden-box-footer .logout {
@@ -5097,6 +5099,9 @@ header {
           font-size: 24px;
           vertical-align: middle;
           margin-right: 5px; }
+    header .logged-user-right-nav .hidden-box.show-this {
+      display: block;
+      visibility: visible; }
   @media screen and (max-width: 767px) {
     header .logged-user-right-nav {
       position: static; }
@@ -5107,6 +5112,8 @@ header {
         top: 0;
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.6); }
+        header .logged-user-right-nav .hidden-box.with-hub .up-arrow {
+          display: none; }
         header .logged-user-right-nav .hidden-box.with-hub .hidden-box-hub {
           padding: 30px 15px 15px; } }
 
