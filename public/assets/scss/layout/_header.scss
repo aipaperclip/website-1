@@ -60,10 +60,19 @@ header {
             top: calc(100% - 10px);
             right: 0;
             background-color: white;
-            z-index: 50;
-            overflow: hidden;
+            z-index: 50;  
             @include box-shadow(0px 0px 7px 1px rgba(0, 0, 0, 0.5));
             @include rounded(15px);
+            .up-arrow {
+                color: white;
+                position: absolute;
+                bottom: 100%;
+                font-size: 16px;
+                z-index: 5000000000;
+                display: block;
+                line-height: 8px;
+                right: 30px;
+            }
             .hidden-box-hub {
                 background-image: url('/assets/images/dentacoin-ecosystem-background.jpg');
                 background-position: center center;
@@ -89,8 +98,19 @@ header {
                     }
                 }
             }
-            @include breakpoint($xs) {
-                min-width: 280px;
+        }
+        @include breakpoint($xs) {
+            position: static;
+            .hidden-box {
+                min-width: 0;
+                max-width: none;
+                width: 100%;
+                top: 0;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.6);
+                .hidden-box-hub {
+                    padding: 30px 15px 15px;
+                }
             }
         }
     }

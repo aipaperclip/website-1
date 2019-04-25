@@ -126,7 +126,7 @@
     </svg>
     <header class="container">
         <div class="row fs-0">
-            <figure itemscope="" itemtype="http://schema.org/Organization" class="col-xs-4 logo-container inline-block">
+            <figure itemscope="" itemtype="http://schema.org/Organization" class="col-xs-3 logo-container inline-block">
                 <a itemprop="url" @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('foundation') }}" @else  href="{{ route('home') }}" @endif @if(!empty(Route::current())) @if(Route::current()->getName() == "home") tabindex="=-1" @endif @endif>
                     <img src="@if((new \App\Http\Controllers\UserController())->checkSession() && Route::current()->getName() == 'home') {{URL::asset('assets/images/round-logo-white.svg') }} @else {{URL::asset('assets/images/logo.svg') }} @endif" itemprop="logo" alt="Dentacoin logo"/>
                     @if(!empty(Route::current()))
@@ -137,7 +137,7 @@
                 </a>
             </figure>
             @if(!(new \App\Http\Controllers\UserController())->checkSession())
-                <div class="col-xs-8 btn-container inline-block">
+                <div class="col-xs-9 btn-container inline-block">
                     <a href="//dentists.dentacoin.com" class="inline-block fs-20 margin-right-20 main-color" target="_blank">For dentists</a>
                     <div class="inline-block btn-and-line">
                         <a href="javascript:void(0)" class="white-black-btn show-login-signin" tabindex="-1">SIGN IN</a>
@@ -146,7 +146,7 @@
                 </div>
             @else
                 @if(!empty(Route::current()) && in_array(Route::current()->getName(), array('my-profile', 'edit-account', 'manage-privacy', 'my-contracts')))
-                    <div class="col-xs-8 inline-block text-right show-on-mobile">
+                    <div class="col-xs-9 inline-block text-right show-on-mobile">
                         <a href="javascript:void(0)" class="logged-user-hamburger"><i class="fa fa-bars fs-32 dark-color" aria-hidden="true"></i></a>
                     </div>
                     @include('partials.logged-user-desktop-header-menu', ['class' => 'hide-on-mobile'])

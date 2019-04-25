@@ -544,6 +544,7 @@
         >.row {
             display: flex;
             align-items: center;
+            position: relative;
         }
         .apps-list {
             background-image: url('/assets/images/dentacoin-ecosystem-background.jpg');
@@ -595,18 +596,12 @@
             }
         }
         .info-section {
-            padding-top: 50px;
+            padding-top: 70px;
             padding-bottom: 50px;
-            position: relative;
-            .close-app {
+            position: static;
+            .show-login-signin {
                 position: absolute;
-                top: 10px;
-                font-size: 26px;
-                right: 25px;
-                display: none;
-                @include breakpoint($sm-down) {
-                    display: block;
-                }
+                top: 15px;
             }
             .content {
                 padding: 0 30px;

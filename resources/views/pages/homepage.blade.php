@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="info-section col-xs-12 col-md-6">
-                    <a href="javascript:void(0)" class="close-app"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <a href="javascript:void(0)" class="white-black-btn show-login-signin">SIGN IN</a>
                     <div class="html-content"></div>
                 </div>
             </div>
