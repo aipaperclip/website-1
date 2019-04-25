@@ -5802,6 +5802,8 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         .homepage-container .dentacoin-ecosystem .apps-list .list button figure {
           text-align: center;
           cursor: pointer; }
+          .homepage-container .dentacoin-ecosystem .apps-list .list button figure:focus {
+            outline: 0; }
           .homepage-container .dentacoin-ecosystem .apps-list .list button figure img {
             max-width: 75%;
             margin: 0 auto;

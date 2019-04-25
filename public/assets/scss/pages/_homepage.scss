@@ -567,7 +567,10 @@
                     margin-bottom: 15px;
                     figure {
                         text-align: center;
-                        cursor: pointer;
+                        cursor: pointer;   
+                        &:focus {
+                            outline: 0;
+                        }
                         img {
                             max-width: 75%;
                             margin: 0 auto;
