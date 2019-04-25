@@ -674,9 +674,9 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
     $('body').addClass('overflow-hidden');
     if($(window).width() > 992) {
-        $('body').removeClass('overflow-hidden');
         $('.dentacoin-ecosystem .single-application').eq(0).click();
     }
+    $('body').removeClass('overflow-hidden');
 
     //logic for open testimonials and close the ones that are too near to the current opening one (TESTIMONIALS)
     $('.homepage-container .testimonials .circle-wrapper').click(function()   {

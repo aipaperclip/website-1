@@ -5091,6 +5091,7 @@ header {
         text-align: right;
         padding-bottom: 15px; }
         header .logged-user-right-nav .hidden-box .hidden-box-hub .close-btn a {
+          font-size: 20px;
           color: white; }
           header .logged-user-right-nav .hidden-box .hidden-box-hub .close-btn a span {
             background: white;

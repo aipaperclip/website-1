@@ -87,6 +87,7 @@ header {
                     text-align: right;
                     padding-bottom: 15px;
                     a {
+                        font-size: 20px;
                         color: white;
                         span {
                             background: white;
@@ -96,11 +97,10 @@ header {
                             display: inline-block;
                             text-align: center;
                             line-height: 25px;
-                            @include rounded(50%);   
+                            @include rounded(50%);
                         }
                     }
                 }
-
                 @include breakpoint($xs) {
                     .close-btn {
                         display: block;
