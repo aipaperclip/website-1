@@ -575,7 +575,7 @@
                         img {
                             max-width: 75%;
                             margin: 0 auto;
-                            @include rounded(15px);         
+                            @include rounded(20px);      
                             @include box-shadow(0 0 8px 0px rgba(0, 0, 0, 0.4));
                             @include simple_transition(.3s);
                         }
