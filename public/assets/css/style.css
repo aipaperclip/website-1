@@ -5040,7 +5040,7 @@ header {
     font-size: 16px;
     color: black;
     display: inline-block;
-    padding: 10px 0; }
+    padding: 15px 0; }
     header .logged-user-right-nav > a span {
       vertical-align: middle; }
     header .logged-user-right-nav > a figure {
@@ -5051,15 +5051,25 @@ header {
       -moz-border-radius: 50%;
       -ms-border-radius: 50%;
       border-radius: 50%; }
+  header .logged-user-right-nav .up-arrow {
+    color: #669ccc;
+    position: absolute;
+    top: calc(100% - 5px);
+    font-size: 16px;
+    z-index: 5000000000;
+    display: block;
+    line-height: 8px;
+    right: 30px; }
   header .logged-user-right-nav .hidden-box {
     display: none;
     visibility: hidden;
     position: absolute;
     min-width: 270px;
     max-width: 450px;
-    top: calc(100% + 5px);
+    top: 100%;
     right: 0;
     background-color: white;
+    overflow: hidden;
     z-index: 50;
     -webkit-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.5);
@@ -5069,15 +5079,6 @@ header {
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
     border-radius: 15px; }
-    header .logged-user-right-nav .hidden-box .up-arrow {
-      color: white;
-      position: absolute;
-      bottom: 100%;
-      font-size: 16px;
-      z-index: 5000000000;
-      display: block;
-      line-height: 8px;
-      right: 30px; }
     header .logged-user-right-nav .hidden-box .hidden-box-hub {
       background-image: url("/assets/images/dentacoin-ecosystem-background.jpg");
       background-position: center center;
