@@ -5054,9 +5054,9 @@ header {
   header .logged-user-right-nav .hidden-box {
     display: none;
     position: absolute;
-    min-width: 350px;
+    min-width: 270px;
     max-width: 450px;
-    top: calc(100% - 10px);
+    top: calc(100% + 5px);
     right: 0;
     background-color: white;
     z-index: 50;
@@ -5098,16 +5098,16 @@ header {
           vertical-align: middle;
           margin-right: 5px; }
   @media screen and (max-width: 767px) {
-    header .logged-user-right-nav {
+    header .logged-user-right-nav.with-hub {
       position: static; }
-      header .logged-user-right-nav .hidden-box {
+      header .logged-user-right-nav.with-hub .hidden-box {
         min-width: 0;
         max-width: none;
         width: 100%;
         top: 0;
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.6); }
-        header .logged-user-right-nav .hidden-box .hidden-box-hub {
+        header .logged-user-right-nav.with-hub .hidden-box .hidden-box-hub {
           padding: 30px 15px 15px; } }
 
 body.home {

@@ -10,7 +10,7 @@
             @endif
         </figure>
     </a>
-    <div class="hidden-box">
+    <div class="hidden-box @if(Route::current()->getName() != 'home' && (new \App\Http\Controllers\UserController())->checkSession()) with-hub @endif">
         <span class="up-arrow">▲</span>
         @if(!empty(Route::current()))
             @if(Route::current()->getName() != 'home' && (new \App\Http\Controllers\UserController())->checkSession())
