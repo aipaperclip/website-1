@@ -614,7 +614,7 @@
             position: static;
             .show-login-signin {
                 position: absolute;
-                top: 20px; 
+                top: 20px;
                 @include breakpoint($lg-up) {
                     top: 30px;
                 }

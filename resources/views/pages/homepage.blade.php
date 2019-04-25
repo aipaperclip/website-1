@@ -71,7 +71,9 @@
                     </div>
                 </div>
                 <div class="info-section col-xs-12 col-md-6">
-                    <a href="javascript:void(0)" class="white-black-btn show-login-signin">SIGN IN</a>
+                    @if(!\App\Http\Controllers\UserController::instance()->checkSession())
+                        <a href="javascript:void(0)" class="white-black-btn show-login-signin">SIGN IN</a>
+                    @endif
                     <div class="html-content"></div>
                 </div>
             </div>
