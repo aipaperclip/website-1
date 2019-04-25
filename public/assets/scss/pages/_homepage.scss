@@ -565,12 +565,12 @@
                 @include vertical-horizontal-align(absolute);
                 button {
                     margin-bottom: 15px;
+                    &:focus {
+                        outline: 0 !important;
+                    }    
                     figure {
                         text-align: center;
                         cursor: pointer;
-                        &:focus {
-                            outline: 0 !important;    
-                        }
                         img {
                             max-width: 75%;
                             margin: 0 auto;
