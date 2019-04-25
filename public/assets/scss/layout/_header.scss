@@ -98,22 +98,22 @@ header {
                     }
                 }
             }
-        }
-        &.with-hub {
-            @include breakpoint($xs) {
-                position: static;
-                .hidden-box {
-                    min-width: 0;   
-                    max-width: none;
-                    width: 100%;
-                    top: 0;
-                    height: 100vh;
-                    background-color: rgba(0, 0, 0, 0.6);
-                    .hidden-box-hub {
-                        padding: 30px 15px 15px;
+            &.with-hub {
+                @include breakpoint($xs) {
+                    position: static;
+                    .hidden-box {
+                        min-width: 0;
+                        max-width: none;
+                        width: 100%;
+                        top: 0;
+                        height: 100vh;
+                        background-color: rgba(0, 0, 0, 0.6);
+                        .hidden-box-hub {
+                            padding: 30px 15px 15px;
+                        }
                     }
                 }
-            }
+            }   
         }
     }
 }
