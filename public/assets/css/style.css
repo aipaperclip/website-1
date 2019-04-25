@@ -5052,7 +5052,7 @@ header {
       -ms-border-radius: 50%;
       border-radius: 50%; }
   header .logged-user-right-nav .up-arrow {
-    color: #669ccc;
+    color: white;
     position: absolute;
     top: calc(100% - 15px);
     font-size: 16px;
@@ -5061,6 +5061,8 @@ header {
     display: none; }
     header .logged-user-right-nav .up-arrow.show-this {
       display: block; }
+  header .logged-user-right-nav.with-hub .up-arrow {
+    color: #669ccc; }
   header .logged-user-right-nav .hidden-box {
     display: none;
     visibility: hidden;
