@@ -5807,20 +5807,30 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           cursor: pointer; }
           .homepage-container .dentacoin-ecosystem .apps-list .list button figure img {
             max-width: 75%;
-            margin: 0 auto; }
+            margin: 0 auto;
+            -webkit-transition: 0.3s;
+            -moz-transition: 0.3s;
+            -o-transition: 0.3s;
+            -ms-transition: 0.3s;
+            transition: 0.3s; }
           .homepage-container .dentacoin-ecosystem .apps-list .list button figure figcaption {
             color: white;
             font-size: 18px;
             padding-top: 10px; }
         .homepage-container .dentacoin-ecosystem .apps-list .list button.show-shadow figure img {
-          -webkit-box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.5);
-          -moz-box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.5);
-          -ms-box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.5);
+          -webkit-box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
+          -moz-box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
+          -ms-box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
           -webkit-border-radius: 15px;
           -moz-border-radius: 15px;
           -ms-border-radius: 15px;
           border-radius: 15px; }
+        .homepage-container .dentacoin-ecosystem .apps-list .list button:hover figure img {
+          -webkit-box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
+          -moz-box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
+          -ms-box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5); }
       @media screen and (max-width: 991px) {
         .homepage-container .dentacoin-ecosystem .apps-list .list {
           position: static;

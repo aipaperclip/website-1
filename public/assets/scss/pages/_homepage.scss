@@ -575,6 +575,7 @@
                         img {
                             max-width: 75%;
                             margin: 0 auto;
+                            @include simple_transition(.3s);     
                         }
                         figcaption {
                             color: white;
@@ -585,8 +586,15 @@
                     &.show-shadow {
                         figure {
                             img {
-                                @include box-shadow(0 0 12px 3px rgba(0,0,0,0.5));      
+                                @include box-shadow(-6px 8px 8px 0px rgba(0, 0, 0, 0.5));
                                 @include rounded(15px);
+                            }
+                        }
+                    }
+                    &:hover {
+                        figure {
+                            img {
+                                @include box-shadow(-6px 8px 8px 0px rgba(0, 0, 0, 0.5));
                             }
                         }
                     }
