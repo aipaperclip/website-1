@@ -102,7 +102,7 @@ header {
             }
             &.show-this {
                 display: block;
-                visibility: visible;  
+                visibility: visible;
             }
         }
         @include breakpoint($xs) {
