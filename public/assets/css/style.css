@@ -5853,7 +5853,13 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     position: static; }
     .homepage-container .dentacoin-ecosystem .info-section .show-login-signin {
       position: absolute;
-      top: 15px; }
+      top: 25px; }
+      @media screen and (min-width: 1399px) {
+        .homepage-container .dentacoin-ecosystem .info-section .show-login-signin {
+          top: 30px; } }
+      @media screen and (max-width: 1199px) {
+        .homepage-container .dentacoin-ecosystem .info-section .show-login-signin {
+          top: 15px; } }
     .homepage-container .dentacoin-ecosystem .info-section .content {
       padding: 0 30px; }
       .homepage-container .dentacoin-ecosystem .info-section .content .logo {

@@ -575,7 +575,7 @@
                         img {
                             max-width: 75%;
                             margin: 0 auto;
-                            @include rounded(20px);      
+                            @include rounded(20px);
                             @include box-shadow(0 0 8px 0px rgba(0, 0, 0, 0.4));
                             @include simple_transition(.3s);
                         }
@@ -618,7 +618,13 @@
             position: static;
             .show-login-signin {
                 position: absolute;
-                top: 15px;
+                top: 25px;
+                @include breakpoint($lg-up) {
+                    top: 30px;
+                }
+                @include breakpoint($md-down) {
+                    top: 15px;
+                }
             }
             .content {
                 padding: 0 30px;
