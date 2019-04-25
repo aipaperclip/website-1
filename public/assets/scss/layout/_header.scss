@@ -135,7 +135,7 @@ header {
             &.show-this {
                 display: block;
                 visibility: visible;
-            }  
+            }
         }
         @include breakpoint($xs) {
             &.with-hub {
