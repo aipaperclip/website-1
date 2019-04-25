@@ -65127,14 +65127,14 @@ async function loggedOrNotLogic() {
             $('.logged-user-right-nav .hidden-box').addClass('show-this');
             if(add_overflow_hidden_on_hidden_box_show) {
                 $('body').addClass('overflow-hidden');
-            } else {
+            } else if(!$('.logged-user-right-nav').hasClass('with-hub')) {
                 $('.logged-user-right-nav .up-arrow').addClass('show-this');
             }
         }, function () {
             $('.logged-user-right-nav .hidden-box').removeClass('show-this');
             if(add_overflow_hidden_on_hidden_box_show) {
                 $('body').removeClass('overflow-hidden');
-            } else {
+            } else if(!$('.logged-user-right-nav').hasClass('with-hub')) {
                 $('.logged-user-right-nav .up-arrow').removeClass('show-this');
             }
         });
@@ -65143,7 +65143,7 @@ async function loggedOrNotLogic() {
             $('.logged-user-right-nav .hidden-box').removeClass('show-this');
             if(add_overflow_hidden_on_hidden_box_show) {
                 $('body').removeClass('overflow-hidden');
-            } else {
+            } else if(!$('.logged-user-right-nav').hasClass('with-hub')) {
                 $('.logged-user-right-nav .up-arrow').removeClass('show-this');
             }
         });

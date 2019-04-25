@@ -5131,6 +5131,8 @@ header {
   @media screen and (max-width: 767px) {
     header .logged-user-right-nav.with-hub {
       position: static; }
+      header .logged-user-right-nav.with-hub .up-arrow {
+        display: none; }
       header .logged-user-right-nav.with-hub .hidden-box {
         min-width: 0;
         max-width: none;
@@ -5139,8 +5141,6 @@ header {
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.6);
         overflow: auto; }
-        header .logged-user-right-nav.with-hub .hidden-box .up-arrow {
-          display: none; }
         header .logged-user-right-nav.with-hub .hidden-box .hidden-box-hub {
           padding: 10px 15px 15px; } }
 

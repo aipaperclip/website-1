@@ -140,6 +140,9 @@ header {
         @include breakpoint($xs) {
             &.with-hub {
                 position: static;
+                .up-arrow {
+                    display: none;
+                }
                 .hidden-box {
                     min-width: 0;
                     max-width: none;
@@ -148,9 +151,6 @@ header {
                     height: 100vh;
                     background-color: rgba(0, 0, 0, 0.6);
                     overflow: auto;
-                    .up-arrow {
-                        display: none;
-                    }
                     .hidden-box-hub {
                         padding: 10px 15px 15px;
                     }
