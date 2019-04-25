@@ -5054,12 +5054,13 @@ header {
   header .logged-user-right-nav .up-arrow {
     color: #669ccc;
     position: absolute;
-    top: calc(100% - 5px);
+    top: calc(100% - 15px);
     font-size: 16px;
     z-index: 5000000000;
-    display: block;
-    line-height: 8px;
-    right: 30px; }
+    right: 30px;
+    display: none; }
+    header .logged-user-right-nav .up-arrow.show-this {
+      display: block; }
   header .logged-user-right-nav .hidden-box {
     display: none;
     visibility: hidden;
@@ -5126,9 +5127,9 @@ header {
       display: block;
       visibility: visible; }
   @media screen and (max-width: 767px) {
-    header .logged-user-right-nav {
+    header .logged-user-right-nav.with-hub {
       position: static; }
-      header .logged-user-right-nav .hidden-box.with-hub {
+      header .logged-user-right-nav.with-hub .hidden-box {
         min-width: 0;
         max-width: none;
         width: 100%;
@@ -5136,9 +5137,9 @@ header {
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.6);
         overflow: auto; }
-        header .logged-user-right-nav .hidden-box.with-hub .up-arrow {
+        header .logged-user-right-nav.with-hub .hidden-box .up-arrow {
           display: none; }
-        header .logged-user-right-nav .hidden-box.with-hub .hidden-box-hub {
+        header .logged-user-right-nav.with-hub .hidden-box .hidden-box-hub {
           padding: 10px 15px 15px; } }
 
 body.home {

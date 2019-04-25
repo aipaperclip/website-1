@@ -55,12 +55,14 @@ header {
         .up-arrow {
             color: #669ccc;
             position: absolute;
-            top: calc(100% - 5px);
+            top: calc(100% - 15px);
             font-size: 16px;
             z-index: 5000000000;
-            display: block;
-            line-height: 8px;
             right: 30px;
+            display: none;
+            &.show-this {
+                display: block;
+            }
         }
         .hidden-box {
             display: none;
@@ -131,20 +133,22 @@ header {
             }
         }
         @include breakpoint($xs) {
-            position: static;
-            .hidden-box.with-hub {
-                min-width: 0;
-                max-width: none;
-                width: 100%;
-                top: 0;
-                height: 100vh;
-                background-color: rgba(0, 0, 0, 0.6);
-                overflow: auto;
-                .up-arrow {
-                    display: none;
-                }
-                .hidden-box-hub {
-                    padding: 10px 15px 15px;
+            &.with-hub {
+                position: static;
+                .hidden-box {
+                    min-width: 0;  
+                    max-width: none;
+                    width: 100%;
+                    top: 0;
+                    height: 100vh;
+                    background-color: rgba(0, 0, 0, 0.6);
+                    overflow: auto;
+                    .up-arrow {
+                        display: none;
+                    }
+                    .hidden-box-hub {
+                        padding: 10px 15px 15px;
+                    }
                 }
             }
         }
