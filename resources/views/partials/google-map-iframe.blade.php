@@ -65,6 +65,6 @@
 @yield("script_block")
 <script src="/assets/js/markerclusterer-v2.js"></script>
 <script src="/assets/js/google-map.js"></script>
-<script src="/assets/js/index.js"></script>
+<script src="/assets/js/index-bundled.js"></script>
 </body>
 </html>

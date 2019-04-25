@@ -565,10 +565,6 @@
                 @include vertical-horizontal-align(absolute);
                 button {
                     margin-bottom: 15px;
-                    &:focus {
-                        outline: 5px auto white;
-                        outline-offset: -2px;
-                    }
                     figure {
                         text-align: center;
                         cursor: pointer;
@@ -618,7 +614,7 @@
             position: static;
             .show-login-signin {
                 position: absolute;
-                top: 25px;
+                top: 20px; 
                 @include breakpoint($lg-up) {
                     top: 30px;
                 }

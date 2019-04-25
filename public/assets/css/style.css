@@ -5799,9 +5799,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       transform: translate(-50%, -50%); }
       .homepage-container .dentacoin-ecosystem .apps-list .list button {
         margin-bottom: 15px; }
-        .homepage-container .dentacoin-ecosystem .apps-list .list button:focus {
-          outline: 5px auto white;
-          outline-offset: -2px; }
         .homepage-container .dentacoin-ecosystem .apps-list .list button figure {
           text-align: center;
           cursor: pointer; }
@@ -5853,7 +5850,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     position: static; }
     .homepage-container .dentacoin-ecosystem .info-section .show-login-signin {
       position: absolute;
-      top: 25px; }
+      top: 20px; }
       @media screen and (min-width: 1399px) {
         .homepage-container .dentacoin-ecosystem .info-section .show-login-signin {
           top: 30px; } }
