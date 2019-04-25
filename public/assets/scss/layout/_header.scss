@@ -84,14 +84,25 @@ header {
                 text-align: left;
                 .close-btn {
                     display: none;
+                    text-align: right;
+                    padding-bottom: 15px;
                     a {
                         color: white;
-                        text-align: right;
-                        span { 
-
+                        span {
+                            background: white;
+                            color: black;
+                            width: 25px;
+                            height: 25px;
+                            display: inline-block;
+                            text-align: center;
+                            line-height: 25px;
+                            @include rounded(50%);   
                         }
                     }
-                    @include breakpoint($xs) {
+                }
+
+                @include breakpoint($xs) {
+                    .close-btn {
                         display: block;
                     }
                 }
@@ -132,7 +143,7 @@ header {
                     display: none;
                 }
                 .hidden-box-hub {
-                    padding: 30px 15px 15px;
+                    padding: 10px 15px 15px;
                 }
             }
         }

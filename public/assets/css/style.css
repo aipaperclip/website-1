@@ -5087,13 +5087,26 @@ header {
       padding: 30px 50px 15px;
       text-align: left; }
       header .logged-user-right-nav .hidden-box .hidden-box-hub .close-btn {
-        display: none; }
+        display: none;
+        text-align: right;
+        padding-bottom: 15px; }
         header .logged-user-right-nav .hidden-box .hidden-box-hub .close-btn a {
-          color: white;
-          text-align: right; }
-        @media screen and (max-width: 767px) {
-          header .logged-user-right-nav .hidden-box .hidden-box-hub .close-btn {
-            display: block; } }
+          color: white; }
+          header .logged-user-right-nav .hidden-box .hidden-box-hub .close-btn a span {
+            background: white;
+            color: black;
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            text-align: center;
+            line-height: 25px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            border-radius: 50%; }
+      @media screen and (max-width: 767px) {
+        header .logged-user-right-nav .hidden-box .hidden-box-hub .close-btn {
+          display: block; } }
     header .logged-user-right-nav .hidden-box .hidden-box-footer {
       padding-top: 10px;
       padding-bottom: 10px;
@@ -5124,7 +5137,7 @@ header {
         header .logged-user-right-nav .hidden-box.with-hub .up-arrow {
           display: none; }
         header .logged-user-right-nav .hidden-box.with-hub .hidden-box-hub {
-          padding: 30px 15px 15px; } }
+          padding: 10px 15px 15px; } }
 
 body.home {
   overflow-x: hidden; }

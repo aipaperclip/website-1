@@ -1702,6 +1702,10 @@ async function loggedOrNotLogic() {
             $('.logged-user-right-nav .hidden-box').removeClass('show-this');
         });
 
+        $('.logged-user-right-nav .close-btn a').click(function() {
+            $('.logged-user-right-nav .hidden-box').removeClass('show-this');
+        });
+
         if($('.logged-user-hamburger').length) {
             $('.logged-user-hamburger').click(function() {
                 $('.logged-mobile-profile-menu').addClass('active');
