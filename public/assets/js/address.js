@@ -53,14 +53,15 @@ $(document).ready(function($){
     };
 
     initAddressSuggesters = function() {
-        console.log('initAddressSuggesters called');
         prepareMapFunction(function() {
             $('.address-suggester').each( function() {
-                console.log('.address-suggester each');
+                //dont init map which are not supposed to be inited at this time
+                if($(this).hasClass('dont-init')) {
+                    return false;
+                }
                 var suggester_container = $(this).closest('.address-suggester-wrapper');
                 suggester_container.find('.country-select').change( function() {
                     var cc = $(this).find('option:selected').val();
-                    console.log(cc, 'cc');
                     GMautocomplete.setComponentRestrictions({
                         'country': cc
                     });
@@ -71,13 +72,11 @@ $(document).ready(function($){
                         lat: parseFloat(suggester_container.find('.suggester-map-div').attr('lat')),
                         lng: parseFloat(suggester_container.find('.suggester-map-div').attr('lon'))
                     };
-                    console.log(coords, 'coords');
                     setupMap(suggester_container, coords);
                 }
 
                 var input = $(this)[0];
                 var cc = suggester_container.find('.country-select option:selected').val();
-                console.log(cc, 'cc');
                 var options = {
                     componentRestrictions: {
                         country: cc
@@ -97,12 +96,8 @@ $(document).ready(function($){
                     var country_name = suggester_container.find('.country-select option:selected').text();
                     var country_code = suggester_container.find('.country-select option:selected').val();
 
-                    console.log(country_name, 'country_name');
-                    console.log(country_code, 'country_code');
-
                     var geocoder = new google.maps.Geocoder();
                     var address = $(this).val();
-                    console.log(address, 'address');
                     geocoder.geocode( {
                         'address': address,
                         'region': country_code
@@ -150,9 +145,9 @@ $(document).ready(function($){
         } else {
             suggester_container.find('.geoip-hint').show();
         }
-    };/*
+    };
 
     if($('.address-suggester').length) {
         initAddressSuggesters();
-    }*/
+    }
 });
