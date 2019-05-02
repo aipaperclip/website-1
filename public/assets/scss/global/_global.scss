@@ -573,7 +573,7 @@ body.testimonials, body.press-center {
                                     .pretty {
                                         white-space: normal;
                                         padding-bottom: 5px;
-                                        margin-bottom: 0;
+                                        margin-bottom: 0 !important;
                                         .state {
                                             position: relative;
                                             color: black;
@@ -649,6 +649,17 @@ body.testimonials, body.press-center {
                                                 }
                                             }
                                         }
+
+                                        .privacy-policy-row {
+                                            input[type='checkbox'] {
+                                                max-width: 170px;
+                                            }
+                                            label {
+                                                display: block;
+                                                white-space: normal;
+                                                text-indent: 25px;
+                                            }
+                                        }
                                     }
                                     &.third {
                                         .phone {
@@ -702,7 +713,7 @@ body.testimonials, body.press-center {
                                         width: 50%;
                                         .prev-step {
                                             display: none;
-                                            color: white;
+                                            color: black;
                                             font-size: 14px;
                                             font-family: 'Calibri Light';
                                             border: 0;
@@ -754,7 +765,7 @@ body.testimonials, body.press-center {
                                 padding: 7px 12px;
                             }
                             h2 {
-                                font-size: 35px;
+                                font-size: 30px;
                                 padding-bottom: 20px;
                                 font-family: "Calibri Light";
                             }
