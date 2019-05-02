@@ -35,8 +35,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
 
-    Route::get('/forgotten-password', 'UserController@getForgottenPasswordView')->name('forgotten-password');
-
     //Route::get('changelly', 'ChangellyController@getView')->name('changelly');
 
     Route::get('careers/{slug?}', function($slug = null)    {
@@ -87,6 +85,14 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/download-gdpr-data', 'UserController@downloadGDPRData')->name('download-gdpr-data');
 
+    Route::get('/forgotten-password', 'UserController@getForgottenPasswordView')->name('forgotten-password');
+
+    Route::post('/forgotten-password-submit', 'UserController@forgottenPasswordSubmit')->name('forgotten-password-submit');
+
+    Route::post('/enrich-profile', 'UserController@enrichProfile')->name('enrich-profile');
+
+    Route::post('/invite-your-clinic', 'UserController@inviteYourClinic')->name('invite-your-clinic');
+
     //======================================= AJAX ========================================
 
     Route::post('/press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
@@ -98,9 +104,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::post('/check-email', 'UserController@checkEmail')->name('check-email');
 
     Route::post('/check-captcha', 'UserController@checkCaptcha')->name('check-captcha');
-
-    Route::post('/forgotten-password-submit', 'UserController@forgottenPasswordSubmit')->name('forgotten-password-submit');
-
     //======================================= REDIRECTS ========================================
 
     Route::get('privacy', function() {

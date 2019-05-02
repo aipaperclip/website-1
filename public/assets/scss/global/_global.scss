@@ -570,10 +570,87 @@ body.testimonials, body.press-center {
                             .form-register {
                                 .step {
                                     display: none;
+                                    .pretty {
+                                        white-space: normal;
+                                        padding-bottom: 5px;
+                                        margin-bottom: 0;
+                                        .state {
+                                            position: relative;
+                                            color: black;
+                                            svg.svg {
+                                                left: 0;
+                                                top: 0;
+                                                width: 18px;
+                                                height: 18px;
+                                            }
+                                            i {
+                                                left: 1px;
+                                                top: 1px;
+                                                position: absolute;
+                                            }
+                                            label {
+                                                line-height: 20px;
+                                                &:before, &:after {
+                                                    left: 0;
+                                                    top: 0;
+                                                    width: 18px;
+                                                    height: 18px;
+                                                }
+                                            }
+                                        }
+                                        input:checked~.state.p-success label:after, &.p-toggle .state.p-success label:after {
+                                            background-color: black !important;
+                                        }
+                                    }
                                     &.visible {
                                         display: block;
                                     }
                                     &.second {
+                                        .user-type-container {
+                                            .user-type {
+                                                width: 50%;
+                                                .custom-button {
+                                                    padding: 5px 10px;
+                                                    display: block;
+                                                    border: 2px solid #dddddd;
+                                                    color: #dddddd;
+                                                    font-size: 20px;
+                                                    @include rounded(4px);
+                                                    .custom-radio {
+                                                        margin-right: 5px;
+                                                        width: 20px;
+                                                        height: 20px;
+                                                        line-height: 20px;
+                                                        border: 1px solid #dddddd;
+                                                        text-align: center;
+                                                        font-size: 0;
+                                                        @include rounded(50%);
+                                                        .circle {
+                                                            width: 10px;
+                                                            height: 10px;
+                                                            background-color: black;
+                                                            background-color: gray;
+                                                            vertical-align: middle;
+                                                            display: none;
+                                                            @include rounded(50%);
+                                                        }
+                                                    }
+                                                }
+                                                &.active {
+                                                    .custom-button {
+                                                        color: $dark_blue;
+                                                        border: 2px solid $dark_blue;
+                                                        .custom-radio {
+                                                            .circle {
+                                                                display: inline-block;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.third {
                                         .phone {
                                             display: flex;
                                             align-items: center;
@@ -586,28 +663,8 @@ body.testimonials, body.press-center {
                                                 flex: 1;
                                             }
                                         }
-                                        .pretty {
-                                            white-space: normal;
-                                            padding-bottom: 5px;
-                                            .state {
-                                                position: relative;
-                                                color: black;
-                                                i {
-                                                    left: 1px;
-                                                    top: 1px;
-                                                    position: absolute;
-                                                }
-                                                label {
-                                                    line-height: 20px;
-                                                    &:before, &:after {
-                                                        left: 1px;
-                                                        top: 1px;
-                                                    }
-                                                }
-                                            }
-                                        }
                                     }
-                                    &.third {
+                                    &.fourth {
                                         .avatar {
                                             padding-right: 20px;
                                             width: 50%;
@@ -627,20 +684,6 @@ body.testimonials, body.press-center {
                                                 label {
                                                     text-indent: 25px;
                                                 }
-                                            }
-                                        }
-                                        .privacy-policy-row {
-                                            svg.svg {
-                                                border-color: red !important;
-                                            }
-                                            label {
-                                                display: block;
-                                                white-space: normal;
-                                                text-indent: 25px;
-                                            }
-                                            a {
-                                                text-decoration: underline;
-                                                color: black;
                                             }
                                         }
                                         .combobox-container {
@@ -757,11 +800,59 @@ body.testimonials, body.press-center {
             margin-top: -20px;
             opacity: 1;
             color: #424242;
+            position: absolute;
+            right: 15px;
         }
         .modal-dialog {
+            width: 95%;
+            max-width: 900px;
             .modal-body {
                 .bootbox-body {
                     padding: 0 8%;
+                    .border-bottom {
+                        border-bottom: 1px solid black;
+                    }
+                    .line-crossed {
+                        position: relative;
+                        text-align: center;
+                        span {
+                            background-color: white;
+                            z-index: 5;
+                            padding: 0 10px;
+                            position: relative;
+                        }
+                        &:after {
+                            content: '';
+                            height: 1px;
+                            left: 0;
+                            width: 100%;
+                            background-color: black;
+                            @include vertical-align(absolute);
+                        }
+                    }
+                    form {
+                        padding: 0 50px;
+                        text-align: left;
+                        .error-handle {
+                            display: block;
+                        }
+                        &#enrich-profile {
+                            color: #888888;
+                            textarea {
+                                border: 1px solid #cccccc;
+                                font-size: 16px;
+                                width: 100%;
+                                padding: 10px;
+                                @include rounded(4px);
+                            }
+                        }
+                    }
+                    @include breakpoint($xs) {
+                        padding: 0;
+                        form {
+                            padding: 0;
+                        }
+                    }
                 }
             }
         }

@@ -94,6 +94,42 @@
     font-display: auto;
 }
 
+@font-face {
+    font-family: "Lato-Semibold";
+    src: url("/assets/fonts/Lato-Semibold.eot");
+    src: url("/assets/fonts/Lato-Semibold.eot?#iefix") format("embedded-opentype"),
+    url("/assets/fonts/Lato-Semibold.woff2") format("woff2"),
+    url("/assets/fonts/Lato-Semibold.woff") format("woff"),
+    url("/assets/fonts/Lato-Semibold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "Lato-Regular";
+    src: url("/assets/fonts/Lato-Regular.eot");
+    src: url("/assets/fonts/Lato-Regular.eot?#iefix") format("embedded-opentype"),
+    url("/assets/fonts/Lato-Regular.woff2") format("woff2"),
+    url("/assets/fonts/Lato-Regular.woff") format("woff"),
+    url("/assets/fonts/Lato-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "Lato-Light";
+    src: url("/assets/fonts/Lato-Light.eot");
+    src: url("/assets/fonts/Lato-Light.eot?#iefix") format("embedded-opentype"),
+    url("/assets/fonts/Lato-Light.woff2") format("woff2"),
+    url("/assets/fonts/Lato-Light.woff") format("woff"),
+    url("/assets/fonts/Lato-Light.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
 .calibri-bold {
     font-family: "Calibri-Bold";
 }
@@ -108,4 +144,16 @@
 
 .lato-black {
     font-family: "Lato-Black";
+}
+
+.lato-semibold {
+    font-family: "Lato-Semibold";
+}
+
+.lato-light {
+    font-family: "Lato-Light";
+}
+
+.lato-regular {
+    font-family: "Lato-Regular";
 }

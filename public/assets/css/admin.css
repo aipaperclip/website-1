@@ -54,6 +54,27 @@
   font-weight: normal;
   font-style: normal;
   font-display: auto; }
+@font-face {
+  font-family: "Lato-Semibold";
+  src: url("/assets/fonts/Lato-Semibold.eot");
+  src: url("/assets/fonts/Lato-Semibold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Lato-Semibold.woff2") format("woff2"), url("/assets/fonts/Lato-Semibold.woff") format("woff"), url("/assets/fonts/Lato-Semibold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; }
+@font-face {
+  font-family: "Lato-Regular";
+  src: url("/assets/fonts/Lato-Regular.eot");
+  src: url("/assets/fonts/Lato-Regular.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Lato-Regular.woff2") format("woff2"), url("/assets/fonts/Lato-Regular.woff") format("woff"), url("/assets/fonts/Lato-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; }
+@font-face {
+  font-family: "Lato-Light";
+  src: url("/assets/fonts/Lato-Light.eot");
+  src: url("/assets/fonts/Lato-Light.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Lato-Light.woff2") format("woff2"), url("/assets/fonts/Lato-Light.woff") format("woff"), url("/assets/fonts/Lato-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; }
 .calibri-bold {
   font-family: "Calibri-Bold"; }
 
@@ -65,6 +86,15 @@
 
 .lato-black {
   font-family: "Lato-Black"; }
+
+.lato-semibold {
+  font-family: "Lato-Semibold"; }
+
+.lato-light {
+  font-family: "Lato-Light"; }
+
+.lato-regular {
+  font-family: "Lato-Regular"; }
 
 @media screen and (max-width: 400px) {
   .col-xxs-12 {
@@ -535,6 +565,116 @@
   height: 200px;
   display: none;
   background: transparent; }
+.module.custom-google-label-style {
+  position: relative; }
+  .module.custom-google-label-style label {
+    position: absolute;
+    font-size: 16px !important;
+    cursor: pointer;
+    margin: 0;
+    width: calc(100% - 20px) !important;
+    padding-bottom: 10px !important;
+    padding-top: 10px !important;
+    background-color: white;
+    left: 10px;
+    color: #888888;
+    font-weight: normal;
+    top: 50%;
+    font-family: 'Calibri-Regular';
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s; }
+    .module.custom-google-label-style label.active-label {
+      width: auto !important;
+      font-size: 14px !important;
+      top: -8px;
+      padding: 0 5px !important;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+      color: #041e42;
+      font-weight: bold; }
+  .module.custom-google-label-style .left-side {
+    width: calc(100% - 100px);
+    position: relative; }
+    .module.custom-google-label-style .left-side.error-field input, .module.custom-google-label-style .left-side.error-field label {
+      color: red; }
+  .module.custom-google-label-style input {
+    border: 2px solid #dddddd;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Lato-Regular';
+    width: 100%;
+    padding: 10px 15px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    -ms-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px; }
+    .module.custom-google-label-style input.full-rounded {
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      border-radius: 4px; }
+    .module.custom-google-label-style input.blue-green-border {
+      border: 2px solid #041e42; }
+  .module.custom-google-label-style span {
+    width: 100px;
+    text-align: center;
+    padding-top: 12px;
+    font-size: 18px;
+    font-family: 'Lato-Regular';
+    color: #1d1d1d;
+    background-color: #dddddd;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    -ms-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0; }
+.module.custom-google-select-style {
+  position: relative; }
+  .module.custom-google-select-style label {
+    width: auto !important;
+    font-size: 14px !important;
+    top: -8px;
+    padding: 0 5px !important;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    color: #041e42;
+    font-weight: bold;
+    position: absolute;
+    cursor: pointer;
+    margin: 0;
+    background-color: white;
+    left: 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s; }
+  .module.custom-google-select-style select {
+    border: 2px solid #041e42;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Lato-Regular';
+    width: 100%;
+    padding: 10px 15px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px; }
 
 body {
   background-color: #222d32; }
