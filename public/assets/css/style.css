@@ -5234,6 +5234,7 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
     font-family: 'Lato-Regular';
     width: 100%;
     padding: 10px 15px;
+    -webkit-appearance: initial;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;

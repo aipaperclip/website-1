@@ -11,7 +11,7 @@ class APIRequestsController extends Controller {
             CURLOPT_URL => 'https://api.dentacoin.com/api/login',
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_POSTFIELDS => array(
-                'platform' => 'assurance',
+                'platform' => 'dentacoin',
                 'type' => 'dentist',
                 'email' => $data['email'],
                 'password' => $data['password']

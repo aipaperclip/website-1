@@ -15,7 +15,7 @@ mix.js('public/assets/js/index.js', 'public/assets/js/index-compiled.js');
 //mix.js('public/assets/libs/truffle-contract/truffle-contract.js', 'public/assets/libs/truffle-contract/truffle-contract-compiled.js');
 
 /* ===== PUBLIC =====*/
-/*mix.styles([
+mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.css',
     'public/assets/libs/font-awesome/css/font-awesome.min.css',
@@ -23,7 +23,7 @@ mix.js('public/assets/js/index.js', 'public/assets/js/index-compiled.js');
     'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
     'node_modules/pretty-checkbox/dist/pretty-checkbox.min.css',
     'public/assets/libs/combobox/combobox.css',
-], 'public/dist/css/front-libs-style.css');*/
+], 'public/dist/css/front-libs-style.css');
 
 mix.styles([
     'public/assets/css/style.css',

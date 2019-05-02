@@ -93,6 +93,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/invite-your-clinic', 'UserController@inviteYourClinic')->name('invite-your-clinic');
 
+    Route::post('/check-dentist-account', 'UserController@checkDentistAccount')->name('check-dentist-account');
+
     //======================================= AJAX ========================================
 
     Route::post('/press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
