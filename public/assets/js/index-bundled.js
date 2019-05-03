@@ -64091,6 +64091,12 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
             $('.dentacoin-ecosystem .apps-list').hide();
             $('.dentacoin-ecosystem .info-section').fadeIn(500);
         }
+
+        $('.dentacoin-ecosystem .info-section .close-application').click(function() {
+            $('.dentacoin-ecosystem .apps-list').fadeIn(500);
+            $('.dentacoin-ecosystem .info-section').hide();
+        });
+
         $('body').removeClass('overflow-hidden');
     });
 
