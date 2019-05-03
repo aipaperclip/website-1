@@ -47,13 +47,6 @@
                     customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret);
 
                     setTimeout(function () {
-                        console.log(civic_custom_btn, 'civic_custom_btn');
-                        console.log({
-                            platform: civic_custom_btn.attr('data-platform'),
-                            social_network: civic_config.platform,
-                            auth_token: jwtToken,
-                            type: civic_custom_btn.attr('data-type')
-                        }, 'data');
                         $.ajax({
                             type: 'POST',
                             dataType: 'json',
@@ -65,7 +58,6 @@
                                 type: civic_custom_btn.attr('data-type')
                             },
                             success: function(data){
-                                console.log(data, 'data');
                                 if (data.success) {
                                     customCivicEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
                                 } else {

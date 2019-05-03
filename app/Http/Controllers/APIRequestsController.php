@@ -450,4 +450,26 @@ class APIRequestsController extends Controller {
             return false;
         }
     }
+
+    public function validateCivicToken($token) {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_POST => 1,
+            CURLOPT_URL => 'https://api.dentacoin.com/api/validateCivicToken',
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_POSTFIELDS => array(
+                'token' => $token
+            )
+        ));
+
+        $resp = json_decode(curl_exec($curl));
+        curl_close($curl);
+        if(!empty($resp))   {
+            return $resp;
+        }else {
+            return false;
+        }
+    }
 }
