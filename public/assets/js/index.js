@@ -1911,6 +1911,7 @@ async function loggedOrNotLogic() {
                                                 window.location.reload();
                                             }, 2000);
                                         } else if(inner_response.error) {
+                                            $('.response-layer').hide();
                                             basic.showAlert(inner_response.error, '', true);
                                         }
                                     }
