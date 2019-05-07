@@ -38,8 +38,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    {{--<link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">--}}
     <script>
         var HOME_URL = '{{ route("home") }}';
     </script>
@@ -59,7 +59,7 @@
                 <a href="javascript:void(0)" class="close-logged-mobile-profile-menu"><i class="fa fa-times" aria-hidden="true"></i></a>
                 <ul itemscope="" itemtype="http://schema.org/SiteNavigationElement">
                     <li>
-                        <a href="{{ route('home') }}" itemprop="url">
+                        <a @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('logged-home') }}" @else href="{{ route('home') }}" @endif itemprop="url">
                             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
                                 <img alt="Home icon" src="/assets/uploads/home.svg"/>
                             </figure>
@@ -93,7 +93,7 @@
                     <li>
                         <a href="//dentavox.dentacoin.com" target="_blank" itemprop="url">
                             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
-                                <img alt="Privacy icon" src="/assets/uploads/dentavox--surveys.svg"/>
+                                <img alt="Dentavox logo" src="/assets/uploads/dentavox--surveys.svg"/>
                             </figure>
                             <span itemprop="name">DentaVox Surveys</span>
                         </a>
@@ -101,7 +101,7 @@
                     <li>
                         <a href="//reviews.dentacoin.com" target="_blank" itemprop="url">
                             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
-                                <img alt="Privacy icon" src="/assets/uploads/trusted-reviews-icon.svg"/>
+                                <img alt="Trusted reviews logo" src="/assets/uploads/trusted-reviews-icon.svg"/>
                             </figure>
                             <span itemprop="name">Trusted Reviews</span>
                         </a>
@@ -109,7 +109,7 @@
                     <li>
                         <a href="//assurance.dentacoin.com" target="_blank" itemprop="url">
                             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
-                                <img alt="Privacy icon" src="/assets/uploads/assurance.svg"/>
+                                <img alt="Assurance logo" src="/assets/uploads/assurance.svg"/>
                             </figure>
                             <span itemprop="name">Dentacoin Assurance</span>
                         </a>

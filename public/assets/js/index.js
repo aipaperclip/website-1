@@ -60,9 +60,7 @@ $(document).ready(async function() {
         }
     }, 2000);
 
-    if($('body').hasClass('logged-in')) {
-
-    } else {
+    if(!$('body').hasClass('logged-in')) {
         await $.getScript('/assets/libs/civic-login/civic.js', function() {});
         await $.getScript('/assets/libs/facebook-login/facebook.js', function() {});
     }
@@ -1933,7 +1931,6 @@ async function loggedOrNotLogic() {
         }
     }
 }
-
 loggedOrNotLogic();
 
 function initDataTable()    {

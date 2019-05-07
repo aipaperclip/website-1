@@ -11,7 +11,7 @@ let mix = require('laravel-mix');
  */
 mix.disableSuccessNotifications();
 
-mix.js('public/assets/js/index.js', 'public/assets/js/index-compiled.js');
+//mix.js('public/assets/js/index.js', 'public/assets/js/index-compiled.js');
 //mix.js('public/assets/libs/truffle-contract/truffle-contract.js', 'public/assets/libs/truffle-contract/truffle-contract-compiled.js');
 
 /* ===== PUBLIC =====*/
@@ -22,7 +22,7 @@ mix.styles([
     'node_modules/slick-carousel/slick/slick.css',
     'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
     'node_modules/pretty-checkbox/dist/pretty-checkbox.min.css',
-    'public/assets/libs/combobox/combobox.css',
+    'public/assets/libs/combobox/combobox.css'
 ], 'public/dist/css/front-libs-style.css');
 
 mix.styles([

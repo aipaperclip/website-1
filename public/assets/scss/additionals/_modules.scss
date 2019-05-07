@@ -160,6 +160,21 @@
     }
 }
 
+.custom-input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: white;
+    font-size: 16px;
+    font-family: 'Calibri-Regular';
+    border: 0;
+    @include rounded(4px);
+    @include box-shadow(0px 2px 10px 0 rgba(0, 0, 0, 0.2));
+    @include simple_transition(.3s);
+    &:focus {
+        @include box-shadow(0px 2px 10px 0 #679dca);
+    }
+}
+
 .social-login-btn {
     background-color: white;
     width: 100%;
@@ -182,21 +197,6 @@
     &.facebook-custom-btn {
         background-image: url(/assets/images/facebook.svg);
         border: 1px solid #3b5999;
-    }
-}
-
-.custom-input {
-    width: 100%;
-    padding: 12px 15px;
-    background-color: white;
-    font-size: 16px;
-    font-family: 'Calibri-Regular';
-    border: 0;
-    @include rounded(4px);
-    @include box-shadow(0px 2px 10px 0 rgba(0, 0, 0, 0.2));
-    @include simple_transition(.3s);
-    &:focus {
-        @include box-shadow(0px 2px 10px 0 #679dca);
     }
 }
 
@@ -475,12 +475,16 @@
             @include simple_transition(.3s);
         }
         select {
+            background-image: url('/assets/images/select-arrow.svg');
+            background-position: top 50% right 10px;
+            background-size: 15px;
+            background-repeat: no-repeat;
             border: 2px solid $dark_blue;
             cursor: pointer;
             font-size: 16px;
             font-family: 'Lato-Regular';
             width: 100%;
-            padding: 10px 15px;
+            padding: 10px 30px 10px 15px;
             -webkit-appearance: initial;
             @include rounded(4px);
         }
