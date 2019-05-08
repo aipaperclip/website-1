@@ -14,7 +14,7 @@
         <nav class="profile-menu module">
             <ul itemscope="" itemtype="http://schema.org/SiteNavigationElement">
                 <li>
-                    <a @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('logged-home') }}" @else href="{{ route('home') }}" @endif itemprop="url">
+                    <a @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('foundation') }}" @else href="{{ route('home') }}" @endif itemprop="url">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
                             <img alt="Home icon" src="/assets/uploads/home.svg"/>
                         </figure>

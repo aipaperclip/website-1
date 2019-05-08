@@ -71,7 +71,7 @@
                 <a href="javascript:void(0)" class="close-logged-mobile-profile-menu"><i class="fa fa-times" aria-hidden="true"></i></a>
                 <ul itemscope="" itemtype="http://schema.org/SiteNavigationElement">
                     <li>
-                        <a @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('logged-home') }}" @else href="{{ route('home') }}" @endif itemprop="url">
+                        <a @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('foundation') }}" @else href="{{ route('home') }}" @endif itemprop="url">
                             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
                                 <img alt="Home icon" src="/assets/uploads/home.svg"/>
                             </figure>
