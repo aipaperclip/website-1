@@ -346,7 +346,7 @@ class UserController extends Controller {
         $data = $this->clearPostData($request->input());
 
         $dcn_balance_api_method_response = (new APIRequestsController())->getDCNBalance();
-        $failed_withdraw_error_msg = 'Withdraw failed, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.';
+        $failed_withdraw_error_msg = 'Withdraw failed, please try again later or contact <a href=\'mailto:admin@dentacoin.com\'>admin@dentacoin.com</a>.';
         if($dcn_balance_api_method_response->success) {
             //checking if the withdrawing amount is more than the balance
             if((int)$data['amount'] > $dcn_balance_api_method_response->data) {
