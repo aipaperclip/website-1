@@ -5,7 +5,7 @@ define('DS', '/');
 // define base directory for project
 define('ROOT', realpath(dirname(__FILE__)) . DS);
 // define uploads directory
-define('BASE_URL', 'https://Mdentacoin.com/');
+define('BASE_URL', 'https://dentacoin.com/');
 define('UPLOADS', ROOT . 'public' . DS . 'assets' . DS . 'uploads' . DS);
 define('UPLOADS_FRONT_END', DS . 'assets' . DS . 'uploads' . DS);
 define('EMAIL_RECEIVER', 'press@dentacoin.com');
