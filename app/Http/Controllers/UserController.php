@@ -593,8 +593,25 @@ class UserController extends Controller {
     protected function setCustomCookie(Request $request) {
         if(!empty(Input::get('slug'))) {
             $user = (new APIRequestsController())->getUserData($this->decrypt(Input::get('slug')));
+            $type = $this->decrypt(Input::get('type'));
+
             var_dump($user);
-            die();
+            var_dump($type);
+
+            if($user) {
+                $approved_statuses = array('approved', 'pending', 'test');
+                if($user['self_deleted'] != NULL) {
+                    return abort(404);
+                } else if(!in_array($user['status'], $approved_statuses)) {
+                    return abort(404);
+                } else {
+                    echo '<br>';
+                    var_dump('ok');
+                    die();
+                }
+            } else {
+                return abort(404);
+            }
         } else {
             return abort(404);
         }
