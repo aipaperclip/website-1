@@ -597,8 +597,8 @@ class UserController extends Controller {
 
 
             var_dump($user);
-            die('asd');
             var_dump($type);
+            die('asd');
 
             if($user) {
                 $approved_statuses = array('approved', 'pending', 'test');
