@@ -591,10 +591,12 @@ class UserController extends Controller {
 
     //dentist can add profile description while waiting for approval from Dentacoin admin
     protected function setCustomCookie(Request $request) {
-        if(!empty(Input::get('slug')) && !empty(Input::get('type'))) {
-            $user = (new APIRequestsController())->getUserData($this->decrypt(Input::get('slug')));
+        if(!empty(Input::get('slug')) && !empty(Input::get('type')) && !empty(Input::get('token'))) {
+            $slug = $this->decrypt(Input::get('slug'));
             $type = $this->decrypt(Input::get('type'));
+            $token = $this->decrypt(Input::get('token'));
 
+            $user = (new APIRequestsController())->getUserData($slug);
             if($user) {
                 $approved_statuses = array('approved', 'pending', 'test');
                 if($user->self_deleted != NULL) {
@@ -602,9 +604,14 @@ class UserController extends Controller {
                 } else if(!in_array($user->status, $approved_statuses)) {
                     return abort(404);
                 } else {
-                    echo '<br>';
-                    var_dump('ok');
-                    die();
+                    $session_arr = [
+                        'token' => $token,
+                        'id' => $slug,
+                        'type' => $type
+                    ];
+
+                    session(['logged_user' => $session_arr]);
+                    return redirect()->route('home');
                 }
             } else {
                 return abort(404);
