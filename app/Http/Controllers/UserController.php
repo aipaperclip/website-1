@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller {
     public static function instance() {
@@ -586,5 +587,15 @@ class UserController extends Controller {
 
         var_dump($data);
         die();
+    }
+
+    //dentist can add profile description while waiting for approval from Dentacoin admin
+    protected function setCustomCookie(Request $request) {
+        if(!empty(Input::get('slug'))) {
+            var_dump(Input::get('slug'));
+            die('asd');
+        } else {
+            return abort(404);
+        }
     }
 }

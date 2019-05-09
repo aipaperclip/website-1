@@ -106,6 +106,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::post('/check-email', 'UserController@checkEmail')->name('check-email');
 
     Route::post('/check-captcha', 'UserController@checkCaptcha')->name('check-captcha');
+
+    Route::get('/custom-cookie', 'UserController@setCustomCookie')->name('custom-cookie');
     //======================================= REDIRECTS ========================================
 
     Route::get('privacy', function() {
