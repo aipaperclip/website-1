@@ -595,16 +595,11 @@ class UserController extends Controller {
             $user = (new APIRequestsController())->getUserData($this->decrypt(Input::get('slug')));
             $type = $this->decrypt(Input::get('type'));
 
-
-            var_dump($user);
-            var_dump($type);
-            die('asd');
-
             if($user) {
                 $approved_statuses = array('approved', 'pending', 'test');
-                if($user['self_deleted'] != NULL) {
+                if($user->self_deleted != NULL) {
                     return abort(404);
-                } else if(!in_array($user['status'], $approved_statuses)) {
+                } else if(!in_array($user->status, $approved_statuses)) {
                     return abort(404);
                 } else {
                     echo '<br>';
