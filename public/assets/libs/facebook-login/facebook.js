@@ -36,7 +36,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
     }
 
     var obj = {
-        scope: 'email,user_friends'
+        scope: 'user_friends'
     };
     if(rerequest){
         obj.auth_type = 'rerequest';
