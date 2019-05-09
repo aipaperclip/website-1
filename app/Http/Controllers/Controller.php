@@ -31,7 +31,7 @@ class Controller extends BaseController
     const currencies = ['USD', 'EUR', 'GBP', 'RUB', 'INR', 'CNY', 'JPY'];
 
     public function __construct() {
-        if(!Request::isMethod('post'))    {
+        if(!empty(Route::getCurrentRoute()) && !Request::isMethod('post'))    {
             View::share('mobile', $this->isMobile());
             View::share('meta_data', $this->getMetaData());
             View::share('parent_titles', $this->getParentDbTitles());
