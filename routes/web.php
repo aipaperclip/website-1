@@ -14,6 +14,10 @@ Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captc
 
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
     //======================================= PAGES ========================================
+    Route::get('/test', function() {
+        var_dump((new \App\Http\Controllers\Controller())->decrypt((new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['id'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))));
+        die();
+    })->name('test');
 
     Route::get('/', 'HomeController@getView')->name('home');
 
