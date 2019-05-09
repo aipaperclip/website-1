@@ -266,10 +266,14 @@ class Controller extends BaseController
 
     public function decrypt($encrypted_text) {
         var_dump($encrypted_text);
+        echo "<br>";
         var_dump(getenv('API_ENCRYPTION_METHOD'));
+        echo "<br>";
         var_dump(getenv('API_ENCRYPTION_KEY'));
+        echo "<br>";
         list($data, $iv) = explode('|', $encrypted_text);
         var_dump($data);
+        echo "<br>";
         var_dump($iv);
         die('asd');
         $iv = base64_decode($iv);
