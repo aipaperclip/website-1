@@ -589,7 +589,6 @@ class UserController extends Controller {
         die();
     }
 
-    //dentist can add profile description while waiting for approval from Dentacoin admin
     protected function setCustomCookie(Request $request) {
         if(!empty(Input::get('slug')) && !empty(Input::get('type')) && !empty(Input::get('token'))) {
             $slug = $this->decrypt(Input::get('slug'));
