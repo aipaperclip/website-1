@@ -35,9 +35,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
         return false;
     }
 
-    var obj = {
-        scope: 'user_friends'
-    };
+    var obj = {};
     if(rerequest){
         obj.auth_type = 'rerequest';
     }
