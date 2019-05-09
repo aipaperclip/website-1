@@ -593,6 +593,7 @@ class UserController extends Controller {
     protected function setCustomCookie(Request $request) {
         if(!empty(Input::get('slug'))) {
             var_dump(Input::get('slug'));
+            var_dump($this->decrypt(Input::get('slug')));
             die();
         } else {
             return abort(404);
