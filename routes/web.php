@@ -14,13 +14,6 @@ Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captc
 
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
     //======================================= PAGES ========================================
-    Route::get('/test123', function() {
-        var_dump(env('SENDGRID_USERNAME'));
-        var_dump(env('SENDGRID_PASSWORD'));
-        var_dump(env('API_ENCRYPTION_KEY'));
-        var_dump(env('API_ENCRYPTION_METHOD'));
-        die();
-    })->name('test123');
 
     Route::get('/', 'HomeController@getView')->name('home');
 
