@@ -595,8 +595,9 @@ class UserController extends Controller {
             $user = (new APIRequestsController())->getUserData($this->decrypt(Input::get('slug')));
             $type = $this->decrypt(Input::get('type'));
 
-            die('asd');
+
             var_dump($user);
+            die('asd');
             var_dump($type);
 
             if($user) {
