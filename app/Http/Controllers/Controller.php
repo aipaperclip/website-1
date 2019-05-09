@@ -268,8 +268,10 @@ class Controller extends BaseController
         var_dump($encrypted_text);
         var_dump(getenv('API_ENCRYPTION_METHOD'));
         var_dump(getenv('API_ENCRYPTION_KEY'));
-        die('asd');
         list($data, $iv) = explode('|', $encrypted_text);
+        var_dump($data);
+        var_dump($iv);
+        die('asd');
         $iv = base64_decode($iv);
         $raw_text = openssl_decrypt($data, getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'), 0, $iv);
         return $raw_text;
