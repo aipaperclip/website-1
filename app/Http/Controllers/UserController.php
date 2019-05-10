@@ -114,6 +114,9 @@ class UserController extends Controller {
     protected function userLogout(Request $request) {
         $token = $this->encrypt(session('logged_user')['token'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
 
+        var_dump($token);
+        die('asd');
+
         $request->session()->forget('logged_user');
         return redirect()->route('home')->with(['logout_token' => $token]);
     }
