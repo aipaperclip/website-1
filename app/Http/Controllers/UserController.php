@@ -322,16 +322,10 @@ class UserController extends Controller {
         ]);
 
         $civic_validation_response = (new APIRequestsController())->validateCivicToken($request->input('token'));
-        return response()->json(['error' => 'Civic authentication failed. Please try again later.']);
-
         if($civic_validation_response->success) {
-            /*$update_user_data_response = (new APIRequestsController())->updateUserData(array('civic_kyc' => 1));
-            if(!$update_user_data_response) {
-                return response()->json(['error' => 'Civic authentication failed.']);
-            }*/
             return response()->json(['success' => true]);
         } else {
-            return response()->json(['error' => 'Civic authentication failed.']);
+            return response()->json(['error' => $civic_validation_response->errors]);
         }
     }
 
