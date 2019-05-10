@@ -35,7 +35,9 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
         return false;
     }
 
-    var obj = {};
+    var obj = {
+        scope: 'email,user_friends'
+    };
     if(rerequest){
         obj.auth_type = 'rerequest';
     }
