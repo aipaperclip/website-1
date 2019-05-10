@@ -1694,7 +1694,7 @@ function apiEventsListeners() {
         }
 
         $('.response-layer').hide();
-        basic.showAlert(error_popup_html, '', true);
+        basic.showDialog(error_popup_html, '', null, true);
     });
 }
 apiEventsListeners();
