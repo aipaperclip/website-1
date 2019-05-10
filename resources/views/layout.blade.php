@@ -518,6 +518,10 @@
                 </div>
             </div>
         </div>
+        @if(!empty($logout_token))
+            <img src="//dentists.dentacoin.com/custom-cookie?logout-token={{ urlencode($logout_token) }}" class="hide"/>
+            <img src="//assurance.dentacoin.com/custom-cookie?logout-token={{ urlencode($logout_token) }}" class="hide"/>
+        @endif
     @else
         @php($slug = (new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['id'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')))
         @php($type = (new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['type'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')))

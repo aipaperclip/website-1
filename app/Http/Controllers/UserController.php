@@ -112,8 +112,10 @@ class UserController extends Controller {
     }
 
     protected function userLogout(Request $request) {
+        $token = $this->encrypt(session('logged_user')['token'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
+
         $request->session()->forget('logged_user');
-        return redirect()->route('home');
+        return redirect()->route('home')->with(['logout_token' => $token]);
     }
 
     protected function updateAccount(Request $request) {
@@ -595,8 +597,9 @@ class UserController extends Controller {
         die();
     }
 
-    protected function setCustomCookie(Request $request) {
+    protected function manageCustomCookie(Request $request) {
         if(!empty(Input::get('slug')) && !empty(Input::get('type')) && !empty(Input::get('token'))) {
+            //logging
             $slug = $this->decrypt(Input::get('slug'));
             $type = $this->decrypt(Input::get('type'));
             $token = $this->decrypt(Input::get('token'));
@@ -620,6 +623,13 @@ class UserController extends Controller {
                 }
             } else {
                 return abort(404);
+            }
+        } else if(!empty(Input::get('logout-token'))) {
+            //logging out
+            $token = $this->decrypt(Input::get('logout-token'));
+
+            if(session('logged_user')['token'] == $token) {
+                $request->session()->forget('logged_user');
             }
         } else {
             return abort(404);
