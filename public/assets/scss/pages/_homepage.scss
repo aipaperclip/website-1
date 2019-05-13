@@ -543,14 +543,13 @@
         @include box-shadow(0 2px 6px 0 rgba(0, 0, 0, 0.4));
         >.row {
             display: flex;
-            align-items: center;
             position: relative;
-        }
-        .apps-list {
             background-image: url('/assets/images/dentacoin-ecosystem-background.jpg');
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
+        }
+        .apps-list {
             position: relative;
             padding-top: 50px;
             padding-bottom: 50px;
@@ -615,9 +614,10 @@
             }
         }
         .info-section {
-            padding-top: 70px;
+            padding-top: 100px;
             padding-bottom: 50px;
             position: static;
+            background-color: white;
             .show-login-signin {
                 position: absolute;
                 top: 20px;
@@ -646,19 +646,28 @@
             .content {
                 padding: 0 30px;
                 .logo {
-                    width: 40%;
+                    width: 100%;
+                    max-width: 100px;
+                    margin: 0 auto;
                 }
                 .title {
-                    font-size: 32px;
-                    font-family: 'Calibri-Bold';
-                    padding-top: 20px;
+                    font-size: 28px;
+                    font-family: 'Calibri-Bold'    ;
+                    padding-top: 10px;
                     padding-bottom: 10px;
+                    text-align: center;
                 }
                 .description {
                     line-height: 20px;
                     font-size: 16px;
+                    max-width: 500px;
+                    margin: 0 auto;
+                    text-align: center;
+                    video {
+                        width: 100%;
+                    }
                     p {
-                        padding-bottom: 10px;
+                        padding-bottom: 5px;
                         a {
                             margin-top: 10px;
                             display: inline-block;
@@ -666,13 +675,59 @@
                     }
                 }
                 .extra-html {
+                    max-width: 500px;
+                    margin: 0 auto;
                     .extra-title {
                         font-family: 'Calibri-Bold';
                         font-size: 20px;
                         padding-bottom: 10px;
                         padding-top: 20px;
                     }
-                    ul {
+                    .slider-with-tool-data {
+                        .slick-track {
+                            display: flex;
+                            a {
+                                display: block;
+                                color: $main_color;
+                                .single-slide {
+                                    padding-left: 10px;
+                                    padding-right: 10px;
+                                    display: flex;
+                                    height: auto;
+                                    align-items: center;
+                                    figure {
+                                        width: 100px;
+                                    }
+                                    .content {
+                                        padding-left: 10px;
+                                        width: calc(100% - 100px);
+                                        .title {
+                                            font-size: 16px;
+                                        }
+                                        time {
+                                            font-size: 13px;
+                                            color: #999999;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        @include breakpoint($sm-down)   {
+                            margin-bottom: -10px;
+                            .slick-track {
+                                a {
+                                    .single-slide {
+                                        .content {
+                                            .title {
+                                                font-size: 14px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    /*ul {
                         li {
                             padding-bottom: 5px;
                             list-style: disc inside none;
@@ -683,19 +738,23 @@
                     }
                     .see-all {
                         padding-top: 15px;
-                    }
+                    }*/
                 }
-                @include breakpoint($sm-down) {
-                    .logo {
-                        width: 40%;
-                        margin: 0 auto;
-                    }
+                @include breakpoint($lg-up) {
                     .title {
-                        text-align: center;
+                        padding-bottom: 15px;
+                    }
+                    .description {
+                        video {
+                            margin-bottom: 10px;
+                        }
+                    }
+                    .description, .extra-html {
+                        max-width: 650px;
                     }
                 }
             }
-            .gif {
+            /*.gif {
                 img {
                     @include box-shadow(0 2px 6px 0 rgba(0,0,0,.2));
                 }
@@ -710,7 +769,7 @@
                 @include breakpoint($xs) {
                     display: none;
                 }
-            }
+            }*/
             @include breakpoint($sm-down) {
                 display: none;
             }
