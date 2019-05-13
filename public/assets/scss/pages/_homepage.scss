@@ -614,9 +614,9 @@
             }
         }
         .info-section {
-            padding-top: 100px;
+            padding-top: 90px;
             padding-bottom: 50px;
-            position: static;
+            position: static;    
             background-color: white;
             .show-login-signin {
                 position: absolute;
@@ -647,7 +647,7 @@
                 padding: 0 30px;
                 .logo {
                     width: 100%;
-                    max-width: 100px;
+                    max-width: 80px;
                     margin: 0 auto;
                 }
                 .title {
@@ -679,9 +679,9 @@
                     margin: 0 auto;
                     .extra-title {
                         font-family: 'Calibri-Bold';
-                        font-size: 20px;
-                        padding-bottom: 10px;
-                        padding-top: 20px;
+                        font-size: 18px;
+                        padding-bottom: 5px;
+                        padding-top: 10px;
                     }
                     .slider-with-tool-data {
                         .slick-prev {

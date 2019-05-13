@@ -6087,7 +6087,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         width: 100%;
         max-width: 1300px; } }
   .homepage-container .dentacoin-ecosystem .info-section {
-    padding-top: 100px;
+    padding-top: 90px;
     padding-bottom: 50px;
     position: static;
     background-color: white;
@@ -6134,7 +6134,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       padding: 0 30px; }
       .homepage-container .dentacoin-ecosystem .info-section .content .logo {
         width: 100%;
-        max-width: 100px;
+        max-width: 80px;
         margin: 0 auto; }
       .homepage-container .dentacoin-ecosystem .info-section .content .title {
         font-size: 28px;
@@ -6172,9 +6172,9 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         }*/ }
         .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .extra-title {
           font-family: 'Calibri-Bold';
-          font-size: 20px;
-          padding-bottom: 10px;
-          padding-top: 20px; }
+          font-size: 18px;
+          padding-bottom: 5px;
+          padding-top: 10px; }
         .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-prev {
           width: 20px;
           height: 20px;
