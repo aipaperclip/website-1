@@ -684,6 +684,48 @@
                         padding-top: 20px;
                     }
                     .slider-with-tool-data {
+                        .slick-prev {
+                            width: 20px;
+                            height: 20px;
+                            left: -10px;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            background: url(../images/left-arrow.svg);
+                            background-size: auto 100%;
+                            z-index: 3;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            display: block;
+                            font-size: 0;
+                            border: 0;
+                            cursor: pointer;
+                            @include box-shadow(none);
+                            &.slick-disabled {
+                                display: none !important;
+                            }
+                        }
+                        .slick-next {
+                            width: 20px;
+                            height: 20px;
+                            right: -10px;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            background: url(../images/right-arrow.svg);
+                            background-size: auto 100%;
+                            z-index: 3;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            display: block;
+                            font-size: 0;
+                            border: 0;
+                            cursor: pointer;
+                            @include box-shadow(none);
+                            &.slick-disabled {
+                                display: none !important;
+                            }
+                        }
                         .slick-track {
                             display: flex;
                             a {
@@ -692,7 +734,6 @@
                                 .single-slide {
                                     padding-left: 10px;
                                     padding-right: 10px;
-                                    display: flex;
                                     height: auto;
                                     align-items: center;
                                     figure {
@@ -701,7 +742,7 @@
                                     .content {
                                         padding-left: 10px;
                                         width: calc(100% - 100px);
-                                        .title {
+                                        .slide-title {
                                             font-size: 16px;
                                         }
                                         time {
@@ -752,6 +793,10 @@
                     .description, .extra-html {
                         max-width: 650px;
                     }
+                }
+                @include breakpoint($sm-down) {
+                    padding-left: 0;
+                    padding-right: 0;
                 }
             }
             /*.gif {

@@ -6175,6 +6175,50 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           font-size: 20px;
           padding-bottom: 10px;
           padding-top: 20px; }
+        .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-prev {
+          width: 20px;
+          height: 20px;
+          left: -10px;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: url(../images/left-arrow.svg);
+          background-size: auto 100%;
+          z-index: 3;
+          background-position: center;
+          background-repeat: no-repeat;
+          display: block;
+          font-size: 0;
+          border: 0;
+          cursor: pointer;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          -ms-box-shadow: none;
+          box-shadow: none; }
+          .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-prev.slick-disabled {
+            display: none !important; }
+        .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-next {
+          width: 20px;
+          height: 20px;
+          right: -10px;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: url(../images/right-arrow.svg);
+          background-size: auto 100%;
+          z-index: 3;
+          background-position: center;
+          background-repeat: no-repeat;
+          display: block;
+          font-size: 0;
+          border: 0;
+          cursor: pointer;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          -ms-box-shadow: none;
+          box-shadow: none; }
+          .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-next.slick-disabled {
+            display: none !important; }
         .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-track {
           display: flex; }
           .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-track a {
@@ -6183,7 +6227,6 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
             .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-track a .single-slide {
               padding-left: 10px;
               padding-right: 10px;
-              display: flex;
               height: auto;
               align-items: center; }
               .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-track a .single-slide figure {
@@ -6191,7 +6234,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
               .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-track a .single-slide .content {
                 padding-left: 10px;
                 width: calc(100% - 100px); }
-                .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-track a .single-slide .content .title {
+                .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-track a .single-slide .content .slide-title {
                   font-size: 16px; }
                 .homepage-container .dentacoin-ecosystem .info-section .content .extra-html .slider-with-tool-data .slick-track a .single-slide .content time {
                   font-size: 13px;
@@ -6208,6 +6251,10 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           margin-bottom: 10px; }
         .homepage-container .dentacoin-ecosystem .info-section .content .description, .homepage-container .dentacoin-ecosystem .info-section .content .extra-html {
           max-width: 650px; } }
+      @media screen and (max-width: 991px) {
+        .homepage-container .dentacoin-ecosystem .info-section .content {
+          padding-left: 0;
+          padding-right: 0; } }
     @media screen and (max-width: 991px) {
       .homepage-container .dentacoin-ecosystem .info-section {
         display: none; } }

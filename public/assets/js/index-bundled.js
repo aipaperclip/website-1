@@ -64054,12 +64054,12 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         var media_html = '';
 
         if(this_btn.attr('data-articles') != undefined)    {
-            extra_html+='<div class="extra-html"><div class="extra-title">Latest Blog articles:</div><ul>';
+            extra_html+='<div class="extra-html"><div class="extra-title">Latest Blog articles:</div><div class="slider-with-tool-data">';
             var articles_arr = $.parseJSON(this_btn.attr('data-articles'));
             for(var i = 0, len = articles_arr.length; i < len; i+=1)    {
-                extra_html+='<li class="link"><a href="//blog.dentacoin.com/'+articles_arr[i]['post_name']+'" target="_blank">'+articles_arr[i]['post_title']+'</a></li>';
+                extra_html+='<a target="_blank" href="'+articles_arr[i]['link']+'"><div class="single-slide text-left fs-0"><figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject"><img src="'+articles_arr[i]['thumb']+'" alt="" itemprop="contentUrl"/></figure><div class="content inline-block-top"><div class="slide-title">'+articles_arr[i]['post_title']+'</div><time>'+dateObjToFormattedDate(new Date(parseInt(articles_arr[i]['date']) * 1000))+'</time></div></div></a>';
             }
-            extra_html+='</ul><div class="see-all"><a href="//blog.dentacoin.com/" class="white-blue-rounded-btn" target="_blank">GO TO ALL</a></div></div>';
+            extra_html+='</div><div class="text-center padding-top-15"><a href="//blog.dentacoin.com/" class="white-blue-rounded-btn" target="_blank">GO TO ALL</a></div></div>';
         }
 
         /*if(['mp4', 'avi'].indexOf(this_btn.attr('data-image-type')) > -1) {
@@ -64069,8 +64069,12 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         }*/
         var html = '<div class="container-fluid"><div class="row">'+media_html+'<div class="col-sm-12 content"><figure class="logo"><img src="'+this_btn.attr('data-popup-logo')+'" alt="'+this_btn.attr('data-popup-logo-alt')+'"/></figure><div class="title">'+this_btn.find('figcaption').html()+'</div><div class="description">'+$.parseJSON(this_btn.attr('data-description'))+'</div>'+extra_html+'</div></div></div>';
 
-
         $('.dentacoin-ecosystem .info-section .html-content').html(html);
+
+        if(extra_html != '') {
+            initToolsPostsSlider();
+        }
+
         $('.dentacoin-ecosystem .info-section video').removeAttr('controls');
 
         $('body').addClass('overflow-hidden');
@@ -65401,4 +65405,35 @@ function bindGoogleAlikeButtonsEvents() {
     });
 }
 bindGoogleAlikeButtonsEvents();
+
+function initToolsPostsSlider()   {
+    //init slider for most popular posts
+    jQuery('.slider-with-tool-data').slick({
+        slidesToShow: 2,
+        infinite: false,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
+}
+
+function dateObjToFormattedDate(object) {
+    if(object.getDate() < 10) {
+        var date = '0' + object.getDate();
+    } else {
+        var date = object.getDate();
+    }
+
+    if(object.getMonth() + 1 < 10) {
+        var month = '0' + (object.getMonth() + 1);
+    } else {
+        var month = object.getMonth() + 1;
+    }
+    return date + '/' + month + '/' + object.getFullYear();
+}
 },{"./helper":1092}]},{},[1093]);
