@@ -64731,6 +64731,10 @@ function bindLoginSigninPopupShow() {
             $('.response-layer').show();
         });
 
+        $(document).on('receivedFacebookToken', async function (event) {
+            $('.response-layer').show();
+        });
+
         $(document).on('facebookCustomBtnClicked', function (event) {
             $('.login-signin-popup .patient .form-register .step-errors-holder').html('');
         });
