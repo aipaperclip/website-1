@@ -652,7 +652,7 @@
                 }
                 .title {
                     font-size: 28px;
-                    font-family: 'Calibri-Bold'    ;
+                    font-family: 'Calibri-Bold';
                     padding-top: 10px;
                     padding-bottom: 10px;
                     text-align: center;
@@ -768,18 +768,6 @@
                             }
                         }
                     }
-                    /*ul {
-                        li {
-                            padding-bottom: 5px;
-                            list-style: disc inside none;
-                            a {
-                                text-decoration: underline;
-                            }
-                        }
-                    }
-                    .see-all {
-                        padding-top: 15px;
-                    }*/
                 }
                 @include breakpoint($lg-up) {
                     .title {

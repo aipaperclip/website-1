@@ -64067,6 +64067,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         }else {
             media_html+='<figure class="col-sm-6 gif"><img src="'+this_btn.attr('data-image')+'?'+new Date().getTime()+'" alt="'+this_btn.attr('data-image-alt')+'"/></figure>';
         }*/
+
         var html = '<div class="container-fluid"><div class="row">'+media_html+'<div class="col-sm-12 content"><figure class="logo"><img src="'+this_btn.attr('data-popup-logo')+'" alt="'+this_btn.attr('data-popup-logo-alt')+'"/></figure><div class="title">'+this_btn.find('figcaption').html()+'</div><div class="description">'+$.parseJSON(this_btn.attr('data-description'))+'</div>'+extra_html+'</div></div></div>';
 
         $('.dentacoin-ecosystem .info-section .html-content').html(html);
@@ -64088,7 +64089,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
             init_apps_interval_slide = setTimeout(function() {
                 $('.dentacoin-ecosystem .single-application').eq(start_clicking_from_num).click();
-            }, 100000);
+            }, 10000);
         } else {
             $('.dentacoin-ecosystem .apps-list').hide();
             $('.dentacoin-ecosystem .info-section').fadeIn(500);
