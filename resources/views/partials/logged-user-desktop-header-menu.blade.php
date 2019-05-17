@@ -1,4 +1,4 @@
-<div class="col-xs-9 logged-user-right-nav inline-block text-right @if(!empty($class)) {{$class}} @endif @if(Route::current()->getName() != 'home' && (new \App\Http\Controllers\UserController())->checkSession()) with-hub @endif">
+<div class="col-xs-9 logged-user-right-nav inline-block text-right @if(!empty($class)) {{$class}} @endif with-hub">
     <a href="javascript:void(0)">
         <span>{{(new \App\Http\Controllers\APIRequestsController())->getUserData(session('logged_user')['id'])->name}}</span>
         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
@@ -13,7 +13,7 @@
     <span class="up-arrow">▲</span>
     <div class="hidden-box">
         @if(!empty(Route::current()))
-            @if(Route::current()->getName() != 'home' && (new \App\Http\Controllers\UserController())->checkSession())
+            @if(Route::current()->getName() != 'home')
                 <div class="hidden-box-hub container-fluid">
                     <div class="row close-btn">
                         <div class="col-xs-12"><a href="javascript:void(0)">Close <span>X</span></a></div>

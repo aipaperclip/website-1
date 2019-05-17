@@ -64327,29 +64327,30 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
 
                         var required_inputs = [];
-                        for(var i = 0, len = $('.required').length; i < len; i+=1)  {
-                            required_inputs.push($('.required').eq(i).attr('name'));
+                        for(var i = 0, len = $('.bootbox.media-inquries .required').length; i < len; i+=1)  {
+                            required_inputs.push($('.bootbox.media-inquries .required').eq(i).attr('name'));
                         }
                         required_inputs.push('answer');
+
                         $('.selectpicker').selectpicker('refresh');
 
-                        $('select[name="reason"]').on('change', function()    {
-                            $('.waiting-for-action').html('');
+                        $('.bootbox.media-inquries select[name="reason"]').on('change', function()    {
+                            $('.bootbox.media-inquries .waiting-for-action').html('');
                             if($(this).find('option:selected').attr('data-action') == 'newsletter-register')  {
-                                $('.waiting-for-action').html('<input type="hidden" name="answer" value="Manual email register to newletter receivers list."/>');
+                                $('.bootbox.media-inquries .waiting-for-action').html('<input type="hidden" name="answer" value="Manual email register to newletter receivers list."/>');
                             }else if($(this).find('option:selected').attr('data-action') == 'long-text')  {
-                                $('.waiting-for-action').html('<div class="popup-row"><textarea placeholder="'+$(this).find('option:selected').attr('data-title')+'" rows="3" name="answer" maxlength="3000"></textarea></div>');
+                                $('.bootbox.media-inquries .waiting-for-action').html('<div class="popup-row"><textarea placeholder="'+$(this).find('option:selected').attr('data-title')+'" rows="3" name="answer" maxlength="3000"></textarea></div>');
                             }else if($(this).find('option:selected').attr('data-action') == 'long-text-and-attachments')  {
-                                $('.waiting-for-action').html('<textarea placeholder="'+$(this).find('option:selected').attr('data-title')+'" rows="3" name="answer" class="padding-bottom-10" maxlength="3000"></textarea></div><div class="popup-row text-center-xs"><div class="upload-file inline-block-top" id="media-package" data-label="Attach file (media package):"><input type="file" name="media-package" class="inputfile inputfile-1 hide-input" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx"><button type="button"></button></div><div class="upload-file inline-block-top" id="individual-offer" data-label="Attach file (individual offer, if present):"><input type="file" class="inputfile inputfile-1 hide-input" name="individual-offer" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx"><button type="button"></button></div>');
+                                $('.bootbox.media-inquries .waiting-for-action').html('<textarea placeholder="'+$(this).find('option:selected').attr('data-title')+'" rows="3" name="answer" class="padding-bottom-10" maxlength="3000"></textarea></div><div class="popup-row text-center-xs"><div class="upload-file inline-block-top" id="media-package" data-label="Attach file (media package):"><input type="file" name="media-package" class="inputfile inputfile-1 hide-input" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx"><button type="button"></button></div><div class="upload-file inline-block-top" id="individual-offer" data-label="Attach file (individual offer, if present):"><input type="file" class="inputfile inputfile-1 hide-input" name="individual-offer" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx"><button type="button"></button></div>');
                                 styleContactFormUploadBtn();
 
                                 //ADD CUSTOM EVENTS ON ENTER OR SPACE CLICK FOR accessibility
-                                $('#media-package button').keypress(function(event){
+                                $('.bootbox.media-inquries #media-package button').keypress(function(event){
                                     if(event.keyCode == 13 || event.keyCode == 0 || event.keyCode == 32){
                                         document.getElementById('file-media-package').click();
                                     }
                                 });
-                                $('#individual-offer button').keypress(function(event){
+                                $('.bootbox.media-inquries #individual-offer button').keypress(function(event){
                                     if(event.keyCode == 13 || event.keyCode == 0 || event.keyCode == 32){
                                         document.getElementById('file-individual-offer').click();
                                     }
@@ -64361,20 +64362,20 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                             var errors = [];
                             for(var i = 0, len = required_inputs.length; i < len; i+=1) {
                                 if(required_inputs[i] == 'answer')  {
-                                    if($('[name="'+required_inputs[i]+'"]').length > 0) {
-                                        if($('[name="'+required_inputs[i]+'"]').val().trim() == '') {
+                                    if($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').length > 0) {
+                                        if($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').val().trim() == '') {
                                             errors.push('<strong>Reason for contract extra field</strong> is required.');
                                         }
                                     }else {
                                         errors.push('<strong>Reason for contract extra field</strong> is required.');
                                     }
                                 }else {
-                                    if($('[name="'+required_inputs[i]+'"]').length > 0) {
-                                        if($('[name="'+required_inputs[i]+'"]').val().trim() == '')    {
-                                            if($('[name="'+required_inputs[i]+'"]').is('input'))    {
-                                                errors.push('<strong>'+$('[name="'+required_inputs[i]+'"]').attr('placeholder')+'</strong> is required.');
+                                    if($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').length > 0) {
+                                        if($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').val().trim() == '')    {
+                                            if($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').is('input'))    {
+                                                errors.push('<strong>'+$('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').attr('placeholder')+'</strong> is required.');
                                             }else if($('[name="'+required_inputs[i]+'"]').is('select')) {
-                                                errors.push('<strong>'+$('[name="'+required_inputs[i]+'"]').attr('title')+'</strong> is required.');
+                                                errors.push('<strong>'+$('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').attr('title')+'</strong> is required.');
                                             }
                                         }
                                     }else {
@@ -64383,9 +64384,11 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                 }
                             }
 
-                            if(!$('#agree-with-privacy-policy-popup').is(':checked'))   {
-                                errors.push($('#agree-with-privacy-policy-popup').closest('.checkbox-row').attr('data-valid-message'));
+                            if(!$('.bootbox.media-inquries #agree-with-privacy-policy-popup').is(':checked'))   {
+                                errors.push($('.bootbox.media-inquries #agree-with-privacy-policy-popup').closest('.checkbox-row').attr('data-valid-message'));
                             }
+
+                            console.log(errors, 'errors');
 
                             if(errors.length > 0) {
                                 event.preventDefault();
@@ -64393,7 +64396,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                 for(var y = 0, len = errors.length; y < len; y+=1)  {
                                     errors_html+='<div class="alert alert-danger">'+errors[y]+'</div>';
                                 }
-                                $('.errors.popup-row').html(errors_html);
+                                $('.bootbox.media-inquries .errors.popup-row').html(errors_html);
                             }
                         });
                     }
@@ -64439,8 +64442,8 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
     styleContactFormUploadBtn(true);
 
     var required_inputs = [];
-    for(var i = 0, len = $('.required').length; i < len; i+=1)  {
-        required_inputs.push($('.required').eq(i).attr('name'));
+    for(var i = 0, len = $('.apply-for-position form .required').length; i < len; i+=1)  {
+        required_inputs.push($('.apply-for-position form .required').eq(i).attr('name'));
     }
 
     //handle apply from submission
@@ -64448,9 +64451,9 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         var this_form = $(this);
         var errors = [];
         for(var i = 0, len = required_inputs.length; i < len; i+=1) {
-            if($('[name="'+required_inputs[i]+'"]').length > 0) {
-                if($('[name="'+required_inputs[i]+'"]').val().trim() == '') {
-                    errors.push('<strong>'+$('[name="'+required_inputs[i]+'"]').attr('placeholder')+'</strong> is required.');
+            if($('.apply-for-position form [name="'+required_inputs[i]+'"]').length > 0) {
+                if($('.apply-for-position form [name="'+required_inputs[i]+'"]').val().trim() == '') {
+                    errors.push('<strong>'+$('.apply-for-position form [name="'+required_inputs[i]+'"]').attr('placeholder')+'</strong> is required.');
                 }
             }else {
                 window.location.reload();
@@ -64733,7 +64736,7 @@ function bindLoginSigninPopupShow() {
 
         $(document).on('receivedFacebookToken', async function (event) {
             $('.response-layer').show();
-        }); 
+        });
 
         $(document).on('facebookCustomBtnClicked', function (event) {
             $('.login-signin-popup .patient .form-register .step-errors-holder').html('');
