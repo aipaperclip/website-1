@@ -236,6 +236,17 @@ class Controller extends BaseController
                 }
                 return json_encode($testimonials);
                 break;
+            case 'applications':
+                $applications = DB::connection('mysql')->table('applications')->leftJoin('media', 'applications.logo_id', '=', 'media.id')->select('applications.title', 'applications.link', 'media.name as media_name', 'media.alt as media_alt')->orderByRaw('applications.order_id ASC')->get()->toArray();
+                foreach($applications as $application) {
+                    if(!empty($application->media_name)) {
+                        $application->media_name = route('home') . UPLOADS_FRONT_END . $application->media_name;
+                    } else {
+                        $application->media_name = NULL;
+                    }
+                }
+                return json_encode($applications);
+                break;
             default:
                 $additional_data = (new Admin\MainController())->getApiEndpoint($slug);
                 if(!empty($additional_data))    {
