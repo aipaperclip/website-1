@@ -1,4 +1,4 @@
-<div class="col-xs-9 logged-user-right-nav inline-block text-right @if(!empty($class)) {{$class}} @endif with-hub">
+<div class="col-xs-9 logged-user-right-nav inline-block text-right @if(!empty($class)) {{$class}} @endif @if(Route::current()->getName() != 'home') with-hub @endif">
     <a href="javascript:void(0)">
         <span>{{(new \App\Http\Controllers\APIRequestsController())->getUserData(session('logged_user')['id'])->name}}</span>
         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
