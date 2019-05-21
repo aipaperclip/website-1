@@ -63524,6 +63524,12 @@ $(window).on('load', function() {
                     }, 1000);
                 }
             });
+        } else if(current_url.searchParams.get('section') != null && current_url.searchParams.get('section') == 'buy-dentacoin') {
+            $('html').animate({
+                scrollTop: $('.buy-dentacoin').offset().top
+            }, {
+                duration: 500
+            });
         }
     }
 });

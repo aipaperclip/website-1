@@ -167,6 +167,10 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return Redirect::to('/?payment=bidali-gift-cards');
     });
 
+    Route::get('buy-dentacoin', function() {
+        return Redirect::to('/?section=buy-dentacoin');
+    });
+
     Route::get('corporate-design', function() {
         return Redirect::to('/corporate-design/one-line-logo');
     });
