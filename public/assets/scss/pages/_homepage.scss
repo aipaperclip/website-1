@@ -543,11 +543,18 @@
         @include box-shadow(0 2px 6px 0 rgba(0, 0, 0, 0.4));
         >.row {
             display: flex;
+            min-height: 900px;
             position: relative;
             background-image: url('/assets/images/dentacoin-ecosystem-background.jpg');
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
+            @include breakpoint($md-only) {
+                min-height: 750px;
+            }
+            @include breakpoint($sm-down) {
+                min-height: 0;
+            }
         }
         .apps-list {
             position: relative;
@@ -614,8 +621,8 @@
             }
         }
         .info-section {
-            padding-top: 90px;
-            padding-bottom: 50px;
+            padding-top: 75px;
+            padding-bottom: 20px;
             position: static;
             background-color: white;
             .show-login-signin {
@@ -805,6 +812,7 @@
             }*/
             @include breakpoint($sm-down) {
                 display: none;
+                padding-bottom: 50px;
             }
         }
     }

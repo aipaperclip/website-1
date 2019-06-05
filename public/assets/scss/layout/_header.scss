@@ -37,19 +37,22 @@ header {
         }
     }
     .logged-user-right-nav {
-        > a {
-            font-size: 16px;
-            color: black;
-            display: inline-block;
-            padding: 15px 0;
-            span {
-                vertical-align: middle;
-            }
-            figure {
-                width: 40px;
-                margin-left: 10px;
-                overflow: hidden;
-                @include rounded(50%);
+        .hidden-box-hover {
+            > a {
+                font-size: 16px;
+                color: black;
+                display: inline-block;
+                padding: 15px 0;
+                span {
+                    vertical-align: middle;
+                    color: white;
+                }
+                figure {
+                    width: 40px;
+                    margin-left: 10px;
+                    overflow: hidden;
+                    @include rounded(50%);
+                }
             }
         }
         .up-arrow {
@@ -65,6 +68,13 @@ header {
             }
         }
         &.with-hub {
+            .hidden-box-hover {
+                > a {
+                    span {
+                        color: $main_color;
+                    }
+                }
+            }
             .up-arrow {
                 color: #669ccc;
             }
@@ -83,7 +93,7 @@ header {
             @include box-shadow(0px 0px 7px 1px rgba(0, 0, 0, 0.5));
             @include rounded(15px);
             .hidden-box-hub {
-                background-image: url('/assets/images/dentacoin-ecosystem-background.jpg');
+                background-image: url('/assets/images/small-dentacoin-ecosystem-background.jpg');
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;

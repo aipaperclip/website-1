@@ -5275,14 +5275,15 @@ header {
   @media screen and (max-width: 991px) {
     header .hide-on-mobile {
       display: none; } }
-  header .logged-user-right-nav > a {
+  header .logged-user-right-nav .hidden-box-hover > a {
     font-size: 16px;
     color: black;
     display: inline-block;
     padding: 15px 0; }
-    header .logged-user-right-nav > a span {
-      vertical-align: middle; }
-    header .logged-user-right-nav > a figure {
+    header .logged-user-right-nav .hidden-box-hover > a span {
+      vertical-align: middle;
+      color: white; }
+    header .logged-user-right-nav .hidden-box-hover > a figure {
       width: 40px;
       margin-left: 10px;
       overflow: hidden;
@@ -5300,6 +5301,8 @@ header {
     display: none; }
     header .logged-user-right-nav .up-arrow.show-this {
       display: block; }
+  header .logged-user-right-nav.with-hub .hidden-box-hover > a span {
+    color: #1d1d1d; }
   header .logged-user-right-nav.with-hub .up-arrow {
     color: #669ccc; }
   header .logged-user-right-nav .hidden-box {
@@ -5322,7 +5325,7 @@ header {
     -ms-border-radius: 15px;
     border-radius: 15px; }
     header .logged-user-right-nav .hidden-box .hidden-box-hub {
-      background-image: url("/assets/images/dentacoin-ecosystem-background.jpg");
+      background-image: url("/assets/images/small-dentacoin-ecosystem-background.jpg");
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -6013,11 +6016,18 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); }
   .homepage-container .dentacoin-ecosystem > .row {
     display: flex;
+    min-height: 900px;
     position: relative;
     background-image: url("/assets/images/dentacoin-ecosystem-background.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover; }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      .homepage-container .dentacoin-ecosystem > .row {
+        min-height: 750px; } }
+    @media screen and (max-width: 991px) {
+      .homepage-container .dentacoin-ecosystem > .row {
+        min-height: 0; } }
   .homepage-container .dentacoin-ecosystem .apps-list {
     position: relative;
     padding-top: 50px;
@@ -6087,8 +6097,8 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         width: 100%;
         max-width: 1300px; } }
   .homepage-container .dentacoin-ecosystem .info-section {
-    padding-top: 90px;
-    padding-bottom: 50px;
+    padding-top: 75px;
+    padding-bottom: 20px;
     position: static;
     background-color: white;
     /*.gif {
@@ -6245,7 +6255,8 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           padding-right: 0; } }
     @media screen and (max-width: 991px) {
       .homepage-container .dentacoin-ecosystem .info-section {
-        display: none; } }
+        display: none;
+        padding-bottom: 50px; } }
 .homepage-container .successful-practices .dots {
   height: 80px; }
   .homepage-container .successful-practices .dots .first-dot-wrapper {

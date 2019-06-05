@@ -65171,7 +65171,7 @@ async function loggedOrNotLogic() {
         $('body').removeClass('overflow-hidden');
 
         //IF NOT LOGGED LOGIC
-        $('.logged-user-right-nav > a, .logged-user-right-nav .hidden-box').hover(function () {
+        $('.logged-user-right-nav .hidden-box-hover').hover(function () {
             $('.logged-user-right-nav .hidden-box').addClass('show-this');
             if(add_overflow_hidden_on_hidden_box_show) {
                 $('body').addClass('overflow-hidden');
@@ -65251,6 +65251,8 @@ async function loggedOrNotLogic() {
 
                 if (errors) {
                     event.preventDefault();
+                } else {
+                    $('.response-layer').show();
                 }
             });
         } else if ($('body').hasClass('manage-privacy')) {
