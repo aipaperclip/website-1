@@ -64095,7 +64095,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
             init_apps_interval_slide = setTimeout(function() {
                 $('.dentacoin-ecosystem .single-application').eq(start_clicking_from_num).click();
-            }, 10000);
+            }, 15000);
         } else {
             $('.dentacoin-ecosystem .apps-list').hide();
             $('.dentacoin-ecosystem .info-section').fadeIn(500);
