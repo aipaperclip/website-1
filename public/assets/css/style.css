@@ -6180,7 +6180,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          background: url(../images/left-arrow.svg);
+          background: url("/assets/images/left-arrow.svg");
           background-size: auto 100%;
           z-index: 3;
           background-position: center;
@@ -6202,7 +6202,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          background: url(../images/right-arrow.svg);
+          background: url("/assets/images/right-arrow.svg");
           background-size: auto 100%;
           z-index: 3;
           background-position: center;
