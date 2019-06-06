@@ -739,10 +739,9 @@ if($('.add-edit-clinic').length) {
 function initUploadMediaLogic() {
     if($('form#upload-media').length) {
         $('form#upload-media').submit(function(event) {
+            $('.response-layer').show();
             event.preventDefault();
             var this_form = this;
-
-            $('.response-layer').show();
 
             $.ajax({
                 type: 'POST',

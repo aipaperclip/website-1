@@ -1466,7 +1466,7 @@ body.additionals .box.api-endpoints a {
   left: 0;
   z-index: 1100;
   display: none; }
-  .response-layer .wrapper {
+  .response-layer .response-wrapper {
     text-align: center;
     padding-left: 15px;
     padding-right: 15px;
@@ -1477,7 +1477,7 @@ body.additionals .box.api-endpoints a {
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
-    .response-layer .wrapper img {
+    .response-layer .response-wrapper img {
       width: 95%;
       margin-bottom: 15px; }
 
