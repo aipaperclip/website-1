@@ -179,6 +179,7 @@ function openMedia(id, close_btn, type, editor)    {
                 initDataTable();
                 $('table.table.table-without-reorder.media-table').attr('data-id-in-action', id).attr('data-close-btn', close_btn);
                 saveImageAltsEvent();
+                initUploadMediaLogic();
                 useMediaEvent(id, close_btn, editor);
             }
         }
@@ -759,7 +760,7 @@ function initUploadMediaLogic() {
                             if($('.media-table').length) {
                                 $('.media-table tbody').prepend(response.html_with_images);
 
-                                if($('table.table.table-without-reorder.media-table').attr('data-id-in-action') != undefined && $('table.table.table-without-reorder.media-table').attr('data-close-btn') != undefined) {
+                                if($('table.table.table-without-reorder.media-table').attr('data-id-in-action') != undefined) {
                                     useMediaEvent($('table.table.table-without-reorder.media-table').attr('data-id-in-action'), $('table.table.table-without-reorder.media-table').attr('data-close-btn'), null);
                                 }
                             }
