@@ -335,4 +335,7 @@ body.additionals {
             margin-bottom: 15px;
         }
     }
+    &.show-this {
+        display: block !important;   
+    }
 }

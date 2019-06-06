@@ -739,7 +739,7 @@ if($('.add-edit-clinic').length) {
 function initUploadMediaLogic() {
     if($('form#upload-media').length) {
         $('form#upload-media').submit(function(event) {
-            $('.response-layer').show();
+            $('.response-layer').addClass('show-this');
             event.preventDefault();
             var this_form = this;
 
@@ -766,7 +766,7 @@ function initUploadMediaLogic() {
                         basic.showAlert(response.error, '', true);
                     }
 
-                    $('.response-layer').hide();
+                    $('.response-layer').removeClass('show-this');
 
                     $(this_form).find('input[name="images[]"]').val('');
                 }
