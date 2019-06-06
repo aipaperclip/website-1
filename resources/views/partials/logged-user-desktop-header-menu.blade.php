@@ -4,9 +4,8 @@
         <a href="javascript:void(0)">
             <span>{{$user_data->name}}</span>
             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block">
-                @php($avatar_url = $user_data->avatar_url)
-                @if(!empty($avatar_url))
-                    <img alt="" itemprop="contentUrl" src="{{$avatar_url}}"/>
+                @if(!empty($user_data->thumbnail_url))
+                    <img alt="" itemprop="contentUrl" src="{{$user_data->thumbnail_url}}"/>
                 @else
                     <img alt="" itemprop="contentUrl" src="/assets/images/avatar-icon.svg"/>
                 @endif
