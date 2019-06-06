@@ -264,7 +264,6 @@
     </footer>
     @if(!\App\Http\Controllers\UserController::instance()->checkSession())
         @php($api_enums = (new \App\Http\Controllers\APIRequestsController())->getAllEnums())
-        {{dd($api_enums)}}
         <div class="hidden-login-form hide">
             <div class="fs-0 popup-header-action">
                 <a href="javascript:void(0)" class="inline-block" data-type="patient">I'm a Patient</a>
