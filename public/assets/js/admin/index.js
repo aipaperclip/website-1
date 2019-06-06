@@ -742,6 +742,8 @@ function initUploadMediaLogic() {
             event.preventDefault();
             var this_form = this;
 
+            $('.response-layer').show();
+
             $.ajax({
                 type: 'POST',
                 url: SITE_URL + '/media/ajax-upload',
@@ -764,6 +766,9 @@ function initUploadMediaLogic() {
                     } else if(response.error) {
                         basic.showAlert(response.error, '', true);
                     }
+
+                    $('.response-layer').hide();
+
                     $(this_form).find('input[name="images[]"]').val('');
                 }
             });
