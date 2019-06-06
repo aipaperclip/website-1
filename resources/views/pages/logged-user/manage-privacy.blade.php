@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-    <section class="manage-privacy-container padding-top-100 padding-bottom-100 padding-top-xs-30">
+    <section class="manage-privacy-container padding-top-50 padding-bottom-100 padding-top-xs-30">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1 fs-0">

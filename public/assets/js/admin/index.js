@@ -201,23 +201,31 @@ function useMediaEvent(id, close_btn, editor) {
                     $('.media[data-id="'+id+'"] .image-visualization').html('<a href="'+$(this).closest('tr').attr('data-src')+'">'+$(this).closest('tr').attr('data-src')+'</a>');
                     $('.media[data-id="'+id+'"] input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
                     $('.media[data-id="'+id+'"] input.hidden-input-url').val($(this).closest('tr').attr('data-src'));
+                    if(close_btn) {
+                        $('.media[data-id="'+id+'"] .image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
+                    }
                 }else {
                     $('.image-visualization').html('<a href="'+$(this).closest('tr').attr('data-src')+'">'+$(this).closest('tr').attr('data-src')+'</a>');
                     $('input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
                     $('input.hidden-input-url').val($(this).closest('tr').attr('data-src'));
+                    if(close_btn) {
+                        $('.image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
+                    }
                 }
             }else if(type == 'image')    {
                 if(id != null)	{
                     $('.media[data-id="'+id+'"] .image-visualization').html('<img class="small-image" src="'+$(this).closest('tr').attr('data-src')+'"/>');
                     $('.media[data-id="'+id+'"] input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
+                    if(close_btn) {
+                        $('.media[data-id="'+id+'"] .image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
+                    }
                 }else {
                     $('.image-visualization').html('<img class="small-image" src="'+$(this).closest('tr').attr('data-src')+'"/>');
                     $('input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
+                    if(close_btn) {
+                        $('.image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
+                    }
                 }
-            }
-            if(close_btn) {
-                $('.image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
-                removeImage();
             }
         }
         basic.closeDialog();
@@ -226,14 +234,35 @@ function useMediaEvent(id, close_btn, editor) {
 
 //removing image from posts listing pages
 function removeImage()  {
-    if($('.remove-image').length > 0)   {
-        $('.remove-image').click(function()    {
-            $('.image-visualization').html('');
-            $('input[name="image"]').val('');
-        });
-    }
+    $(document).on('click', '.remove-image', function()    {
+        $(this).closest('.media').find('.hidden-input-image').val('');
+        $(this).closest('.media').find('.image-visualization').html('');
+    });
 }
 removeImage();
+
+function deleteMedia() {
+    $(document).on('click', '.delete-media', function()    {
+        var this_btn = $(this);
+        $.ajax({
+            type: 'POST',
+            url: SITE_URL + '/media/delete/'+this_btn.closest('tr').attr('data-id'),
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                if(response.success)    {
+                    basic.showAlert(response.success, '', true);
+                    this_btn.closest('tr').remove();
+                } else if(response.error) {
+                    basic.showAlert(response.error, '', true);
+                }
+            }
+        });
+    });
+}
+deleteMedia();
 
 //saving image alts on media listing pages
 function saveImageAltsEvent()   {
@@ -706,3 +735,39 @@ if($('.add-edit-clinic').length) {
         $('select[name="subtype"] .subtype-option[data-type-id="'+$(this).val()+'"]').removeClass('hide');
     });
 }
+
+function initUploadMediaLogic() {
+    if($('form#upload-media').length) {
+        $('form#upload-media').submit(function(event) {
+            event.preventDefault();
+            var this_form = this;
+
+            $.ajax({
+                type: 'POST',
+                url: SITE_URL + '/media/ajax-upload',
+                data: new FormData($(this_form)[0]),
+                async: false,
+                processData: false,
+                contentType: false,
+                dataType: 'json',
+                success: function (response) {
+                    if(response.success) {
+                        basic.showAlert(response.success, '', true);
+
+                        if($('.media-table').length) {
+                            $('.media-table tbody').prepend(response.html_with_images);
+
+                            if($('table.table.table-without-reorder.media-table').attr('data-id-in-action') != undefined && $('table.table.table-without-reorder.media-table').attr('data-close-btn') != undefined) {
+                                useMediaEvent($('table.table.table-without-reorder.media-table').attr('data-id-in-action'), $('table.table.table-without-reorder.media-table').attr('data-close-btn'), null);
+                            }
+                        }
+                    } else if(response.error) {
+                        basic.showAlert(response.error, '', true);
+                    }
+                    $(this_form).find('input[name="images[]"]').val('');
+                }
+            });
+        });
+    }
+}
+initUploadMediaLogic();
