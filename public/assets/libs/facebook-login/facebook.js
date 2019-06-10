@@ -1,5 +1,6 @@
 const fb_config = {
-    app_id: '299398824049604',
+    //app_id: '299398824049604',
+    app_id: '1906201509652855',
     platform: 'fb'
 };
 
