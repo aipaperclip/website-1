@@ -1686,8 +1686,6 @@ async function checkCaptcha(captcha) {
 function apiEventsListeners() {
     //login
     $(document).on('successResponseCoreDBApi', async function (event) {
-        console.log(event.response_data, 'event.response_data');
-        return false;
         if(event.response_data.token) {
             var custom_form_obj = {
                 token: event.response_data.token,
@@ -1708,19 +1706,37 @@ function apiEventsListeners() {
                 //}
             }
 
-            if(event.platform_type == 'facebook') {
-                var event_obj = {
-                    'event_category': 'PatientLogin',
-                    'event_label': 'Login FB'
-                };
-                gtag('event', 'Patient with FB', event_obj);
-            } else if(event.platform_type == 'civic') {
-                var event_obj = {
-                    'event_category': 'PatientLogin',
-                    'event_label': 'Login Civic'
-                };
-                gtag('event', 'Patient with Civic', event_obj);
-
+            if(event.response_data.new_account) {
+                //REGISTER
+                if(event.platform_type == 'facebook') {
+                    var event_obj = {
+                        'event_action' : '',
+                        'event_category': 'PatientRegistration',
+                        'event_label': 'Patient Registration FB'
+                    };
+                    gtag('event', 'Patient with FB', event_obj);
+                } else if(event.platform_type == 'civic') {
+                    var event_obj = {
+                        'event_category': 'PatientRegistration',
+                        'event_label': 'Patient Registration FB Civic'
+                    };
+                    gtag('event', 'Patient with Civic', event_obj);
+                }
+            } else {
+                //LOGIN
+                if(event.platform_type == 'facebook') {
+                    var event_obj = {
+                        'event_category': 'PatientLogin',
+                        'event_label': 'Login FB'
+                    };
+                    gtag('event', 'Patient with FB', event_obj);
+                } else if(event.platform_type == 'civic') {
+                    var event_obj = {
+                        'event_category': 'PatientLogin',
+                        'event_label': 'Login Civic'
+                    };
+                    gtag('event', 'Patient with Civic', event_obj);
+                }
             }
 
             customJavascriptForm('/patient-login', custom_form_obj, 'post');
