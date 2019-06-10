@@ -59,7 +59,7 @@
                     @foreach($list_locations_with_subtypes_types as $key=>$type)
                         @if($type['type'] == 'subcategories')
                             <div class="single-type">
-                                <h2 class="type-title section-title">{{$key}}</h2>
+                                <h2 class="type-title section-title" style="background-color: {{$type['color']}};">{{$key}}</h2>
                                 <div class="subtypes">
                                     @foreach($type['subtypes'] as $subkey=>$subtype)
                                         <div class="subtype-title section-subtitle"><button>{{$subkey}}</button><i class="fa fa-caret-right"></i></div>
@@ -85,7 +85,7 @@
                             </div>
                         @elseif($type['type'] == 'no-subcategories')
                             <div class="single-type">
-                                <h2 class="type-title section-title">{{$key}}</h2>
+                                <h2 class="type-title section-title" style="background-color: {{$type['color']}};">{{$key}}</h2>
                                 <div class="clinics-no-subcategory display-block">
                                     @php($clinics = (new \App\Http\Controllers\PartnerNetworkController())->getClinicsForCategoryWithoutSubcategories($type['id']))
                                     @foreach($clinics as $clinic)

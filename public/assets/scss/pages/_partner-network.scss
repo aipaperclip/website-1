@@ -124,6 +124,13 @@
             padding-top: 30px;
             text-align: left;
         }
+        .type-title {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            color: white;
+            padding: 5px;
+            @include rounded(6px);
+        }
         .section-subtitle {
             font-size: 26px;
             padding-top: 8px;

@@ -7172,6 +7172,15 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     .partner-network-container .list-with-locations .section-title {
       padding-top: 30px;
       text-align: left; }
+    .partner-network-container .list-with-locations .type-title {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      color: white;
+      padding: 5px;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      -ms-border-radius: 6px;
+      border-radius: 6px; }
     .partner-network-container .list-with-locations .section-subtitle {
       font-size: 26px;
       padding-top: 8px;

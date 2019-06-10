@@ -18,9 +18,9 @@ jQuery(window).on('scroll', function () {
 });
 
 
-// ============================== PAGES ==============================
-//init job offer slug creation on title type
-if($('body').hasClass('add-job-offer'))    {
+// =========================================== PAGES ===========================================
+
+if($('body').hasClass('add-job-offer')) {
     $('body.add-job-offer input[name="title"]').on('input', function() {
         $('body.add-job-offer input[name="slug"]').val(generateUrl($(this).val().trim()));
     });
@@ -28,11 +28,11 @@ if($('body').hasClass('add-job-offer'))    {
     initSkillsLogic();
 
     bindDontSubmitFormOnEnter();
-}else if($('body').hasClass('edit-job-offer'))    {
+} else if($('body').hasClass('edit-job-offer'))    {
     initSkillsLogic();
 
     bindDontSubmitFormOnEnter();
-}else if($('body').hasClass('additionals')) {
+} else if($('body').hasClass('additionals')) {
     $('.box.api-endpoints .remove-box').unbind().click(function()   {
         $(this).closest('.custom-box').remove();
     });
@@ -49,7 +49,45 @@ if($('body').hasClass('add-job-offer'))    {
             });
         }
     });
+} else if($('body').hasClass('add-location'))  {
+    addLocationMap();
+} else if($('body').hasClass('edit-location'))  {
+    addLocationMap(true);
+} else if($('body').hasClass('add-clinic') || $('body').hasClass('edit-clinic')) {
+    $('.add-edit-clinic #featured').change(function() {
+        if($(this).is(':checked')) {
+            $('.add-edit-clinic .clinic-text').removeClass('hide');
+        } else {
+            $('.add-edit-clinic .clinic-text').addClass('hide');
+        }
+    });
+
+    $('select[name="type"]').on('change', function() {
+        $('select[name="subtype"] .subtype-option').addClass('hide');
+        $('select[name="subtype"] .subtype-option[data-type-id="'+$(this).val()+'"]').removeClass('hide');
+    });
+} else if($('body').hasClass('add-type') || $('body').hasClass('edit-type')) {
+    var color_picker_options = {
+        preferredFormat: "hex",
+        showInput: true,
+        clickoutFiresChange: true,
+        showButtons: false,
+        move: function(color) {
+            $('input[name="color"]').val(color.toHexString());
+        },
+        change: function(color) {
+            $('input[name="color"]').val(color.toHexString());
+        }
+    };
+
+    if($('input[name="color"]').attr('data-color') != undefined) {
+        color_picker_options.color = $('input[name="color"]').attr('data-color');
+    }
+
+    $('input[name="color"]').spectrum(color_picker_options);
 }
+
+// =========================================== /PAGES ===========================================
 
 function initDataTable()    {
     if($('table.table.table-without-reorder').length > 0) {
@@ -348,26 +386,6 @@ function addLocationMap(edit) {
         edit = false;
     }
 
-    /*$('select[name="subtype"] option[data-type-id="'+$('select[name="type"]').val()+'"]').addClass('show');
-    if(!edit) {
-        $('select[name="subtype"]').val($('select[name="subtype"] option:first').val());
-    }
-    $('select[name="type"]').on('change', function() {
-        $('select[name="subtype"] option').removeClass('show').removeAttr('selected');
-        $('select[name="subtype"] option[data-type-id="'+$('select[name="type"]').val()+'"]').addClass('show');
-        $('select[name="subtype"] option.show:first').attr('selected', 'selected').trigger('change');
-    });
-
-    $('select[name="clinic"] option[data-subtype-id="'+$('select[name="subtype"]').val()+'"]').addClass('show');
-    if(!edit) {
-        $('select[name="clinic"]').val($('select[name="clinic"] option:first').val());
-    }
-    $('select[name="subtype"]').on('change', function() {
-        $('select[name="clinic"] option').removeClass('show').removeAttr('selected');
-        $('select[name="clinic"] option[data-subtype-id="'+$('select[name="subtype"]').val()+'"]').addClass('show');
-        $('select[name="clinic"] option.show:first').attr('selected', 'selected');
-    });*/
-
     Gmap = jQuery('.add-edit-location-map');
     Gmap.each(function () {
         var $this = jQuery(this),
@@ -422,206 +440,7 @@ function addLocationMap(edit) {
             draggable = true;
         }
 
-        var styles = [
-            {
-                "featureType": "poi",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "hue": "#000000"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": -100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "poi",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "hue": "#000000"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": -100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "administrative",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "hue": "#000000"
-                    },
-                    {
-                        "saturation": 0
-                    },
-                    {
-                        "lightness": -100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "road",
-                "elementType": "labels",
-                "stylers": [
-                    {
-                        "hue": "#ffffff"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": 100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "water",
-                "elementType": "labels",
-                "stylers": [
-                    {
-                        "hue": "#000000"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": -100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "road.local",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "hue": "#ffffff"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": 100
-                    },
-                    {
-                        "visibility": "on"
-                    }
-                ]
-            },
-            {
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "hue": "#ffffff"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": 100
-                    },
-                    {
-                        "visibility": "on"
-                    }
-                ]
-            },
-            {
-                "featureType": "transit",
-                "elementType": "labels",
-                "stylers": [
-                    {
-                        "hue": "#000000"
-                    },
-                    {
-                        "saturation": 0
-                    },
-                    {
-                        "lightness": -100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "landscape",
-                "elementType": "labels",
-                "stylers": [
-                    {
-                        "hue": "#000000"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": -100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "road",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "hue": "#bbbbbb"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": 26
-                    },
-                    {
-                        "visibility": "on"
-                    }
-                ]
-            },
-            {
-                "featureType": "landscape",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "hue": "#dddddd"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": -3
-                    },
-                    {
-                        "visibility": "on"
-                    }
-                ]
-            }
-        ];
+        var styles = [{"featureType":"poi","elementType":"all","stylers":[{"hue":"#000000"},{"saturation":-100},{"lightness":-100},{"visibility":"off"}]},{"featureType":"poi","elementType":"all","stylers":[{"hue":"#000000"},{"saturation":-100},{"lightness":-100},{"visibility":"off"}]},{"featureType":"administrative","elementType":"all","stylers":[{"hue":"#000000"},{"saturation":0},{"lightness":-100},{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"hue":"#ffffff"},{"saturation":-100},{"lightness":100},{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"hue":"#000000"},{"saturation":-100},{"lightness":-100},{"visibility":"off"}]},{"featureType":"road.local","elementType":"all","stylers":[{"hue":"#ffffff"},{"saturation":-100},{"lightness":100},{"visibility":"on"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffffff"},{"saturation":-100},{"lightness":100},{"visibility":"on"}]},{"featureType":"transit","elementType":"labels","stylers":[{"hue":"#000000"},{"saturation":0},{"lightness":-100},{"visibility":"off"}]},{"featureType":"landscape","elementType":"labels","stylers":[{"hue":"#000000"},{"saturation":-100},{"lightness":-100},{"visibility":"off"}]},{"featureType":"road","elementType":"geometry","stylers":[{"hue":"#bbbbbb"},{"saturation":-100},{"lightness":26},{"visibility":"on"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"hue":"#dddddd"},{"saturation":-100},{"lightness":-3},{"visibility":"on"}]}];
 
         var mapOptions = {
             zoom: zoom,
@@ -648,14 +467,6 @@ function addLocationMap(edit) {
             $('input[type="number"][name="lng"]').val(marker.position.lng().toFixed(5));
         });
     });
-}
-
-if($('body').hasClass('add-location'))  {
-    addLocationMap();
-}
-
-if($('body').hasClass('edit-location'))  {
-    addLocationMap(true);
 }
 
 if($('.add-edit-menu-element select[name="type"]').length > 0) {
@@ -719,21 +530,6 @@ function bindDontSubmitFormOnEnter()    {
         if(event.keyCode == 13) {
             addSkillFromInput();
         }
-    });
-}
-
-if($('.add-edit-clinic').length) {
-    $('.add-edit-clinic #featured').change(function() {
-        if($(this).is(':checked')) {
-            $('.add-edit-clinic .clinic-text').removeClass('hide');
-        } else {
-            $('.add-edit-clinic .clinic-text').addClass('hide');
-        }
-    });
-
-    $('select[name="type"]').on('change', function() {
-        $('select[name="subtype"] .subtype-option').addClass('hide');
-        $('select[name="subtype"] .subtype-option[data-type-id="'+$(this).val()+'"]').removeClass('hide');
     });
 }
 

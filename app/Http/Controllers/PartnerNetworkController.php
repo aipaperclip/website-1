@@ -17,6 +17,8 @@ class PartnerNetworkController extends Controller
         $list_locations_with_subtypes_types = array();
         foreach($this->getLocationTypes() as $type) {
             $list_locations_with_subtypes_types[$type->name]['subtypes'] = array();
+            $list_locations_with_subtypes_types[$type->name]['color'] = $type->color;
+
             //types - Laboratories, Suppliers ..
             if(!array_key_exists($type->name, $list_locations_with_subtypes_types))   {
                 $list_locations_with_subtypes_types[$type->name]['subtypes'] = array();
@@ -42,6 +44,7 @@ class PartnerNetworkController extends Controller
                 $list_locations_with_subtypes_types[$type->name]['id'] = $type->id;
             }
         }
+
         return view('pages/partner-network', ['locations' => $this->getLocations(), 'location_types' => $this->getLocationTypes(), 'locations_select' => $this->getAllLocations(), 'list_locations_with_subtypes_types' => $list_locations_with_subtypes_types, 'clinics' => (new LocationsController())->getAllFeaturedClinics()]);
     }
 
