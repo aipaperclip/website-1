@@ -87,6 +87,7 @@ function customFacebookEvent(type, message, response_data) {
     var event_obj = {
         type: type,
         message: message,
+        platform_type: 'facebook',
         time: new Date()
     };
 

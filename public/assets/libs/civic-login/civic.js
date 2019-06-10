@@ -95,6 +95,7 @@
         var event_obj = {
             type: type,
             message: message,
+            platform_type: 'civic',
             time: new Date()
         };
 

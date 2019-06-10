@@ -1376,6 +1376,12 @@ function bindLoginSigninPopupShow() {
             });
 
             if(submit_form && check_account_response.success) {
+                var event_obj = {
+                    'event_category': 'DentistLogin',
+                    'event_label': 'Dentist Login'
+                };
+                gtag('event', 'Dentist', event_obj);
+
                 this_form_native.submit();
             } else if(check_account_response.error) {
                 customErrorHandle(this_form.find('input[name="password"]').closest('.field-parent'), check_account_response.message);
@@ -1566,6 +1572,7 @@ function bindLoginSigninPopupShow() {
                     }
 
                     if(!errors) {
+
                         //submit the form
                         $('.response-layer').show();
                         $('.login-signin-popup form#dentist-register').submit();
@@ -1679,6 +1686,8 @@ async function checkCaptcha(captcha) {
 function apiEventsListeners() {
     //login
     $(document).on('successResponseCoreDBApi', async function (event) {
+        console.log(event.response_data, 'event.response_data');
+        return false;
         if(event.response_data.token) {
             var custom_form_obj = {
                 token: event.response_data.token,
@@ -1697,6 +1706,21 @@ function apiEventsListeners() {
                 //if(current_dentists_for_logging_user.length > 0) {
                 //custom_form_obj.have_contracts = true;
                 //}
+            }
+
+            if(event.platform_type == 'facebook') {
+                var event_obj = {
+                    'event_category': 'PatientLogin',
+                    'event_label': 'Login FB'
+                };
+                gtag('event', 'Patient with FB', event_obj);
+            } else if(event.platform_type == 'civic') {
+                var event_obj = {
+                    'event_category': 'PatientLogin',
+                    'event_label': 'Login Civic'
+                };
+                gtag('event', 'Patient with Civic', event_obj);
+
             }
 
             customJavascriptForm('/patient-login', custom_form_obj, 'post');
