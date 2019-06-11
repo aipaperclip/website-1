@@ -64015,6 +64015,8 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
     if($('#bidali-init-btn').length) {
         $('#bidali-init-btn').click(function() {
+            fireGoogleAnalyticsEvent('Tools', 'Buy', 'Giftcard');
+
             bidaliSdk.Commerce.render({
                 apiKey: 'pk_n6mvpompwzm83egzrz2vnh',
                 paymentCurrencies: ['DCN']
@@ -64028,11 +64030,6 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
     $('.homepage-container .intro .bg-wrapper .video .play-btn').bind("click", openVideo);
     $('.homepage-container .intro .bg-wrapper .video .video-wrapper .close-video').click(function()   {
-        clearInterval(homepage_video_timer);
-
-        console.log(fmtMSS(homepage_video_time_watched), 'fmtMSS(homepage_video_time_watched)');
-        fireGoogleAnalyticsEvent('Video', 'Play', 'Dentacoin Explainer', fmtMSS(homepage_video_time_watched));
-
         $(this).closest('.video-wrapper').find('video').get(0).pause();
         $(this).closest('.video-wrapper').animate({
             width: "60px"
@@ -64048,6 +64045,17 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         });
     });
 
+    $('.homepage-container .intro .video-wrapper').find('video').on('pause', function() {
+        clearInterval(homepage_video_timer);
+        fireGoogleAnalyticsEvent('Video', 'Play', 'Dentacoin Explainer', fmtMSS(homepage_video_time_watched));
+    });
+
+    $('.homepage-container .intro .video-wrapper').find('video').on('play', function() {
+        homepage_video_timer = setInterval(function() {
+            homepage_video_time_watched+=1;
+        }, 1000);
+    });
+
     function openVideo()    {
         $(this).slideUp(500);
         $(this).unbind("click", openVideo).closest('.video').find('.video-wrapper').show().animate({
@@ -64055,10 +64063,6 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         }, 500);
         $('.homepage-container .intro .video-wrapper').find('video').get(0).play();
         $('.homepage-container .intro .bg-wrapper .section-description').hide();
-
-        homepage_video_timer = setInterval(function() {
-            homepage_video_time_watched+=1;
-        }, 1000);
     }
     // ===== /first section video logic =====
 
@@ -65196,6 +65200,12 @@ async function loggedOrNotLogic() {
         }
         $('body').removeClass('overflow-hidden');
 
+        $(document).on('click', '.logged-user-right-nav .application, .dentacoin-ecosystem-section .single-application', function() {
+            var this_btn = $(this);
+
+            fireGoogleAnalyticsEvent('Tools', 'Click', this_btn.attr('data-platform'))
+        });
+
         //IF NOT LOGGED LOGIC
         $('.logged-user-right-nav .hidden-box-hover').hover(function () {
             $('.logged-user-right-nav .hidden-box').addClass('show-this');
@@ -65479,20 +65489,6 @@ function dateObjToFormattedDate(object) {
     return date + '/' + month + '/' + object.getFullYear();
 }
 
-function fireGoogleAnalyticsEvent(category, action, label, value) {
-    var event_obj = {
-        'event_action' : action,
-        'event_category': category,
-        'event_label': label
-    };
-
-    if(value != undefined) {
-        event_obj.value = value;
-    }
-
-    gtag('event', label, event_obj);
-}
-
 function onEnrichProfileFormSubmit() {
     $(document).on('submit', '.enrich-profile-container #enrich-profile', function(event) {
         var errors = false;
@@ -65517,4 +65513,36 @@ function onEnrichProfileFormSubmit() {
 onEnrichProfileFormSubmit();
 
 function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
+
+// =================================== GOOGLE ANALYTICS TRACKING LOGIC ======================================
+
+function bindTrackerClickDentistsBtnEvent() {
+    $(document).on('click', '.init-dentists-click-event', function() {
+        fireGoogleAnalyticsEvent('Tools', 'Click', 'Dentists');
+    });
+}
+bindTrackerClickDentistsBtnEvent();
+
+function bindTrackerClickRedirectToWalletBuyPage() {
+    $(document).on('click', '.redirect-to-wallet-buy-page', function() {
+        fireGoogleAnalyticsEvent('Tools', 'Buy', 'Wallet Buy');
+    });
+}
+bindTrackerClickRedirectToWalletBuyPage();
+
+function fireGoogleAnalyticsEvent(category, action, label, value) {
+    var event_obj = {
+        'event_action' : action,
+        'event_category': category,
+        'event_label': label
+    };
+
+    if(value != undefined) {
+        event_obj.value = value;
+    }
+
+    gtag('event', label, event_obj);
+}
+
+// =================================== /GOOGLE ANALYTICS TRACKING LOGIC ======================================
 },{"./helper":1092}]},{},[1093]);

@@ -174,7 +174,7 @@
             </figure>
             @if(!(new \App\Http\Controllers\UserController())->checkSession())
                 <div class="col-xs-9 btn-container inline-block">
-                    <a href="//dentists.dentacoin.com" class="inline-block fs-20 margin-right-20 main-color" target="_blank">For dentists</a>
+                    <a href="//dentists.dentacoin.com" class="inline-block fs-20 margin-right-20 main-color init-dentists-click-event" target="_blank">For dentists</a>
                     <div class="inline-block btn-and-line">
                         <a href="javascript:void(0)" class="white-black-btn show-login-signin" tabindex="-1">SIGN IN</a>
                         <span class="first-dot custom-dot">&nbsp;</span>
@@ -267,7 +267,7 @@
         <div class="hidden-login-form hide">
             <div class="fs-0 popup-header-action">
                 <a href="javascript:void(0)" class="inline-block" data-type="patient">I'm a Patient</a>
-                <a href="javascript:void(0)" class="inline-block" data-type="dentist">I'm a Dentist</a>
+                <a href="javascript:void(0)" class="inline-block init-dentists-click-event" data-type="dentist">I'm a Dentist</a>
             </div>
             <div class="fs-0 popup-body">
                 <div class="patient inline-block">
@@ -691,10 +691,10 @@
     {{--<script src="/assets/js/basic.js"></script>--}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.0.41"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.0.42"></script>
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.0.41"></script>
-    <script src="/assets/js/index-bundled.js?v=1.0.41"></script>
+    <script src="/dist/js/front-script.js?v=1.0.42"></script>
+    <script src="/assets/js/index-bundled.js?v=1.0.42"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/index.js"></script>--}}

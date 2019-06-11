@@ -234,7 +234,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="padding-top-20"><a href="https://wallet.dentacoin.com/buy" target="_blank" class="white-blue-rounded-btn">BUY WITH A CARD</a></div>
+                        <div class="padding-top-20"><a href="https://wallet.dentacoin.com/buy" target="_blank" class="white-blue-rounded-btn redirect-to-wallet-buy-page">BUY WITH A CARD</a></div>
                         {!! $sections[13]->html !!}
                     </div>
                     <div class="col-xs-12 col-md-5 col-md-offset-1 gif inline-block-top">
