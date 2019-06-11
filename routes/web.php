@@ -174,4 +174,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::get('corporate-design', function() {
         return Redirect::to('/corporate-design/one-line-logo');
     });
+
+    Route::get('nonsence-file-dentacoin.pdf', function() {
+        return Redirect::to('//dentacoin.com/assets/uploads/dentacoin-fact-sheet.pdf');
+    });
 });
