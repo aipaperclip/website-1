@@ -16,4 +16,8 @@ class Application extends Model {
     protected function popup_logo() {
         return $this->belongsTo('App\Media');
     }
+
+    protected function platform_logo() {
+        return $this->belongsTo('App\Media');
+    }
 }
