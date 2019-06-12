@@ -27,15 +27,17 @@ window.fbAsyncInit = function () {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-//login method
+//binding click event for all the faceboon login btns
 $('body').on('click', '.facebook-custom-btn', function(rerequest){
     customFacebookEvent('facebookCustomBtnClicked', 'Button #facebook-custom-btn was clicked.');
 
+    //based on some logic and conditions you can add or remove this attribute, if custom-stopped="true" the facebook login won't proceed
     if($(this).attr('custom-stopper') && $(this).attr('custom-stopper') == 'true') {
         customFacebookEvent('customCivicFbStopperTriggered', '');
         return false;
     }
 
+    //asking users only for email
     var obj = {
         scope: 'email'
     };
@@ -48,9 +50,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
 
             var fb_token = response.authResponse.accessToken;
 
-            //for exchange token with user data, but we do this on API level and we dont need it here
-            //fbGetData();
-
+            //exchanging the token for user data
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
@@ -63,12 +63,15 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
                 },
                 success: function(data){
                     if (data.success) {
+                        //firing success event
                         customFacebookEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
                     } else {
+                        //firing error event
                         customFacebookEvent('errorResponseCoreDBApi', 'Request to CoreDB-API succeed, but conditions failed.', data);
                     }
                 },
                 error: function() {
+                    //ajax to the external url is not working properly
                     customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
                 }
             });
@@ -77,12 +80,13 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
 });
 
 //exchanging token for data
-function fbGetData() {
+/*function fbGetData() {
     FB.api('/me?fields=id,email,name,permissions', function (response) {
         customFacebookEvent('receivedFacebookData', 'Received facebook data successfully.', response);
     });
-}
+}*/
 
+//custom function for firing events
 function customFacebookEvent(type, message, response_data) {
     var event_obj = {
         type: type,
