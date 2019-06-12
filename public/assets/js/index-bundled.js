@@ -64831,7 +64831,7 @@ function bindLoginSigninPopupShow() {
 
         //THIRD STEP INIT LOGIC
         $('.login-signin-popup #dentist-country').on('change', function() {
-            $('.login-signin-popup .step.second .phone .country-code').html('+'+$(this).find('option:selected').attr('data-code'));
+            $('.login-signin-popup .step.third .phone .country-code').html('+'+$(this).find('option:selected').attr('data-code'));
         });
 
         //FOURTH STEP INIT LOGIC
