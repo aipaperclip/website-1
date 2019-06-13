@@ -57,9 +57,6 @@ class APIRequestsController extends Controller {
                 break;
         }
 
-        var_dump($post_fields_arr);
-        
-
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
@@ -69,12 +66,8 @@ class APIRequestsController extends Controller {
             CURLOPT_POSTFIELDS => $post_fields_arr
         ));
 
-        //$resp = json_decode(curl_exec($curl), true);
-        $resp = curl_exec($curl);
+        $resp = json_decode(curl_exec($curl), true);
         curl_close($curl);
-
-        var_dump($resp);
-        die('test');
 
         if(!empty($resp))   {
             return $resp;
