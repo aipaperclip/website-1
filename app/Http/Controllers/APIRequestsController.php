@@ -58,6 +58,7 @@ class APIRequestsController extends Controller {
         }
 
         var_dump($post_fields_arr);
+        die('asd');
 
         $curl = curl_init();
         curl_setopt_array($curl, array(
