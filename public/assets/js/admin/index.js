@@ -66,7 +66,7 @@ if($('body').hasClass('add-job-offer')) {
         $('select[name="subtype"] .subtype-option').addClass('hide');
         $('select[name="subtype"] .subtype-option[data-type-id="'+$(this).val()+'"]').removeClass('hide');
     });
-} else if($('body').hasClass('add-type') || $('body').hasClass('edit-type') || $('body').hasClass('add-application') || $('body').hasClass('edit-application')) {
+} else if($('body').hasClass('add-type') || $('body').hasClass('edit-type') || $('body').hasClass('add-platform') || $('body').hasClass('edit-platform')) {
     var color_picker_options = {
         preferredFormat: "hex",
         showInput: true,
