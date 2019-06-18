@@ -1798,7 +1798,7 @@ async function loggedOrNotLogic() {
         }
         $('body').removeClass('overflow-hidden');
 
-        $(document).on('click', '.logged-user-right-nav .application, .dentacoin-ecosystem-section .single-application', function() {
+        $(document).on('click', '.logged-user-right-nav .application, .dentacoin-ecosystem-section .single-application, .dentacoin-ecosystem .single-application', function() {
             var this_btn = $(this);
 
             fireGoogleAnalyticsEvent('Tools', 'Click', this_btn.attr('data-platform'))

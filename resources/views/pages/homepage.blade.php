@@ -55,7 +55,7 @@
                                 <div class="container-fluid">
                                     <div class="row fs-0">
                                         @foreach($applications as $application)
-                                            <button class="col-xs-4 inline-block-top single-application">
+                                            <button class="col-xs-4 inline-block-top single-application" data-platform="{{$application->title}}">
                                                 <figure class="wrapper" @if($application->media) data-image="{{URL::asset('assets/uploads/'.$application->media->name) }}" data-image-alt="@if($application->media->alt){{$application->media->alt}}@endif" data-image-type="{{$application->media->type}}" data-upload-date="{{$application->media->created_at->format('c')}}" @endif @if($application->popup_logo) data-popup-logo="{{URL::asset('assets/uploads/'.$application->popup_logo->name) }}" data-popup-logo-alt="@if($application->popup_logo->alt){{$application->popup_logo->alt}}@endif" @endif @if($application->text) data-title="{{$application->title}}" data-description="{{ json_encode($application->text) }}" @endif  @if($application->slug == 'blog-intro') data-articles="{{json_encode($latest_blog_articles)}}" @endif itemscope="" data-slug="{{$application->slug}}" itemtype="http://schema.org/ImageObject">
                                                     @if($application->logo)
                                                         <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/uploads/'.$application->logo->name) }}" itemprop="contentUrl" @if(!empty($application->logo->alt)) alt="{{$application->logo->alt}}" @endif/>
