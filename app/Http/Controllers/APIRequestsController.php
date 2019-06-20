@@ -70,6 +70,8 @@ class APIRequestsController extends Controller {
             CURLOPT_POSTFIELDS => $post_fields_arr
         ));
 
+        var_dump($data);
+
         $resp = curl_exec($curl);
         var_dump($resp);
         die('test');
