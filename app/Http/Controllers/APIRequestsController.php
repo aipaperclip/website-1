@@ -71,11 +71,10 @@ class APIRequestsController extends Controller {
         ));
 
         var_dump($data);
+        die('asd');
 
-        $resp = curl_exec($curl);
-        var_dump($resp);
-        die('test');
-        //$resp = json_decode(curl_exec($curl), true);
+        
+        $resp = json_decode(curl_exec($curl), true);
         curl_close($curl);
 
         if(!empty($resp))   {
