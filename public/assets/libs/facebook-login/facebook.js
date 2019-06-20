@@ -4,7 +4,6 @@ const fb_config = {
     platform: 'fb'
 };
 
-var fb_custom_btn = $('.facebook-custom-btn');
 //application init
 window.fbAsyncInit = function () {
     FB.init({
@@ -29,6 +28,7 @@ window.fbAsyncInit = function () {
 
 //binding click event for all the faceboon login btns
 $('body').on('click', '.facebook-custom-btn', function(rerequest){
+    var this_btn = $(this);
     customFacebookEvent('facebookCustomBtnClicked', 'Button #facebook-custom-btn was clicked.');
 
     //based on some logic and conditions you can add or remove this attribute, if custom-stopped="true" the facebook login won't proceed
@@ -50,17 +50,23 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
 
             var fb_token = response.authResponse.accessToken;
 
+            var register_data = {
+                platform: this_btn.attr('data-platform'),
+                social_network: this_btn.platform,
+                auth_token: this_btn,
+                type: this_btn.attr('data-type')
+            };
+
+            if(this_btn.attr('data-inviter') != undefined) {
+                register_data.invited_by = this_btn.attr('data-inviter');
+            }
+
             //exchanging the token for user data
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
-                url: fb_custom_btn.attr('data-url'),
-                data: {
-                    platform: fb_custom_btn.attr('data-platform'),
-                    social_network: fb_config.platform,
-                    auth_token: fb_token,
-                    type: fb_custom_btn.attr('data-type')
-                },
+                url: this_btn.attr('data-url'),
+                data: register_data,
                 success: function(data){
                     if (data.success) {
                         //firing success event

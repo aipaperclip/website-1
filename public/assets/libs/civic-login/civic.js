@@ -18,7 +18,7 @@
         civic_custom_btn = $(this);
         customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.');
 
-        if($(this).attr('custom-stopper') && $(this).attr('custom-stopper') == 'true') {
+        if(civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
             customCivicEvent('customCivicFbStopperTriggered', '');
             return false;
         }
@@ -49,16 +49,22 @@
                     customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret);
 
                     setTimeout(function () {
+                        var register_data = {
+                            platform: civic_custom_btn.attr('data-platform'),
+                            social_network: civic_config.platform,
+                            auth_token: jwtToken,
+                            type: civic_custom_btn.attr('data-type')
+                        };
+
+                        if(civic_custom_btn.attr('data-inviter') != undefined) {
+                            register_data.invited_by = civic_custom_btn.attr('data-inviter');
+                        }
+
                         $.ajax({
                             type: 'POST',
                             dataType: 'json',
                             url: civic_custom_btn.attr('data-url'),
-                            data: {
-                                platform: civic_custom_btn.attr('data-platform'),
-                                social_network: civic_config.platform,
-                                auth_token: jwtToken,
-                                type: civic_custom_btn.attr('data-type')
-                            },
+                            data: register_data,
                             success: function(data){
                                 if (data.success) {
                                     customCivicEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);

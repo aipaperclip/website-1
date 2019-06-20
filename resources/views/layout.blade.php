@@ -509,6 +509,10 @@
                                 <div class="inline-block text-right">
                                     <input type="button" value="Next" class="white-black-btn fs-20 next-step" data-current-step="first"/>
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    @php($inviter = \Illuminate\Support\Facades\Input::get('inviter'))
+                                    @if(isset($inviter))
+                                        <input type="hidden" name="inviter" value="{{\Illuminate\Support\Facades\Input::get('inviter')}}">
+                                    @endif
                                 </div>
                             </div>
                         </form>
@@ -691,10 +695,10 @@
     {{--<script src="/assets/js/basic.js"></script>--}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.0.45"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.0.46"></script>
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.0.45"></script>
-    <script src="/assets/js/index-bundled.js?v=1.0.45"></script>
+    <script src="/dist/js/front-script.js?v=1.0.46"></script>
+    <script src="/assets/js/index-bundled.js?v=1.0.46"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/index.js"></script>--}}
