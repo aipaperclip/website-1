@@ -52,8 +52,8 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
 
             var register_data = {
                 platform: this_btn.attr('data-platform'),
-                social_network: this_btn.platform,
-                auth_token: this_btn,
+                social_network: fb_config.platform,
+                auth_token: fb_token,
                 type: this_btn.attr('data-type')
             };
 
