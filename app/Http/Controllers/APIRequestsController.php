@@ -71,8 +71,6 @@ class APIRequestsController extends Controller {
         ));
 
         $resp = json_decode(curl_exec($curl), true);
-        var_dump($resp);
-        die('asd');
         curl_close($curl);
 
         if(!empty($resp))   {
