@@ -70,14 +70,6 @@ class APIRequestsController extends Controller {
             CURLOPT_POSTFIELDS => $post_fields_arr
         ));
 
-        var_dump($post_fields_arr['invited_by']);
-
-        var_dump($this->decrypt($post_fields_arr['invited_by']));
-
-        var_dump($post_fields_arr);
-        die('asd');
-
-
         $resp = json_decode(curl_exec($curl), true);
         curl_close($curl);
 
