@@ -64053,7 +64053,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
     $('.homepage-container .intro .video-wrapper').find('video').on('pause', function() {
         clearInterval(homepage_video_timer);
-        fireGoogleAnalyticsEvent('Video', 'Play', 'Dentacoin Explainer', fmtMSS(homepage_video_time_watched));
+        fireGoogleAnalyticsEvent('Video', 'Play', 'Dentacoin Explainer', homepage_video_time_watched);
     });
 
     $('.homepage-container .intro .video-wrapper').find('video').on('play', function() {
@@ -65553,8 +65553,6 @@ function onEnrichProfileFormSubmit() {
     });
 }
 onEnrichProfileFormSubmit();
-
-function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
 
 // =================================== GOOGLE ANALYTICS TRACKING LOGIC ======================================
 
