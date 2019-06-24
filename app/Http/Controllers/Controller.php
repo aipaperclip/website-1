@@ -256,8 +256,9 @@ class Controller extends BaseController
                         $platform->media_name = NULL;
                     }
                 }
-                return urlencode(json_encode($platforms));
-                break;
+
+                var_dump($platforms);
+                die('asd');
             default:
                 $additional_data = (new Admin\MainController())->getApiEndpoint($slug);
                 if(!empty($additional_data))    {
