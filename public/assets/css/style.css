@@ -4734,6 +4734,8 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
     color: #041e42 !important;
     background-color: white;
     text-decoration: none !important; }
+  .white-dark-blue-btn.platform-custom-button, .platform-custom-button.platform-custom-button {
+    display: inline-block; }
 
 .dark-blue-white-btn {
   background-color: white;

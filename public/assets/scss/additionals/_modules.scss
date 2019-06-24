@@ -9,9 +9,12 @@
     @include rounded(4px);
     @include simple_transition(.3s);
     &:hover {
-        color: $dark_blue !important;    
+        color: $dark_blue !important;
         background-color: white;
         text-decoration: none !important;
+    }
+    &.platform-custom-button {
+        display: inline-block;   
     }
 }
 
