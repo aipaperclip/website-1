@@ -4713,7 +4713,7 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
 .pac-container {
   z-index: 50000; }
 
-.white-dark-blue-btn {
+.white-dark-blue-btn, .platform-custom-button {
   background-color: #041e42;
   color: white !important;
   font-size: 16px;
@@ -4730,7 +4730,7 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s; }
-  .white-dark-blue-btn:hover {
+  .white-dark-blue-btn:hover, .platform-custom-button:hover {
     color: #041e42 !important;
     background-color: white;
     text-decoration: none !important; }

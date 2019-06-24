@@ -1,4 +1,4 @@
-.white-dark-blue-btn {
+.white-dark-blue-btn, .platform-custom-button {
     background-color: $dark_blue;
     color: white !important;;
     font-size: 16px;
@@ -9,7 +9,7 @@
     @include rounded(4px);
     @include simple_transition(.3s);
     &:hover {
-        color: $dark_blue !important;
+        color: $dark_blue !important;    
         background-color: white;
         text-decoration: none !important;
     }
