@@ -255,10 +255,12 @@ class Controller extends BaseController
                     } else {
                         $platform->media_name = NULL;
                     }
-                }
 
-                var_dump($platforms);
-                die('asd');
+                    $platform->extra_html = htmlentities($platform->extra_html);
+                    $platform->extra_html_patients = htmlentities($platform->extra_html_patients);
+                }
+                return json_encode($platforms);
+                break;
             default:
                 $additional_data = (new Admin\MainController())->getApiEndpoint($slug);
                 if(!empty($additional_data))    {
