@@ -53,6 +53,8 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
             console.log(response, 'response');
             console.log(response.authResponse, 'response.authResponse');
 
+            return false;
+
             var register_data = {
                 platform: this_btn.attr('data-platform'),
                 social_network: fb_config.platform,
