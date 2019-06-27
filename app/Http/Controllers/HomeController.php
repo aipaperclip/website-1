@@ -18,9 +18,23 @@ class HomeController extends Controller
 
     protected function getNotLoggedView()   {
         //$latest_blog_articles = DB::connection('mysql2')->select(DB::raw("SELECT `post_title`, `post_name` from dIf_posts WHERE post_status = 'publish' AND post_type = 'post' ORDER BY `post_date` DESC LIMIT 0, 5"));
-        $latest_blog_articles = json_decode(file_get_contents('https://blog.dentacoin.com/dumb-latest-posts/'));
 
-        $params = ['applications' => $this->getApplications(), 'testimonials' => $this->getFeaturedTestimonials(), 'publications' => $this->getPublications(), 'latest_blog_articles' => $latest_blog_articles, 'exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'wallets' => (new AvailableBuyingOptionsController())->getWallets()];
+        $params = ['applications' => $this->getApplications(), 'testimonials' => $this->getFeaturedTestimonials(), 'publications' => $this->getPublications(), 'exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'wallets' => (new AvailableBuyingOptionsController())->getWallets()];
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => 'https://blog.dentacoin.com/dumb-latest-posts/',
+            CURLOPT_SSL_VERIFYPEER => 0
+        ));
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        $resp = json_decode(curl_exec($curl));
+        curl_close($curl);
+
+        if(!empty($resp))   {
+            $params['latest_blog_articles'] = $resp;
+        }
+
         return view('pages/homepage', $params);
     }
 
