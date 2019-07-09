@@ -178,6 +178,9 @@ body.home {
         }
     }
     &.logged-in {
+        header {
+            padding-top: 0;    
+        }
         .logged-user-right-nav {
             > .hidden-box-parent {
                 font-size: 0;
@@ -185,7 +188,7 @@ body.home {
                 display: inline-block;
                 padding: 15px 0;
                 > span.user-name {
-                    color: white;  
+                    color: white;
                 }
             }
         }

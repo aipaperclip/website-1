@@ -5409,6 +5409,8 @@ body.home {
     @media screen and (max-width: 767px) {
       body.home header {
         width: 100%; } }
+  body.home.logged-in header {
+    padding-top: 0; }
   body.home.logged-in .logged-user-right-nav > .hidden-box-parent {
     font-size: 0;
     color: black;
