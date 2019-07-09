@@ -60,7 +60,8 @@
 @endif
 @include('partials.map-locations')
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-<script src="/dist/js/front-libs-script.js?v=1.0.48"></script>
+<script src="/dist/js/front-libs-script.js"></script>
+@yield("script_block")
 <script src="/dist/js/front-script.js?v=1.0.48"></script>
 </body>
 </html>
