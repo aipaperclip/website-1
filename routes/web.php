@@ -35,6 +35,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
 
+    Route::get('/how-to-create-wallet', 'HowToCreateWalletController@getView')->name('how-to-create-wallet');
+
     //Route::get('changelly', 'ChangellyController@getView')->name('changelly');
 
     Route::get('careers/{slug?}', function($slug = null)    {
@@ -51,25 +53,9 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     //======================================= LOGIN LOGIC ========================================
 
-    Route::get('/my-profile', 'UserController@getMyProfileView')->middleware('HandleUserSession')->name('my-profile');
-
-    Route::get('/edit-account', 'UserController@getEditAccountView')->middleware('HandleUserSession')->name('edit-account');
-
-    Route::get('/manage-privacy', 'UserController@getManagePrivacyView')->middleware('HandleUserSession')->name('manage-privacy');
-
-    Route::post('/validate-civic-kyc', 'UserController@validateCivicKyc')->middleware('HandleUserSession')->name('validate-civic-kyc');
-
-    Route::post('/delete-my-profile', 'UserController@deleteMyProfile')->middleware('HandleUserSession')->name('delete-my-profile');
-
-    Route::post('/update-account', 'UserController@updateAccount')->middleware('HandleUserSession')->name('update-account');
-
-    Route::post('/add-dcn-address', 'UserController@addDcnAddress')->middleware('HandleUserSession')->name('add-dcn-address');
-
     Route::get('/user-logout', 'UserController@userLogout')->name('user-logout');
 
     Route::get('/get-current-user-data', 'UserController@getCurrentUserData')->middleware('HandleUserSession')->name('get-current-user-data');
-
-    Route::post('/withdraw', 'UserController@withdraw')->middleware('HandleUserSession')->name('withdraw');
 
     Route::post('/dentist-login', 'UserController@dentistLogin')->name('dentist-login');
 
@@ -80,8 +66,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::get('/forgotten-password', 'UserController@getForgottenPasswordView')->name('forgotten-password');
 
     Route::post('/password-recover', 'UserController@getRecoverPassword')->name('password-recover');
-
-    Route::post('/download-gdpr-data', 'UserController@downloadGDPRData')->name('download-gdpr-data');
 
     Route::get('/forgotten-password', 'UserController@getForgottenPasswordView')->name('forgotten-password');
 

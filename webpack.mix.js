@@ -12,7 +12,6 @@ let mix = require('laravel-mix');
 mix.disableSuccessNotifications();
 
 //mix.js('public/assets/js/index.js', 'public/assets/js/index-compiled.js');
-//mix.js('public/assets/libs/truffle-contract/truffle-contract.js', 'public/assets/libs/truffle-contract/truffle-contract-compiled.js');
 
 /* ===== PUBLIC =====*/
 mix.styles([
@@ -29,7 +28,6 @@ mix.styles([
     'public/assets/css/style.css',
 ], 'public/dist/css/front-style.css');
 
-/*
 mix.scripts([
     'node_modules/jquery/dist/jquery.min.js',
     'public/assets/libs/emailoctopus/emailoctopus.js',
@@ -40,16 +38,14 @@ mix.scripts([
     'node_modules/bootstrap-select/dist/js/bootstrap-select.min.js',
     'node_modules/datatables.net/js/jquery.dataTables.min.js',
     'public/assets/libs/combobox/combobox.js',
-    'public/assets/libs/truffle-contract/truffle-contract-compiled.js',
 ], 'public/dist/js/front-libs-script.js');
-*/
 
-mix.babel([
+mix.scripts([
     'public/assets/js/basic.js',
     'public/assets/js/markerclusterer-v2.js',
     'public/assets/js/google-map.js',
-    'public/assets/js/address.js',/*
-    'public/assets/js/index-bundled.js',*/
+    'public/assets/js/address.js',
+    'public/assets/js/index.js',
 ], 'public/dist/js/front-script.js');
 
 /* ===== /PUBLIC =====*/

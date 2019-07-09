@@ -146,6 +146,7 @@ class Controller extends BaseController
         $sitemap->add(URL::to('corporate-design/one-line-logo'), '2018-12-10T20:10:00+02:00', '0.6', 'monthly');
         $sitemap->add(URL::to('corporate-design/two-line-logo'), '2018-12-10T20:10:00+02:00', '0.6', 'monthly');
         $sitemap->add(URL::to('corporate-design/round-logo'), '2018-12-10T20:10:00+02:00', '0.6', 'monthly');
+        $sitemap->add(URL::to('/how-to-create-wallet'), '2019-07-09:10:00+02:00', '0.8', 'weekly');
 
         //getting all pagination pages for testimonials
         for($i = 1, $length = (new UserExpressionsController())->getPagesCount(); $i <= $length; $i+=1) {

@@ -1,7 +1,3 @@
-var {getWeb3} = require('./helper');
-
-basic.init();
-
 checkIfCookie();
 
 //load images after website load
@@ -17,26 +13,6 @@ var stoppers = [];
 const draw_line_interval = 10;
 const draw_line_increment = 10;
 const border_width = 2;
-
-var dApp = {
-    infura_node: 'https://rinkeby.infura.io/v3/c3a8017424324e47be615fb4028275bb',
-    web3Provider: null,
-    web3_0_2: null,
-    web3_1_0: null,
-    init: function () {
-        return dApp.initWeb3();
-    },
-    initWeb3: async function () {
-        dApp.web3_1_0 = getWeb3(new Web3.providers.HttpProvider(dApp.infura_node));
-    }
-};
-
-dApp.init();
-
-//checking if passed address is valid
-function innerAddressCheck(address)    {
-    return dApp.web3_1_0.utils.isAddress(address);
-}
 
 var get_params = getGETParameters();
 
@@ -824,7 +800,28 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
     //LINE GOING UNDER TESTIMONIAL AVATARS
     initListingPageLine();
-}else if($('body').hasClass('partner-network') || $('body').hasClass('google-map-iframe')) {
+} else if($('body').hasClass('how-to-create-wallet')) {
+    var wallet_video_time_watched = 0;
+    var wallet_video_timer;
+
+    $('video.wallet-instructions-video').on('play', function() {
+        wallet_video_timer = setInterval(function() {
+            wallet_video_time_watched+=1;
+        }, 1000);
+    });
+
+    $('video.wallet-instructions-video').on('pause', function() {
+        clearInterval(wallet_video_timer);
+        fireGoogleAnalyticsEvent('Video', 'Play', 'How to Create a Wallet Demo', wallet_video_time_watched);
+    });
+
+    if($('.section-wallet-questions .question').length > 0) {
+        $('.section-wallet-questions .question').click(function()   {
+            $(this).toggleClass('active');
+            $(this).closest('li').find('.question-content').toggle(300);
+        });
+    }
+} else if($('body').hasClass('partner-network') || $('body').hasClass('google-map-iframe')) {
     //PARTNER NETWORK
     initMap();
 
@@ -1733,14 +1730,6 @@ function apiEventsListeners() {
                 custom_form_obj.slug = $('input[type="hidden"][name="slug"]').val();
             }
 
-            //check if CoreDB returned address for this user and if its valid one
-            if(basic.objHasKey(custom_form_obj, 'address') != null && innerAddressCheck(custom_form_obj.address)) {
-                //var current_dentists_for_logging_user = await App.assurance_methods.getWaitingContractsForPatient(custom_form_obj.address);
-                //if(current_dentists_for_logging_user.length > 0) {
-                //custom_form_obj.have_contracts = true;
-                //}
-            }
-
             if(event.response_data.new_account) {
                 //REGISTER
                 if(event.platform_type == 'facebook') {
@@ -1802,11 +1791,54 @@ function customJavascriptForm(path, params, method) {
 async function loggedOrNotLogic() {
     if($('body').hasClass('logged-in')) {
         var add_overflow_hidden_on_hidden_box_show = false;
+        var sm_screen_width = false;
         $('body').addClass('overflow-hidden');
         if($(window).width() < 992) {
             add_overflow_hidden_on_hidden_box_show = true;
+            if($(window).width() > 767) {
+                sm_screen_width = true;
+            }
         }
         $('body').removeClass('overflow-hidden');
+
+        if(sm_screen_width) {
+            $(document).on('click', 'body', function(){
+                if(!$('.hidden-box-parent').find(event.target).length) {
+                    $('.logged-user-right-nav .hidden-box').removeClass('show-this');
+                    $('.logged-user-right-nav .up-arrow').removeClass('show-this');
+                }
+            });
+        }
+
+        if(add_overflow_hidden_on_hidden_box_show) {
+            $('.logged-user-right-nav .user-name, .logged-user-right-nav .header-avatar').click(function() {
+                $('.logged-user-right-nav .hidden-box').toggleClass('show-this');
+                if(sm_screen_width) {
+                    $('.logged-user-right-nav .up-arrow').toggleClass('show-this');
+                } else {
+                    $('body').toggleClass('overflow-hidden');
+                }
+            });
+        } else {
+            $('.logged-user-right-nav > .hidden-box-parent').hover(function () {
+                $('.logged-user-right-nav .hidden-box').addClass('show-this');
+                $('.logged-user-right-nav .up-arrow').addClass('show-this');
+            }, function () {
+                $('.logged-user-right-nav .hidden-box').removeClass('show-this');
+                $('.logged-user-right-nav .up-arrow').removeClass('show-this');
+            });
+        }
+
+        $('.logged-user-right-nav .close-btn a').click(function() {
+            $('.logged-user-right-nav .hidden-box').removeClass('show-this');
+            if(add_overflow_hidden_on_hidden_box_show) {
+                $('body').removeClass('overflow-hidden');
+
+                if(sm_screen_width) {
+                    $('.logged-user-right-nav .up-arrow').removeClass('show-this');
+                }
+            }
+        });
 
         //IF NOT LOGGED LOGIC
         $('.logged-user-right-nav .hidden-box-hover').hover(function () {
@@ -1842,175 +1874,6 @@ async function loggedOrNotLogic() {
                 $('.logged-user-right-nav .up-arrow').removeClass('show-this');
             }
         });
-
-        if($('.logged-user-hamburger').length) {
-            $('.logged-user-hamburger').click(function() {
-                $('.logged-mobile-profile-menu').addClass('active');
-            });
-
-            $('.close-logged-mobile-profile-menu').click(function() {
-                $('.logged-mobile-profile-menu').removeClass('active');
-            });
-        }
-
-        //LOGGED USER LOGIC BY PAGES
-        if ($('body').hasClass('edit-account')) {
-            styleAvatarUploadButton('form#patient-update-profile .avatar .btn-wrapper label');
-
-            $('form#patient-update-profile').on('submit', function (event) {
-                var this_form = $(this);
-                var errors = false;
-                //clear prev errors
-                if (this_form.find('.error-handle').length) {
-                    this_form.find('.error-handle').remove();
-                }
-
-                var form_fields = this_form.find('.custom-input.required');
-                for (var i = 0, len = form_fields.length; i < len; i += 1) {
-                    if (form_fields.eq(i).hasClass('bootstrap-select')) {
-                        continue;
-                    }
-
-                    if (form_fields.eq(i).attr('type') == 'email' && !basic.validateEmail(form_fields.eq(i).val().trim())) {
-                        customErrorHandle(form_fields.eq(i).parent(), 'Please use valid email address.');
-                        errors = true;
-                    }
-
-                    if (form_fields.eq(i).val().trim() == '') {
-                        customErrorHandle(form_fields.eq(i).parent(), 'This field is required.');
-                        errors = true;
-                    }
-                }
-
-                if (this_form.find('[name="dcn_address"]').val().trim().length > 0 && !innerAddressCheck(this_form.find('[name="dcn_address"]').val().trim())) {
-                    customErrorHandle(this_form.find('[name="dcn_address"]').parent(), 'Please enter valid Wallet Address.');
-                    errors = true;
-                }
-
-                if (errors) {
-                    event.preventDefault();
-                } else {
-                    $('.response-layer').show();
-                }
-            });
-        } else if ($('body').hasClass('manage-privacy')) {
-            $('.download-gdpr-data').click(function () {
-                $.ajax({
-                    type: 'POST',
-                    url: '/download-gdpr-data',
-                    dataType: 'json',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (response) {
-                        if (response.success) {
-                            window.open(response.success, '_blank');
-                        } else if (response.error) {
-                            basic.showAlert(response.error, '', true);
-                        }
-                    }
-                });
-            });
-        } else if($('body').hasClass('my-profile')) {
-            $('.my-profile-page-content .dropdown-hidden-menu button').click(function () {
-                var this_btn = $(this);
-                $('.my-profile-page-content .current-converted-price .amount').html((parseFloat($('.current-dcn-amount').html()) * parseFloat(this_btn.attr('data-multiple-with'))).toFixed(2));
-                $('.my-profile-page-content .current-converted-price .symbol span').html(this_btn.html());
-            });
-
-            initDataTable();
-
-            if ($('form#withdraw').length) {
-                $('form#withdraw').on('submit', function (event) {
-                    var this_form_native = this;
-                    var this_form = $(this);
-                    var form_errors = false;
-                    this_form.find('.error-handle').remove();
-
-                    for (var i = 0, len = this_form.find('.required').length; i < len; i += 1) {
-                        if (this_form.find('.required').eq(i).val().trim() == '') {
-                            customErrorHandle(this_form.find('.required').eq(i).parent(), 'This field is required.');
-                            event.preventDefault();
-                            form_errors = true;
-                        } else if (this_form.find('.required').eq(i).hasClass('address') && !innerAddressCheck(this_form.find('.required').eq(i).val().trim())) {
-                            customErrorHandle(this_form.find('.required').eq(i).parent(), 'Please enter valid wallet address.');
-                            event.preventDefault();
-                            form_errors = true;
-                        }
-                    }
-
-                    event.preventDefault();
-                    if (!form_errors) {
-                        $('.response-layer').show();
-                        this_form_native.submit();
-                        this_form.unbind();
-                    }
-                });
-            }
-
-            if ($('form#add-dcn-address').length) {
-                $('form#add-dcn-address').on('submit', function (event) {
-                    var this_form = $(this);
-                    this_form.find('.error-handle').remove();
-                    if (this_form.find('.address').val().trim() == '') {
-                        customErrorHandle(this_form.find('.address').parent(), 'Please enter your wallet address.');
-                        event.preventDefault();
-                    } else if (!innerAddressCheck(this_form.find('.address').val().trim())) {
-                        customErrorHandle(this_form.find('.address').parent(), 'Please enter valid wallet address.');
-                        event.preventDefault();
-                    }
-                });
-            }
-
-            //loading address logic
-            await $.getScript('//dentacoin.com/assets/libs/civic-login/civic-kyc.js', function() {});
-
-            $(document).on('civicRead', async function (event) {
-                $('.response-layer').show();
-            });
-
-            $(document).on('receivedKYCCivicToken', async function (event) {
-                if(event.response_data) {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'https://civic.dentacoin.net/civic',
-                        dataType: 'json',
-                        data: {
-                            jwtToken: event.response_data
-                        },
-                        success: function (response) {
-                            if(response.data && has(response, 'userId') && response.userId != '') {
-                                $.ajax({
-                                    type: 'POST',
-                                    url: '/validate-civic-kyc',
-                                    dataType: 'json',
-                                    data: {
-                                        token: event.response_data
-                                    },
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    success: function (inner_response) {
-                                        if(inner_response.success) {
-                                            basic.showAlert('Civic KYC authentication passed successfully.', '', true);
-                                            setTimeout(function() {
-                                                window.location.reload();
-                                            }, 2000);
-                                        } else if(inner_response.error) {
-                                            $('.response-layer').hide();
-                                            basic.showAlert(inner_response.error, '', true);
-                                        }
-                                    }
-                                });
-                            }
-                        }
-                    });
-                } else {
-                    $('.response-layer').hide();
-                    basic.showAlert('Something went wrong with Civic authentication. Please try again later.', '', true);
-                }
-            });
-        }
     } else {
         //IF NOT LOGGED LOGIC
         if($('body').hasClass('home') || $('body').hasClass('foundation')) {

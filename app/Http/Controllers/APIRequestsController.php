@@ -279,64 +279,6 @@ class APIRequestsController extends Controller {
         }
     }
 
-    public function updateUserData($data) {
-        if(isset($data['specialisations'])) {
-            $data['specialisations'] = json_encode($data['specialisations']);
-        }
-
-        $header = array();
-        $header[] = 'Accept: */*';
-        $header[] = 'Authorization: Bearer ' . session('logged_user')['token'];
-        $header[] = 'Cache-Control: no-cache';
-
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/user/',
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_POSTFIELDS => $data,
-            CURLOPT_HTTPHEADER => $header
-        ));
-
-        $resp = json_decode(curl_exec($curl));
-        curl_close($curl);
-
-        if(!empty($resp))   {
-            return $resp;
-        }else {
-            return false;
-        }
-    }
-
-    public function deleteProfile() {
-        $header = array();
-        $header[] = 'Accept: */*';
-        $header[] = 'Authorization: Bearer ' . session('logged_user')['token'];
-        $header[] = 'Cache-Control: no-cache';
-
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/user/',
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_POSTFIELDS => array(
-                'self_deleted' => true
-            ),
-            CURLOPT_HTTPHEADER => $header
-        ));
-
-        $resp = json_decode(curl_exec($curl));
-        curl_close($curl);
-
-        if(!empty($resp))   {
-            return $resp;
-        }else {
-            return false;
-        }
-    }
-
     protected function getGasEstimationFromEthgasstation()  {
         //API connection
         $curl = curl_init();
@@ -378,59 +320,6 @@ class APIRequestsController extends Controller {
         }
     }
 
-    public function withdraw($amount) {
-        $header = array();
-        $header[] = 'Accept: */*';
-        $header[] = 'Authorization: Bearer ' . session('logged_user')['token'];
-        $header[] = 'Cache-Control: no-cache';
-
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/transcations/',
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_POSTFIELDS => array(
-                'amount' => $amount
-            ),
-            CURLOPT_HTTPHEADER => $header
-        ));
-
-        $resp = json_decode(curl_exec($curl));
-        curl_close($curl);
-
-        if(!empty($resp))   {
-            return $resp;
-        }else {
-            return false;
-        }
-    }
-
-    public function getGDPRDownloadLink() {
-        $header = array();
-        $header[] = 'Accept: */*';
-        $header[] = 'Authorization: Bearer ' . session('logged_user')['token'];
-        $header[] = 'Cache-Control: no-cache';
-
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/gdpr/',
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_HTTPHEADER => $header
-        ));
-
-        $resp = json_decode(curl_exec($curl));
-        curl_close($curl);
-
-        if(!empty($resp))   {
-            return $resp;
-        }else {
-            return false;
-        }
-    }
-
     public function getDCNTransactions() {
         $header = array();
         $header[] = 'Accept: */*';
@@ -453,31 +342,6 @@ class APIRequestsController extends Controller {
         }else {
             return false;
         }
-    }
-
-    public function validateCivicToken($token) {
-        $header = array();
-        $header[] = 'Accept: */*';
-        $header[] = 'Authorization: Bearer ' . session('logged_user')['token'];
-        $header[] = 'Cache-Control: no-cache';
-
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/kyc/',
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_POSTFIELDS => array(
-                'jwtToken' => $token
-            ),
-            CURLOPT_HTTPHEADER => $header
-        ));
-
-        $resp = json_decode(curl_exec($curl));
-        curl_close($curl);
-
-        return $resp;
     }
 
     public function updateAnonymousUserData($data) {

@@ -1,0 +1,43 @@
+.section-wallet-video {
+    .wallet-instructions-video {
+        display: block;
+        width: 100%;
+    }
+}
+
+.section-wallet-questions {
+    .question {
+        color: $main_color;
+        display: block;
+        width: 100%;
+        @include box-shadow(0 1px 8px 0 rgba(0,0,0,.2));
+        @include simple_transition(.3s);
+        .column {
+            background-image: url(/assets/images/arrow-down-dark-blue.svg);
+            background-repeat: no-repeat;
+            background-size: 15px auto;
+            background-position: center right 15px;
+        }
+        &.active {
+            color: white;
+            background-color: $dark_blue;
+            .column {
+                background-image: url(/assets/images/arrow-up-white.svg);
+            }
+            .dark_blue {
+                color: white;
+            }
+        }
+    }
+    .question-content {
+        display: none;
+        ul {
+            li {
+                list-style: disc inside none;
+            }
+        }
+        a {
+            text-decoration: underline;
+        }
+    }
+}

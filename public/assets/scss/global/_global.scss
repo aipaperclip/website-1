@@ -149,10 +149,18 @@ body {
     font-style: italic;
 }
 
+.display-block {
+    display: block;
+}
+
 .hide-xs {
     @include breakpoint($xs)    {
         display: none !important;
     }
+}
+
+.text-center {
+    text-align: center;
 }
 
 .text-center-xs {
@@ -484,13 +492,12 @@ body.testimonials, body.press-center {
 }
 
 .bootbox {
-    .close {
-        opacity: .5;
-    }
     .bootbox-close-button {
-        font-size: 28px;
-        margin-top: -5px !important;
-        margin-right: 5px;
+        position: absolute;
+        right: 10px;
+        font-size: 26px;
+        top: 0;
+        margin-top: 0 !important;
     }
     @include breakpoint($sm-up) {
         display: flex !important;
