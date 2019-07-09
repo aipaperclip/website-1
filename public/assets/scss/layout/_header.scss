@@ -163,7 +163,7 @@ header {
         }
     }
     @include breakpoint($xs) {
-        padding-top: 0;  
+        padding-top: 0;
     }
 }
 
@@ -179,9 +179,13 @@ body.home {
     }
     &.logged-in {
         .logged-user-right-nav {
-            > a {
-                span {
-                    color: white;
+            > .hidden-box-parent {
+                font-size: 0;
+                color: black;
+                display: inline-block;
+                padding: 15px 0;
+                > span.user-name {
+                    color: white;  
                 }
             }
         }
