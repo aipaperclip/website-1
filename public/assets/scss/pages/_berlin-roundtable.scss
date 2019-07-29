@@ -1,0 +1,257 @@
+$light_blue_2: #3aabe1;
+
+body.berlin-roundtable {
+    .color-light-blue-2 {
+        color: $light_blue_2;
+    }
+    .white-light-blue-btn {
+        background-color: $light_blue_2;
+        color: white;
+        font-size: 20px;
+        padding: 6px 15px;
+        font-weight: bold;
+        border: 2px solid $light_blue_2;
+        text-decoration: none;
+        @include rounded(4px);
+        @include simple_transition(.3s);
+        &:hover {
+            color: $light_blue_2;
+            background-color: white;
+            text-decoration: none;
+        }
+    }
+    .module {
+        &.custom-google-label-style {
+            position: relative;
+            label {
+                position: absolute;
+                font-size: 16px !important;
+                cursor: pointer;
+                margin: 0;
+                width: calc(100% - 20px) !important;
+                padding-bottom: 10px !important;
+                padding-top: 10px !important;
+                background-color: white;
+                left: 10px;
+                color: #888888;
+                font-weight: normal;
+                top: 50%;
+                font-family: 'Calibri-Regular';
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+                @include rounded(4px);
+                @include simple_transition(.3s);
+                &.active-label {
+                    width: auto !important;
+                    font-size: 14px !important;
+                    top: -8px;
+                    padding: 0 5px !important;
+                    -webkit-transform: none;
+                    -ms-transform: none;
+                    transform: none;
+                    color: $light_blue_2;
+                    font-weight: bold;
+                }
+            }
+            .left-side {
+                width: calc(100% - 100px);
+                position: relative;
+                &.error-field {
+                    input, label {
+                        color: red;
+                    }
+                }
+            }
+            input {
+                border: 2px solid #dddddd;
+                cursor: pointer;
+                font-size: 16px;
+                font-family: 'Lato-Regular';
+                width: 100%;
+                padding: 10px 15px;
+                @include rounded(4px 0 0 4px);
+                &.full-rounded {
+                    @include rounded(4px);
+                }
+                &.blue-green-border {
+                    border: 2px solid $light_blue_2;
+                }
+            }
+            span {
+                width: 100px;
+                text-align: center;
+                padding-top: 12px;
+                font-size: 18px;
+                font-family: 'Lato-Regular';
+                color: $main_color;
+                background-color: #dddddd;
+                @include rounded(0 4px 4px 0);
+            }
+        }
+        &.custom-google-select-style {
+            position: relative;
+            label {
+                width: auto !important;
+                font-size: 14px !important;
+                top: -8px;
+                padding: 0 5px !important;
+                -webkit-transform: none;
+                -ms-transform: none;
+                transform: none;
+                color: $light_blue_2;
+                font-weight: bold;
+                position: absolute;
+                cursor: pointer;
+                margin: 0;
+                background-color: white;
+                left: 10px;
+                @include rounded(4px);
+                @include simple_transition(.3s);
+            }
+            select {
+                background-image: url('/assets/images/select-arrow.svg');
+                background-position: top 50% right 10px;
+                background-size: 15px;
+                background-repeat: no-repeat;
+                border: 2px solid $light_blue_2;
+                cursor: pointer;
+                font-size: 16px;
+                font-family: 'Lato-Regular';
+                width: 100%;
+                padding: 10px 30px 10px 15px;
+                -webkit-appearance: initial;
+                @include rounded(4px);
+            }
+        }
+    }
+    .section-register-form {
+        .blue-line {
+            height: 10px;
+            background-color: $light_blue_2;
+        }
+        .box-shadow {
+            @include box-shadow(0 2px 10px 0 rgba(0,0,0,.1));
+        }
+        form {
+            textarea {
+                border: 2px solid #dddddd;
+                cursor: pointer;
+                font-size: 16px;
+                font-family: 'Lato-Regular';
+                width: 100%;
+                padding: 10px 15px;
+                @include rounded(4px 0 0 4px);
+            }
+            .captcha-parent {
+                .width-50 {
+                    width: 50%;
+                    .captcha-container {
+                        text-align: center;
+                    }
+                    @include breakpoint($xs)    {
+                        width: 100%;
+                        .captcha-container {
+                            padding-top: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .section-days {
+        background-image: url('/assets/images/days-bg.svg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        @include breakpoint($xs) {
+            background-image: url('/assets/images/days-bg-mobile.svg');
+        }
+    }
+    .section-confirmed-attendees {
+        .cell-wrapper {
+            padding: 15px;
+            background-color: #eef8fd;
+            height: 100%;
+            .logo {
+                img {
+                    max-height: 50px;
+                }
+            }
+            hr {
+                width: 150px;
+                margin: 5px auto;
+                border-color: #686c6e;
+            }
+        }
+
+        .slick-prev {
+            width: 30px;
+            height: 30px;
+            left: 10px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: url('/assets/images/left-arrow.svg');
+            background-size: auto 100%;
+            z-index: 3;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: block;
+            font-size: 0;
+            border: 0;
+            cursor: pointer;
+            @include box-shadow(none);
+            &.slick-disabled {
+                display: none !important;
+            }
+        }
+        .slick-next {
+            width: 30px;
+            height: 30px;
+            right: 10px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: url('/assets/images/right-arrow.svg');
+            background-size: auto 100%;
+            z-index: 3;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: block;
+            font-size: 0;
+            border: 0;
+            cursor: pointer;
+            @include box-shadow(none);
+            &.slick-disabled {
+                display: none !important;
+            }
+        }
+    }
+    .section-reserve-your-spot {
+        background-color: #eef8fd;
+    }
+    footer {
+        background-color: #eef8fd;
+        border: 0;
+        .left-border {
+            border-left: 1px solid black;
+            @include breakpoint($xs) {
+                border: 0;
+                position: relative;
+                &:before {
+                    content: '';
+                    top: 0;
+                    width: 100px;
+                    height: 1px;
+                    background-color: black;
+                    @include horizontal-align(absolute);
+                }
+            }
+        }
+        .blue-line {
+            height: 20px;
+            background-color: $light_blue_2;
+        }
+    }
+}

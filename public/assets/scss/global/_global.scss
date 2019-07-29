@@ -153,6 +153,10 @@ body {
     display: block;
 }
 
+.display-flex {
+    display: flex;
+}
+
 .hide-xs {
     @include breakpoint($xs)    {
         display: none !important;

@@ -1079,10 +1079,64 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         }
     });
 }else if($('body.corporate-design').length > 0) {
+    //CORPORATE DESIGN
+
     $('.clickable-squares-row .square').click(function()    {
         $(this).closest('.clickable-squares-row').find('.square').removeClass('active');
         $(this).addClass('active');
     });
+}else if($('body.berlin-roundtable').length > 0) {
+    //BERLIN ROUNDTABLE
+
+    $(document).on('click', '.reserve-your-spot', function() {
+        $('html, body').animate({'scrollTop': $('.reserve-your-spot-form').offset().top }, 300);
+    });
+
+    $('select[name="company-profile"]').on('change', function() {
+        if($(this).find('option:selected').val() == 'Other (please specify):') {
+            $('.camping-select-result').html('<div class="padding-bottom-20 field-parent"><textarea id="why-do-you-want-to-join" name="why-do-you-want-to-join" placeholder="Why do you want to join the roundtable?" rows="3" maxlength="3000" class="required form-field"></textarea></div>');
+        } else {
+            $('.camping-select-result').html('');
+        }
+    });
+
+    $('form.reserve-your-spot-form').on('submit', async function(event) {
+        var this_form_native = this;
+        var this_form = $(this_form_native);
+        event.preventDefault();
+
+        //clear prev errors
+        if(this_form.find('.error-handle').length) {
+            this_form.find('.error-handle').remove();
+        }
+
+        var form_fields = this_form.find('.form-field.required');
+        var submit_form = true;
+        for (var i = 0, len = form_fields.length; i < len; i += 1) {
+            if (form_fields.eq(i).attr('type') == 'email' && !basic.validateEmail(form_fields.eq(i).val().trim())) {
+                customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please use valid email address.');
+                submit_form = false;
+            }
+
+            if (form_fields.eq(i).val().trim() == '') {
+                customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'This field is required.');
+                submit_form = false;
+            }
+        }
+
+        if(submit_form) {
+            this_form_native.submit();
+        }
+    });
+
+    if($('.attendees-slider').length) {
+        $('.attendees-slider').slick({
+            slidesToShow: 1,
+            infinite: true,
+            arrows: true,
+            dots: false
+        });
+    }
 }
 
 function drawHeaderToFirstSectionLine() {

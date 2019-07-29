@@ -3380,6 +3380,9 @@ body {
 .display-block {
   display: block; }
 
+.display-flex {
+  display: flex; }
+
 @media screen and (max-width: 767px) {
   .hide-xs {
     display: none !important; } }
@@ -8148,6 +8151,260 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     list-style: disc inside none; }
   .section-wallet-questions .question-content a {
     text-decoration: underline; }
+
+body.berlin-roundtable .color-light-blue-2 {
+  color: #3aabe1; }
+body.berlin-roundtable .white-light-blue-btn {
+  background-color: #3aabe1;
+  color: white;
+  font-size: 20px;
+  padding: 6px 15px;
+  font-weight: bold;
+  border: 2px solid #3aabe1;
+  text-decoration: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  body.berlin-roundtable .white-light-blue-btn:hover {
+    color: #3aabe1;
+    background-color: white;
+    text-decoration: none; }
+body.berlin-roundtable .module.custom-google-label-style {
+  position: relative; }
+  body.berlin-roundtable .module.custom-google-label-style label {
+    position: absolute;
+    font-size: 16px !important;
+    cursor: pointer;
+    margin: 0;
+    width: calc(100% - 20px) !important;
+    padding-bottom: 10px !important;
+    padding-top: 10px !important;
+    background-color: white;
+    left: 10px;
+    color: #888888;
+    font-weight: normal;
+    top: 50%;
+    font-family: 'Calibri-Regular';
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s; }
+    body.berlin-roundtable .module.custom-google-label-style label.active-label {
+      width: auto !important;
+      font-size: 14px !important;
+      top: -8px;
+      padding: 0 5px !important;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+      color: #3aabe1;
+      font-weight: bold; }
+  body.berlin-roundtable .module.custom-google-label-style .left-side {
+    width: calc(100% - 100px);
+    position: relative; }
+    body.berlin-roundtable .module.custom-google-label-style .left-side.error-field input, body.berlin-roundtable .module.custom-google-label-style .left-side.error-field label {
+      color: red; }
+  body.berlin-roundtable .module.custom-google-label-style input {
+    border: 2px solid #dddddd;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Lato-Regular';
+    width: 100%;
+    padding: 10px 15px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    -ms-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px; }
+    body.berlin-roundtable .module.custom-google-label-style input.full-rounded {
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      border-radius: 4px; }
+    body.berlin-roundtable .module.custom-google-label-style input.blue-green-border {
+      border: 2px solid #3aabe1; }
+  body.berlin-roundtable .module.custom-google-label-style span {
+    width: 100px;
+    text-align: center;
+    padding-top: 12px;
+    font-size: 18px;
+    font-family: 'Lato-Regular';
+    color: #1d1d1d;
+    background-color: #dddddd;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    -ms-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0; }
+body.berlin-roundtable .module.custom-google-select-style {
+  position: relative; }
+  body.berlin-roundtable .module.custom-google-select-style label {
+    width: auto !important;
+    font-size: 14px !important;
+    top: -8px;
+    padding: 0 5px !important;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    color: #3aabe1;
+    font-weight: bold;
+    position: absolute;
+    cursor: pointer;
+    margin: 0;
+    background-color: white;
+    left: 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s; }
+  body.berlin-roundtable .module.custom-google-select-style select {
+    background-image: url("/assets/images/select-arrow.svg");
+    background-position: top 50% right 10px;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    border: 2px solid #3aabe1;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Lato-Regular';
+    width: 100%;
+    padding: 10px 30px 10px 15px;
+    -webkit-appearance: initial;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px; }
+body.berlin-roundtable .section-register-form .blue-line {
+  height: 10px;
+  background-color: #3aabe1; }
+body.berlin-roundtable .section-register-form .box-shadow {
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1); }
+body.berlin-roundtable .section-register-form form textarea {
+  border: 2px solid #dddddd;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Lato-Regular';
+  width: 100%;
+  padding: 10px 15px;
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  -ms-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px; }
+body.berlin-roundtable .section-register-form form .captcha-parent .width-50 {
+  width: 50%; }
+  body.berlin-roundtable .section-register-form form .captcha-parent .width-50 .captcha-container {
+    text-align: center; }
+  @media screen and (max-width: 767px) {
+    body.berlin-roundtable .section-register-form form .captcha-parent .width-50 {
+      width: 100%; }
+      body.berlin-roundtable .section-register-form form .captcha-parent .width-50 .captcha-container {
+        padding-top: 10px; } }
+body.berlin-roundtable .section-days {
+  background-image: url("/assets/images/days-bg.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+  @media screen and (max-width: 767px) {
+    body.berlin-roundtable .section-days {
+      background-image: url("/assets/images/days-bg-mobile.svg"); } }
+body.berlin-roundtable .section-confirmed-attendees .cell-wrapper {
+  padding: 15px;
+  background-color: #eef8fd;
+  height: 100%; }
+  body.berlin-roundtable .section-confirmed-attendees .cell-wrapper .logo img {
+    max-height: 50px; }
+  body.berlin-roundtable .section-confirmed-attendees .cell-wrapper hr {
+    width: 150px;
+    margin: 5px auto;
+    border-color: #686c6e; }
+body.berlin-roundtable .section-confirmed-attendees .slick-prev {
+  width: 30px;
+  height: 30px;
+  left: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: url("/assets/images/left-arrow.svg");
+  background-size: auto 100%;
+  z-index: 3;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  font-size: 0;
+  border: 0;
+  cursor: pointer;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  box-shadow: none; }
+  body.berlin-roundtable .section-confirmed-attendees .slick-prev.slick-disabled {
+    display: none !important; }
+body.berlin-roundtable .section-confirmed-attendees .slick-next {
+  width: 30px;
+  height: 30px;
+  right: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: url("/assets/images/right-arrow.svg");
+  background-size: auto 100%;
+  z-index: 3;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  font-size: 0;
+  border: 0;
+  cursor: pointer;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  box-shadow: none; }
+  body.berlin-roundtable .section-confirmed-attendees .slick-next.slick-disabled {
+    display: none !important; }
+body.berlin-roundtable .section-reserve-your-spot {
+  background-color: #eef8fd; }
+body.berlin-roundtable footer {
+  background-color: #eef8fd;
+  border: 0; }
+  body.berlin-roundtable footer .left-border {
+    border-left: 1px solid black; }
+    @media screen and (max-width: 767px) {
+      body.berlin-roundtable footer .left-border {
+        border: 0;
+        position: relative; }
+        body.berlin-roundtable footer .left-border:before {
+          content: '';
+          top: 0;
+          width: 100px;
+          height: 1px;
+          background-color: black;
+          position: absolute;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          transform: translateX(-50%); } }
+  body.berlin-roundtable footer .blue-line {
+    height: 20px;
+    background-color: #3aabe1; }
 
 body.logged-in .my-profile-menu {
   width: 300px;
