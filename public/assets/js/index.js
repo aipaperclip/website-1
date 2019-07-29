@@ -1051,8 +1051,10 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
     }
 
     //handle apply from submission
-    $('.apply-for-position form').on('submit', function()   {
-        var this_form = $(this);
+    $('.apply-for-position form').on('submit', async function(event)   {
+        event.preventDefault();
+        var this_form_native = this;
+        var this_form = $(this_form_native);
         var errors = [];
         for(var i = 0, len = required_inputs.length; i < len; i+=1) {
             if($('.apply-for-position form [name="'+required_inputs[i]+'"]').length > 0) {
@@ -1064,18 +1066,24 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
             }
         }
 
+        var check_captcha_response = await checkCaptcha(this_form.find('#captcha').val().trim());
+        if(check_captcha_response.error) {
+            errors.push('<strong>Please enter correct captcha.</strong>');
+        }
+
         if(!this_form.find('.privacy-policy #privacy-policy').is(':checked'))   {
             errors.push(this_form.find('.privacy-policy').attr('data-valid-message'));
         }
 
         if(errors.length > 0) {
-            event.preventDefault();
             var errors_html = '';
             for(var y = 0, len = errors.length; y < len; y+=1)  {
                 errors_html+='<div class="alert alert-danger">'+errors[y]+'</div>';
             }
             $('.errors.form-row').html(errors_html);
             $('html, body').animate({'scrollTop': $('.below-apply-for-position').offset().top}, 300);
+        } else {
+            this_form_native.submit();
         }
     });
 }else if($('body.corporate-design').length > 0) {

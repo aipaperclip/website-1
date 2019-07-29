@@ -74,7 +74,7 @@
                         <img src="/assets/images/date.svg" alt="Date" class="width-100 max-width-50 max-width-xs-30" itemprop="contentUrl"/>
                     </figure>
                     <span class="lato-bold fs-36 fs-xs-22 inline-block padding-left-10">DATE:</span>
-                    <div class="padding-top-10 fs-24 fs-xs-16 lato-regular">October 26, 2019</div>
+                    <div class="padding-top-10 fs-24 fs-xs-16 lato-regular">October 26-27, 2019</div>
                 </div>
                 <div class="col-xs-12 col-sm-4 padding-bottom-20 padding-bottom-xs-30 text-center inline-block-top">
                     <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
@@ -404,25 +404,25 @@
                 <h2 class="col-xs-12 fs-36 fs-xs-26 lato-bold padding-bottom-70 padding-bottom-xs-30">DOWNLOAD BROCHURES TO LEARN MORE</h2>
             </div>
             <div class="row">
-                <a href="" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50">
+                <a href="/assets/uploads/blockchain-in-healthcare-berlin-providers-1.pdf" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50">
                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
                         <img src="/assets/images/blockchain-brochure.svg" class="max-width-150" alt="Blockchain companies" itemprop="contentUrl"/>
                         <figcaption class="color-light-blue-2 fs-18 fs-xs-16 lato-bold padding-top-25">Blockchain companies</figcaption>
                     </figure>
                 </a>
-                <a href="" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50">
+                <a href="/assets/uploads/blockchain-in-healthcare-berlin-suppliers-1.pdf" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50">
                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
                         <img src="/assets/images/suppliers-brochure.svg" class="max-width-150" alt="Supplier/ Manufacturers" itemprop="contentUrl"/>
                         <figcaption class="color-light-blue-2 fs-18 fs-xs-16 lato-bold padding-top-25">Supplier/ Manufacturers</figcaption>
                     </figure>
                 </a>
-                <a href="" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50">
+                <a href="/assets/uploads/blockchain-in-healthcare-berlin-media-1.pdf" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50">
                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
                         <img src="/assets/images/media-brochure.svg" class="max-width-100" alt="Media" itemprop="contentUrl"/>
                         <figcaption class="color-light-blue-2 fs-18 fs-xs-16 lato-bold padding-top-25">Media</figcaption>
                     </figure>
                 </a>
-                <a href="" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50">
+                <a href="/assets/uploads/blockchain-in-healthcare-berlin-investors-1.pdf" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50">
                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
                         <img src="/assets/images/investors-brochure.svg" class="max-width-150" alt="Investors" itemprop="contentUrl"/>
                         <figcaption class="color-light-blue-2 fs-18 fs-xs-16 lato-bold padding-top-25">Investors</figcaption>
