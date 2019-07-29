@@ -92,7 +92,7 @@
                 </figure>
                 <div class="inline-block-bottom col-xs-12 col-sm-6 col-lg-4 no-gutter margin-bottom-100 box-shadow">
                     <div class="blue-line"></div>
-                    <form method="POST" enctype="multipart/form-data" action="{{route('submit-berlin-roundtable-form')}}" class="padding-top-30 padding-bottom-30 padding-left-40 padding-right-40 padding-left-xs-20 padding-right-xs-20 reserve-your-spot-form">
+                    <form method="POST" enctype="multipart/form-data" action="" class="padding-top-30 padding-bottom-30 padding-left-40 padding-right-40 padding-left-xs-20 padding-right-xs-20 reserve-your-spot-form">
                         <h2 class="text-center lato-bold fs-36 fs-xs-26 padding-bottom-10">RESERVE YOUR SPOT</h2>
                         <h3 class="text-center fs-26 fs-xs-18 padding-bottom-40">until August 31, 2019: </h3>
                         <div class="padding-bottom-20 field-parent">
@@ -486,11 +486,11 @@
             </figure>
         </div>
     </div>
-    {{--<script src="/assets/js/basic.js"></script>--}}
+    <script src="/assets/js/basic.js"></script>
     <script src="/dist/js/front-libs-script.js?v=1.0.1"></script>
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.0.1"></script>
-    {{--<script src="/assets/js/index.js"></script>--}}
+    {{--<script src="/dist/js/front-script.js?v=1.0.1"></script>--}}
+    <script src="/assets/js/index.js"></script>
 
     {{--Multiple errors from laravel validation--}}
     @if(!empty($errors) && count($errors) > 0)

@@ -1100,32 +1100,60 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         }
     });
 
+    var init_form = true;
     $('form.reserve-your-spot-form').on('submit', async function(event) {
-        var this_form_native = this;
-        var this_form = $(this_form_native);
+        var this_form = $(this);
         event.preventDefault();
+        if(init_form) {
+            //clear prev errors
+            if(this_form.find('.error-handle').length) {
+                this_form.find('.error-handle').remove();
+            }
 
-        //clear prev errors
-        if(this_form.find('.error-handle').length) {
-            this_form.find('.error-handle').remove();
-        }
+            var form_fields = this_form.find('.form-field.required');
+            var submit_form = true;
+            for (var i = 0, len = form_fields.length; i < len; i += 1) {
+                if (form_fields.eq(i).attr('type') == 'email' && !basic.validateEmail(form_fields.eq(i).val().trim())) {
+                    customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please use valid email address.');
+                    submit_form = false;
+                }
 
-        var form_fields = this_form.find('.form-field.required');
-        var submit_form = true;
-        for (var i = 0, len = form_fields.length; i < len; i += 1) {
-            if (form_fields.eq(i).attr('type') == 'email' && !basic.validateEmail(form_fields.eq(i).val().trim())) {
-                customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please use valid email address.');
+                if (form_fields.eq(i).val().trim() == '') {
+                    customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'This field is required.');
+                    submit_form = false;
+                }
+            }
+
+            var check_captcha_response = await checkCaptcha(this_form.find('#register-captcha').val().trim());
+            if(check_captcha_response.error) {
+                customErrorHandle(this_form.find('#register-captcha').closest('.field-parent'), 'Please enter correct captcha.');
                 submit_form = false;
             }
 
-            if (form_fields.eq(i).val().trim() == '') {
-                customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'This field is required.');
-                submit_form = false;
+            if(submit_form && init_form) {
+                init_form = false;
+                $('.response-layer').show();
+                setTimeout(async function() {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/submit-berlin-roundtable-form',
+                        dataType: 'json',
+                        data: this_form.serialize(),
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function (response) {
+                            if(response.success) {
+                                init_form = true;
+                                basic.showAlert(response.success);
+                                $('form.reserve-your-spot-form input.required, form.reserve-your-spot-form textarea.required').val('');
+                                $('.refresh-captcha').click();
+                                $('.response-layer').hide();
+                            }
+                        }
+                    });
+                }, 1000);
             }
-        }
-
-        if(submit_form) {
-            this_form_native.submit();
         }
     });
 
