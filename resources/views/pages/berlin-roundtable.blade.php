@@ -371,7 +371,7 @@
                                     <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
                                         <img src="/assets/images/yossi-logo.png" class="width-100" alt="Yossi logo" itemprop="contentUrl"/>
                                     </figure>
-                                    <div>Helping consumers get recognized and paid for data and healthy behaviour</div>
+                                    <div>A boutique consulting firm helping technology meet funding</div>
                                     <a href="//investable.solutions/" target="_blank" class="color-light-blue-2">www.investable.solutions</a>
                                     <hr/>
                                     <div>Represented by:</div>
