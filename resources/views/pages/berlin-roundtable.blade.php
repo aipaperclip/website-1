@@ -486,11 +486,11 @@
             </figure>
         </div>
     </div>
-    <script src="/assets/js/basic.js"></script>
-    <script src="/dist/js/front-libs-script.js?v=1.0.1"></script>
+    {{--<script src="/assets/js/basic.js"></script>--}}
+    <script src="/dist/js/front-libs-script.js?v=1.0.2"></script>
     @yield("script_block")
-    {{--<script src="/dist/js/front-script.js?v=1.0.1"></script>--}}
-    <script src="/assets/js/index.js"></script>
+    <script src="/dist/js/front-script.js?v=1.0.2"></script>
+    {{--<script src="/assets/js/index.js"></script>--}}
 
     {{--Multiple errors from laravel validation--}}
     @if(!empty($errors) && count($errors) > 0)
