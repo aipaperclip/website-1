@@ -144,7 +144,7 @@
                                     <option>Medical manufacturer</option>
                                     <option>Software provider</option>
                                     <option>Media</option>
-                                    <option>Other (please specify):</option>
+                                    <option>Other:</option>
                                 </select>
                             </div>
                         </div>
