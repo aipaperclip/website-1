@@ -131,10 +131,11 @@
                                 <input type="text" id="website" name="website" maxlength="250" class="full-rounded required form-field"/>
                             </div>
                         </div>
-                        <div class="padding-bottom-20">
+                        <div class="padding-bottom-20 field-parent">
                             <div class="custom-google-select-style module">
                                 <label>Company profile:</label>
                                 <select class="form-field required" name="company-profile">
+                                    <option value="disabled">Choose from list</option>
                                     <option>Blockchain company</option>
                                     <option>Investor</option>
                                     <option>Dental supplier</option>
@@ -148,6 +149,9 @@
                             </div>
                         </div>
                         <div class="camping-select-result"></div>
+                        <div class="padding-bottom-20 field-parent">
+                            <textarea id="why-do-you-want-to-join" name="why-do-you-want-to-join" placeholder="Why do you want to join the roundtable?" rows="3" maxlength="3000" class="required form-field"></textarea>
+                        </div>
                         <div class="fs-0 captcha-parent padding-bottom-20 field-parent">
                             <div class="inline-block width-50 width-xs-100 padding-bottom-xs-15">
                                 <div class="captcha-container flex text-center">
@@ -199,7 +203,7 @@
                         <div class="attendees-slider padding-left-50 padding-right-50">
                             <div class="cell-wrapper fs-16">
                                 <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="/assets/images/one-line-logo.svg" class="width-100" alt="Dentacoin logo" itemprop="contentUrl"/>
+                                    <img src="/assets/images/dentacoin-logo.png"  alt="Dentacoin logo" itemprop="contentUrl"/>
                                 </figure>
                                 <div>The first blockchain solution for the global dental industry</div>
                                 <a href="//dentacoin.com/" target="_blank" class="color-light-blue-2">www.dentacoin.com</a>
@@ -213,7 +217,7 @@
                             </div>
                             <div class="cell-wrapper fs-16">
                                 <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="/assets/images/cover-us-logo.svg" class="width-100" alt="Cover us logo" itemprop="contentUrl"/>
+                                    <img src="/assets/images/cover-us-logo.png"  alt="Cover us logo" itemprop="contentUrl"/>
                                 </figure>
                                 <div>Smart app allowing patients to control and profit from their health data</div>
                                 <a href="//coverus.health/" target="_blank" class="color-light-blue-2">www.coverus.health</a>
@@ -227,7 +231,7 @@
                             </div>
                             <div class="cell-wrapper fs-16">
                                 <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="/assets/images/well-logo.svg" class="width-100" alt="Well logo" itemprop="contentUrl"/>
+                                    <img src="/assets/images/well-logo.png"  alt="Well logo" itemprop="contentUrl"/>
                                 </figure>
                                 <div>Helping consumers get recognized and paid for data and healthy behaviour</div>
                                 <a href="//joinwell.io/" target="_blank" class="color-light-blue-2">www.joinwell.io</a>
@@ -241,7 +245,7 @@
                             </div>
                             <div class="cell-wrapper fs-16">
                                 <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="/assets/images/dnatix.png" class="width-100" alt="Dnatix logo" itemprop="contentUrl"/>
+                                    <img src="/assets/images/dnatix.png"  alt="Dnatix logo" itemprop="contentUrl"/>
                                 </figure>
                                 <div>The anonymous genetic platform for secure storage and trasfer of data</div>
                                 <a href="//dnatix.com/" target="_blank" class="color-light-blue-2">www.dnatix.com</a>
@@ -255,7 +259,7 @@
                             </div>
                             <div class="cell-wrapper fs-16">
                                 <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="/assets/images/aimedis.png" class="width-100" alt="Aimedis logo" itemprop="contentUrl"/>
+                                    <img src="/assets/images/aimedis.png"  alt="Aimedis logo" itemprop="contentUrl"/>
                                 </figure>
                                 <div>A blockchain backed medical ecosystem offering more than eHealth</div>
                                 <a href="//aimedis.com/" target="_blank" class="color-light-blue-2">www.aimedis.com</a>
@@ -269,7 +273,7 @@
                             </div>
                             <div class="cell-wrapper fs-16">
                                 <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="/assets/images/yossi-logo.png" class="width-100" alt="Yossi logo" itemprop="contentUrl"/>
+                                    <img src="/assets/images/yossi-logo.png"  alt="Yossi logo" itemprop="contentUrl"/>
                                 </figure>
                                 <div>A boutique consulting firm helping technology meet funding</div>
                                 <a href="//investable.solutions/" target="_blank" class="color-light-blue-2">www.investable.solutions</a>
@@ -287,7 +291,7 @@
                             <div class="col-xs-12 col-sm-4 padding-bottom-20">
                                 <div class="cell-wrapper fs-16">
                                     <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="/assets/images/one-line-logo.svg" class="width-100" alt="Dentacoin logo" itemprop="contentUrl"/>
+                                        <img src="/assets/images/dentacoin-logo.png"  alt="Dentacoin logo" itemprop="contentUrl"/>
                                     </figure>
                                     <div>The first blockchain solution for the global dental industry</div>
                                     <a href="//dentacoin.com/" target="_blank" class="color-light-blue-2">www.dentacoin.com</a>
@@ -303,7 +307,7 @@
                             <div class="col-xs-12 col-sm-4 padding-bottom-20">
                                 <div class="cell-wrapper fs-16">
                                     <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="/assets/images/cover-us-logo.svg" class="width-100" alt="Cover us logo" itemprop="contentUrl"/>
+                                        <img src="/assets/images/cover-us-logo.png"  alt="Cover us logo" itemprop="contentUrl"/>
                                     </figure>
                                     <div>Smart app allowing patients to control and profit from their health data</div>
                                     <a href="//coverus.health/" target="_blank" class="color-light-blue-2">www.coverus.health</a>
@@ -319,7 +323,7 @@
                             <div class="col-xs-12 col-sm-4 padding-bottom-20">
                                 <div class="cell-wrapper fs-16">
                                     <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="/assets/images/well-logo.svg" class="width-100" alt="Well logo" itemprop="contentUrl"/>
+                                        <img src="/assets/images/well-logo.png"  alt="Well logo" itemprop="contentUrl"/>
                                     </figure>
                                     <div>Helping consumers get recognized and paid for data and healthy behaviour</div>
                                     <a href="//joinwell.io/" target="_blank" class="color-light-blue-2">www.joinwell.io</a>
@@ -337,7 +341,7 @@
                             <div class="col-xs-12 col-sm-4 padding-bottom-20">
                                 <div class="cell-wrapper fs-16">
                                     <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="/assets/images/dnatix.png" class="width-100" alt="Dnatix logo" itemprop="contentUrl"/>
+                                        <img src="/assets/images/dnatix.png"  alt="Dnatix logo" itemprop="contentUrl"/>
                                     </figure>
                                     <div>The anonymous genetic platform for secure storage and trasfer of data</div>
                                     <a href="//dnatix.com/" target="_blank" class="color-light-blue-2">www.dnatix.com</a>
@@ -353,7 +357,7 @@
                             <div class="col-xs-12 col-sm-4 padding-bottom-20">
                                 <div class="cell-wrapper fs-16">
                                     <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="/assets/images/aimedis.png" class="width-100" alt="Aimedis logo" itemprop="contentUrl"/>
+                                        <img src="/assets/images/aimedis.png"  alt="Aimedis logo" itemprop="contentUrl"/>
                                     </figure>
                                     <div>A blockchain backed medical ecosystem offering more than eHealth</div>
                                     <a href="//aimedis.com/" target="_blank" class="color-light-blue-2">www.aimedis.com</a>
@@ -369,7 +373,7 @@
                             <div class="col-xs-12 col-sm-4 padding-bottom-20">
                                 <div class="cell-wrapper fs-16">
                                     <figure class="inline-block-bottom padding-bottom-10 logo" itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="/assets/images/yossi-logo.png" class="width-100" alt="Yossi logo" itemprop="contentUrl"/>
+                                        <img src="/assets/images/yossi-logo.png"  alt="Yossi logo" itemprop="contentUrl"/>
                                     </figure>
                                     <div>A boutique consulting firm helping technology meet funding</div>
                                     <a href="//investable.solutions/" target="_blank" class="color-light-blue-2">www.investable.solutions</a>
@@ -404,25 +408,25 @@
                 <h2 class="col-xs-12 fs-36 fs-xs-26 lato-bold padding-bottom-70 padding-bottom-xs-30">DOWNLOAD BROCHURES TO LEARN MORE</h2>
             </div>
             <div class="row">
-                <a href="/assets/uploads/blockchain-in-healthcare-berlin-providers-1.pdf" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50">
+                <a href="/assets/uploads/blockchain-in-healthcare-berlin-providers-1.pdf" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50 single-brochure">
                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
                         <img src="/assets/images/blockchain-brochure.svg" class="max-width-150" alt="Blockchain companies" itemprop="contentUrl"/>
                         <figcaption class="color-light-blue-2 fs-18 fs-xs-16 lato-bold padding-top-25">Blockchain companies</figcaption>
                     </figure>
                 </a>
-                <a href="/assets/uploads/blockchain-in-healthcare-berlin-suppliers-1.pdf" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50">
+                <a href="/assets/uploads/blockchain-in-healthcare-berlin-suppliers-1.pdf" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50 single-brochure">
                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
                         <img src="/assets/images/suppliers-brochure.svg" class="max-width-150" alt="Supplier/ Manufacturers" itemprop="contentUrl"/>
                         <figcaption class="color-light-blue-2 fs-18 fs-xs-16 lato-bold padding-top-25">Supplier/ Manufacturers</figcaption>
                     </figure>
                 </a>
-                <a href="/assets/uploads/blockchain-in-healthcare-berlin-media-1.pdf" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50">
+                <a href="/assets/uploads/blockchain-in-healthcare-berlin-media-1.pdf" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50 single-brochure">
                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
                         <img src="/assets/images/media-brochure.svg" class="max-width-100" alt="Media" itemprop="contentUrl"/>
                         <figcaption class="color-light-blue-2 fs-18 fs-xs-16 lato-bold padding-top-25">Media</figcaption>
                     </figure>
                 </a>
-                <a href="/assets/uploads/blockchain-in-healthcare-berlin-investors-1.pdf" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50">
+                <a href="/assets/uploads/blockchain-in-healthcare-berlin-investors-1.pdf" download="" class="col-xs-12 col-sm-3 padding-bottom-xs-50 single-brochure">
                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
                         <img src="/assets/images/investors-brochure.svg" class="max-width-150" alt="Investors" itemprop="contentUrl"/>
                         <figcaption class="color-light-blue-2 fs-18 fs-xs-16 lato-bold padding-top-25">Investors</figcaption>

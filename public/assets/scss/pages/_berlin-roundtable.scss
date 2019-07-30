@@ -231,6 +231,35 @@ body.berlin-roundtable {
     .section-reserve-your-spot {
         background-color: #eef8fd;
     }
+    .section-download-brochures {
+        .single-brochure {
+            figure {
+                position: relative;
+                &:after {
+                    content: '';
+                    background-image: url('/assets/images/download.svg');
+                    background-position: center center;
+                    background-size: auto 100%;
+                    background-repeat: no-repeat;
+                    background-color: white;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1000;
+                    top: 0;
+                    left: 0;
+                    position: absolute;
+                    display: block;
+                    opacity: 0;
+                    @include simple_transition(.3s);
+                }
+                &:hover {
+                    &:after {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
     footer {
         background-color: #eef8fd;
         border: 0;

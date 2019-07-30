@@ -1102,7 +1102,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
     $('select[name="company-profile"]').on('change', function() {
         if($(this).find('option:selected').val() == 'Other (please specify):') {
-            $('.camping-select-result').html('<div class="padding-bottom-20 field-parent"><textarea id="why-do-you-want-to-join" name="why-do-you-want-to-join" placeholder="Why do you want to join the roundtable?" rows="3" maxlength="3000" class="required form-field"></textarea></div>');
+            $('.camping-select-result').html('<div class="padding-bottom-20 field-parent"><textarea id="please-specify" name="please-specify" placeholder="Please specify" rows="3" maxlength="3000" class="required form-field"></textarea></div>');
         } else {
             $('.camping-select-result').html('');
         }
@@ -1121,14 +1121,21 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
             var form_fields = this_form.find('.form-field.required');
             var submit_form = true;
             for (var i = 0, len = form_fields.length; i < len; i += 1) {
-                if (form_fields.eq(i).attr('type') == 'email' && !basic.validateEmail(form_fields.eq(i).val().trim())) {
-                    customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please use valid email address.');
-                    submit_form = false;
-                }
+                if(form_fields.eq(i).is('select')) {
+                    if(form_fields.eq(i).val() == 'disabled') {
+                        customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please choose from list.');
+                        submit_form = false;
+                    }
+                } else {
+                    if (form_fields.eq(i).attr('type') == 'email' && !basic.validateEmail(form_fields.eq(i).val().trim())) {
+                        customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please use valid email address.');
+                        submit_form = false;
+                    }
 
-                if (form_fields.eq(i).val().trim() == '') {
-                    customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'This field is required.');
-                    submit_form = false;
+                    if (form_fields.eq(i).val().trim() == '') {
+                        customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'This field is required.');
+                        submit_form = false;
+                    }
                 }
             }
 
@@ -1755,7 +1762,6 @@ function readURL(input, label_el) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
 
 //transfer all selects to bootstrap combobox
 function initComboboxes() {
