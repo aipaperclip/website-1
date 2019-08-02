@@ -280,9 +280,9 @@
                                 <hr/>
                                 <div>Represented by:</div>
                                 <figure class="inline-block-bottom padding-top-5 padding-bottom-5" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="/assets/images/aaron.png" class="max-width-70" alt="Aaron" itemprop="contentUrl"/>
+                                    <img src="/assets/images/yossi.png" class="max-width-70" alt="Aaron" itemprop="contentUrl"/>
                                 </figure>
-                                <div class="lato-bold">Aaron Rothenberg</div>
+                                <div class="lato-bold">Yossi Konijn</div>
                                 <div class="lato-light">Co-Managing Partner</div>
                             </div>
                         </div>
@@ -380,9 +380,9 @@
                                     <hr/>
                                     <div>Represented by:</div>
                                     <figure class="inline-block-bottom padding-top-5 padding-bottom-5" itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="/assets/images/aaron.png" class="max-width-70" alt="Aaron" itemprop="contentUrl"/>
+                                        <img src="/assets/images/yossi.png" class="max-width-70" alt="Aaron" itemprop="contentUrl"/>
                                     </figure>
-                                    <div class="lato-bold">Aaron Rothenberg</div>
+                                    <div class="lato-bold">Yossi Konijn</div>
                                     <div class="lato-light">Co-Managing Partner</div>
                                 </div>
                             </div>
