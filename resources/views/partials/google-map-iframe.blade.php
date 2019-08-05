@@ -34,7 +34,8 @@
     </div>
 </div>
 <div class="map-canvas"></div>
-@if(!empty($clinics))
+@php($hide_clinics = \Illuminate\Support\Facades\Input::get('hide-clinics'))
+@if(!empty($clinics) && !isset($hide_clinics))
     <div class="featured-clinics-slider">
         @foreach($clinics as $clinic)
             <div class="single-slide">

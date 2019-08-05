@@ -248,6 +248,10 @@ class Controller extends BaseController
                 }
                 return json_encode($applications);
                 break;
+            case 'exchanges':
+                $exchanges = DB::connection('mysql')->table('available_buying_options')->select('available_buying_options.*')->where(array('type' => 'exchange-platforms'))->get()->toArray();
+                return json_encode($exchanges);
+                break;
             case 'platforms':
                 $platforms = DB::connection('mysql')->table('platforms')->leftJoin('media', 'platforms.platform_logo_id', '=', 'media.id')->select('platforms.slug', 'platforms.link', 'platforms.color', 'platforms.extra_html', 'platforms.extra_html_patients', 'media.name as media_name', 'media.alt as media_alt')->get()->toArray();
                 foreach($platforms as $platform) {
