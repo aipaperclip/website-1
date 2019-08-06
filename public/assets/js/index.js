@@ -1101,7 +1101,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
     });
 
     $('select[name="company-profile"]').on('change', function() {
-        if($(this).find('option:selected').val() == 'Other (please specify):') {
+        if($(this).find('option:selected').val() == 'Other:') {
             $('.camping-select-result').html('<div class="padding-bottom-20 field-parent"><textarea id="please-specify" name="please-specify" placeholder="Please specify" rows="3" maxlength="3000" class="required form-field"></textarea></div>');
         } else {
             $('.camping-select-result').html('');
