@@ -48,8 +48,7 @@ class BerlinRoundtableController extends Controller
         $body .= '<br><b>Why do you want to join?:</b>'.$request->input('why-do-you-want-to-join');
 
         Mail::send(array(), array(), function($message) use ($body) {
-            $message->to(array('miroslav.nedelchev@dentacoin.com'))->subject('New apply from Dentacoin Berling Roundtable form')->from(EMAIL_SENDER, EMAIL_SENDER)->replyTo(EMAIL_SENDER, EMAIL_SENDER)->setBody($body, 'text/html');
-            //$message->to(array('ali.hashem@dentacoin.com', 'donika.kraeva@dentacoin.com'))->subject('New apply from Dentacoin Berling Roundtable form')->from(EMAIL_SENDER, EMAIL_SENDER)->replyTo(EMAIL_SENDER, EMAIL_SENDER)->setBody($body, 'text/html');
+            $message->to(array('ali.hashem@dentacoin.com', 'donika.kraeva@dentacoin.com'))->subject('New apply from Dentacoin Berling Roundtable form')->from(EMAIL_SENDER, EMAIL_SENDER)->replyTo(EMAIL_SENDER, EMAIL_SENDER)->setBody($body, 'text/html');
         });
 
         return response()->json(['success' => 'Thank you! Your request has been sent successfully. We will contact you shortly.']);
