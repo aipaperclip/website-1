@@ -148,6 +148,23 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="padding-bottom-20 field-parent">
+                            <div class="custom-google-select-style module">
+                                <label>Number of participants:</label>
+                                <select class="form-field required" name="participants">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="camping-select-result"></div>
                         <div class="padding-bottom-20 field-parent">
                             <textarea id="why-do-you-want-to-join" name="why-do-you-want-to-join" placeholder="Why do you want to join the roundtable?" rows="3" maxlength="3000" class="required form-field"></textarea>

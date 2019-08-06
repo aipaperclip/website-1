@@ -39,7 +39,7 @@ class BerlinRoundtableController extends Controller
             'captcha.captcha' => 'Please type the code from the captcha image.'
         ]);*/
 
-        $body = '<b>First name:</b> '.$request->input('fname').'<br><b>Last name:</b> '.$request->input('lname').'<br><b>Email:</b> '.$request->input('email').'<br><b>Job title:</b> '.$request->input('job-title').'<br><b>Company:</b> '.$request->input('company').'<br><b>Website:</b> '.$request->input('website').'<br><b>Company profile:</b> '.$request->input('company-profile').'<br>';
+        $body = '<b>First name:</b> '.$request->input('fname').'<br><b>Last name:</b> '.$request->input('lname').'<br><b>Email:</b> '.$request->input('email').'<br><b>Job title:</b> '.$request->input('job-title').'<br><b>Company:</b> '.$request->input('company').'<br><b>Number of participants:</b> '.$request->input('participants').'<br><b>Website:</b> '.$request->input('website').'<br><b>Company profile:</b> '.$request->input('company-profile').'<br>';
         $additional_field = $request->input('please-specify');
         if(!empty($additional_field)) {
             $body .= '<b>Please specify:</b> '.$request->input('please-specify');
@@ -48,7 +48,8 @@ class BerlinRoundtableController extends Controller
         $body .= '<br><b>Why do you want to join?:</b>'.$request->input('why-do-you-want-to-join');
 
         Mail::send(array(), array(), function($message) use ($body) {
-            $message->to(array('ali.hashem@dentacoin.com', 'donika.kraeva@dentacoin.com'))->subject('New apply from Dentacoin Berling Roundtable form')->from(EMAIL_SENDER, EMAIL_SENDER)->replyTo(EMAIL_SENDER, EMAIL_SENDER)->setBody($body, 'text/html');
+            $message->to(array('miroslav.nedelchev@dentacoin.com'))->subject('New apply from Dentacoin Berling Roundtable form')->from(EMAIL_SENDER, EMAIL_SENDER)->replyTo(EMAIL_SENDER, EMAIL_SENDER)->setBody($body, 'text/html');
+            //$message->to(array('ali.hashem@dentacoin.com', 'donika.kraeva@dentacoin.com'))->subject('New apply from Dentacoin Berling Roundtable form')->from(EMAIL_SENDER, EMAIL_SENDER)->replyTo(EMAIL_SENDER, EMAIL_SENDER)->setBody($body, 'text/html');
         });
 
         return response()->json(['success' => 'Thank you! Your request has been sent successfully. We will contact you shortly.']);
