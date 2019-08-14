@@ -125,11 +125,11 @@ var basic = {
         if(dialog_type == "confirm" && params!=undefined && params.buttons == undefined){
             atrs.buttons = {
                 confirm: {
-                    label: 'Ð”Ð°',
+                    label: 'Yes',
                     className: 'btn-success'
                 },
                 cancel: {
-                    label: 'ÐÐµ',
+                    label: 'No',
                     className: 'btn-danger'
                 }
             }
