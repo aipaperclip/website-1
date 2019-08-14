@@ -323,11 +323,11 @@
                                 <div class="padding-bottom-20 field-parent">
                                     <div class="custom-google-select-style module">
                                         <label>Select country:</label>
-                                        <select name="country-code" id="dentist-country" class="form-field required country-select">
-                                            @php($current_phone_code = '+')
-                                            @if(isset($client_ip) && $client_ip != '127.0.0.1')
-                                                @php($current_user_country_code = mb_strtolower(trim(file_get_contents('http://ipinfo.io/' . $client_ip . '/country'))))
-                                            @endif
+                                        @php($current_phone_code = '+')
+                                        @if(isset($client_ip) && $client_ip != '127.0.0.1')
+                                            @php($current_user_country_code = mb_strtolower(trim(file_get_contents('http://ipinfo.io/' . $client_ip . '/country'))))
+                                        @endif
+                                        <select name="country-code" id="dentist-country" class="form-field required country-select" @if(!empty($current_user_country_code)) data-current-user-country-code="{{$current_user_country_code}}" @endif>
                                             @php($countries = (new \App\Http\Controllers\APIRequestsController())->getAllCountries())
                                             @if(!empty($countries))
                                                 @foreach($countries as $country)
@@ -605,9 +605,9 @@
     {{--<script src="/assets/js/basic.js"></script>--}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.0.49"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.0.50"></script>
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.0.49"></script>
+    <script src="/dist/js/front-script.js?v=1.0.50"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/index.js"></script>--}}
