@@ -5419,7 +5419,7 @@ body.home {
     color: black;
     display: inline-block;
     padding: 15px 0; }
-    body.home.logged-in .logged-user-right-nav > .hidden-box-parent > span.user-name {
+    body.home.logged-in .logged-user-right-nav > .hidden-box-parent .color-white-on-hub {
       color: white; }
 
 body.foundation {

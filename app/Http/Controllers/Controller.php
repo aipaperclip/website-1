@@ -64,6 +64,26 @@ class Controller extends BaseController
         return PageMetaData::where(array('slug' => $slug))->get()->first();
     }
 
+    public function getCurrentDcnUsdRate()  {
+        //API connection
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => 'https://api.coingecko.com/api/v3/coins/dentacoin',
+            CURLOPT_SSL_VERIFYPEER => 0
+        ));
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        $resp = json_decode(curl_exec($curl));
+        curl_close($curl);
+        if(!empty($resp))   {
+            if(!empty($resp->market_data->current_price->usd))  {
+                return $resp->market_data->current_price->usd;
+            }else {
+                return 0;
+            }
+        }
+    }
+
     protected function getParentDbTitles()    {
         if(!empty(Route::getCurrentRoute()->parameters['slug'])) {
             $current_page = PageMetaData::where(array('slug' => Route::getCurrentRoute()->parameters['slug']))->get()->first();

@@ -1,7 +1,11 @@
 <div class="col-xs-9 logged-user-right-nav inline-block text-right @if(!empty($class)) {{$class}} @endif @if(Route::current()->getName() != 'home') with-hub @endif">
     <div class="hidden-box-parent">
         @php($user_data = (new \App\Http\Controllers\APIRequestsController())->getUserData(session('logged_user')['id']))
-        <span class="fs-14 padding-right-10 user-name">{{$user_data->name}}</span>
+        <div class="inline-block fs-14 padding-right-10 color-white-on-hub">
+            <span class="user-name">{{$user_data->name}}</span>
+            @php($dcn_balance = (new \App\Http\Controllers\APIRequestsController())->getDCNBalance()->data)
+            <div>{{$dcn_balance}} DCN | ${{(new \App\Http\Controllers\Controller())->getCurrentDcnUsdRate() * $dcn_balance}}</div>
+        </div>
         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block header-avatar">
             @if(!empty($user_data->thumbnail_url))
                 <img alt="" itemprop="contentUrl" src="{{$user_data->thumbnail_url}}"/>
