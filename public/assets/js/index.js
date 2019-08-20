@@ -1742,23 +1742,28 @@ function styleAvatarUploadButton(label_el)    {
                     labelVal = label.innerHTML;
 
                 input.addEventListener('change', function(e) {
-                    readURL(this, label_el);
+                    if(2 < bytesToMegabytes(this.files[0].size)) {
+                        basic.showAlert('The image you selected is large. Max size: 2MB.', '', true);
+                        $(this).val('');
+                    } else {
+                        readURL(this);
 
-                    var fileName = '';
-                    if(this.files && this.files.length > 1)
-                        fileName = ( this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
-                    else
-                        fileName = e.target.value.split('\\').pop();
+                        var fileName = '';
+                        if(this.files && this.files.length > 1)
+                            fileName = ( this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
+                        else
+                            fileName = e.target.value.split('\\').pop();
 
-                    /*if(fileName) {
-                        if(load_filename_to_other_el)    {
-                            $(this).closest('.form-row').find('.file-name').html('<i class="fa fa-file-text-o" aria-hidden="true"></i>' + fileName);
-                        }else {
-                            label.querySelector('span').innerHTML = fileName;
-                        }
-                    }else{
-                        label.innerHTML = labelVal;
-                    }*/
+                        /*if(fileName) {
+                            if(load_filename_to_other_el)    {
+                                $(this).closest('.form-row').find('.file-name').html('<i class="fa fa-file-text-o" aria-hidden="true"></i>' + fileName);
+                            }else {
+                                label.querySelector('span').innerHTML = fileName;
+                            }
+                        }else{
+                            label.innerHTML = labelVal;
+                        }*/
+                    }
                 });
                 // Firefox bug fix
                 input.addEventListener('focus', function(){ input.classList.add('has-focus'); });
@@ -1768,14 +1773,44 @@ function styleAvatarUploadButton(label_el)    {
     }
 }
 
-function readURL(input, label_el) {
+function bytesToMegabytes(bytes) {
+    return bytes / Math.pow(1024, 2);
+}
+
+var croppie_instance;
+function readURL(input) {
     if(input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            //SHOW THE IMAGE ON LOAD
-            $(label_el).css({'background-image' : 'url("'+e.target.result+'")'});
-            $(label_el).find('.inner i').addClass('fs-0');
-            $(label_el).find('.inner .inner-label').addClass('fs-0');
+            $('#cropper-container').addClass('width-and-height');
+            if(croppie_instance != undefined) {
+                croppie_instance.croppie('destroy');
+                $('#cropper-container').html('');
+            }
+
+            croppie_instance = $('#cropper-container').croppie({
+                viewport: {
+                    width: 120,
+                    height: 120
+                }
+            });
+
+            $('.avatar.module .btn-wrapper').hide();
+            $('.max-size-label').addClass('active');
+
+            croppie_instance.croppie('bind', {
+                url: e.target.result,
+                points: [77,469,280,739]
+            });
+
+            $('#cropper-container').on('update.croppie', function(ev, cropData) {
+                croppie_instance.croppie('result', {
+                    type: 'canvas',
+                    size: {width: 300, height: 300}
+                }).then(function (src) {
+                    $('#hidden-image').val(src);
+                });
+            });
         };
         reader.readAsDataURL(input.files[0]);
     }

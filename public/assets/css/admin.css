@@ -563,6 +563,16 @@
         @media screen and (max-width: 767px) {
           .module.avatar .btn-wrapper label .inner .inner-label {
             font-size: 16px; } }
+.module.avatar #cropper-container.width-and-height {
+  width: 180px;
+  height: 180px; }
+.module.avatar .max-size-label label {
+  display: none;
+  cursor: pointer; }
+.module.avatar .max-size-label.active {
+  padding-top: 40px !important; }
+  .module.avatar .max-size-label.active label {
+    display: inline-block; }
 .module.suggester-parent .suggester-map-div {
   height: 200px;
   display: none;

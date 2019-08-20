@@ -4226,10 +4226,10 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .phone .input-phone {
                 flex: 1; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .avatar {
-              padding-right: 20px;
-              width: 50%; }
+              width: 180px; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .specializations {
-              width: 50%;
+              width: calc(100% - 180px);
+              padding-left: 20px;
               color: black; }
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .specializations h4 {
                 padding-bottom: 10px; }
@@ -4240,6 +4240,9 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
                   border-color: #126585 !important; }
                 .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .specializations .pretty label {
                   text-indent: 25px; }
+              @media screen and (max-width: 767px) {
+                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .specializations {
+                  padding-left: 10px; } }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .combobox-container .input-group {
               display: block; }
             .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .combobox-container .input-group-addon.dropdown-toggle {
@@ -4304,11 +4307,11 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
           .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-register {
             display: none; }
           .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-login, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-login {
-            width: 70%;
+            width: 80%;
             margin: 0 auto; }
             @media screen and (max-width: 767px) {
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-login, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-login {
-                width: 90%; } }
+                width: 95%; } }
           .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist.custom-hide, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient.custom-hide {
             visibility: hidden; }
             @media screen and (max-width: 767px) {
@@ -5135,6 +5138,16 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
         @media screen and (max-width: 767px) {
           .module.avatar .btn-wrapper label .inner .inner-label {
             font-size: 16px; } }
+.module.avatar #cropper-container.width-and-height {
+  width: 180px;
+  height: 180px; }
+.module.avatar .max-size-label label {
+  display: none;
+  cursor: pointer; }
+.module.avatar .max-size-label.active {
+  padding-top: 40px !important; }
+  .module.avatar .max-size-label.active label {
+    display: inline-block; }
 .module.suggester-parent .suggester-map-div {
   height: 200px;
   display: none;

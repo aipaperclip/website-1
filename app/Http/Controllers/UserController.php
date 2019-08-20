@@ -233,6 +233,7 @@ class UserController extends Controller {
             'website.required' => 'Website is required.',
             'specializations.required' => 'Specialization is required.',
             'captcha.required' => 'Captcha is required.',
+            'hidden-image.required' => 'Image is required.',
             'captcha.captcha' => 'Please enter correct captcha.',
         ];
         $this->validate($request, [
@@ -247,6 +248,7 @@ class UserController extends Controller {
             'phone' => 'required|max:50',
             'website' => 'required|max:250',
             'specializations' => 'required',
+            'hidden-image' => 'required',
             'captcha' => 'required|captcha|max:5'
         ], $customMessages);
 
@@ -283,8 +285,17 @@ class UserController extends Controller {
             return redirect()->route('home')->with(['error' => 'Please select avatar and try again.']);
         }
 
+        //creating dummy image with full path to pass it to CORE DB
+        $data['image-name'] = 'dentist-'.time().'.png';
+        $data['image-path'] = UPLOADS . $data['image-name'];
+        $img_data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data['hidden-image']));
+        file_put_contents($data['image-path'], $img_data);
+
         //handle the API response
         $api_response = (new APIRequestsController())->dentistRegister($data, $files);
+        //deleting the dummy image
+        unlink($data['image-path']);
+
         if($api_response['success']) {
             if($data['user-type'] == 'dentist') {
                 $popup_view = view('partials/popup-dentist-profile-verification', ['user' => $api_response['data']['id']]);
