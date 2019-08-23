@@ -364,4 +364,12 @@ class APIRequestsController extends Controller {
             return false;
         }
     }
+
+    public function getCountry($client_ip)  {
+        try {
+            return mb_strtolower(trim(@file_get_contents('https://ipinfo.io/' . $client_ip . '/country')));
+        } catch(Exception $e) {
+            return false;
+        }
+    }
 }
