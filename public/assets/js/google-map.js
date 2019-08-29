@@ -334,4 +334,91 @@ function initMap(filter) {
         }
         map.setOptions({minZoom: 2.2, maxZoom: 20});
     });
+
+    if($('.featured-clinics-slider').length) {
+        $('.featured-clinics-slider').slick({
+            centerMode: true,
+            centerPadding: '250px',
+            slidesToShow: 3,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed: 8000,
+            accessibility: true,
+            responsive: [
+                {
+                    breakpoint: 1600,
+                    settings: {
+                        centerPadding: '160px',
+                    }
+                },
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 1,
+                        centerPadding: '200px',
+                    }
+                },{
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        centerPadding: '50px'
+                    }
+                }
+            ]
+        });
+
+        //on click make slide active
+        $('.featured-clinics-slider .single-slide').on("click", function (){
+            $('.featured-clinics-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
+        });
+
+        $('.featured-clinics-slider .single-slide').keypress(function (e) {
+            if (e.key === ' ' || e.key === 'Spacebar' || e.which === 13) {
+                // ' ' is standard, 'Spacebar' was used by IE9 and Firefox < 37
+                e.preventDefault();
+                $('.featured-clinics-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
+            }
+        });
+    }
+
+    //filtering google map by location type
+    $('.filter select').on('change', function()  {
+        var types_val = '';
+        if($(this).is('.types'))    {
+            types_val = $(this).val();
+        }
+        $('select.locations option').removeClass('hidden');
+        if(types_val != '') {
+            for(var i = 0, len = $('select.locations option').length; i < len; i+=1)   {
+                if($('select.locations option').eq(i).attr('data-type-id') != '' && $('select.locations option').eq(i).attr('data-type-id') != types_val) {
+                    $('select.locations option').eq(i).addClass('hidden');
+                }
+            }
+            $('.selectpicker').selectpicker('refresh');
+            $('.bootstrap-select.locations .dropdown-menu li a.hidden').parent().hide();
+            initMap(true);
+        }else {
+            $('.selectpicker').selectpicker('refresh');
+            initMap();
+        }
+    });
+
+    //logic for show/hide locations
+    $('.partner-network-container .list-with-locations .subtype-title').click(function()    {
+        var this_title = $(this);
+        if(!this_title.hasClass('opened'))  {
+            $('.partner-network-container .list-with-locations .clinics').slideUp(300);
+            $('.partner-network-container .list-with-locations .subtype-title').removeClass('opened').find('i').removeClass('active');
+            this_title.addClass('opened').find('i').addClass('active');
+            this_title.next().slideDown({
+                duration: 300,
+                complete: function()    {
+                    $('html, body').animate({'scrollTop': this_title.offset().top - this_title.outerHeight()}, 300);
+                }
+            });
+        }else {
+            $('.partner-network-container .list-with-locations .clinics').slideUp(300);
+            $('.partner-network-container .list-with-locations .subtype-title').removeClass('opened').find('i').removeClass('active');
+        }
+    });
 }
