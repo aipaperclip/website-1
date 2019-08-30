@@ -1,33 +1,33 @@
-//binding click event for all the faceboon login btns
-$('body').on('click', '.facebook-custom-btn', function(rerequest){
-    const fb_config = {
-        //app_id: '299398824049604',
-        app_id: '1906201509652855',
-        platform: 'fb'
-    };
+const fb_config = {
+    //app_id: '299398824049604',
+    app_id: '1906201509652855',
+    platform: 'fb'
+};
 
 //application init
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: fb_config.app_id,
-            cookie: true,
-            xfbml: true,
-            version: 'v2.8'
-        });
-        FB.AppEvents.logPageView();
-    };
+window.fbAsyncInit = function () {
+    FB.init({
+        appId: fb_config.app_id,
+        cookie: true,
+        xfbml: true,
+        version: 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+};
 
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-            return;
-        }
-        js = d.createElement(s);
-        js.id = id;
-        js.src = '//connect.facebook.net/bg_BG/sdk.js';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+        return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = '//connect.facebook.net/bg_BG/sdk.js';
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
+//binding click event for all the faceboon login btns
+$('body').on('click', '.facebook-custom-btn', function(rerequest){
     var this_btn = $(this);
     customFacebookEvent('facebookCustomBtnClicked', 'Button #facebook-custom-btn was clicked.');
 
