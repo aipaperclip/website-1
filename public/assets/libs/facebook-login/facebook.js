@@ -49,6 +49,8 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
             customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
 
             var fb_token = response.authResponse.accessToken;
+            console.log(fb_token 'fb_token');
+            return false;
 
             var register_data = {
                 platform: this_btn.attr('data-platform'),
