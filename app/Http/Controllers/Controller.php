@@ -314,6 +314,7 @@ class Controller extends BaseController
 
                     $platform->extra_html = htmlentities($platform->extra_html);
                     $platform->extra_html_patients = htmlentities($platform->extra_html_patients);
+                    $platform->invitation_text = htmlentities($platform->invitation_text);
                 }
                 return json_encode($platforms);
                 break;
