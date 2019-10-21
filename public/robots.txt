@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /google-map-iframe
 Disallow: /dcn-admin-access/
+Disallow: /info/
