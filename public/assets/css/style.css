@@ -5408,9 +5408,6 @@ header {
         overflow: auto; }
         header .logged-user-right-nav.with-hub > .hidden-box-parent .hidden-box .hidden-box-hub {
           padding: 10px 15px 15px; } }
-  @media screen and (max-width: 767px) {
-    header {
-      padding-top: 0; } }
 
 body.home {
   overflow-x: hidden; }

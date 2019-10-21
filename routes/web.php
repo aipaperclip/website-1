@@ -37,11 +37,11 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/how-to-create-wallet', 'HowToCreateWalletController@getView')->name('how-to-create-wallet');
 
-    Route::get('/berlin-roundtable', 'BerlinRoundtableController@getView')->name('berlin-roundtable');
+    Route::get('/berlin-roundtable', /*'BerlinRoundtableController@getView'*/ function() {
+        return abort(410);
+    })->name('berlin-roundtable');
 
     Route::post('/submit-berlin-roundtable-form', 'BerlinRoundtableController@submitForm')->name('submit-berlin-roundtable-form');
-
-    //Route::get('changelly', 'ChangellyController@getView')->name('changelly');
 
     Route::get('careers/{slug?}', function($slug = null)    {
         if(empty($slug))   {

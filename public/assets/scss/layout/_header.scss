@@ -162,9 +162,6 @@ header {
             }
         }
     }
-    @include breakpoint($xs) {
-        padding-top: 0;
-    }
 }
 
 body.home {
