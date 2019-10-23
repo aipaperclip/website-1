@@ -17,7 +17,7 @@ const border_width = 2;
 var get_params = getGETParameters();
 
 $(document).ready(async function() {
-    if(has(get_params, 'show-login') && !$('body').hasClass('logged-in')) {
+    if((has(get_params, 'show-login') || has(get_params, 'inviter')) && !$('body').hasClass('logged-in')) {
         openLoginSigninPopup();
     }
 
