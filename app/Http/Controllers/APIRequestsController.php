@@ -185,7 +185,7 @@ class APIRequestsController extends Controller {
         curl_close($curl);
 
         if(!empty($resp))   {
-            return $resp->data;
+            return $resp;
         }else {
             return false;
         }
