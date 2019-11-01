@@ -325,6 +325,8 @@ class UserController extends Controller {
         ];
 
         $current_logging_patient = (new APIRequestsController())->getUserData($request->input('id'));
+        var_dump($current_logging_patient);
+        die('asd');
         if($current_logging_patient->self_deleted != NULL) {
             return redirect()->route('home')->with(['error' => 'This account is deleted, you cannot log in with this account anymore.']);
         } else {
