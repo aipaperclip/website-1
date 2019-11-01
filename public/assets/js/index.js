@@ -1558,8 +1558,6 @@ function openLoginSigninPopup() {
                         }
                     }
                 }
-                
-                
 
                 var validate_phone = await validatePhone($('.login-signin-popup .dentist .form-register .step.third input[name="phone"]').val().trim(), $('.login-signin-popup .dentist .form-register .step.third select[name="country-code"]').val());
                 if(has(validate_phone, 'success') && !validate_phone.success) {

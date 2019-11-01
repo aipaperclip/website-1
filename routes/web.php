@@ -98,6 +98,10 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::get('/custom-cookie', 'UserController@manageCustomCookie')->name('custom-cookie');
     //======================================= REDIRECTS ========================================
 
+    Route::get('partners', function() {
+        return Redirect::to('//dentacoin.com/partner-network');
+    });
+
     Route::get('privacy', function() {
         return Redirect::to('//dentacoin.com/privacy-policy');
     });
