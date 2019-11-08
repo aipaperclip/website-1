@@ -2,6 +2,7 @@
 
 @section("content")
     <div class="press-center-container">
+        {{getenv('APP_URL')}}
         <div class="container">
             <div class="row">
                 <h1 class="col-xs-12 page-h1-title">{{ $meta_data->page_title }}</h1>
