@@ -41,6 +41,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return abort(410);
     })->name('berlin-roundtable');
 
+    Route::get('/christmas-calendar', 'ChristmasCalendarController@getView')->name('christmas-calendar');
+
     Route::post('/submit-berlin-roundtable-form', 'BerlinRoundtableController@submitForm')->name('submit-berlin-roundtable-form');
 
     Route::get('careers/{slug?}', function($slug = null)    {

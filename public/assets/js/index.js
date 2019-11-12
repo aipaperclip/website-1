@@ -62,7 +62,7 @@ $(window).on('load', function() {
     if($('body.careers.allow-draw-lines').length > 0) {
         //init lines
         drawHeaderToFirstSectionLine();
-    }else if($('body.corporate-design.allow-draw-lines').length > 0) {
+    } else if($('body.corporate-design.allow-draw-lines').length > 0) {
         //init lines
         drawHeaderToFirstSectionLine();
     }
@@ -102,16 +102,16 @@ $(window).on('resize', function(){
     if((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && !basic.isMobile()) {
         //HOMEPAGE
         setLinesDots(true);
-    }else if($('body').hasClass('testimonials')) {
+    } else if($('body').hasClass('testimonials')) {
         //TESTIMONIALS
         initListingPageLine();
-    }else if($('body').hasClass('press-center')) {
+    } else if($('body').hasClass('press-center')) {
         //PRESS CENTER
         initListingPageLine();
-    }else if($('body.careers.allow-draw-lines').length > 0) {
+    } else if($('body.careers.allow-draw-lines').length > 0) {
         //CAREERSdentacoin-ecosystem
         drawHeaderToFirstSectionLine();
-    }else if($('body.corporate-design.allow-draw-lines').length > 0) {
+    } else if($('body.corporate-design.allow-draw-lines').length > 0) {
         //CORPORATE DESIGN
         drawHeaderToFirstSectionLine();
         drawNavToBottomSectionLine();
@@ -137,14 +137,14 @@ function onMousewheel(event)    {
             //scroll up
             if($('body').attr('data-current') == 'two') {
                 scrollToSectionAnimation('one', null, null, true);
-            }else if($(window).scrollTop() < $('.fullpage-section.two').offset().top + $('.fullpage-section.two').outerHeight() && $('body').attr('data-current') == 'rest-data') {
+            } else if($(window).scrollTop() < $('.fullpage-section.two').offset().top + $('.fullpage-section.two').outerHeight() && $('body').attr('data-current') == 'rest-data') {
                 scrollToSectionAnimation('two', null, true);
             }
-        }else {
+        } else {
             //scroll down
             if($('body').attr('data-current') == 'one') {
                 scrollToSectionAnimation('two', null, true);
-            }else if ($('body').attr('data-current') == 'two') {
+            } else if ($('body').attr('data-current') == 'two') {
                 scrollToSectionAnimation('rest-data', true);
             }
         }
@@ -163,7 +163,7 @@ function scrollToSectionAnimation(to_become_current, full_height, clear_dots, dr
     var scroll_obj = {};
     if(full_height != null) {
         scroll_obj.scrollTop = $('.'+to_become_current).offset().top;
-    }else {
+    } else {
         scroll_obj.scrollTop = $('.fullpage-section.'+to_become_current).offset().top;
     }
     $('body').unbind('wheel', onMousewheel);
@@ -171,7 +171,7 @@ function scrollToSectionAnimation(to_become_current, full_height, clear_dots, dr
         $('body').bind('wheel', onMousewheel);
         if(clear_dots != null)  {
             refreshingMainDots();
-        }else if(draw_first != null)  {
+        } else if(draw_first != null)  {
             drawLine('first', 'vertical');
         }
     });
@@ -297,7 +297,7 @@ function setLinesDots(resize)    {
         $('body').removeClass('overflow-hidden');
         $('line.eighteenth').attr('x1', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width());
         $('line.eighteenth').attr('x2', $('.roadmap .second-dot').offset().left + $('.roadmap .second-dot').width());
-    }else {
+    } else {
         $('body').removeClass('overflow-hidden');
         $('line.eighteenth').attr('x1', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width() + 1);
         $('line.eighteenth').attr('x2', $('.roadmap .second-dot').offset().left + $('.roadmap .second-dot').width() + 1);
@@ -340,7 +340,7 @@ function setLinesDots(resize)    {
         $('line.eighteenth').attr('y2', $('.roadmap .second-dot').offset().top + $('.roadmap .second-dot').height());
         $('line.nineteenth').attr('y2', $('.below-roadmap-timeline .first-dot').offset().top + $('.below-roadmap-timeline .first-dot').height() / 2);
         $('line.twentieth').attr('x2', $('.below-roadmap-timeline .second-dot').offset().left);
-    }else {
+    } else {
         //SETTING UP FRESH ATTRIBUTES ALSO FOR REFRESHING THE MAIN DOTS AT THEIR STARTING POSITION
         if($('body').hasClass('home')) {
             $('line.first')/*.attr('y2', $('header .first-dot').offset().top)*/.attr('fresh-y2', 0);
@@ -374,7 +374,7 @@ function refreshingMainDots()   {
     for(var i = 0, len = $('svg.svg-with-lines line').length; i < len; i+=1)    {
         if($('svg.svg-with-lines line').eq(i).attr('fresh-x2') != undefined)   {
             $('svg.svg-with-lines line').eq(i).attr('x2', $('svg.svg-with-lines line').eq(i).attr('fresh-x2'));
-        }else if($('svg.svg-with-lines line').eq(i).attr('fresh-y2') != undefined)   {
+        } else if($('svg.svg-with-lines line').eq(i).attr('fresh-y2') != undefined)   {
             $('svg.svg-with-lines line').eq(i).attr('y2', $('svg.svg-with-lines line').eq(i).attr('fresh-y2'));
         }
     }
@@ -432,11 +432,11 @@ function drawLine(el, position, tail, tail_position, action) {
         stoppers.push(el);
         if(position == 'vertical') {
             intervals_arr[el] = setInterval(verticalTimer, draw_line_interval);
-        }else if(position == 'horizontal')    {
+        } else if(position == 'horizontal')    {
             if(parseFloat($('line.'+el).attr('x2')) > parseFloat($('line.'+el).attr('max-x2'))) {
                 //if horizontal line drawing from right to left
                 intervals_arr[el] = setInterval(horizontalTimerBackwards, draw_line_interval);
-            }else {
+            } else {
                 //if horizontal line drawing from left to right
                 intervals_arr[el] = setInterval(horizontalTimerForward, draw_line_interval);
             }
@@ -455,7 +455,7 @@ function drawLine(el, position, tail, tail_position, action) {
         function horizontalTimerBackwards()  {
             if(parseFloat($('line.'+el).attr('x2')) + draw_line_increment > parseFloat($('line.'+el).attr('max-x2'))) {
                 $('line.'+el).attr('x2', parseFloat($('line.'+el).attr('x2')) - draw_line_increment);
-            }else {
+            } else {
                 $('line.'+el).attr('x2', $('line.'+el).attr('max-x2'))/*.attr('executed', 'true')*/;
                 clearInterval(intervals_arr[el]);
                 callTheTail(tail, tail_position, action);
@@ -465,7 +465,7 @@ function drawLine(el, position, tail, tail_position, action) {
         function horizontalTimerForward()  {
             if(parseFloat($('line.'+el).attr('x2')) + draw_line_increment < parseFloat($('line.'+el).attr('max-x2'))) {
                 $('line.'+el).attr('x2', parseFloat($('line.'+el).attr('x2')) + draw_line_increment);
-            }else {
+            } else {
                 $('line.'+el).attr('x2', $('line.'+el).attr('max-x2'))/*.attr('executed', 'true')*/;
                 clearInterval(intervals_arr[el]);
                 callTheTail(tail, tail_position, action);
@@ -494,7 +494,7 @@ function callTheTail(tail, tail_position, action)  {
             tail.shift();
             tail_position.shift();
             drawLine(next_tail, next_tail_position, tail, tail_position, action);
-        }else if(action != null)    {
+        } else if(action != null)    {
             callActionOnLastTailFinish(action);
         }
     }
@@ -509,7 +509,7 @@ function callActionOnLastTailFinish(action)    {
                     $('.homepage-container .successful-practices .content figure img').addClass('active');
                 });
 
-            }else {
+            } else {
                 $('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-svg')+'?'+new Date().getTime()).on('load', function()    {
                     $('.homepage-container .successful-practices .content figure img').addClass('active');
                 });
@@ -522,7 +522,7 @@ function callActionOnLastTailFinish(action)    {
                 $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr("src", $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr('data-gif')+'?'+new Date().getTime()).on('load', function()    {
                     $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').addClass('active');
                 });
-            }else {
+            } else {
                 $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr("src", $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr('data-svg')+'?'+new Date().getTime()).on('load', function()    {
                     $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').addClass('active');
                 });
@@ -535,7 +535,7 @@ function callActionOnLastTailFinish(action)    {
                 $('.homepage-container .roadmap-timeline img.desktop-image').attr("src", $('.homepage-container .roadmap-timeline img.desktop-image').attr('data-gif')+'?'+new Date().getTime()).on('load', function()    {
                     $('.homepage-container .roadmap-timeline img.desktop-image').addClass('active');
                 });
-            }else {
+            } else {
                 $('.homepage-container .roadmap-timeline img.desktop-image').attr("src", $('.homepage-container .roadmap-timeline img.desktop-image').attr('data-svg')+'?'+new Date().getTime()).on('load', function()    {
                     $('.homepage-container .roadmap-timeline img.desktop-image').addClass('active');
                 });
@@ -563,7 +563,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         $('.homepage-container.mobile .below-successful-practices .flex .cells').removeClass('col-md-5');
         $('.homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .wallet-app').removeClass('col-md-5 col-md-offset-1');
         $('.homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .gif').removeClass('col-md-5 col-md-offset-1').addClass('col-sm-10 col-sm-offset-1');
-    }else {
+    } else {
         //set all fullpage sections with window height
         for(var i = 0, len = $('.fullpage-section').length; i < len; i+=1)  {
             if($('.fullpage-section').eq(i).outerHeight() != $(window).height())    {
@@ -694,7 +694,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
     }
     $('body').removeClass('overflow-hidden');
 
-    //logic for open testimonials and close the ones that are too near to the current opening one (TESTIMONIALS)
+    // logic for open testimonials and close the ones that are too near to the current opening one (TESTIMONIALS)
     $('.homepage-container .testimonials .circle-wrapper').click(function()   {
         $(this).addClass('active').removeClass('not-active');
         var this_text = $(this).find('.text');
@@ -706,7 +706,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                     if(current_active_testimonial.find('.text').offset().left - this_text.offset().left < text_width) {
                         current_active_testimonial.removeClass('active').addClass('not-active');
                     }
-                }else if(current_active_testimonial.find('.text').offset().left < this_text.offset().left)  {
+                } else if(current_active_testimonial.find('.text').offset().left < this_text.offset().left)  {
                     if(this_text.offset().left - current_active_testimonial.find('.text').offset().left < text_width) {
                         current_active_testimonial.removeClass('active').addClass('not-active');
                     }
@@ -715,17 +715,17 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         }
     });
 
-    //load random default avatar for testimonial givers without avatar
+    // load random default avatar for testimonial givers without avatar
     var testimonial_icons = ['avatar-icon-1.svg', 'avatar-icon-2.svg'];
     for(var i = 0; i < $('.homepage-container .testimonials .circle-wrapper.no-image').length; i+=1)  {
         $('.homepage-container .testimonials .circle-wrapper.no-image').eq(i).find('.circle .background').css({'background-image' : 'url(/assets/images/'+testimonial_icons[Math.floor(Math.random()*testimonial_icons.length)]+')'});
     }
 
-    //logic for show/hide different exchange methods on click in BUY DCN section
+    // logic for show/hide different exchange methods on click in BUY DCN section
     $('.homepage-container .exchange-platforms-and-wallets .exchange-method .title').click(function() {
         if($(this).closest('.exchange-method').hasClass('active'))  {
             $(this).closest('.exchange-method').removeClass('active').find('.list').slideUp(300);
-        }else {
+        } else {
             if(basic.isMobile())    {
                 $('.homepage-container .exchange-platforms-and-wallets .exchange-method').removeClass('active').find('.list').slideUp(300);
             }
@@ -733,7 +733,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         }
     });
 
-    //init slider for publications
+    // init slider for publications
     $('.homepage-container .awards-and-publications .publications-slider').slick({
         centerMode: true,
         centerPadding: '140px',
@@ -761,7 +761,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         ]
     });
 
-    //on click make slide active
+    // on click make slide active
     $('.homepage-container .awards-and-publications .publications-slider .single-slide').on("click", function (){
         $('.homepage-container .awards-and-publications .publications-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
     });
@@ -788,9 +788,9 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         }
     }
     introDentistsNumberCounter();
-}else if($('body').hasClass('testimonials')) {
-    //TESTIMONIALS
-    //load random default avatar for testimonial givers without avatar
+} else if($('body').hasClass('testimonials')) {
+    // TESTIMONIALS
+    // load random default avatar for testimonial givers without avatar
     var testimonial_icons_listing_page = ['avatar-icon-1.svg', 'avatar-icon-2.svg'];
     for(var i = 0; i < $('.list .single .image.no-avatar').length; i+=1)  {
         $('.list .single .image.no-avatar').eq(i).css({'background-image' : 'url(/assets/images/'+testimonial_icons_listing_page[Math.floor(Math.random()*testimonial_icons_listing_page.length)]+')'});
@@ -798,7 +798,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
     $('svg.svg-with-lines').height($(document).height());
 
-    //LINE GOING UNDER TESTIMONIAL AVATARS
+    // LINE GOING UNDER TESTIMONIAL AVATARS
     initListingPageLine();
 } else if($('body').hasClass('how-to-create-wallet')) {
     var wallet_video_time_watched = 0;
@@ -822,11 +822,10 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         });
     }
 } else if($('body').hasClass('partner-network')) {
-    //PARTNER NETWORK
+    // PARTNER NETWORK
     initMap();
-}else if($('body').hasClass('press-center')) {
-    //PRESS CENTER
-
+} else if($('body').hasClass('press-center')) {
+    // PRESS CENTER
     initListingPageLine();
 
     if($('.open-form').length > 0)  {
@@ -857,9 +856,9 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                             $('.bootbox.media-inquries .waiting-for-action').html('');
                             if($(this).find('option:selected').attr('data-action') == 'newsletter-register')  {
                                 $('.bootbox.media-inquries .waiting-for-action').html('<input type="hidden" name="answer" value="Manual email register to newletter receivers list."/>');
-                            }else if($(this).find('option:selected').attr('data-action') == 'long-text')  {
+                            } else if($(this).find('option:selected').attr('data-action') == 'long-text')  {
                                 $('.bootbox.media-inquries .waiting-for-action').html('<div class="popup-row"><textarea placeholder="'+$(this).find('option:selected').attr('data-title')+'" rows="3" name="answer" maxlength="3000"></textarea></div>');
-                            }else if($(this).find('option:selected').attr('data-action') == 'long-text-and-attachments')  {
+                            } else if($(this).find('option:selected').attr('data-action') == 'long-text-and-attachments')  {
                                 $('.bootbox.media-inquries .waiting-for-action').html('<textarea placeholder="'+$(this).find('option:selected').attr('data-title')+'" rows="3" name="answer" class="padding-bottom-10" maxlength="3000"></textarea></div><div class="popup-row text-center-xs"><div class="upload-file inline-block-top" id="media-package" data-label="Attach file (media package):"><input type="file" name="media-package" class="inputfile inputfile-1 hide-input" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx"><button type="button"></button></div><div class="upload-file inline-block-top" id="individual-offer" data-label="Attach file (individual offer, if present):"><input type="file" class="inputfile inputfile-1 hide-input" name="individual-offer" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx"><button type="button"></button></div>');
                                 styleContactFormUploadBtn();
 
@@ -885,19 +884,19 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                         if($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').val().trim() == '') {
                                             errors.push('<strong>Reason for contract extra field</strong> is required.');
                                         }
-                                    }else {
+                                    } else {
                                         errors.push('<strong>Reason for contract extra field</strong> is required.');
                                     }
-                                }else {
+                                } else {
                                     if($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').length > 0) {
                                         if($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').val().trim() == '')    {
                                             if($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').is('input'))    {
                                                 errors.push('<strong>'+$('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').attr('placeholder')+'</strong> is required.');
-                                            }else if($('[name="'+required_inputs[i]+'"]').is('select')) {
+                                            } else if($('[name="'+required_inputs[i]+'"]').is('select')) {
                                                 errors.push('<strong>'+$('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').attr('title')+'</strong> is required.');
                                             }
                                         }
-                                    }else {
+                                    } else {
                                         window.location.reload();
                                     }
                                 }
@@ -921,10 +920,10 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
             });
         });
     }
-}else if($('body').hasClass('team')) {
-    //TEAM
+} else if($('body').hasClass('team')) {
+    // TEAM
 
-    //init slider for advisors
+    // init slider for advisors
     $('.team-container .advisors .advisors-slider').slick({
         slidesToShow: 3,
         autoplay: true,
@@ -950,12 +949,12 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         $(this).closest('.more-advisors').find('.list').slideDown(300);
         $(this).closest('.read-more').slideUp(300);
     });
-}else if($('body.careers.allow-draw-lines').length > 0) {
+} else if($('body.careers.allow-draw-lines').length > 0) {
     $('.join-our-team .text .btn-container a').click(function()  {
         $('html, body').animate({'scrollTop': $('.open-job-positions-title .logo-over-line').offset().top}, 300);
     });
-}else if($('body.careers').length > 0) {
-    //init buttons style
+} else if($('body.careers').length > 0) {
+    // init buttons style
     styleContactFormUploadBtn(true);
 
     var required_inputs = [];
@@ -974,7 +973,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                 if($('.apply-for-position form [name="'+required_inputs[i]+'"]').val().trim() == '') {
                     errors.push('<strong>'+$('.apply-for-position form [name="'+required_inputs[i]+'"]').attr('placeholder')+'</strong> is required.');
                 }
-            }else {
+            } else {
                 window.location.reload();
             }
         }
@@ -999,15 +998,15 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
             this_form_native.submit();
         }
     });
-}else if($('body.corporate-design').length > 0) {
-    //CORPORATE DESIGN
+} else if($('body.corporate-design').length > 0) {
+    // CORPORATE DESIGN
 
     $('.clickable-squares-row .square').click(function()    {
         $(this).closest('.clickable-squares-row').find('.square').removeClass('active');
         $(this).addClass('active');
     });
-}else if($('body.berlin-roundtable').length > 0) {
-    //BERLIN ROUNDTABLE
+} else if($('body.berlin-roundtable').length > 0) {
+    // BERLIN ROUNDTABLE
 
     $(document).on('click', '.reserve-your-spot', function() {
         $('html, body').animate({'scrollTop': $('.reserve-your-spot-form').offset().top }, 300);
@@ -1093,6 +1092,41 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
             dots: false
         });
     }
+} else if($('body.christmas-calendar').length > 0) {
+    // CHRISTMAS CALENDAR
+
+    $(document).ready(function(){
+        console.log(1);
+        FB.login(function(response) {
+
+            console.log(2);
+            if (response.session) {
+                console.log(response.session, 'response.session');
+                var user_id = response.session.uid;
+                var page_id = "40796308305"; //coca cola
+                var fql_query = "SELECT uid FROM page_fan WHERE page_id = "+page_id+"and uid="+user_id;
+                var the_query = FB.Data.query(fql_query);
+
+                the_query.wait(function(rows) {
+
+                    if (rows.length == 1 && rows[0].uid == user_id) {
+                        $("#container_like").show();
+
+                        //here you could also do some ajax and get the content for a "liker" instead of simply showing a hidden div in the page.
+
+                    } else {
+                        $("#container_notlike").show();
+                        //and here you could get the content for a non liker in ajax...
+                    }
+                });
+
+
+            } else {
+                // user is not logged in
+            }
+        });
+
+    });
 }
 
 function drawHeaderToFirstSectionLine() {
@@ -1136,7 +1170,7 @@ function styleContactFormUploadBtn(load_filename_to_other_el)    {
         jQuery(this).find("input").attr("id","file-"+current_form_id);
         if(load_filename_to_other_el){
             jQuery(this).find("button").append("<label for='file-"+current_form_id+"'><span class='blue-white-rounded-btn'>"+this_file_btn_parent.attr('data-label')+"</span></label>");
-        }else {
+        } else {
             jQuery(this).find("button").append("<label for='file-"+current_form_id+"'><span class='white-blue-rounded-btn'>"+this_file_btn_parent.attr('data-label')+"</span></label>");
         }
 
@@ -1155,10 +1189,10 @@ function styleContactFormUploadBtn(load_filename_to_other_el)    {
                 if(fileName) {
                     if(load_filename_to_other_el)    {
                         $(this).closest('.form-row').find('.file-name').html('<i class="fa fa-file-text-o" aria-hidden="true"></i>' + fileName);
-                    }else {
+                    } else {
                         label.querySelector('span').innerHTML = fileName;
                     }
-                }else{
+                } else{
                     label.innerHTML = labelVal;
                 }
             });
@@ -1185,7 +1219,7 @@ function newsletterRegisterValidation() {
         var error = false;
         if(!basic.validateEmail(this_form.find('input[type="email"]').val().trim()))    {
             error = true;
-        }else if(!this_form.find('#newsletter-privacy-policy').is(':checked'))  {
+        } else if(!this_form.find('#newsletter-privacy-policy').is(':checked'))  {
             error = true;
         }
 
@@ -1552,7 +1586,7 @@ function openLoginSigninPopup() {
                         if(third_step_inputs.eq(i).attr('type') == 'url' && !basic.validateUrl(third_step_inputs.eq(i).val().trim())) {
                             customErrorHandle(third_step_inputs.eq(i).closest('.field-parent'), 'Please enter your website URL starting with http:// or https://.');
                             errors = true;
-                        }else if(third_step_inputs.eq(i).attr('type') == 'number' && !basic.validatePhone(third_step_inputs.eq(i).val().trim())) {
+                        } else if(third_step_inputs.eq(i).attr('type') == 'number' && !basic.validatePhone(third_step_inputs.eq(i).val().trim())) {
                             customErrorHandle(third_step_inputs.eq(i).closest('.field-parent'), 'Please use valid numbers.');
                             errors = true;
                         }
@@ -1668,10 +1702,10 @@ function styleAvatarUploadButton(label_el)    {
                         /*if(fileName) {
                             if(load_filename_to_other_el)    {
                                 $(this).closest('.form-row').find('.file-name').html('<i class="fa fa-file-text-o" aria-hidden="true"></i>' + fileName);
-                            }else {
+                            } else {
                                 label.querySelector('span').innerHTML = fileName;
                             }
-                        }else{
+                        } else{
                             label.innerHTML = labelVal;
                         }*/
                     }
