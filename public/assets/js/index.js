@@ -1115,7 +1115,11 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
-    $(document).ready(function() {
+    setInterval(function() {
+        console.log(typeof(FB));
+    }, 500);
+
+    /*$(document).ready(function() {
         FB.login(function(response) {
             console.log(2);
             if (response.session) {
@@ -1141,7 +1145,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                 // user is not logged in
             }
         });
-    })
+    })*/
 }
 
 function drawHeaderToFirstSectionLine() {
