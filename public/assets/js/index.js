@@ -1099,7 +1099,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
             appId: '1906201509652855',
             cookie: true,
             xfbml: true,
-            version: 'v2.8'
+            version: 'v2.0'
         });
         FB.AppEvents.logPageView();
     };
@@ -1119,33 +1119,33 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         console.log(typeof(FB));
     }, 500);
 
-    /*$(document).ready(function() {
-        FB.login(function(response) {
+    $(document).ready(function() {
+        /*FB.login(function(response) {
             console.log(2);
-            if (response.session) {
-                console.log(response.session, 'response.session');
-                var user_id = response.session.uid;
+            if (response.authResponse) {
+                console.log(response.authResponse, 'response.session');
+                var user_id = response.authResponse.userID;
                 var page_id = "40796308305"; //coca cola
-                var fql_query = "SELECT uid FROM page_fan WHERE page_id = "+page_id+"and uid="+user_id;
-                var the_query = FB.Data.query(fql_query);
+                var fql_query = "SELECT uid FROM page_fan WHERE page_id="+page_id+" and uid="+"509818122840595";
 
-                the_query.wait(function(rows) {
-
-                    if (rows.length == 1 && rows[0].uid == user_id) {
-                        $("#container_like").show();
-
-                        //here you could also do some ajax and get the content for a "liker" instead of simply showing a hidden div in the page.
-
-                    } else {
-                        $("#container_notlike").show();
-                        //and here you could get the content for a non liker in ajax...
+                FB.api({
+                        method: 'fql.query',
+                        query: fql_query
+                    },
+                    function(response){
+                    console.log(response, 'response');
+                        if (response[0]) {
+                            $("#container_like").show();
+                        } else {
+                            $("#container_notlike").show();
+                        }
                     }
-                });
+                );
             } else {
                 // user is not logged in
             }
-        });
-    })*/
+        });*/
+    })
 }
 
 function drawHeaderToFirstSectionLine() {
