@@ -181,11 +181,9 @@ class APIRequestsController extends Controller {
             CURLOPT_SSL_VERIFYPEER => 0,
         ));
 
-        //$resp = json_decode(curl_exec($curl));
+        $resp = json_decode(curl_exec($curl));
         $resp = curl_exec($curl);
         curl_close($curl);
-        var_dump($resp);
-        die('asd');
 
         if(!empty($resp))   {
             if($logging) {

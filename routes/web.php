@@ -59,11 +59,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     //======================================= LOGIN LOGIC ========================================
 
-    Route::get('/test', function() {
-        var_dump(session('logged_user')['id']);
-        (new \App\Http\Controllers\APIRequestsController())->getUserData(session('logged_user')['id']);
-    })->name('test');
-
     Route::get('/user-logout', 'UserController@userLogout')->name('user-logout');
 
     Route::get('/get-current-user-data', 'UserController@getCurrentUserData')->middleware('HandleUserSession')->name('get-current-user-data');
