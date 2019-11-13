@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1">
                     <div class="row fs-0">
-                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-15 padding-right-15 padding-bottom-30 inline-block">
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
                             <div class="wrapper">
                                 <div class="present__pane">
                                     <h2 class="present__date">1</h2>
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-15 padding-right-15 padding-bottom-30 inline-block">
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
                             <div class="wrapper">
                                 <div class="present__pane">
                                     <h2 class="present__date">2</h2>
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-15 padding-right-15 padding-bottom-30 inline-block">
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
                             <div class="wrapper">
                                 <div class="present__pane">
                                     <h2 class="present__date">3</h2>
@@ -101,7 +101,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-15 padding-right-15 padding-bottom-30 inline-block">
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
                             <div class="wrapper">
                                 <div class="present__pane">
                                     <h2 class="present__date">4</h2>
@@ -117,6 +117,358 @@
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                                 <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                            </figure>
+                                        @endif
+                                    @endif
+                                </div>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block">
+                            <div class="wrapper">
+                                <div class="present__pane">
+                                    <h2 class="present__date">4</h2>
+                                </div>
+                                <div class="present__content">
+                                    @if(!empty($tasks[3]))
+                                        @if($tasks[3]['type'] == 'dcn-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                            </figure>
+                                        @elseif($tasks[3]['type'] == 'ticket-reward')
+                                            <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
