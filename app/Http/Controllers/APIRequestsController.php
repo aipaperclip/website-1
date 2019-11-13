@@ -174,21 +174,15 @@ class APIRequestsController extends Controller {
     }
 
     public function getUserData($id, $logging = false) {
-        var_dump('https://api.dentacoin.com/api/user/?id='.$this->encrypt($id, getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')));
-        die('asd');
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/user/?id='.$this->encrypt($id, getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')),
+            CURLOPT_URL => 'https://api.dentacoin.com/api/user/?id='.$id,
             CURLOPT_SSL_VERIFYPEER => 0,
         ));
 
-        //$resp = json_decode(curl_exec($curl));
-        $resp = curl_exec($curl);
+        $resp = json_decode(curl_exec($curl));
         curl_close($curl);
-
-        var_dump($resp);
-        die('asd');
 
         if(!empty($resp))   {
             if($logging) {
