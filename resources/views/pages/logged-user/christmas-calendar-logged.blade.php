@@ -45,12 +45,12 @@
                                         @if($tasks[0]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[0]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[0]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[0]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[0]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[0]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -67,12 +67,12 @@
                                         @if($tasks[1]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[1]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[1]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[1]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[1]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[1]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -89,12 +89,12 @@
                                         @if($tasks[2]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[2]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[2]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[2]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[2]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[2]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -111,12 +111,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -133,12 +133,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -155,12 +155,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -177,12 +177,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -199,12 +199,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -221,12 +221,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -243,12 +243,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -265,12 +265,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -287,12 +287,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -309,12 +309,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -331,12 +331,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -353,12 +353,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -375,12 +375,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -397,12 +397,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -419,12 +419,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -441,12 +441,12 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$tasks[3]['value']}} raffle ticket</figcaption>
                                             </figure>
                                         @endif
                                     @endif
@@ -463,7 +463,7 @@
                                         @if($tasks[3]['type'] == 'dcn-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                 <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="fs-16 color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$tasks[3]['value']}} DCN</figcaption>
                                             </figure>
                                         @elseif($tasks[3]['type'] == 'ticket-reward')
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
