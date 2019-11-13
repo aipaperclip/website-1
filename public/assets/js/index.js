@@ -43,6 +43,7 @@ $(document).ready(async function() {
     }, 2000);
 
     if(!$('body').hasClass('logged-in')) {
+        console.log('LOAD SOCIALS LOGIN SCRIPTS');
         await $.getScript('/assets/libs/civic-login/civic.js', function() {});
         await $.getScript('/assets/libs/facebook-login/facebook.js', function() {});
     }
@@ -1107,7 +1108,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                     basic.showDialog('Please confirm that you are eighteen (18) years of age or older.', '', null);
                 } else {
                     basic.cookies.set('agreed_with_christmas_calendar_rules', '1');
-                    basic.closeDialog();
+                    window.location.reload();
                 }
             });
         } else {

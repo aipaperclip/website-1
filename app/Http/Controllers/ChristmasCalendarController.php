@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ChristmasCalendarController extends Controller
 {
     public function getView()   {
-        if(!empty($_COOKIE['dev_christmas_calendar'])) {
+        if(!empty($_COOKIE['dev'])) {
             /*if((new UserController())->checkSession()) {
                 return view('pages/logged-user/christmas-calendar-logged');
             } else {
