@@ -4079,19 +4079,6 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
     display: flex !important;
     align-items: center;
     justify-content: center; } }
-.bootbox.christmas-calendar-rules .bootbox-close-button {
-  display: none; }
-.bootbox.christmas-calendar-rules .modal-dialog {
-  width: 95%;
-  max-width: 900px; }
-  .bootbox.christmas-calendar-rules .modal-dialog .modal-content {
-    background-color: rgba(255, 255, 255, 0.95); }
-    .bootbox.christmas-calendar-rules .modal-dialog .modal-content .modal-body {
-      padding: 15px 60px; }
-      .bootbox.christmas-calendar-rules .modal-dialog .modal-content .modal-body ul {
-        list-style-type: disc; }
-      .bootbox.christmas-calendar-rules .modal-dialog .modal-content .modal-body label {
-        cursor: pointer; }
 .bootbox.login-signin-popup .bootbox-close-button {
   display: none; }
 .bootbox.login-signin-popup .modal-dialog {
@@ -8492,6 +8479,27 @@ body.christmas-calendar .christmas-calendar-logged .tasks-section .present__cont
     transform: translate(-50%, -50%); }
 body.christmas-calendar .christmas-calendar-logged .santa-section img {
   margin-top: -80px; }
+body.christmas-calendar .christmas-calendar-not-logged .white-red-btn, body.christmas-calendar .christmas-calendar-logged .white-red-btn {
+  background-color: #d70a10;
+  color: white;
+  font-size: 16px;
+  padding: 6px 15px;
+  font-weight: bold;
+  border: 1.5px solid #d70a10;
+  text-decoration: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  body.christmas-calendar .christmas-calendar-not-logged .white-red-btn:hover, body.christmas-calendar .christmas-calendar-logged .white-red-btn:hover {
+    color: #d70a10;
+    background-color: white;
+    text-decoration: none; }
 body.christmas-calendar .christmas-calendar-not-logged .tasks-section .wrapper, body.christmas-calendar .christmas-calendar-logged .tasks-section .wrapper {
   padding-top: 100%;
   position: relative;
@@ -8560,6 +8568,19 @@ body.christmas-calendar .christmas-calendar-not-logged .tasks-section .wrapper, 
     z-index: -1;
     width: 100%;
     height: 100%; }
+body.christmas-calendar .bootbox.christmas-calendar-rules .bootbox-close-button {
+  display: none; }
+body.christmas-calendar .bootbox.christmas-calendar-rules .modal-dialog {
+  width: 95%;
+  max-width: 900px; }
+  body.christmas-calendar .bootbox.christmas-calendar-rules .modal-dialog .modal-content {
+    background-color: rgba(255, 255, 255, 0.95); }
+    body.christmas-calendar .bootbox.christmas-calendar-rules .modal-dialog .modal-content .modal-body {
+      padding: 15px 60px; }
+      body.christmas-calendar .bootbox.christmas-calendar-rules .modal-dialog .modal-content .modal-body ul {
+        list-style-type: disc; }
+      body.christmas-calendar .bootbox.christmas-calendar-rules .modal-dialog .modal-content .modal-body label {
+        cursor: pointer; }
 
 body.logged-in .my-profile-menu {
   width: 300px;

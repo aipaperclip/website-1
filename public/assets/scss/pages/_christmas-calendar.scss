@@ -1,3 +1,4 @@
+$christmas_calendar_red: #d70a10;
 body.christmas-calendar {
     .christmas-calendar-not-logged {
         .presents-list {
@@ -47,6 +48,22 @@ body.christmas-calendar {
         }
     }
     .christmas-calendar-not-logged, .christmas-calendar-logged {
+        .white-red-btn {
+            background-color: $christmas_calendar_red;
+            color: white;
+            font-size: 16px;
+            padding: 6px 15px;
+            font-weight: bold;
+            border: 1.5px solid $christmas_calendar_red;
+            text-decoration: none;
+            @include rounded(4px);
+            @include simple_transition(.3s);
+            &:hover {
+                color: $christmas_calendar_red;
+                background-color: white;
+                text-decoration: none;
+            }
+        }
         .tasks-section {
             .wrapper {
                 padding-top: 100%;
@@ -114,6 +131,29 @@ body.christmas-calendar {
                     z-index: -1;
                     width: 100%;
                     height: 100%;
+                }
+            }
+        }
+    }
+    .bootbox {
+        &.christmas-calendar-rules {
+            .bootbox-close-button {
+                display: none;
+            }
+            .modal-dialog {
+                width: 95%;
+                max-width: 900px;
+                .modal-content {
+                    background-color: rgba(255, 255, 255, 0.95);
+                    .modal-body {
+                        padding: 15px 60px;
+                        ul {
+                            list-style-type: disc;
+                        }
+                        label {
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
         }
