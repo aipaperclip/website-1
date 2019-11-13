@@ -20,8 +20,13 @@ header {
         .btn-and-line {
             text-align: center;
             min-width: 90px;
+            position: relative;
             a {
                 display: block;
+            }
+            .christmas-ball {
+                top: 100%;
+                @include horizontal-align(absolute);
             }
         }
     }
