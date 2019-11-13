@@ -193,6 +193,9 @@
                         <div>
                             <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient">with Civic</a>
                         </div>
+                        @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
+                            <input type="hidden" name="route" value="christmas-calendar"/>
+                        @endif
                         <div class="popup-half-footer">
                             Don't have an account? <a href="javascript:void(0)" class="call-sign-up color-white">Sign up</a>
                         </div>
@@ -242,6 +245,9 @@
                             <div class="btn-container text-center">
                                 <input type="submit" value="Log in" class="white-black-btn fs-20"/>
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
+                                    <input type="hidden" name="route" value="christmas-calendar"/>
+                                @endif
                             </div>
                             <div class="text-center padding-top-40 fs-16">Don't have an account? <a href="javascript:void(0)" class="call-sign-up fs-20">Sign up</a></div>
                         </form>

@@ -1094,75 +1094,82 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
     }
 } else if($('body.christmas-calendar').length > 0) {
     // CHRISTMAS CALENDAR
-    if($('body').hasClass('logged-in') && basic.cookies.get('dev') != undefined) {
-        if(basic.cookies.get('agreed_with_christmas_calendar_rules') != '1') {
-            basic.showDialog('<h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">SIMPLE RULES:</h2><ul class="lato-regular fs-18 line-height-30"><li><span class="lato-black">31 days = 31 gifts:</span> Unlock a new task every day, complete it and earn various rewards!</li><li><span class="lato-black">Complete tasks every day and your DCN rewards will be doubled at the end of the challenge.</span></li><li><span class="lato-black">31 days = 31 tickets:</span> Don’t miss a day and increase your chances to win!</li><li><span class="lato-black">Missed a day?</span> You can catch up with the daily tasks and gifts, but you’ll have one ticket less and your DCN rewards will not be doubled at the end.</li><li>All DCN daily rewards are withdrawable from <span class="lato-black">Jan 1, 2020 on.</span></li><li>Other gifts are sent via email <span class="lato-black">within 5 days after</span> the task is completed.</li><li>Only users who have <span class="lato-black">submitted proofs</span> for their tasks earn rewards and participate in the raffle.</li><li>All posts, likes and follows <span class="lato-black">must remain</span> at least until the raffle is finished.</li><li><span class="lato-black">Check the raffle winners on January 10, 2020 - first in our Telegram group!</span></li></ul><div class="padding-top-20 padding-bottom-20 max-width-350 margin-0-auto"><div><input id="christmas-calendar-terms" type="checkbox"/><label class="fs-14 padding-left-5" for="christmas-calendar-terms">I read and agree to the Terms & Conditions</label></div><div><input id="christmas-calendar-privacy-policy" type="checkbox"/><label class="fs-14 padding-left-5" for="christmas-calendar-privacy-policy">I read and agree to the Privacy Policy</label></div><div><input id="christmas-calendar-years" type="checkbox"/><label class="fs-14 padding-left-5" for="christmas-calendar-years">I confirm that I am eighteen (18) years of age or older.</label></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="accept-christmas-calendar-rules"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="/assets/images/christmas-calendar-campaign/ready-btn-present.svg" class="width-100 max-width-220" alt="Popup button" itemprop="contentUrl"/></figure></a></div>', 'christmas-calendar-rules', null, true);
+    if($('body').hasClass('logged-in')) {
+        if(basic.cookies.get('dev') != undefined) {
+            if(basic.cookies.get('agreed_with_christmas_calendar_rules') != '1') {
+                basic.showDialog('<h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">SIMPLE RULES:</h2><ul class="lato-regular fs-18 line-height-30"><li><span class="lato-black">31 days = 31 gifts:</span> Unlock a new task every day, complete it and earn various rewards!</li><li><span class="lato-black">Complete tasks every day and your DCN rewards will be doubled at the end of the challenge.</span></li><li><span class="lato-black">31 days = 31 tickets:</span> Don’t miss a day and increase your chances to win!</li><li><span class="lato-black">Missed a day?</span> You can catch up with the daily tasks and gifts, but you’ll have one ticket less and your DCN rewards will not be doubled at the end.</li><li>All DCN daily rewards are withdrawable from <span class="lato-black">Jan 1, 2020 on.</span></li><li>Other gifts are sent via email <span class="lato-black">within 5 days after</span> the task is completed.</li><li>Only users who have <span class="lato-black">submitted proofs</span> for their tasks earn rewards and participate in the raffle.</li><li>All posts, likes and follows <span class="lato-black">must remain</span> at least until the raffle is finished.</li><li><span class="lato-black">Check the raffle winners on January 10, 2020 - first in our Telegram group!</span></li></ul><div class="padding-top-20 padding-bottom-20 max-width-350 margin-0-auto"><div><input id="christmas-calendar-terms" type="checkbox"/><label class="fs-14 padding-left-5" for="christmas-calendar-terms">I read and agree to the Terms & Conditions</label></div><div><input id="christmas-calendar-privacy-policy" type="checkbox"/><label class="fs-14 padding-left-5" for="christmas-calendar-privacy-policy">I read and agree to the Privacy Policy</label></div><div><input id="christmas-calendar-years" type="checkbox"/><label class="fs-14 padding-left-5" for="christmas-calendar-years">I confirm that I am eighteen (18) years of age or older.</label></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="accept-christmas-calendar-rules"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="/assets/images/christmas-calendar-campaign/ready-btn-present.svg" class="width-100 max-width-220" alt="Popup button" itemprop="contentUrl"/></figure></a></div>', 'christmas-calendar-rules', null, true);
 
-            $('.christmas-calendar-rules .accept-christmas-calendar-rules').click(function() {
-                if(!$('.christmas-calendar-rules #christmas-calendar-terms').is(':checked')) {
-                    basic.showDialog('Please agree to the Terms & Conditions.', '', null);
-                } else if(!$('.christmas-calendar-rules #christmas-calendar-privacy-policy').is(':checked')) {
-                    basic.showDialog('Please agree to the Privacy Policy.', '', null);
-                } else if(!$('.christmas-calendar-rules #christmas-calendar-years').is(':checked')) {
-                    basic.showDialog('Please confirm that you are eighteen (18) years of age or older.', '', null);
-                } else {
-                    basic.cookies.set('agreed_with_christmas_calendar_rules', '1');
-                    window.location.reload();
-                }
-            });
-        } else {
-            basic.showDialog('<h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">BEFORE YOU START:</h2><div class="fs-18 text-center lato-regular">01. Follow us on Twitter</div><div class="text-center padding-top-15 padding-bottom-35"><a class="twitter-follow-button" href="https://twitter.com/dentacoin" data-size="large" data-show-screen-name="true" data-show-count="true">Follow</a></div><div class="fs-18 text-center lato-regular">02. Like our Facebook pages: </div><div class="facebook-buttons text-center padding-top-15 padding-bottom-35"><div class="single-facebook-btn inline-block"><div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></div><div class="single-facebook-btn inline-block"><div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></div><div class="single-facebook-btn inline-block"><div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></div><div class="single-facebook-btn inline-block"><div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="christmas-calendar-get-started white-red-btn">GET STARTED</a></div>', 'christmas-calendar-social-engagement', null, true);
-
-            /*window.fbAsyncInit = function () {
-                FB.init({
-                    appId: '1906201509652855',
-                    cookie: true,
-                    xfbml: true,
-                    version: 'v2.0'
+                $('.christmas-calendar-rules .accept-christmas-calendar-rules').click(function() {
+                    if(!$('.christmas-calendar-rules #christmas-calendar-terms').is(':checked')) {
+                        basic.showDialog('Please agree to the Terms & Conditions.', '', null);
+                    } else if(!$('.christmas-calendar-rules #christmas-calendar-privacy-policy').is(':checked')) {
+                        basic.showDialog('Please agree to the Privacy Policy.', '', null);
+                    } else if(!$('.christmas-calendar-rules #christmas-calendar-years').is(':checked')) {
+                        basic.showDialog('Please confirm that you are eighteen (18) years of age or older.', '', null);
+                    } else {
+                        basic.cookies.set('agreed_with_christmas_calendar_rules', '1');
+                        window.location.reload();
+                    }
                 });
-                FB.AppEvents.logPageView();
-            };
+            } else if(basic.cookies.get('christmas_calendar_social_engagement_password') != '1') {
+                basic.showDialog('<h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">BEFORE YOU START:</h2><div class="fs-18 text-center lato-regular">01. Follow us on Twitter</div><div class="text-center padding-top-15 padding-bottom-35"><a class="twitter-follow-button" href="https://twitter.com/dentacoin" data-size="large" data-show-screen-name="true" data-show-count="true">Follow</a></div><div class="fs-18 text-center lato-regular">02. Like our Facebook pages: </div><div class="facebook-buttons text-center padding-top-15 padding-bottom-35"><div class="single-facebook-btn inline-block"><div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></div><div class="single-facebook-btn inline-block"><div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></div><div class="single-facebook-btn inline-block"><div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></div><div class="single-facebook-btn inline-block"><div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="christmas-calendar-get-started white-red-btn">GET STARTED</a></div>', 'christmas-calendar-social-engagement', null, true);
 
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {
-                    return;
-                }
-                js = d.createElement(s);
-                js.id = id;
-                js.src = '//connect.facebook.net/bg_BG/sdk.js';
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
+                $('.christmas-calendar-get-started').click(function() {
+                    basic.cookies.set('christmas_calendar_social_engagement_password', '1');
+                    basic.closeDialog();
+                });
 
-            setInterval(function() {
-                console.log(typeof(FB), 'typeof(FB)');
-            }, 500);
+                /*window.fbAsyncInit = function () {
+                    FB.init({
+                        appId: '1906201509652855',
+                        cookie: true,
+                        xfbml: true,
+                        version: 'v2.0'
+                    });
+                    FB.AppEvents.logPageView();
+                };
 
-            FB.login(function(response) {
-                console.log(2);
-                if (response.authResponse) {
-                    console.log(response.authResponse, 'response.session');
-                    var user_id = response.authResponse.userID;
-                    var page_id = "40796308305"; //coca cola
-                    var fql_query = "SELECT uid FROM page_fan WHERE page_id=40796308305 and uid=509818122840595";
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {
+                        return;
+                    }
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = '//connect.facebook.net/bg_BG/sdk.js';
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
 
-                    FB.api({
-                            method: 'fql.query',
-                            query: fql_query
-                        },
-                        function(response){
-                            console.log(response, 'response');
-                            if (response[0]) {
-                                $("#container_like").show();
-                            } else {
-                                $("#container_notlike").show();
+                setInterval(function() {
+                    console.log(typeof(FB), 'typeof(FB)');
+                }, 500);
+
+                FB.login(function(response) {
+                    console.log(2);
+                    if (response.authResponse) {
+                        console.log(response.authResponse, 'response.session');
+                        var user_id = response.authResponse.userID;
+                        var page_id = "40796308305"; //coca cola
+                        var fql_query = "SELECT uid FROM page_fan WHERE page_id=40796308305 and uid=509818122840595";
+
+                        FB.api({
+                                method: 'fql.query',
+                                query: fql_query
+                            },
+                            function(response){
+                                console.log(response, 'response');
+                                if (response[0]) {
+                                    $("#container_like").show();
+                                } else {
+                                    $("#container_notlike").show();
+                                }
                             }
-                        }
-                    );
-                } else {
-                    // user is not logged in
-                }
-            });*/
+                        );
+                    } else {
+                        // user is not logged in
+                    }
+                });*/
+            }
         }
     }
 }
