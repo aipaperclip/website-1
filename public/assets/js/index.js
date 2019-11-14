@@ -1131,69 +1131,6 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                     $('.blurred-section').removeClass('active');
                 }
             }
-
-
-
-
-            if(basic.cookies.get('christmas_calendar_social_engagement_password') != '1') {
-                basic.showDialog('<h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">BEFORE YOU START:</h2><div class="fs-18 text-center lato-regular">01. Follow us on Twitter</div><div class="text-center padding-top-15 padding-bottom-35"><a class="twitter-follow-button" href="https://twitter.com/dentacoin" data-size="large" data-show-screen-name="true" data-show-count="true">Follow</a></div><div class="fs-18 text-center lato-regular">02. Like our Facebook pages: </div><div class="facebook-buttons text-center padding-top-15 padding-bottom-35"><div class="single-facebook-btn inline-block"><div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></div><div class="single-facebook-btn inline-block"><div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></div><div class="single-facebook-btn inline-block"><div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></div><div class="single-facebook-btn inline-block"><div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="christmas-calendar-get-started white-red-btn">GET STARTED</a></div>', 'christmas-calendar-social-engagement', null, true);
-
-                $('.christmas-calendar-get-started').click(function() {
-                    basic.cookies.set('christmas_calendar_social_engagement_password', '1');
-                    basic.closeDialog();
-                });
-
-                /*window.fbAsyncInit = function () {
-                    FB.init({
-                        appId: '1906201509652855',
-                        cookie: true,
-                        xfbml: true,
-                        version: 'v2.0'
-                    });
-                    FB.AppEvents.logPageView();
-                };
-
-                (function (d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) {
-                        return;
-                    }
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = '//connect.facebook.net/bg_BG/sdk.js';
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-
-                setInterval(function() {
-                    console.log(typeof(FB), 'typeof(FB)');
-                }, 500);
-
-                FB.login(function(response) {
-                    console.log(2);
-                    if (response.authResponse) {
-                        console.log(response.authResponse, 'response.session');
-                        var user_id = response.authResponse.userID;
-                        var page_id = "40796308305"; //coca cola
-                        var fql_query = "SELECT uid FROM page_fan WHERE page_id=40796308305 and uid=509818122840595";
-
-                        FB.api({
-                                method: 'fql.query',
-                                query: fql_query
-                            },
-                            function(response){
-                                console.log(response, 'response');
-                                if (response[0]) {
-                                    $("#container_like").show();
-                                } else {
-                                    $("#container_notlike").show();
-                                }
-                            }
-                        );
-                    } else {
-                        // user is not logged in
-                    }
-                });*/
-            }
         }
     }
 }
