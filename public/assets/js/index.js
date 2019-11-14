@@ -1101,11 +1101,11 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
 
                 $('.tasks-section .camping-custom-popups.rules .popup-wrapper .accept-christmas-calendar-rules').click(function() {
-                    if(!$('.christmas-calendar-rules #christmas-calendar-terms').is(':checked')) {
+                    if(!$('.camping-custom-popups.rules #christmas-calendar-terms').is(':checked')) {
                         basic.showDialog('Please agree to the Terms & Conditions.', '', null);
-                    } else if(!$('.christmas-calendar-rules #christmas-calendar-privacy-policy').is(':checked')) {
+                    } else if(!$('.camping-custom-popups.rules #christmas-calendar-privacy-policy').is(':checked')) {
                         basic.showDialog('Please agree to the Privacy Policy.', '', null);
-                    } else if(!$('.christmas-calendar-rules #christmas-calendar-years').is(':checked')) {
+                    } else if(!$('.camping-custom-popups.rules #christmas-calendar-years').is(':checked')) {
                         basic.showDialog('Please confirm that you are eighteen (18) years of age or older.', '', null);
                     } else {
                         basic.cookies.set('agreed_with_christmas_calendar_rules', '1');

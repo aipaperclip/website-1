@@ -42,10 +42,17 @@ body.christmas-calendar {
                     border: 1px solid black;
                     @include rounded(10px);
                     ul {
-                        list-style-type: disc;
+                        li {
+                            list-style: disc outside none;
+                        }
                     }
                     label {
                         cursor: pointer;
+                    }
+                    .facebook-buttons {
+                        .single-facebook-btn {
+                            padding: 20px;
+                        }
                     }
                 }
                 &.socials {

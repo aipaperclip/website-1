@@ -8483,10 +8483,12 @@ body.christmas-calendar .christmas-calendar-logged .tasks-section {
       -moz-border-radius: 10px;
       -ms-border-radius: 10px;
       border-radius: 10px; }
-      body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups .popup-wrapper ul {
-        list-style-type: disc; }
+      body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups .popup-wrapper ul li {
+        list-style: disc outside none; }
       body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups .popup-wrapper label {
         cursor: pointer; }
+      body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups .popup-wrapper .facebook-buttons .single-facebook-btn {
+        padding: 20px; }
     body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups.socials {
       display: none; }
   body.christmas-calendar .christmas-calendar-logged .tasks-section .blurred-section {
