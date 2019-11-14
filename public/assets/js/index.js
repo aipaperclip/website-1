@@ -1110,7 +1110,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                     } else {
                         basic.cookies.set('agreed_with_christmas_calendar_rules', '1');
 
-                        $('.tasks-section .camping-custom-popups.rules .popup-wrapper').html('');
+                        $('.tasks-section .camping-custom-popups.rules').html('');
                         checkChristmasCalendarSocialEngagement();
                     }
                 });
