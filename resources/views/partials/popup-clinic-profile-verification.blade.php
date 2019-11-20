@@ -7,31 +7,31 @@
     {{--<form method="POST" action="{{ route('invite-your-clinic') }}" id="invite-your-clinic">
         <h3 class="line-crossed margin-bottom-20 fs-0"><span class="fs-16">Invite your clinic to join.</span></h3>
         <div class="padding-bottom-20 field-parent">
-            <div class="custom-google-label-style module" data-input-blue-green-border="true">
+            <div class="custom-google-label-style module" data-input-colorful-border="true">
                 <label for="invite-clinic-name">Name:</label>
                 <input class="full-rounded form-field" name="invite-clinic-name" maxlength="250" id="invite-clinic-name" type="text"/>
             </div>
         </div>
         <div class="padding-bottom-20 field-parent">
-            <div class="custom-google-label-style module" data-input-blue-green-border="true">
+            <div class="custom-google-label-style module" data-input-colorful-border="true">
                 <label for="invite-clinic-email">Email:</label>
                 <input class="full-rounded form-field" name="invite-clinic-email" maxlength="50" id="invite-clinic-email" type="email"/>
             </div>
         </div>
         <div class="padding-bottom-20 field-parent">
-            <div class="custom-google-label-style module" data-input-blue-green-border="true">
+            <div class="custom-google-label-style module" data-input-colorful-border="true">
                 <label for="invite-clinic-address">Address:</label>
                 <input class="full-rounded form-field" name="invite-clinic-address" maxlength="250" id="invite-clinic-address" type="text"/>
             </div>
         </div>
         <div class="padding-bottom-20 field-parent">
-            <div class="custom-google-label-style module" data-input-blue-green-border="true">
+            <div class="custom-google-label-style module" data-input-colorful-border="true">
                 <label for="invite-clinic-website">Website:</label>
                 <input class="full-rounded form-field" name="invite-clinic-website" maxlength="500" id="invite-clinic-website" type="url"/>
             </div>
         </div>
         <div class="padding-bottom-20 field-parent">
-            <div class="custom-google-label-style module" data-input-blue-green-border="true">
+            <div class="custom-google-label-style module" data-input-colorful-border="true">
                 <label for="invite-clinic-phone">Phone:</label>
                 <input class="full-rounded form-field" name="invite-clinic-phone" maxlength="20" id="invite-clinic-phone" type="number"/>
             </div>

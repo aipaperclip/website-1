@@ -15,19 +15,19 @@
                     <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                         <img src="/assets/images/christmas-calendar-campaign/ticket.svg" alt="Ticket" itemprop="contentUrl" class="width-100"/>
                     </figure>
-                    <div class="inline-block lato-bold fs-16 stats-text">31/31 daily raffle tickets</div>
+                    <div class="inline-block lato-bold fs-16 stats-text"><span class="user-bonus-ticket-amount">{{$bonusTickets}}</span>/31 daily raffle tickets</div>
                 </div>
                 <div class="col-xs-12 col-sm-4 single-stat">
                     <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                         <img src="/assets/images/christmas-calendar-campaign/bonus-ticket.svg" alt="Bonus ticket" itemprop="contentUrl" class="width-100"/>
                     </figure>
-                    <div class="inline-block lato-bold fs-16 stats-text">80/80 bonus tickets for tasks</div>
+                    <div class="inline-block lato-bold fs-16 stats-text"><span class="user-ticket-amount">{{$ticketAmount}}</span>/81 bonus tickets for tasks</div>
                 </div>
                 <div class="col-xs-12 col-sm-4 single-stat">
                     <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                         <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" alt="Dentacoins" itemprop="contentUrl" class="width-100"/>
                     </figure>
-                    <div class="inline-block lato-bold fs-16 stats-text">210,000/210,000 Dentacoin (DCN)</div>
+                    <div class="inline-block lato-bold fs-16 stats-text"><span class="user-dcn-amount">{{$dcnAmount}}</span>/105,000 Dentacoin (DCN)</div>
                 </div>
             </div>
         </section>
@@ -38,43 +38,34 @@
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1">
                     <div class="row fs-0">
                         @foreach($tasks as $task)
-                            <a href="javascript:void(0);" class="col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block" data-task="{{$task['id']+1}}">
-                                <div class="wrapper">
+                            <a href="javascript:void(0);" class="single-task col-xs-12 col-sm-2 padding-left-10 padding-right-10 padding-bottom-30 inline-block" data-task="{{$task['id']}}">
+                                <div class="wrapper @if((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id)) opened @endif">
                                     <div class="present__pane">
-                                        <h2 class="present__date">{{$task['id']+1}}</h2>
+                                        <h2 class="present__date">{{$task['id']}}</h2>
                                     </div>
                                     <div class="present__content">
+                                        <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                             @if($task['type'] == 'dcn-reward')
-                                                <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                                    <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">{{$task['value']}} DCN</figcaption>
-                                                </figure>
+                                                <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="color-white lato-bold padding-top-5">{{$task['value']}} DCN</figcaption>
                                             @elseif($task['type'] == 'ticket-reward')
-                                                <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                                    <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">+{{$task['value']}} raffle ticket</figcaption>
-                                                </figure>
+                                                <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="color-white lato-bold padding-top-5">+{{$task['value']}} raffle ticket</figcaption>
                                             @elseif($task['type'] == 'face-sticker')
-                                                <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">Face sticker</figcaption>
-                                                </figure>
+                                                <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="color-white lato-bold padding-top-5">Face sticker</figcaption>
                                             @elseif($task['type'] == 'facebook-holiday-frame')
-                                                <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">Facebook frame</figcaption>
-                                                </figure>
+                                                <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="color-white lato-bold padding-top-5">Facebook frame</figcaption>
                                             @elseif($task['type'] == 'free-oracle-health-guide')
-                                                <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">Oracle health guide</figcaption>
-                                                </figure>
+                                                <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="color-white lato-bold padding-top-5">Oracle health guide</figcaption>
                                             @elseif($task['type'] == 'custom-holiday-card')
-                                                <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>
-                                                </figure>
+                                                <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>
                                             @endif
+                                        </figure>
+                                        @if((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id)) <i class="fa fa-check check-icon" aria-hidden="true"></i> @endif
                                     </div>
                                 </div>
                             </a>

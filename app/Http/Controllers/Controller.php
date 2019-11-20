@@ -354,7 +354,7 @@ class Controller extends BaseController
         return $raw_text;
     }
 
-    protected function getClientIp() {
+    public function getClientIp() {
         $ipaddress = '';
         if (getenv('HTTP_CLIENT_IP'))
             $ipaddress = getenv('HTTP_CLIENT_IP');

@@ -150,6 +150,9 @@
 .color-white {
   color: white; }
 
+.color-christmas-calendar-red {
+  color: #d70a10; }
+
 .white-dark-blue-btn, .platform-custom-button {
   background-color: #041e42;
   color: white !important;

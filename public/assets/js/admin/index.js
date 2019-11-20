@@ -85,6 +85,49 @@ if($('body').hasClass('add-job-offer')) {
     }
 
     $('input[name="color"]').spectrum(color_picker_options);
+} else if($('body').hasClass('view-christmas-calendar-participant')) {
+    $('.approve-user-calendar-participation').click(function() {
+        var approvedTasksLength = $('.approve-task:checked').length;
+        if($('.approve-task:checked').length) {
+            var dcnAmount = 0;
+            var ticketAmount = 0;
+            var tasksToApprove = [];
+            for(var i = 0; i < approvedTasksLength; i+=1) {
+                if($('.approve-task:checked').eq(i).closest('tr').attr('data-type') == 'dcn-reward') {
+                    dcnAmount += parseInt($('.approve-task:checked').eq(i).closest('tr').attr('data-value'));
+                } else if($('.approve-task:checked').eq(i).closest('tr').attr('data-type') == 'ticket-reward') {
+                    ticketAmount += parseInt($('.approve-task:checked').eq(i).closest('tr').attr('data-value'));
+                }
+                tasksToApprove.push($('.approve-task:checked').eq(i).closest('tr').attr('data-id'));
+            }
+
+            console.log(tasksToApprove, 'tasksToApprove');
+
+            var confirm_obj = {};
+            confirm_obj.callback = function (result) {
+                if(result) {
+                    $.ajax({
+                        type: 'POST',
+                        url: SITE_URL + '/christmas-calendar-participants/approve-tasks',
+                        data: {
+                            'tasksToApprove' : tasksToApprove,
+                            'participant' : $('table').attr('data-participant-id')
+                        },
+                        dataType: 'json',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function (response) {
+                            console.log(response, 'response');
+                        }
+                    });
+                }
+            };
+            basic.showConfirm('Are you sure you want to approve these user tasks? They make in total ' + dcnAmount + ' DCN and ' + ticketAmount + ' tickets.', '', confirm_obj, true);
+        } else {
+            basic.showAlert('Before approving user calendar participation please select which tasks to approve.', '', true);
+        }
+    });
 }
 
 // =========================================== /PAGES ===========================================

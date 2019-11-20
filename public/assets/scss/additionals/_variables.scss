@@ -8,6 +8,7 @@ $light_blue: #679dca;
 $dark_blue: #041e42;
 $light_gray: #3e3e3e;
 $solid_gray: #aaaaaa;
+$christmas_calendar_red: #d70a10;
 
 .main_color {
     color: $main_color;
@@ -59,4 +60,8 @@ $solid_gray: #aaaaaa;
 
 .color-white {
     color: white;
+}
+
+.color-christmas-calendar-red {
+    color: $christmas_calendar_red;
 }

@@ -7,6 +7,7 @@ define('ROOT', realpath(dirname(__FILE__)) . DS);
 // define uploads directory
 define('BASE_URL', 'https://dentacoin.com/');
 define('UPLOADS', ROOT . 'public' . DS . 'assets' . DS . 'uploads' . DS);
+define('SCREENSHOT_PROOFS', ROOT . 'public' . DS . 'assets' . DS . 'images' . DS . 'christmas-calendar-campaign' . DS . 'screenshot-proofs' . DS);
 define('UPLOADS_FRONT_END', DS . 'assets' . DS . 'uploads' . DS);
 define('EMAIL_RECEIVER', 'press@dentacoin.com');
 define('JOB_APPLIES_EMAIL_RECEIVER', 'donika.kraeva@dentacoin.com');

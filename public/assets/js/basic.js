@@ -92,8 +92,8 @@ var basic = {
             jQuery('.bootbox').last().css({'z-index': last_z+2}).next('.modal-backdrop').css({'z-index': last_z+1});
         }
     },
-    showAlert: function(message, class_name) {
-        basic.realShowDialog(message, "alert", class_name);
+    showAlert: function(message, class_name, vertical_center) {
+        basic.realShowDialog(message, "alert", class_name, null, null, vertical_center);
     },
     showConfirm: function(message, class_name, params, vertical_center) {
         basic.realShowDialog(message, "confirm", class_name, params, null, vertical_center);

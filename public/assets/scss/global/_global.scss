@@ -506,12 +506,12 @@ body.testimonials, body.press-center {
         font-size: 26px;
         top: 0;
         margin-top: 0 !important;
-    }
+    }/*
     @include breakpoint($sm-up) {
         display: flex !important;
         align-items: center;
         justify-content: center;
-    }
+    }*/
     &.login-signin-popup {
         .bootbox-close-button {
             display: none;

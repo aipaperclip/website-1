@@ -96,37 +96,37 @@
                         <h2 class="text-center lato-bold fs-36 fs-xs-26 padding-bottom-10">RESERVE YOUR SPOT</h2>
                         <h3 class="text-center fs-26 fs-xs-18 padding-bottom-40">until September 25, 2019: </h3>
                         <div class="padding-bottom-20 field-parent">
-                            <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                            <div class="custom-google-label-style module" data-input-colorful-border="true">
                                 <label for="fname">First Name:</label>
                                 <input type="text" id="fname" name="fname" maxlength="100" class="full-rounded required form-field"/>
                             </div>
                         </div>
                         <div class="padding-bottom-20 field-parent">
-                            <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                            <div class="custom-google-label-style module" data-input-colorful-border="true">
                                 <label for="lname">Last Name:</label>
                                 <input type="text" id="lname" name="lname" maxlength="100" class="full-rounded required form-field"/>
                             </div>
                         </div>
                         <div class="padding-bottom-20 field-parent">
-                            <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                            <div class="custom-google-label-style module" data-input-colorful-border="true">
                                 <label for="email">Business Email:</label>
                                 <input type="email" id="email" name="email" maxlength="100" class="full-rounded required form-field"/>
                             </div>
                         </div>
                         <div class="padding-bottom-20 field-parent">
-                            <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                            <div class="custom-google-label-style module" data-input-colorful-border="true">
                                 <label for="job-title">Job Title:</label>
                                 <input type="text" id="job-title" name="job-title" maxlength="100" class="full-rounded required form-field"/>
                             </div>
                         </div>
                         <div class="padding-bottom-20 field-parent">
-                            <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                            <div class="custom-google-label-style module" data-input-colorful-border="true">
                                 <label for="company">Company:</label>
                                 <input type="text" id="company" name="company" maxlength="100" class="full-rounded required form-field"/>
                             </div>
                         </div>
                         <div class="padding-bottom-20 field-parent">
-                            <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                            <div class="custom-google-label-style module" data-input-colorful-border="true">
                                 <label for="website">Company website:</label>
                                 <input type="text" id="website" name="website" maxlength="250" class="full-rounded required form-field"/>
                             </div>
@@ -179,7 +179,7 @@
                                 </div>
                             </div>
                             <div class="inline-block fs-14 width-50 width-xs-100 padding-left-10">
-                                <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                                <div class="custom-google-label-style module" data-input-colorful-border="true">
                                     <label for="register-captcha">Enter captcha:</label>
                                     <input type="text" name="captcha" id="register-captcha" maxlength="5" class="full-rounded form-field required"/>
                                 </div>

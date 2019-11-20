@@ -114,3 +114,18 @@
     -o-transform: none;
     transform: none;
 }
+
+@mixin user-select($val: none){
+    -webkit-user-select: $val;
+    -khtml-user-select: $val;
+    -moz-user-select: $val;
+    -o-user-select: $val;
+    user-select: $val;
+}
+@mixin user-drag($val: none){
+    -webkit-user-drag: $val;
+    -khtml-user-drag: $val;
+    -moz-user-drag: $val;
+    -o-user-drag: $val;
+    user-drag: $val;
+}

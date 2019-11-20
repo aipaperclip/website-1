@@ -16,6 +16,7 @@ mix.disableSuccessNotifications();
 /* ===== PUBLIC =====*/
 mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
+    'public/assets/libs/jquery-ui/jquery-ui.css',
     'node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.css',
     'public/assets/libs/font-awesome/css/font-awesome.min.css',
     'node_modules/slick-carousel/slick/slick.css',
@@ -31,6 +32,7 @@ mix.styles([
 
 mix.scripts([
     'node_modules/jquery/dist/jquery.min.js',
+    'public/assets/libs/jquery-ui/jquery-ui.js',
     'public/assets/libs/emailoctopus/emailoctopus.js',
     'public/assets/libs/bidali/bidali-commerce.js',
     'node_modules/bootstrap/dist/js/bootstrap.min.js',

@@ -1,5 +1,20 @@
-$christmas_calendar_red: #d70a10;
 body.christmas-calendar {
+    .white-red-btn {
+        background-color: $christmas_calendar_red;
+        color: white;
+        font-size: 16px;
+        padding: 6px 15px;
+        font-weight: bold;
+        border: 1.5px solid $christmas_calendar_red;
+        text-decoration: none;
+        @include rounded(4px);
+        @include simple_transition(.3s);
+        &:hover {
+            color: $christmas_calendar_red;
+            background-color: white;
+            text-decoration: none;
+        }
+    }
     .christmas-calendar-not-logged {
         .presents-list {
             figure {
@@ -66,16 +81,18 @@ body.christmas-calendar {
                     -webkit-filter: blur(3.5px);
                 }
             }
-            .present__content {
-                background-image: url(/assets/images/christmas-calendar-campaign/christams-box-bg.svg);
-                background-repeat: no-repeat;
-                background-size: 100% 100%;
-                background-position: center center;
-                text-align: center;
-                figure {
-                    width: 80%;
-                    max-height: 100%;
-                    @include vertical-horizontal-align(absolute);
+            .single-task {
+                .present__content {
+                    background-image: url(/assets/images/christmas-calendar-campaign/christams-box-bg.svg);
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                    background-position: center center;
+                    text-align: center;
+                    figure {
+                        width: 80%;
+                        max-height: 100%;
+                        @include vertical-horizontal-align(absolute);
+                    }
                 }
             }
         }
@@ -86,30 +103,14 @@ body.christmas-calendar {
         }
     }
     .christmas-calendar-not-logged, .christmas-calendar-logged {
-        .white-red-btn {
-            background-color: $christmas_calendar_red;
-            color: white;
-            font-size: 16px;
-            padding: 6px 15px;
-            font-weight: bold;
-            border: 1.5px solid $christmas_calendar_red;
-            text-decoration: none;
-            @include rounded(4px);
-            @include simple_transition(.3s);
-            &:hover {
-                color: $christmas_calendar_red;
-                background-color: white;
-                text-decoration: none;
-            }
-        }
         .tasks-section {
             .wrapper {
                 padding-top: 100%;
                 position: relative;
                 display: inline-block;
                 width: 100%;
-                -webkit-perspective: 850px;
-                perspective: 850px;
+                -webkit-perspective: 1500px;
+                perspective: 1500px;
                 z-index: 666;
                 .present__pane {
                     width: inherit;
@@ -127,8 +128,6 @@ body.christmas-calendar {
                     transform-style: preserve-3d;
                     -webkit-transform-origin: 0;
                     transform-origin: 0;
-                    -webkit-perspective: 850px;
-                    perspective: 850px;
                     text-align: center;
                     box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
                     cursor: pointer;
@@ -152,10 +151,10 @@ body.christmas-calendar {
                 }
                 &:hover .present__pane {
                     background: linear-gradient(135deg, #9ddafd 50%, #4eb6eb 50%);
-                    -webkit-transform: rotateY(-97deg);
-                    transform: rotateY(-97deg);
+                    -webkit-transform: rotateY(-93deg);
+                    transform: rotateY(-93deg);
                     -webkit-perspective-origin: 0;
-                    perspective-origin: 0;
+                    perspective-origin: 0;  
                     transition: all 0.25s ease-in;
                 }
                 &:hover .present__date {
@@ -170,8 +169,353 @@ body.christmas-calendar {
                     width: 100%;
                     height: 100%;
                     font-size: 16px;
+                    img {
+                        max-width: 70%;
+                    }
+                    .check-icon {
+                        display: block;
+                        color: white;
+                        background-color: #00f272;
+                        position: absolute;
+                        top: 10px;
+                        left: 10px;
+                        width: 25px;
+                        height: 25px;
+                        line-height: 25px;
+                        font-size: 16px;
+                        text-align: center;
+                        @include rounded(50%);
+                    }
                     @include breakpoint($md-only) {
                         font-size: 14px;
+                    }
+                }
+                &.opened {
+                    z-index: 999;
+                    .present__pane {
+                        background: linear-gradient(135deg, #9ddafd 50%, #4eb6eb 50%);
+                        -webkit-transform: rotateY(-93deg);
+                        transform: rotateY(-93deg);
+                        -webkit-perspective-origin: 0;
+                        perspective-origin: 0;
+                        transition: all 0.25s ease-in;
+                    }
+                    .present__date {
+                        -webkit-backface-visibility: hidden;
+                        backface-visibility: hidden;
+                    }
+                }
+            }
+        }
+    }
+    .bootbox {
+        &.christmas-calendar-task {
+            .bootbox-close-button {
+                display: none;
+            }
+            .modal-dialog {
+                width: 95%;
+                max-width: 900px;
+                .modal-content {
+                    background: transparent;
+                    border: 0;
+                    @include box-shadow(none);
+                    .modal-body {
+                        padding: 0;
+                        .popup-header {
+                            img {
+                                max-width: 250px;
+                            }
+                            .lines-and-day {
+                                position: relative;
+                                .lines {
+                                    overflow: hidden;
+                                    @include rounded(20px 20px 0 0);
+                                    .small-red-line {
+                                        background-color: $christmas_calendar_red;
+                                        height: 10px;
+                                    }
+                                    .small-yellow-line {
+                                        background-color: #f3b434;
+                                        height: 5px;
+                                    }
+                                    .big-red-line {
+                                        background-color: $christmas_calendar_red;
+                                        height: 35px;
+                                    }
+                                }
+                                .day {
+                                    font-size: 40px;
+                                    text-align: center;
+                                    color: white;
+                                    font-family: 'Lato-Black';
+                                    padding: 15px 30px;
+                                    background-color: $christmas_calendar_red;
+                                    @include rounded(15px);
+                                    @include box-shadow(0 2px 6px 0 rgba(0, 0, 0, 0.7));
+                                    @include vertical-horizontal-align(absolute);
+                                }
+                            }
+                        }
+                        .popup-body {
+                            background-color: white;
+                            @include rounded(0 0 20px 20px);
+
+                            .newsletter-register {
+                                padding-top: 50px;
+                                padding-bottom: 30px;
+                                #mc_embed_signup_scroll {
+                                    max-width: 300px;
+                                    margin: 0 auto;
+                                    font-size: 0;
+                                    input[type='email'] {
+                                        width: calc(100% - 100px);
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                        height: 40px;
+                                        font-size: 18px;
+                                        border: 1px solid #aaaaaa;
+                                        padding: 0 5px;
+                                        @include rounded(4px 0 0 4px);
+                                    }
+                                    .btn-container {
+                                        width: 100px;
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                        input[type='submit'] {
+                                            height: 40px;
+                                            font-size: 18px;
+                                            background-color: $christmas_calendar_red;
+                                            display: block;
+                                            width: 100%;
+                                            border: 0;
+                                            color: white;
+                                            @include rounded(0 4px 4px 0);
+                                        }
+                                    }
+                                }
+                                .checkbox-row {
+                                    padding-top: 10px;
+                                    text-align: left;
+                                    max-width: 300px;
+                                    margin: 0 auto;
+                                    input[type='checkbox'] {
+                                        vertical-align: middle;
+                                        margin: 0;
+                                    }
+                                    label {
+                                        font-size: 16px;
+                                        margin: 0;
+                                        vertical-align: middle;
+                                        padding-left: 10px;
+                                        a {
+                                            text-decoration: underline;
+                                        }
+                                    }
+                                }
+                            }
+                            form {
+                                width: 80%;
+                                margin: 0 auto;
+                                #upload-avatar {
+                                    display: none;
+                                }
+                                textarea {
+                                    width: 100%;
+                                    border: 2px solid #dddddd;
+                                    cursor: pointer;
+                                    font-size: 16px;
+                                    font-family: 'Lato-Regular';
+                                    padding: 10px 15px;
+                                    @include rounded(4px);
+
+                                }
+                                .task-present {
+                                    width: 120px;
+                                    height: 120px;
+                                    background-image: url(/assets/images/christmas-calendar-campaign/christams-box-bg.svg);
+                                    background-repeat: no-repeat;
+                                    background-size: 100% 100%;
+                                    background-position: center center;
+                                    text-align: center;
+                                    position: relative;
+                                    figure {
+                                        width: 80%;
+                                        max-height: 100%;
+                                        font-size: 14px;
+                                        @include vertical-horizontal-align(absolute);
+                                        img {
+                                            max-width: 70%;
+                                        }
+                                    }
+                                }
+                                .task-name {
+                                    width: calc(100% - 120px);
+                                }
+                                .task-body {
+                                    .upload-image {
+                                        .rotate {
+                                            position: absolute;
+                                            right: 50px;
+                                            top: -10px;
+                                            cursor: pointer;
+                                            z-index: 3;
+                                            width: 35px;
+                                            @include breakpoint($xs){
+                                                width: 25px;
+                                                right: 41px;
+                                            }
+                                        }
+                                        .photo {
+                                            overflow: hidden;
+                                            cursor: pointer;
+                                            position: relative;
+                                            width: calc(100% - 76px);
+                                            margin-bottom: 0;
+                                            .border {
+                                                position: absolute;
+                                                top: 0;
+                                                width: 100%;
+                                                height: 100%;
+                                                img{
+                                                    width: 100%;
+                                                    max-width: none;
+                                                }
+                                            }
+                                            .avatar {
+                                                width: 100%;
+                                                &.avatar-selected {
+                                                    background-repeat: no-repeat;
+                                                    background-position: calc(50% - 0px) calc(50% - 0px);
+                                                    background-size: contain;
+                                                }
+                                                @include breakpoint($xs)    {
+                                                    img {
+                                                        width: 100%;
+                                                    }
+                                                }
+                                                &.filter-sepia{
+                                                    -filter: brightness(0.9) sepia(1);
+                                                    -webkit-filter: brightness(0.9) sepia(1);
+                                                }
+                                                &.filter-grayscale{
+                                                    -webkit-filter: grayscale(1);
+                                                    filter: grayscale(1);
+                                                    background-color: #d6d6d6;
+                                                }
+                                            }
+                                            @include breakpoint($xs){
+                                                width: calc(100% - 50px);
+                                            }
+                                        }
+                                        .up-triangle {
+                                            padding-bottom: 5px;
+                                            text-align: center;
+                                            &, img{
+                                                @include user-select(none);
+                                                @include user-drag(none);
+                                            }
+                                            img {
+                                                max-height: 100%;
+                                                max-width: none;
+                                                width: auto;
+                                                height: 100%;
+                                            }
+                                            @include breakpoint($xs){
+                                                height: 25px;
+                                            }
+                                        }
+                                        .down-triangle {
+                                            padding-top: 5px;
+                                            position: relative;
+                                            text-align: center;
+                                            div {
+                                                color: $dark_blue;
+                                                font-size: 14px;
+                                                &:first-child {
+                                                    @include breakpoint($xs)    {
+                                                        padding-top: 30px;
+                                                    }
+                                                }
+                                            }
+                                            &, img{
+                                                @include user-select(none);
+                                                @include user-drag(none);
+                                            }
+                                            img {
+                                                transform: rotate(180deg);
+                                                max-height: 100%;
+                                                max-width: none;
+                                                width: auto;
+                                                height: 100%;
+                                            }
+                                            @include breakpoint($xs){
+                                                height: 25px;
+                                            }
+                                        }
+                                        .left-triangle {
+                                            padding-right: 5px;
+                                            text-align: left;
+                                            &, img{
+                                                @include user-select(none);
+                                                @include user-drag(none);
+                                            }
+                                            @include breakpoint($xs){
+                                                width: 25px;
+                                            }
+                                        }
+                                        .right-triangle {
+                                            padding-right: 5px;
+                                            text-align: left;
+                                            transform: rotate(180deg);
+                                            &, img{
+                                                @include user-select(none);
+                                                @include user-drag(none);
+                                            }
+                                            @include breakpoint($xs){
+                                                width: 25px;
+                                            }
+                                        }
+                                        .zoom-scroll-container {
+                                            padding-top: 20px;
+                                            padding-left: 15px;
+                                            padding-right: 15px;
+                                            .wrapper {
+                                                height: 10px;
+                                                background-color: white;
+                                                max-width: 300px;
+                                                margin: 0 auto;
+                                                position: relative;
+                                                border: 1.5px solid #c5c5c5;
+                                                span {
+                                                    width: 25px;
+                                                    height: 25px;
+                                                    left: -10px;
+                                                    cursor: pointer;
+                                                    background-color: $christmas_calendar_red;
+                                                    display: none;
+                                                    position: absolute;
+                                                    top: 50%;
+                                                    -webkit-transform: translate(-50%, -50%);
+                                                    -ms-transform: translate(-50%, -50%);
+                                                    transform: translate(-50%, -50%);
+                                                    @include rounded(50%);
+                                                }
+                                                .ui-slider-handle {
+                                                    display: block;
+                                                }
+                                            }
+                                        }
+                                        .legend {
+                                            color: #1f3685;
+                                            font-size: 14px;
+                                            padding-top: 35px;
+                                            text-align: center;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

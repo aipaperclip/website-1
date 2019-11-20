@@ -38,8 +38,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.0.53">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.0.53">
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.0.56">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.0.56">
     <script>
         var HOME_URL = '{{ route("home") }}';
     </script>
@@ -231,13 +231,13 @@
                         <h2>LOG IN</h2>
                         <form method="POST" action="{{ route('dentist-login') }}" id="dentist-login">
                             <div class="padding-bottom-10 field-parent">
-                                <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                                <div class="custom-google-label-style module" data-input-colorful-border="true">
                                     <label for="dentist-login-email">Email address:</label>
                                     <input class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-login-email" placeholder=""/>
                                 </div>
                             </div>
                             <div class="padding-bottom-20 field-parent">
-                                <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                                <div class="custom-google-label-style module" data-input-colorful-border="true">
                                     <label for="dentist-login-password">Password:</label>
                                     <input class="full-rounded form-field" name="password" maxlength="50" id="dentist-login-password" type="password"/>
                                 </div>
@@ -260,19 +260,19 @@
                         <form method="POST" enctype="multipart/form-data" id="dentist-register" action="{{ route('dentist-register') }}">
                             <div class="step first visible" data-step="first">
                                 <div class="padding-bottom-10 field-parent">
-                                    <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                                    <div class="custom-google-label-style module" data-input-colorful-border="true">
                                         <label for="dentist-register-email">Work Email Address:</label>
                                         <input class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-register-email"/>
                                     </div>
                                 </div>
                                 <div class="padding-bottom-10 field-parent">
-                                    <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                                    <div class="custom-google-label-style module" data-input-colorful-border="true">
                                         <label for="dentist-register-password">Password:</label>
                                         <input class="full-rounded form-field password" name="password" minlength="6" maxlength="50" type="password" id="dentist-register-password"/>
                                     </div>
                                 </div>
                                 <div class="padding-bottom-20 field-parent">
-                                    <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                                    <div class="custom-google-label-style module" data-input-colorful-border="true">
                                         <label for="dentist-register-repeat-password">Repeat password:</label>
                                         <input class="full-rounded form-field repeat-password" name="repeat-password" minlength="6" maxlength="50" type="password" id="dentist-register-repeat-password"/>
                                     </div>
@@ -305,14 +305,14 @@
                                     </div>
                                 </div>
                                 <div class="padding-bottom-15 field-parent">
-                                    <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                                    <div class="custom-google-label-style module" data-input-colorful-border="true">
                                         <label for="dentist-register-latin-name">Your Name (Latin letters):</label>
                                         <input class="full-rounded form-field required" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name"/>
                                     </div>
                                     <div class="fs-14 light-gray-color">Ex: Vladimir Alexandrovich (First name, Last name)</div>
                                 </div>
                                 <div class="padding-bottom-30 field-parent">
-                                    <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                                    <div class="custom-google-label-style module" data-input-colorful-border="true">
                                         <label for="dentist-register-alternative-name">Alternative Spelling (optional):</label>
                                         <input class="full-rounded form-field" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name"/>
                                     </div>
@@ -356,7 +356,7 @@
                                     </div>
                                 </div>
                                 <div class="padding-bottom-15 suggester-parent module field-parent">
-                                    <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                                    <div class="custom-google-label-style module" data-input-colorful-border="true">
                                         <label for="dentist-register-address">Address: Start typing street, No, city</label>
                                         <input type="text" name="address" class="full-rounded form-field required address-suggester dont-init" autocomplete="off" id="dentist-register-address">
                                     </div>
@@ -365,7 +365,7 @@
                                     <div class="alert alert-warning geoip-hint margin-top-10 margin-bottom-10">Please enter a valid address for your practice (including street name and number)</div>
                                 </div>
                                 <div class="padding-bottom-15 field-parent">
-                                    <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                                    <div class="custom-google-label-style module" data-input-colorful-border="true">
                                         <label for="dentist-register-website">Website: http(s)://:</label>
                                         <input class="full-rounded form-field required" name="website" id="dentist-register-website" maxlength="250" type="url"/>
                                     </div>
@@ -374,7 +374,7 @@
                                 <div class="padding-bottom-10 field-parent">
                                     <div class="phone">
                                         <div class="country-code" name="phone-code">{{$current_phone_code}}</div>
-                                        <div class="custom-google-label-style module input-phone" data-input-blue-green-border="true">
+                                        <div class="custom-google-label-style module input-phone" data-input-colorful-border="true">
                                             <label for="dentist-register-phone">Phone number:</label>
                                             <input class="full-rounded form-field required" name="phone" maxlength="50" type="number" id="dentist-register-phone"/>
                                         </div>
@@ -415,7 +415,7 @@
                                             </div>
                                         </div>
                                         <div class="inline-block fs-14 width-50 width-xs-100 padding-left-10">
-                                            <div class="custom-google-label-style module" data-input-blue-green-border="true">
+                                            <div class="custom-google-label-style module" data-input-colorful-border="true">
                                                 <label for="register-captcha">Enter captcha:</label>
                                                 <input type="text" name="captcha" id="register-captcha" maxlength="5" class="full-rounded form-field"/>
                                             </div>
@@ -615,16 +615,16 @@
 }
 </script>
     <!--End of Tawk.to Script-->
-    <script src="/assets/js/basic.js"></script>
+    {{--<script src="/assets/js/basic.js"></script>--}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.0.53"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.0.56"></script>
     @yield("script_block")
-    {{--<script src="/dist/js/front-script.js?v=1.0.53"></script>--}}
-    <script src="/assets/js/markerclusterer-v2.js"></script>
+    <script src="/dist/js/front-script.js?v=1.0.56"></script>
+    {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/address.js"></script>
-    <script src="/assets/js/index.js"></script>
+    <script src="/assets/js/index.js"></script>--}}
 
     {{--Multiple errors from laravel validation--}}
     @if(!empty($errors) && count($errors) > 0)
