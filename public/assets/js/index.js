@@ -2240,7 +2240,6 @@ function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, faile
             //check file extension
             if(jQuery.inArray(filename.split('.').pop().toLowerCase(), allowedImagesExtensions) !== -1) {
                 if(callback != undefined) {
-                    callback(e, filename);
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         callback(e, filename);
