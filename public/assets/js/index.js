@@ -13,6 +13,7 @@ var stoppers = [];
 const draw_line_interval = 10;
 const draw_line_increment = 10;
 const border_width = 2;
+var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
 
 var get_params = getGETParameters();
 
@@ -1093,8 +1094,6 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
         });
     }
 } else if($('body.christmas-calendar').length > 0) {
-    var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
-
     // CHRISTMAS CALENDAR
     //if($('body').hasClass('logged-in')) {
         if(basic.cookies.get('dev') != undefined) {
@@ -2181,7 +2180,6 @@ function styleAvatarUploadButton()    {
             input.addEventListener('change', function(e) {
                 var this_input = $(this);
                 readURL(this, 2, allowedImagesExtensions, function() {
-                    console.log('readURL');
                     $('#cropper-container').addClass('width-and-height');
                     if(croppie_instance != undefined) {
                         croppie_instance.croppie('destroy');
@@ -2228,10 +2226,8 @@ function bytesToMegabytes(bytes) {
 
 // reading file and check size and extension
 function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, failed_callback) {
-    console.log(input, 'input');
     if (input.files && input.files[0]) {
         var filename = input.files[0].name;
-        console.log(filename, 'filename');
 
         // check file size
         if(megaBytesLimit < bytesToMegabytes(input.files[0].size)) {
@@ -2241,7 +2237,6 @@ function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, faile
             basic.showAlert('The file you selected is large. Max size: '+megaBytesLimit+'MB.', '', true);
             return false;
         } else {
-            console.log(allowedImagesExtensions, 'allowedImagesExtensions');
             //check file extension
             if(jQuery.inArray(filename.split('.').pop().toLowerCase(), allowedImagesExtensions) !== -1) {
                 if(callback != undefined) {
