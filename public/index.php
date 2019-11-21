@@ -1,4 +1,5 @@
 <?php
+//var_dump(hash('sha256', 'Dentacare Jaws Of Battle'.'dentacoin'));
 
 /**
  * Laravel - A PHP Framework For Web Artisans

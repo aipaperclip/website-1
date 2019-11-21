@@ -15,31 +15,36 @@ body.christmas-calendar {
             text-decoration: none;
         }
     }
-    .christmas-calendar-not-logged {
-        .presents-list {
-            figure {
-                img {
-                    margin-top: -40px;
-                }
-            }
-        }
-        .santa-section {
-            img {
-                margin-top: -150px;
-            }
-        }
-    }
     .christmas-calendar-logged {
         .christmas-calendar-campaign-stats {
             .single-stat {
                 text-align: center;
                 border-right: 1.5px solid black;
+                padding-left: 5px;
+                padding-right: 5px;
                 figure {
                     margin-right: 10px;
                     width: 50px;
                 }
                 &:last-child {
                     border: 0;
+                }
+                @include breakpoint($md-only) {
+                    .stats-text {
+                        display: block;
+                        padding-top: 5px;
+                    }
+                }
+                @include breakpoint($sm-down) {
+                    padding-bottom: 20px;
+                    border: 0;
+                    .stats-text {
+                        display: inline-block;
+                        padding-top: 5px;
+                    }
+                    &:last-child {
+                        padding-bottom: 0;
+                    }
                 }
             }
         }
@@ -99,6 +104,9 @@ body.christmas-calendar {
         .santa-section {
             img {
                 margin-top: -80px;
+                @include breakpoint($xs) {
+                    margin-top: 0;
+                }
             }
         }
     }
@@ -185,9 +193,25 @@ body.christmas-calendar {
                         font-size: 16px;
                         text-align: center;
                         @include rounded(50%);
+                        @include breakpoint($xs) {
+                        }
                     }
                     @include breakpoint($md-only) {
                         font-size: 14px;
+                    }
+                    @include breakpoint($xs) {
+                        font-size: 13px;
+                        img {
+                            max-width: 55%;
+                        }
+                        .check-icon {
+                            top: 5px;
+                            left: 5px;
+                            width: 20px;
+                            height: 20px;
+                            line-height: 20px;
+                            font-size: 12px;
+                        }
                     }
                 }
                 &.opened {
@@ -216,6 +240,9 @@ body.christmas-calendar {
             .modal-dialog {
                 width: 95%;
                 max-width: 900px;
+                @include breakpoint($xs) {
+                    margin-bottom: 100px;
+                }
                 .modal-content {
                     background: transparent;
                     border: 0;
@@ -254,6 +281,9 @@ body.christmas-calendar {
                                     @include rounded(15px);
                                     @include box-shadow(0 2px 6px 0 rgba(0, 0, 0, 0.7));
                                     @include vertical-horizontal-align(absolute);
+                                    @include breakpoint($xs) {
+                                        font-size: 32px;
+                                    }
                                 }
                             }
                         }
@@ -351,6 +381,10 @@ body.christmas-calendar {
                                 }
                                 .task-name {
                                     width: calc(100% - 120px);
+                                    @include breakpoint($xs) {
+                                        width: 100%;
+                                        padding-top: 15px;
+                                    }
                                 }
                                 .task-body {
                                     .upload-image {
@@ -514,9 +548,41 @@ body.christmas-calendar {
                                         }
                                     }
                                 }
+                                @include breakpoint($xs) {
+                                    width: 90%;
+                                }
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+    .christmas-calendar-not-logged {
+        .tasks-section {
+            .wrapper {
+                .present__content {
+                    img {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+        .presents-list {
+            figure {
+                img {
+                    margin-top: -40px;
+                    @include breakpoint($xs) {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+        .santa-section {
+            img {
+                margin-top: -150px;
+                @include breakpoint($xs) {
+                    margin-top: 0;
                 }
             }
         }

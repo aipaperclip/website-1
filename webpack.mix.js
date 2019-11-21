@@ -33,6 +33,7 @@ mix.styles([
 mix.scripts([
     'node_modules/jquery/dist/jquery.min.js',
     'public/assets/libs/jquery-ui/jquery-ui.js',
+    'public/assets/libs/jquery-touch-punch/jquery.ui.touch-punch.min.js',
     'public/assets/libs/emailoctopus/emailoctopus.js',
     'public/assets/libs/bidali/bidali-commerce.js',
     'node_modules/bootstrap/dist/js/bootstrap.min.js',

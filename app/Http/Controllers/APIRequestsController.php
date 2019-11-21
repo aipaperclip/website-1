@@ -3,20 +3,26 @@
 namespace App\Http\Controllers;
 
 class APIRequestsController extends Controller {
-    public function dentistLogin($data) {
+    public function dentistLogin($data, $dontCountLogin = false) {
+        $postData = array(
+            'platform' => 'dentacoin',
+            'type' => 'dentist',
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'client_ip' => $this->getClientIp()
+        );
+
+        if($dontCountLogin) {
+            $postData['dont_count_login'] = true;
+        }
+
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
             CURLOPT_URL => 'https://api.dentacoin.com/api/login',
             CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_POSTFIELDS => array(
-                'platform' => 'dentacoin',
-                'type' => 'dentist',
-                'email' => $data['email'],
-                'password' => $data['password'],
-                'client_ip' => $this->getClientIp()
-            )
+            CURLOPT_POSTFIELDS => $postData
         ));
 
         $resp = json_decode(curl_exec($curl), true);
@@ -192,6 +198,28 @@ class APIRequestsController extends Controller {
             } else {
                 return $resp->data;
             }
+        }else {
+            return false;
+        }
+    }
+
+    public function registerDCNReward($user_id, $amount, $platform) {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_POST => 1,
+            CURLOPT_URL => 'https://dev-api.dentacoin.com/api/add-rewards/',
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_POSTFIELDS => array(
+                'hashed_dcn_reward' => (new \App\Http\Controllers\Controller())->encrypt(json_encode(array('user_id' => $user_id, 'amount' => $amount, 'platform' => $platform)) , getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
+            )
+        ));
+
+        $resp = json_decode(curl_exec($curl));
+        curl_close($curl);
+
+        if(!empty($resp))   {
+            return $resp;
         }else {
             return false;
         }

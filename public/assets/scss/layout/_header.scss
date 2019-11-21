@@ -27,6 +27,9 @@ header {
             .christmas-ball {
                 top: 100%;
                 @include horizontal-align(absolute);
+                @include breakpoint($xs) {
+                    display: none;
+                }
             }
         }
     }

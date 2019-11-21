@@ -15,11 +15,6 @@ Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captc
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
     //======================================= PAGES ========================================
 
-    Route::get('/check-ip', function() {
-        var_dump((new \App\Http\Controllers\Controller())->getClientIp());
-        die();
-    })->name('check-ip');
-
     Route::get('/', 'HomeController@getView')->name('home');
 
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
@@ -46,13 +41,13 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return abort(410);
     })->name('berlin-roundtable');
 
-    /*Route::group(['prefix' => 'christmas-calendar'], function () {
+    Route::group(['prefix' => 'christmas-calendar'], function () {
         Route::get('/', 'ChristmasCalendarController@getView')->name('christmas-calendar');
 
         Route::post('/get-task-popup/{id}', 'ChristmasCalendarController@getTaskPopup')->name('get-task-popup');
 
         Route::post('/complete-task/{id}', 'ChristmasCalendarController@completeTask')->name('complete-task');
-    });*/
+    });
 
     Route::post('/submit-berlin-roundtable-form', 'BerlinRoundtableController@submitForm')->name('submit-berlin-roundtable-form');
 

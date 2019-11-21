@@ -163,7 +163,7 @@ class UserController extends Controller {
 
         $data = $request->input();
 
-        $api_response = (new APIRequestsController())->dentistLogin($data);
+        $api_response = (new APIRequestsController())->dentistLogin($data, true);
         if($api_response['success']) {
             $approved_statuses = array('approved', 'pending', 'test');
             if($api_response['data']['self_deleted'] != NULL) {
