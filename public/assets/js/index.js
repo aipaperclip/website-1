@@ -2179,7 +2179,7 @@ function styleAvatarUploadButton()    {
 
             input.addEventListener('change', function(e) {
                 var this_input = $(this);
-                readURL(this, 2, allowedImagesExtensions, function() {
+                readURL(this, 2, allowedImagesExtensions, function(e) {
                     $('#cropper-container').addClass('width-and-height');
                     if(croppie_instance != undefined) {
                         croppie_instance.croppie('destroy');
