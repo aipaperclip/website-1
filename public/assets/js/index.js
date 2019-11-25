@@ -1096,130 +1096,153 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 } else if($('body.christmas-calendar').length > 0) {
     // CHRISTMAS CALENDAR
     if($('body').hasClass('logged-in')) {
-        if(basic.cookies.get('dev') != undefined) {
-            if(basic.cookies.get('agreed_with_christmas_calendar_rules') != '1') {
-                $('.tasks-section .camping-custom-popups.rules').html('<div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">SIMPLE RULES:</h2><ul class="lato-regular fs-18 line-height-30"><li><span class="lato-black">31 days = 31 gifts:</span> Unlock a new task every day, complete it and earn various rewards!</li><li><span class="lato-black">Complete tasks every day and your DCN rewards will be doubled at the end of the challenge.</span></li><li><span class="lato-black">31 days = 31 tickets:</span> Don’t miss a day and increase your chances to win!</li><li><span class="lato-black">Missed a day?</span> You can catch up with the daily tasks and gifts, but you’ll have one ticket less and your DCN rewards will not be doubled at the end.</li><li>All DCN daily rewards are withdrawable from <span class="lato-black">Jan 1, 2020 on.</span></li><li>Other gifts are sent via email <span class="lato-black">within 5 days after</span> the task is completed.</li><li>Only users who have <span class="lato-black">submitted proofs</span> for their tasks earn rewards and participate in the raffle.</li><li>All posts, likes and follows <span class="lato-black">must remain</span> at least until the raffle is finished.</li><li><span class="lato-black">Check the raffle winners on January 10, 2020 - first in our Telegram group!</span></li></ul><div class="padding-top-20 padding-bottom-20 max-width-350 margin-0-auto"><div><input id="christmas-calendar-terms" type="checkbox"/><label class="fs-14 padding-left-5" for="christmas-calendar-terms">I read and agree to the Terms & Conditions</label></div><div><input id="christmas-calendar-privacy-policy" type="checkbox"/><label class="fs-14 padding-left-5" for="christmas-calendar-privacy-policy">I read and agree to the Privacy Policy</label></div><div><input id="christmas-calendar-years" type="checkbox"/><label class="fs-14 padding-left-5" for="christmas-calendar-years">I confirm that I am eighteen (18) years of age or older.</label></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="accept-christmas-calendar-rules"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="/assets/images/christmas-calendar-campaign/ready-btn-present.svg" class="width-100 max-width-220" alt="Popup button" itemprop="contentUrl"/></figure></a></div></div>');
+        if(basic.cookies.get('agreed_with_christmas_calendar_rules') != '1') {
+            $('.tasks-section .camping-custom-popups.rules').html('<div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">SIMPLE RULES:</h2><ul class="lato-regular fs-18 line-height-30"><li><span class="lato-black">31 days = 31 gifts:</span> Unlock a new task every day, complete it and earn various rewards!</li><li><span class="lato-black">Complete tasks every day and your DCN rewards will be doubled at the end of the challenge.</span></li><li><span class="lato-black">31 days = 31 tickets:</span> Don’t miss a day and increase your chances to win!</li><li><span class="lato-black">Missed a day?</span> You can catch up with the daily tasks and gifts, but you’ll have one ticket less and your DCN rewards will not be doubled at the end.</li><li>All DCN daily rewards are withdrawable from <span class="lato-black">Jan 1, 2020 on.</span></li><li>Other gifts are sent via email <span class="lato-black">within 5 days after</span> the task is completed.</li><li>Only users who have <span class="lato-black">submitted proofs</span> for their tasks earn rewards and participate in the raffle.</li><li>All posts, likes and follows <span class="lato-black">must remain</span> at least until the raffle is finished.</li><li><span class="lato-black">Check the raffle winners on January 10, 2020 - first in our Telegram group!</span></li></ul><div class="padding-top-20 padding-bottom-20 max-width-350 margin-0-auto"><div><input id="christmas-calendar-terms" type="checkbox"/><label class="fs-14 padding-left-5" for="christmas-calendar-terms">I read and agree to the Terms & Conditions</label></div><div><input id="christmas-calendar-privacy-policy" type="checkbox"/><label class="fs-14 padding-left-5" for="christmas-calendar-privacy-policy">I read and agree to the Privacy Policy</label></div><div><input id="christmas-calendar-years" type="checkbox"/><label class="fs-14 padding-left-5" for="christmas-calendar-years">I confirm that I am eighteen (18) years of age or older.</label></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="accept-christmas-calendar-rules"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="/assets/images/christmas-calendar-campaign/ready-btn-present.svg" class="width-100 max-width-220" alt="Popup button" itemprop="contentUrl"/></figure></a></div></div>');
 
-                $('.tasks-section .camping-custom-popups.rules .popup-wrapper .accept-christmas-calendar-rules').click(function() {
-                    if(!$('.camping-custom-popups.rules #christmas-calendar-terms').is(':checked')) {
-                        basic.showDialog('Please agree to the Terms & Conditions.', '', null);
-                    } else if(!$('.camping-custom-popups.rules #christmas-calendar-privacy-policy').is(':checked')) {
-                        basic.showDialog('Please agree to the Privacy Policy.', '', null);
-                    } else if(!$('.camping-custom-popups.rules #christmas-calendar-years').is(':checked')) {
-                        basic.showDialog('Please confirm that you are eighteen (18) years of age or older.', '', null);
-                    } else {
-                        basic.cookies.set('agreed_with_christmas_calendar_rules', '1');
+            $('.tasks-section .camping-custom-popups.rules .popup-wrapper .accept-christmas-calendar-rules').click(function() {
+                if(!$('.camping-custom-popups.rules #christmas-calendar-terms').is(':checked')) {
+                    basic.showDialog('Please agree to the Terms & Conditions.', '', null);
+                } else if(!$('.camping-custom-popups.rules #christmas-calendar-privacy-policy').is(':checked')) {
+                    basic.showDialog('Please agree to the Privacy Policy.', '', null);
+                } else if(!$('.camping-custom-popups.rules #christmas-calendar-years').is(':checked')) {
+                    basic.showDialog('Please confirm that you are eighteen (18) years of age or older.', '', null);
+                } else {
+                    basic.cookies.set('agreed_with_christmas_calendar_rules', '1');
 
-                        $('.tasks-section .camping-custom-popups.rules').html('');
-                        checkChristmasCalendarSocialEngagement();
-                    }
+                    $('.tasks-section .camping-custom-popups.rules').html('');
+                    checkChristmasCalendarSocialEngagement();
+                }
+            });
+        } else {
+            checkChristmasCalendarSocialEngagement();
+        }
+
+        function checkChristmasCalendarSocialEngagement() {
+            if(basic.cookies.get('christmas_calendar_social_engagement') != '1') {
+                $('.tasks-section .camping-custom-popups.socials').show();
+
+                $('.christmas-calendar-get-started').click(function() {
+                    basic.cookies.set('christmas_calendar_social_engagement', '1');
+                    $('.blurred-section').removeClass('active');
+                    $('.tasks-section .camping-custom-popups.socials').hide();
+                    initTasksEvent();
                 });
             } else {
-                checkChristmasCalendarSocialEngagement();
+                $('.blurred-section').removeClass('active');
+                initTasksEvent();
             }
+        }
 
-            function checkChristmasCalendarSocialEngagement() {
-                if(basic.cookies.get('christmas_calendar_social_engagement') != '1') {
-                    $('.tasks-section .camping-custom-popups.socials').show();
+        function initTasksEvent() {
+            $('.tasks-section .single-task').click(function() {
+                var this_btn = $(this);
+                $.ajax({
+                    type: 'POST',
+                    url: '/christmas-calendar/get-task-popup/' + this_btn.attr('data-task'),
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        if(response.success) {
+                            basic.showDialog(response.success, 'christmas-calendar-task', null);
 
-                    $('.christmas-calendar-get-started').click(function() {
-                        basic.cookies.set('christmas_calendar_social_engagement', '1');
-                        $('.blurred-section').removeClass('active');
-                        $('.tasks-section .camping-custom-popups.socials').hide();
-                        initTasksEvent();
-                    });
-                } else {
-                    $('.blurred-section').removeClass('active');
-                    initTasksEvent();
-                }
-            }
+                            if (this_btn.attr('data-task') == '1') {
+                                // face sticker generation task
+                                var vertical_step = 0;
+                                var horizontal_step = 0;
+                                var interval_arrows;
+                                var rotation = 0;
+                                var avatar_border = 0;
 
-            function initTasksEvent() {
-                $('.tasks-section .single-task').click(function() {
-                    var this_btn = $(this);
-                    $.ajax({
-                        type: 'POST',
-                        url: '/christmas-calendar/get-task-popup/' + this_btn.attr('data-task'),
-                        dataType: 'json',
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function (response) {
-                            if(response.success) {
-                                basic.showDialog(response.success, 'christmas-calendar-task', null);
+                                $('.task-body [name="character-type"]').on('change', function() {
+                                    if($(this).val() == 'male') {
+                                        avatar_border = 1;
+                                    } else if($(this).val() == 'female') {
+                                        avatar_border = 2;
+                                    }
 
-                                if (this_btn.attr('data-task') == '1') {
-                                    // face sticker generation task
-                                    var vertical_step = 0;
-                                    var horizontal_step = 0;
-                                    var interval_arrows;
-                                    var rotation = 0;
-                                    var avatar_border = 0;
+                                    $('.task-body .upload-image .border').html('<img src="/assets/images/christmas-calendar-campaign/border-'+avatar_border+'.png"/>');
+                                });
 
-                                    $('.task-body [name="character-type"]').on('change', function() {
-                                        if($(this).val() == 'male') {
-                                            avatar_border = 1;
-                                        } else if($(this).val() == 'female') {
-                                            avatar_border = 2;
-                                        }
+                                function readUserPhoto(input) {
+                                    if (input.files && input.files[0]) {
+                                        var reader = new FileReader();
+                                        reader.onload = function (e) {
 
-                                        $('.task-body .upload-image .border').html('<img src="/assets/images/christmas-calendar-campaign/border-'+avatar_border+'.png"/>');
-                                    });
-
-                                    function readUserPhoto(input) {
-                                        if (input.files && input.files[0]) {
-                                            var reader = new FileReader();
-                                            reader.onload = function (e) {
-
-                                                var image = new Image();
-                                                image.src = e.target.result;
-                                                image.onload = function () {
-                                                    // access image size here
-                                                    var background_size = "";
-                                                    var image_ratio = this.width / this.height;
-                                                    if (image_ratio >= 1) {
-                                                        background_size = "100% " + (100 / image_ratio) + "%";
-                                                    } else {
-                                                        background_size = (100 * image_ratio) + "% 100%";
-                                                    }
-
-                                                    $(".avatar img").hide();
-                                                    $(".avatar").css("background-image", "url(" + e.target.result + ")");
-                                                    $(".avatar").css("background-size", background_size);
-                                                    $(".avatar").data("ratio", image_ratio).data("w", this.width).data("h", this.height);
-                                                    $(".avatar").addClass("avatar-selected");
-
-                                                    fixGameImageSquare();
-
-                                                    //set file input
-                                                    $("form input[name='avatar']").val(e.target.result);
-
-                                                    resetImageStuff();
+                                            var image = new Image();
+                                            image.src = e.target.result;
+                                            image.onload = function () {
+                                                // access image size here
+                                                var background_size = "";
+                                                var image_ratio = this.width / this.height;
+                                                if (image_ratio >= 1) {
+                                                    background_size = "100% " + (100 / image_ratio) + "%";
+                                                } else {
+                                                    background_size = (100 * image_ratio) + "% 100%";
                                                 }
+
+                                                $(".avatar img").hide();
+                                                $(".avatar").css("background-image", "url(" + e.target.result + ")");
+                                                $(".avatar").css("background-size", background_size);
+                                                $(".avatar").data("ratio", image_ratio).data("w", this.width).data("h", this.height);
+                                                $(".avatar").addClass("avatar-selected");
+
+                                                fixGameImageSquare();
+
+                                                //set file input
+                                                $("form input[name='avatar']").val(e.target.result);
+
+                                                resetImageStuff();
                                             }
-                                            reader.readAsDataURL(input.files[0]);
                                         }
+                                        reader.readAsDataURL(input.files[0]);
                                     }
+                                }
 
-                                    $("#upload-avatar").change(function () {
-                                        readUserPhoto(this);
+                                $("#upload-avatar").change(function () {
+                                    readUserPhoto(this);
+                                });
+
+                                function fixGameImageSquare() {
+                                    //setting width and height, because we are replacing the image with background
+                                    $(".upload-image .avatar").height($(".upload-image .avatar").width());
+                                }
+
+                                function resetImageStuff() {
+                                    $(".zoom-scroll-container .wrapper").slider("value", 1);
+                                    $(".popup-body form input[name='background_scale']").val(1);
+                                    vertical_step = horizontal_step = 0;
+                                    changeAvatarOffset();
+                                    resetRotation();
+                                }
+
+                                function resetRotation() {
+                                    rotation = 0;
+                                    $(".upload-image .rotation").css({
+                                        "transform": "rotate(" + rotation + "deg)",
+                                        "-webkit-transform": "rotate(" + rotation + "deg)",
+                                        "-moz-transform": "(" + rotation + "deg)",
+                                        "-ms-transform": "rotate(" + rotation + "deg)"
                                     });
+                                    $(".upload-image .rotation .border").css({
+                                        "transform": "rotate(-" + rotation + "deg)",
+                                        "-webkit-transform": "rotate(-" + rotation + "deg)",
+                                        "-moz-transform": "(-" + rotation + "deg)",
+                                        "-ms-transform": "rotate(-" + rotation + "deg)"
+                                    });
+                                }
 
-                                    function fixGameImageSquare() {
-                                        //setting width and height, because we are replacing the image with background
-                                        $(".upload-image .avatar").height($(".upload-image .avatar").width());
-                                    }
+                                function changeAvatarOffset() {
+                                    $(".popup-body .upload-image .photo .avatar.avatar-selected").css({"background-position": "calc(50% - " + horizontal_step + "px) calc(50% - " + vertical_step + "px)"});
+                                }
 
-                                    function resetImageStuff() {
-                                        $(".zoom-scroll-container .wrapper").slider("value", 1);
-                                        $(".popup-body form input[name='background_scale']").val(1);
-                                        vertical_step = horizontal_step = 0;
-                                        changeAvatarOffset();
-                                        resetRotation();
-                                    }
-
-                                    function resetRotation() {
-                                        rotation = 0;
+                                function rotateImage() {
+                                    if ($(".avatar img").is(":hidden")) {
+                                        rotation += 90;
+                                        if (rotation == 360) {
+                                            rotation = 0;
+                                        }
                                         $(".upload-image .rotation").css({
                                             "transform": "rotate(" + rotation + "deg)",
                                             "-webkit-transform": "rotate(" + rotation + "deg)",
@@ -1233,212 +1256,224 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                             "-ms-transform": "rotate(-" + rotation + "deg)"
                                         });
                                     }
-
-                                    function changeAvatarOffset() {
-                                        $(".popup-body .upload-image .photo .avatar.avatar-selected").css({"background-position": "calc(50% - " + horizontal_step + "px) calc(50% - " + vertical_step + "px)"});
+                                }
+                                function moveArrow(direction, step) {
+                                    var new_step;
+                                    var avatar_rad;
+                                    if (direction == "vertical") {
+                                        new_step = vertical_step + step;
+                                        avatar_rad = parseInt($(".popup-body .upload-image .photo .avatar").data("h")) / 2;
+                                    } else {
+                                        new_step = horizontal_step + step;
+                                        avatar_rad = parseInt($(".popup-body .upload-image .photo .avatar").data("w")) / 2;
                                     }
-
-                                    function rotateImage() {
-                                        if ($(".avatar img").is(":hidden")) {
-                                            rotation += 90;
-                                            if (rotation == 360) {
-                                                rotation = 0;
-                                            }
-                                            $(".upload-image .rotation").css({
-                                                "transform": "rotate(" + rotation + "deg)",
-                                                "-webkit-transform": "rotate(" + rotation + "deg)",
-                                                "-moz-transform": "(" + rotation + "deg)",
-                                                "-ms-transform": "rotate(" + rotation + "deg)"
-                                            });
-                                            $(".upload-image .rotation .border").css({
-                                                "transform": "rotate(-" + rotation + "deg)",
-                                                "-webkit-transform": "rotate(-" + rotation + "deg)",
-                                                "-moz-transform": "(-" + rotation + "deg)",
-                                                "-ms-transform": "rotate(-" + rotation + "deg)"
-                                            });
-                                        }
-                                    }
-                                    function moveArrow(direction, step) {
-                                        var new_step;
-                                        var avatar_rad;
+                                    if (new_step > -avatar_rad && new_step < avatar_rad) {
                                         if (direction == "vertical") {
-                                            new_step = vertical_step + step;
-                                            avatar_rad = parseInt($(".popup-body .upload-image .photo .avatar").data("h")) / 2;
+                                            vertical_step += step;
                                         } else {
-                                            new_step = horizontal_step + step;
-                                            avatar_rad = parseInt($(".popup-body .upload-image .photo .avatar").data("w")) / 2;
+                                            horizontal_step += step;
                                         }
-                                        if (new_step > -avatar_rad && new_step < avatar_rad) {
-                                            if (direction == "vertical") {
-                                                vertical_step += step;
-                                            } else {
-                                                horizontal_step += step;
-                                            }
-                                            changeAvatarOffset();
-                                        } else {
-                                            clearInterval(interval_arrows);
-                                        }
+                                        changeAvatarOffset();
+                                    } else {
+                                        clearInterval(interval_arrows);
                                     }
+                                }
 
-                                    $(".popup-body .up-triangle img").mousedown(function () {
-                                        if ($(".avatar img").is(":hidden")) {
-                                            if (interval_arrows != undefined) {
-                                                clearInterval(interval_arrows);
-                                            }
-                                            moveArrow("vertical", 10);
-                                            interval_arrows = setInterval(function () {
-                                                moveArrow("vertical", 10);
-                                            }, 100);
-                                        }
-                                    });
-
-                                    $(document).mouseup(function () {
+                                $(".popup-body .up-triangle img").mousedown(function () {
+                                    if ($(".avatar img").is(":hidden")) {
                                         if (interval_arrows != undefined) {
                                             clearInterval(interval_arrows);
                                         }
-                                    });
+                                        moveArrow("vertical", 10);
+                                        interval_arrows = setInterval(function () {
+                                            moveArrow("vertical", 10);
+                                        }, 100);
+                                    }
+                                });
 
-                                    $(".popup-body .down-triangle img").mousedown(function () {
-                                        if ($(".avatar img").is(":hidden")) {
-                                            if (interval_arrows != undefined) {
-                                                clearInterval(interval_arrows);
-                                            }
+                                $(document).mouseup(function () {
+                                    if (interval_arrows != undefined) {
+                                        clearInterval(interval_arrows);
+                                    }
+                                });
+
+                                $(".popup-body .down-triangle img").mousedown(function () {
+                                    if ($(".avatar img").is(":hidden")) {
+                                        if (interval_arrows != undefined) {
+                                            clearInterval(interval_arrows);
+                                        }
+                                        moveArrow("vertical", -10);
+                                        interval_arrows = setInterval(function () {
                                             moveArrow("vertical", -10);
-                                            interval_arrows = setInterval(function () {
-                                                moveArrow("vertical", -10);
-                                            }, 100);
-                                        }
-                                    });
+                                        }, 100);
+                                    }
+                                });
 
-                                    $(".popup-body .left-triangle img").mousedown(function () {
-                                        if ($(".avatar img").is(":hidden")) {
-                                            if (interval_arrows != undefined) {
-                                                clearInterval(interval_arrows);
-                                            }
+                                $(".popup-body .left-triangle img").mousedown(function () {
+                                    if ($(".avatar img").is(":hidden")) {
+                                        if (interval_arrows != undefined) {
+                                            clearInterval(interval_arrows);
+                                        }
+                                        moveArrow("horizontal", 10);
+                                        interval_arrows = setInterval(function () {
                                             moveArrow("horizontal", 10);
-                                            interval_arrows = setInterval(function () {
-                                                moveArrow("horizontal", 10);
-                                            }, 100);
+                                        }, 100);
+                                    }
+                                });
+
+
+                                $(".popup-body .right-triangle img").mousedown(function () {
+                                    if ($(".avatar img").is(":hidden")) {
+                                        if (interval_arrows != undefined) {
+                                            clearInterval(interval_arrows);
                                         }
-                                    });
-
-
-                                    $(".popup-body .right-triangle img").mousedown(function () {
-                                        if ($(".avatar img").is(":hidden")) {
-                                            if (interval_arrows != undefined) {
-                                                clearInterval(interval_arrows);
-                                            }
+                                        moveArrow("horizontal", -10);
+                                        interval_arrows = setInterval(function () {
                                             moveArrow("horizontal", -10);
-                                            interval_arrows = setInterval(function () {
-                                                moveArrow("horizontal", -10);
-                                            }, 100);
-                                        }
-                                    });
+                                        }, 100);
+                                    }
+                                });
 
-                                    $(".popup-body .rotate").click(function () {
-                                        rotateImage();
-                                    });
+                                $(".popup-body .rotate").click(function () {
+                                    rotateImage();
+                                });
 
-                                    $(".zoom-scroll-container .wrapper").slider({
-                                        value: 1,
-                                        min: 0.5,
-                                        max: 1.5,
-                                        step: 0.1,
-                                        slide: function (event, ui) {
-                                            $(".popup-body form input[name='background_scale']").val(ui.value);
+                                $(".zoom-scroll-container .wrapper").slider({
+                                    value: 1,
+                                    min: 0.5,
+                                    max: 1.5,
+                                    step: 0.1,
+                                    slide: function (event, ui) {
+                                        $(".popup-body form input[name='background_scale']").val(ui.value);
 
-                                            var image_ratio = $(".avatar").data("ratio");
-                                            var background_size;
-                                            if (image_ratio >= 1) {
-                                                background_size = (ui.value * 100) + "% " + (ui.value * 100 / image_ratio) + "%";
-                                            } else {
-                                                background_size = (ui.value * 100 * image_ratio) + "% " + (ui.value * 100) + "%";
-                                            }
-
-                                            $(".avatar").css("background-size", background_size);
-                                        }
-                                    });
-
-
-                                    $('.popup-body form').on('submit', function(event) {
-                                        event.preventDefault();
-                                        var form = $(this);
-
-                                        if($('#telegram-username').val().trim() == '') {
-                                            basic.showAlert('Please enter your Telegram username.', '', true);
-                                        } else if(avatar_border != 1 && avatar_border != 2) {
-                                            basic.showAlert('Please select character gender.', '', true);
-                                        } else if(form.find('[name="avatar"]').val() == '') {
-                                            basic.showAlert('Please upload your photo.', '', true);
+                                        var image_ratio = $(".avatar").data("ratio");
+                                        var background_size;
+                                        if (image_ratio >= 1) {
+                                            background_size = (ui.value * 100) + "% " + (ui.value * 100 / image_ratio) + "%";
                                         } else {
-                                            $('.response-layer').show();
+                                            background_size = (ui.value * 100 * image_ratio) + "% " + (ui.value * 100) + "%";
+                                        }
 
-                                            var post_data = {
-                                                'avatar' : form.find('[name="avatar"]').val(),
-                                                'background_scale' : form.find('[name="background_scale"]').val(),
-                                                'avatar-border' : avatar_border,
-                                                'horizontal_step' : horizontal_step,
-                                                'vertical_step' : vertical_step,
-                                                'size' : $('.upload-image .avatar').width(),
-                                                'rotation' : rotation
-                                            };
+                                        $(".avatar").css("background-size", background_size);
+                                    }
+                                });
 
-                                            $.ajax({
-                                                type: 'POST',
-                                                url: '/christmas-calendar/complete-task/' + this_btn.attr('data-task'),
-                                                dataType: 'json',
-                                                data: {
-                                                    'text_proof' : $('#telegram-username').val().trim()
-                                                },
-                                                headers: {
-                                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                },
-                                                success: function (response) {
-                                                    if(response.success) {
-                                                        post_data['user_slug'] = response.data;
-                                                        $.ajax({
-                                                            type: 'POST',
-                                                            url: 'https://christmas-calendar-api.dentacoin.com/generate-face-sticker',
-                                                            dataType: 'json',
-                                                            data: post_data,
-                                                            success: function (imageGenerationResponse) {
-                                                                $('.response-layer').hide();
-                                                                if (imageGenerationResponse.success) {
-                                                                    if(response.dcnAmount) {
-                                                                        $('.user-dcn-amount').html(response.dcnAmount);
-                                                                    }
-                                                                    if(response.ticketAmount) {
-                                                                        $('.user-ticket-amount').html(response.ticketAmount);
-                                                                    }
-                                                                    if(response.bonusTickets) {
-                                                                        $('.user-bonus-ticket-amount').html(response.bonusTickets);
-                                                                    }
 
-                                                                    this_btn.find('.wrapper').addClass('opened');
-                                                                    this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
+                                $('.popup-body form').on('submit', function(event) {
+                                    event.preventDefault();
+                                    var form = $(this);
 
-                                                                    basic.closeDialog();
-                                                                    basic.showAlert('Congrats, you have completed task successfully!', '', true);
-                                                                    window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
-                                                                } else {
-                                                                    basic.showAlert('Something went wrong. Please try again later or write a message to admin@dentacoin.com with description of the problem.', '', true);
+                                    if($('#telegram-username').val().trim() == '') {
+                                        basic.showAlert('Please enter your Telegram username.', '', true);
+                                    } else if(avatar_border != 1 && avatar_border != 2) {
+                                        basic.showAlert('Please select character gender.', '', true);
+                                    } else if(form.find('[name="avatar"]').val() == '') {
+                                        basic.showAlert('Please upload your photo.', '', true);
+                                    } else {
+                                        $('.response-layer').show();
+
+                                        var post_data = {
+                                            'avatar' : form.find('[name="avatar"]').val(),
+                                            'background_scale' : form.find('[name="background_scale"]').val(),
+                                            'avatar-border' : avatar_border,
+                                            'horizontal_step' : horizontal_step,
+                                            'vertical_step' : vertical_step,
+                                            'size' : $('.upload-image .avatar').width(),
+                                            'rotation' : rotation
+                                        };
+
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '/christmas-calendar/complete-task/' + this_btn.attr('data-task'),
+                                            dataType: 'json',
+                                            data: {
+                                                'text_proof' : $('#telegram-username').val().trim()
+                                            },
+                                            headers: {
+                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                            },
+                                            success: function (response) {
+                                                if(response.success) {
+                                                    post_data['user_slug'] = response.data;
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: 'https://christmas-calendar-api.dentacoin.com/generate-face-sticker',
+                                                        dataType: 'json',
+                                                        data: post_data,
+                                                        success: function (imageGenerationResponse) {
+                                                            $('.response-layer').hide();
+                                                            if (imageGenerationResponse.success) {
+                                                                if(response.dcnAmount) {
+                                                                    $('.user-dcn-amount').html(response.dcnAmount);
                                                                 }
+                                                                if(response.ticketAmount) {
+                                                                    $('.user-ticket-amount').html(response.ticketAmount);
+                                                                }
+                                                                if(response.bonusTickets) {
+                                                                    $('.user-bonus-ticket-amount').html(response.bonusTickets);
+                                                                }
+
+                                                                this_btn.find('.wrapper').addClass('opened');
+                                                                this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
+
+                                                                basic.closeDialog();
+                                                                basic.showAlert('Congrats, you have completed task successfully!', '', true);
+                                                                window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
+                                                            } else {
+                                                                basic.showAlert('Something went wrong. Please try again later or write a message to admin@dentacoin.com with description of the problem.', '', true);
                                                             }
-                                                        });
-                                                    } else if(response.error) {
-                                                        $('.response-layer').hide();
-                                                        basic.showAlert(response.error, '', true);
-                                                    }
+                                                        }
+                                                    });
+                                                } else if(response.error) {
+                                                    $('.response-layer').hide();
+                                                    basic.showAlert(response.error, '', true);
                                                 }
-                                            });
+                                            }
+                                        });
+                                    }
+                                });
+                            } else if (['3', '4', '5', '7', '8', '10', '13', '14', '15', '17', '18', '19', '2', '6', '11', '20', '12', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'].indexOf(this_btn.attr('data-task')) > -1) {
+                                $('.popup-body form').on('submit', function(event) {
+                                    event.preventDefault();
+                                    var form = $(this);
+                                    var this_form = this;
+
+                                    completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
+                                        $('.response-layer').hide();
+                                        if(response.dcnAmount) {
+                                            $('.user-dcn-amount').html(response.dcnAmount);
+                                        }
+                                        if(response.ticketAmount) {
+                                            $('.user-ticket-amount').html(response.ticketAmount);
+                                        }
+                                        if(response.bonusTickets) {
+                                            $('.user-bonus-ticket-amount').html(response.bonusTickets);
+                                        }
+
+                                        this_btn.find('.wrapper').addClass('opened');
+                                        this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
+
+                                        basic.closeDialog();
+                                        if(this_btn.attr('data-task') == '31') {
+                                            basic.showAlert('You have successfully completed all tasks in our christmas calendar! After reviewing your proofs your rewards will be unlocked.', '', true);
+                                        } else {
+                                            basic.showAlert('You have successfully completed this christmas calendar task! We will be waiting for you to come back for the next task!', '', true);
                                         }
                                     });
-                                } else if (['3', '4', '5', '7', '8', '10', '13', '14', '15', '17', '18', '19', '2', '6', '11', '20', '12', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'].indexOf(this_btn.attr('data-task')) > -1) {
-                                    $('.popup-body form').on('submit', function(event) {
-                                        event.preventDefault();
-                                        var form = $(this);
-                                        var this_form = this;
+                                });
+                            } else if (['9'].indexOf(this_btn.attr('data-task')) > -1) {
+                                // newsletter registration task
+                                $('.newsletter-register form').on('submit', function(event)  {
+                                    event.preventDefault();
+                                    var this_form = $(this);
+                                    var error = false;
+                                    if(!basic.validateEmail(this_form.find('input[type="email"]').val().trim()))    {
+                                        error = true;
+                                    } else if(!this_form.find('#newsletter-privacy-policy').is(':checked'))  {
+                                        error = true;
+                                    }
 
+                                    if(!error) {
                                         completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
                                             $('.response-layer').hide();
                                             if(response.dcnAmount) {
@@ -1455,170 +1490,133 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                             this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
 
                                             basic.closeDialog();
-                                            if(this_btn.attr('data-task') == '31') {
-                                                basic.showAlert('You have successfully completed all tasks in our christmas calendar! After reviewing your proofs your rewards will be unlocked.', '', true);
-                                            } else {
-                                                basic.showAlert('You have successfully completed this christmas calendar task! We will be waiting for you to come back for the next task!', '', true);
-                                            }
+                                            basic.showAlert('You have successfully completed this christmas calendar task! We will be waiting for you to come back for the next task!', '', true);
                                         });
-                                    });
-                                } else if (['9'].indexOf(this_btn.attr('data-task')) > -1) {
-                                    // newsletter registration task
-                                    $('.newsletter-register form').on('submit', function(event)  {
-                                        event.preventDefault();
-                                        var this_form = $(this);
-                                        var error = false;
-                                        if(!basic.validateEmail(this_form.find('input[type="email"]').val().trim()))    {
-                                            error = true;
-                                        } else if(!this_form.find('#newsletter-privacy-policy').is(':checked'))  {
-                                            error = true;
-                                        }
 
-                                        if(!error) {
-                                            completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
+                                        fireGoogleAnalyticsEvent('Subscription', 'Sign-up', 'Newsletter');
+                                    }
+                                });
+                            } else if (['16'].indexOf(this_btn.attr('data-task')) > -1) {
+                                // holiday card generation task
+                                $('.popup-body form').on('submit', function(event) {
+                                    event.preventDefault();
+                                    var form = $(this);
+                                    var this_form = this;
+
+                                    completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
+                                        var post_data = {};
+                                        post_data['user_slug'] = response.data;
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: 'https://christmas-calendar-api.dentacoin.com/generate-holiday-card',
+                                            dataType: 'json',
+                                            data: post_data,
+                                            success: function (imageGenerationResponse) {
                                                 $('.response-layer').hide();
-                                                if(response.dcnAmount) {
-                                                    $('.user-dcn-amount').html(response.dcnAmount);
-                                                }
-                                                if(response.ticketAmount) {
-                                                    $('.user-ticket-amount').html(response.ticketAmount);
-                                                }
-                                                if(response.bonusTickets) {
-                                                    $('.user-bonus-ticket-amount').html(response.bonusTickets);
-                                                }
-
-                                                this_btn.find('.wrapper').addClass('opened');
-                                                this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
-
-                                                basic.closeDialog();
-                                                basic.showAlert('You have successfully completed this christmas calendar task! We will be waiting for you to come back for the next task!', '', true);
-                                            });
-
-                                            fireGoogleAnalyticsEvent('Subscription', 'Sign-up', 'Newsletter');
-                                        }
-                                    });
-                                } else if (['16'].indexOf(this_btn.attr('data-task')) > -1) {
-                                    // holiday card generation task
-                                    $('.popup-body form').on('submit', function(event) {
-                                        event.preventDefault();
-                                        var form = $(this);
-                                        var this_form = this;
-
-                                        completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
-                                            var post_data = {};
-                                            post_data['user_slug'] = response.data;
-                                            $.ajax({
-                                                type: 'POST',
-                                                url: 'https://christmas-calendar-api.dentacoin.com/generate-holiday-card',
-                                                dataType: 'json',
-                                                data: post_data,
-                                                success: function (imageGenerationResponse) {
-                                                    $('.response-layer').hide();
-                                                    if (imageGenerationResponse.success) {
-                                                        if(imageGenerationResponse.dcnAmount) {
-                                                            $('.user-dcn-amount').html(imageGenerationResponse.dcnAmount);
-                                                        }
-                                                        if(imageGenerationResponse.ticketAmount) {
-                                                            $('.user-ticket-amount').html(imageGenerationResponse.ticketAmount);
-                                                        }
-                                                        if(imageGenerationResponse.bonusTickets) {
-                                                            $('.user-bonus-ticket-amount').html(imageGenerationResponse.bonusTickets);
-                                                        }
-
-                                                        this_btn.find('.wrapper').addClass('opened');
-                                                        this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
-
-                                                        basic.closeDialog();
-                                                        basic.showAlert('Congrats, you have completed task successfully!', '', true);
-                                                        window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
-                                                    } else {
-                                                        basic.showAlert('Something went wrong. Please try again later or write a message to admin@dentacoin.com with description of the problem.', '', true);
+                                                if (imageGenerationResponse.success) {
+                                                    if(imageGenerationResponse.dcnAmount) {
+                                                        $('.user-dcn-amount').html(imageGenerationResponse.dcnAmount);
                                                     }
-                                                }
-                                            });
-                                        });
-                                    });
-                                }
-
-                                var screenshotProofsLength = $('.screenshot_proof').length;
-                                //my_file_image.txt
-                                if(screenshotProofsLength > 0) {
-                                    for (var i = 0; i < screenshotProofsLength; i+= 1) {
-                                        $('.screenshot_proof').eq(i).on('change', function() {
-                                            $(this).parent().find('.filename').remove();
-                                            $(this).parent().append('<div class="fs-14 filename">'+$(this)[0].files[0].name+'</div>');
-                                        });
-                                    }
-                                }
-
-                                function completeTask(form, this_form, this_btn, data, callback) {
-                                    var error = false;
-                                    if(form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
-                                        basic.showAlert('Please enter the field and submit again.', '', true);
-                                        return false;
-                                    } else if(screenshotProofsLength) {
-                                        if (screenshotProofsLength > 0) {
-                                            for (var i = 0; i < screenshotProofsLength; i+= 1) {
-                                                if(!error) {
-                                                    if (form.find('.screenshot_proof').eq(i).val().trim() == '') {
-                                                        basic.showAlert('Please attach all screenshots and submit again.', '', true);
-                                                        error = true;
-                                                    } else {
-                                                        readURL(this_form.querySelectorAll('.screenshot_proof')[i], 2, allowedImagesExtensions, undefined, function () {
-                                                            error = true;
-                                                        });
+                                                    if(imageGenerationResponse.ticketAmount) {
+                                                        $('.user-ticket-amount').html(imageGenerationResponse.ticketAmount);
                                                     }
+                                                    if(imageGenerationResponse.bonusTickets) {
+                                                        $('.user-bonus-ticket-amount').html(imageGenerationResponse.bonusTickets);
+                                                    }
+
+                                                    this_btn.find('.wrapper').addClass('opened');
+                                                    this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
+
+                                                    basic.closeDialog();
+                                                    basic.showAlert('Congrats, you have completed task successfully!', '', true);
+                                                    window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
+                                                } else {
+                                                    basic.showAlert('Something went wrong. Please try again later or write a message to admin@dentacoin.com with description of the problem.', '', true);
                                                 }
                                             }
-                                        } else {
-                                            if (form.find('.screenshot_proof').val().trim() == '') {
-                                                basic.showAlert('Please attach screenshot and submit again.', '', true);
-                                                error = true;
-                                            } else {
-                                                readURL(this_form.querySelectorAll('.screenshot_proof')[0], 2, allowedImagesExtensions, undefined, function () {
-                                                    error = true;
-                                                });
-                                            }
-                                        }
-                                    }
-
-                                    function proceedWithTaskFinishing() {
-                                        $('.response-layer').show();
-                                        setTimeout(function() {
-                                            $.ajax({
-                                                type: 'POST',
-                                                url: '/christmas-calendar/complete-task/' + this_btn.attr('data-task'),
-                                                data: data,
-                                                async: false,
-                                                processData: false,
-                                                contentType: false,
-                                                dataType: 'json',
-                                                headers: {
-                                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                },
-                                                success: function (response) {
-                                                    if(response.success) {
-                                                        callback(response);
-                                                    } else if(response.error) {
-                                                        $('.response-layer').hide();
-                                                        basic.showAlert(response.error, '', true);
-                                                    }
-                                                }
-                                            });
                                         });
-                                    }
-
-                                    if (!error) {
-                                        proceedWithTaskFinishing();
-                                    }
-                                }
-                            } else if(response.error) {
-                                basic.showAlert(response.error, '', true);
+                                    });
+                                });
                             }
+
+                            var screenshotProofsLength = $('.screenshot_proof').length;
+                            //my_file_image.txt
+                            if(screenshotProofsLength > 0) {
+                                for (var i = 0; i < screenshotProofsLength; i+= 1) {
+                                    $('.screenshot_proof').eq(i).on('change', function() {
+                                        $(this).parent().find('.filename').remove();
+                                        $(this).parent().append('<div class="fs-14 filename">'+$(this)[0].files[0].name+'</div>');
+                                    });
+                                }
+                            }
+
+                            function completeTask(form, this_form, this_btn, data, callback) {
+                                var error = false;
+                                if(form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
+                                    basic.showAlert('Please enter the field and submit again.', '', true);
+                                    return false;
+                                } else if(screenshotProofsLength) {
+                                    if (screenshotProofsLength > 0) {
+                                        for (var i = 0; i < screenshotProofsLength; i+= 1) {
+                                            if(!error) {
+                                                if (form.find('.screenshot_proof').eq(i).val().trim() == '') {
+                                                    basic.showAlert('Please attach all screenshots and submit again.', '', true);
+                                                    error = true;
+                                                } else {
+                                                    readURL(this_form.querySelectorAll('.screenshot_proof')[i], 2, allowedImagesExtensions, undefined, function () {
+                                                        error = true;
+                                                    });
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        if (form.find('.screenshot_proof').val().trim() == '') {
+                                            basic.showAlert('Please attach screenshot and submit again.', '', true);
+                                            error = true;
+                                        } else {
+                                            readURL(this_form.querySelectorAll('.screenshot_proof')[0], 2, allowedImagesExtensions, undefined, function () {
+                                                error = true;
+                                            });
+                                        }
+                                    }
+                                }
+
+                                function proceedWithTaskFinishing() {
+                                    $('.response-layer').show();
+                                    setTimeout(function() {
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '/christmas-calendar/complete-task/' + this_btn.attr('data-task'),
+                                            data: data,
+                                            async: false,
+                                            processData: false,
+                                            contentType: false,
+                                            dataType: 'json',
+                                            headers: {
+                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                            },
+                                            success: function (response) {
+                                                if(response.success) {
+                                                    callback(response);
+                                                } else if(response.error) {
+                                                    $('.response-layer').hide();
+                                                    basic.showAlert(response.error, '', true);
+                                                }
+                                            }
+                                        });
+                                    });
+                                }
+
+                                if (!error) {
+                                    proceedWithTaskFinishing();
+                                }
+                            }
+                        } else if(response.error) {
+                            basic.showAlert(response.error, '', true);
                         }
-                    });
+                    }
                 });
-            }
+            });
         }
     }
 }
