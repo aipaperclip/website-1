@@ -177,16 +177,16 @@ class ChristmasCalendarController extends Controller
                     $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id))->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)->whereRaw('christmas_calendar_task_participant.task_id <= 31')->get()->toArray();
 
                     foreach($passedTasks as $passedTask) {
-                        $task = ChristmasCalendarTask::where(array('id' => $passedTask->task_id))->get()->first();
-                        if (!empty($task)) {
-                            if ($task->type == 'dcn-reward') {
-                                $dcnAmount += $task->value;
-                            } else if ($task->type == 'ticket-reward') {
-                                $ticketAmount += $task->value;
+                        $taskRecord = ChristmasCalendarTask::where(array('id' => $passedTask->task_id))->get()->first();
+                        if (!empty($taskRecord)) {
+                            if ($taskRecord->type == 'dcn-reward') {
+                                $dcnAmount += $taskRecord->value;
+                            } else if ($taskRecord->type == 'ticket-reward') {
+                                $ticketAmount += $taskRecord->value;
                             }
 
                             $datePassedTask = new \DateTime($passedTask->created_at);
-                            $dateDiff = strtotime($task->date) - strtotime($datePassedTask->format('Y-m-d'));
+                            $dateDiff = strtotime($taskRecord->date) - strtotime($datePassedTask->format('Y-m-d'));
                             $difference = floor($dateDiff / (60*60*24));
                             if ($difference == 0) {
                                 $bonusTickets += 1;
@@ -194,7 +194,11 @@ class ChristmasCalendarController extends Controller
                         }
                     }
 
-                    return response()->json(['success' => 'You have completed this task successfully.', 'data' => $coredb_data->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets]);
+                    if ($task->id == 1 || $task->id == 16) {
+                        return response()->json(['success' => 'You have completed this task successfully. You can download your reward anytime by clicking on the finished task.', 'data' => $coredb_data->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets]);
+                    } else {
+                        return response()->json(['success' => 'You have completed this task successfully.', 'data' => $coredb_data->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets]);
+                    }
                 }
             } else {
                 return response()->json(['error' => 'This present is not active yet. Please kindly wait until ' . $task->date . '.']);
