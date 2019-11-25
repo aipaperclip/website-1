@@ -208,7 +208,7 @@ class APIRequestsController extends Controller {
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://dev-api.dentacoin.com/api/add-rewards/',
+            CURLOPT_URL => 'https://api.dentacoin.com/api/add-rewards/',
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_POSTFIELDS => array(
                 'hashed_dcn_reward' => (new \App\Http\Controllers\Controller())->encrypt(json_encode(array('user_id' => $user_id, 'amount' => $amount, 'platform' => $platform)) , getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
@@ -216,7 +216,7 @@ class APIRequestsController extends Controller {
         ));
 
         $resp = json_decode(curl_exec($curl));
-        curl_close($curl);
+        curl_close($curl);;
 
         if(!empty($resp))   {
             return $resp;

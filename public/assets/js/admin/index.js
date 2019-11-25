@@ -101,8 +101,6 @@ if($('body').hasClass('add-job-offer')) {
                 tasksToApprove.push($('.approve-task:checked').eq(i).closest('tr').attr('data-id'));
             }
 
-            console.log(tasksToApprove, 'tasksToApprove');
-
             var confirm_obj = {};
             confirm_obj.callback = function (result) {
                 if(result) {
@@ -118,7 +116,13 @@ if($('body').hasClass('add-job-offer')) {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         success: function (response) {
-                            console.log(response, 'response');
+                            if (response.success) {
+                                basic.showAlert(response.success, '', true);
+
+                                $('.approve-task:checked').closest('tr').find('.actions').html('This task is already approved.');
+                            } else if (response.error) {
+                                basic.showAlert(response.error, '', true);
+                            }
                         }
                     });
                 }
