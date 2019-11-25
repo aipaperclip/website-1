@@ -1119,11 +1119,11 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
             }
 
             function checkChristmasCalendarSocialEngagement() {
-                if(basic.cookies.get('christmas_calendar_social_engagement_password') != '1') {
+                if(basic.cookies.get('christmas_calendar_social_engagement') != '1') {
                     $('.tasks-section .camping-custom-popups.socials').show();
 
                     $('.christmas-calendar-get-started').click(function() {
-                        basic.cookies.set('christmas_calendar_social_engagement_password', '1');
+                        basic.cookies.set('christmas_calendar_social_engagement', '1');
                         $('.blurred-section').removeClass('active');
                         $('.tasks-section .camping-custom-popups.socials').hide();
                         initTasksEvent();

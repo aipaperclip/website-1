@@ -42,6 +42,7 @@ class Controller extends BaseController
             View::share('footer_menu', $this->getFooterMenu());
             View::share('footer_data', $this->getFooterData());
             View::share('privacy_policy_cookie', $this->checkIfPrivacyPolicyCookie());
+            View::share('social_engagement_cookie', $this->checkIfSocialEngagementCookie());
             View::share('client_ip', $this->getClientIp());
         }
     }
@@ -165,6 +166,15 @@ class Controller extends BaseController
 
     protected function checkIfPrivacyPolicyCookie()    {
         $bool = empty($_COOKIE['privacy_policy']);
+        if($bool) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    protected function checkIfSocialEngagementCookie()    {
+        $bool = empty($_COOKIE['christmas_calendar_social_engagement']);
         if($bool) {
             return true;
         }else {
