@@ -18,28 +18,36 @@ class ChristmasCalendarController extends Controller
                 $ticketAmount = 0;
                 $bonusTickets = 0;
                 $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
-                $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id))->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)->whereRaw('christmas_calendar_task_participant.task_id <= 31')->get()->toArray();
-                if (!empty($passedTasks)) {
-                    foreach($passedTasks as $passedTask) {
-                        $task = ChristmasCalendarTask::where(array('id' => $passedTask->task_id))->get()->first();
-                        if (!empty($task)) {
-                            if ($task->type == 'dcn-reward') {
-                                $dcnAmount += $task->value;
-                            } else if ($task->type == 'ticket-reward') {
-                                $ticketAmount += $task->value;
-                            }
 
-                            $datePassedTask = new \DateTime($passedTask->created_at);
-                            $dateDiff = strtotime($task->date) - strtotime($datePassedTask->format('Y-m-d'));
-                            $difference = floor($dateDiff / (60*60*24));
-                            if ($difference == 0) {
-                                $bonusTickets += 1;
+                if (empty($participant)) {
+                    // create participant
+                    $participant = new ChristmasCalendarParticipant();
+                    $participant->user_id = session('logged_user')['id'];
+                    $participant->save();
+
+                    // just created participant should not have any passed tasks
+                } else {
+                    $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id))->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)->whereRaw('christmas_calendar_task_participant.task_id <= 31')->get()->toArray();
+                    if (!empty($passedTasks)) {
+                        foreach($passedTasks as $passedTask) {
+                            $task = ChristmasCalendarTask::where(array('id' => $passedTask->task_id))->get()->first();
+                            if (!empty($task)) {
+                                if ($task->type == 'dcn-reward') {
+                                    $dcnAmount += $task->value;
+                                } else if ($task->type == 'ticket-reward') {
+                                    $ticketAmount += $task->value;
+                                }
+
+                                $datePassedTask = new \DateTime($passedTask->created_at);
+                                $dateDiff = strtotime($task->date) - strtotime($datePassedTask->format('Y-m-d'));
+                                $difference = floor($dateDiff / (60*60*24));
+                                if ($difference == 0) {
+                                    $bonusTickets += 1;
+                                }
                             }
                         }
                     }
                 }
-
-                $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
 
                 return view('pages/logged-user/christmas-calendar-logged', ['tasks' => $this->getAllTasks()->toArray(), 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets, 'participant' => $participant]);
             } else {
@@ -60,24 +68,15 @@ class ChristmasCalendarController extends Controller
             //$participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
 
-            if (empty($participant)) {
-                // create participant
-                $participant = new ChristmasCalendarParticipant();
-                $participant->user_id = session('logged_user')['id'];
-                $participant->save();
-            } else {
-                // only if participant already existed check if he completed this task
+            if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id)) {
+                $coredb_data = (new APIRequestsController())->getUserData(session('logged_user')['id']);
 
-                if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id)) {
-                    $coredb_data = (new APIRequestsController())->getUserData(session('logged_user')['id']);
-
-                    if ($task->id == 1) {
-                        return response()->json(['error' => '<div class="text-center padding-bottom-20">You have already completed this task.<div class="padding-top-15"><a href="https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredb_data->slug.'.png" class="white-red-btn" download target="_blank">Your face sticker</a></div></div>']);
-                    } else if ($task->id == 16) {
-                        return response()->json(['error' => '<div class="text-center padding-bottom-20">You have already completed this task.<div class="padding-top-15"><a href="https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredb_data->slug.'.png" class="white-red-btn" download target="_blank">Your holiday sticker</a></div></div>']);
-                    } else {
-                        return response()->json(['error' => '<div class="text-center padding-bottom-20">You have already completed this task.</div>']);
-                    }
+                if ($task->id == 1) {
+                    return response()->json(['error' => '<div class="text-center padding-bottom-20">You have already completed this task.<div class="padding-top-15"><a href="https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredb_data->slug.'.png" class="white-red-btn" download target="_blank">Your face sticker</a></div></div>']);
+                } else if ($task->id == 16) {
+                    return response()->json(['error' => '<div class="text-center padding-bottom-20">You have already completed this task.<div class="padding-top-15"><a href="https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredb_data->slug.'.png" class="white-red-btn" download target="_blank">Your holiday sticker</a></div></div>']);
+                } else {
+                    return response()->json(['error' => '<div class="text-center padding-bottom-20">You have already completed this task.</div>']);
                 }
             }
 
