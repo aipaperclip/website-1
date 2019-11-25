@@ -19,21 +19,22 @@ class ChristmasCalendarController extends Controller
                 $bonusTickets = 0;
                 $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
                 $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id))->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)->whereRaw('christmas_calendar_task_participant.task_id <= 31')->get()->toArray();
+                if (!empty($passedTasks)) {
+                    foreach($passedTasks as $passedTask) {
+                        $task = ChristmasCalendarTask::where(array('id' => $passedTask->task_id))->get()->first();
+                        if (!empty($task)) {
+                            if ($task->type == 'dcn-reward') {
+                                $dcnAmount += $task->value;
+                            } else if ($task->type == 'ticket-reward') {
+                                $ticketAmount += $task->value;
+                            }
 
-                foreach($passedTasks as $passedTask) {
-                    $task = ChristmasCalendarTask::where(array('id' => $passedTask->task_id))->get()->first();
-                    if (!empty($task)) {
-                        if ($task->type == 'dcn-reward') {
-                            $dcnAmount += $task->value;
-                        } else if ($task->type == 'ticket-reward') {
-                            $ticketAmount += $task->value;
-                        }
-
-                        $datePassedTask = new \DateTime($passedTask->created_at);
-                        $dateDiff = strtotime($task->date) - strtotime($datePassedTask->format('Y-m-d'));
-                        $difference = floor($dateDiff / (60*60*24));
-                        if ($difference == 0) {
-                            $bonusTickets += 1;
+                            $datePassedTask = new \DateTime($passedTask->created_at);
+                            $dateDiff = strtotime($task->date) - strtotime($datePassedTask->format('Y-m-d'));
+                            $difference = floor($dateDiff / (60*60*24));
+                            if ($difference == 0) {
+                                $bonusTickets += 1;
+                            }
                         }
                     }
                 }
