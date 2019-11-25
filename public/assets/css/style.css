@@ -8511,7 +8511,7 @@ body.christmas-calendar .christmas-calendar-logged .tasks-section {
     max-width: 800px;
     z-index: 100;
     position: absolute;
-    left: 50%;
+    left: calc(50% + 15px);
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%); }
@@ -8531,6 +8531,9 @@ body.christmas-calendar .christmas-calendar-logged .tasks-section {
         padding: 20px; }
     body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups.socials {
       display: none; }
+    @media screen and (max-width: 767px) {
+      body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups .popup-wrapper {
+        padding: 15px 30px; } }
   body.christmas-calendar .christmas-calendar-logged .tasks-section .blurred-section {
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
