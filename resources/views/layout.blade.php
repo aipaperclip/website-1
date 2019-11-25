@@ -38,8 +38,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.0.58">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.0.58">
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.0.59">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.0.59">
     <script>
         var HOME_URL = '{{ route("home") }}';
     </script>
@@ -193,9 +193,6 @@
                         <div>
                             <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient">with Civic</a>
                         </div>
-                        @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
-                            <input type="hidden" name="route" value="christmas-calendar"/>
-                        @endif
                         <div class="popup-half-footer">
                             Don't have an account? <a href="javascript:void(0)" class="call-sign-up color-white">Sign up</a>
                         </div>
@@ -618,9 +615,9 @@
     {{--<script src="/assets/js/basic.js"></script>--}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.0.58"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.0.59"></script>
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.0.58"></script>
+    <script src="/dist/js/front-script.js?v=1.0.59"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/address.js"></script>

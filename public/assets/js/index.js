@@ -2327,9 +2327,12 @@ function apiEventsListeners() {
                 _token: $('meta[name="csrf-token"]').attr('content')
             };
 
-            if($('input[type="hidden"][name="route"]').length && $('input[type="hidden"][name="slug"]').length) {
+            if($('input[type="hidden"][name="route"]').length) {
                 custom_form_obj.route = $('input[type="hidden"][name="route"]').val();
-                custom_form_obj.slug = $('input[type="hidden"][name="slug"]').val();
+
+                if($('input[type="hidden"][name="slug"]').length) {
+                    custom_form_obj.slug = $('input[type="hidden"][name="slug"]').val();
+                }
             }
 
             if(event.response_data.new_account) {
