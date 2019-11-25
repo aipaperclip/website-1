@@ -4233,6 +4233,12 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
                   color: black; }
                 .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .phone .input-phone {
                   flex: 1; }
+                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .phone input[type=number]::-webkit-inner-spin-button,
+                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .phone input[type=number]::-webkit-outer-spin-button {
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  appearance: none;
+                  margin: 0; }
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .avatar {
                 width: 180px; }
               .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .specializations {
@@ -5153,7 +5159,7 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
   display: none;
   cursor: pointer; }
 .module.avatar .max-size-label.active {
-  padding-top: 40px !important; }
+  margin-top: 40px !important; }
   .module.avatar .max-size-label.active label {
     display: inline-block; }
 .module.suggester-parent .suggester-map-div {
