@@ -76,7 +76,7 @@
                 </div>
             </div>
         </section>
-        <section class="container-fluid text-center presents-list blurred-section">
+        <section class="container-fluid text-center presents-list blurred-section active">
             <div class="row">
                 <div class="col-xs-12 padding-left-xs-0 padding-right-xs-0 padding-bottom-50 padding-bottom-xs-0">
                     <picture itemscope="" itemtype="http://schema.org/ImageObject">
@@ -86,7 +86,7 @@
                 </div>
             </div>
         </section>
-        <section class="santa-section blurred-section">
+        <section class="santa-section blurred-section active">
             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                 <img src="/assets/images/christmas-calendar-campaign/forest.svg" class="width-100" alt="Forest" itemprop="contentUrl"/>
             </figure>
