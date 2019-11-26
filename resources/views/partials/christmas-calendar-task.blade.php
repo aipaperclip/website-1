@@ -99,7 +99,7 @@
                                 <img src="/assets/images/christmas-calendar-campaign/join-now.svg" class="width-100 max-width-150" alt="Join now Dentacoin telegram group" itemprop="contentUrl"/>
                             </figure>
                         </a>
-                        <div class="inline-block link-text fs-16 lato-regular padding-left-10">Don’t have Telegram yet? <a href="https://telegram.org/" target="_blank" class="color-christmas-calendar-red">Get it here.</a></div>
+                        <div class="inline-block link-text fs-16 lato-regular padding-left-10 padding-left-xs-10 padding-top-xs-10">Don’t have Telegram yet? <a href="https://telegram.org/" target="_blank" class="color-christmas-calendar-red">Get it here.</a></div>
                     </div>
                     <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                     <div class="padding-bottom-20">
@@ -109,10 +109,10 @@
                         </div>
                     </div>
                     <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 3:</span> Let’s prepare  your custom sticker!</div>
-                    <div class="fs-14 padding-bottom-10">Attach a portrait photo and choose a character:</div>
-                    <div class="text-center fs-16 padding-bottom-20">
-                        <input type="radio" name="character-type" id="character-type-male" value="male"/> <label for="character-type-male">Male character</label>
-                        <input type="radio" name="character-type" id="character-type-female" class="margin-left-15" value="female"/> <label for="character-type-female">Female character</label>
+                    <div class="fs-16 padding-bottom-10">Attach a portrait photo and choose a character:</div>
+                    <div class="text-center fs-16 padding-bottom-20 gender-radio-btns">
+                        <input type="radio" name="character-type" id="character-type-male" value="male"/> <label class="fs-16 lato-bold" for="character-type-male">Male character</label>
+                        <input type="radio" name="character-type" id="character-type-female" class="margin-left-15" value="female"/> <label class="fs-16 lato-bold" for="character-type-female">Female character</label>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-offset-1 col-sm-10 upload-image">

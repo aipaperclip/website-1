@@ -98,6 +98,7 @@ body.christmas-calendar {
                             width: calc(100% - 25px);
                             display: inline-block;
                             vertical-align: top;
+                            font-weight: normal;
                         }
                     }
                 }
@@ -421,6 +422,11 @@ body.christmas-calendar {
                                     }
                                 }
                                 .task-body {
+                                    .gender-radio-btns {
+                                        label {
+                                            font-weight: normal;
+                                        }
+                                    }
                                     .upload-image {
                                         .rotate {
                                             position: absolute;
