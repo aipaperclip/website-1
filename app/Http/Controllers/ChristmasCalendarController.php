@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class ChristmasCalendarController extends Controller
 {
-    const ALLOWED_ACCOUNTS = [70879, 3040];
+    const ALLOWED_ACCOUNTS = [70879, 3040, 69468];
 
     public function getView()   {
         if ((new UserController())->checkSession()) {
