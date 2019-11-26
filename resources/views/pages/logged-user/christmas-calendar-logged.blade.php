@@ -76,16 +76,17 @@
                 </div>
             </div>
         </section>
-        <section class="container-fluid text-center presents-list">
+        <section class="container-fluid text-center presents-list blurred-section">
             <div class="row">
-                <div class="col-xs-12">
-                    <figure class="padding-bottom-50 padding-bottom-xs-0" itemscope="" itemtype="http://schema.org/ImageObject">
+                <div class="col-xs-12 padding-left-xs-0 padding-right-xs-0 padding-bottom-50 padding-bottom-xs-0">
+                    <picture itemscope="" itemtype="http://schema.org/ImageObject">
+                        <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/presents-mobile.png" />
                         <img src="/assets/images/christmas-calendar-campaign/presents.png" alt="Presents list" itemprop="contentUrl"/>
-                    </figure>
+                    </picture>
                 </div>
             </div>
         </section>
-        <section class="santa-section">
+        <section class="santa-section blurred-section">
             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                 <img src="/assets/images/christmas-calendar-campaign/forest.svg" class="width-100" alt="Forest" itemprop="contentUrl"/>
             </figure>

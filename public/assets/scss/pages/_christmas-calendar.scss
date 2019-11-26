@@ -82,17 +82,20 @@ body.christmas-calendar {
                 &.socials {
                     display: none;
                 }
-                @include breakpoint($xs) {
-                    .popup-wrapper {
-                        padding: 15px 30px;
+                &.rules {
+                    .checkboxes {
+                        font-size: 0;
+                        .checkbox-wrapper {
+                            width: 30px;
+                            display: inline-block;
+                            vertical-align: top;
+                        }
+                        label {
+                            width: calc(100% - 30px);
+                            display: inline-block;
+                            vertical-align: top;
+                        }
                     }
-                }
-            }
-            .blurred-section {
-                @include simple_transition(.3s);
-                &.active {
-                    filter: blur(3.5px);
-                    -webkit-filter: blur(3.5px);
                 }
             }
             .single-task {
@@ -109,6 +112,17 @@ body.christmas-calendar {
                     }
                 }
             }
+            @include breakpoint($xs) {
+                position: static;
+                .camping-custom-popups {
+                    width: 100%;
+                    top: 0;
+                    .popup-wrapper {
+                        padding: 15px 30px;
+                        border: 0;
+                    }
+                }
+            }
         }
         .santa-section {
             img {
@@ -120,6 +134,13 @@ body.christmas-calendar {
         }
     }
     .christmas-calendar-not-logged, .christmas-calendar-logged {
+        .blurred-section {
+            @include simple_transition(.3s);
+            &.active {
+                filter: blur(3.5px);
+                -webkit-filter: blur(3.5px);
+            }
+        }
         .tasks-section {
             .wrapper {
                 padding-top: 100%;

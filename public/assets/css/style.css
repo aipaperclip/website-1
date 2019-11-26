@@ -8545,18 +8545,16 @@ body.christmas-calendar .christmas-calendar-logged .tasks-section {
         padding: 20px; }
     body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups.socials {
       display: none; }
-    @media screen and (max-width: 767px) {
-      body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups .popup-wrapper {
-        padding: 15px 30px; } }
-  body.christmas-calendar .christmas-calendar-logged .tasks-section .blurred-section {
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -o-transition: 0.3s;
-    -ms-transition: 0.3s;
-    transition: 0.3s; }
-    body.christmas-calendar .christmas-calendar-logged .tasks-section .blurred-section.active {
-      filter: blur(3.5px);
-      -webkit-filter: blur(3.5px); }
+    body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups.rules .checkboxes {
+      font-size: 0; }
+      body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups.rules .checkboxes .checkbox-wrapper {
+        width: 30px;
+        display: inline-block;
+        vertical-align: top; }
+      body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups.rules .checkboxes label {
+        width: calc(100% - 30px);
+        display: inline-block;
+        vertical-align: top; }
   body.christmas-calendar .christmas-calendar-logged .tasks-section .single-task .present__content {
     background-image: url(/assets/images/christmas-calendar-campaign/christams-box-bg.svg);
     background-repeat: no-repeat;
@@ -8572,11 +8570,29 @@ body.christmas-calendar .christmas-calendar-logged .tasks-section {
       -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%); }
+  @media screen and (max-width: 767px) {
+    body.christmas-calendar .christmas-calendar-logged .tasks-section {
+      position: static; }
+      body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups {
+        width: 100%;
+        top: 0; }
+        body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups .popup-wrapper {
+          padding: 15px 30px;
+          border: 0; } }
 body.christmas-calendar .christmas-calendar-logged .santa-section img {
   margin-top: -80px; }
   @media screen and (max-width: 767px) {
     body.christmas-calendar .christmas-calendar-logged .santa-section img {
       margin-top: 0; } }
+body.christmas-calendar .christmas-calendar-not-logged .blurred-section, body.christmas-calendar .christmas-calendar-logged .blurred-section {
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  body.christmas-calendar .christmas-calendar-not-logged .blurred-section.active, body.christmas-calendar .christmas-calendar-logged .blurred-section.active {
+    filter: blur(3.5px);
+    -webkit-filter: blur(3.5px); }
 body.christmas-calendar .christmas-calendar-not-logged .tasks-section .wrapper, body.christmas-calendar .christmas-calendar-logged .tasks-section .wrapper {
   padding-top: 100%;
   position: relative;
