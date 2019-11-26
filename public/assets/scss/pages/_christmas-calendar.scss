@@ -576,6 +576,17 @@ body.christmas-calendar {
                     }
                 }
             }
+            .dots {
+                text-align: center;
+                span {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: black;
+                    display: inline-block;
+                    margin: 0 5px;
+                }
+            }
         }
         .presents-list {
             figure {

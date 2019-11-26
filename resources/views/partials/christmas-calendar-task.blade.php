@@ -41,7 +41,7 @@
                             @endif
                         </figure>
                     </div>
-                    <div class="task-name inline-block lato-black fs-26 fs-xs-20 line-height-30 padding-left-20 padding-left-xs-0">{{$task->task}}</div>
+                    <div class="task-name inline-block lato-black fs-26 fs-xs-20 line-height-30 padding-left-20 padding-left-xs-0">{!! $task->task !!}</div>
                 </div>
                 <div class="text-center">
                     <div id="mc_embed_signup">
@@ -82,7 +82,7 @@
                     @endif
                 </figure>
             </div>
-            <div class="task-name inline-block lato-black fs-26 fs-xs-20 line-height-30 padding-left-20 padding-left-xs-0">{{$task->task}}</div>
+            <div class="task-name inline-block lato-black fs-26 fs-xs-20 line-height-30 padding-left-20 padding-left-xs-0">{!! $task->task !!}</div>
         </div>
         <div class="task-body">
             @switch($task->id)
@@ -124,7 +124,7 @@
                                 <div class="left-triangle inline-block"><img src="/assets/images/christmas-calendar-campaign/left-triangle.png"/></div>
                                 <label class="photo inline-block" for="upload-avatar">
                                     <div class="avatar">
-                                        <img src="/assets/images/christmas-calendar-campaign/upload-photo.jpg"/>
+                                        <img src="/assets/images/christmas-calendar-campaign/upload-photo.png"/>
                                     </div>
                                     <div class="border"></div>
                                 </label>
@@ -160,7 +160,8 @@
                 @break
                 @case(4)
                 <div>
-                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> SHARE this post on your Facebook profile:</div>
+                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
+                    <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">SHARE this post on your Facebook profile:</div>
                     <a href="https://www.facebook.com/pg/dentacoin/sample post/" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/pg/dentacoin/sample post/</a>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>

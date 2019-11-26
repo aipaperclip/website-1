@@ -3393,6 +3393,14 @@ body {
   .hide-xs {
     display: none !important; } }
 
+.show-xs {
+  display: none !important; }
+  @media screen and (max-width: 767px) {
+    .show-xs {
+      display: block !important; }
+      .show-xs.inline-block {
+        display: inline-block !important; } }
+
 .text-center {
   text-align: center; }
 
@@ -9010,6 +9018,15 @@ body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog {
               width: 90%; } }
 body.christmas-calendar .christmas-calendar-not-logged .tasks-section .wrapper .present__content img {
   max-width: 100%; }
+body.christmas-calendar .christmas-calendar-not-logged .tasks-section .dots {
+  text-align: center; }
+  body.christmas-calendar .christmas-calendar-not-logged .tasks-section .dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: black;
+    display: inline-block;
+    margin: 0 5px; }
 body.christmas-calendar .christmas-calendar-not-logged .presents-list figure img {
   margin-top: -40px; }
   @media screen and (max-width: 767px) {

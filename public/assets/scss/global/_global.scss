@@ -167,6 +167,16 @@ body {
     }
 }
 
+.show-xs {
+    display: none !important;
+    @include breakpoint($xs)    {
+        display: block !important;
+        &.inline-block {
+            display: inline-block !important;
+        }
+    }
+}
+
 .text-center {
     text-align: center;
 }

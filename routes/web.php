@@ -41,7 +41,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return abort(410);
     })->name('berlin-roundtable');
 
-    Route::group(['prefix' => 'christmas-calendar'], function () {
+    Route::group(['prefix' => 'holiday-calendar-2019'], function () {
         Route::get('/', 'ChristmasCalendarController@getView')->name('christmas-calendar');
 
         Route::post('/get-task-popup/{id}', 'ChristmasCalendarController@getTaskPopup')->name('get-task-popup');
