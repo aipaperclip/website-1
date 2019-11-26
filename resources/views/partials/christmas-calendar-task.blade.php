@@ -96,7 +96,7 @@
                     <div class="padding-bottom-20">
                         <a href="https://t.me/dentacoin" target="_blank" class="inline-block">
                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                <img src="/assets/images/christmas-calendar-campaign/join-now.png" class="width-100 max-width-150" alt="Join now Dentacoin telegram group" itemprop="contentUrl"/>
+                                <img src="/assets/images/christmas-calendar-campaign/join-now.svg" class="width-100 max-width-150" alt="Join now Dentacoin telegram group" itemprop="contentUrl"/>
                             </figure>
                         </a>
                         <div class="inline-block link-text fs-16 lato-regular padding-left-10">Don’t have Telegram yet? <a href="https://telegram.org/" target="_blank" class="color-christmas-calendar-red">Get it here.</a></div>
@@ -161,7 +161,7 @@
                 @case(4)
                 <div>
                     <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
-                    <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">SHARE this post on your Facebook profile:</div>
+                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">SHARE this post on your Facebook profile:</div>
                     <a href="https://www.facebook.com/pg/dentacoin/sample post/" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/pg/dentacoin/sample post/</a>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>
@@ -225,7 +225,8 @@
                 @break
                 @case(7)
                 <div>
-                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> SHARE this post on your Facebook profile:</div>
+                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
+                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">SHARE this post on your Facebook profile:</div>
                     <a href="https://www.facebook.com/pg/dentavox.dentacoin/sample post/" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/pg/dentavox.dentacoin/sample post/</a>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>
@@ -259,7 +260,8 @@
                 @break
                 @case(10)
                 <div>
-                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> SHARE this post on your Facebook profile:</div>
+                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
+                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">SHARE this post on your Facebook profile:</div>
                     <a href="https://www.facebook.com/pg/reviews.dentacoin/sample post/" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/pg/reviews.dentacoin/sample post/</a>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>
@@ -382,7 +384,8 @@
                 @break
                 @case(19)
                 <div>
-                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> SHARE this post on your Facebook profile:</div>
+                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
+                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">SHARE this post on your Facebook profile:</div>
                     <a href="https://www.facebook.com/pg/dentacare.dentacoin/sample post/" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/pg/dentacare.dentacoin/sample post/</a>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>
@@ -467,7 +470,8 @@ Share in the latest DentaVox survey “Oral Care during Holidays”!</div>
                 @break
                 @case(28)
                 <div>
-                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Share Dentacoin’s Facebook page: <a href="https://www.facebook.com/dentacoin/" target="_blank" class="color-christmas-calendar-red">https://www.facebook.com/dentacoin/</a> in ONE crypto-related Facebook group you participate in.</div>
+                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
+                    <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">Share Dentacoin’s Facebook page: <a href="https://www.facebook.com/dentacoin/" target="_blank" class="color-christmas-calendar-red">https://www.facebook.com/dentacoin/</a> in ONE crypto-related Facebook group you participate in.</div>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">Share Dentacoin’s Telegram group: <a href="https://t.me/dentacoin" target="_blank" class="color-christmas-calendar-red">https://t.me/dentacoin</a> in ONE crypto-related Telegram group you participate in.</div>
                     <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Add a nice, short text description to your post. Example:<div>Check out Dentacoin, the first blockchain solution for dentistry with 90K+ users and 1.8K+ dental offices on board!</div></div>
@@ -522,9 +526,9 @@ Share in the latest DentaVox survey “Oral Care during Holidays”!</div>
                 <div class="text-center padding-top-50 padding-bottom-50 padding-left-10 padding-right-10 fs-20 lato-black">Something went wrong, please try again</div>
             @endswitch
         </div>
-        <div class="padding-top-30 padding-bottom-10 text-center">
+        <div class="padding-top-40 padding-bottom-10 text-center">
             <button>
-                <img src="/assets/images/christmas-calendar-campaign/submit-btn-present.svg" class="width-100 max-width-150" alt="Submit button" itemprop="contentUrl"/>
+                <img src="/assets/images/christmas-calendar-campaign/submit-btn-present.svg" class="width-100 max-width-180" alt="Submit button" itemprop="contentUrl"/>
             </button>
         </div>
         <div class="lato-bold fs-12 padding-bottom-20 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2020.<br> Other gifts are sent via email within 5 days after the task is completed. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h1 class="lato-black fs-38 fs-xs-24 padding-bottom-15 padding-top-15 max-width-600 margin-0-auto">Join Dentacoin Holiday CALENDAR CHALLENGE 2019</h1>
-                    <p class="fs-22 fs-xs-16 lato-regular padding-bottom-40">Unlock a new surprise every day from December 1 to 31!</p>
+                    <p class="fs-22 fs-xs-20 lato-regular padding-bottom-40">Unlock a new surprise every day from December 1 to 31!</p>
                 </div>
             </div>
         </section>
@@ -34,7 +34,7 @@
         <section class="container tasks-section">
             <div class="row camping-custom-popups rules"></div>
             @if(!empty($social_engagement_cookie))
-                <div class="row camping-custom-popups socials"><div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">BEFORE YOU START:</h2><div class="fs-18 text-center lato-regular">01. Follow us on Twitter</div><div class="text-center padding-top-15 padding-bottom-35"><a class="twitter-follow-button" href="https://twitter.com/dentacoin" data-size="large" data-show-screen-name="true" data-show-count="true">Follow</a></div><div class="fs-18 text-center lato-regular">02. Like our Facebook pages: </div><div class="facebook-buttons text-center padding-top-15 padding-bottom-35"><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacoin</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacare</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentavox</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Trusted Reviews</div></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="christmas-calendar-get-started white-red-btn padding-left-30 padding-right-30">GET STARTED</a></div></div></div>
+                <div class="row camping-custom-popups socials"><div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-35">BEFORE YOU START:</h2><div class="fs-18 text-center lato-regular">01. Follow us on Twitter</div><div class="text-center padding-top-15 padding-bottom-35"><a class="twitter-follow-button" href="https://twitter.com/dentacoin" data-size="large" data-show-screen-name="true" data-show-count="true">Follow</a></div><div class="fs-18 text-center lato-regular">02. Like our Facebook pages: </div><div class="facebook-buttons text-center padding-top-15 padding-bottom-35"><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacoin</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacare</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentavox</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Trusted Reviews</div></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="christmas-calendar-get-started white-red-btn padding-left-30 padding-right-30">GET STARTED</a></div></div></div>
             @endif
             <div class="row blurred-section active">
                 <div class="col-xs-12 col-lg-10 col-lg-offset-1">
@@ -52,7 +52,13 @@
                                                 <figcaption class="color-white lato-bold padding-top-5">{{$task['value']}} DCN</figcaption>
                                             @elseif($task['type'] == 'ticket-reward')
                                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="color-white lato-bold padding-top-5">+{{$task['value']}} raffle ticket</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">
+                                                    @if((int)$task['value'] > 1)
+                                                        +{{$task['value']}} raffle tickets
+                                                    @else
+                                                        +{{$task['value']}} raffle ticket
+                                                    @endif
+                                                </figcaption>
                                             @elseif($task['type'] == 'face-sticker')
                                                 <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                                 <figcaption class="color-white lato-bold padding-top-5">Face sticker</figcaption>
@@ -78,6 +84,7 @@
         </section>
         <section class="container-fluid text-center presents-list blurred-section active">
             <div class="row">
+                <div class="col-xs-12"><p class="fs-22 fs-xs-20 lato-regular">We are picking 10 big winners on January 10, 2020:</p></div>
                 <div class="col-xs-12 padding-left-xs-0 padding-right-xs-0 padding-bottom-50 padding-bottom-xs-0">
                     <picture itemscope="" itemtype="http://schema.org/ImageObject">
                         <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/presents-mobile.png" />
