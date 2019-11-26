@@ -1093,7 +1093,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
             dots: false
         });
     }
-} else if($('body.holiday-calendar-2019').length > 0) {
+} else if($('body.christmas-calendar').length > 0) {
     // CHRISTMAS CALENDAR
     if($('body').hasClass('logged-in')) {
         if(basic.cookies.get('agreed_with_christmas_calendar_rules') != '1') {
