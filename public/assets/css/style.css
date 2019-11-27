@@ -8708,43 +8708,43 @@ body.christmas-calendar .christmas-calendar-not-logged .tasks-section .wrapper, 
     body.christmas-calendar .christmas-calendar-not-logged .tasks-section .wrapper.opened .present__date, body.christmas-calendar .christmas-calendar-logged .tasks-section .wrapper.opened .present__date {
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden; }
-body.christmas-calendar .bootbox.christmas-calendar-task .bootbox-close-button, body.christmas-calendar .bootbox .response-popup .bootbox-close-button {
+body.christmas-calendar .bootbox.christmas-calendar-task .bootbox-close-button, body.christmas-calendar .bootbox.response-popup .bootbox-close-button {
   display: none; }
-body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog, body.christmas-calendar .bootbox .response-popup .modal-dialog {
+body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog, body.christmas-calendar .bootbox.response-popup .modal-dialog {
   width: 95%;
   max-width: 900px; }
   @media screen and (max-width: 767px) {
-    body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog, body.christmas-calendar .bootbox .response-popup .modal-dialog {
+    body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog, body.christmas-calendar .bootbox.response-popup .modal-dialog {
       margin-bottom: 100px; } }
-  body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content, body.christmas-calendar .bootbox .response-popup .modal-dialog .modal-content {
+  body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content {
     background: transparent;
     border: 0;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     -ms-box-shadow: none;
     box-shadow: none; }
-    body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body, body.christmas-calendar .bootbox .response-popup .modal-dialog .modal-content .modal-body {
+    body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body {
       padding: 0; }
-      body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header img, body.christmas-calendar .bootbox .response-popup .modal-dialog .modal-content .modal-body .popup-header img {
+      body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header img, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-header img {
         max-width: 250px; }
-      body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day, body.christmas-calendar .bootbox .response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day {
+      body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day {
         position: relative; }
-        body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines, body.christmas-calendar .bootbox .response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines {
+        body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines {
           overflow: hidden;
           -webkit-border-radius: 20px 20px 0 0;
           -moz-border-radius: 20px 20px 0 0;
           -ms-border-radius: 20px 20px 0 0;
           border-radius: 20px 20px 0 0; }
-          body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines .small-red-line, body.christmas-calendar .bootbox .response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines .small-red-line {
+          body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines .small-red-line, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines .small-red-line {
             background-color: #d70a10;
             height: 10px; }
-          body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines .small-yellow-line, body.christmas-calendar .bootbox .response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines .small-yellow-line {
+          body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines .small-yellow-line, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines .small-yellow-line {
             background-color: #f3b434;
             height: 5px; }
-          body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines .big-red-line, body.christmas-calendar .bootbox .response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines .big-red-line {
+          body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines .big-red-line, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .lines .big-red-line {
             background-color: #d70a10;
             height: 35px; }
-        body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .day, body.christmas-calendar .bootbox .response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .day {
+        body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .day, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .day {
           font-size: 40px;
           text-align: center;
           color: white;
@@ -8766,9 +8766,9 @@ body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog, body.chr
           -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
           @media screen and (max-width: 767px) {
-            body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .day, body.christmas-calendar .bootbox .response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .day {
+            body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .day, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-header .lines-and-day .day {
               font-size: 32px; } }
-      body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-body, body.christmas-calendar .bootbox .response-popup .modal-dialog .modal-content .modal-body .popup-body {
+      body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-body, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-body {
         background-color: white;
         -webkit-border-radius: 0 0 20px 20px;
         -moz-border-radius: 0 0 20px 20px;
