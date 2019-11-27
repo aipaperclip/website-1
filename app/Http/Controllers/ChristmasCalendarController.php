@@ -104,7 +104,7 @@ class ChristmasCalendarController extends Controller
         if ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
             $task = ChristmasCalendarTask::where(array('id' => $id))->get()->first();
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
-            $coredb_data = (new APIRequestsController())->getUserData(session('logged_user')['id']);
+            $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
 
             // check if time passed to unlock this task
             if (time() > strtotime($task->date)) {
@@ -119,7 +119,7 @@ class ChristmasCalendarController extends Controller
                 }
 
                 if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id)) {
-                    $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'already-completed']);
+                    $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'already-completed', 'coredbData' => $coredbData]);
                     $view = $view->render();
                     return response()->json(['error' => $view]);
                 } else {
@@ -200,7 +200,7 @@ class ChristmasCalendarController extends Controller
 
                     $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'congrats']);
                     $view = $view->render();
-                    return response()->json(['success' => $view, 'data' => $coredb_data->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets]);
+                    return response()->json(['success' => $view, 'data' => $coredbData->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets, 'coredbData' => $coredbData]);
                 }
             } else {
                 $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'not-active-yet']);

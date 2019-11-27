@@ -571,7 +571,7 @@
                     <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
                 </div>
             @else
-                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-220">SEE YOU TOMORROW!</button>
+                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-220 margin-top-30">SEE YOU TOMORROW!</button>
             @endif
         </div>
     @elseif($type == 'already-completed')
@@ -610,7 +610,7 @@
                     <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
                 </div>
             @else
-                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button>
+                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button>
             @endif
         </div>
     @elseif($type == 'not-active-yet')
