@@ -70,14 +70,12 @@ class ChristmasCalendarController extends Controller
 
             if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id)) {
                 $coredb_data = (new APIRequestsController())->getUserData(session('logged_user')['id']);
+                /*https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredb_data->slug.'.png*/
+                /*https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredb_data->slug.'.png*/
 
-                if ($task->id == 1) {
-                    return response()->json(['error' => '<div class="text-center padding-bottom-20">You have already completed this task.<div class="padding-top-15"><a href="https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredb_data->slug.'.png" class="white-red-btn" download target="_blank">Your face sticker</a></div></div>']);
-                } else if ($task->id == 16) {
-                    return response()->json(['error' => '<div class="text-center padding-bottom-20">You have already completed this task.<div class="padding-top-15"><a href="https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredb_data->slug.'.png" class="white-red-btn" download target="_blank">Your holiday sticker</a></div></div>']);
-                } else {
-                    return response()->json(['error' => '<div class="text-center padding-bottom-20">You have already completed this task.</div>']);
-                }
+                $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'already-completed']);
+                $view = $view->render();
+                return response()->json(['error' => $view]);
             }
 
             if (time() > strtotime($task->date)) {
@@ -85,15 +83,19 @@ class ChristmasCalendarController extends Controller
                     // check if user completed the tasks before this one
                     $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id))->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)->whereRaw('christmas_calendar_task_participant.task_id <= ' . $task->id)->get()->toArray();
                     if (sizeof($passedTasks) != (int)$id - 1) {
-                        return response()->json(['error' => 'In order to unlock this task you must first finish all the previous tasks.']);
+                        $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'no-hurries']);
+                        $view = $view->render();
+                        return response()->json(['error' => $view]);
                     }
                 }
 
-                $view = view('partials/christmas-calendar-task', ['task' => $task]);
+                $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'task']);
                 $view = $view->render();
                 return response()->json(['success' => $view]);
             } else {
-                return response()->json(['error' => 'This present is not active yet. Please kindly wait until ' . $task->date . '.']);
+                $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'not-active-yet']);
+                $view = $view->render();
+                return response()->json(['error' => $view]);
             }
         } else {
             return abort(404);
@@ -112,12 +114,16 @@ class ChristmasCalendarController extends Controller
                     // check if user completed the tasks before this one
                     $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id))->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)->whereRaw('christmas_calendar_task_participant.task_id <= ' . $task->id)->get()->toArray();
                     if (sizeof($passedTasks) != (int)$id - 1) {
-                        return response()->json(['error' => 'In order to unlock this task you must first finish all the previous tasks.']);
+                        $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'no-hurries']);
+                        $view = $view->render();
+                        return response()->json(['error' => $view]);
                     }
                 }
 
                 if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id)) {
-                    return response()->json(['error' => 'You have already completed this task.']);
+                    $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'already-completed']);
+                    $view = $view->render();
+                    return response()->json(['error' => $view]);
                 } else {
                     $insert_arr = array(
                         'participant_id' => $participant->id,
@@ -194,14 +200,14 @@ class ChristmasCalendarController extends Controller
                         }
                     }
 
-                    if ($task->id == 1 || $task->id == 16) {
-                        return response()->json(['success' => 'You have completed this task successfully. You can download your reward anytime by clicking on the finished task.', 'data' => $coredb_data->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets]);
-                    } else {
-                        return response()->json(['success' => 'You have completed this task successfully.', 'data' => $coredb_data->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets]);
-                    }
+                    $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'congrats']);
+                    $view = $view->render();
+                    return response()->json(['success' => $view, 'data' => $coredb_data->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets]);
                 }
             } else {
-                return response()->json(['error' => 'This present is not active yet. Please kindly wait until ' . $task->date . '.']);
+                $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'not-active-yet']);
+                $view = $view->render();
+                return response()->json(['error' => $view]);
             }
         } else {
             return abort(404);
