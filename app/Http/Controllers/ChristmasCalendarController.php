@@ -69,11 +69,9 @@ class ChristmasCalendarController extends Controller
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
 
             if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id)) {
-                $coredb_data = (new APIRequestsController())->getUserData(session('logged_user')['id']);
-                /*https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredb_data->slug.'.png*/
-                /*https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredb_data->slug.'.png*/
+                $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
 
-                $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'already-completed']);
+                $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'already-completed', 'coredbData' => $coredbData]);
                 $view = $view->render();
                 return response()->json(['error' => $view]);
             }

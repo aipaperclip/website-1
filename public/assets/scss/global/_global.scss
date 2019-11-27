@@ -181,6 +181,12 @@ body {
     text-align: center;
 }
 
+.text-center-sm {
+    @include breakpoint($sm-only)    {
+        text-align: center !important;
+    }
+}
+
 .text-center-xs {
     @include breakpoint($xs)    {
         text-align: center !important;
