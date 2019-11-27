@@ -243,8 +243,6 @@ body.christmas-calendar {
                         font-size: 16px;
                         text-align: center;
                         @include rounded(50%);
-                        @include breakpoint($xs) {
-                        }
                     }
                     @include breakpoint($md-only) {
                         font-size: 14px;
@@ -340,6 +338,23 @@ body.christmas-calendar {
                         .popup-body {
                             background-color: white;
                             @include rounded(0 0 20px 20px);
+                            .task-present-tile {
+                                background-image: url(/assets/images/christmas-calendar-campaign/christams-box-bg.svg);
+                                background-repeat: no-repeat;
+                                background-size: 100% 100%;
+                                background-position: center center;
+                                text-align: center;
+                                position: relative;
+                                font-size: 14px; 
+                                img {
+                                    max-width: 70%;
+                                }
+                                @include breakpoint($xs) {
+                                    img {
+                                        max-width: 55%;
+                                    }
+                                }
+                            }
                         }
                     }
                 }

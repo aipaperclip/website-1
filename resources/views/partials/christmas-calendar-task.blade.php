@@ -545,25 +545,25 @@
         <div class="text-center padding-top-50 padding-bottom-50">
             <h2 class="fs-50 fs-xs-32 lato-black">COMPLETED</h2>
             <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You have already completed this task.</div>
-            <figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center padding-bottom-30">
+            <figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile">
                 @if($task['type'] == 'dcn-reward')
-                    <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100 max-width-150" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold fs-18 padding-top-10">{{$task['value']}} DCN</figcaption>
+                    <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    <figcaption class="lato-bold color-white padding-top-5">{{$task['value']}} DCN</figcaption>
                 @elseif($task['type'] == 'ticket-reward')
-                    <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100 max-width-150" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold fs-18 padding-top-10">+{{$task['value']}} raffle ticket</figcaption>
+                    <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    <figcaption class="lato-bold color-white padding-top-5">+{{$task['value']}} raffle ticket</figcaption>
                 @elseif($task['type'] == 'face-sticker')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100 max-width-150" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold fs-18 padding-top-10">Face sticker</figcaption>
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    <figcaption class="lato-bold color-white padding-top-5">Face sticker</figcaption>
                 @elseif($task['type'] == 'facebook-holiday-frame')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100 max-width-150" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold fs-18 padding-top-10">Facebook frame</figcaption>
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    <figcaption class="lato-bold color-white padding-top-5">Facebook frame</figcaption>
                 @elseif($task['type'] == 'free-oracle-health-guide')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100 max-width-150" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold fs-18 padding-top-10">Oracle health guide</figcaption>
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    <figcaption class="lato-bold color-white padding-top-5">Oracle health guide</figcaption>
                 @elseif($task['type'] == 'custom-holiday-card')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100 max-width-150" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold fs-18 padding-top-10">Holiday card</figcaption>
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    <figcaption class="lato-bold color-white padding-top-5">Holiday card</figcaption>
                 @endif
             </figure>
             @if($task->id == 1 || $task->id == 16)
@@ -572,8 +572,8 @@
                 @elseif($task->id == 16)
                     @php($downloadLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredbData->slug.'.png')
                 @endif
-                <div class="row">
-                    <div class="col-xs-12 col-md-6 text-right text-center-xs text-center-sm"><a href="{{$downloadLink}}" download class="red-white-btn width-100 max-width-150">DOWNLOAD</a></div>
+                <div class="row padding-top-30">
+                    <div class="col-xs-12 col-md-6 text-right text-center-xs text-center-sm"><a href="{{$downloadLink}}" target="_blank" download class="red-white-btn width-100 max-width-150 inline-block text-center">DOWNLOAD</a></div>
                     <div class="col-xs-12 col-md-6 text-left text-center-xs text-center-sm"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
                 </div>
             @else

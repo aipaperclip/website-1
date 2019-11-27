@@ -8799,6 +8799,19 @@ body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog, body.chr
         -moz-border-radius: 0 0 20px 20px;
         -ms-border-radius: 0 0 20px 20px;
         border-radius: 0 0 20px 20px; }
+        body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-body .task-present-tile, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-body .task-present-tile {
+          background-image: url(/assets/images/christmas-calendar-campaign/christams-box-bg.svg);
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          background-position: center center;
+          text-align: center;
+          position: relative;
+          font-size: 14px; }
+          body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-body .task-present-tile img, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-body .task-present-tile img {
+            max-width: 70%; }
+          @media screen and (max-width: 767px) {
+            body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-body .task-present-tile img, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-body .task-present-tile img {
+              max-width: 55%; } }
 body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-body .newsletter-register {
   padding-top: 50px;
   padding-bottom: 30px; }
