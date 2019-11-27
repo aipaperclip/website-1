@@ -283,7 +283,11 @@ body.christmas-calendar {
     .bootbox {
         &.christmas-calendar-task, &.response-popup {
             .bootbox-close-button {
-                display: none;
+                position: absolute;
+                right: 20px;
+                font-size: 30px;
+                top: 175px;
+                opacity: 1;
             }
             .modal-dialog {
                 width: 95%;

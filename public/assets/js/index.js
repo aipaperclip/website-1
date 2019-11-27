@@ -1423,7 +1423,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
                                                                 basic.closeDialog();
                                                                 basic.showDialog(response.success, 'response-popup', null);
-                                                                window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
+                                                                //window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
                                                             } else {
                                                                 basic.showAlert('Something went wrong. Please try again later or write a message to admin@dentacoin.com with description of the problem.', '', true);
                                                             }
@@ -1534,7 +1534,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
                                                     basic.closeDialog();
                                                     basic.showDialog(response.success, 'response-popup', null);
-                                                    window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
+                                                    //window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
                                                 } else {
                                                     basic.showAlert('Something went wrong. Please try again later or write a message to admin@dentacoin.com with description of the problem.', '', true);
                                                 }
@@ -1759,6 +1759,7 @@ function stopMaliciousInspect()  {
 function hidePopupOnBackdropClick() {
     $(document).on('click', '.bootbox', function(){
         var classname = event.target.className;
+        console.log(classname, 'classname');
         classname = classname.replace(/ /g, '.');
 
         if(classname && !$('.' + classname).parents('.modal-dialog').length) {

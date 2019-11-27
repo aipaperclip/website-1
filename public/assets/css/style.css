@@ -8734,7 +8734,11 @@ body.christmas-calendar .christmas-calendar-not-logged .tasks-section .wrapper, 
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden; }
 body.christmas-calendar .bootbox.christmas-calendar-task .bootbox-close-button, body.christmas-calendar .bootbox.response-popup .bootbox-close-button {
-  display: none; }
+  position: absolute;
+  right: 20px;
+  font-size: 30px;
+  top: 175px;
+  opacity: 1; }
 body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog, body.christmas-calendar .bootbox.response-popup .modal-dialog {
   width: 95%;
   max-width: 900px; }
