@@ -536,26 +536,26 @@
             </form>
         @endif
     @elseif($type == 'congrats')
-        <div class="text-center">
+        <div class="text-center padding-top-50 padding-bottom-50">
             <h2 class="fs-50 fs-xs-32 lato-black">CONGRATS!</h2>
-            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">YOUR DAILY REWARD.</div>
-            <button type="button" class="white-red-btn custom-close-bootbox">SEE YOU TOMORROW!</button>
+            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30 padding-top-10">YOUR DAILY REWARD.</div>
+            <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">SEE YOU TOMORROW!</button>
         </div>
     @elseif($type == 'already-completed')
-        <div class="text-center">
-            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You have already completed this task.</div>
-            <button type="button" class="white-red-btn custom-close-bootbox">OK</button>
+        <div class="text-center padding-top-50 padding-bottom-50">
+            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30">You have already completed this task.</div>
+            <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">OK</button>
         </div>
     @elseif($type == 'not-active-yet')
-        <div class="text-center">
-            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">This present is not active yet. Please kindly wait until {{$task->date}}.</div>
-            <button type="button" class="white-red-btn custom-close-bootbox">OK</button>
+        <div class="text-center padding-top-50 padding-bottom-50">
+            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30">This present is not active yet. Please kindly wait until {{$task->date}}.</div>
+            <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">OK</button>
         </div>
     @elseif($type == 'no-hurries')
-        <div class="text-center">
+        <div class="text-center padding-top-50 padding-bottom-50">
             <h2 class="fs-50 fs-xs-32 lato-black">Hey, no hurries!</h2>
-            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You must complete all previous tasks.</div>
-            <button type="button" class="white-red-btn custom-close-bootbox">OK</button>
+            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30 padding-top-10">You must complete all previous tasks.</div>
+            <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">OK</button>
         </div>
     @endif
 </div>
