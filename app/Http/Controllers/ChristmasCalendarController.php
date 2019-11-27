@@ -198,9 +198,9 @@ class ChristmasCalendarController extends Controller
                         }
                     }
 
-                    $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'congrats']);
+                    $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'congrats', 'coredbData' => $coredbData]);
                     $view = $view->render();
-                    return response()->json(['success' => $view, 'data' => $coredbData->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets, 'coredbData' => $coredbData]);
+                    return response()->json(['success' => $view, 'data' => $coredbData->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets]);
                 }
             } else {
                 $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'not-active-yet']);
