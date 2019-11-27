@@ -1431,7 +1431,11 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                                     });
                                                 } else if(response.error) {
                                                     $('.response-layer').hide();
-                                                    basic.showAlert(response.error, '', true);
+                                                    if(response.technicalError) {
+                                                        basic.showAlert(response.error, '', null);
+                                                    } else {
+                                                        basic.showDialog(response.error, 'response-popup', null);
+                                                    }
                                                 }
                                             }
                                         });
@@ -1459,11 +1463,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                         this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
 
                                         basic.closeDialog();
-                                        if(this_btn.attr('data-task') == '31') {
-                                            basic.showAlert('You have successfully completed all tasks in our christmas calendar! After reviewing your proofs your rewards will be unlocked.', '', true);
-                                        } else {
-                                            basic.showAlert('You have successfully completed this christmas calendar task! We will be waiting for you to come back for the next task!', '', true);
-                                        }
+                                        basic.showDialog(response.success, 'response-popup', null);
                                     });
                                 });
                             } else if (['9'].indexOf(this_btn.attr('data-task')) > -1) {
@@ -1495,7 +1495,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                             this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
 
                                             basic.closeDialog();
-                                            basic.showAlert('You have successfully completed this christmas calendar task! We will be waiting for you to come back for the next task!', '', true);
+                                            basic.showDialog(response.success, 'response-popup', null);
                                         });
 
                                         fireGoogleAnalyticsEvent('Subscription', 'Sign-up', 'Newsletter');
@@ -1533,7 +1533,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                                     this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
 
                                                     basic.closeDialog();
-                                                    basic.showAlert('Congrats, you have completed task successfully!', '', true);
+                                                    basic.showDialog(response.success, 'response-popup', null);
                                                     window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
                                                 } else {
                                                     basic.showAlert('Something went wrong. Please try again later or write a message to admin@dentacoin.com with description of the problem.', '', true);
@@ -1605,7 +1605,11 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                                     callback(response);
                                                 } else if(response.error) {
                                                     $('.response-layer').hide();
-                                                    basic.showAlert(response.error, '', true);
+                                                    if(response.technicalError) {
+                                                        basic.showAlert(response.error, '', null);
+                                                    } else {
+                                                        basic.showDialog(response.error, 'response-popup', null);
+                                                    }
                                                 }
                                             }
                                         });
@@ -1617,7 +1621,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                 }
                             }
                         } else if(response.error) {
-                            basic.showAlert(response.error, '', true);
+                            basic.showDialog(response.success, 'response-popup', null);
                         }
                     }
                 });

@@ -268,10 +268,10 @@ body.christmas-calendar {
         }
     }
     .bootbox {
-        &.christmas-calendar-task {
+        &.christmas-calendar-task, .response-popup {
             .bootbox-close-button {
                 display: none;
-            }
+            } 
             .modal-dialog {
                 width: 95%;
                 max-width: 900px;
@@ -325,7 +325,16 @@ body.christmas-calendar {
                         .popup-body {
                             background-color: white;
                             @include rounded(0 0 20px 20px);
-
+                        }
+                    }
+                }
+            }
+        }
+        &.christmas-calendar-task {
+            .modal-dialog {
+                .modal-content {
+                    .modal-body {
+                        .popup-body {
                             .newsletter-register {
                                 padding-top: 50px;
                                 padding-bottom: 30px;

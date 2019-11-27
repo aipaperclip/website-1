@@ -139,11 +139,11 @@ class ChristmasCalendarController extends Controller
                         if (is_array($screenshotProof)) {
                             foreach($screenshotProof as $file) {
                                 if (!in_array(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION), $allowed)) {
-                                    return json_encode(array('error' => 'Screenshots can be only with jpeg, png or jpg formats.'));
+                                    return json_encode(array('error' => 'Screenshots can be only with jpeg, png or jpg formats.', 'technicalError' => true));
                                 }
 
                                 if ($file->getSize() > 2097152) {
-                                    return json_encode(array('error' => 'Screenshots can be only with maximum size of 2MB.'));
+                                    return json_encode(array('error' => 'Screenshots can be only with maximum size of 2MB.', 'technicalError' => true));
                                 }
 
                                 $filename = (new MediaController())->getMediaNameWithoutExtension($file->getClientOriginalName()) . '-' . time() . '.' . pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
@@ -153,11 +153,11 @@ class ChristmasCalendarController extends Controller
                             }
                         } else {
                             if (!in_array(pathinfo($screenshotProof->getClientOriginalName(), PATHINFO_EXTENSION), $allowed)) {
-                                return json_encode(array('error' => 'Screenshots can be only with jpeg, png or jpg formats.'));
+                                return json_encode(array('error' => 'Screenshots can be only with jpeg, png or jpg formats.', 'technicalError' => true));
                             }
 
                             if ($screenshotProof->getSize() > 2097152) {
-                                return json_encode(array('error' => 'Screenshots can be only with maximum size of 2MB.'));
+                                return json_encode(array('error' => 'Screenshots can be only with maximum size of 2MB.', 'technicalError' => true));
                             }
 
                             $filename = (new MediaController())->getMediaNameWithoutExtension($screenshotProof->getClientOriginalName()) . '-' . time() . '.' . pathinfo($screenshotProof->getClientOriginalName(), PATHINFO_EXTENSION);
