@@ -3404,8 +3404,8 @@ body {
 .text-center {
   text-align: center; }
 
-@media screen and (max-width: 767px) {
-  .text-center-xs {
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .text-center-sm {
     text-align: center !important; } }
 
 @media screen and (max-width: 767px) {
@@ -8497,6 +8497,27 @@ body.christmas-calendar .white-red-btn {
   body.christmas-calendar .white-red-btn:hover {
     color: #d70a10;
     background-color: white;
+    text-decoration: none; }
+body.christmas-calendar .red-white-btn {
+  background-color: white;
+  color: #d70a10;
+  font-size: 16px;
+  padding: 6px 15px;
+  font-weight: bold;
+  border: 1.5px solid #d70a10;
+  text-decoration: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  body.christmas-calendar .red-white-btn:hover {
+    background-color: #d70a10;
+    color: white;
     text-decoration: none; }
 body.christmas-calendar .christmas-calendar-logged .christmas-calendar-campaign-stats .single-stat {
   text-align: center;

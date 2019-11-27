@@ -573,7 +573,7 @@
                     @php($downloadLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredbData->slug.'.png')
                 @endif
                 <div class="row">
-                    <div class="col-xs-12 col-md-6 text-right text-center-xs text-center-sm"><a href="{{$downloadLink}}" target="_blank" download="">DOWNLOAD</a></div>
+                    <div class="col-xs-12 col-md-6 text-right text-center-xs text-center-sm"><a href="{{$downloadLink}}" download class="red-white-btn width-100 max-width-150">DOWNLOAD</a></div>
                     <div class="col-xs-12 col-md-6 text-left text-center-xs text-center-sm"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
                 </div>
             @else

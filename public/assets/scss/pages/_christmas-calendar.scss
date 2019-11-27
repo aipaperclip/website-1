@@ -15,6 +15,22 @@ body.christmas-calendar {
             text-decoration: none;
         }
     }
+    .red-white-btn {
+        background-color: white;
+        color: $christmas_calendar_red;
+        font-size: 16px;
+        padding: 6px 15px;
+        font-weight: bold;
+        border: 1.5px solid $christmas_calendar_red;
+        text-decoration: none;
+        @include rounded(4px);
+        @include simple_transition(.3s);
+        &:hover {
+            background-color: $christmas_calendar_red;
+            color: white;
+            text-decoration: none;
+        }
+    }
     .christmas-calendar-logged {
         .christmas-calendar-campaign-stats {
             .single-stat {
@@ -270,7 +286,7 @@ body.christmas-calendar {
         &.christmas-calendar-task, &.response-popup {
             .bootbox-close-button {
                 display: none;
-            } 
+            }
             .modal-dialog {
                 width: 95%;
                 max-width: 900px;
