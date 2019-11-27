@@ -18,7 +18,7 @@
                 </div>
             </div>
         </section>
-        <section class="container-fluid text-center presents-list padding-bottom-xs-30">
+        <section class="container-fluid text-center presents-list padding-bottom-50 padding-bottom-xs-30">
             <div class="row">
                 <div class="col-xs-12 padding-left-xs-0 padding-right-xs-0">
                     <picture itemscope="" itemtype="http://schema.org/ImageObject">
