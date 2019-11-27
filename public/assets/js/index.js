@@ -1105,11 +1105,11 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
 
             $('.tasks-section .camping-custom-popups.rules .popup-wrapper .accept-christmas-calendar-rules').click(function() {
                 if(!$('.camping-custom-popups.rules #christmas-calendar-terms').is(':checked')) {
-                    basic.showDialog('Please agree to the Terms & Conditions.', '', true);
+                    basic.showAlert('Please agree to the Terms & Conditions.', '', true);
                 } else if(!$('.camping-custom-popups.rules #christmas-calendar-privacy-policy').is(':checked')) {
-                    basic.showDialog('Please agree to the Privacy Policy.', '', true);
+                    basic.showAlert('Please agree to the Privacy Policy.', '', true);
                 } else if(!$('.camping-custom-popups.rules #christmas-calendar-years').is(':checked')) {
-                    basic.showDialog('Please confirm that you are eighteen (18) years of age or older.', '', true);
+                    basic.showAlert('Please confirm that you are eighteen (18) years of age or older.', '', true);
                 } else {
                     basic.cookies.set('agreed_with_christmas_calendar_rules', '1');
 
@@ -1621,7 +1621,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                 }
                             }
                         } else if(response.error) {
-                            basic.showDialog(response.success, 'response-popup', null);
+                            basic.showDialog(response.error, 'response-popup', null);
                         }
                     }
                 });

@@ -8552,8 +8552,7 @@ body.christmas-calendar .christmas-calendar-logged .tasks-section {
         display: inline-block;
         vertical-align: top; }
         body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups.rules .checkboxes .checkbox-wrapper input {
-          zoom: 1.5;
-          margin: 0; }
+          zoom: 1.5; }
       body.christmas-calendar .christmas-calendar-logged .tasks-section .camping-custom-popups.rules .checkboxes label {
         width: calc(100% - 25px);
         display: inline-block;
