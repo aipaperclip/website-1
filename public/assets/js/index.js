@@ -1470,16 +1470,17 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                 // newsletter registration task
                                 $('.newsletter-register form').on('submit', function(event)  {
                                     event.preventDefault();
-                                    var this_form = $(this);
+                                    var this_form = this;
+                                    var form = $(this_form);
                                     var error = false;
-                                    if(!basic.validateEmail(this_form.find('input[type="email"]').val().trim()))    {
+                                    if(!basic.validateEmail(form.find('input[type="email"]').val().trim()))    {
                                         error = true;
-                                    } else if(!this_form.find('#newsletter-privacy-policy').is(':checked'))  {
+                                    } else if(!form.find('#newsletter-privacy-policy').is(':checked'))  {
                                         error = true;
                                     }
 
                                     if(!error) {
-                                        completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
+                                        completeTask(form, this_form, this_btn, new FormData($(form)[0]), function(response) {
                                             $('.response-layer').hide();
                                             if(response.dcnAmount) {
                                                 $('.user-dcn-amount').html(response.dcnAmount);
