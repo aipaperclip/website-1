@@ -536,9 +536,16 @@
             </form>
         @endif
     @elseif($type == 'congrats')
+        @if($task->id == 31)
+            @php($subtitle = 'YOU’VE COMPLETED ALL TASKS!')
+            @php($btnText = 'STAY TUNED FOR RAFFLE WINNERS')
+        @else
+            @php($subtitle = 'YOUR DAILY REWARD.')
+            @php($btnText = 'SEE YOU TOMORROW!')
+        @endif
         <div class="text-center padding-top-50 padding-bottom-50">
             <h2 class="fs-50 fs-xs-32 lato-black">CONGRATS!</h2>
-            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30 padding-top-10">YOUR DAILY REWARD.</div>
+            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30 padding-top-10">{{$subtitle}}</div>
             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile">
                 @if($task['type'] == 'dcn-reward')
                     <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
@@ -571,7 +578,7 @@
                     <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
                 </div>
             @else
-                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-220 margin-top-30">SEE YOU TOMORROW!</button>
+                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-220 margin-top-30">{{$btnText}}</button>
             @endif
         </div>
     @elseif($type == 'already-completed')
