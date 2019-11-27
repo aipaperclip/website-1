@@ -582,7 +582,8 @@
         </div>
     @elseif($type == 'not-active-yet')
         <div class="text-center padding-top-50 padding-bottom-50">
-            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30">This present is not active yet. Please kindly wait until {{$task->date}}.</div>
+            <h2 class="fs-50 fs-xs-32 lato-black">Hey, no hurries!</h2>
+            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30 padding-top-10">This present is not active yet. Please kindly wait until {{$task->date}}.</div>
             <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">OK</button>
         </div>
     @elseif($type == 'no-hurries')
