@@ -1469,7 +1469,6 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                             } else if (['9'].indexOf(this_btn.attr('data-task')) > -1) {
                                 // newsletter registration task
                                 $('.newsletter-register form').on('submit', function(event)  {
-                                    event.preventDefault();
                                     var this_form = this;
                                     var form = $(this_form);
                                     var error = false;
