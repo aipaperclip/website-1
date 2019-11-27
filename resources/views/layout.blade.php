@@ -346,7 +346,7 @@
                                                     @php($selected = '')
                                                     @if(!empty($current_user_country_code))
                                                         @if($current_user_country_code == $country->code)
-                                                            @php($current_phone_code = $current_phone_code.$country->phone_code)
+                                                            @php($current_phone_code = '+'.$country->phone_code)
                                                             @php($selected = 'selected')
                                                         @endif
                                                     @endif
