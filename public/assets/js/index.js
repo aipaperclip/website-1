@@ -1759,14 +1759,15 @@ function stopMaliciousInspect()  {
 function hidePopupOnBackdropClick() {
     $(document).on('click', '.bootbox', function(){
         var classname = event.target.className;
-        console.log(classname, 'classname');
         classname = classname.replace(/ /g, '.');
 
-        if(classname && !$('.' + classname).parents('.modal-dialog').length) {
-            if($('.bootbox.login-signin-popup').length) {
-                $('.hidden-login-form').html(hidden_popup_content);
+        if (classname.indexOf('christmas-calendar-task') === -1) {
+            if(classname && !$('.' + classname).parents('.modal-dialog').length) {
+                if($('.bootbox.login-signin-popup').length) {
+                    $('.hidden-login-form').html(hidden_popup_content);
+                }
+                bootbox.hideAll();
             }
-            bootbox.hideAll();
         }
     });
 }
