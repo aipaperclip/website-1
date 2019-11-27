@@ -1422,8 +1422,8 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                                                 this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
 
                                                                 basic.closeDialog();
-                                                                basic.showAlert('Congrats, you have completed task successfully!', '', true);
-                                                                window.open('https://holiday-calendar-2019-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
+                                                                basic.showDialog(response.success, 'response-popup', null);
+                                                                window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
                                                             } else {
                                                                 basic.showAlert('Something went wrong. Please try again later or write a message to admin@dentacoin.com with description of the problem.', '', true);
                                                             }
