@@ -203,7 +203,7 @@ class ChristmasCalendarController extends Controller
                     }
 
                     $doubleAmount = false;
-                    if (sizeof($passedTasks) == 31) {
+                    if (sizeof($bonusTickets) == 31) {
                         $doubleAmount = true;
                         $dcnAmount *= 2;
                     }
