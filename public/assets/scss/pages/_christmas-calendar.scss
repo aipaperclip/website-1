@@ -358,7 +358,7 @@ body.christmas-calendar {
                                 height: 120px;
                                 img {
                                     max-width: 70%;
-                                    @include vertical-horizontal-align(absolute); 
+                                    @include vertical-horizontal-align(absolute);
                                 }
                                 @include breakpoint($xs) {
                                     img {

@@ -566,9 +566,9 @@
                     <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @if((int)$task['value'] > 1)
                         +{{$task['value']}} raffle tickets
-                        @php($presentName = $task['value'] . 'raffle tickets')
+                        @php($presentName = $task['value'] . ' raffle tickets')
                     @else
-                        @php($presentName = $task['value'] . 'raffle ticket')
+                        @php($presentName = $task['value'] . ' raffle ticket')
                     @endif
                 @elseif($task['type'] == 'face-sticker')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
@@ -611,9 +611,9 @@
                     <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @if((int)$task['value'] > 1)
                         +{{$task['value']}} raffle tickets
-                        @php($presentName = $task['value'] . 'raffle tickets')
+                        @php($presentName = $task['value'] . ' raffle tickets')
                     @else
-                        @php($presentName = $task['value'] . 'raffle ticket')
+                        @php($presentName = $task['value'] . ' raffle ticket')
                     @endif
                 @elseif($task['type'] == 'face-sticker')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>

@@ -2284,7 +2284,7 @@ function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, faile
                     }
                 }
 
-                $(input).closest('.upload-btn-parent').append('Please select file in '+allowedExtensionsHtml+' format.');
+                $(input).closest('.upload-btn-parent').append('<div class="error-handle">Please select file in '+allowedExtensionsHtml+' format.</div>');
                 return false;
             }
         }
