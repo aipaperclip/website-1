@@ -584,7 +584,7 @@
     @elseif($type == 'already-completed')
         <div class="text-center padding-top-50 padding-bottom-50">
             <h2 class="fs-50 fs-xs-32 lato-black">COMPLETED</h2>
-            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You have already completed this task.</div>
+            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You are one step closer etc.</div>
             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile">
                 @if($task['type'] == 'dcn-reward')
                     <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
