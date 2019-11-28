@@ -40,7 +40,7 @@
                 <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                     <div class="row fs-0">
                         @foreach($tasks as $task)
-                            <a href="javascript:void(0);" class="single-task col-xs-4 col-sm-2 padding-left-xs-15 padding-right-xs-15 padding-left-10 padding-right-10 padding-bottom-30 padding-bottom-xs-25 inline-block" data-task="{{$task['id']}}">
+                            <a href="javascript:void(0);" class="single-task col-xs-4 col-sm-2 padding-left-xs-15 padding-right-xs-15 padding-left-10 padding-right-10 padding-bottom-30 padding-bottom-xs-25 inline-block @if((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsDisqualified($task['id'], $participant->id)) disqualified @endif" data-task="{{$task['id']}}" data-type="{{$task['type']}}">
                                 <div class="wrapper @if((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id)) opened @endif">
                                     <div class="present__pane">
                                         <h2 class="present__date">{{$task['id']}}</h2>
@@ -67,13 +67,17 @@
                                                 <figcaption class="color-white lato-bold padding-top-5">Facebook frame</figcaption>
                                             @elseif($task['type'] == 'free-oracle-health-guide')
                                                 <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                <figcaption class="color-white lato-bold padding-top-5">Oracle health guide</figcaption>
+                                                <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
                                             @elseif($task['type'] == 'custom-holiday-card')
                                                 <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                                 <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>
                                             @endif
                                         </figure>
-                                        @if((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id)) <i class="fa fa-check check-icon" aria-hidden="true"></i> @endif
+                                        @if((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsDisqualified($task['id'], $participant->id))
+                                            <i class="fa fa-times check-icon red" aria-hidden="true"></i>
+                                        @elseif((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id))
+                                            <i class="fa fa-check check-icon" aria-hidden="true"></i>
+                                        @endif
                                     </div>
                                 </div>
                             </a>

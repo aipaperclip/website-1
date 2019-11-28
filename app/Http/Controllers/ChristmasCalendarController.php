@@ -215,4 +215,8 @@ class ChristmasCalendarController extends Controller
     public function checkIfTaskIsAlreadyFinished($task_id, $participant_id) {
         return DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.task_id' => $task_id, 'christmas_calendar_task_participant.participant_id' => $participant_id))->get()->first();
     }
+
+    public function checkIfTaskIsDisqualified($task_id, $participant_id) {
+        return DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.task_id' => $task_id, 'christmas_calendar_task_participant.participant_id' => $participant_id, 'disqualified' => true))->get()->first();
+    }
 }

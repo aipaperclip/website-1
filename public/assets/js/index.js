@@ -1142,7 +1142,15 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
             $('.tasks-section .single-task').click(function() {
                 var this_btn = $(this);
                 if (this_btn.hasClass('double-reward') && !this_btn.find('wrapper').hasClass('opened')) {
-                    alert('show alert');
+                    basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/popup-gifts-header.png" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="small-red-line"></div><div class="small-yellow-line"></div><div class="big-red-line"></div><div class="small-yellow-line"></div><div class="small-red-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50"><h2 class="fs-50 fs-xs-32 lato-black">DOUBLE REWARDS</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">IF YOU COMPLETE ALL 31 TASKS ON THE EXACT DATE</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="/assets/images/christmas-calendar-campaign/double-reward.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
+                } else if (this_btn.hasClass('disqualified')) {
+                    var disqualifiedText = 'DISQUALIFIED';
+                    var disqualifiedImage = this_btn.find('img').attr('src');
+                    if (this_btn.attr('data-type') == 'dcn-reward' || this_btn.attr('data-type') == 'ticket-reward') {
+                        disqualifiedText = 'Your daily prize has been taken out of your balance.';
+                    }
+
+                    basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/popup-gifts-header.png" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="small-red-line"></div><div class="small-yellow-line"></div><div class="big-red-line"></div><div class="small-yellow-line"></div><div class="small-red-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50"><h2 class="fs-50 fs-xs-32 lato-black">DISQUALIFIED</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You haven\'t completed the task as required.</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="'+disqualifiedImage+'" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="fs-18 lato-bold padding-top-10">'+disqualifiedText+'<br>You haven\'t completed the task as required.</div><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
                 } else {
                     $.ajax({
                         type: 'POST',
@@ -1561,7 +1569,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                 function completeTask(form, this_form, this_btn, data, callback) {
                                     var error = false;
                                     if(form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
-                                        basic.showAlert('Please enter the field and submit again.', '', true);
+                                        basic.showAlert('Please submit proof. Otherwise, you may be disqualified.', '', true);
                                         return false;
                                     } else if(screenshotProofsLength) {
                                         if (screenshotProofsLength > 1) {
@@ -2247,7 +2255,8 @@ function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, faile
             if(failed_callback != undefined) {
                 failed_callback();
             }
-            basic.showAlert('The file you selected is large. Max size: '+megaBytesLimit+'MB.', '', true);
+
+            $(input).closest('.upload-btn-parent').append('<div class="error-handle">The file you selected is large. Max size: '+megaBytesLimit+'MB.</div>');
             return false;
         } else {
             //check file extension
@@ -2275,7 +2284,7 @@ function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, faile
                     }
                 }
 
-                basic.showAlert('Please select file in '+allowedExtensionsHtml+' format.', '', true);
+                $(input).closest('.upload-btn-parent').append('Please select file in '+allowedExtensionsHtml+' format.');
                 return false;
             }
         }

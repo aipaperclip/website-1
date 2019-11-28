@@ -26,7 +26,13 @@
                                     <figcaption class="color-white lato-bold padding-top-5">{{$task['value']}} DCN</figcaption>
                                 @elseif($task['type'] == 'ticket-reward')
                                     <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                    <figcaption class="color-white lato-bold padding-top-5">+{{$task['value']}} raffle ticket</figcaption>
+                                    <figcaption class="color-white lato-bold padding-top-5">
+                                        @if((int)$task['value'] > 1)
+                                            +{{$task['value']}} raffle tickets
+                                        @else
+                                            +{{$task['value']}} raffle ticket
+                                        @endif
+                                    </figcaption>
                                 @elseif($task['type'] == 'face-sticker')
                                     <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                     <figcaption class="color-white lato-bold padding-top-5">Face sticker</figcaption>
@@ -35,7 +41,7 @@
                                     <figcaption class="color-white lato-bold padding-top-5">Facebook frame</figcaption>
                                 @elseif($task['type'] == 'free-oracle-health-guide')
                                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                    <figcaption class="color-white lato-bold padding-top-5">Oracle health guide</figcaption>
+                                    <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
                                 @elseif($task['type'] == 'custom-holiday-card')
                                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                     <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>
@@ -54,7 +60,7 @@
                             <div class="checkbox-row"><input type="checkbox" required id="newsletter-privacy-policy"/><label for="newsletter-privacy-policy">I agree with <a href="/privacy-policy" target="_blank">Privacy Policy</a></label></div>
                         </div>
                     </div>
-                    <div class="lato-bold fs-12 padding-bottom-20 padding-top-40 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2020.<br> Other gifts are sent via email within 5 days after the task is completed. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>
+                    <div class="lato-bold fs-12 padding-bottom-20 padding-top-40 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2020.<br> Other gifts are sent via email within 5 days after the task is completed. All tasks are subject to manual approval. Improper entries will be disqualified and prizes will not be granted. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>
                 </form>
             </div>
         @else
@@ -67,7 +73,13 @@
                                 <figcaption class="color-white lato-bold padding-top-5">{{$task['value']}} DCN</figcaption>
                             @elseif($task['type'] == 'ticket-reward')
                                 <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                <figcaption class="color-white lato-bold padding-top-5">+{{$task['value']}} raffle ticket</figcaption>
+                                <figcaption class="color-white lato-bold padding-top-5">
+                                    @if((int)$task['value'] > 1)
+                                        +{{$task['value']}} raffle tickets
+                                    @else
+                                        +{{$task['value']}} raffle ticket
+                                    @endif
+                                </figcaption>
                             @elseif($task['type'] == 'face-sticker')
                                 <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                 <figcaption class="color-white lato-bold padding-top-5">Face sticker</figcaption>
@@ -76,7 +88,7 @@
                                 <figcaption class="color-white lato-bold padding-top-5">Facebook frame</figcaption>
                             @elseif($task['type'] == 'free-oracle-health-guide')
                                 <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                <figcaption class="color-white lato-bold padding-top-5">Oracle health guide</figcaption>
+                                <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
                             @elseif($task['type'] == 'custom-holiday-card')
                                 <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                 <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>
@@ -153,7 +165,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin on Facebook, go to the “Reviews” tab and post a recommendation. Text comment is required.</div>
                             <a href="https://www.facebook.com/pg/dentacoin/reviews/" class="white-red-btn" target="_blank">POST NOW</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -174,7 +186,7 @@
                                     <input type="text" id="text_proof" name="text_proof" maxlength="1000" class="full-rounded required form-field"/>
                                 </div>
                             </div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -186,23 +198,23 @@
                             <div>Here is a sample text you may send them with the image:<br>
                                 I care about you and your oral health. Here are 5 tips on how to take better care of your teeth.</div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
-                            <div class="padding-bottom-10">
+                            <div class="padding-bottom-10 upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof_1" name="screenshot_proof[0]"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof_1" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
-                            <div class="padding-bottom-10">
+                            <div class="padding-bottom-10 upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof_2" name="screenshot_proof[1]"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof_2" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
-                            <div class="padding-bottom-10">
+                            <div class="padding-bottom-10 upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof_3" name="screenshot_proof[2]"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof_3" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
-                            <div class="padding-bottom-10">
+                            <div class="padding-bottom-10 upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof_4" name="screenshot_proof[3]"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof_4" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof_5" name="screenshot_proof[4]"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof_5" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -210,10 +222,10 @@
                         @break
                         @case(6)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Join the official Announcements channel of Dentacoin: https://t.me/Dentacoin_Official.</div>
-                            <div class="inline-block link-text fs-16 lato-regular padding-left-10">Don’t have Telegram yet? <a href="https://telegram.org/" target="_blank" class="color-christmas-calendar-red">Get it here.</a></div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Join the official Announcements channel of Dentacoin: <a href="https://t.me/Dentacoin_Official" target="_blank" class="color-christmas-calendar-red">https://t.me/Dentacoin_Official</a>.</div>
                             <div class="padding-top-15">
                                 <a href="https://t.me/Dentacoin_Official" target="_blank" class="white-red-btn padding-left-30 padding-right-30 inline-block">JOIN</a>
+                                <div class="inline-block link-text fs-16 lato-regular padding-left-10 padding-left-xs-0 padding-top-xs-10">Don’t have Telegram yet? <a href="https://telegram.org/" target="_blank" class="color-christmas-calendar-red">Get it here.</a></div>
                             </div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="padding-bottom-20">
@@ -239,7 +251,7 @@
                                     <input type="text" id="text_proof" name="text_proof" maxlength="1000" class="full-rounded required form-field"/>
                                 </div>
                             </div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -249,11 +261,11 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Find DentaVox Surveys on Facebook, go to the “Reviews” tab and post a recommendation. Text comment is required.</div>
                             <div>
-                                <a href="https://www.facebook.com/pg/dentavox,dentacoin/reviews/" class="white-red-btn" target="_blank">POST NOW</a>
+                                <a href="https://www.facebook.com/pg/dentavox.dentacoin/reviews/" class="white-red-btn" target="_blank">POST NOW</a>
                             </div>
 
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -274,7 +286,7 @@
                                     <input type="text" id="text_proof" name="text_proof" maxlength="1000" class="full-rounded required form-field"/>
                                 </div>
                             </div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -282,7 +294,7 @@
                         @break
                         @case(11)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10 padding-top-15">We’ve heard about robots instead of dentist, tablettes instead of brushing, gels for eternal caries protection and many other brave dreams. What are you dreaming about in terms of oral health? Be brave.</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10 padding-top-15">We’ve heard about robots instead of dentists, tablets instead of brushing, gels for eternal caries protection and many other brave dreams. What are you dreaming about in terms of oral health? Be brave.</div>
                             <textarea name="text_proof" rows="4" maxlength="1000"></textarea>
                         </div>
                         @break
@@ -296,10 +308,10 @@
                         @break
                         @case(13)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find DentaVox Surveys on Facebook, go to the “Reviews” tab and post a recommendation. Text comment is required.</div>
-                            <a href="https://www.facebook.com/pg/dentavox,dentacoin/reviews/" class="white-red-btn" target="_blank">POST NOW</a>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin Trusted Reviews on Facebook. The link is also wrong, must be:</div>
+                            <a href="https://www.facebook.com/pg/dentacoin.trusted.reviews/reviews/" class="white-red-btn" target="_blank">POST NOW</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -313,7 +325,7 @@
                                 <a href="#" onclick="alert('Coming soon!');" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>
                             </div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -327,7 +339,7 @@
                                 <a href="#" onclick="alert('Coming soon!');" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>
                             </div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -337,7 +349,7 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Cover the requirements:</div>
                             <div class="fs-16">
-                                1. Make a photo/ video/ boomerang of yourself with a holiday motive (Christmas three, any decoration, drawing, etc.) and an oral health related object (toothbrush, toothpaste, floss, etc.).<br>
+                                1. Make a photo/ video/ boomerang of yourself with a holiday motive (Christmas tree, any decoration or drawing) and an oral health related object (toothbrush, toothpaste, floss).<br>
                                 2. Post it on Facebook/ Twitter/ Instagram and make the post public.<br>
                                 3. Tag Dentacoin’s official account on this social network and add hashtags: #BrushYourTeeth #Dentacoin #DentacoinCalendar
                             </div>
@@ -349,7 +361,7 @@
                                     <input type="text" id="text_proof" name="text_proof" maxlength="1000" class="full-rounded required form-field"/>
                                 </div>
                             </div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -363,7 +375,7 @@
                                 <a href="https://apps.apple.com/us/app/dentacare-health-training/id1274148338" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>
                             </div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot of the screen after brushing teeth</label></button>
                             </div>
@@ -377,7 +389,7 @@
                                 <a href="https://apps.apple.com/us/app/dentacare-health-training/id1274148338" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>
                             </div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -398,7 +410,7 @@
                                     <input type="text" id="text_proof" name="text_proof" maxlength="1000" class="full-rounded required form-field"/>
                                 </div>
                             </div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -478,7 +490,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Add a nice, short text description to your post. Example:<div>Check out Dentacoin, the first blockchain solution for dentistry with 90K+ users and 1.8K+ dental offices on board!</div></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10 color-christmas-calendar-red">People who have posted in more than one groups OR multiple times in one group will be disqualified.</div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 3:</span> Submit proof after completing the task:</div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -497,7 +509,7 @@
                         @break
                         @case(30)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20">How many times did you change your toothbrush in 2019? What about your dentist? Did your oral hygiene habits changed somehow? Share in the latest DentaVox survey “My Oral Health Diary 2019”!</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20">How many times did you change your toothbrush in 2019? What about your dentist? Did your oral hygiene habits change somehow? Share in the latest DentaVox survey “My Oral Health Diary 2019”!</div>
                             <a href="#" onclick="alert('Coming soon!');" class="white-red-btn" target="_blank">TAKE SURVEY</a>
                         </div>
                         @break
@@ -516,7 +528,7 @@
                                 </div>
                             </div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 3:</span> Submit proof after completing the task:</div>
-                            <div>
+                            <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
                             </div>
@@ -532,7 +544,7 @@
                         <img src="/assets/images/christmas-calendar-campaign/submit-btn-present.svg" class="width-100 max-width-180" alt="Submit button" itemprop="contentUrl"/>
                     </button>
                 </div>
-                <div class="lato-bold fs-12 padding-bottom-20 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2020.<br> Other gifts are sent via email within 5 days after the task is completed. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>
+                <div class="lato-bold fs-12 padding-bottom-20 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2020.<br> Other gifts are sent via email within 5 days after the task is completed. All tasks are subject to manual approval. Improper entries will be disqualified and prizes will not be granted. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>
             </form>
         @endif
     @elseif($type == 'congrats')
@@ -540,7 +552,7 @@
             @php($subtitle = 'YOU’VE COMPLETED ALL TASKS!')
             @php($btnText = 'STAY TUNED FOR RAFFLE WINNERS')
         @else
-            @php($subtitle = 'YOUR DAILY REWARD.')
+            @php($subtitle = 'YOUR DAILY REWARD:')
             @php($btnText = 'SEE YOU TOMORROW!')
         @endif
         <div class="text-center padding-top-50 padding-bottom-50">
@@ -549,23 +561,29 @@
             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile">
                 @if($task['type'] == 'dcn-reward')
                     <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold color-white padding-top-5">{{$task['value']}} DCN</figcaption>
+                    @php($presentName = $task['value'] . 'DCN')
                 @elseif($task['type'] == 'ticket-reward')
                     <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold color-white padding-top-5">+{{$task['value']}} raffle ticket</figcaption>
+                    @if((int)$task['value'] > 1)
+                        +{{$task['value']}} raffle tickets
+                        @php($presentName = $task['value'] . 'raffle tickets')
+                    @else
+                        @php($presentName = $task['value'] . 'raffle ticket')
+                    @endif
                 @elseif($task['type'] == 'face-sticker')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold color-white padding-top-5">Face sticker</figcaption>
+                    @php($presentName = 'Face sticker')
                 @elseif($task['type'] == 'facebook-holiday-frame')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold color-white padding-top-5">Facebook frame</figcaption>
+                    @php($presentName = 'Facebook frame')
                 @elseif($task['type'] == 'free-oracle-health-guide')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold color-white padding-top-5">Oracle health guide</figcaption>
+                    @php($presentName = 'Oral health guide')
                 @elseif($task['type'] == 'custom-holiday-card')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold color-white padding-top-5">Holiday card</figcaption>
+                    @php($presentName = 'Holiday card')
                 @endif
+                <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
             </figure>
             @if($task->id == 1 || $task->id == 16)
                 @if($task->id == 1)
@@ -584,28 +602,34 @@
     @elseif($type == 'already-completed')
         <div class="text-center padding-top-50 padding-bottom-50">
             <h2 class="fs-50 fs-xs-32 lato-black">COMPLETED</h2>
-            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You are one step closer etc.</div>
-            <figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile">
+            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You are one step closer to the big prizes!</div>
+            <figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center margin-0-auto task-present-tile">
                 @if($task['type'] == 'dcn-reward')
                     <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold color-white padding-top-5">{{$task['value']}} DCN</figcaption>
+                    @php($presentName = $task['value'] . 'DCN')
                 @elseif($task['type'] == 'ticket-reward')
                     <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold color-white padding-top-5">+{{$task['value']}} raffle ticket</figcaption>
+                    @if((int)$task['value'] > 1)
+                        +{{$task['value']}} raffle tickets
+                        @php($presentName = $task['value'] . 'raffle tickets')
+                    @else
+                        @php($presentName = $task['value'] . 'raffle ticket')
+                    @endif
                 @elseif($task['type'] == 'face-sticker')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold color-white padding-top-5">Face sticker</figcaption>
+                    @php($presentName = 'Face sticker')
                 @elseif($task['type'] == 'facebook-holiday-frame')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold color-white padding-top-5">Facebook frame</figcaption>
+                    @php($presentName = 'Facebook frame')
                 @elseif($task['type'] == 'free-oracle-health-guide')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold color-white padding-top-5">Oracle health guide</figcaption>
+                    @php($presentName = 'Oral health guide')
                 @elseif($task['type'] == 'custom-holiday-card')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    <figcaption class="lato-bold color-white padding-top-5">Holiday card</figcaption>
+                    @php($presentName = 'Holiday card')
                 @endif
             </figure>
+            <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
             @if($task->id == 1 || $task->id == 16)
                 @if($task->id == 1)
                     @php($downloadLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredbData->slug.'.png')
