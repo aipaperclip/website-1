@@ -79,11 +79,11 @@
                             </a>
                         @endforeach
                         <a href="javascript:void(0);" class="single-task double-reward col-xs-4 col-sm-2 padding-left-xs-15 padding-right-xs-15 padding-left-10 padding-right-10 padding-bottom-30 padding-bottom-xs-25 inline-block">
-                            <div class="wrapper">
+                            <div class="wrapper opened">
                                 <div class="present__pane"></div>
                                 <div class="present__content">
                                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="/assets/images/christmas-calendar-campaign/double-reward.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                        <img src="/assets/images/christmas-calendar-campaign/double-reward.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                     </figure>
                                     @if((int)$bonusTickets == 31) <i class="fa fa-check check-icon" aria-hidden="true"></i> @endif
                                 </div>
