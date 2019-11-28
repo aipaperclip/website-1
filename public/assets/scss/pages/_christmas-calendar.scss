@@ -162,6 +162,23 @@ body.christmas-calendar {
             }
         }
         .tasks-section {
+            .position-relative {
+                position: relative;
+                .terms-link {
+                    position: absolute;
+                    right: 0;
+                    bottom: 20px;
+                    @include breakpoint($sm-only) {
+                        bottom: 50px;
+                    }
+                    @include breakpoint($xs) {
+                        position: static;
+                        text-align: center;
+                        display: block;
+                        margin: 50px 0;
+                    }
+                }
+            }
             .wrapper {
                 padding-top: 100%;
                 position: relative;

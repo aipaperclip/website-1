@@ -1474,7 +1474,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                         }
                                     });
 
-                                    function submitFormForMostTasks() {
+                                    function submitFormForMostTasks(form, this_form) {
                                         completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
                                             $('.response-layer').hide();
                                             if(response.dcnAmount) {

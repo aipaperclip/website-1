@@ -31,7 +31,7 @@
         <section class="container tasks-section">
             <div class="row">
                 <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-                    <div class="row fs-0">
+                    <div class="row fs-0 position-relative">
                         @for($i = 1; $i <= 31; $i+=1)
                             @if($i == 31)
                                 <a href="javascript:void(0);" class="col-xs-6 col-sm-4 col-md-2 padding-left-15 padding-right-15 padding-bottom-30 inline-block padding-left-xs-10 padding-right-xs-10 padding-bottom-xs-15 show-login-signin show-on-mobile show-xs dots"><span></span><span></span><span></span></a>
@@ -49,6 +49,7 @@
                                 </div>
                             </a>
                         @endfor
+                        <a href="{{route('holiday-calendar-terms')}}" target="_blank" class="text-decoration-underline padding-right-15 padding-right-xs-0 fs-18 terms-link">Terms &  Conditions</a>
                     </div>
                 </div>
             </div>

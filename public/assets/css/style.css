@@ -3516,6 +3516,9 @@ a {
   a:hover, a:active, a:visited, a:focus {
     text-decoration: none; }
 
+.text-decoration-underline {
+  text-decoration: underline; }
+
 img {
   max-width: 100%;
   height: auto; }
@@ -8624,6 +8627,21 @@ body.christmas-calendar .christmas-calendar-not-logged .blurred-section, body.ch
   body.christmas-calendar .christmas-calendar-not-logged .blurred-section.active, body.christmas-calendar .christmas-calendar-logged .blurred-section.active {
     filter: blur(3.5px);
     -webkit-filter: blur(3.5px); }
+body.christmas-calendar .christmas-calendar-not-logged .tasks-section .position-relative, body.christmas-calendar .christmas-calendar-logged .tasks-section .position-relative {
+  position: relative; }
+  body.christmas-calendar .christmas-calendar-not-logged .tasks-section .position-relative .terms-link, body.christmas-calendar .christmas-calendar-logged .tasks-section .position-relative .terms-link {
+    position: absolute;
+    right: 0;
+    bottom: 20px; }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      body.christmas-calendar .christmas-calendar-not-logged .tasks-section .position-relative .terms-link, body.christmas-calendar .christmas-calendar-logged .tasks-section .position-relative .terms-link {
+        bottom: 50px; } }
+    @media screen and (max-width: 767px) {
+      body.christmas-calendar .christmas-calendar-not-logged .tasks-section .position-relative .terms-link, body.christmas-calendar .christmas-calendar-logged .tasks-section .position-relative .terms-link {
+        position: static;
+        text-align: center;
+        display: block;
+        margin: 50px 0; } }
 body.christmas-calendar .christmas-calendar-not-logged .tasks-section .wrapper, body.christmas-calendar .christmas-calendar-logged .tasks-section .wrapper {
   padding-top: 100%;
   position: relative;

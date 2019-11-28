@@ -38,7 +38,7 @@
             @endif
             <div class="row blurred-section active">
                 <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-                    <div class="row fs-0">
+                    <div class="row fs-0 position-relative">
                         @foreach($tasks as $task)
                             <a href="javascript:void(0);" class="single-task col-xs-4 col-sm-2 padding-left-xs-15 padding-right-xs-15 padding-left-10 padding-right-10 padding-bottom-30 padding-bottom-xs-25 inline-block @if((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsDisqualified($task['id'], $participant->id)) disqualified @endif" data-task="{{$task['id']}}" data-type="{{$task['type']}}">
                                 <div class="wrapper @if((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id)) opened @endif">
@@ -93,6 +93,7 @@
                                 </div>
                             </div>
                         </a>
+                        <a href="{{route('holiday-calendar-terms')}}" target="_blank" class="text-decoration-underline padding-right-15 padding-right-xs-0 fs-18 terms-link">Terms &  Conditions</a>
                     </div>
                 </div>
             </div>
