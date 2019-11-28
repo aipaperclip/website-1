@@ -41,6 +41,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return abort(410);
     })->name('berlin-roundtable');
 
+    Route::get('/holiday-calendar-terms', 'ChristmasCalendarController@getChristmasCalendarTermsView')->name('holiday-calendar-terms');
+
     Route::group(['prefix' => 'holiday-calendar-2019'], function () {
         Route::get('/', 'ChristmasCalendarController@getView')->name('christmas-calendar');
 

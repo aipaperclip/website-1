@@ -58,6 +58,10 @@ class ChristmasCalendarController extends Controller
         }
     }
 
+    public function getChristmasCalendarTermsView()   {
+        return view('pages/holiday-calendar-terms');
+    }
+
     public function getAllTasks() {
         return ChristmasCalendarTask::all();
     }
