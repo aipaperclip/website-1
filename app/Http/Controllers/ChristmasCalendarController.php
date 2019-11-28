@@ -202,9 +202,15 @@ class ChristmasCalendarController extends Controller
                         }
                     }
 
+                    $doubleAmount = false;
+                    if (sizeof($passedTasks) == 31) {
+                        $doubleAmount = true;
+                        $dcnAmount *= 2;
+                    }
+
                     $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'congrats', 'coredbData' => $coredbData]);
                     $view = $view->render();
-                    return response()->json(['success' => $view, 'data' => $coredbData->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets]);
+                    return response()->json(['success' => $view, 'data' => $coredbData->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets, 'doubleAmount' => $doubleAmount]);
                 }
             } else {
                 $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'not-active-yet']);

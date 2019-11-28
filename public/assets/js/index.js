@@ -1490,6 +1490,10 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                             this_btn.find('.wrapper').addClass('opened');
                                             this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
 
+                                            if (this_btn.attr('data-task') == '31') {
+                                                $('.single-taskdouble-reward .present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
+                                            }
+
                                             basic.closeDialog();
                                             basic.showDialog(response.success, 'response-popup', null);
                                         });
