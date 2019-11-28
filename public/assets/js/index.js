@@ -1567,6 +1567,7 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                 }
 
                                 function completeTask(form, this_form, this_btn, data, callback) {
+                                    $('.task-error').remove();
                                     var error = false;
                                     if(form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
                                         basic.showAlert('Please submit proof. Otherwise, you may be disqualified.', '', true);
@@ -2256,7 +2257,7 @@ function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, faile
                 failed_callback();
             }
 
-            $(input).closest('.upload-btn-parent').append('<div class="error-handle">The file you selected is large. Max size: '+megaBytesLimit+'MB.</div>');
+            $(input).closest('.upload-btn-parent').append('<div class="error-handle task-error">The file you selected is large. Max size: '+megaBytesLimit+'MB.</div>');
             return false;
         } else {
             //check file extension
@@ -2284,7 +2285,7 @@ function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, faile
                     }
                 }
 
-                $(input).closest('.upload-btn-parent').append('<div class="error-handle">Please select file in '+allowedExtensionsHtml+' format.</div>');
+                $(input).closest('.upload-btn-parent').append('<div class="error-handletask-error">Please select file in '+allowedExtensionsHtml+' format.</div>');
                 return false;
             }
         }
