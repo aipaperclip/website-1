@@ -1456,42 +1456,42 @@ if(($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body'
                                         }
                                     });
                                 } else if (['3', '4', '5', '7', '8', '10', '13', '14', '15', '17', '18', '19', '2', '6', '11', '20', '12', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'].indexOf(this_btn.attr('data-task')) > -1) {
-                                    if(['12', '21', '25', '30'].indexOf(this_btn.attr('data-task')) > -1) {
-                                        var warningReminderAboutTaskValidation = {};
-                                        warningReminderAboutTaskValidation.callback = function (result) {
-                                            if (result) {
-                                                submitFormForMostTasks();
-                                            }
-                                        };
-                                        basic.showConfirm('<div class="fs-20 lato-bold text-center padding-bottom-20">WARNING</div><div class="fs-16 text-center padding-bottom-20">All entries are subject to manual approval. If your entry does not meet the requierements, you will be disqualified from today\'s task.</div><div class="fs-16 text-center padding-bottom-20">Are you sure you want to submit the task?</div>', '', warningReminderAboutTaskValidation, true);
-                                    } else {
-                                        submitFormForMostTasks();
-                                    }
+                                    $('.popup-body form').on('submit', function(event) {
+                                        event.preventDefault();
+                                        var form = $(this);
+                                        var this_form = this;
+
+                                        if(['12', '21', '25', '30'].indexOf(this_btn.attr('data-task')) > -1) {
+                                            var warningReminderAboutTaskValidation = {};
+                                            warningReminderAboutTaskValidation.callback = function (result) {
+                                                if (result) {
+                                                    submitFormForMostTasks(form, this_form);
+                                                }
+                                            };
+                                            basic.showConfirm('<div class="fs-20 lato-bold text-center padding-bottom-20">WARNING</div><div class="fs-16 text-center padding-bottom-20">All entries are subject to manual approval. If your entry does not meet the requierements, you will be disqualified from today\'s task.</div><div class="fs-16 text-center padding-bottom-20">Are you sure you want to submit the task?</div>', '', warningReminderAboutTaskValidation, true);
+                                        } else {
+                                            submitFormForMostTasks(form, this_form);
+                                        }
+                                    });
 
                                     function submitFormForMostTasks() {
-                                        $('.popup-body form').on('submit', function(event) {
-                                            event.preventDefault();
-                                            var form = $(this);
-                                            var this_form = this;
+                                        completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
+                                            $('.response-layer').hide();
+                                            if(response.dcnAmount) {
+                                                $('.user-dcn-amount').html(response.dcnAmount);
+                                            }
+                                            if(response.ticketAmount) {
+                                                $('.user-ticket-amount').html(response.ticketAmount);
+                                            }
+                                            if(response.bonusTickets) {
+                                                $('.user-bonus-ticket-amount').html(response.bonusTickets);
+                                            }
 
-                                            completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
-                                                $('.response-layer').hide();
-                                                if(response.dcnAmount) {
-                                                    $('.user-dcn-amount').html(response.dcnAmount);
-                                                }
-                                                if(response.ticketAmount) {
-                                                    $('.user-ticket-amount').html(response.ticketAmount);
-                                                }
-                                                if(response.bonusTickets) {
-                                                    $('.user-bonus-ticket-amount').html(response.bonusTickets);
-                                                }
+                                            this_btn.find('.wrapper').addClass('opened');
+                                            this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
 
-                                                this_btn.find('.wrapper').addClass('opened');
-                                                this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
-
-                                                basic.closeDialog();
-                                                basic.showDialog(response.success, 'response-popup', null);
-                                            });
+                                            basic.closeDialog();
+                                            basic.showDialog(response.success, 'response-popup', null);
                                         });
                                     }
                                 } else if (['9'].indexOf(this_btn.attr('data-task')) > -1) {
