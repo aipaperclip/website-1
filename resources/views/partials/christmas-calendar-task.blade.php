@@ -527,7 +527,6 @@
                                     <input type="text" id="text_proof" name="text_proof" maxlength="1000" class="full-rounded required form-field"/>
                                 </div>
                             </div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 3:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
@@ -565,7 +564,6 @@
                 @elseif($task['type'] == 'ticket-reward')
                     <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @if((int)$task['value'] > 1)
-                        +{{$task['value']}} raffle tickets
                         @php($presentName = $task['value'] . ' raffle tickets')
                     @else
                         @php($presentName = $task['value'] . ' raffle ticket')
@@ -583,8 +581,8 @@
                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @php($presentName = 'Holiday card')
                 @endif
-                <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
             </figure>
+            <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
             @if($task->id == 1 || $task->id == 16)
                 @if($task->id == 1)
                     @php($downloadLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredbData->slug.'.png')
@@ -610,7 +608,6 @@
                 @elseif($task['type'] == 'ticket-reward')
                     <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @if((int)$task['value'] > 1)
-                        +{{$task['value']}} raffle tickets
                         @php($presentName = $task['value'] . ' raffle tickets')
                     @else
                         @php($presentName = $task['value'] . ' raffle ticket')

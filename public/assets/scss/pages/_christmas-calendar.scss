@@ -250,6 +250,11 @@ body.christmas-calendar {
                     @include breakpoint($md-only) {
                         font-size: 14px;
                     }
+                    @include breakpoint($sm-only) {
+                        img {
+                            max-width: 60%;
+                        }
+                    }
                     @include breakpoint($xs) {
                         font-size: 13px;
                         img {
@@ -359,6 +364,11 @@ body.christmas-calendar {
                                 img {
                                     max-width: 70%;
                                     @include vertical-horizontal-align(absolute);
+                                }
+                                @include breakpoint($sm-only) {
+                                    img {
+                                        max-width: 60%;
+                                    }
                                 }
                                 @include breakpoint($xs) {
                                     img {

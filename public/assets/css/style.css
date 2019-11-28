@@ -8714,6 +8714,9 @@ body.christmas-calendar .christmas-calendar-not-logged .tasks-section .wrapper, 
     @media screen and (min-width: 992px) and (max-width: 1199px) {
       body.christmas-calendar .christmas-calendar-not-logged .tasks-section .wrapper .present__content, body.christmas-calendar .christmas-calendar-logged .tasks-section .wrapper .present__content {
         font-size: 14px; } }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      body.christmas-calendar .christmas-calendar-not-logged .tasks-section .wrapper .present__content img, body.christmas-calendar .christmas-calendar-logged .tasks-section .wrapper .present__content img {
+        max-width: 60%; } }
     @media screen and (max-width: 767px) {
       body.christmas-calendar .christmas-calendar-not-logged .tasks-section .wrapper .present__content, body.christmas-calendar .christmas-calendar-logged .tasks-section .wrapper .present__content {
         font-size: 13px; }
@@ -8827,6 +8830,9 @@ body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog, body.chr
             -webkit-transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%); }
+          @media screen and (min-width: 768px) and (max-width: 991px) {
+            body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-body .task-present-tile img, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-body .task-present-tile img {
+              max-width: 60%; } }
           @media screen and (max-width: 767px) {
             body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-body .task-present-tile img, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-body .task-present-tile img {
               max-width: 55%; } }
