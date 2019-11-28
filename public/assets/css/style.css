@@ -4979,6 +4979,9 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
     -moz-box-shadow: 0px 2px 10px 0 #679dca;
     -ms-box-shadow: 0px 2px 10px 0 #679dca;
     box-shadow: 0px 2px 10px 0 #679dca; }
+  @media screen and (max-width: 991px) {
+    .custom-input {
+      border: 1px solid #E0E0E0; } }
 
 .social-login-btn {
   background-color: white;
