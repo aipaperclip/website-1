@@ -202,8 +202,6 @@ class ChristmasCalendarController extends Controller
                         }
                     }
 
-                    var_dump($bonusTickets);
-
                     $doubleAmount = false;
                     if ($bonusTickets == 31) {
                         $doubleAmount = true;
