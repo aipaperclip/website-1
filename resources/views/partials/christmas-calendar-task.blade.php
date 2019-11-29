@@ -167,7 +167,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -188,7 +188,7 @@
                             </div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -200,23 +200,23 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="padding-bottom-10 upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof_1" name="screenshot_proof[0]"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof_1" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof_1" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                             <div class="padding-bottom-10 upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof_2" name="screenshot_proof[1]"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof_2" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof_2" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                             <div class="padding-bottom-10 upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof_3" name="screenshot_proof[2]"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof_3" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof_3" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                             <div class="padding-bottom-10 upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof_4" name="screenshot_proof[3]"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof_4" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof_4" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof_5" name="screenshot_proof[4]"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof_5" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof_5" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -253,7 +253,7 @@
                             </div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -267,7 +267,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -288,7 +288,7 @@
                             </div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -313,7 +313,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -327,7 +327,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -341,7 +341,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -363,7 +363,7 @@
                             </div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -377,7 +377,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot of the screen after brushing teeth</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot of the screen after brushing teeth</label></button>
                             </div>
                         </div>
                         @break
@@ -391,7 +391,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -412,7 +412,7 @@
                             </div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -492,7 +492,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 3:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -529,7 +529,7 @@
                             </div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn"><label for="screenshot_proof" class="margin-bottom-0">Attach a screenshot</label></button>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break

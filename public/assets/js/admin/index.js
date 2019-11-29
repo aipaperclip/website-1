@@ -106,7 +106,7 @@ if($('body').hasClass('add-job-offer')) {
 
             if ($('tr.passed-not-payed-task.on-time').length == 31) {
                 doubleReward = true;
-                warningMsg += ' This user has also completed all tasks in the tasks days so he will receive x2 DCN reward => ' + (dcnAmount*2) + 'DCN.';
+                warningMsg += ' This user has also completed all tasks in the tasks days so he will receive x2 DCN reward => ' + (dcnAmount*2) + ' DCN.';
             }
 
             var confirm_obj = {};
