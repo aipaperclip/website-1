@@ -12,9 +12,9 @@ class ChristmasCalendarController extends Controller
     //const ALLOWED_ACCOUNTS = [70879, 3040, 69468];
 
     public function getView()   {
-        if ((new UserController())->checkSession()) {
-            // if (in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
-            if (strtotime('12/01/2019') < time()) {
+        // if (in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
+        if (strtotime('12/01/2019') < time()) {
+            if ((new UserController())->checkSession()) {
                 $dcnAmount = 0;
                 $ticketAmount = 0;
                 $bonusTickets = 0;
@@ -52,10 +52,10 @@ class ChristmasCalendarController extends Controller
 
                 return view('pages/logged-user/christmas-calendar-logged', ['tasks' => $this->getAllTasks()->toArray(), 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets, 'participant' => $participant]);
             } else {
-                return abort(404);
+                return view('pages/christmas-calendar');
             }
         } else {
-            return view('pages/christmas-calendar');
+            return abort(404);
         }
     }
 
