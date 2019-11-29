@@ -13,7 +13,7 @@ class ChristmasCalendarController extends Controller
 
     public function getView()   {
         // if (in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
-        if (strtotime('12/01/2019') < time()) {
+        //if (strtotime('12/01/2019') < time()) {
             if ((new UserController())->checkSession()) {
                 $dcnAmount = 0;
                 $ticketAmount = 0;
@@ -54,9 +54,9 @@ class ChristmasCalendarController extends Controller
             } else {
                 return view('pages/christmas-calendar');
             }
-        } else {
-            return abort(404);
-        }
+        //} else {
+            //return abort(404);
+        //}
     }
 
     public function getChristmasCalendarTermsView()   {
