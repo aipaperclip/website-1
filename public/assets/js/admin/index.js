@@ -87,18 +87,26 @@ if($('body').hasClass('add-job-offer')) {
     $('input[name="color"]').spectrum(color_picker_options);
 } else if($('body').hasClass('view-christmas-calendar-participant')) {
     $('.approve-user-calendar-participation').click(function() {
-        var approvedTasksLength = $('.approve-task:checked').length;
-        if($('.approve-task:checked').length) {
+        var approvedTasksLength = $('tr.passed-not-payed-task').length;
+        if(approvedTasksLength) {
             var dcnAmount = 0;
             var ticketAmount = 0;
+            var doubleReward = false;
             var tasksToApprove = [];
             for(var i = 0; i < approvedTasksLength; i+=1) {
-                if($('.approve-task:checked').eq(i).closest('tr').attr('data-type') == 'dcn-reward') {
-                    dcnAmount += parseInt($('.approve-task:checked').eq(i).closest('tr').attr('data-value'));
-                } else if($('.approve-task:checked').eq(i).closest('tr').attr('data-type') == 'ticket-reward') {
-                    ticketAmount += parseInt($('.approve-task:checked').eq(i).closest('tr').attr('data-value'));
+                if($('tr.passed-not-payed-task').eq(i).attr('data-type') == 'dcn-reward') {
+                    dcnAmount += parseInt($('tr.passed-not-payed-task').eq(i).attr('data-value'));
+                } else if($('tr.passed-not-payed-task').eq(i).attr('data-type') == 'ticket-reward') {
+                    ticketAmount += parseInt($('tr.passed-not-payed-task').eq(i).attr('data-value'));
                 }
-                tasksToApprove.push($('.approve-task:checked').eq(i).closest('tr').attr('data-id'));
+                tasksToApprove.push($('tr.passed-not-payed-task').eq(i).attr('data-id'));
+            }
+
+            var warningMsg = 'Are you sure you want to approve these user tasks? They make in total ' + dcnAmount + ' DCN and ' + ticketAmount + ' tickets.';
+
+            if ($('tr.passed-not-payed-task.on-time').length == 31) {
+                doubleReward = true;
+                warningMsg += ' This user has also completed all tasks in the tasks days so he will receive x2 DCN reward.'
             }
 
             var confirm_obj = {};
@@ -109,7 +117,8 @@ if($('body').hasClass('add-job-offer')) {
                         url: SITE_URL + '/christmas-calendar-participants/approve-tasks',
                         data: {
                             'tasksToApprove' : tasksToApprove,
-                            'participant' : $('table').attr('data-participant-id')
+                            'participant' : $('table').attr('data-participant-id'),
+                            'doubleReward' : doubleReward
                         },
                         dataType: 'json',
                         headers: {
@@ -127,7 +136,7 @@ if($('body').hasClass('add-job-offer')) {
                     });
                 }
             };
-            basic.showConfirm('Are you sure you want to approve these user tasks? They make in total ' + dcnAmount + ' DCN and ' + ticketAmount + ' tickets.', '', confirm_obj, true);
+            basic.showConfirm(warningMsg, '', confirm_obj, true);
         } else {
             basic.showAlert('Before approving user calendar participation please select which tasks to approve.', '', true);
         }

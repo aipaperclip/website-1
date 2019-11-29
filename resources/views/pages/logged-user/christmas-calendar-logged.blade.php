@@ -100,7 +100,7 @@
         </section>
         <section class="container-fluid text-center presents-list blurred-section active">
             <div class="row">
-                <div class="col-xs-12 padding-top-30"><p class="fs-22 fs-xs-20 lato-regular">We are picking 10 big winners on January 10, 2020:</p></div>
+                <div class="col-xs-12 padding-top-30"><p class="fs-22 fs-xs-20 lato-regular">We are picking 9 big winners on January 10, 2020:</p></div>
                 <div class="col-xs-12 padding-left-xs-0 padding-right-xs-0 padding-bottom-50 padding-bottom-xs-0">
                     <picture itemscope="" itemtype="http://schema.org/ImageObject">
                         <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/presents-mobile.png" />

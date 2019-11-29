@@ -14,7 +14,7 @@
                             </figure>
                         </a>
                     </div>
-                    <p class="fs-22 fs-xs-20 lato-regular">We are picking 10 big winners on January 10, 2020:</p>
+                    <p class="fs-22 fs-xs-20 lato-regular">We are picking 9 big winners on January 10, 2020:</p>
                 </div>
             </div>
         </section>
