@@ -129,6 +129,7 @@ if($('body').hasClass('add-job-offer')) {
                                 basic.showAlert(response.success, '', true);
 
                                 $('tr.passed-not-payed-task').find('.reward-sent-td').html('<i class="fa fa-check text-success" aria-hidden="true"></i>').removeClass('passed-not-payed-task');
+                                $('tr.passed-not-payed-task').removeClass('passed-not-payed-task');
                             } else if (response.error) {
                                 basic.showAlert(response.error, '', true);
                             }
