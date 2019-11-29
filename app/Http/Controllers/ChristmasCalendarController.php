@@ -69,7 +69,7 @@ class ChristmasCalendarController extends Controller
 
     public function getTaskPopup($id) {
         // if ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
-        if ((new UserController())->checkSession() && strtotime('12/01/2019') < time()) {
+        if ((new UserController())->checkSession() /*&& strtotime('12/01/2019') < time()*/) {
             $task = ChristmasCalendarTask::where(array('id' => $id))->get()->first();
             //$participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
