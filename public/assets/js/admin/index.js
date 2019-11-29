@@ -128,7 +128,7 @@ if($('body').hasClass('add-job-offer')) {
                             if (response.success) {
                                 basic.showAlert(response.success, '', true);
 
-                                $('.approve-task:checked').closest('tr').find('.actions').html('This task is already approved.');
+                                $('tr.passed-not-payed-task').find('.reward-sent-td').html('<i class="fa fa-check text-success" aria-hidden="true"></i>');
                             } else if (response.error) {
                                 basic.showAlert(response.error, '', true);
                             }
