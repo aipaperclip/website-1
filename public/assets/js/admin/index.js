@@ -139,7 +139,7 @@ if($('body').hasClass('add-job-offer')) {
             };
             basic.showConfirm(warningMsg, '', confirm_obj, true);
         } else {
-            basic.showAlert('Before approving user calendar participation please select which tasks to approve.', '', true);
+            basic.showAlert('This user has no tasks to approve.', '', true);
         }
     });
 }

@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class ChristmasCalendarController extends Controller
 {
-    const ALLOWED_ACCOUNTS = [70879, 3040, 69468];
+    //const ALLOWED_ACCOUNTS = [70879, 3040, 69468];
 
     public function getView()   {
         if ((new UserController())->checkSession()) {
-            if (in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
+            // if (in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
+            if (strtotime('12/01/2019') < time()) {
                 $dcnAmount = 0;
                 $ticketAmount = 0;
                 $bonusTickets = 0;
@@ -67,7 +68,8 @@ class ChristmasCalendarController extends Controller
     }
 
     public function getTaskPopup($id) {
-        if ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
+        // if ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
+        if ((new UserController())->checkSession() && strtotime('12/01/2019') < time()) {
             $task = ChristmasCalendarTask::where(array('id' => $id))->get()->first();
             //$participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
@@ -105,7 +107,8 @@ class ChristmasCalendarController extends Controller
     }
 
     public function completeTask($id, Request $request) {
-        if ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
+        // if ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
+        if ((new UserController())->checkSession() && strtotime('12/01/2019') < time()) {
             $task = ChristmasCalendarTask::where(array('id' => $id))->get()->first();
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
             $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
