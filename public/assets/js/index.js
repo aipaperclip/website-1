@@ -118,10 +118,10 @@ $(document).ready(async function() {
                                 //firing success event
                                 //customFacebookEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
 
-                                if(data.response_data.token) {
+                                if(data.token) {
                                     var custom_form_obj = {
-                                        token: data.response_data.token,
-                                        id: data.response_data.data.id,
+                                        token: data.token,
+                                        id: data.data.id,
                                         _token: $('meta[name="csrf-token"]').attr('content')
                                     };
 
@@ -133,7 +133,7 @@ $(document).ready(async function() {
                                         }
                                     }
 
-                                    if(data.response_data.new_account) {
+                                    if(data.new_account) {
                                         alert('Success register');
                                         //REGISTER
                                         if(data.platform_type == 'facebook') {
@@ -158,9 +158,9 @@ $(document).ready(async function() {
                                 //customFacebookEvent('errorResponseCoreDBApi', 'Request to CoreDB-API succeed, but conditions failed.', data);
 
                                 var error_popup_html = '';
-                                if(data.response_data.errors) {
-                                    for(var key in data.response_data.errors) {
-                                        error_popup_html += data.response_data.errors[key]+'<br>';
+                                if(data.errors) {
+                                    for(var key in data.errors) {
+                                        error_popup_html += data.errors[key]+'<br>';
                                     }
                                 }
 
