@@ -105,6 +105,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/check-captcha', 'UserController@checkCaptcha')->name('check-captcha');
 
+    Route::post('/get-ip', 'Controller@getClientIpAsResponse')->name('get-ip');
+
     Route::get('/custom-cookie', 'UserController@manageCustomCookie')->name('custom-cookie');
     //======================================= REDIRECTS ========================================
 

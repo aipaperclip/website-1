@@ -382,4 +382,8 @@ class Controller extends BaseController
             $ipaddress = 'UNKNOWN';
         return $ipaddress;
     }
+
+    public function getClientIpAsResponse() {
+        return response()->json(['success' => true, 'data' => $this->getClientIp()]);
+    }
 }
