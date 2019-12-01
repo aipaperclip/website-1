@@ -80,6 +80,7 @@ $(document).ready(async function() {
 
         // Listen for data
         civicSip.on('auth-code-received', function (event) {
+            $('.response-layer').show();
             var jwtToken = event.response;
 
             //ajax for exchanging received token from civic for user personal data
@@ -103,11 +104,10 @@ $(document).ready(async function() {
                                 type: civic_custom_btn.attr('data-type')
                             };
                             
-                            var clientIp = await getClientIp();
-                            console.log(clientIp, 'clientIp');
+                            /*var clientIp = await getClientIp();
                             if (clientIp.success) {
                                 register_data.ip = clientIp.data;
-                            }
+                            }*/
 
                             if (civic_custom_btn.attr('data-inviter') != undefined) {
                                 register_data.invited_by = civic_custom_btn.attr('data-inviter');
@@ -137,7 +137,6 @@ $(document).ready(async function() {
                                             }
 
                                             if (data.new_account) {
-                                                alert('Success register');
                                                 //REGISTER
                                                 if (data.platform_type == 'facebook') {
                                                     fireGoogleAnalyticsEvent('PatientRegistration', 'ClickFB', 'Patient Registration FB');
@@ -145,7 +144,6 @@ $(document).ready(async function() {
                                                     fireGoogleAnalyticsEvent('PatientRegistration', 'ClickNext', 'Patient Registration Civic');
                                                 }
                                             } else {
-                                                alert('Success login');
                                                 //LOGIN
                                                 if (data.platform_type == 'facebook') {
                                                     fireGoogleAnalyticsEvent('PatientLogin', 'Click', 'Login FB');
@@ -184,9 +182,9 @@ $(document).ready(async function() {
                     }
                 },
                 error: function (ret) {
-                    var errorMessage = 'Login with Facebook failed. Please try again later.';
+                    var errorMessage = 'Login with Civic failed. Please try again later.';
                     if (basic.isMobile()) {
-                        errorMessage = 'Login with mobile Facebook failed. Please try again from desktop device.';
+                        errorMessage = 'Login with Civic Facebook failed. Please try again from desktop device.';
                     }
 
                     $('.response-layer').hide();
@@ -288,7 +286,6 @@ $(document).ready(async function() {
                                     }
 
                                     if (data.new_account) {
-                                        alert('Success register');
                                         //REGISTER
                                         if (data.platform_type == 'facebook') {
                                             fireGoogleAnalyticsEvent('PatientRegistration', 'ClickFB', 'Patient Registration FB');
@@ -296,7 +293,6 @@ $(document).ready(async function() {
                                             fireGoogleAnalyticsEvent('PatientRegistration', 'ClickNext', 'Patient Registration Civic');
                                         }
                                     } else {
-                                        alert('Success login');
                                         //LOGIN
                                         if (data.platform_type == 'facebook') {
                                             fireGoogleAnalyticsEvent('PatientLogin', 'Click', 'Login FB');
