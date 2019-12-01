@@ -44,7 +44,155 @@ $(document).ready(async function() {
     }, 2000);
 
     if(!$('body').hasClass('logged-in')) {
-        await $.getScript('/assets/libs/civic-login/civic.js', function() {});
+        // =============================================== CIVIC =======================================================
+
+        //await $.getScript('/assets/libs/civic-login/civic.js', function() {});
+        await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-config.js', function() {});
+
+        //load civic lib CSS
+        $('head').append('<link rel="stylesheet" type="text/css" href="https://hosted-sip.civic.com/css/civic-modal.min.css?v='+Date.now()+'"/>"/>');
+        //$('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css"/>"/>');
+
+        //load civic lib JS
+        //await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js', function() {});
+        await $.getScript('https://hosted-sip.civic.com/js/civic.sip.min.js?v='+Date.now(), function() {});
+
+        var civic_custom_btn;
+        //init civic
+        var civicSip = new civic.sip({appId: civic_config.app_id});
+
+        //bind click event for the civic button
+        $('body').on('click', '.civic-custom-btn', function(){
+            civic_custom_btn = $(this);
+            $('.login-signin-popup .patient .form-register .step-errors-holder').html('');
+
+            if(civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
+                //customCivicEvent('customCivicFbStopperTriggered', '');
+                customErrorHandle($('.login-signin-popup .patient .form-register .step-errors-holder'), 'Please agree with our privacy policy.');
+                return false;
+            }
+
+            civicSip.signup({
+                style: 'popup',
+                scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
+            });
+        });
+
+        // Listen for data
+        civicSip.on('auth-code-received', function (event) {
+            var jwtToken = event.response;
+
+            //ajax for exchanging received token from civic for user personal data
+            $.ajax({
+                type: 'POST',
+                url: civic_config.url_exchange_token_for_data,
+                data: {
+                    jwtToken: jwtToken
+                },
+                dataType: 'json',
+                success: function (ret) {
+                    if(!ret.userId) {
+                        $('.response-layer').hide();
+                        basic.showDialog('No userId found after civic token/data exchange.', '', null, true);
+                    } else {
+                        setTimeout(function () {
+                            var register_data = {
+                                platform: civic_custom_btn.attr('data-platform'),
+                                social_network: civic_config.platform,
+                                auth_token: jwtToken,
+                                type: civic_custom_btn.attr('data-type')
+                            };
+
+                            if(civic_custom_btn.attr('data-inviter') != undefined) {
+                                register_data.invited_by = civic_custom_btn.attr('data-inviter');
+                            }
+
+                            $.ajax({
+                                type: 'POST',
+                                dataType: 'json',
+                                url: civic_custom_btn.attr('data-url'),
+                                data: register_data,
+                                success: function(data){
+                                    if (data.success) {
+                                        //customCivicEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
+                                        if(data.token) {
+                                            var custom_form_obj = {
+                                                token: data.token,
+                                                id: data.data.id,
+                                                _token: $('meta[name="csrf-token"]').attr('content')
+                                            };
+
+                                            if($('input[type="hidden"][name="route"]').length) {
+                                                custom_form_obj.route = $('input[type="hidden"][name="route"]').val();
+
+                                                if($('input[type="hidden"][name="slug"]').length) {
+                                                    custom_form_obj.slug = $('input[type="hidden"][name="slug"]').val();
+                                                }
+                                            }
+
+                                            if(data.new_account) {
+                                                alert('Success register');
+                                                //REGISTER
+                                                if(data.platform_type == 'facebook') {
+                                                    fireGoogleAnalyticsEvent('PatientRegistration', 'ClickFB', 'Patient Registration FB');
+                                                } else if(data.platform_type == 'civic') {
+                                                    fireGoogleAnalyticsEvent('PatientRegistration', 'ClickNext', 'Patient Registration Civic');
+                                                }
+                                            } else {
+                                                alert('Success login');
+                                                //LOGIN
+                                                if(data.platform_type == 'facebook') {
+                                                    fireGoogleAnalyticsEvent('PatientLogin', 'Click', 'Login FB');
+                                                } else if(data.platform_type == 'civic') {
+                                                    fireGoogleAnalyticsEvent('PatientLogin', 'Click', 'Login Civic');
+                                                }
+                                            }
+
+                                            customJavascriptForm('/patient-login', custom_form_obj, 'post');
+                                        }
+                                    } else {
+                                        //customCivicEvent('errorResponseCoreDBApi', 'Request to CoreDB-API succeed, but conditions failed.', data);
+                                        var error_popup_html = '';
+                                        if(data.errors) {
+                                            for(var key in data.errors) {
+                                                error_popup_html += data.errors[key]+'<br>';
+                                            }
+                                        }
+
+                                        $('.response-layer').hide();
+                                        basic.showDialog(error_popup_html, '', null, true);
+                                    }
+                                },
+                                error: function() {
+                                    //customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
+                                    var errorMessage = 'Login with Facebook failed. Please try again later.';
+                                    if (basic.isMobile()) {
+                                        errorMessage = 'Login with mobile Facebook failed. Please try again from desktop device.';
+                                    }
+
+                                    $('.response-layer').hide();
+                                    basic.showDialog(errorMessage, '', null, true);
+                                }
+                            });
+                        }, 3000);
+                    }
+                },
+                error: function (ret) {
+                    var errorMessage = 'Login with Facebook failed. Please try again later.';
+                    if (basic.isMobile()) {
+                        errorMessage = 'Login with mobile Facebook failed. Please try again from desktop device.';
+                    }
+
+                    $('.response-layer').hide();
+                    basic.showDialog(errorMessage, '', null, true);
+                }
+            });
+        });
+
+
+
+        // =============================================== FACEBOOK ====================================================
+
         /*await $.getScript('/assets/libs/facebook-login/facebook.js', function() {});*/
 
         const fb_config = {
