@@ -184,7 +184,7 @@ $(document).ready(async function() {
                 error: function (ret) {
                     var errorMessage = 'Login with Civic failed. Please try again later.';
                     if (basic.isMobile()) {
-                        errorMessage = 'Login with Civic Facebook failed. Please try again from desktop device.';
+                        errorMessage = 'Login with Civic failed. Please try again from desktop device.';
                     }
 
                     $('.response-layer').hide();
