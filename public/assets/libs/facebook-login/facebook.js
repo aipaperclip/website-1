@@ -37,15 +37,8 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
         return false;
     }
 
-    //asking users only for email
-    var obj = {
-        scope: 'email'
-    };
-    if(rerequest){
-        obj.auth_type = 'rerequest';
-    }
     FB.login(function (response) {
-        if(response.authResponse) {
+        if(response.authResponse && response.status == 'connected') {
             customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
 
             var fb_token = response.authResponse.accessToken;
@@ -82,7 +75,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
                 }
             });
         }
-    }, obj);
+    });
 });
 
 //exchanging token for data
