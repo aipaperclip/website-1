@@ -45,7 +45,145 @@ $(document).ready(async function() {
 
     if(!$('body').hasClass('logged-in')) {
         await $.getScript('/assets/libs/civic-login/civic.js', function() {});
-        await $.getScript('/assets/libs/facebook-login/facebook.js', function() {});
+        /*await $.getScript('/assets/libs/facebook-login/facebook.js', function() {});*/
+
+        const fb_config = {
+            //app_id: '299398824049604',
+            app_id: '1906201509652855',
+            platform: 'fb'
+        };
+
+        //application init
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: fb_config.app_id,
+                cookie: true,
+                xfbml: true,
+                version: 'v2.8'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = '//connect.facebook.net/bg_BG/sdk.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        //binding click event for all the faceboon login btns
+        $('body').on('click', '.facebook-custom-btn', function(rerequest){
+            var this_btn = $(this);
+            //customFacebookEvent('facebookCustomBtnClicked', 'Button #facebook-custom-btn was clicked.');
+
+            $('.login-signin-popup .patient .form-register .step-errors-holder').html('');
+
+            //based on some logic and conditions you can add or remove this attribute, if custom-stopped="true" the facebook login won't proceed
+            if($(this).attr('custom-stopper') && $(this).attr('custom-stopper') == 'true') {
+                //customFacebookEvent('customCivicFbStopperTriggered', '');
+                customErrorHandle($('.login-signin-popup .patient .form-register .step-errors-holder'), 'Please agree with our privacy policy.');
+                return false;
+            }
+
+            FB.login(function (response) {
+                if(response.authResponse && response.status == 'connected') {
+                    //customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
+                    $('.response-layer').show();
+
+                    var fb_token = response.authResponse.accessToken;
+
+                    var register_data = {
+                        platform: this_btn.attr('data-platform'),
+                        social_network: fb_config.platform,
+                        auth_token: fb_token,
+                        type: this_btn.attr('data-type')
+                    };
+
+                    if(this_btn.attr('data-inviter') != undefined) {
+                        register_data.invited_by = this_btn.attr('data-inviter');
+                    }
+
+                    //exchanging the token for user data
+                    $.ajax({
+                        type: 'POST',
+                        dataType: 'json',
+                        url: this_btn.attr('data-url'),
+                        data: register_data,
+                        success: function(data) {
+                            if (data.success) {
+                                //firing success event
+                                //customFacebookEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
+
+                                if(data.response_data.token) {
+                                    var custom_form_obj = {
+                                        token: data.response_data.token,
+                                        id: data.response_data.data.id,
+                                        _token: $('meta[name="csrf-token"]').attr('content')
+                                    };
+
+                                    if($('input[type="hidden"][name="route"]').length) {
+                                        custom_form_obj.route = $('input[type="hidden"][name="route"]').val();
+
+                                        if($('input[type="hidden"][name="slug"]').length) {
+                                            custom_form_obj.slug = $('input[type="hidden"][name="slug"]').val();
+                                        }
+                                    }
+
+                                    if(data.response_data.new_account) {
+                                        alert('Success register');
+                                        //REGISTER
+                                        if(data.platform_type == 'facebook') {
+                                            fireGoogleAnalyticsEvent('PatientRegistration', 'ClickFB', 'Patient Registration FB');
+                                        } else if(data.platform_type == 'civic') {
+                                            fireGoogleAnalyticsEvent('PatientRegistration', 'ClickNext', 'Patient Registration Civic');
+                                        }
+                                    } else {
+                                        alert('Success login');
+                                        //LOGIN
+                                        if(data.platform_type == 'facebook') {
+                                            fireGoogleAnalyticsEvent('PatientLogin', 'Click', 'Login FB');
+                                        } else if(data.platform_type == 'civic') {
+                                            fireGoogleAnalyticsEvent('PatientLogin', 'Click', 'Login Civic');
+                                        }
+                                    }
+
+                                    customJavascriptForm('/patient-login', custom_form_obj, 'post');
+                                }
+                            } else {
+                                //firing error event
+                                //customFacebookEvent('errorResponseCoreDBApi', 'Request to CoreDB-API succeed, but conditions failed.', data);
+
+                                var error_popup_html = '';
+                                if(data.response_data.errors) {
+                                    for(var key in data.response_data.errors) {
+                                        error_popup_html += data.response_data.errors[key]+'<br>';
+                                    }
+                                }
+
+                                $('.response-layer').hide();
+                                basic.showDialog(error_popup_html, '', null, true);
+                            }
+                        },
+                        error: function() {
+                            //ajax to the external url is not working properly
+                            //customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
+
+                            var errorMessage = 'Login with Facebook failed. Please try again later.';
+                            if (basic.isMobile()) {
+                                errorMessage = 'Login with mobile Facebook failed. Please try again from desktop device.';
+                            }
+
+                            $('.response-layer').hide();
+                            basic.showDialog(errorMessage, '', null, true);
+                        }
+                    });
+                }
+            });
+        });
     }
 });
 
