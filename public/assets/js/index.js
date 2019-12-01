@@ -63,6 +63,8 @@ $(document).ready(async function() {
 
         //bind click event for the civic button
         $('body').on('click', '.civic-custom-btn', function(){
+            basic.showAlert('Login with Civic on dentacoin.com is temporally not working. Please head to <a href="https://vox.dentacoin.com/en/login/" style="font-weight: bold; text-decoration: underline" target="_blank">https://vox.dentacoin.com/en/login/</a>, login there and come back to the calendar.', '', true);
+            return false;
             civic_custom_btn = $(this);
             $('.login-signin-popup .patient .form-register .step-errors-holder').html('');
 
