@@ -367,6 +367,9 @@ body.christmas-calendar {
                         .popup-body {
                             background-color: white;
                             @include rounded(0 0 20px 20px);
+                            .submit-btn {
+                                width: 150px;
+                            }
                             .task-present-tile {
                                 background-image: url(/assets/images/christmas-calendar-campaign/christams-box-bg.svg);
                                 background-repeat: no-repeat;

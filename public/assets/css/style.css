@@ -8829,6 +8829,8 @@ body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog, body.chr
         -moz-border-radius: 0 0 20px 20px;
         -ms-border-radius: 0 0 20px 20px;
         border-radius: 0 0 20px 20px; }
+        body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-body .submit-btn, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-body .submit-btn {
+          width: 150px; }
         body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-content .modal-body .popup-body .task-present-tile, body.christmas-calendar .bootbox.response-popup .modal-dialog .modal-content .modal-body .popup-body .task-present-tile {
           background-image: url(/assets/images/christmas-calendar-campaign/christams-box-bg.svg);
           background-repeat: no-repeat;

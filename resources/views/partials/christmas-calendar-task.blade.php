@@ -540,7 +540,7 @@
                 </div>
                 <div class="padding-top-40 padding-bottom-10 text-center">
                     <button>
-                        <img src="/assets/images/christmas-calendar-campaign/submit-btn-present.svg" class="width-100 max-width-180" alt="Submit button" itemprop="contentUrl"/>
+                        <img src="/assets/images/christmas-calendar-campaign/submit-btn-present.svg" class="submit-btn" alt="Submit button" itemprop="contentUrl"/>
                     </button>
                 </div>
                 <div class="lato-bold fs-12 padding-bottom-20 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2020.<br> Other gifts are sent via email within 5 days after the task is completed. All tasks are subject to manual approval. Improper entries will be disqualified and prizes will not be granted. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>
