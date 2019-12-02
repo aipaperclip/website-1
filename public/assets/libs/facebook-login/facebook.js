@@ -6,8 +6,6 @@ const fb_config = {
 
 //application init
 window.fbAsyncInit = function () {
-    console.log(2);
-    console.log(typeof(FB));
     FB.init({
         appId: fb_config.app_id,
         cookie: true,
@@ -16,9 +14,8 @@ window.fbAsyncInit = function () {
     });
 };
 
+/*
 (function (d, s, id) {
-    console.log(1);
-    console.log(typeof(FB));
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {
         return;
@@ -28,6 +25,7 @@ window.fbAsyncInit = function () {
     js.src = '//connect.facebook.net/bg_BG/sdk.js';
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+*/
 
 //binding click event for all the faceboon login btns
 $('body').on('click', '.facebook-custom-btn', function(rerequest){
@@ -102,20 +100,3 @@ function customFacebookEvent(type, message, response_data) {
     }
     $.event.trigger(event_obj);
 }
-
-
-var loadScript = function( url, callback ) {
-    return jQuery.ajax( {
-        type: "GET",
-        url: url,
-        data: null,
-        success: callback,
-        dataType: 'script',
-        forceRemote: true // this is the key
-    } );
-};
-
-loadScript('https://connect.facebook.net/bg_BG/sdk.js', function() {
-    console.log('loaded sdk.js');
-    console.log(typeof(FB));
-});
