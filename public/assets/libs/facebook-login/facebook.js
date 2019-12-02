@@ -11,7 +11,9 @@ const fb_config = {
 $('head').append('<script id="facebook-jssdk" src=""></script>');*/
 
 async function initFacebookLogin() {
+    console.log('initFacebookLogin');
     await $.getScript('//connect.facebook.net/bg_BG/sdk.js', function() {
+        console.log('getScript');
         //application init
         window.fbAsyncInit = function () {
             FB.init({
@@ -20,7 +22,6 @@ async function initFacebookLogin() {
                 xfbml: true,
                 version: 'v2.8'
             });
-            FB.AppEvents.logPageView();
 
             console.log('window.fbAsyncInit');
 
