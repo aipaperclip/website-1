@@ -22,10 +22,16 @@ window.fbAsyncInit = function () {
     console.log('window.fbAsyncInit');
 };
 
-window.on('fbAsyncInit', function() {
+$(window).on('fbAsyncInit', function() {
 
 
     console.log('window.fbAsyncInit2');
+});
+
+$(document).on('fbAsyncInit', function() {
+
+
+    console.log('window.fbAsyncInit3');
 });
 
 /*(function (d, s, id) {
