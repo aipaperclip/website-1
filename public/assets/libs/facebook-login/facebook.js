@@ -9,7 +9,7 @@ if ($('#facebook-jssdk').length) {
 }
 
 $('head').append('<script id="facebook-jssdk" src="//connect.facebook.net/bg_BG/sdk.js"></script>');
-
+console.log('test1');
 //application init
 window.fbAsyncInit = function () {
     FB.init({
