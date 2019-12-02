@@ -7,6 +7,7 @@ const fb_config = {
 //application init
 window.fbAsyncInit = function () {
     console.log(2);
+    console.log(typeof(FB));
     FB.init({
         appId: fb_config.app_id,
         cookie: true,
@@ -17,6 +18,7 @@ window.fbAsyncInit = function () {
 
 (function (d, s, id) {
     console.log(1);
+    console.log(typeof(FB));
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {
         return;
@@ -101,3 +103,10 @@ function customFacebookEvent(type, message, response_data) {
     $.event.trigger(event_obj);
 }
 
+async function init() {
+    await $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function() {
+        console.log('loaded sdk.js');
+        console.log(typeof(FB));
+    });
+}
+init();
