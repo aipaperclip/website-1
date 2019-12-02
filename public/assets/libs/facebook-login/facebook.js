@@ -1,4 +1,4 @@
-$.getScript( "https://connect.facebook.net/bg_BG/sdk.js", function( data, textStatus, jqxhr ) {
+$.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textStatus, jqxhr ) {
     const fb_config = {
         //app_id: '299398824049604',
         app_id: '1906201509652855',
