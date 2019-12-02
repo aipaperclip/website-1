@@ -4,37 +4,19 @@ const fb_config = {
     platform: 'fb'
 };
 
-if ($('#facebook-jssdk').length) {
-    $('#facebook-jssdk').remove();
-}
-
-$('head').append('<script id="facebook-jssdk" src="//connect.facebook.net/bg_BG/sdk.js"></script>');
-console.log('test1');
 //application init
 window.fbAsyncInit = function () {
+    console.log(2);
     FB.init({
         appId: fb_config.app_id,
         cookie: true,
         xfbml: true,
         version: 'v2.8'
     });
-
-    console.log('window.fbAsyncInit');
 };
 
-$(window).on('fbAsyncInit', function() {
-
-
-    console.log('window.fbAsyncInit2');
-});
-
-$(document).on('fbAsyncInit', function() {
-
-
-    console.log('window.fbAsyncInit3');
-});
-
-/*(function (d, s, id) {
+(function (d, s, id) {
+    console.log(1);
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {
         return;
@@ -43,7 +25,7 @@ $(document).on('fbAsyncInit', function() {
     js.id = id;
     js.src = '//connect.facebook.net/bg_BG/sdk.js';
     fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));*/
+}(document, 'script', 'facebook-jssdk'));
 
 //binding click event for all the faceboon login btns
 $('body').on('click', '.facebook-custom-btn', function(rerequest){
