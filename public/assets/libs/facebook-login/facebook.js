@@ -13,6 +13,8 @@ window.fbAsyncInit = function () {
         version: 'v2.8'
     });
     FB.AppEvents.logPageView();
+
+    console.log('window.fbAsyncInit');
 };
 
 (function (d, s, id) {
