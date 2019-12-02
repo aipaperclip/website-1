@@ -103,10 +103,19 @@ function customFacebookEvent(type, message, response_data) {
     $.event.trigger(event_obj);
 }
 
-async function init() {
-    await $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function() {
-        console.log('loaded sdk.js');
-        console.log(typeof(FB));
-    });
-}
-init();
+
+var loadScript = function( url, callback ) {
+    return jQuery.ajax( {
+        type: "GET",
+        url: url,
+        data: null,
+        success: callback,
+        dataType: 'script',
+        forceRemote: true // this is the key
+    } );
+};
+
+loadScript('https://connect.facebook.net/bg_BG/sdk.js', function() {
+    console.log('loaded sdk.js');
+    console.log(typeof(FB));
+});
