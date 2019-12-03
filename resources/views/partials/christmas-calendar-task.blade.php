@@ -175,10 +175,10 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">SHARE this post on your Facebook profile:</div>
-                            <a href="https://www.facebook.com/pg/dentacoin/sample post/" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/pg/dentacoin/sample post/</a>
+                            <a href="https://www.facebook.com/dentacoin/posts/866686657067732" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/dentacoin/posts/866686657067732</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>
-                            <a href="https://www.twitter.com/pg/dentacoin/sample post/" class="color-christmas-calendar-red" target="_blank">https://www.twitter.com/pg/dentacoin/sample post/</a>
+                            <a href="https://twitter.com/dentacoin/status/1201786929307701248" class="color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1201786929307701248</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="padding-bottom-20">
                                 <div class="custom-google-label-style module max-width-400">
@@ -197,6 +197,12 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Save this image and send it to 5 friends using any channel:</div>
                             <div>Here is a sample text you may send them with the image:<br>
                                 I care about you and your oral health. Here are 5 tips on how to take better care of your teeth.</div>
+                            <figure class="margin-top-25 downloadable-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                                <img alt="Trusted reviews promo banner" class="width-100" itemprop="contentUrl" src="/assets/images/christmas-calendar-campaign/5-oral-health-tips.jpg">
+                                <a class="overlay-on-hover" download="" href="/assets/images/christmas-calendar-campaign/5-oral-health-tips.jpg">
+                                    <span class="lato-bold fs-16 dark-blue-color">DOWNLOAD IMAGE</span>
+                                </a>
+                            </figure>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="padding-bottom-10 upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof_1" name="screenshot_proof[0]"/>
@@ -535,7 +541,7 @@
                         @break
 
                         @default
-                        <div class="text-center padding-top-50 padding-bottom-50 padding-left-10 padding-right-10 fs-20 lato-black">Something went wrong, please try again</div>
+                        <div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20 padding-left-10 padding-right-10 fs-20 lato-black">Something went wrong, please try again</div>
                     @endswitch
                 </div>
                 <div class="padding-top-40 padding-bottom-10 text-center">
@@ -554,7 +560,7 @@
             @php($subtitle = 'YOUR DAILY REWARD:')
             @php($btnText = 'SEE YOU TOMORROW!')
         @endif
-        <div class="text-center padding-top-50 padding-bottom-50">
+        <div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20">
             <h2 class="fs-50 fs-xs-32 lato-black">CONGRATS!</h2>
             <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30 padding-top-10">{{$subtitle}}</div>
             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile">
@@ -583,14 +589,22 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if($task->id == 1 || $task->id == 16)
+            @if($task->id == 1 || $task->id == 16 || $task->id == 8)
                 @if($task->id == 1)
-                    @php($downloadLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredbData->slug.'.png')
+                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredbData->slug.'.png')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($task->id == 8)
+                    @php($btnLink = 'https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500')
+                    @php($btnLabel = 'HOLIDAY FRAME')
+                    @php($actionType = 'external-link')
                 @elseif($task->id == 16)
-                    @php($downloadLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredbData->slug.'.png')
+                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredbData->slug.'.png')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
                 @endif
                 <div class="row padding-top-30">
-                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$downloadLink}}" target="_blank" download class="red-white-btn width-100 max-width-150 inline-block text-center">DOWNLOAD</a></div>
+                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
                     <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
                 </div>
             @else
@@ -598,7 +612,7 @@
             @endif
         </div>
     @elseif($type == 'already-completed')
-        <div class="text-center padding-top-50 padding-bottom-50">
+        <div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20">
             <h2 class="fs-50 fs-xs-32 lato-black">COMPLETED</h2>
             <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You are one step closer to the big prizes!</div>
             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center margin-0-auto task-present-tile">
@@ -629,12 +643,20 @@
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
             @if($task->id == 1 || $task->id == 16)
                 @if($task->id == 1)
-                    @php($downloadLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredbData->slug.'.png')
+                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredbData->slug.'.png')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($task->id == 8)
+                    @php($btnLink = 'https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500')
+                    @php($btnLabel = 'HOLIDAY FRAME')
+                    @php($actionType = 'external-link')
                 @elseif($task->id == 16)
-                    @php($downloadLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredbData->slug.'.png')
+                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredbData->slug.'.png')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
                 @endif
                 <div class="row padding-top-30">
-                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$downloadLink}}" target="_blank" download class="red-white-btn width-100 max-width-150 inline-block text-center">DOWNLOAD</a></div>
+                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
                     <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
                 </div>
             @else
@@ -642,13 +664,13 @@
             @endif
         </div>
     @elseif($type == 'not-active-yet')
-        <div class="text-center padding-top-50 padding-bottom-50">
+        <div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20">
             <h2 class="fs-50 fs-xs-32 lato-black">Hey, no hurries!</h2>
             <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30 padding-top-10">This present is not active yet. Please kindly wait until {{date('d F Y', strtotime($task->date))}}.</div>
             <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">OK</button>
         </div>
     @elseif($type == 'no-hurries')
-        <div class="text-center padding-top-50 padding-bottom-50">
+        <div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20">
             <h2 class="fs-50 fs-xs-32 lato-black">Hey, no hurries!</h2>
             <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30 padding-top-10">You must complete all previous tasks.</div>
             <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">OK</button>

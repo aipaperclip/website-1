@@ -370,6 +370,37 @@ body.christmas-calendar {
                             .submit-btn {
                                 width: 150px;
                             }
+                            .downloadable-image {
+                                position: relative;
+                                .overlay-on-hover {
+                                    opacity: 0;
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                    top: 0;
+                                    left: 0;
+                                    background-color: rgba(0, 0, 0, 0.6);
+                                    @include simple_transition(.3s);
+                                    span {
+                                        padding: 10px 15px;
+                                        background-color: white;
+                                        text-align: center;
+                                        max-width: 90%;
+                                        white-space: nowrap;
+                                        @include rounded(4px);
+                                        @include vertical-horizontal-align(absolute);
+                                        @include breakpoint($xs) {
+                                            white-space: normal;
+                                            width: 100%;
+                                        }
+                                    }
+                                }
+                                &:hover {
+                                    .overlay-on-hover {
+                                        opacity: 1;
+                                    }
+                                }
+                            }
                             .task-present-tile {
                                 background-image: url(/assets/images/christmas-calendar-campaign/christams-box-bg.svg);
                                 background-repeat: no-repeat;

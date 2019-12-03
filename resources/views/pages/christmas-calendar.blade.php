@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="present__content">
                                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                            <img src="/assets/images/christmas-calendar-campaign/present.jpg" class="width-100" alt="Present" itemprop="contentUrl"/>
+                                            <img src="/assets/images/christmas-calendar-campaign/present.png" class="width-100" alt="Present" itemprop="contentUrl"/>
                                         </figure>
                                     </div>
                                 </div>

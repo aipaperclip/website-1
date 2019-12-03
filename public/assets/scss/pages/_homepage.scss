@@ -583,8 +583,6 @@
                         img {
                             max-width: 75%;
                             margin: 0 auto;
-                            @include rounded(20px);
-                            @include box-shadow(0 0 8px 0px rgba(0, 0, 0, 0.4));
                             @include simple_transition(.3s);
                         }
                         figcaption {
@@ -611,6 +609,14 @@
                 @include breakpoint($sm-down) {
                     position: static;
                     @include clear_transform();
+                    button {
+                        figure {
+                            img {
+                                @include rounded(0);
+                                @include box-shadow(none);
+                            }
+                        }
+                    }
                 }
             }
             @include breakpoint($lg-up) {
