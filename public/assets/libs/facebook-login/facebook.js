@@ -49,7 +49,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                     dataType: 'json',
                     url: this_btn.attr('data-url'),
                     data: register_data,
-                    success: function(data){
+                    success: function(data) {
                         if (data.success) {
                             //firing success event
                             customFacebookEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);

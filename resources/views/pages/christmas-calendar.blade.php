@@ -55,9 +55,10 @@
             </div>
         </section>
         <section class="santa-section">
-            <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                <img src="/assets/images/christmas-calendar-campaign/santa-flying-in-the-sky.svg" class="width-100" alt="Sign up button" itemprop="contentUrl"/>
-            </figure>
+            <picture itemscope="" itemtype="http://schema.org/ImageObject">
+                <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/santa-flying-in-the-sky-mobile.png" />
+                <img src="/assets/images/christmas-calendar-campaign/santa-flying-in-the-sky-1400.png" alt="Santa flying in the sky" itemprop="contentUrl"/>
+            </picture>
         </section>
     </div>
 @endsection

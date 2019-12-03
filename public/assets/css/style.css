@@ -6627,6 +6627,14 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           .homepage-container .dentacoin-ecosystem .apps-list .list button figure img {
             max-width: 75%;
             margin: 0 auto;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -ms-border-radius: 20px;
+            border-radius: 20px;
+            -webkit-box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.4);
+            -moz-box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.4);
+            -ms-box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.4);
             -webkit-transition: 0.3s;
             -moz-transition: 0.3s;
             -o-transition: 0.3s;
@@ -9453,6 +9461,7 @@ body.christmas-calendar .bootbox.christmas-calendar-task .modal-dialog .modal-co
     font-size: 16px;
     font-family: 'Lato-Regular';
     padding: 10px 15px;
+    resize: none;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
