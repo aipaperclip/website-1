@@ -110,7 +110,7 @@
         </div>
     </header>
     <main>@yield("content")</main>
-    <footer class="padding-top-50 padding-top-xs-100 padding-top-sm-100">
+    <footer class="padding-bottom-50 padding-bottom-xs-100 padding-bottom-sm-100">
         <div class="container">
             @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() != 'careers' && Route::current()->getName() != 'corporate-identity' && Route::current()->getName() != 'corporate-design' && Route::current()->getName() != 'christmas-calendar')
                 @if(isset($footer_data))
