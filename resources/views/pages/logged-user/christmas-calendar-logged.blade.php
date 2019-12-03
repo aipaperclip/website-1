@@ -112,7 +112,7 @@
         <section class="santa-section blurred-section active">
             <picture itemscope="" itemtype="http://schema.org/ImageObject">
                 <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/forest-mobile-768.png" />
-                <img src="/assets/images/christmas-calendar-campaign/forest-1400.png" alt="Forest" itemprop="contentUrl"/>
+                <img src="/assets/images/christmas-calendar-campaign/forest-1400.png" class="width-100" alt="Forest" itemprop="contentUrl"/>
             </picture>
         </section>
     </div>

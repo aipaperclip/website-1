@@ -57,7 +57,7 @@
         <section class="santa-section">
             <picture itemscope="" itemtype="http://schema.org/ImageObject">
                 <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/santa-flying-in-the-sky-mobile.png" />
-                <img src="/assets/images/christmas-calendar-campaign/santa-flying-in-the-sky-1400.png" alt="Santa flying in the sky" itemprop="contentUrl"/>
+                <img src="/assets/images/christmas-calendar-campaign/santa-flying-in-the-sky-1400.png" class="width-100" alt="Santa flying in the sky" itemprop="contentUrl"/>
             </picture>
         </section>
     </div>
