@@ -614,7 +614,7 @@
                     button {
                         figure {
                             img {
-                                @include rounded(0);
+                                @include rounded(10px);
                                 @include box-shadow(none);
                             }
                         }
