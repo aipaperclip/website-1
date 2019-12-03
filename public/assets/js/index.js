@@ -2424,6 +2424,7 @@ function apiEventsListeners() {
 
     $(document).on('errorResponseCoreDBApi', function (event) {
         var error_popup_html = '';
+        console.log(event.response_data, 'event.response_data');
         if (event.response_data.errors) {
             for(var key in event.response_data.errors) {
                 error_popup_html += event.response_data.errors[key]+'<br>';
