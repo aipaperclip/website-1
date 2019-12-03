@@ -42,6 +42,38 @@ body {
 }
 
 @for $i from 0 through 20 * 2 {
+    @include breakpoint($sm-only)    {
+        .padding-bottom-sm-#{$i * 5} {
+            padding-bottom: 0px + $i * 5!important;
+        }
+    }
+}
+
+@for $i from 0 through 20 * 2 {
+    @include breakpoint($sm-only) {
+        .padding-top-sm-#{$i * 5} {
+            padding-top: 0px + $i * 5 !important;
+        }
+    }
+}
+
+@for $i from 0 through 20 * 2 {
+    @include breakpoint($sm-only) {
+        .padding-left-sm-#{$i * 5} {
+            padding-left: 0px + $i * 5 !important;
+        }
+    }
+}
+
+@for $i from 0 through 20 * 2 {
+    @include breakpoint($sm-only) {
+        .padding-right-sm-#{$i * 5} {
+            padding-right: 0px + $i * 5 !important;
+        }
+    }
+}
+
+@for $i from 0 through 20 * 2 {
     @include breakpoint($xs)    {
         .padding-bottom-xs-#{$i * 5} {
             padding-bottom: 0px + $i * 5!important;

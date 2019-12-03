@@ -42,8 +42,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.0.72">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.0.72">
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.0.73">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.0.73">
     <script>
         var HOME_URL = '{{ route("home") }}';
     </script>
@@ -110,7 +110,7 @@
         </div>
     </header>
     <main>@yield("content")</main>
-    <footer>
+    <footer class="padding-top-50 padding-top-xs-100 padding-top-sm-100">
         <div class="container">
             @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() != 'careers' && Route::current()->getName() != 'corporate-identity' && Route::current()->getName() != 'corporate-design' && Route::current()->getName() != 'christmas-calendar')
                 @if(isset($footer_data))
@@ -467,7 +467,7 @@
             <picture itemscope="" itemtype="http://schema.org/ImageObject">
                 <source media="(max-width: 992px)" srcset="/assets/uploads/mobile-christmas-banner-small.gif"/>
                 <img src="/assets/uploads/christmas-banner.gif" alt="Holiday calendar banner" class="width-100" itemprop="contentUrl"/>
-            </picture> 
+            </picture>
         </a>
         @if(!empty($privacy_policy_cookie))
             <div class="privacy-policy-cookie">
@@ -625,9 +625,9 @@
     {{--<script src="/assets/js/basic.js"></script>--}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.0.72"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.0.73"></script>
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.0.72"></script>
+    <script src="/dist/js/front-script.js?v=1.0.73"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/address.js"></script>
