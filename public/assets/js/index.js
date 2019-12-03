@@ -20,6 +20,8 @@ var get_params = getGETParameters();
 $(document).ready(async function() {
     if ((has(get_params, 'show-login') || has(get_params, 'inviter')) && !$('body').hasClass('logged-in')) {
         openLoginSigninPopup();
+    } else if ((has(get_params, 'show-patient-register'))) {
+        openLoginSigninPopup('show-patient-register');
     }
 
     if ($('body.corporate-design.allow-draw-lines').length > 0) {
@@ -1146,7 +1148,7 @@ if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body
                 var this_btn = $(this);
                 if (this_btn.hasClass('double-reward') && !this_btn.find('wrapper').hasClass('opened')) {
                     basic.closeDialog();
-                    basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/popup-gifts-header.png" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="small-red-line"></div><div class="small-yellow-line"></div><div class="big-red-line"></div><div class="small-yellow-line"></div><div class="small-red-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50"><h2 class="fs-50 fs-xs-32 lato-black">DOUBLE REWARDS</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">IF YOU COMPLETE ALL 31 TASKS ON THE EXACT DATE</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="/assets/images/christmas-calendar-campaign/double-reward.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
+                    basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/popup-gifts-header.png" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="small-red-line"></div><div class="small-yellow-line"></div><div class="big-red-line"></div><div class="small-yellow-line"></div><div class="small-red-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20"><h2 class="fs-50 fs-xs-32 lato-black">DOUBLE REWARDS</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">IF YOU COMPLETE ALL 31 TASKS ON THE EXACT DATE</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="/assets/images/christmas-calendar-campaign/double-reward.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
                 } else if (this_btn.hasClass('disqualified')) {
                     var disqualifiedText = 'DISQUALIFIED';
                     var disqualifiedImage = this_btn.find('img').attr('src');
@@ -1155,7 +1157,7 @@ if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body
                     }
 
                     basic.closeDialog();
-                    basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/popup-gifts-header.png" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="small-red-line"></div><div class="small-yellow-line"></div><div class="big-red-line"></div><div class="small-yellow-line"></div><div class="small-red-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50"><h2 class="fs-50 fs-xs-32 lato-black">DISQUALIFIED</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You haven\'t completed the task as required.</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="'+disqualifiedImage+'" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="fs-18 lato-bold padding-top-10">'+disqualifiedText+'</div><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
+                    basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/popup-gifts-header.png" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="small-red-line"></div><div class="small-yellow-line"></div><div class="big-red-line"></div><div class="small-yellow-line"></div><div class="small-red-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20"><h2 class="fs-50 fs-xs-32 lato-black">DISQUALIFIED</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You haven\'t completed the task as required.</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="'+disqualifiedImage+'" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="fs-18 lato-bold padding-top-10">'+disqualifiedText+'</div><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
                 } else {
                     $.ajax({
                         type: 'POST',
@@ -1872,10 +1874,17 @@ function bindLoginSigninPopupShow() {
 }
 bindLoginSigninPopupShow();
 
-function openLoginSigninPopup() {
+function openLoginSigninPopup(type) {
     basic.closeDialog();
     $('.hidden-login-form').html('');
     basic.showDialog(hidden_popup_content, 'login-signin-popup', null, true);
+
+    if (type != undefined) {
+        if(type == 'show-patient-register') {
+            $('.login-signin-popup .popup-body .patient .form-login').hide();
+            $('.login-signin-popup .popup-body .patient .form-register').show();
+        }
+    }
 
     $('.login-signin-popup .dentist .form-register .address-suggester').removeClass('dont-init');
 
