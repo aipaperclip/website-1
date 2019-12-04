@@ -82,11 +82,6 @@ class ChristmasCalendarController extends Controller
                 return response()->json(['error' => $view]);
             }
 
-            var_dump(time());
-            var_dump(strtotime($task->date));
-            var_dump(time() > strtotime($task->date));
-            die('asd');
-
             if (time() > strtotime($task->date)) {
                 if ((int)$id > 1) {
                     // check if user completed the tasks before this one
