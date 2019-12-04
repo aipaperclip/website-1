@@ -21,13 +21,17 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
         customFacebookEvent('facebookCustomBtnClicked', 'Button #facebook-custom-btn was clicked.');
 
         //based on some logic and conditions you can add or remove this attribute, if custom-stopped="true" the facebook login won't proceed
-        if($(this).attr('custom-stopper') && $(this).attr('custom-stopper') == 'true') {
+        if ($(this).attr('custom-stopper') && $(this).attr('custom-stopper') == 'true') {
             customFacebookEvent('customCivicFbStopperTriggered', '');
             return false;
         }
 
+        var obj = {
+            scope: 'email,first_name,middle_name,last_name,user_gender,user_birthday,picture,user_location'
+        };
+        
         FB.login(function (response) {
-            if(response.authResponse && response.status == 'connected') {
+            if (response.authResponse && response.status == 'connected') {
                 customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
 
                 var fb_token = response.authResponse.accessToken;
@@ -39,7 +43,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                     type: this_btn.attr('data-type')
                 };
 
-                if(this_btn.attr('data-inviter') != undefined) {
+                if (this_btn.attr('data-inviter') != undefined) {
                     register_data.invited_by = this_btn.attr('data-inviter');
                 }
 
@@ -64,7 +68,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                     }
                 });
             }
-        });
+        }, obj);
     });
 
     //exchanging token for data
@@ -83,7 +87,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                 time: new Date()
             };
 
-            if(response_data != undefined) {
+            if (response_data != undefined) {
                 event_obj.response_data = response_data;
             }
             $.event.trigger(event_obj);

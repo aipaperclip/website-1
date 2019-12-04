@@ -47,10 +47,10 @@ $(document).ready(async function() {
 
     if (!$('body').hasClass('logged-in')) {
         // =============================================== CIVIC =======================================================
-        await $.getScript('/assets/libs/civic-login/civic.js', function() {});
+        await $.getScript('/assets/libs/civic-login/civic.js?v='+new Date().getTime(), function() {});
 
         // =============================================== FACEBOOK ====================================================
-        await $.getScript('/assets/libs/facebook-login/facebook.js', function() {});
+        await $.getScript('/assets/libs/facebook-login/facebook.js?v='+new Date().getTime(), function() {});
     }
 });
 

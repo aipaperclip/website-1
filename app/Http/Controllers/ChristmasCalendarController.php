@@ -232,4 +232,52 @@ class ChristmasCalendarController extends Controller
     public function checkIfTaskIsDisqualified($task_id, $participant_id) {
         return DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.task_id' => $task_id, 'christmas_calendar_task_participant.participant_id' => $participant_id, 'disqualified' => true))->get()->first();
     }
+
+    public function getHolidayCalendarParticipants(Request $request) {
+        if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY')) == trim($request->input('hash'))) {
+            $participants = DB::connection('mysql')->table('christmas_calendar_participants')->select('christmas_calendar_participants.user_id')->where(array('christmas_calendar_participants.email_notifications' => true))->get()->all();
+            $task = ChristmasCalendarTask::where(array('id' => $request->input('day')))->get()->first();
+
+            if (!empty($participants) && !empty($task)) {
+                foreach ($participants as $participant) {
+                    $coredbData = (new APIRequestsController())->getUserData($participant->user_id);
+                    $participant->email = $coredbData->email;
+                }
+
+                if ($task->type == 'dcn-reward') {
+                    $reward = $task->value . ' DCN';
+                } else if ($task->type == 'ticket-reward') {
+                    if ((int)$task->value > 1) {
+                        $reward = $task->value . ' raffle tickets';
+                    } else {
+                        $reward = $task->value . ' raffle ticket';
+                    }
+                } else if ($task->type == 'face-sticker') {
+                    $reward = 'Face sticker';
+                } else if ($task->type == 'facebook-holiday-frame') {
+                    $reward = 'Facebook frame';
+                } else if ($task->type == 'free-oracle-health-guide') {
+                    $reward = 'Oral health guide';
+                } else if ($task->type == 'custom-holiday-card') {
+                    $reward = 'Holiday card';
+                }
+
+                return response()->json([
+                    'success' => true,
+                    'data' => array(
+                        'participants' => $participants,
+                        'dailyReward' => $reward
+                    )
+                ]);
+            } else {
+                return response()->json([
+                    'error' => true
+                ]);
+            }
+        } else {
+            return response()->json([
+                'error' => true
+            ]);
+        }
+    }
 }
