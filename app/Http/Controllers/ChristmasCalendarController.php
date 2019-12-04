@@ -234,6 +234,8 @@ class ChristmasCalendarController extends Controller
     }
 
     public function getHolidayCalendarParticipants(Request $request) {
+        var_dump(hash('sha256', getenv('HOLIDAY_CALENDAR_KEY')) == trim($request->input('hash')));
+        die('asd');
         if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY')) == trim($request->input('hash'))) {
             $participants = DB::connection('mysql')->table('christmas_calendar_participants')->select('christmas_calendar_participants.user_id')->where(array('christmas_calendar_participants.email_notifications' => true))->get()->all();
             $task = ChristmasCalendarTask::where(array('id' => $request->input('day')))->get()->first();
