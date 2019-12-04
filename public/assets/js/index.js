@@ -2707,7 +2707,7 @@ function fireGoogleAnalyticsEvent(category, action, label, value) {
 
 // custom solution for broken safari
 function isMobileIOS() {
-    if(/Macintosh/i.test(navigator.userAgent) && $(window).width() < 1024) {
+    if(/Macintosh|Mac|Mac OS X/i.test(navigator.userAgent) && $(window).width() < 1024) {
         return true;
     } else {
         return false;
