@@ -242,7 +242,9 @@ class ChristmasCalendarController extends Controller
                 foreach ($participants as $participant) {
                     $coredbData = (new APIRequestsController())->getUserData($participant->user_id, true);
                     var_dump($coredbData);
-                    //$participant->email = $coredbData->email;
+                    if(property_exists($coredbData, 'success') && $coredbData->success) {
+                        $participant->email = $coredbData->data->email;
+                    }
                 }
 
                 if ($task->type == 'dcn-reward') {
@@ -263,7 +265,6 @@ class ChristmasCalendarController extends Controller
                     $reward = 'Holiday card';
                 }
 
-                die('saf');
                 return response()->json([
                     'success' => true,
                     'data' => array(
