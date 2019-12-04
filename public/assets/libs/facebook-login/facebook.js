@@ -28,8 +28,11 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
 
         var obj = {
             //scope: 'email,first_name,last_name,user_gender,user_birthday,user_location'
-            scope: 'email'
+            scope: 'email,public_profile',
+            auth_type: 'rerequest'
         };
+
+        console.log(rerequest, 'rerequest');
         
         FB.login(function (response) {
             if (response.authResponse && response.status == 'connected') {
