@@ -2711,8 +2711,8 @@ if ($('.test-mobile').length) {
     });
 }
 
-if ($('.test-os').length) {
-    $('.test-os').click(function() {
+if ($('.test-os-btn').length) {
+    $('.test-os-btn').click(function() {
         alert(basic.getMobileOperatingSystem());
     });
 }
