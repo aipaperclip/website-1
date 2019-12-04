@@ -2704,3 +2704,33 @@ function fireGoogleAnalyticsEvent(category, action, label, value) {
 }
 
 // =================================== /GOOGLE ANALYTICS TRACKING LOGIC ======================================
+
+if ($('.test-mobile').length) {
+    $('.test-mobile').click(function() {
+        alert(basic.isMobile());
+    });
+}
+
+if ($('.test-os').length) {
+    $('.test-os').click(function() {
+        alert(basic.getMobileOperatingSystem());
+    });
+}
+
+if ($('.test-userAgent').length) {
+    $('.test-userAgent').click(function() {
+        alert(navigator.userAgent);
+    });
+}
+
+if ($('.test-vendor').length) {
+    $('.test-vendor').click(function() {
+        alert(navigator.vendor);
+    });
+}
+
+if ($('.test-opera').length) {
+    $('.test-opera').click(function() {
+        alert(window.opera);
+    });
+}
