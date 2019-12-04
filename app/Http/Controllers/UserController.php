@@ -350,7 +350,11 @@ class UserController extends Controller {
         } else {
             session(['logged_user' => $session_arr]);
 
-            return redirect()->route('home');
+            if(!empty($request->input('route'))) {
+                return redirect()->route($request->input('route'));
+            } else {
+                return redirect()->route('home');
+            }
         }
     }
 
