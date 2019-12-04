@@ -18,9 +18,9 @@ var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
 var get_params = getGETParameters();
 
 $(document).ready(async function() {
-    if ((has(get_params, 'show-login') || has(get_params, 'inviter')) && !$('body').hasClass('logged-in')) {
+    if ((basic.objHasKey(get_params, 'show-login') || basic.objHasKey(get_params, 'inviter')) && !$('body').hasClass('logged-in')) {
         openLoginSigninPopup();
-    } else if ((has(get_params, 'show-patient-register'))) {
+    } else if (basic.objHasKey(get_params, 'show-patient-register')) {
         openLoginSigninPopup('show-patient-register');
     }
 
@@ -2143,7 +2143,7 @@ function openLoginSigninPopup(type) {
                 }
 
                 var validate_phone = await validatePhone($('.login-signin-popup .dentist .form-register .step.third input[name="phone"]').val().trim(), $('.login-signin-popup .dentist .form-register .step.third select[name="country-code"]').val());
-                if (has(validate_phone, 'success') && !validate_phone.success) {
+                if (basic.objHasKey(validate_phone, 'success') && !validate_phone.success) {
                     customErrorHandle($('.login-signin-popup .dentist .form-register .step.third input[name="phone"]').closest('.field-parent'), 'Please use valid phone.');
                     errors = true;
                 }
@@ -2597,11 +2597,6 @@ function bindGoogleAlikeButtonsEvents() {
     });
 }
 bindGoogleAlikeButtonsEvents();
-
-//check if object has property
-function has(object, key) {
-    return object ? hasOwnProperty.call(object, key) : false;
-}
 
 function initToolsPostsSlider()   {
     //init slider for most popular posts

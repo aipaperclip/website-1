@@ -31,8 +31,6 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
             scope: 'email,public_profile',
             auth_type: 'rerequest'
         };
-
-        console.log(rerequest, 'rerequest');
         
         FB.login(function (response) {
             if (response.authResponse && response.status == 'connected') {
