@@ -234,17 +234,15 @@ class ChristmasCalendarController extends Controller
     }
 
     public function getHolidayCalendarParticipants(Request $request) {
-        var_dump($request->input('hash'));
-        var_dump(hash('sha256', getenv('HOLIDAY_CALENDAR_KEY')) == trim($request->input('hash')));
-        die('asd');
         if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY')) == trim($request->input('hash'))) {
             $participants = DB::connection('mysql')->table('christmas_calendar_participants')->select('christmas_calendar_participants.user_id')->where(array('christmas_calendar_participants.email_notifications' => true))->get()->all();
             $task = ChristmasCalendarTask::where(array('id' => $request->input('day')))->get()->first();
 
             if (!empty($participants) && !empty($task)) {
                 foreach ($participants as $participant) {
-                    $coredbData = (new APIRequestsController())->getUserData($participant->user_id);
-                    $participant->email = $coredbData->email;
+                    $coredbData = (new APIRequestsController())->getUserData($participant->user_id, true);
+                    var_dump($coredbData);
+                    //$participant->email = $coredbData->email;
                 }
 
                 if ($task->type == 'dcn-reward') {
@@ -265,6 +263,7 @@ class ChristmasCalendarController extends Controller
                     $reward = 'Holiday card';
                 }
 
+                die('saf');
                 return response()->json([
                     'success' => true,
                     'data' => array(
