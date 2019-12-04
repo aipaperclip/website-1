@@ -234,6 +234,7 @@ class ChristmasCalendarController extends Controller
     }
 
     public function getHolidayCalendarParticipants(Request $request) {
+        var_dump($request->input('hash'));
         var_dump(hash('sha256', getenv('HOLIDAY_CALENDAR_KEY')) == trim($request->input('hash')));
         die('asd');
         if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY')) == trim($request->input('hash'))) {
