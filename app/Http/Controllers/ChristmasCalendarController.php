@@ -241,7 +241,6 @@ class ChristmasCalendarController extends Controller
             if (!empty($participants) && !empty($task)) {
                 foreach ($participants as $participant) {
                     $coredbData = (new APIRequestsController())->getUserData($participant->user_id, true);
-                    var_dump($coredbData);
                     if(property_exists($coredbData, 'success') && $coredbData->success) {
                         $participant->email = $coredbData->data->email;
                     }
