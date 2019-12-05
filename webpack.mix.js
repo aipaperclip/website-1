@@ -14,7 +14,7 @@ mix.disableSuccessNotifications();
 //mix.js('public/assets/js/index.js', 'public/assets/js/index-compiled.js');
 
 /* ===== PUBLIC =====*/
-/*mix.styles([
+mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'public/assets/libs/jquery-ui/jquery-ui.css',
     'node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.css',
@@ -51,12 +51,12 @@ mix.scripts([
     'public/assets/js/google-map.js',
     'public/assets/js/address.js',
     'public/assets/js/index.js',
-], 'public/dist/js/front-script.js');*/
+], 'public/dist/js/front-script.js');
 
 /* ===== /PUBLIC =====*/
 
 /* ===== ADMIN =====*/
-mix.scripts([
+/*mix.scripts([
     'node_modules/jquery/dist/jquery.min.js',
     'node_modules/bootstrap/dist/js/bootstrap.min.js',
     'node_modules/bootbox.js/bootbox.min.js',
@@ -86,6 +86,6 @@ mix.styles([
     'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
     'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
     'public/assets/libs/jquery-ui/jquery-ui.css',
-], 'public/dist/css/admin-libs-style.css');
+], 'public/dist/css/admin-libs-style.css');*/
 /* ===== /ADMIN =====*/
 
