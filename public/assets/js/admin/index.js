@@ -162,13 +162,22 @@ function initDataTable()    {
                 }
                 useMediaEvent(pagination_id, close_button);
             });
-        }else {
+        } else if($('table.table.table-without-reorder').hasClass('holiday-calendar-participants'))  {
+            $('table.table.table-without-reorder').DataTable({
+                ordering: true,
+                order: [],
+                columnDefs: [{
+                    orderable: false,
+                    targets: 'no-sort'
+                }],
+                aaSorting: []
+            });
+        } else {
             $('table.table.table-without-reorder').DataTable({
                 sort: false
             });
         }
-    }
-    if($('table.table.table-with-reorder').length > 0) {
+    } else if($('table.table.table-with-reorder').length > 0) {
         var table = $('table.table.table-with-reorder').DataTable({
             rowReorder: true
         });
