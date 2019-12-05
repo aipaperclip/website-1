@@ -14,7 +14,7 @@ var basic = {
                 value = 1;
             }
             var d = new Date();
-            d.setTime(d.getTime() + (10*24*60*60*1000));
+            d.setTime(d.getTime() + (100*24*60*60*1000));
             var expires = "expires="+d.toUTCString();
             document.cookie = name + "=" + value + "; " + expires + ";path=/";
             if(name == "cookieLaw"){
@@ -92,8 +92,8 @@ var basic = {
             jQuery('.bootbox').last().css({'z-index': last_z+2}).next('.modal-backdrop').css({'z-index': last_z+1});
         }
     },
-    showAlert: function(message, class_name) {
-        basic.realShowDialog(message, "alert", class_name);
+    showAlert: function(message, class_name, vertical_center) {
+        basic.realShowDialog(message, "alert", class_name, null, null, vertical_center);
     },
     showConfirm: function(message, class_name, params, vertical_center) {
         basic.realShowDialog(message, "confirm", class_name, params, null, vertical_center);
@@ -125,11 +125,11 @@ var basic = {
         if(dialog_type == "confirm" && params!=undefined && params.buttons == undefined){
             atrs.buttons = {
                 confirm: {
-                    label: 'Ð”Ð°',
+                    label: 'Yes',
                     className: 'btn-success'
                 },
                 cancel: {
-                    label: 'ÐÐµ',
+                    label: 'No',
                     className: 'btn-danger'
                 }
             }
@@ -273,7 +273,13 @@ var basic = {
         return /^[\d\.\-]+$/.test(phone);
     },
     validateUrl: function(url)   {
-        return /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(url);
+        var pattern = new RegExp(/*'^(https?:\\/\\/)?' +*/ // protocol
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+            '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+            '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+            '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        return !!pattern.test(url);
     },
     isInViewport: function(el) {
         var elementTop = $(el).offset().top;
@@ -290,6 +296,25 @@ var basic = {
             isMobile = true;
         }
         return isMobile;
+    },
+    getMobileOperatingSystem: function () {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // Windows Phone must come first because its UA also contains "Android"
+        if (/windows phone/i.test(userAgent)) {
+            return "Windows Phone";
+        }
+
+        if (/android/i.test(userAgent)) {
+            return "Android";
+        }
+
+        // iOS detection from: http://stackoverflow.com/a/9039885/177710
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            return "iOS";
+        }
+
+        return "unknown";
     },
     objHasKey: function(object, key) {
         return object ? hasOwnProperty.call(object, key) : false;
@@ -322,9 +347,9 @@ jQuery(window).on('scroll', function () {
 });
 
 
-// ============================== PAGES ==============================
-//init job offer slug creation on title type
-if($('body').hasClass('add-job-offer'))    {
+// =========================================== PAGES ===========================================
+
+if($('body').hasClass('add-job-offer')) {
     $('body.add-job-offer input[name="title"]').on('input', function() {
         $('body.add-job-offer input[name="slug"]').val(generateUrl($(this).val().trim()));
     });
@@ -332,11 +357,11 @@ if($('body').hasClass('add-job-offer'))    {
     initSkillsLogic();
 
     bindDontSubmitFormOnEnter();
-}else if($('body').hasClass('edit-job-offer'))    {
+} else if($('body').hasClass('edit-job-offer'))    {
     initSkillsLogic();
 
     bindDontSubmitFormOnEnter();
-}else if($('body').hasClass('additionals')) {
+} else if($('body').hasClass('additionals')) {
     $('.box.api-endpoints .remove-box').unbind().click(function()   {
         $(this).closest('.custom-box').remove();
     });
@@ -353,7 +378,102 @@ if($('body').hasClass('add-job-offer'))    {
             });
         }
     });
+} else if($('body').hasClass('add-location'))  {
+    addLocationMap();
+} else if($('body').hasClass('edit-location'))  {
+    addLocationMap(true);
+} else if($('body').hasClass('add-clinic') || $('body').hasClass('edit-clinic')) {
+    $('.add-edit-clinic #featured').change(function() {
+        if($(this).is(':checked')) {
+            $('.add-edit-clinic .clinic-text').removeClass('hide');
+        } else {
+            $('.add-edit-clinic .clinic-text').addClass('hide');
+        }
+    });
+
+    $('select[name="type"]').on('change', function() {
+        $('select[name="subtype"] .subtype-option').addClass('hide');
+        $('select[name="subtype"] .subtype-option[data-type-id="'+$(this).val()+'"]').removeClass('hide');
+    });
+} else if($('body').hasClass('add-type') || $('body').hasClass('edit-type') || $('body').hasClass('add-platform') || $('body').hasClass('edit-platform')) {
+    var color_picker_options = {
+        preferredFormat: "hex",
+        showInput: true,
+        clickoutFiresChange: true,
+        showButtons: false,
+        move: function(color) {
+            $('input[name="color"]').val(color.toHexString());
+        },
+        change: function(color) {
+            $('input[name="color"]').val(color.toHexString());
+        }
+    };
+
+    if($('input[name="color"]').attr('data-color') != undefined) {
+        color_picker_options.color = $('input[name="color"]').attr('data-color');
+    }
+
+    $('input[name="color"]').spectrum(color_picker_options);
+} else if($('body').hasClass('view-christmas-calendar-participant')) {
+    $('.approve-user-calendar-participation').click(function() {
+        var approvedTasksLength = $('tr.passed-not-payed-task').length;
+        if(approvedTasksLength) {
+            var dcnAmount = 0;
+            var ticketAmount = 0;
+            var doubleReward = false;
+            var tasksToApprove = [];
+            for(var i = 0; i < approvedTasksLength; i+=1) {
+                if($('tr.passed-not-payed-task').eq(i).attr('data-type') == 'dcn-reward') {
+                    dcnAmount += parseInt($('tr.passed-not-payed-task').eq(i).attr('data-value'));
+                } else if($('tr.passed-not-payed-task').eq(i).attr('data-type') == 'ticket-reward') {
+                    ticketAmount += parseInt($('tr.passed-not-payed-task').eq(i).attr('data-value'));
+                }
+                tasksToApprove.push($('tr.passed-not-payed-task').eq(i).attr('data-id'));
+            }
+
+            var warningMsg = 'Are you sure you want to approve these user tasks? They make in total ' + dcnAmount + ' DCN and ' + ticketAmount + ' tickets.';
+
+            if ($('tr.passed-not-payed-task.on-time').length == 31) {
+                doubleReward = true;
+                warningMsg += ' This user has also completed all tasks in the tasks days so he will receive x2 DCN reward => ' + (dcnAmount*2) + ' DCN.';
+            }
+
+            var confirm_obj = {};
+            confirm_obj.callback = function (result) {
+                if(result) {
+                    $.ajax({
+                        type: 'POST',
+                        url: SITE_URL + '/christmas-calendar-participants/approve-tasks',
+                        data: {
+                            'tasksToApprove' : tasksToApprove,
+                            'participant' : $('table').attr('data-participant-id'),
+                            'doubleReward' : doubleReward
+                        },
+                        dataType: 'json',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function (response) {
+                            if (response.success) {
+                                basic.showAlert(response.success, '', true);
+
+                                $('tr.passed-not-payed-task').find('.reward-sent-td').html('<i class="fa fa-check text-success" aria-hidden="true"></i>').removeClass('passed-not-payed-task');
+                                $('tr.passed-not-payed-task').removeClass('passed-not-payed-task');
+                            } else if (response.error) {
+                                basic.showAlert(response.error, '', true);
+                            }
+                        }
+                    });
+                }
+            };
+            basic.showConfirm(warningMsg, '', confirm_obj, true);
+        } else {
+            basic.showAlert('This user has no tasks to approve.', '', true);
+        }
+    });
 }
+
+// =========================================== /PAGES ===========================================
 
 function initDataTable()    {
     if($('table.table.table-without-reorder').length > 0) {
@@ -371,13 +491,22 @@ function initDataTable()    {
                 }
                 useMediaEvent(pagination_id, close_button);
             });
-        }else {
+        } else if($('table.table.table-without-reorder').hasClass('holiday-calendar-participants'))  {
+            $('table.table.table-without-reorder').DataTable({
+                ordering: true,
+                order: [],
+                columnDefs: [{
+                    orderable: false,
+                    targets: 'no-sort'
+                }],
+                aaSorting: []
+            });
+        } else {
             $('table.table.table-without-reorder').DataTable({
                 sort: false
             });
         }
-    }
-    if($('table.table.table-with-reorder').length > 0) {
+    } else if($('table.table.table-with-reorder').length > 0) {
         var table = $('table.table.table-with-reorder').DataTable({
             rowReorder: true
         });
@@ -652,26 +781,6 @@ function addLocationMap(edit) {
         edit = false;
     }
 
-    /*$('select[name="subtype"] option[data-type-id="'+$('select[name="type"]').val()+'"]').addClass('show');
-    if(!edit) {
-        $('select[name="subtype"]').val($('select[name="subtype"] option:first').val());
-    }
-    $('select[name="type"]').on('change', function() {
-        $('select[name="subtype"] option').removeClass('show').removeAttr('selected');
-        $('select[name="subtype"] option[data-type-id="'+$('select[name="type"]').val()+'"]').addClass('show');
-        $('select[name="subtype"] option.show:first').attr('selected', 'selected').trigger('change');
-    });
-
-    $('select[name="clinic"] option[data-subtype-id="'+$('select[name="subtype"]').val()+'"]').addClass('show');
-    if(!edit) {
-        $('select[name="clinic"]').val($('select[name="clinic"] option:first').val());
-    }
-    $('select[name="subtype"]').on('change', function() {
-        $('select[name="clinic"] option').removeClass('show').removeAttr('selected');
-        $('select[name="clinic"] option[data-subtype-id="'+$('select[name="subtype"]').val()+'"]').addClass('show');
-        $('select[name="clinic"] option.show:first').attr('selected', 'selected');
-    });*/
-
     Gmap = jQuery('.add-edit-location-map');
     Gmap.each(function () {
         var $this = jQuery(this),
@@ -726,206 +835,7 @@ function addLocationMap(edit) {
             draggable = true;
         }
 
-        var styles = [
-            {
-                "featureType": "poi",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "hue": "#000000"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": -100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "poi",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "hue": "#000000"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": -100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "administrative",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "hue": "#000000"
-                    },
-                    {
-                        "saturation": 0
-                    },
-                    {
-                        "lightness": -100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "road",
-                "elementType": "labels",
-                "stylers": [
-                    {
-                        "hue": "#ffffff"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": 100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "water",
-                "elementType": "labels",
-                "stylers": [
-                    {
-                        "hue": "#000000"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": -100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "road.local",
-                "elementType": "all",
-                "stylers": [
-                    {
-                        "hue": "#ffffff"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": 100
-                    },
-                    {
-                        "visibility": "on"
-                    }
-                ]
-            },
-            {
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "hue": "#ffffff"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": 100
-                    },
-                    {
-                        "visibility": "on"
-                    }
-                ]
-            },
-            {
-                "featureType": "transit",
-                "elementType": "labels",
-                "stylers": [
-                    {
-                        "hue": "#000000"
-                    },
-                    {
-                        "saturation": 0
-                    },
-                    {
-                        "lightness": -100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "landscape",
-                "elementType": "labels",
-                "stylers": [
-                    {
-                        "hue": "#000000"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": -100
-                    },
-                    {
-                        "visibility": "off"
-                    }
-                ]
-            },
-            {
-                "featureType": "road",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "hue": "#bbbbbb"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": 26
-                    },
-                    {
-                        "visibility": "on"
-                    }
-                ]
-            },
-            {
-                "featureType": "landscape",
-                "elementType": "geometry",
-                "stylers": [
-                    {
-                        "hue": "#dddddd"
-                    },
-                    {
-                        "saturation": -100
-                    },
-                    {
-                        "lightness": -3
-                    },
-                    {
-                        "visibility": "on"
-                    }
-                ]
-            }
-        ];
+        var styles = [{"featureType":"poi","elementType":"all","stylers":[{"hue":"#000000"},{"saturation":-100},{"lightness":-100},{"visibility":"off"}]},{"featureType":"poi","elementType":"all","stylers":[{"hue":"#000000"},{"saturation":-100},{"lightness":-100},{"visibility":"off"}]},{"featureType":"administrative","elementType":"all","stylers":[{"hue":"#000000"},{"saturation":0},{"lightness":-100},{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"hue":"#ffffff"},{"saturation":-100},{"lightness":100},{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"hue":"#000000"},{"saturation":-100},{"lightness":-100},{"visibility":"off"}]},{"featureType":"road.local","elementType":"all","stylers":[{"hue":"#ffffff"},{"saturation":-100},{"lightness":100},{"visibility":"on"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffffff"},{"saturation":-100},{"lightness":100},{"visibility":"on"}]},{"featureType":"transit","elementType":"labels","stylers":[{"hue":"#000000"},{"saturation":0},{"lightness":-100},{"visibility":"off"}]},{"featureType":"landscape","elementType":"labels","stylers":[{"hue":"#000000"},{"saturation":-100},{"lightness":-100},{"visibility":"off"}]},{"featureType":"road","elementType":"geometry","stylers":[{"hue":"#bbbbbb"},{"saturation":-100},{"lightness":26},{"visibility":"on"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"hue":"#dddddd"},{"saturation":-100},{"lightness":-3},{"visibility":"on"}]}];
 
         var mapOptions = {
             zoom: zoom,
@@ -952,14 +862,6 @@ function addLocationMap(edit) {
             $('input[type="number"][name="lng"]').val(marker.position.lng().toFixed(5));
         });
     });
-}
-
-if($('body').hasClass('add-location'))  {
-    addLocationMap();
-}
-
-if($('body').hasClass('edit-location'))  {
-    addLocationMap(true);
 }
 
 if($('.add-edit-menu-element select[name="type"]').length > 0) {
@@ -1023,21 +925,6 @@ function bindDontSubmitFormOnEnter()    {
         if(event.keyCode == 13) {
             addSkillFromInput();
         }
-    });
-}
-
-if($('.add-edit-clinic').length) {
-    $('.add-edit-clinic #featured').change(function() {
-        if($(this).is(':checked')) {
-            $('.add-edit-clinic .clinic-text').removeClass('hide');
-        } else {
-            $('.add-edit-clinic .clinic-text').addClass('hide');
-        }
-    });
-
-    $('select[name="type"]').on('change', function() {
-        $('select[name="subtype"] .subtype-option').addClass('hide');
-        $('select[name="subtype"] .subtype-option[data-type-id="'+$(this).val()+'"]').removeClass('hide');
     });
 }
 
