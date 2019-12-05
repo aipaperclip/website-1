@@ -33,6 +33,10 @@ class Controller extends BaseController
     public function __construct() {
         if(!empty(Route::getCurrentRoute()) && !Request::isMethod('post'))    {
             View::share('mobile', $this->isMobile());
+            View::share('mobileGrade', $this->mobileGrade());
+            View::share('getOperatingSystems', $this->getOperatingSystems());
+            View::share('checkHttpHeadersForMobile', $this->checkHttpHeadersForMobile());
+            View::share('getUserAgent', $this->getUserAgent());
             View::share('meta_data', $this->getMetaData());
             View::share('parent_titles', $this->getParentDbTitles());
             View::share('parent_sections', $this->getParentDbSections());
@@ -184,6 +188,22 @@ class Controller extends BaseController
 
     protected function isMobile()   {
         return (new Agent())->isMobile();
+    }
+
+    protected function mobileGrade()   {
+        return (new Agent())->mobileGrade();
+    }
+
+    protected function getOperatingSystems()   {
+        return (new Agent())->getOperatingSystems();
+    }
+
+    protected function checkHttpHeadersForMobile()   {
+        return (new Agent())->checkHttpHeadersForMobile();
+    }
+
+    protected function getUserAgent()   {
+        return (new Agent())->getUserAgent();
     }
 
     protected function getSitemap() {
