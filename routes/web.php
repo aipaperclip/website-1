@@ -17,10 +17,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/test-os', function() {
-        return view('pages/test-os');
-    })->name('test-os');
-
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
@@ -57,7 +53,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');
 
-    Route::post('/submit-berlin-roundtable-form', 'BerlinRoundtableController@submitForm')->name('submit-berlin-roundtable-form');
+    //Route::post('/submit-berlin-roundtable-form', 'BerlinRoundtableController@submitForm')->name('submit-berlin-roundtable-form');
 
     Route::get('careers/{slug?}', function($slug = null)    {
         if(empty($slug))   {
@@ -82,8 +78,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::post('/dentist-register', 'UserController@dentistRegister')->name('dentist-register');
 
     Route::post('/patient-login', 'UserController@patientLogin')->name('patient-login');
-
-    Route::get('/forgotten-password', 'UserController@getForgottenPasswordView')->name('forgotten-password');
 
     Route::post('/password-recover', 'UserController@getRecoverPassword')->name('password-recover');
 
