@@ -215,6 +215,9 @@ class APIRequestsController extends Controller {
             )
         ));
 
+        $resp = json_decode(curl_exec($curl));
+        curl_close($curl);
+
         if(!empty($resp) && property_exists($resp, 'success')) {
             return $resp;
         }else {
