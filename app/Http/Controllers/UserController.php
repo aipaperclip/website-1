@@ -23,9 +23,9 @@ class UserController extends Controller {
     function checkEmail(Request $request) {
         $data = $this->clearPostData($request->input());
         $api_response = (new APIRequestsController())->checkIfFreeEmail($data['email']);
-        if($api_response->success) {
+        if ($api_response->success) {
             return response()->json(['success' => true]);
-        } else if(!$api_response->success) {
+        } else if (!$api_response->success) {
             return response()->json(['error' => true]);
         }
     }
@@ -44,7 +44,7 @@ class UserController extends Controller {
     }
 
     public function checkSession()   {
-        if(!empty(session('logged_user')) && (session('logged_user')['type'] == 'dentist' || session('logged_user')['type'] == 'patient'))    {
+        if (!empty(session('logged_user')) && (session('logged_user')['type'] == 'dentist' || session('logged_user')['type'] == 'patient'))    {
             //LOGGED
             return true;
         }else {
@@ -54,7 +54,7 @@ class UserController extends Controller {
     }
 
     public function checkDentistSession()   {
-        if(!empty(session('logged_user')) && session('logged_user')['type'] == 'dentist')    {
+        if (!empty(session('logged_user')) && session('logged_user')['type'] == 'dentist')    {
             //LOGGED
             return true;
         }else {
@@ -64,7 +64,7 @@ class UserController extends Controller {
     }
 
     public function checkPatientSession()   {
-        if(!empty(session('logged_user')) && session('logged_user')['type'] == 'patient')    {
+        if (!empty(session('logged_user')) && session('logged_user')['type'] == 'patient')    {
             //LOGGED
             return true;
         }else {
@@ -94,12 +94,12 @@ class UserController extends Controller {
         $data = $this->clearPostData($request->input());
 
         //check email validation
-        if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             return redirect()->route('forgotten-password')->with(['error' => 'Your form was not sent. Please try again with valid email.']);
         }
 
         $api_response = (new APIRequestsController())->generatePasswordRecoveryToken($data['email']);
-        if($api_response->success) {
+        if ($api_response->success) {
             $body = '<!DOCTYPE html><html><head></head><body><div style="font-size: 16px;">Seems like you forgot your password for Dentacoin. If this is true, click below to reset your password.<br><br><br><form target="_blank" method="POST" action="'.BASE_URL.'password-recover"><input type="hidden" name="slug" value="'.$api_response->data.'"/><input type="submit" value="PASSWORD RESET" style="font-size: 20px;color: #126585;background-color: white;padding: 10px 20px;text-decoration: none;font-weight: bold;border-radius: 4px;border: 2px solid #126585;cursor: pointer;"/><input type="hidden" name="_token" value="'.csrf_token().'"></form></div></body></html>';
 
             Mail::send(array(), array(), function($message) use ($body, $data) {
@@ -108,7 +108,7 @@ class UserController extends Controller {
                 $message->setBody($body, 'text/html');
             });
 
-            if(count(Mail::failures()) > 0) {
+            if (count(Mail::failures()) > 0) {
                 return redirect()->route('forgotten-password')->with(['error' => 'Your form was not sent. Please try again later.']);
             } else {
                 return redirect()->route('forgotten-password')->with(['success' => 'You have received an email with a password reset link.']);
@@ -135,7 +135,7 @@ class UserController extends Controller {
         ];
 
         $recover_method_response = (new APIRequestsController())->recoverPassword($post_fields_arr);
-        if($recover_method_response->success) {
+        if ($recover_method_response->success) {
             return redirect()->route('home')->with(['success' => 'Your password has been changed successfully.']);
         } else {
             return redirect()->route('home')->with(['error' => 'Your password change failed, please try again later.']);
@@ -164,11 +164,11 @@ class UserController extends Controller {
         $data = $request->input();
 
         $api_response = (new APIRequestsController())->dentistLogin($data, true);
-        if($api_response['success']) {
+        if ($api_response['success']) {
             $approved_statuses = array('approved', 'pending', 'test');
-            if($api_response['data']['self_deleted'] != NULL) {
+            if ($api_response['data']['self_deleted'] != NULL) {
                 return response()->json(['error' => true, 'message' => 'This account is deleted, you cannot log in with this account anymore.']);
-            } else if(!in_array($api_response['data']['status'], $approved_statuses)) {
+            } else if (!in_array($api_response['data']['status'], $approved_statuses)) {
                 return response()->json(['error' => true, 'message' => 'This account is not approved by Dentacoin team yet, please try again later.']);
             } else {
                 return response()->json(['success' => true]);
@@ -191,18 +191,18 @@ class UserController extends Controller {
         $data = $request->input();
 
         //check email validation
-        if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             return redirect()->route('home')->with(['error' => 'Your form was not sent. Please try again with valid email.']);
         }
 
         //handle the API response
         $api_response = (new APIRequestsController())->dentistLogin($data);
 
-        if($api_response['success']) {
+        if ($api_response['success']) {
             $approved_statuses = array('approved', 'pending', 'test');
-            if($api_response['data']['self_deleted'] != NULL) {
+            if ($api_response['data']['self_deleted'] != NULL) {
                 return redirect()->route('home')->with(['error' => 'This account has been deleted by its owner and cannot be restored.']);
-            } else if(!in_array($api_response['data']['status'], $approved_statuses)) {
+            } else if (!in_array($api_response['data']['status'], $approved_statuses)) {
                 return redirect()->route('home')->with(['error' => 'This account is not approved by Dentacoin team yet, please try again later.']);
             } else {
                 $session_arr = [
@@ -213,7 +213,7 @@ class UserController extends Controller {
 
                 session(['logged_user' => $session_arr]);
 
-                if(!empty($request->input('route'))) {
+                if (!empty($request->input('route'))) {
                     return redirect()->route($request->input('route'));
                 } else {
                     return redirect()->route('home');
@@ -268,27 +268,27 @@ class UserController extends Controller {
         $files = $request->file();
 
         //check email validation
-        if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL))   {
+        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL))   {
             return redirect()->route('home')->with(['error' => 'Your form was not sent. Please try again with valid email.']);
         }
 
-        if(!empty($files)) {
+        if (!empty($files)) {
             //404 if they're trying to send more than 2 files
-            if(sizeof($files) > 2) {
+            if (sizeof($files) > 2) {
                 return abort(404);
             } else {
                 $allowed = array('png', 'jpg', 'jpeg', 'svg', 'bmp', 'PNG', 'JPG', 'JPEG', 'SVG', 'BMP');
                 foreach($files as $file)  {
                     //checking the file size
-                    if($file->getSize() > MAX_UPL_SIZE) {
+                    if ($file->getSize() > MAX_UPL_SIZE) {
                         return redirect()->route('home', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with with maximum size of '.number_format(MAX_UPL_SIZE / 1048576).'MB. Please try again.']);
                     }
                     //checking file format
-                    if(!in_array(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION), $allowed)) {
+                    if (!in_array(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION), $allowed)) {
                         return redirect()->route('home')->with(['error' => 'Your form was not sent. Files can be only with .png, .jpg, .jpeg, .svg, .bmp formats. Please try again.']);
                     }
                     //checking if error in file
-                    if($file->getError()) {
+                    if ($file->getError()) {
                         return redirect()->route('home')->with(['error' => 'Your form was not sent. There is error with one or more of the files, please try with other files. Please try again.']);
                     }
                 }
@@ -308,11 +308,11 @@ class UserController extends Controller {
         //deleting the dummy image
         unlink($data['image-path']);
 
-        if($api_response['success']) {
-            if($data['user-type'] == 'dentist') {
+        if ($api_response['success']) {
+            if ($data['user-type'] == 'dentist') {
                 $popup_view = view('partials/popup-dentist-profile-verification', ['user' => $api_response['data']['id']]);
                 return redirect()->route('home')->with(['success' => true, 'popup-html' => $popup_view->render()]);
-            }else if($data['user-type'] == 'clinic') {
+            }else if ($data['user-type'] == 'clinic') {
                 $popup_view = view('partials/popup-clinic-profile-verification', ['user' => $api_response['data']['id']]);
                 return redirect()->route('home')->with(['success' => true, 'popup-html' => $popup_view->render()]);
             }
@@ -327,7 +327,7 @@ class UserController extends Controller {
             'id' => 'required'
         ], [
             'token.required' => 'Token is required.',
-            'id.required' => 'Email is required.'
+            'id.required' => 'ID is required.'
         ]);
 
         $session_arr = [
@@ -337,8 +337,8 @@ class UserController extends Controller {
         ];
 
         $current_logging_patient = (new APIRequestsController())->getUserData($request->input('id'), true);
-        if(!$current_logging_patient->success) {
-            if ((property_exists($current_logging_patient, 'deleted') && $current_logging_patient->deleted == true) && (property_exists($current_logging_patient, 'self_deleted') && $current_logging_patient->self_deleted == true)) {
+        if (!$current_logging_patient->success) {
+            if (property_exists($current_logging_patient, 'self_deleted') && $current_logging_patient->self_deleted == true) {
                 // self deleted
                 return redirect()->route('home')->with(['error' => 'This account has been deleted by its owner and cannot be restored.']);
             } else if ((property_exists($current_logging_patient, 'deleted') && $current_logging_patient->deleted == true)) {
@@ -350,7 +350,7 @@ class UserController extends Controller {
         } else {
             session(['logged_user' => $session_arr]);
 
-            if(!empty($request->input('route'))) {
+            if (!empty($request->input('route'))) {
                 return redirect()->route($request->input('route'));
             } else {
                 return redirect()->route('home');
@@ -374,7 +374,7 @@ class UserController extends Controller {
             'short_description' => $this->encrypt($data['description'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
         );
         $update_method_response = (new APIRequestsController())->updateAnonymousUserData($post_api_data);
-        if($update_method_response->success) {
+        if ($update_method_response->success) {
             return redirect()->route('home')->with(['success' => 'Your short description was saved successfully.']);
         } else {
             return redirect()->route('home')->with(['error' => 'Something went wrong, please try again later.']);
@@ -389,18 +389,18 @@ class UserController extends Controller {
     }
 
     protected function manageCustomCookie(Request $request) {
-        if(!empty(Input::get('slug')) && !empty(Input::get('type')) && !empty(Input::get('token'))) {
+        if (!empty(Input::get('slug')) && !empty(Input::get('type')) && !empty(Input::get('token'))) {
             //logging
             $slug = $this->decrypt(Input::get('slug'));
             $type = $this->decrypt(Input::get('type'));
             $token = $this->decrypt(Input::get('token'));
 
             $user = (new APIRequestsController())->getUserData($slug);
-            if($user) {
+            if ($user) {
                 $approved_statuses = array('approved', 'pending', 'test');
-                if($user->self_deleted != NULL) {
+                if ($user->self_deleted != NULL) {
                     return abort(404);
-                } else if(!in_array($user->status, $approved_statuses)) {
+                } else if (!in_array($user->status, $approved_statuses)) {
                     return abort(404);
                 } else {
                     $session_arr = [
@@ -415,11 +415,11 @@ class UserController extends Controller {
             } else {
                 return abort(404);
             }
-        } else if(!empty(Input::get('logout-token'))) {
+        } else if (!empty(Input::get('logout-token'))) {
             //logging out
             $token = $this->decrypt(Input::get('logout-token'));
 
-            if(session('logged_user')['token'] == $token) {
+            if (session('logged_user')['token'] == $token) {
                 $request->session()->forget('logged_user');
             }
         } else {

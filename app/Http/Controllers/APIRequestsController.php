@@ -203,6 +203,31 @@ class APIRequestsController extends Controller {
         }
     }
 
+    public function getUsersData($arrayIds) {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_POST => 1,
+            CURLOPT_URL => 'https://api.dentacoin.com/api/get-users-data/',
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_POSTFIELDS => array(
+                'ids' => (new \App\Http\Controllers\Controller())->encrypt(json_encode($arrayIds) , getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
+            )
+        ));
+
+        $resp = json_decode(curl_exec($curl));
+        curl_close($curl);
+
+        var_dump($resp);
+        die('asd');
+
+        if(!empty($resp) && property_exists($resp, 'success')) {
+            return $resp->data;
+        }else {
+            return false;
+        }
+    }
+
     public function registerDCNReward($user_id, $amount, $platform) {
         $curl = curl_init();
         curl_setopt_array($curl, array(
