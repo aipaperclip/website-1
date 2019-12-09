@@ -281,10 +281,10 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">SHARE this post on your Facebook profile:</div>
-                            <a href="https://www.facebook.com/pg/reviews.dentacoin/sample post/" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/pg/reviews.dentacoin/sample post/</a>
+                            <a href="https://www.facebook.com/dentacoin.trusted.reviews/posts/479024519389142" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/dentacoin.trusted.reviews/posts/479024519389142</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>
-                            <a href="https://www.twitter.com/pg/reviews.dentacoin/sample post/" class="color-christmas-calendar-red" target="_blank">https://www.twitter.com/pg/reviews.dentacoin/sample post/</a>
+                            <a href="https://twitter.com/dentacoin/status/1202612625881882624" class="color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1202612625881882624</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="padding-bottom-20">
                                 <div class="custom-google-label-style module max-width-400">
@@ -641,7 +641,7 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if($task->id == 1 || $task->id == 16)
+            @if($task->id == 1 || $task->id == 16 || $task->id == 8)
                 @if($task->id == 1)
                     @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredbData->slug.'.png')
                     @php($btnLabel = 'DOWNLOAD')
