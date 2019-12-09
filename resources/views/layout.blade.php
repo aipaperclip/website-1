@@ -491,6 +491,7 @@
             </figure>
         </div>
     </div>
+    
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -503,127 +504,12 @@
             s0.parentNode.insertBefore(s1,s0);
         })();
     </script>
-    <script type='application/ld+json'>
-{
-  "@context": "http://www.schema.org",
-  "@type": "Corporation",
-  "name": "Dentacoin Foundation",
-  "description": "Dentacoin develops the dental industry as well as creates market intelligence through a crypto currency reward system that inspires participation throughout the community. Dentacoin is the first crypto currency that uses a decentralized review platform and transparently rewards patients and dentists who make contributions that benefit the community. The Dentacoin Foundation team strongly believes in building a future healthcare industry that will fall into the hands of the people, resulting in the disruption of the existing industries and the creation of new industries in the short and long term.",
-  "logo": "https://dentacoin.com/assets/uploads/rounded-logo.svg",
-  "image": "https://dentacoin.com/assets/uploads/two-line-logo.svg",
-  "url": "https://dentacoin.com",
-  "sameAs": [
-        "https://www.facebook.com/dentacoin/",
-        "https://www.instagram.com/dentacoin_official/",
-        "https://twitter.com/dentacoin",
-        "https://www.linkedin.com/company/dentacoin/",
-        "https://www.youtube.com/dentacoin",
-        "https://medium.com/@dentacoin/",
-        "https://github.com/Dentacoin",
-        "https://steemit.com/@dentacoin",
-        "https://www.reddit.com/r/Dentacoin/"
-    ],
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Wim Duisenbergplantsoen 31, ",
-    "addressLocality": "Maastricht",
-    "postalCode": "6221 SE ",
-    "addressCountry": "Netherlands"
-    },
-    "foundingDate": "03/22/2017",
-    "founders": [
-    {
-        "@type": "Person",
-        "jobTitle": "Founder",
-        "familyName": "Dimitrakiev",
-        "givenName": "Dimitar ",
-        "honorificPrefix": "Prof. Dr. ",
-        "sameAs": "https://www.linkedin.com/in/dimitar-dimitrakiev/"
-        },
-    {
-        "@type": "Person",
-        "familyName": "Grenzebach",
-        "givenName": "Philipp",
-        "jobTitle": "Co-Founder & Business Developer",
-        "sameAs": "https://www.linkedin.com/in/philipp-g-986861146/"
-    },
-    {
-        "@type": "Person",
-        "familyName": "Grenzebach",
-        "givenName": "Jeremias",
-        "jobTitle": "Co-Founder & Core Developer",
-        "sameAs": "https://twitter.com/neptox"
-    }
-    ],
-  "owns": {
-   "@type": "Product",
-  "name": "DentaVox",
-  "image": "https://dentavox.dentacoin.com/new-vox-img/logo-vox.png",
-  "description": "Take genuine paid surveys online and get rewarded! DentaVox is a market research platfom designed to provide valuable patient insights to the dental industry. Our large database with reliable dental statistics is available for free for anyone who's interested. Feel free to become a respondent yourself and help improve global dental care while also earning your first Dentacoin tokens with DentaVox.",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "ratingCount": "31"
-  },
-  "owns": {
-   "@type": "Product",
-  "name": "Dentacoin Trusted Reviews",
-  "image": "https://dentacoin.com/assets/uploads/trusted-reviews.svg",
-  "description": "Dentacoin Trusted Reviews is the first platform for detailed, verified and incentivized dental treatment reviews. Patients are invited by their dentists, verified through Blockchain-based identity system and rewarded for providing valuable feedback. Dentists have the chance to improve upon the feedback received and are incentivized for willing to do so.",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "ratingCount": "23"
-  },
-  "owns": {
-   "@type": "Product",
-  "name": "Dentacoin Assurance",
-  "image": "https://assurance.dentacoin.com/assets/uploads/assurance-logo.svg",
-  "description": "Dentacoin Assurance is a revolutionary dental insurance-like program that shifts the focus from treatment to prevention and brings the financial interests of patients and dentists into complete alignment without any intermediaries. Patients are entitled to a lifelong, prevention-focused dental care by paying a low monthly premium in DCN to their dentists.Dentists receive a stable basic income while simultaneously establish strong, lasting bonds with their patients.",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "ratingCount": "13"
-  },
-  "owns": {
-   "@type": "Product",
-  "name": "Dentacare App",
-  "image": "https://dentacoin.com/assets/uploads/pop-up-dentacare-app-icon.svg",
-  "description": "Dentacare is a mobile app which teaches kids and adults to maintain good oral hygiene through a 3-month, incentivized challenge. Users are guided through reminders, notifications, voice navigation and tutorials towards establishing and maintaining dental care habits. Dentists recommend the app to their patients to ensure proper in-home care.",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "ratingCount": "19"
-  },
-  "owns": {
-   "@type": "Product",
-  "name": "Wallet dApp",
-  "image": "https://dentacoin.com/assets/uploads/pop-up-wallet-app-icon.svg",
-  "description": "Dentacoin Wallet allows users to easily and securely store, send, receive DCN tokens, as well as buy DCN against fiat and crypto currencies. Users are entitled to the combination between account security and a very friendly user interface. Dentists, patients, suppliers can easily handle payments between each other without any significant tech knowledge required.",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "ratingCount": "48"
-  },
-  "owns": {
-   "@type": "Product",
-  "name": "Dentacoin Blog",
-  "image": "https://dentacoin.com/assets/uploads/pop-up-blog-app-icon.svg",
-  "description": "Dentacoin Blog provides the most recent news around the project, as well as regular weekly updates.",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "ratingCount": "27"
-  }
-}
-}
-}
-}
-}
-}
-}
-</script>
     <!--End of Tawk.to Script-->
+
+    <!--Start of Schema Markup-->
+    <script type='application/ld+json'>{"@context":"http://www.schema.org","@type":"Corporation","name":"Dentacoin Foundation","description":"Dentacoin develops the dental industry as well as creates market intelligence through a crypto currency reward system that inspires participation throughout the community. Dentacoin is the first crypto currency that uses a decentralized review platform and transparently rewards patients and dentists who make contributions that benefit the community. The Dentacoin Foundation team strongly believes in building a future healthcare industry that will fall into the hands of the people, resulting in the disruption of the existing industries and the creation of new industries in the short and long term.","logo":"https://dentacoin.com/assets/uploads/rounded-logo.svg","image":"https://dentacoin.com/assets/uploads/two-line-logo.svg","url":"https://dentacoin.com","sameAs":["https://www.facebook.com/dentacoin/","https://www.instagram.com/dentacoin_official/","https://twitter.com/dentacoin","https://www.linkedin.com/company/dentacoin/","https://www.youtube.com/dentacoin","https://medium.com/@dentacoin/","https://github.com/Dentacoin","https://steemit.com/@dentacoin","https://www.reddit.com/r/Dentacoin/"],"address":{"@type":"PostalAddress","streetAddress":"Wim Duisenbergplantsoen 31, ","addressLocality":"Maastricht","postalCode":"6221 SE ","addressCountry":"Netherlands"},"foundingDate":"03/22/2017","founders":[{"@type":"Person","jobTitle":"Founder","familyName":"Dimitrakiev","givenName":"Dimitar ","honorificPrefix":"Prof. Dr. ","sameAs":"https://www.linkedin.com/in/dimitar-dimitrakiev/"},{"@type":"Person","familyName":"Grenzebach","givenName":"Philipp","jobTitle":"Co-Founder & Business Developer","sameAs":"https://www.linkedin.com/in/philipp-g-986861146/"},{"@type":"Person","familyName":"Grenzebach","givenName":"Jeremias","jobTitle":"Co-Founder & Core Developer","sameAs":"https://twitter.com/neptox"}],"owns":[{"@type":"Product","name":"DentaVox","image":"https://dentavox.dentacoin.com/new-vox-img/logo-vox.png","description":"Take genuine paid surveys online and get rewarded! DentaVox is a market research platfom designed to provide valuable patient insights to the dental industry. Our large database with reliable dental statistics is available for free for anyone who's interested. Feel free to become a respondent yourself and help improve global dental care while also earning your first Dentacoin tokens with DentaVox.","aggregateRating":{"@type":"AggregateRating","ratingValue":"5","ratingCount":"31"},"url":"https://dentavox.dentacoin.com/"},{"@type":"Product","name":"Dentacoin Trusted Reviews","image":"https://dentacoin.com/assets/uploads/trusted-reviews.svg","description":"Dentacoin Trusted Reviews is the first platform for detailed, verified and incentivized dental treatment reviews. Patients are invited by their dentists, verified through Blockchain-based identity system and rewarded for providing valuable feedback. Dentists have the chance to improve upon the feedback received and are incentivized for willing to do so.","aggregateRating":{"@type":"AggregateRating","ratingValue":"5","ratingCount":"23"},"url":"https://reviews.dentacoin.com/"},{"@type":"Product","name":"Dentacoin Assurance","image":"https://assurance.dentacoin.com/assets/uploads/assurance-logo.svg","description":"Dentacoin Assurance is a revolutionary dental insurance-like program that shifts the focus from treatment to prevention and brings the financial interests of patients and dentists into complete alignment without any intermediaries. Patients are entitled to a lifelong, prevention-focused dental care by paying a low monthly premium in DCN to their dentists.Dentists receive a stable basic income while simultaneously establish strong, lasting bonds with their patients.","aggregateRating":{"@type":"AggregateRating","ratingValue":"5","ratingCount":"13"},"url":"https://assurance.dentacoin.com/"},{"@type":"Product","name":"Dentacare App","image":"https://dentacoin.com/assets/uploads/pop-up-dentacare-app-icon.svg","description":"Dentacare is a mobile app which teaches kids and adults to maintain good oral hygiene through a 3-month, incentivized challenge. Users are guided through reminders, notifications, voice navigation and tutorials towards establishing and maintaining dental care habits. Dentists recommend the app to their patients to ensure proper in-home care.","aggregateRating":{"@type":"AggregateRating","ratingValue":"5","ratingCount":"19"},"url":"https://dentacare.dentacoin.com/"},{"@type":"Product","name":"Dentacoin Blog","image":"https://dentacoin.com/assets/uploads/pop-up-blog-app-icon.svg","description":"Dentacoin Blog provides the most recent news around the project, as well as regular weekly updates.","aggregateRating":{"@type":"AggregateRating","ratingValue":"5","ratingCount":"27"},"url":"https://blog.dentacoin.com/"},{"@type":"Product","name":"Wallet dApp","image":"https://dentacoin.com/assets/uploads/pop-up-wallet-app-icon.svg","description":"Dentacoin Wallet allows users to easily and securely store, send, receive DCN tokens, as well as buy DCN against fiat and crypto currencies. Users are entitled to the combination between account security and a very friendly user interface. Dentists, patients, suppliers can easily handle payments between each other without any significant tech knowledge required.","aggregateRating":{"@type":"AggregateRating","ratingValue":"5","ratingCount":"48"},"url":"https://wallet.dentacoin.com/"}]}</script>
+    <!--End of Schema Markup-->
+
     {{--<script src="/assets/js/basic.js"></script>--}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
