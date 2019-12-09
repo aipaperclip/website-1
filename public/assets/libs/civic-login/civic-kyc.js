@@ -24,6 +24,7 @@
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
+        console.log(event, 'event');
         var jwtToken = event.response;
         customCivicEvent('receivedKYCCivicToken', 'Received civic token successfully.', jwtToken);
     });
