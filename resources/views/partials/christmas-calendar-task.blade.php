@@ -589,7 +589,7 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if($task->id == 1 || $task->id == 16 || $task->id == 8)
+            @if($task->id == 1 || $task->id == 16 || $task->id == 8 || $task->id == 24)
                 @if($task->id == 1)
                     @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredbData->slug.'.png')
                     @php($btnLabel = 'DOWNLOAD')
@@ -600,6 +600,10 @@
                     @php($actionType = 'external-link')
                 @elseif($task->id == 16)
                     @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredbData->slug.'.png')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($task->id == 24)
+                    @php($btnLink = 'https://dentacoin.com/assets/uploads/dentacoin-oral-health-guide-2020.pdf')
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @endif
@@ -641,7 +645,7 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if($task->id == 1 || $task->id == 16 || $task->id == 8)
+            @if($task->id == 1 || $task->id == 16 || $task->id == 8 || $task->id == 24)
                 @if($task->id == 1)
                     @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredbData->slug.'.png')
                     @php($btnLabel = 'DOWNLOAD')
@@ -652,6 +656,10 @@
                     @php($actionType = 'external-link')
                 @elseif($task->id == 16)
                     @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredbData->slug.'.png')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($task->id == 24)
+                    @php($btnLink = 'https://dentacoin.com/assets/uploads/dentacoin-oral-health-guide-2020.pdf')
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @endif
