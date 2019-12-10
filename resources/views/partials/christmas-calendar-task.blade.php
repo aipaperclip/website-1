@@ -603,7 +603,7 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($task->id == 24)
-                    @php($btnLink = 'https://dentacoin.com/assets/uploads/dentacoin-oral-health-guide-2020.pdf')
+                    @php($btnLink = 'https://dentacoin.com/assets/docs/dentacoin-oral-health-guide-2020.pdf')
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @endif
@@ -659,7 +659,7 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($task->id == 24)
-                    @php($btnLink = 'https://dentacoin.com/assets/uploads/dentacoin-oral-health-guide-2020.pdf')
+                    @php($btnLink = 'https://dentacoin.com/assets/docs/dentacoin-oral-health-guide-2020.pdf')
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @endif
