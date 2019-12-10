@@ -2,10 +2,10 @@
     await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-config.js', function() {});
 
     //load civic lib CSS
-    $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css"/>"/>');
+    $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css?v='+new Date().getTime()+'"/>');
 
     //load civic lib JS
-    await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js', function() {});
+    await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js?v='+new Date().getTime(), function() {});
 
     var civic_custom_btn;
     //init civic
@@ -24,7 +24,6 @@
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
-        console.log(event, 'event');
         var jwtToken = event.response;
         customCivicEvent('receivedKYCCivicToken', 'Received civic token successfully.', jwtToken);
     });
