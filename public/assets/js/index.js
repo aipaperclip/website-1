@@ -56,7 +56,7 @@ $(document).ready(async function() {
 
 $(window).on('load', function() {
     //HOMEPAGE
-    if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && (!basic.isMobile() || !isMobileIOS())) {
+    if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && !basic.isMobile()) {
         console.log('Don\'t touch the code. Or do ... ¯\\_(ツ)_/¯');
         setLinesDots();
 
@@ -105,7 +105,7 @@ $(window).on('load', function() {
 $('body').bind('wheel', onMousewheel);
 
 $(window).on('resize', function(){
-    if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && (!basic.isMobile() || !isMobileIOS())) {
+    if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && !basic.isMobile()) {
         //HOMEPAGE
         setLinesDots(true);
     } else if ($('body').hasClass('testimonials')) {
@@ -138,7 +138,7 @@ $(window).on('scroll', function()  {
 });
 
 function onMousewheel(event)    {
-    if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && (!basic.isMobile() || !isMobileIOS()) && !$('body').hasClass('modal-open') && !is_mac) {
+    if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && !basic.isMobile() && !$('body').hasClass('modal-open') && !is_mac) {
         if (event.originalEvent.deltaY < 0)  {
             //scroll up
             if ($('body').attr('data-current') == 'two') {
@@ -404,7 +404,7 @@ function refreshingMainDots()   {
 
 function checkIfLineIsReadyToBeCreated(el, position, tail, tail_position, action) {
     //HOMEPAGE
-    if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && (!basic.isMobile() || !isMobileIOS())) {
+    if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && !basic.isMobile()) {
         //doing this check, because IE 11 not support ES6
         if (action === undefined) {
             action = null;
@@ -562,7 +562,7 @@ function callActionOnLastTailFinish(action)    {
 
 //HOMEPAGE
 if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) {
-    if (basic.isMobile() || isMobileIOS())    {
+    if (basic.isMobile())    {
         $('.homepage-container.mobile .successful-practices .content .content-container').removeClass('col-md-5 col-md-offset-2').addClass('col-md-12');
         $('.homepage-container.mobile .successful-practices .content figure').removeClass('col-md-5').addClass('col-md-10 col-md-offset-1');
         $('.homepage-container.mobile .below-successful-practices .flex .description-over-line').removeClass('col-md-7 col-md-offset-0').addClass('col-md-8 col-md-offset-2');
@@ -732,7 +732,7 @@ if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body
         if ($(this).closest('.exchange-method').hasClass('active'))  {
             $(this).closest('.exchange-method').removeClass('active').find('.list').slideUp(300);
         } else {
-            if (basic.isMobile() || isMobileIOS())    {
+            if (basic.isMobile())    {
                 $('.homepage-container .exchange-platforms-and-wallets .exchange-method').removeClass('active').find('.list').slideUp(300);
             }
             $(this).closest('.exchange-method').addClass('active').find('.list').slideDown(300);
@@ -2704,12 +2704,3 @@ function fireGoogleAnalyticsEvent(category, action, label, value) {
 }
 
 // =================================== /GOOGLE ANALYTICS TRACKING LOGIC ======================================
-
-// custom solution for broken safari
-function isMobileIOS() {
-    if(/Macintosh|Mac|Mac OS X/i.test(navigator.userAgent) && $(window).width() < 1024) {
-        return true;
-    } else {
-        return false;
-    }
-}

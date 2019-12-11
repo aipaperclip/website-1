@@ -34,6 +34,8 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
         
         FB.login(function (response) {
             if (response.authResponse && response.status == 'connected') {
+                fbGetData();
+
                 customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
 
                 var fb_token = response.authResponse.accessToken;
@@ -75,11 +77,12 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
     });
 
     //exchanging token for data
-        /*function fbGetData() {
-            FB.api('/me?fields=id,email,name,permissions', function (response) {
-                customFacebookEvent('receivedFacebookData', 'Received facebook data successfully.', response);
-            });
-        }*/
+    function fbGetData() {
+        console.log('fbGetData');
+        FB.api('/me?fields=id,email,name,permissions', function (response) {
+            console.log(response, 'response');
+        });
+    }
 
     //custom function for firing events
         function customFacebookEvent(type, message, response_data) {
