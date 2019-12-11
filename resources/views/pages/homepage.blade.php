@@ -356,7 +356,7 @@
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
                                 <figure class="mobile-icon" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2017-quarter-1.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 1"/>
+                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2017.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 1"/>
                                 </figure>
                             @endif
                             {!! $sections[8]->html !!}
@@ -364,7 +364,7 @@
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
                                 <figure class="mobile-icon" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2017-quarter-3.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 3"/>
+                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2018.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 3"/>
                                 </figure>
                             @endif
                             {!! $sections[9]->html !!}
@@ -372,7 +372,7 @@
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
                                 <figure class="mobile-icon" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2017-quarter-4.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 4"/>
+                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2019.svg') }}" itemprop="contentUrl" alt="Roadmap 2017 Quarter 4"/>
                                 </figure>
                             @endif
                             {!! $sections[10]->html !!}
@@ -380,19 +380,19 @@
                         <div class="roadmap-cell inline-block-top">
                             @if($mobile)
                                 <figure class="mobile-icon" itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2018.svg') }}" itemprop="contentUrl" alt="Roadmap 2018"/>
+                                    <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2020.svg') }}" itemprop="contentUrl" alt="Roadmap 2018"/>
                                 </figure>
                             @endif
                             {!! $sections[11]->html !!}
                         </div>
-                        <div class="roadmap-cell inline-block-top">
+                        {{--<div class="roadmap-cell inline-block-top">
                             @if($mobile)
                                 <figure class="mobile-icon" itemscope="" itemtype="http://schema.org/ImageObject">
                                     <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/images/roadmap-circle-2019.svg') }}" itemprop="contentUrl" alt="Roadmap 2019"/>
                                 </figure>
                             @endif
                             {!! $sections[12]->html !!}
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
             </div>
