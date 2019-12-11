@@ -133,8 +133,8 @@ $(window).on('scroll', function()  {
     checkIfLineIsReadyToBeCreated('thirteenth', 'horizontal', ['fourteenth'], ['vertical'], 'fade-in-transaction-with-dcn');
     checkIfLineIsReadyToBeCreated('fifteenth', 'horizontal', ['sixteenth'], ['vertical']);
     checkIfLineIsReadyToBeCreated('seventeenth', 'horizontal', ['eighteenth'], ['vertical'], 'load-roadmap-gif');
-    checkIfLineIsReadyToBeCreated('nineteenth', 'vertical');
-    checkIfLineIsReadyToBeCreated('twentieth', 'horizontal');
+    checkIfLineIsReadyToBeCreated('nineteenth', 'vertical', ['twentieth'], ['horizontal']);
+    //checkIfLineIsReadyToBeCreated('twentieth', 'horizontal');
 });
 
 function onMousewheel(event)    {
