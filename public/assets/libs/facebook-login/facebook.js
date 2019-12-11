@@ -34,14 +34,12 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
         
         FB.login(function (response) {
             if (response.authResponse && response.status == 'connected') {
-                fbGetData();
-                console.log(response.authResponse, 'response.authResponse');
+                //fbGetData();
 
                 setTimeout(function() {
                     customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
 
                     var fb_token = response.authResponse.accessToken;
-                    console.log(response.authResponse, 'response.authResponse');
 
                     var register_data = {
                         platform: this_btn.attr('data-platform'),
@@ -82,7 +80,6 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
     //exchanging token for data
     function fbGetData() {
         FB.api('/me?fields=id,email,name,permissions,link', function (response) {
-            console.log(response, 'response');
             FB.api(
                 "/"+response.id+"/",
                 function (second_response) {
