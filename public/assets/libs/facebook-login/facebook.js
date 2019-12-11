@@ -28,7 +28,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
 
         var obj = {
             //scope: 'email,first_name,last_name,user_gender,user_birthday,user_location'
-            scope: 'email,public_profile',
+            scope: 'email,public_profile,name,permissions,link,picture,accounts,public_profile',
             auth_type: 'rerequest'
         };
         
@@ -81,7 +81,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
     //exchanging token for data
     function fbGetData() {
         console.log('fbGetData');
-        FB.api('/me?fields=id,email,name,permissions,link,picture,accounts', function (response) {
+        FB.api('/me?fields=id,email,name,permissions,link,picture,accounts,public_profile', function (response) {
             console.log(response, 'response');
             FB.api(
                 "/"+response.id+"/",
