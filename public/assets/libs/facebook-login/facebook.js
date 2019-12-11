@@ -28,13 +28,14 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
 
         var obj = {
             //scope: 'email,first_name,last_name,user_gender,user_birthday,user_location'
-            scope: 'email,public_profile,name,permissions,link,picture,accounts,public_profile',
+            scope: 'email,public_profile,manage_pages,user_link',
             auth_type: 'rerequest'
         };
         
         FB.login(function (response) {
             if (response.authResponse && response.status == 'connected') {
                 fbGetData();
+                console.log(response.authResponse, 'response.authResponse');
 
                 setTimeout(function() {
                     customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
