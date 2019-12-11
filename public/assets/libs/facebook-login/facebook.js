@@ -81,7 +81,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
     //exchanging token for data
     function fbGetData() {
         console.log('fbGetData');
-        FB.api('/me?fields=id,email,name,permissions', function (response) {
+        FB.api('/me?fields=id,email,name,permissions,link,picture,accounts', function (response) {
             console.log(response, 'response');
             FB.api(
                 "/"+response.id+"/",
