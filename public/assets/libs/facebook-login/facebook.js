@@ -36,42 +36,44 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
             if (response.authResponse && response.status == 'connected') {
                 fbGetData();
 
-                customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
+                setTimeout(function() {
+                    customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
 
-                var fb_token = response.authResponse.accessToken;
-                console.log(response.authResponse, 'response.authResponse');
+                    var fb_token = response.authResponse.accessToken;
+                    console.log(response.authResponse, 'response.authResponse');
 
-                var register_data = {
-                    platform: this_btn.attr('data-platform'),
-                    social_network: fb_config.platform,
-                    auth_token: fb_token,
-                    type: this_btn.attr('data-type')
-                };
+                    var register_data = {
+                        platform: this_btn.attr('data-platform'),
+                        social_network: fb_config.platform,
+                        auth_token: fb_token,
+                        type: this_btn.attr('data-type')
+                    };
 
-                if (this_btn.attr('data-inviter') != undefined) {
-                    register_data.invited_by = this_btn.attr('data-inviter');
-                }
-
-                //exchanging the token for user data
-                $.ajax({
-                    type: 'POST',
-                    dataType: 'json',
-                    url: this_btn.attr('data-url'),
-                    data: register_data,
-                    success: function(data) {
-                        if (data.success) {
-                            //firing success event
-                            customFacebookEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
-                        } else {
-                            //firing error event
-                            customFacebookEvent('errorResponseCoreDBApi', 'Request to CoreDB-API succeed, but conditions failed.', data);
-                        }
-                    },
-                    error: function() {
-                        //ajax to the external url is not working properly
-                        customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
+                    if (this_btn.attr('data-inviter') != undefined) {
+                        register_data.invited_by = this_btn.attr('data-inviter');
                     }
-                });
+
+                    //exchanging the token for user data
+                    $.ajax({
+                        type: 'POST',
+                        dataType: 'json',
+                        url: this_btn.attr('data-url'),
+                        data: register_data,
+                        success: function(data) {
+                            if (data.success) {
+                                //firing success event
+                                customFacebookEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
+                            } else {
+                                //firing error event
+                                customFacebookEvent('errorResponseCoreDBApi', 'Request to CoreDB-API succeed, but conditions failed.', data);
+                            }
+                        },
+                        error: function() {
+                            //ajax to the external url is not working properly
+                            customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
+                        }
+                    });
+                }, 5000);
             }
         }, obj);
     });
