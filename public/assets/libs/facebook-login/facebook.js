@@ -28,7 +28,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
 
         var obj = {
             //scope: 'email,first_name,last_name,user_gender,user_birthday,user_location'
-            scope: 'email,public_profile,manage_pages,user_link',
+            scope: 'email,public_profile,user_link',
             auth_type: 'rerequest'
         };
         
