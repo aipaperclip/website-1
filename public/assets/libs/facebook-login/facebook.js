@@ -36,7 +36,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
             if (response.authResponse && response.status == 'connected') {
                 //fbGetData();
 
-                setTimeout(function() {
+                //setTimeout(function() {
                     customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
 
                     var fb_token = response.authResponse.accessToken;
@@ -72,7 +72,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                             customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
                         }
                     });
-                }, 5000);
+                //}, 5000);
             }
         }, obj);
     });
