@@ -5490,7 +5490,7 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
   text-align: left;
   color: black;
   font-size: 20px;
-  padding: 10px 15px 10px 70px;
+  padding: 10px 15px 10px 60px;
   max-width: 350px;
   margin: 0 auto;
   cursor: pointer;
@@ -5505,8 +5505,9 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
     background-image: url(/assets/images/civic.svg);
     border: 1px solid #3bb03f; }
   .social-login-btn.facebook-custom-btn {
-    background-image: url(/assets/images/facebook.svg);
-    border: 1px solid #3b5999; }
+    background-color: #4267B2;
+    color: white;
+    padding: 10px 15px; }
 
 .error-handle, .alert.alert-warning {
   color: #a94442;
