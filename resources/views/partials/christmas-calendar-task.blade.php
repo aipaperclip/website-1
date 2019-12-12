@@ -310,6 +310,7 @@
                             <div class="padding-top-15">
                                 <a href="https://reviews.dentacoin.com/?popup=invite-new-dentist-popup" target="_blank" class="white-red-btn">INVITE NOW</a>
                             </div>
+                            <div class="padding-top-10 fs-14">If you are a dentist and you want to invite a colleague, please send us their name, address, and website at <a href="mailto:business@dentacoin.com" class="color-christmas-calendar-red">business@dentacoin.com</a>.</div>
                         </div>
                         @break
                         @case(13)
