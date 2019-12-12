@@ -564,6 +564,18 @@ body.testimonials, body.press-center {
         align-items: center;
         justify-content: center;
     }*/
+    &.style-anchors {
+        .modal-dialog {
+            .modal-content {
+                .modal-body {
+                    a {
+                        font-weight: bold;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
     &.login-signin-popup {
         .bootbox-close-button {
             display: none;

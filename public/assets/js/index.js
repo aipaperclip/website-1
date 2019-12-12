@@ -2434,7 +2434,7 @@ function apiEventsListeners() {
         }
 
         $('.response-layer').hide();
-        basic.showDialog(error_popup_html, '', null, true);
+        basic.showDialog(error_popup_html, 'style-anchors', null, true);
     });
 }
 apiEventsListeners();

@@ -4591,6 +4591,9 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
     font-size: 26px;
     top: 0;
     margin-top: 0 !important; }
+  .bootbox.style-anchors .modal-dialog .modal-content .modal-body a {
+    font-weight: bold;
+    text-decoration: underline; }
   .bootbox.login-signin-popup .bootbox-close-button {
     display: none; }
   .bootbox.login-signin-popup .modal-dialog {
