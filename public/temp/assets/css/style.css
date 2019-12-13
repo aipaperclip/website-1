@@ -91,6 +91,10 @@
     padding-bottom: 10px;
 }
 
+.dentavox-mobile-visible-only-on-mobile {
+    display: none;
+}
+
 .how-to-earn-rewards-section {
     margin-bottom: 60px;
     font-size: 0;
@@ -338,6 +342,14 @@
         display: block;
         padding-top: 15px;
         width: 100%;
+    }
+    .dentavox-mobile-visible-only-on-mobile {
+        display: block;
+        text-align: center;
+    }
+    .dentavox-mobile-visible-only-on-mobile img {
+        width: 280px;
+        margin: 0 auto;
     }
     .how-to-earn-rewards-section {
         text-align: center;
