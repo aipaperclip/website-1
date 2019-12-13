@@ -98,7 +98,7 @@
                         <a href="javascript:void(0)" class="white-black-btn show-login-signin" tabindex="-1">SIGN IN</a>
                         <span class="first-dot custom-dot">&nbsp;</span>
                         @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
-                            <figure itemscope="" itemtype="http://schema.org/ImageObject" class="christmas-ball inlin-block">
+                            <figure itemscope="" itemtype="http://schema.org/ImageObject" class="christmas-ball">
                                 <img src="/assets/images/christmas-calendar-campaign/christmas-ball.svg" class="width-100 max-width-40" alt="Christmas ball" itemprop="contentUrl"/>
                             </figure>
                         @endif
