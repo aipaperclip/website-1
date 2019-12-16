@@ -315,7 +315,7 @@
                         @break
                         @case(13)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin Trusted Reviews on Facebook. The link is also wrong, must be:</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin Trusted Reviews on Facebook, go to the “Reviews” tab and post a recommendation. Text comment is required.</div>
                             <a href="https://www.facebook.com/pg/dentacoin.trusted.reviews/reviews/" class="white-red-btn" target="_blank">POST NOW</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
