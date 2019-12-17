@@ -406,10 +406,10 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">SHARE this post on your Facebook profile:</div>
-                            <a href="https://www.facebook.com/pg/dentacare.dentacoin/sample post/" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/pg/dentacare.dentacoin/sample post/</a>
+                            <a href="https://www.facebook.com/dentacare.jaws/posts/106577090843869" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/dentacare.jaws/posts/106577090843869</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>
-                            <a href="https://www.twitter.com/pg/dentacare.dentacoin/sample post/" class="color-christmas-calendar-red" target="_blank">https://www.twitter.com/pg/dentacare.dentacoin/sample post/</a>
+                            <a href="https://twitter.com/dentacoin/status/1206600864615555072" class="color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1206600864615555072</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="padding-bottom-20">
                                 <div class="custom-google-label-style module max-width-400">
@@ -468,7 +468,7 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20">Holidays often take us out of our routines… How are your oral hygiene habits changing during holidays? Have you had any dental emergency in such festive times?<br>
                                 Share in the latest DentaVox survey “Oral Care during Holidays”!</div>
-                            <a href="#" onclick="alert('Coming soon!');" class="white-red-btn" target="_blank">TAKE SURVEY</a>
+                            <a href="https://dentavox.dentacoin.com/en/paid-dental-surveys/oral-care-holidays/" class="white-red-btn" target="_blank">TAKE SURVEY</a>
                         </div>
                         @break
                         @case(26)
@@ -517,7 +517,7 @@
                         @case(30)
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20">How many times did you change your toothbrush in 2019? What about your dentist? Did your oral hygiene habits change somehow? Share in the latest DentaVox survey “My Oral Health Diary 2019”!</div>
-                            <a href="#" onclick="alert('Coming soon!');" class="white-red-btn" target="_blank">TAKE SURVEY</a>
+                            <a href="https://www.meistertask.com/app/task/daJv8Nxt/calendar-dec-31-link-to-dentavox-survey" class="white-red-btn" target="_blank">TAKE SURVEY</a>
                         </div>
                         @break
                         @case(31)
