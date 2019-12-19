@@ -234,15 +234,28 @@ class ChristmasCalendarController extends Controller
     }
 
     public function getHolidayCalendarParticipants(Request $request) {
-        if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY')) == trim($request->input('hash'))) {
-            $participants = DB::connection('mysql')->table('christmas_calendar_participants')->select('christmas_calendar_participants.user_id')->where(array('christmas_calendar_participants.email_notifications' => true))->get()->all();
+        if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY').$request->input('day')) == trim($request->input('hash'))) {
             $task = ChristmasCalendarTask::where(array('id' => $request->input('day')))->get()->first();
 
+            $participants = DB::table('christmas_calendar_participants')
+                ->leftJoin('christmas_calendar_task_participant', 'christmas_calendar_participants.id', '=', 'christmas_calendar_task_participant.participant_id')
+                ->select('christmas_calendar_participants.*')
+                ->where(array('christmas_calendar_task_participant.task_id' => 1))
+                ->get()->keyBy('user_id')->toArray();
+
             if (!empty($participants) && !empty($task)) {
-                foreach ($participants as $participant) {
-                    $coredbData = (new APIRequestsController())->getUserData($participant->user_id, true);
-                    if(property_exists($coredbData, 'success') && $coredbData->success) {
-                        $participant->email = $coredbData->data->email;
+                $participantsCoredbDataResponse = (new APIRequestsController())->getUsersData(array_keys($participants));
+                if ($participantsCoredbDataResponse->success) {
+                    foreach ($participantsCoredbDataResponse->data as $participantData) {
+                        if (array_key_exists($participantData->id, $participants)) {
+                            $participants[$participantData->id]->exists = true;
+                            if (!empty($participantData->name)) {
+                                $participants[$participantData->id]->name = $participantData->name;
+                            }
+                            if (!empty($participantData->email)) {
+                                $participants[$participantData->id]->email = $participantData->email;
+                            }
+                        }
                     }
                 }
 
