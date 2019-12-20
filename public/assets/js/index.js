@@ -1105,41 +1105,45 @@ if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body
             basic.closeDialog();
         });
 
-        if (basic.cookies.get('agreed_with_christmas_calendar_rules') != '1') {
-            $('.tasks-section .camping-custom-popups.rules').html('<div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">SIMPLE RULES:</h2><ul class="lato-regular fs-18 line-height-30"><li><span class="lato-black">31 days = 31 gifts:</span> Unlock a new task every day, complete it and get various rewards!</li><li><span class="lato-black">Complete tasks every day and your DCN rewards will be doubled at the end of the challenge.</span></li><li><span class="lato-black">31 days = 31 tickets:</span> Don’t miss a day and increase your chances to win!</li><li><span class="lato-black">Missed a day?</span> You can catch up with the daily tasks and gifts, but you’ll have one ticket less and your DCN rewards will not be doubled at the end.</li><li>All DCN daily rewards will be gradually unlocked for withdrawal in the period <span class="lato-black">Jan 1-15, 2020.</span></li><li>Other gifts are sent via email <span class="lato-black">within 5 days after</span> the task is completed.</li><li>Only users who have <span class="lato-black">submitted proofs</span> for their tasks get rewards and participate in the raffle.</li><li>All posts, likes and follows <span class="lato-black">must remain</span> at least until the raffle is finished.</li><li><span class="lato-black">Check the raffle winners on January 10, 2020 - first in our Telegram group!</span></li></ul><div class="padding-top-20 padding-bottom-20 max-width-350 margin-0-auto checkboxes"><div class="padding-bottom-10 padding-top-15"><div class="checkbox-wrapper"><input id="christmas-calendar-terms" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-terms">I read and agree to the Terms & Conditions</label></div><div class="padding-bottom-10"><div class="checkbox-wrapper"><input id="christmas-calendar-privacy-policy" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-privacy-policy">I read and agree to the Privacy Policy</label></div><div><div class="checkbox-wrapper"><input id="christmas-calendar-years" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-years">I confirm that I am eighteen (18) years of age or older.</label></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="accept-christmas-calendar-rules"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="/assets/images/christmas-calendar-campaign/ready-btn-present.svg" class="width-100 max-width-220" alt="Popup button" itemprop="contentUrl"/></figure></a></div></div>');
-
-            $('.tasks-section .camping-custom-popups.rules .popup-wrapper .accept-christmas-calendar-rules').click(function() {
-                if (!$('.camping-custom-popups.rules #christmas-calendar-terms').is(':checked')) {
-                    basic.showAlert('Please agree to the Terms & Conditions.', '', true);
-                } else if (!$('.camping-custom-popups.rules #christmas-calendar-privacy-policy').is(':checked')) {
-                    basic.showAlert('Please agree to the Privacy Policy.', '', true);
-                } else if (!$('.camping-custom-popups.rules #christmas-calendar-years').is(':checked')) {
-                    basic.showAlert('Please confirm that you are eighteen (18) years of age or older.', '', true);
-                } else {
-                    basic.cookies.set('agreed_with_christmas_calendar_rules', '1');
-
-                    $('.tasks-section .camping-custom-popups.rules').html('');
-                    checkChristmasCalendarSocialEngagement();
-                }
-            });
+        if (Date.now() > Math.floor(new Date(2019, 12, 1, 23, 59, 59, 0).getTime())) {
+            initTasksEvent();
         } else {
-            checkChristmasCalendarSocialEngagement();
-        }
+            if (basic.cookies.get('agreed_with_christmas_calendar_rules') != '1') {
+                $('.tasks-section .camping-custom-popups.rules').html('<div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">SIMPLE RULES:</h2><ul class="lato-regular fs-18 line-height-30"><li><span class="lato-black">31 days = 31 gifts:</span> Unlock a new task every day, complete it and get various rewards!</li><li><span class="lato-black">Complete tasks every day and your DCN rewards will be doubled at the end of the challenge.</span></li><li><span class="lato-black">31 days = 31 tickets:</span> Don’t miss a day and increase your chances to win!</li><li><span class="lato-black">Missed a day?</span> You can catch up with the daily tasks and gifts, but you’ll have one ticket less and your DCN rewards will not be doubled at the end.</li><li>All DCN daily rewards will be gradually unlocked for withdrawal in the period <span class="lato-black">Jan 1-15, 2020.</span></li><li>Other gifts are sent via email <span class="lato-black">within 5 days after</span> the task is completed.</li><li>Only users who have <span class="lato-black">submitted proofs</span> for their tasks get rewards and participate in the raffle.</li><li>All posts, likes and follows <span class="lato-black">must remain</span> at least until the raffle is finished.</li><li><span class="lato-black">Check the raffle winners on January 10, 2020 - first in our Telegram group!</span></li></ul><div class="padding-top-20 padding-bottom-20 max-width-350 margin-0-auto checkboxes"><div class="padding-bottom-10 padding-top-15"><div class="checkbox-wrapper"><input id="christmas-calendar-terms" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-terms">I read and agree to the Terms & Conditions</label></div><div class="padding-bottom-10"><div class="checkbox-wrapper"><input id="christmas-calendar-privacy-policy" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-privacy-policy">I read and agree to the Privacy Policy</label></div><div><div class="checkbox-wrapper"><input id="christmas-calendar-years" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-years">I confirm that I am eighteen (18) years of age or older.</label></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="accept-christmas-calendar-rules"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="/assets/images/christmas-calendar-campaign/ready-btn-present.svg" class="width-100 max-width-220" alt="Popup button" itemprop="contentUrl"/></figure></a></div></div>');
 
-        function checkChristmasCalendarSocialEngagement() {
-            if (basic.cookies.get('christmas_calendar_social_engagement') != '1') {
-                $('.tasks-section .camping-custom-popups.socials').show();
-                window.scrollTo(0, 0);
+                $('.tasks-section .camping-custom-popups.rules .popup-wrapper .accept-christmas-calendar-rules').click(function() {
+                    if (!$('.camping-custom-popups.rules #christmas-calendar-terms').is(':checked')) {
+                        basic.showAlert('Please agree to the Terms & Conditions.', '', true);
+                    } else if (!$('.camping-custom-popups.rules #christmas-calendar-privacy-policy').is(':checked')) {
+                        basic.showAlert('Please agree to the Privacy Policy.', '', true);
+                    } else if (!$('.camping-custom-popups.rules #christmas-calendar-years').is(':checked')) {
+                        basic.showAlert('Please confirm that you are eighteen (18) years of age or older.', '', true);
+                    } else {
+                        basic.cookies.set('agreed_with_christmas_calendar_rules', '1');
 
-                $('.christmas-calendar-get-started').click(function() {
-                    basic.cookies.set('christmas_calendar_social_engagement', '1');
-                    $('.blurred-section').removeClass('active');
-                    $('.tasks-section .camping-custom-popups.socials').hide();
-                    initTasksEvent();
+                        $('.tasks-section .camping-custom-popups.rules').html('');
+                        checkChristmasCalendarSocialEngagement();
+                    }
                 });
             } else {
-                $('.blurred-section').removeClass('active');
-                initTasksEvent();
+                checkChristmasCalendarSocialEngagement();
+            }
+
+            function checkChristmasCalendarSocialEngagement() {
+                if (basic.cookies.get('christmas_calendar_social_engagement') != '1') {
+                    $('.tasks-section .camping-custom-popups.socials').show();
+                    window.scrollTo(0, 0);
+
+                    $('.christmas-calendar-get-started').click(function() {
+                        basic.cookies.set('christmas_calendar_social_engagement', '1');
+                        $('.blurred-section').removeClass('active');
+                        $('.tasks-section .camping-custom-popups.socials').hide();
+                        initTasksEvent();
+                    });
+                } else {
+                    $('.blurred-section').removeClass('active');
+                    initTasksEvent();
+                }
             }
         }
 

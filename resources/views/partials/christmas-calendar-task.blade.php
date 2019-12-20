@@ -684,5 +684,11 @@
             <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30 padding-top-10">You must complete all previous tasks.</div>
             <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">OK</button>
         </div>
+    @elseif($type == 'campaign-expired')
+        <div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20">
+            <h2 class="fs-50 fs-xs-32 lato-black">Holiday Challenge is over.</h2>
+            <div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-30 padding-top-10">RAFFLE WINNERS WILL BE ANOUNCED ON JAN 10 2020.</div>
+            <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">OK</button>
+        </div>
     @endif
 </div>
