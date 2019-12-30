@@ -517,7 +517,7 @@
                         @case(30)
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20">How many times did you change your toothbrush in 2019? What about your dentist? Did your oral hygiene habits change somehow? Share in the latest DentaVox survey “My Oral Health Diary 2019”!</div>
-                            <a href="https://www.meistertask.com/app/task/daJv8Nxt/calendar-dec-31-link-to-dentavox-survey" class="white-red-btn" target="_blank">TAKE SURVEY</a>
+                            <a href="https://dentavox.dentacoin.com/en/paid-dental-surveys/oral-health-summary-2019/" class="white-red-btn" target="_blank">TAKE SURVEY</a>
                         </div>
                         @break
                         @case(31)
