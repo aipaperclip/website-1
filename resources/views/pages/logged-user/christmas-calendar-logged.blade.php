@@ -26,7 +26,7 @@
                         <p class="fs-22 fs-xs-20 padding-bottom-30 lato-regular max-width-470 margin-0-auto">See the winners in our Telegram group and be the first to know about future raffles!</p>
                         <a href="https://t.me/dentacoin" target="_blank">
                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                <img src="/assets/images/christmas-calendar-campaign/join-now-dentacoin-telegram-btn.png" class="" alt="Join dentacoin telegram button" itemprop="contentUrl"/>
+                                <img src="/assets/images/christmas-calendar-campaign/see-winners-in-dentacoin-telegram.png" class="" alt="Join dentacoin telegram button" itemprop="contentUrl"/>
                             </figure>
                         </a>
                     </div>
