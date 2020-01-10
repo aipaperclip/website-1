@@ -408,6 +408,7 @@ class Controller extends BaseController
     }
 
     public function sendPushNotification() {
+		var_dump('send');
         $registrationIds = 'e9BYOpYKoxo:APA91bHshehmRqj6PvYnqyefOecp15Hj4rGDB8hsDk245vJSzcB7VtxPQiTcjCegiG1nBETaxJou7MWYL6NXwOwcXDKhqh7j9r7HwuPEXb1CdL88z5EGf26Qm0rcnnP_0_0XOW6vL0Pk';
         $fields = array
         (
@@ -433,5 +434,6 @@ class Controller extends BaseController
         $result = curl_exec($ch );
         curl_close( $ch );
         echo $result;
+
     }
 }
