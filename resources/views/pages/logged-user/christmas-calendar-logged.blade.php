@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <p class="fs-22 fs-xs-20 padding-bottom-30 lato-regular max-width-470 margin-0-auto">See the winners in our Telegram group and be the first to know about future raffles!</p>
-                        <a href="https://t.me/dentacoin" target="_blank">
+                        <a href="https://t.me/dentacoin/255508" target="_blank">
                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                 <img src="/assets/images/christmas-calendar-campaign/see-winners-in-dentacoin-telegram.png" class="" alt="Join dentacoin telegram button" itemprop="contentUrl"/>
                             </figure>
