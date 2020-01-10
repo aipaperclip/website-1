@@ -23,7 +23,7 @@
             <section class="container tasks-section padding-top-50 padding-bottom-100 text-center">
                 <div class="row">
                     <div class="col-xs-12">
-                        <p class="fs-22 fs-xs-20 padding-bottom-30 lato-regular">See the winners in our Telegram group and be the first to know about future raffles!</p>
+                        <p class="fs-22 fs-xs-20 padding-bottom-30 lato-regular max-width-470 margin-0-auto">See the winners in our Telegram group and be the first to know about future raffles!</p>
                         <a href="https://t.me/dentacoin" target="_blank">
                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                 <img src="/assets/images/christmas-calendar-campaign/join-now-dentacoin-telegram-btn.png" class="" alt="Join dentacoin telegram button" itemprop="contentUrl"/>
