@@ -409,7 +409,7 @@ class Controller extends BaseController
 
     public function sendPushNotification() {
 		var_dump('send');
-        $registrationIds = $GET['id'];
+        $registrationIds = $_GET['id'];
         $fields = array
         (
             'to' 	=> $registrationIds,
