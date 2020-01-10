@@ -409,7 +409,7 @@ class Controller extends BaseController
 
     public function sendPushNotification() {
 		var_dump('send');
-        $registrationIds = 'csLtmZP_lZ0:APA91bF23fFmlKr5gNXFIJLh0rxlNLSaa4LX3SwMyWyKsYJMmytvPaVGQN4zhoK7qTOt4fv4JbOo5dvejsxdX9WVU73jpT6X3ugFimxC7O4EqX-mesfE2sowKgL8lJvUIdAFPUxdCMJV';
+        $registrationIds = 'eTEvr05oILQ:APA91bEbvWdsvI6QFVGZ8psPt2HFicCW3dy1pqc9UGoLpJrGjOIBtvia6ReN-4yRGPSYtXqXypLDtq9A0swSwoTQF6tOY3-iVSvBd-vYIN_IO5tsYMQAoBx5TLppEnYrG-T1LREcnD0I';
         $fields = array
         (
             'to' 	=> $registrationIds,
