@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto line-height-46">Dentacoin Holiday<br>CALENDAR CHALLENGE 2019 IS OVER!</h1>
-                        <p class="fs-22 fs-xs-20 lato-regular padding-bottom-xs-25">We are picking 9 big winners on January 10, 2020:</p>
+                        <p class="fs-22 fs-xs-20 lato-regular padding-bottom-xs-25">We picked 9 big winners on January 10, 2020:</p>
                     </div>
                 </div>
             </section>
