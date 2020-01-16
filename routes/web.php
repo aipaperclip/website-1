@@ -17,8 +17,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/test-push-notification', 'Controller@sendPushNotification')->name('test-push-notification');
-
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');

@@ -406,34 +406,4 @@ class Controller extends BaseController
     public function getClientIpAsResponse() {
         return response()->json(['success' => true, 'data' => $this->getClientIp()]);
     }
-
-    public function sendPushNotification() {
-		var_dump('send');
-        $registrationIds = $_GET['id'];
-        $fields = array
-        (
-            'to' 	=> $registrationIds,
-            'notification' => array(
-                'body' => 'New message'
-            )
-        );
-
-        $headers = array
-        (
-            'Authorization: key='.getenv('PUSH_NOTIFICATION_KEY'),
-            'Content-Type: application/json'
-        );
-
-        $ch = curl_init();
-        curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
-        curl_setopt( $ch,CURLOPT_POST, true );
-        curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
-        curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
-        curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
-        curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
-        $result = curl_exec($ch );
-        curl_close( $ch );
-        echo $result;
-		die('asd');
-    }
 }
