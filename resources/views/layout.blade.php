@@ -42,8 +42,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.0.86">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.0.86">
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.0.87">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.0.87">
     <script>
         var HOME_URL = '{{ route("home") }}';
     </script>
@@ -513,9 +513,9 @@
     {{--<script src="/assets/js/basic.js"></script>--}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.0.86"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.0.87"></script>
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.0.86"></script>
+    <script src="/dist/js/front-script.js?v=1.0.87"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/address.js"></script>

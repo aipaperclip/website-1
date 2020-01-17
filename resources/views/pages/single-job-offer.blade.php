@@ -87,7 +87,7 @@
                 <div class="col-xs-12">
                     <div class="logo-over-line">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                            <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
+                            <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl" class="inline-block"/>
                         </figure>
                         <div class="border-behind-logo"></div>
                     </div>
