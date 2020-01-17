@@ -107,7 +107,7 @@ class PressCenterController extends Controller
             $message->from($data['email'], $data['sender-name'])->replyTo($data['email'], $data['sender-name']);
             $message->setBody($body, 'text/html');
 
-            if(sizeof($files > 0)) {
+            if(!empty($files) && sizeof($files > 0)) {
                 foreach($files as $file) {
                     $message->attach($file->getRealPath(), array(
                         'as' => $file->getClientOriginalName(), // If you want you can change original name to custom name
