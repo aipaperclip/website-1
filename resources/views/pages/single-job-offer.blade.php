@@ -72,10 +72,8 @@
                     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 col-xs-12">
                         <ul>
                         @foreach(unserialize($job_offer->skills) as $skill)
-                            <li>
-                                <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="{{URL::asset('assets/images/check-mark.svg') }}" alt="" itemprop="contentUrl"/>
-                                </figure>
+                            <li itemprop="skills">
+                                <img src="{{URL::asset('assets/images/check-mark.svg') }}" alt="Check mark"/>
                                 {{$skill}}
                             </li>
                         @endforeach
