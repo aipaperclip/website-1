@@ -43,10 +43,12 @@
                                 <div class="col-xs-12 col-sm-4 single inline-block-top" itemscope=""
                                      itemtype="http://schema.org/JobPosting">
                                     @if(!empty($job_offer->remote_work))
-                                        <meta itemprop="employmentType" content="{{$job_offer->remote_work}}">
+                                        <meta itemprop="employmentType" content="Remote work: {{$job_offer->remote_work}}">
                                     @endif
                                     <meta itemprop="title" content="{{$job_offer->title}}">
-                                    <meta itemprop="datePosted" content="{{$job_offer->created_at}}">
+                                    <meta itemprop="description" content="{!! $job_offer->text !!}">
+                                    <meta itemprop="hiringOrganization" content="Dentacoin Foundation">
+                                    <meta itemprop="datePosted" content="{{date('Y-m-d', strtotime($job_offer->created_at))}}">
                                     @if(!empty($job_offer->location))
                                         <div itemprop="jobLocation" itemscope itemtype="http://schema.org/Place">
                                             <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
