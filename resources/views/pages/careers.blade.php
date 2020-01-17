@@ -40,8 +40,7 @@
                     @if(sizeof($job_offers) > 0)
                         <div class="row fs-0">
                             @foreach($job_offers as $job_offer)
-                                <div class="col-xs-12 col-sm-4 single inline-block-top" itemscope=""
-                                     itemtype="http://schema.org/JobPosting">
+                                <div class="col-xs-12 col-sm-4 single inline-block-top" itemscope="" itemtype="http://schema.org/JobPosting">
                                     @if(!empty($job_offer->remote_work))
                                         <meta itemprop="employmentType" content="Remote work: {{$job_offer->remote_work}}">
                                     @endif

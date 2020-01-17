@@ -1,7 +1,19 @@
 @extends("layout")
 
 @section("content")
-    <section class="single-job-offer-container">
+    <section class="single-job-offer-container" itemscope="" itemtype="http://schema.org/JobPosting">
+        @if(!empty($job_offer->remote_work))
+            <meta itemprop="employmentType" content="Remote work: {{$job_offer->remote_work}}">
+        @endif
+        <meta itemprop="hiringOrganization" content="Dentacoin Foundation">
+        <meta itemprop="datePosted" content="{{date('Y-m-d', strtotime($job_offer->created_at))}}">
+        @if(!empty($job_offer->location))
+            <div itemprop="jobLocation" itemscope itemtype="http://schema.org/Place">
+                <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                    <meta itemprop="addressLocality" content="{{$job_offer->location}}">
+                </div>
+            </div>
+        @endif
         <div class="arrows-container">
             <div class="container">
                 @if(!empty($prev))
@@ -29,14 +41,14 @@
                         <img src="{{URL::asset('assets/uploads/'.$job_offer->media->name) }}" alt="{{$job_offer->media->alt}}" itemprop="contentUrl"/>
                     </figure>
                     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-5 inline-block job-description">
-                        <div class="title section-subtitle">{{$job_offer->title}}</div>
+                        <div class="title section-subtitle" itemprop="title">{{$job_offer->title}}</div>
                         @if(!empty($job_offer->location))
                             <div class="location"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/location-icon.svg') }}" alt="Location icon" itemprop="contentUrl"/></figure> Office Location: <span>{{$job_offer->location}}</span></div>
                         @endif
                         @if(!empty($job_offer->remote_work))
                             <div class="remote-work"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/remote-work-icon.svg') }}" alt="Remote work icon" itemprop="contentUrl"/></figure> Remote work: <span>{{$job_offer->remote_work}}</span></div>
                         @endif
-                        <div class="description">{!! $job_offer->text !!}</div>
+                        <div class="description" itemprop="description">{!! $job_offer->text !!}</div>
                     </div>
                 </div>
             </div>
