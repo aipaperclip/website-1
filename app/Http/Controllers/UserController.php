@@ -74,9 +74,6 @@ class UserController extends Controller {
             'password' => $data['password']
         ];
 
-        var_dump($post_fields_arr);
-        die('asd');
-
         $recover_method_response = (new APIRequestsController())->recoverPassword($post_fields_arr);
         if (property_exists($recover_method_response, 'success') && $recover_method_response->success) {
             return redirect()->route('home')->with(['success' => 'Your password has been changed successfully.']);
