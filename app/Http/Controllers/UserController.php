@@ -15,11 +15,11 @@ class UserController extends Controller {
         return view('pages/forgotten-password');
     }
 
-    protected function getRecoverPassword(Request $request) {
+    protected function getRecoverPassword() {
         if (!empty(Input::get('token'))) {
-            return view('pages/recover-password', ['slug' => $request->input('slug')]);
+            return view('pages/recover-password');
         } else {
-            return abort(4040);
+            return abort(404);
         }
     }
 
@@ -38,7 +38,7 @@ class UserController extends Controller {
         }
 
         $api_response = (new APIRequestsController())->generatePasswordRecoveryToken($data['email']);
-        if ($api_response->success) {
+        if (property_exists($api_response, 'success') && $api_response->success) {
             //$body = '<!DOCTYPE html><html><head></head><body><div style="font-size: 16px;">Seems like you forgot your password for Dentacoin. If this is true, click below to reset your password.<br><br><br><form target="_blank" method="POST" action="'.BASE_URL.'password-recover"><input type="hidden" name="slug" value="'.$api_response->data.'"/><input type="submit" value="PASSWORD RESET" style="font-size: 20px;color: #126585;background-color: white;padding: 10px 20px;text-decoration: none;font-weight: bold;border-radius: 4px;border: 2px solid #126585;cursor: pointer;"/><input type="hidden" name="_token" value="'.csrf_token().'"></form></div></body></html>';
             $body = '<!DOCTYPE html><html><head></head><body><div style="font-size: 16px;">Seems like you forgot your password for Dentacoin. If this is true, click below to reset your password.<br><br><br><a href="'.BASE_URL.'password-recover?token='.urlencode($api_response->data).'" style="font-size: 20px;color: #126585;background-color: white;padding: 10px 20px;text-decoration: none;font-weight: bold;border-radius: 4px;border: 2px solid #126585;cursor: pointer;">PASSWORD RESET</a></div></body></html>';
 
@@ -78,7 +78,7 @@ class UserController extends Controller {
         if (property_exists($recover_method_response, 'success') && $recover_method_response->success) {
             return redirect()->route('home')->with(['success' => 'Your password has been changed successfully.']);
         } else {
-            return redirect()->route('home')->with(['error' => 'Your password change failed, please try again later.']);
+            return redirect()->route('home')->with(['error' => 'Your password change failed, please try again later or request for new password recover.']);
         }
     }
 
