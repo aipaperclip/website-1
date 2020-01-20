@@ -42,8 +42,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.0.87">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.0.87">
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.0.88">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.0.88">
     <script>
         var HOME_URL = '{{ route("home") }}';
     </script>
@@ -53,7 +53,11 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'UA-97167262-1');
+        @if(empty($_COOKIE['marketing_cookies']))
+            gtag('config', 'UA-97167262-1', {'anonymize_ip': true});
+        @else
+            gtag('config', 'UA-97167262-1');
+        @endif
     </script>
 </head>
 <body data-current="one" class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif @if(!empty(Route::current()) && ((Route::current()->getName() == 'careers' && empty(request()->route()->parameters) || Route::current()->getName() == 'corporate-design'))) allow-draw-lines @endif">
@@ -471,13 +475,13 @@
                 </picture>
             </a>
         @endif--}}
-        @if(!empty($privacy_policy_cookie))
+        @if(empty($_COOKIE['performance_cookies']) && empty($_COOKIE['functionality_cookies']) && empty($_COOKIE['marketing_cookies']) && empty($_COOKIE['strictly_necessary_policy']))
             <div class="privacy-policy-cookie">
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="text inline-block">This site uses cookies. Read more about the use of personal data in our <a href="{{route('privacy-policy')}}" class="link" target="_blank">Privacy Policy</a>.</div>
-                            <div class="button inline-block"><a href="javascript:void(0);" class="white-blue-rounded-btn accept">Accept</a></div>
+                            <div class="text inline-block">This site uses cookies. Find out more on how we use cookies in our <a href="https://dentacoin.com/privacy-policy" class="link" target="_blank">Privacy Policy</a>. | <a href="javascript:void(0);" class="link adjust-cookies">Adjust cookies</a></div>
+                            <div class="button inline-block"><a href="javascript:void(0);" class="white-blue-rounded-btn accept-all">Accept all cookies</a></div>
                         </div>
                     </div>
                 </div>
@@ -491,19 +495,20 @@
             </figure>
         </div>
     </div>
-
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/5c5810737cf662208c93f22e/default';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
+    @if(!empty($_COOKIE['marketing_cookies']))
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/5c5810737cf662208c93f22e/default';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
+    @endif
     <!--End of Tawk.to Script-->
 
     <!--Start of Schema Markup-->
@@ -513,9 +518,9 @@
     {{--<script src="/assets/js/basic.js"></script>--}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.0.87"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.0.88"></script>
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.0.87"></script>
+    <script src="/dist/js/front-script.js?v=1.0.88"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/address.js"></script>

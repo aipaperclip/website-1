@@ -283,6 +283,32 @@
     .white-blue-rounded-btn, input[type='submit'].white-blue-rounded-btn {
       padding: 10px 32px; } }
 
+.white-light-blue-rounded-btn, input[type='submit'].white-light-blue-rounded-btn {
+  background-color: #679dca;
+  color: white;
+  font-size: 20px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-weight: bold;
+  border: 2px solid white;
+  cursor: pointer;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s; }
+  .white-light-blue-rounded-btn:hover, input[type='submit'].white-light-blue-rounded-btn:hover {
+    background-color: #041e42;
+    border: 2px solid #679dca;
+    color: white; }
+  @media screen and (max-width: 991px) {
+    .white-light-blue-rounded-btn, input[type='submit'].white-light-blue-rounded-btn {
+      padding: 10px 32px; } }
+
 .blue-white-rounded-btn, input[type='submit'].blue-white-rounded-btn {
   background-color: white;
   color: #679dca;

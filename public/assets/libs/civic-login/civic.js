@@ -15,18 +15,22 @@
 
     //bind click event for the civic button
     $('body').on('click', '.civic-custom-btn', function(){
-        civic_custom_btn = $(this);
-        customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.');
+        if(document.cookie.indexOf('performance_cookies=') == -1) {
+            customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
+        } else {
+            civic_custom_btn = $(this);
+            customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.');
 
-        if(civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
-            customCivicEvent('customCivicFbStopperTriggered', '');
-            return false;
+            if(civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
+                customCivicEvent('customCivicFbStopperTriggered', '');
+                return false;
+            }
+
+            civicSip.signup({
+                style: 'popup',
+                scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
+            });
         }
-
-        civicSip.signup({
-            style: 'popup',
-            scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
-        });
     });
 
     // Listen for data
@@ -96,18 +100,19 @@
     civicSip.on('civic-sip-error', function (error) {
         customCivicEvent('civicSipError', '');
     });
-
-    function customCivicEvent(type, message, response_data) {
-        var event_obj = {
-            type: type,
-            message: message,
-            platform_type: 'civic',
-            time: new Date()
-        };
-
-        if(response_data != undefined) {
-            event_obj.response_data = response_data;
-        }
-        $.event.trigger(event_obj);
-    }
 })();
+
+
+function customCivicEvent(type, message, response_data) {
+    var event_obj = {
+        type: type,
+        message: message,
+        platform_type: 'civic',
+        time: new Date()
+    };
+
+    if(response_data != undefined) {
+        event_obj.response_data = response_data;
+    }
+    $.event.trigger(event_obj);
+}
