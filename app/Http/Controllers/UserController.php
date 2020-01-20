@@ -70,9 +70,12 @@ class UserController extends Controller {
         $data = $this->clearPostData($request->input());
 
         $post_fields_arr = [
-            'token' => $data['token'],
+            'token' => urldecode($data['token']),
             'password' => $data['password']
         ];
+
+        var_dump($post_fields_arr);
+        die('asd');
 
         $recover_method_response = (new APIRequestsController())->recoverPassword($post_fields_arr);
         if (property_exists($recover_method_response, 'success') && $recover_method_response->success) {
