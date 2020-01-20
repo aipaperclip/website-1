@@ -70,7 +70,7 @@ class UserController extends Controller {
         $data = $this->clearPostData($request->input());
 
         $post_fields_arr = [
-            'token' => urldecode($data['token']),
+            'token' => $data['token'],
             'password' => $data['password']
         ];
 
