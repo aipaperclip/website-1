@@ -14,7 +14,7 @@
                         <div>
                             <input type="submit" value="RESET PASSWORD" class="white-blue-rounded-btn"/>
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                            <input type="hidden" name="token" value="{{\Illuminate\Support\Facades\Input::get('token')}}">
+                            <input type="hidden" name="token" value="{{urldecode(\Illuminate\Support\Facades\Input::get('token'))}}">
                         </div>
                     </form>
                 </div>
