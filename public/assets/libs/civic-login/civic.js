@@ -15,7 +15,7 @@
 
     //bind click event for the civic button
     $('body').on('click', '.civic-custom-btn', function(){
-        if(document.cookie.indexOf('performance_cookies=') == -1) {
+        if(document.cookie.indexOf('strictly_necessary_policy=') == -1) {
             customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
         } else {
             civic_custom_btn = $(this);
