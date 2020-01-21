@@ -5145,6 +5145,8 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
             padding-bottom: 20px; }
             .bottom-fixed-container .privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty input[disabled] ~ * {
               opacity: 1; }
+            .bottom-fixed-container .privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty input[disabled] ~ .state label span {
+              opacity: 0.5; }
             .bottom-fixed-container .privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty input {
               width: 18px;
               height: 18px; }
@@ -5157,10 +5159,12 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
             .bottom-fixed-container .privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty label {
               font-size: 18px;
               padding-left: 25px;
-              text-indent: 0; }
+              text-indent: 0;
+              cursor: pointer; }
               .bottom-fixed-container .privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty label i {
                 color: #969696; }
               .bottom-fixed-container .privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty label:before, .bottom-fixed-container .privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty label:after {
+                top: 0;
                 width: 18px;
                 height: 18px;
                 border: 1px solid white; }
