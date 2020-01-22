@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="referrer" content="no-referrer" />
     <link rel="shortcut icon" href="{{URL::asset('assets/images/favicon.png') }}" type="image/x-icon" />
     @if(!empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
         <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
@@ -42,8 +43,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.0.90">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.0.90">
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.0.91">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.0.91">
     <script>
         var HOME_URL = '{{ route("home") }}';
     </script>
@@ -53,7 +54,7 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        @if(empty($_COOKIE['marketing_cookies']))
+        @if(empty($_COOKIE['performance_cookie']))
             gtag('config', 'UA-97167262-1', {'anonymize_ip': true});
         @else
             gtag('config', 'UA-97167262-1');
@@ -518,9 +519,9 @@
     {{--<script src="/assets/js/basic.js"></script>--}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.0.90"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.0.91"></script>
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.0.90"></script>
+    <script src="/dist/js/front-script.js?v=1.0.91"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/address.js"></script>
