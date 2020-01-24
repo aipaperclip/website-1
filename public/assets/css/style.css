@@ -6770,6 +6770,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
             font-size: 18px;
             padding-top: 10px; }
         .homepage-container .dentacoin-ecosystem .apps-list .list button.show-shadow figure img {
+          max-width: 90%;
           -webkit-box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
           -moz-box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
           -ms-box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
