@@ -15,7 +15,7 @@ class UserController extends Controller {
         if($this->checkSession()) {
             return redirect()->route('home');
         } else {
-            return view('pages/forgotten-password')
+            return view('pages/forgotten-password');
         }
     }
 
