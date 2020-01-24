@@ -11,15 +11,23 @@ class UserController extends Controller {
         return new UserController();
     }
 
-    protected function getForgottenPasswordView() {
-        return view('pages/forgotten-password');
+    protected function getForgottenPasswordView() {;
+        if($this->checkSession()) {
+            return redirect()->route('home');
+        } else {
+            return view('pages/forgotten-password')
+        }
     }
 
     protected function getRecoverPassword() {
-        if (!empty(Input::get('token'))) {
-            return view('pages/recover-password');
+        if($this->checkSession()) {
+            return redirect()->route('home');
         } else {
-            return abort(404);
+            if (!empty(Input::get('token'))) {
+                return view('pages/recover-password');
+            } else {
+                return abort(404);
+            }
         }
     }
 
