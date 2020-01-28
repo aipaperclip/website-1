@@ -1,3 +1,5 @@
+console.log('Don\'t touch the code. Or do ... ¯\\_(ツ)_/¯');
+
 checkIfCookie();
 
 //load images after website load
@@ -57,7 +59,6 @@ $(document).ready(async function() {
 $(window).on('load', function() {
     //HOMEPAGE
     if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && !basic.isMobile()) {
-        console.log('Don\'t touch the code. Or do ... ¯\\_(ツ)_/¯');
         setLinesDots();
 
         if ($('body').hasClass('home')) {
