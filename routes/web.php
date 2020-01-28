@@ -64,7 +64,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     })->name('careers');
 
     Route::group(['prefix' => 'claim-dentacoin'], function () {
-        Route::get('/toothbrushzone', 'ChristmasCalendarController@toothbrushzone')->name('toothbrushzone');
+        Route::get('/toothbrushzone', 'ClaimDentacoin@toothbrushzone')->name('toothbrushzone');
     });
 
     Route::get('/corporate-design/{slug}', 'CorporateDesignController@getView')->name('corporate-design');
