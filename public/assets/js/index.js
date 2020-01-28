@@ -18,9 +18,9 @@ var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
 var get_params = getGETParameters();
 
 $(document).ready(async function() {
-    if ((basic.objHasKey(get_params, 'show-login') || basic.objHasKey(get_params, 'inviter')) && !$('body').hasClass('logged-in')) {
+    if ((basic.property_exists(get_params, 'show-login') || basic.property_exists(get_params, 'inviter')) && !$('body').hasClass('logged-in')) {
         openLoginSigninPopup();
-    } else if (basic.objHasKey(get_params, 'show-patient-register')) {
+    } else if (basic.property_exists(get_params, 'show-patient-register')) {
         openLoginSigninPopup('show-patient-register');
     }
 
@@ -2191,7 +2191,7 @@ function openLoginSigninPopup(type) {
                 }
 
                 var validate_phone = await validatePhone($('.login-signin-popup .dentist .form-register .step.third input[name="phone"]').val().trim(), $('.login-signin-popup .dentist .form-register .step.third select[name="country-code"]').val());
-                if (basic.objHasKey(validate_phone, 'success') && !validate_phone.success) {
+                if (basic.property_exists(validate_phone, 'success') && !validate_phone.success) {
                     customErrorHandle($('.login-signin-popup .dentist .form-register .step.third input[name="phone"]').closest('.field-parent'), 'Please use valid phone.');
                     errors = true;
                 }
