@@ -20,6 +20,13 @@ class AdditionalMiddleware
             return response(view('pages/maintenance'));
         }*/
         //$params = $request->route()->parameters();
-        return (new App\Http\Controllers\Controller())->minifyHtml($next($request));
+
+        $response = $next($request);
+        /*$response->headers->set('X-Frame-Options', 'DENY');
+        $response->headers->set('Referrer-Policy', 'no-referrer');
+        $response->headers->set('Feature-Policy', "vibrate 'self'; geolocation 'self'; midi 'self'; notifications 'self'; push 'self'; sync-xhr 'self'; microphone 'self'; camera 'self'; magnetometer 'self'; gyroscope 'self'; speaker 'self'; vibrate 'self'; fullscreen 'self'; payment 'self';");
+        $response->headers->set('X-XSS-Protection', '1; mode=block');*/
+
+        return (new App\Http\Controllers\Controller())->minifyHtml($response);
     }
 }
