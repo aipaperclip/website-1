@@ -49,7 +49,9 @@ class CareersController extends Controller
         }
 
         if(!empty($files))    {
+            var_dump(is_array($files));
             var_dump($files);
+            var_dump(sizeof($files));
             die('asd');
             //404 if they're trying to send more than 2 files
             if(sizeof($files) > 2) {
