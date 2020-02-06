@@ -281,24 +281,26 @@ class UserController extends Controller {
         }
 
         if (!empty($files)) {
-            //404 if they're trying to send more than 2 files
-            if (sizeof($files) > 2) {
-                return abort(404);
-            } else {
-                $allowed = array('png', 'jpg', 'jpeg', 'svg', 'bmp', 'PNG', 'JPG', 'JPEG', 'SVG', 'BMP');
-                foreach($files as $file)  {
-                    //checking the file size
-                    if ($file->getSize() > MAX_UPL_SIZE) {
-                        return redirect()->route('home', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with with maximum size of '.number_format(MAX_UPL_SIZE / 1048576).'MB. Please try again.']);
-                    }
-                    //checking file format
-                    if (!in_array(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION), $allowed)) {
-                        return redirect()->route('home')->with(['error' => 'Your form was not sent. Files can be only with .png, .jpg, .jpeg, .svg, .bmp formats. Please try again.']);
-                    }
-                    //checking if error in file
-                    if ($file->getError()) {
-                        return redirect()->route('home')->with(['error' => 'Your form was not sent. There is error with one or more of the files, please try with other files. Please try again.']);
-                    }
+            $fileCounter = 0;
+            $allowed = array('png', 'jpg', 'jpeg', 'svg', 'bmp', 'PNG', 'JPG', 'JPEG', 'SVG', 'BMP');
+            foreach($files as $file)  {
+                // doing this check to prevent people submitting move than one file
+                $fileCounter+=1;
+                if($fileCounter > 2) {
+                    return abort(404);
+                }
+
+                //checking the file size
+                if ($file->getSize() > MAX_UPL_SIZE) {
+                    return redirect()->route('home', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with with maximum size of '.number_format(MAX_UPL_SIZE / 1048576).'MB. Please try again.']);
+                }
+                //checking file format
+                if (!in_array(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION), $allowed)) {
+                    return redirect()->route('home')->with(['error' => 'Your form was not sent. Files can be only with .png, .jpg, .jpeg, .svg, .bmp formats. Please try again.']);
+                }
+                //checking if error in file
+                if ($file->getError()) {
+                    return redirect()->route('home')->with(['error' => 'Your form was not sent. There is error with one or more of the files, please try with other files. Please try again.']);
                 }
             }
         } else {
