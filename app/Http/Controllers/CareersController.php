@@ -49,28 +49,26 @@ class CareersController extends Controller
         }
 
         if(!empty($files))    {
-            var_dump(is_array($files));
-            var_dump($files);
-            var_dump(sizeof($files));
-            die('asd');
-            //404 if they're trying to send more than 2 files
-            if(sizeof($files) > 2) {
-                return abort(404);
-            }else {
-                $allowed = array('pdf', 'doc', 'docx', 'ppt', 'pptx', 'odt', 'rtf', 'PDF', 'DOC', 'DOCX', 'PPT', 'PPTX', 'ODT', 'RTF');
-                foreach($files as $file)  {
-                    //checking the file size
-                    if($file->getSize() > MAX_UPL_SIZE) {
-                        return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with with maximum size of '.number_format(MAX_UPL_SIZE / 1048576).'MB. Please try again.']);
-                    }
-                    //checking file format
-                    if(!in_array(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION), $allowed)) {
-                        return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with .pdf, .doc, docx, ppt, pptx, odt, rtf formats. Please try again.']);
-                    }
-                    //checking if error in file
-                    if($file->getError()) {
-                        return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. There is error with one or more of the files, please try with other files. Please try again.']);
-                    }
+            $fileCounter = 0;
+            $allowed = array('pdf', 'doc', 'docx', 'ppt', 'pptx', 'odt', 'rtf', 'PDF', 'DOC', 'DOCX', 'PPT', 'PPTX', 'ODT', 'RTF');
+            foreach($files as $file)  {
+                // doing this check to prevent people submitting move than one file
+                $fileCounter+=1;
+                if($fileCounter > 2) {
+                    return abort(404);
+                }
+
+                //checking the file size
+                if($file->getSize() > MAX_UPL_SIZE) {
+                    return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with with maximum size of '.number_format(MAX_UPL_SIZE / 1048576).'MB. Please try again.']);
+                }
+                //checking file format
+                if(!in_array(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION), $allowed)) {
+                    return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with .pdf, .doc, docx, ppt, pptx, odt, rtf formats. Please try again.']);
+                }
+                //checking if error in file
+                if($file->getError()) {
+                    return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. There is error with one or more of the files, please try with other files. Please try again.']);
                 }
             }
         }
