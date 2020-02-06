@@ -319,13 +319,14 @@ function useMediaEvent(id, close_btn, editor) {
                 if(id != null)	{
                     $('.media[data-id="'+id+'"] .image-visualization').html('<img class="small-image" src="'+$(this).closest('tr').attr('data-src')+'"/>');
                     $('.media[data-id="'+id+'"] input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
-                    if(close_btn) {
-                        $('.media[data-id="'+id+'"] .image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
-                    }
                 }else {
                     $('.image-visualization').html('<img class="small-image" src="'+$(this).closest('tr').attr('data-src')+'"/>');
                     $('input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
-                    if(close_btn) {
+                }
+                if(close_btn) {
+                    if(id != null)	{
+                        $('.media[data-id="'+id+'"] .image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
+                    } else {
                         $('.image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
                     }
                 }
