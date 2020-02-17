@@ -36,8 +36,6 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
             };
 
             FB.login(function (response) {
-                console.log(response, 'response');
-                console.log(response.authResponse, 'response.authResponse');
                 if (response.authResponse && response.status == 'connected') {
                     //fbGetData();
 
