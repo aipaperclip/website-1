@@ -6046,6 +6046,9 @@ header {
       padding-top: 10px;
       padding-bottom: 10px;
       background: white; }
+      @media screen and (max-width: 767px) {
+        header .logged-user-right-nav .hidden-box .hidden-box-footer {
+          margin-bottom: 100px; } }
       header .logged-user-right-nav .hidden-box .hidden-box-footer .white-blue-rounded-btn {
         padding: 7px 10px; }
       header .logged-user-right-nav .hidden-box .hidden-box-footer .logout {

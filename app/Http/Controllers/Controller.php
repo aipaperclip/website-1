@@ -91,34 +91,6 @@ class Controller extends BaseController
         }
     }*/
 
-    public function getCurrentDcnRateByCoingecko()  {
-        //API connection
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => "https://api.coingecko.com/api/v3/coins/dentacoin",
-            CURLOPT_SSL_VERIFYPEER => 0
-        ));
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-        $resp = json_decode(curl_exec($curl));
-        curl_close($curl);
-        if(!empty($resp))   {
-            if(!empty($resp->market_data->current_price))  {
-                return array(
-                    'USD' => $resp->market_data->current_price->usd,
-                    'EUR' => $resp->market_data->current_price->eur,
-                    'GBP' => $resp->market_data->current_price->gbp,
-                    'RUB' => $resp->market_data->current_price->rub,
-                    'INR' => $resp->market_data->current_price->inr,
-                    'CNY' => $resp->market_data->current_price->cny,
-                    'JPY' => $resp->market_data->current_price->jpy
-                );
-            }else {
-                return 0;
-            }
-        }
-    }
-
     protected function getParentDbTitles()    {
         if(!empty(Route::getCurrentRoute()->parameters['slug'])) {
             $current_page = PageMetaData::where(array('slug' => Route::getCurrentRoute()->parameters['slug']))->get()->first();
