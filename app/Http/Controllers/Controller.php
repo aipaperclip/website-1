@@ -30,8 +30,9 @@ class Controller extends BaseController
     const POSTS_PER_PAGE = 8;
     const currencies = ['USD', 'EUR', 'GBP', 'RUB', 'INR', 'CNY', 'JPY'];
 
-    public function __construct() {
-        if(!empty(Route::getCurrentRoute()) && !Request::isMethod('post'))    {
+    public function __construct()
+    {
+        if (!empty(Route::getCurrentRoute()) && !Request::isMethod('post')) {
             View::share('mobile', $this->isMobile());
             View::share('mobileGrade', $this->mobileGrade());
             View::share('getOperatingSystems', $this->getOperatingSystems());
@@ -50,19 +51,21 @@ class Controller extends BaseController
         }
     }
 
-    protected function getFooterData()  {
+    protected function getFooterData()
+    {
         $footer_section_id = Section::where(array('slug' => 'footer'))->get()->first()->id;
         return PagesHtmlSection::where(array('section_id' => $footer_section_id))->get()->sortBy('order_id')->toArray();
     }
 
-    protected function getMetaData()    {
-        if(Route::getCurrentRoute()->getName() == 'corporate-design') {
+    protected function getMetaData()
+    {
+        if (Route::getCurrentRoute()->getName() == 'corporate-design') {
             //getting meta data for children pages
             return PageMetaData::where(array('slug' => Route::getCurrentRoute()->parameters['slug']))->get()->first();
         }
 
         $slug = Route::getCurrentRoute()->getName();
-        if(Route::getCurrentRoute()->getName() == 'foundation') {
+        if (Route::getCurrentRoute()->getName() == 'foundation') {
             $slug = 'home';
         }
         return PageMetaData::where(array('slug' => $slug))->get()->first();
@@ -91,84 +94,97 @@ class Controller extends BaseController
         }
     }*/
 
-    protected function getParentDbTitles()    {
-        if(!empty(Route::getCurrentRoute()->parameters['slug'])) {
+    protected function getParentDbTitles()
+    {
+        if (!empty(Route::getCurrentRoute()->parameters['slug'])) {
             $current_page = PageMetaData::where(array('slug' => Route::getCurrentRoute()->parameters['slug']))->get()->first();
-            if(!empty($current_page->parent)) {
+            if (!empty($current_page->parent)) {
                 return PagesHtmlSection::where(array('page_id' => $current_page->parent->id, 'type' => 'title'))->get()->all();
             }
-        }else {
+        } else {
             return null;
         }
     }
 
-    protected function getParentDbSections()    {
-        if(!empty(Route::getCurrentRoute()->parameters['slug'])) {
+    protected function getParentDbSections()
+    {
+        if (!empty(Route::getCurrentRoute()->parameters['slug'])) {
             $current_page = PageMetaData::where(array('slug' => Route::getCurrentRoute()->parameters['slug']))->get()->first();
-            if(!empty($current_page->parent)) {
+            if (!empty($current_page->parent)) {
                 return PagesHtmlSection::where(array('page_id' => $current_page->parent->id, 'type' => 'section'))->get()->all();
             }
-        }else {
+        } else {
             return null;
         }
     }
 
-    protected function getFooterSocials()    {
+    protected function getFooterSocials()
+    {
         return Social::all()->sortBy('order_id');
     }
 
-    protected function getFooterMenu()    {
+    protected function getFooterMenu()
+    {
         return MenuElement::all()->sortBy('order_id');
     }
 
-    protected function getDbTitles()    {
+    protected function getDbTitles()
+    {
         $meta_data = $this->getMetaData();
-        if(!empty($meta_data)) {
+        if (!empty($meta_data)) {
             return PagesHtmlSection::where(array('page_id' => $meta_data->id, 'type' => 'title'))->get()->all();
-        }else {
+        } else {
             return null;
         }
     }
 
-    protected function getDbSections()    {
+    protected function getDbSections()
+    {
         $meta_data = $this->getMetaData();
-        if(!empty($meta_data)) {
+        if (!empty($meta_data)) {
             return PagesHtmlSection::where(array('page_id' => $this->getMetaData()->id, 'type' => 'section'))->get()->all();
-        }else {
+        } else {
             return null;
         }
     }
 
-    protected function checkIfSocialEngagementCookie()    {
+    protected function checkIfSocialEngagementCookie()
+    {
         $bool = empty($_COOKIE['christmas_calendar_social_engagement']);
-        if($bool) {
+        if ($bool) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    protected function isMobile()   {
+    protected function isMobile()
+    {
         return (new Agent())->isMobile();
     }
 
-    protected function mobileGrade()   {
+    protected function mobileGrade()
+    {
         return (new Agent())->mobileGrade();
     }
 
-    protected function getOperatingSystems()   {
+    protected function getOperatingSystems()
+    {
         return (new Agent())->getOperatingSystems();
     }
 
-    protected function checkHttpHeadersForMobile()   {
+    protected function checkHttpHeadersForMobile()
+    {
         return (new Agent())->checkHttpHeadersForMobile();
     }
 
-    protected function getUserAgent()   {
+    protected function getUserAgent()
+    {
         return (new Agent())->getUserAgent();
     }
 
-    protected function getSitemap() {
+    protected function getSitemap()
+    {
         $sitemap = App::make("sitemap");
         // set cache (key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean))
         // by default cache is disabled
@@ -192,18 +208,18 @@ class Controller extends BaseController
         $sitemap->add(URL::to('/how-to-create-wallet'), '2019-07-09:10:00+02:00', '0.8', 'weekly');
 
         //getting all pagination pages for testimonials
-        for($i = 1, $length = (new UserExpressionsController())->getPagesCount(); $i <= $length; $i+=1) {
-            $sitemap->add(URL::to('testimonials/page/'.$i), '2018-08-25T20:10:00+02:00', '0.7', 'daily');
+        for ($i = 1, $length = (new UserExpressionsController())->getPagesCount(); $i <= $length; $i += 1) {
+            $sitemap->add(URL::to('testimonials/page/' . $i), '2018-08-25T20:10:00+02:00', '0.7', 'daily');
         }
 
         //getting all pagination pages for press-center
-        for($i = 1, $length = (new PressCenterController())->getPagesCount(); $i <= $length; $i+=1) {
-            $sitemap->add(URL::to('press-center/page/'.$i), '2018-08-25T20:10:00+02:00', '0.7', 'daily');
+        for ($i = 1, $length = (new PressCenterController())->getPagesCount(); $i <= $length; $i += 1) {
+            $sitemap->add(URL::to('press-center/page/' . $i), '2018-08-25T20:10:00+02:00', '0.7', 'daily');
         }
 
         //getting all pagination pages for press-center
-        foreach((new \App\Http\Controllers\Admin\CareersController())->getAllJobOffers() as $career)    {
-            $sitemap->add(URL::to('careers/'.$career->slug), '2018-10-10T20:10:00+02:00', '0.5', 'weekly');
+        foreach ((new \App\Http\Controllers\Admin\CareersController())->getAllJobOffers() as $career) {
+            $sitemap->add(URL::to('careers/' . $career->slug), '2018-10-10T20:10:00+02:00', '0.5', 'weekly');
         }
 
         // get all posts from db
@@ -219,31 +235,32 @@ class Controller extends BaseController
         return $sitemap->render('xml');
     }
 
-    protected function transliterate($str) {
-        return str_replace(['а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п', 'р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я',' ','_'], ['a','b','v','g','d','e','io','zh','z','i','y','k','l','m','n','o','p', 'r','s','t','u','f','h','ts','ch','sh','sht','a','i','y','e','yu','ya','-','-'], mb_strtolower($str));
+    protected function transliterate($str)
+    {
+        return str_replace(['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', ' ', '_'], ['a', 'b', 'v', 'g', 'd', 'e', 'io', 'zh', 'z', 'i', 'y', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'ts', 'ch', 'sh', 'sht', 'a', 'i', 'y', 'e', 'yu', 'ya', '-', '-'], mb_strtolower($str));
     }
 
-    public function minifyHtml($response)   {
+    public function minifyHtml($response)
+    {
         $buffer = $response->getContent();
-        if(strpos($buffer,'<pre>') !== false) {
+        if (strpos($buffer, '<pre>') !== false) {
             $replace = array(
                 '/<!--[^\[](.*?)[^\]]-->/s' => '',
-                "/<\?php/"                  => '<?php ',
-                "/\r/"                      => '',
-                "/>\n</"                    => '><',
-                "/>\s+\n</"                 => '><',
-                "/>\n\s+</"                 => '><',
+                "/<\?php/" => '<?php ',
+                "/\r/" => '',
+                "/>\n</" => '><',
+                "/>\s+\n</" => '><',
+                "/>\n\s+</" => '><',
             );
-        }
-        else {
+        } else {
             $replace = array(
                 '/<!--[^\[](.*?)[^\]]-->/s' => '',
-                "/<\?php/"                  => '<?php ',
-                "/\n([\S])/"                => '$1',
-                "/\r/"                      => '',
-                "/\n/"                      => '',
-                "/\t/"                      => '',
-                "/ +/"                      => ' ',
+                "/<\?php/" => '<?php ',
+                "/\n([\S])/" => '$1',
+                "/\r/" => '',
+                "/\n/" => '',
+                "/\t/" => '',
+                "/ +/" => ' ',
             );
         }
         $buffer = preg_replace(array_keys($replace), array_values($replace), $buffer);
@@ -252,27 +269,30 @@ class Controller extends BaseController
         return $response;
     }
 
-    protected function getGoogleMapIframe() {
+    protected function getGoogleMapIframe()
+    {
         return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations(), 'location_types' => (new PartnerNetworkController())->getLocationTypes(), 'locations_select' => (new PartnerNetworkController())->getAllLocations(), 'clinics' => (new LocationsController())->getAllFeaturedClinics()]);
     }
 
-    protected function refreshCaptcha() {
+    protected function refreshCaptcha()
+    {
         return response()->json(['captcha' => captcha_img()]);
     }
 
-    protected function handleApiEndpoints($slug) {
+    protected function handleApiEndpoints($slug)
+    {
         switch ($slug) {
             case 'socials-data':
                 $socials = DB::connection('mysql')->table('socials')->leftJoin('media', 'socials.media_id', '=', 'media.id')->select('socials.*', 'media.name as media_name', 'media.alt as media_alt')->orderByRaw('socials.order_id ASC')->get()->toArray();
-                foreach($socials as $social) {
+                foreach ($socials as $social) {
                     $social->media_name = route('home') . UPLOADS_FRONT_END . $social->media_name;
                 }
                 return json_encode($socials);
                 break;
             case 'testimonials':
                 $testimonials = DB::connection('mysql')->table('user_expressions')->leftJoin('media', 'user_expressions.media_id', '=', 'media.id')->select('user_expressions.*', 'media.name as media_name', 'media.alt as media_alt')->orderByRaw('user_expressions.order_id ASC')->get()->toArray();
-                foreach($testimonials as $testimonial) {
-                    if(!empty($testimonial->media_name)) {
+                foreach ($testimonials as $testimonial) {
+                    if (!empty($testimonial->media_name)) {
                         $testimonial->media_name = route('home') . UPLOADS_FRONT_END . $testimonial->media_name;
                     } else {
                         $testimonial->media_name = NULL;
@@ -282,8 +302,8 @@ class Controller extends BaseController
                 break;
             case 'applications':
                 $applications = DB::connection('mysql')->table('applications')->leftJoin('media', 'applications.logo_id', '=', 'media.id')->select('applications.title', 'applications.link', 'media.name as media_name', 'media.alt as media_alt')->orderByRaw('applications.order_id ASC')->get()->toArray();
-                foreach($applications as $application) {
-                    if(!empty($application->media_name)) {
+                foreach ($applications as $application) {
+                    if (!empty($application->media_name)) {
                         $application->media_name = route('home') . UPLOADS_FRONT_END . $application->media_name;
                     } else {
                         $application->media_name = NULL;
@@ -297,8 +317,8 @@ class Controller extends BaseController
                 break;
             case 'platforms':
                 $platforms = DB::connection('mysql')->table('platforms')->leftJoin('media', 'platforms.platform_logo_id', '=', 'media.id')->select('platforms.slug', 'platforms.link', 'platforms.color', 'platforms.extra_html', 'platforms.extra_html_patients', 'platforms.invitation_text_whatsapp', 'platforms.invitation_text_twitter', 'media.name as media_name', 'media.alt as media_alt')->get()->toArray();
-                foreach($platforms as $platform) {
-                    if(!empty($platform->media_name)) {
+                foreach ($platforms as $platform) {
+                    if (!empty($platform->media_name)) {
                         $platform->media_name = route('home') . UPLOADS_FRONT_END . $platform->media_name;
                     } else {
                         $platform->media_name = NULL;
@@ -311,26 +331,180 @@ class Controller extends BaseController
                 }
                 return json_encode($platforms);
                 break;
+            case 'hitbtc-info':
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                    CURLOPT_RETURNTRANSFER => 1,
+                    CURLOPT_URL => 'https://api.hitbtc.com/api/2/public/orderbook/DCNETH?limit=0',
+                    CURLOPT_SSL_VERIFYPEER => 0
+                ));
+
+                $resp = json_decode(curl_exec($curl));
+                curl_close($curl);
+
+                $askAmount = 0;
+                foreach ($resp->ask as $ask) {
+                    $askAmount += (int)$ask->size;
+                }
+
+                echo '<b>Current ask orders count:</b> ' . sizeof($resp->ask) . ' orders<br>';
+                echo '<b>Current ask amount:</b> ' . $askAmount . ' DCN<br><br>';
+
+                $bidAmount = 0;
+                foreach ($resp->bid as $bid) {
+                    $bidAmount += (int)$bid->size;
+                }
+
+                echo '<b>Current bid orders count:</b> ' . sizeof($resp->bid) . ' orders<br>';
+                echo '<b>Current bid amount:</b> ' . $bidAmount . ' DCN<br><br><br>';
+
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                    CURLOPT_RETURNTRANSFER => 1,
+                    CURLOPT_URL => 'https://api.hitbtc.com/api/2/public/ticker/DCNETH',
+                    CURLOPT_SSL_VERIFYPEER => 0
+                ));
+
+                $DCNETHresp = json_decode(curl_exec($curl));
+                curl_close($curl);
+                
+                echo '<b>DCN/ ETH statistics:</b><br><style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+td, th {
+padding: 8px;
+}
+</style><table><thead>
+<tr>
+<th style="text-align: left">Description</th>
+<th style="text-align: left">Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Best ask price. Can return \'null\' if no data</td>
+<td style="text-align: left">'.$DCNETHresp->ask.'</td>
+</tr>
+<td style="text-align: left">Best bid price. Can return \'null\' if no data</td>
+<td style="text-align: left">'.$DCNETHresp->bid.'</td>
+</tr>
+<tr>
+<td style="text-align: left">Last trade price. Can return \'null\' if no data</td>
+<td style="text-align: left">'.$DCNETHresp->last.'</td>
+</tr>
+<tr>
+<td style="text-align: left">Last trade price 24 hours ago. Can return \'null\' if no data</td>
+<td style="text-align: left">'.$DCNETHresp->open.'</td>
+</tr>
+<tr>
+<td style="text-align: left">Lowest trade price within 24 hours</td>
+<td style="text-align: left">'.$DCNETHresp->low.'</td>
+</tr>
+<tr>
+<td style="text-align: left">Highest trade price within 24 hours</td>
+<td style="text-align: left">'.$DCNETHresp->high.'</td>
+</tr>
+<tr>
+<td style="text-align: left">Total trading amount within 24 hours in base currency</td>
+<td style="text-align: left">'.$DCNETHresp->volume.' DCN</td>
+</tr>
+<tr>
+<td style="text-align: left">Total trading amount within 24 hours in quote currency</td>
+<td style="text-align: left">'.$DCNETHresp->volumeQuote.' ETH</td>
+</tr>
+<tr>
+<td style="text-align: left">Last update or refresh ticker timestamp</td>
+<td style="text-align: left">'.$DCNETHresp->timestamp.'</td>
+</tr>
+</tbody></table><br><br><br>';
+
+
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                    CURLOPT_RETURNTRANSFER => 1,
+                    CURLOPT_URL => 'https://api.hitbtc.com/api/2/public/ticker/DCNUSD',
+                    CURLOPT_SSL_VERIFYPEER => 0
+                ));
+
+                $DCNUSDresp = json_decode(curl_exec($curl));
+                curl_close($curl);
+
+                echo '<b>DCN/ USD statistics:</b><br><style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+td, th {
+padding: 8px;
+}
+</style><table><thead>
+<tr>
+<th style="text-align: left">Description</th>
+<th style="text-align: left">Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Best ask price. Can return \'null\' if no data</td>
+<td style="text-align: left">'.$DCNUSDresp->ask.'</td>
+</tr>
+<td style="text-align: left">Best bid price. Can return \'null\' if no data</td>
+<td style="text-align: left">'.$DCNUSDresp->bid.'</td>
+</tr>
+<tr>
+<td style="text-align: left">Last trade price. Can return \'null\' if no data</td>
+<td style="text-align: left">'.$DCNUSDresp->last.'</td>
+</tr>
+<tr>
+<td style="text-align: left">Last trade price 24 hours ago. Can return \'null\' if no data</td>
+<td style="text-align: left">'.$DCNUSDresp->open.'</td>
+</tr>
+<tr>
+<td style="text-align: left">Lowest trade price within 24 hours</td>
+<td style="text-align: left">'.$DCNUSDresp->low.'</td>
+</tr>
+<tr>
+<td style="text-align: left">Highest trade price within 24 hours</td>
+<td style="text-align: left">'.$DCNUSDresp->high.'</td>
+</tr>
+<tr>
+<td style="text-align: left">Total trading amount within 24 hours in base currency</td>
+<td style="text-align: left">'.$DCNUSDresp->volume.' DCN</td>
+</tr>
+<tr>
+<td style="text-align: left">Total trading amount within 24 hours in quote currency</td>
+<td style="text-align: left">'.$DCNUSDresp->volumeQuote.' USD</td>
+</tr>
+<tr>
+<td style="text-align: left">Last update or refresh ticker timestamp</td>
+<td style="text-align: left">'.$DCNUSDresp->timestamp.'</td>
+</tr>
+</tbody></table>';
+                die();
+
+                break;
             default:
                 $additional_data = (new Admin\MainController())->getApiEndpoint($slug);
-                if(!empty($additional_data))    {
+                if (!empty($additional_data)) {
                     return $additional_data->data;
-                }else {
+                } else {
                     return abort(404);
                 }
         }
     }
 
-    protected function clearPostData($data) {
-        foreach($data as &$value) {
-            if(is_string($value)) {
+    protected function clearPostData($data)
+    {
+        foreach ($data as &$value) {
+            if (is_string($value)) {
                 $value = trim(strip_tags($value));
             }
         }
         return $data;
     }
 
-    public function encrypt($raw_text, $algorithm, $key) {
+    public function encrypt($raw_text, $algorithm, $key)
+    {
         $length = openssl_cipher_iv_length($algorithm);
         $iv = openssl_random_pseudo_bytes($length);
         $encrypted = openssl_encrypt($raw_text, $algorithm, $key, OPENSSL_RAW_DATA, $iv);
@@ -339,33 +513,36 @@ class Controller extends BaseController
         return $encrypted_with_iv;
     }
 
-    public function decrypt($encrypted_text) {
+    public function decrypt($encrypted_text)
+    {
         list($data, $iv) = explode('|', $encrypted_text);
         $iv = base64_decode($iv);
         $raw_text = openssl_decrypt($data, getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'), 0, $iv);
         return $raw_text;
     }
 
-    public function getClientIp() {
+    public function getClientIp()
+    {
         $ipaddress = '';
         if (getenv('HTTP_CLIENT_IP'))
             $ipaddress = getenv('HTTP_CLIENT_IP');
-        else if(getenv('HTTP_X_FORWARDED_FOR'))
+        else if (getenv('HTTP_X_FORWARDED_FOR'))
             $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-        else if(getenv('HTTP_X_FORWARDED'))
+        else if (getenv('HTTP_X_FORWARDED'))
             $ipaddress = getenv('HTTP_X_FORWARDED');
-        else if(getenv('HTTP_FORWARDED_FOR'))
+        else if (getenv('HTTP_FORWARDED_FOR'))
             $ipaddress = getenv('HTTP_FORWARDED_FOR');
-        else if(getenv('HTTP_FORWARDED'))
+        else if (getenv('HTTP_FORWARDED'))
             $ipaddress = getenv('HTTP_FORWARDED');
-        else if(getenv('REMOTE_ADDR'))
+        else if (getenv('REMOTE_ADDR'))
             $ipaddress = getenv('REMOTE_ADDR');
         else
             $ipaddress = 'UNKNOWN';
         return $ipaddress;
     }
 
-    public function getClientIpAsResponse() {
+    public function getClientIpAsResponse()
+    {
         return response()->json(['success' => true, 'data' => $this->getClientIp()]);
     }
 }
