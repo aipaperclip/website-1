@@ -18,6 +18,7 @@ const border_width = 2;
 var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
 
 var get_params = getGETParameters();
+console.log(get_params, 'get_params');
 
 $(document).ready(async function() {
     if ((basic.property_exists(get_params, 'show-login') || basic.property_exists(get_params, 'inviter')) && !$('body').hasClass('logged-in')) {

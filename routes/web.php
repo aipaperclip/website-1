@@ -19,6 +19,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/test', function() {
         var_dump(urlencode(\Illuminate\Support\Facades\Input::get('inviter')));
+        var_dump(urldecode(urlencode(\Illuminate\Support\Facades\Input::get('inviter'))));
         die('asd');
     })->name('test');
 

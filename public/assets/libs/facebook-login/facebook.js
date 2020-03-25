@@ -17,6 +17,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
 
     //binding click event for all the faceboon login btns
     $('body').on('click', '.facebook-custom-btn', function(rerequest){
+        console.log(get_params, 'get_params');
         if(document.cookie.indexOf('strictly_necessary_policy=') == -1) {
             customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
         } else {
