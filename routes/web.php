@@ -17,6 +17,11 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
+    Route::get('/test', function() {
+        var_dump(\Illuminate\Support\Facades\Input::get('inviter'));
+        die('asd');
+    })->name('test');
+
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
