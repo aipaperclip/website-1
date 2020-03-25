@@ -521,8 +521,7 @@ padding: 8px;
         return $raw_text;
     }
 
-    public function getClientIp()
-    {
+    public function getClientIp() {
         $ipaddress = '';
         if (getenv('HTTP_CLIENT_IP'))
             $ipaddress = getenv('HTTP_CLIENT_IP');
@@ -541,8 +540,7 @@ padding: 8px;
         return $ipaddress;
     }
 
-    public function getClientIpAsResponse()
-    {
+    public function getClientIpAsResponse()     {
         return response()->json(['success' => true, 'data' => $this->getClientIp()]);
     }
 }

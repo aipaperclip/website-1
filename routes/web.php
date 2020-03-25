@@ -97,6 +97,12 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/check-dentist-account', 'UserController@checkDentistAccount')->name('check-dentist-account');
 
+    Route::group(['prefix' => 'dentacoin-gateway'], function () {
+        Route::get('/', 'DentacoinGateway@getView')->name('dentacoin-gateway');
+    });
+
+    Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');
+
     //======================================= AJAX ========================================
 
     Route::post('/press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');

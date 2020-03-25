@@ -50,7 +50,11 @@ class APIRequestsController extends Controller {
             'phone' => $data['phone'],
             'website' => $data['website'],
             'specialisations' => json_encode($data['specializations']),
-            'client_ip' => $this->getClientIp()
+            'client_ip' => $this->getClientIp()/*,
+            'clinic_data' => json_encode(array(
+                'email' => $clinic_email,
+                'name' => $clinic_name
+            ))*/
         );
 
         if(!empty($data['alternative-name'])) {

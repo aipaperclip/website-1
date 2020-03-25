@@ -43,6 +43,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                     customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
 
                     var fb_token = response.authResponse.accessToken;
+                    console.log(response.authResponse, 'response.authResponse');
 
                     var register_data = {
                         platform: this_btn.attr('data-platform'),
