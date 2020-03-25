@@ -18,7 +18,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::get('/', 'HomeController@getView')->name('home');
 
     Route::get('/test', function() {
-        var_dump(\Illuminate\Support\Facades\Input::get('inviter'));
+        var_dump(urlencode(\Illuminate\Support\Facades\Input::get('inviter')));
         die('asd');
     })->name('test');
 
