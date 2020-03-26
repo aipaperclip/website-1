@@ -17,12 +17,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/test', function() {
-        var_dump(urlencode(\Illuminate\Support\Facades\Input::get('inviter')));
-        var_dump(urldecode(urlencode(\Illuminate\Support\Facades\Input::get('inviter'))));
-        die('asd');
-    })->name('test');
-
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
@@ -103,8 +97,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/check-dentist-account', 'UserController@checkDentistAccount')->name('check-dentist-account');
 
-    Route::group(['prefix' => 'dentacoin-gateway'], function () {
-        Route::get('/', 'DentacoinGateway@getView')->name('dentacoin-gateway');
+    Route::group(['prefix' => 'dentacoin-login-gateway'], function () {
+        Route::post('/', 'DentacoinLoginGateway@getView')->name('dentacoin-login-gateway');
     });
 
     Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');

@@ -1,7 +1,6 @@
-@php($inviter = \Illuminate\Support\Facades\Input::get('inviter'))
 @php($api_enums = (new \App\Http\Controllers\APIRequestsController())->getAllEnums())
 <div class="fs-0 popup-header-action">
-    <a href="javascript:void(0)" class="inline-block" data-type="patient">I'm a Patient</a>
+    <a href="javascript:void(0)" class="inline-block gateway-platform-background-color" data-type="patient">I'm a Patient</a>
     <a href="javascript:void(0)" class="inline-block init-dentists-click-event" data-type="dentist">I'm a Dentist</a>
 </div>
 <div class="fs-0 popup-body">
@@ -12,7 +11,7 @@
                 <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient"><i class="fa fa-facebook-official inline-block fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">Continue with Facebook</span></a>
             </div>
             <div>
-                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient">with Civic</a>
+                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient">Continue with Civic</a>
             </div>
             <div class="popup-half-footer">
                 Don't have an account? <a href="javascript:void(0)" class="call-sign-up color-white">Sign up</a>
@@ -24,18 +23,12 @@
                 <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/register" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient" custom-stopper="true"><i class="fa fa-facebook-official inline-block fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">Continue with Facebook</span></a>
             </div>
             <div>
-                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/register" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient" custom-stopper="true">with Civic</a>
+                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/register" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient" custom-stopper="true">Continue with Civic</a>
             </div>
             <div class="privacy-policy-row padding-top-20">
-                <div class="pretty p-svg p-curve black-style agree-with">
+                <div class="agree-with">
                     <input type="checkbox" id="privacy-policy-registration-patient"/>
-                    <div class="state p-success">
-                        <!-- svg path -->
-                        <svg class="svg svg-icon" viewBox="0 0 20 20">
-                            <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-                        </svg>
-                        <label class="fs-14">I agree with <a href="//dentacoin.com/privacy-policy" class="color-white" target="_blank">Privacy Policy</a></label>
-                    </div>
+                    <label class="fs-14">I agree with <a href="//dentacoin.com/privacy-policy" class="color-white" target="_blank">Privacy Policy</a></label>
                 </div>
             </div>
             <div class="step-errors-holder"></div>
@@ -44,7 +37,7 @@
             </div>
         </div>
     </div>
-    <div class="dentist inline-block custom-hide">
+    <div class="dentist gateway-platform-background-color inline-block custom-hide">
         <div class="form-login">
             <h2>LOG IN</h2>
             <form method="POST" id="dentist-login">
@@ -133,15 +126,8 @@
                         <div class="fs-14 light-gray-color">Ex: Владимир Александрович</div>
                     </div>
                     <div class="privacy-policy-row padding-bottom-20">
-                        <div class="pretty p-svg p-curve on-white-background">
-                            <input type="checkbox" id="privacy-policy-registration"/>
-                            <div class="state p-success">
-                                <svg class="svg svg-icon" viewBox="0 0 20 20">
-                                    <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-                                </svg>
-                                <label class="fs-14">I've read and agree to the <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
-                            </div>
-                        </div>
+                        <input type="checkbox" id="privacy-policy-registration"/>
+                        <label class="fs-14">I've read and agree to the <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
                     </div>
                 </div>
                 <div class="step third address-suggester-wrapper" data-step="third">
@@ -207,33 +193,9 @@
                         <div class="inline-block-top specializations">
                             <h4>Please select your specializations:</h4>
                             @foreach($api_enums->specialisations as $key => $specialisation)
-                                <div class="pretty p-svg p-curve on-white-background">
-                                    <input type="checkbox" name="specializations[]" value="{{$key}}"/>
-                                    <div class="state p-success">
-                                        <!-- svg path -->
-                                        <svg class="svg svg-icon" viewBox="0 0 20 20">
-                                            <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-                                        </svg>
-                                        <label class="fs-14">{{$specialisation}}</label>
-                                    </div>
-                                </div>
+                                <input type="checkbox" name="specializations[]" value="{{$key}}"/>
+                                <label class="fs-14">{{$specialisation}}</label>
                             @endforeach
-                        </div>
-                        <div class="fs-0 captcha-parent padding-bottom-15 padding-top-20">
-                            <div class="inline-block width-50 width-xs-100 padding-bottom-xs-15">
-                                <div class="captcha-container flex text-center">
-                                    <span>{!! captcha_img() !!}</span>
-                                    <button type="button" class="refresh-captcha">
-                                        <i class="fa fa-refresh" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="inline-block fs-14 width-50 width-xs-100 padding-left-10">
-                                <div class="custom-google-label-style module" data-input-colorful-border="true">
-                                    <label for="register-captcha">Enter captcha:</label>
-                                    <input type="text" name="captcha" id="register-captcha" maxlength="5" class="full-rounded form-field"/>
-                                </div>
-                            </div>
                         </div>
                         <div class="step-errors-holder padding-top-10"></div>
                     </div>
