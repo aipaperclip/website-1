@@ -4,7 +4,7 @@
     <a href="javascript:void(0)" class="inline-block init-dentists-click-event" data-type="dentist">I'm a Dentist</a>
 </div>
 <div class="fs-0 popup-body">
-    <div class="patient inline-block">
+    <div class="patient inline-block gateway-platform-background-color">
         <div class="form-login">
             <h2>LOG IN</h2>
             <div class="padding-bottom-10">
@@ -37,7 +37,7 @@
             </div>
         </div>
     </div>
-    <div class="dentist gateway-platform-background-color inline-block custom-hide">
+    <div class="dentist inline-block custom-hide">
         <div class="form-login">
             <h2>LOG IN</h2>
             <form method="POST" id="dentist-login">
