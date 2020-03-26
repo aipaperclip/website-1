@@ -14,7 +14,7 @@
                 <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient">Continue with Civic</a>
             </div>
             <div class="popup-half-footer">
-                Don't have an account? <a href="javascript:void(0)" class="call-sign-up color-white">Sign up</a>
+                Don't have an account? <a href="javascript:void(0)" class="call-sign-up">Sign up</a>
             </div>
         </div>
         <div class="form-register">
@@ -28,12 +28,12 @@
             <div class="privacy-policy-row padding-top-20">
                 <div class="agree-with">
                     <input type="checkbox" id="privacy-policy-registration-patient"/>
-                    <label class="fs-14">I agree with <a href="//dentacoin.com/privacy-policy" class="color-white" target="_blank">Privacy Policy</a></label>
+                    <label class="fs-14">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
                 </div>
             </div>
             <div class="step-errors-holder"></div>
             <div class="popup-half-footer">
-                Already have an account? <a href="javascript:void(0)" class="call-log-in color-white">Log in</a>
+                Already have an account? <a href="javascript:void(0)" class="call-log-in">Log in</a>
             </div>
         </div>
     </div>
