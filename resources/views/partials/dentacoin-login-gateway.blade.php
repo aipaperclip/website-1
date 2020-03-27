@@ -1,17 +1,17 @@
 @php($api_enums = (new \App\Http\Controllers\APIRequestsController())->getAllEnums())
-<div class="fs-0 popup-header-action">
+<div class="dentacoin-login-gateway-fs-0 popup-header-action">
     <a href="javascript:void(0)" class="inline-block gateway-platform-background-color" data-type="patient">I'm a Patient</a>
     <a href="javascript:void(0)" class="inline-block init-dentists-click-event" data-type="dentist">I'm a Dentist</a>
 </div>
-<div class="fs-0 popup-body">
+<div class="dentacoin-login-gateway-fs-0 popup-body">
     <div class="patient inline-block gateway-platform-background-color">
         <div class="form-login">
             <h2>LOG IN</h2>
             <div class="padding-bottom-10">
-                <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient"><i class="fa fa-facebook-official inline-block fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">Continue with Facebook</span></a>
+                <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient"><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">Continue with Facebook</span></a>
             </div>
             <div>
-                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient">Continue with Civic</a>
+                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient">Continue with Civic</a>
             </div>
             <div class="popup-half-footer">
                 Don't have an account? <a href="javascript:void(0)" class="call-sign-up">Sign up</a>
@@ -20,15 +20,15 @@
         <div class="form-register">
             <h2>SIGN UP</h2>
             <div class="padding-bottom-10">
-                <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/register" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient" custom-stopper="true"><i class="fa fa-facebook-official inline-block fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">Continue with Facebook</span></a>
+                <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/register" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient" custom-stopper="true"><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">Continue with Facebook</span></a>
             </div>
             <div>
-                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular fs-20" data-url="//api.dentacoin.com/api/register" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient" custom-stopper="true">Continue with Civic</a>
+                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/register" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient" custom-stopper="true">Continue with Civic</a>
             </div>
             <div class="privacy-policy-row padding-top-20">
                 <div class="agree-with">
                     <input type="checkbox" id="privacy-policy-registration-patient"/>
-                    <label class="fs-14">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
+                    <label class="dentacoin-login-gateway-fs-14">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
                 </div>
             </div>
             <div class="step-errors-holder"></div>
@@ -54,9 +54,9 @@
                     </div>
                 </div>
                 <div class="btn-container text-center">
-                    <input type="submit" value="Log in" class="white-black-btn fs-20"/>
+                    <input type="submit" value="Log in" class="white-black-btn dentacoin-login-gateway-fs-20"/>
                 </div>
-                <div class="text-center padding-top-40 fs-16">Don't have an account? <a href="javascript:void(0)" class="call-sign-up fs-20">Sign up</a></div>
+                <div class="text-center padding-top-40 dentacoin-login-gateway-fs-16">Don't have an account? <a href="javascript:void(0)" class="call-sign-up dentacoin-login-gateway-fs-20">Sign up</a></div>
             </form>
             <div class="popup-half-footer">
                 <a href="#">Forgotten password?</a>
@@ -86,19 +86,19 @@
                     </div>
                 </div>
                 <div class="step second" data-step="second">
-                    <div class="padding-bottom-20 user-type-container fs-0">
+                    <div class="padding-bottom-20 user-type-container dentacoin-login-gateway-fs-0">
                         <input type="hidden" name="user-type" value="dentist"/>
                         <div class="inline-block-top user-type active padding-right-15" data-type="dentist">
                             <a href="javascript:void(0)" class="custom-button">
                                 <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block">Dentist</span>
                             </a>
-                            <div class="fs-14 light-gray-color">For associate dentists OR independent practitioners</div>
+                            <div class="dentacoin-login-gateway-fs-14 light-gray-color">For associate dentists OR independent practitioners</div>
                         </div>
                         <div class="inline-block-top user-type padding-left-15" data-type="clinic">
                             <a href="javascript:void(0)" class="custom-button">
                                 <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block">Clinic</span>
                             </a>
-                            <div class="fs-14 light-gray-color">For clinics with more than one dental practitioners</div>
+                            <div class="dentacoin-login-gateway-fs-14 light-gray-color">For clinics with more than one dental practitioners</div>
                         </div>
                     </div>
                     <div class="padding-bottom-25 field-parent">
@@ -116,18 +116,18 @@
                             <label for="dentist-register-latin-name">Your Name (Latin letters):</label>
                             <input class="full-rounded form-field required" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name"/>
                         </div>
-                        <div class="fs-14 light-gray-color">Ex: Vladimir Alexandrovich (First name, Last name)</div>
+                        <div class="dentacoin-login-gateway-fs-14 light-gray-color">Ex: Vladimir Alexandrovich (First name, Last name)</div>
                     </div>
                     <div class="padding-bottom-30 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
                             <label for="dentist-register-alternative-name">Alternative Spelling (optional):</label>
                             <input class="full-rounded form-field" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name"/>
                         </div>
-                        <div class="fs-14 light-gray-color">Ex: Владимир Александрович</div>
+                        <div class="dentacoin-login-gateway-fs-14 light-gray-color">Ex: Владимир Александрович</div>
                     </div>
                     <div class="privacy-policy-row padding-bottom-20">
                         <input type="checkbox" id="privacy-policy-registration"/>
-                        <label class="fs-14">I've read and agree to the <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
+                        <label class="dentacoin-login-gateway-fs-14">I've read and agree to the <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
                     </div>
                 </div>
                 <div class="step third address-suggester-wrapper" data-step="third">
@@ -169,7 +169,7 @@
                             <label for="dentist-register-website">Website: http(s)://:</label>
                             <input class="full-rounded form-field required" name="website" id="dentist-register-website" maxlength="250" type="url"/>
                         </div>
-                        <div class="fs-14 light-gray-color">No website? Add your most popular social page.</div>
+                        <div class="dentacoin-login-gateway-fs-14 light-gray-color">No website? Add your most popular social page.</div>
                     </div>
                     <div class="padding-bottom-10 field-parent">
                         <div class="phone">
@@ -182,19 +182,19 @@
                     </div>
                 </div>
                 <div class="step fourth" data-step="fourth">
-                    <div class="padding-bottom-20 fs-0">
+                    <div class="padding-bottom-20 dentacoin-login-gateway-fs-0">
                         <div class="inline-block-top avatar module upload-file">
                             <input type="file" class="visualise-image inputfile" id="custom-upload-avatar" name="image" accept=".jpg,.png,.jpeg,.svg,.bmp"/>
                             <input type="hidden" id="hidden-image" name="hidden-image"/>
                             <div class="btn-wrapper"></div>
                             <div id="cropper-container"></div>
-                            <div class="fs-14 padding-top-5 italic max-size-label"><label for="custom-upload-avatar" class="inline-block margin-right-10 max-width-30"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="upload" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="width-100"><path fill="currentColor" d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z" class=""></path></svg></label>Max size: 2MB</div>
+                            <div class="dentacoin-login-gateway-fs-14 padding-top-5 italic max-size-label"><label for="custom-upload-avatar" class="inline-block margin-right-10 max-width-30"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="upload" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="width-100"><path fill="currentColor" d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z" class=""></path></svg></label>Max size: 2MB</div>
                         </div>
                         <div class="inline-block-top specializations">
                             <h4>Please select your specializations:</h4>
                             @foreach($api_enums->specialisations as $key => $specialisation)
                                 <input type="checkbox" name="specializations[]" value="{{$key}}"/>
-                                <label class="fs-14">{{$specialisation}}</label>
+                                <label class="dentacoin-login-gateway-fs-14">{{$specialisation}}</label>
                             @endforeach
                         </div>
                         <div class="step-errors-holder padding-top-10"></div>
@@ -205,7 +205,7 @@
                         <input type="button" value="< back" class="prev-step"/>
                     </div>
                     <div class="inline-block text-right">
-                        <input type="button" value="Next" class="white-black-btn fs-20 next-step" data-current-step="first"/>
+                        <input type="button" value="Next" class="white-black-btn dentacoin-login-gateway-fs-20 next-step" data-current-step="first"/>
                         @if(isset($inviter))
                             <input type="hidden" name="inviter" value="{{\Illuminate\Support\Facades\Input::get('inviter')}}">
                         @endif
