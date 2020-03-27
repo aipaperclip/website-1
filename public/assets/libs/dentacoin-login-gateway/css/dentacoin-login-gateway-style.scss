@@ -80,7 +80,7 @@
 }
 
 .dentacoin-login-gateway-response-layer {
-    background-color: rgba(255,255,255,.9);
+    background-color: rgba(255, 255, 255, .9);
     width: 100%;
     height: 100%;
     position: fixed;
@@ -145,15 +145,16 @@
     @include rounded(4px 4px 0 0);
 }
 
-#dentacoin-login-gateway-container .wrapper .popup-header-action a[data-type="patient"] {
-    color: white;
-    border-bottom: 1px solid white;
-}
-
-#dentacoin-login-gateway-container .wrapper .popup-header-action a[data-type="dentist"] {
-    color: black;
-    background-color: white;
-    border-bottom: 1px solid black;
+#dentacoin-login-gateway-container .wrapper .popup-header-action {
+    a[data-type="patient"] {
+        color: white;
+        border-bottom: 1px solid white;
+    }
+    a[data-type="dentist"] {
+        color: black;
+        background-color: white;
+        border-bottom: 1px solid black;
+    }
 }
 
 #dentacoin-login-gateway-container .wrapper .popup-body {
