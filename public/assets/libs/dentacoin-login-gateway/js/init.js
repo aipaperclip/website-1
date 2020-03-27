@@ -55,7 +55,7 @@ if (typeof jQuery == 'undefined') {
                     return false;
                 }
 
-                var platformsData = await dcnGatewayRequests.getPlatformsData();
+                var platformsData = await dcnGateway.dcnGatewayRequests.getPlatformsData();
                 var validPlatform = false;
                 var currentPlatformColor;
                 for (var i = 0, len = platformsData.length; i < len; i+=1) {
@@ -77,7 +77,7 @@ if (typeof jQuery == 'undefined') {
                 }
 
                 async function showGateway(type) {
-                    var gatewayHtml = await dcnGatewayRequests.getGatewayHtml(type, params.user_ip);
+                    var gatewayHtml = await dcnGateway.dcnGatewayRequests.getGatewayHtml(type, params.user_ip);
                     if (gatewayHtml.success) {
                         $('body').append('<div id="dentacoin-login-gateway-container"><div class="wrapper">'+gatewayHtml.data+'</div></div>')
 
