@@ -33,6 +33,17 @@ if (typeof jQuery == 'undefined') {
                     }
                 });
             },
+            checkDentistAccount: async function (email, password) {
+                return await $.ajax({
+                    type: 'POST',
+                    url: 'https://dentacoin.com/check-dentist-account',
+                    dataType: 'json',
+                    data: {
+                        email: email,
+                        password: password
+                    }
+                })
+            },
             validatePhone: async function (phone, country_code) {
                 return await $.ajax({
                     type: 'POST',
@@ -336,18 +347,7 @@ if (typeof jQuery == 'undefined') {
                                 }
 
                                 //check if existing account
-                                var check_account_response = await $.ajax({
-                                    type: 'POST',
-                                    url: '/check-dentist-account',
-                                    dataType: 'json',
-                                    data: {
-                                        email: $('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(),
-                                        password: $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim()
-                                    },
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    }
-                                });
+                                var check_account_response = dcnGateway.dcnGatewayRequests.checkDentistAccount($('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(), $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim());
 
                                 if (submit_form && check_account_response.success) {
                                     dcnGateway.utils.fireGoogleAnalyticsEvent('DentistLogin', 'Click', 'Dentist Login');
