@@ -1,92 +1,854 @@
-/*
-Error: Undefined variable: "$main_color".
-        on line 75 of dentacoin-login-gateway-style.scss
+@media screen and (max-width: 400px) {
+  .col-xxs-12 {
+    width: 100%; }
 
-70:             width: 100px;
-71:             text-align: center;
-72:             padding-top: 12px;
-73:             font-size: 18px;
-74:             font-family: 'Lato-Regular';
-75:             color: $main_color;
-76:             background-color: #dddddd;
-77:             @include rounded(0 4px 4px 0);
-78:         }
-79:     }
-80:     &.custom-google-select-style {
+  .col-xxs-6 {
+    width: 50%; }
 
-Backtrace:
-dentacoin-login-gateway-style.scss:75
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/script/tree/variable.rb:49:in `_perform'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/script/tree/node.rb:50:in `perform'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:398:in `visit_prop'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/stack.rb:79:in `block in with_base'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/stack.rb:135:in `with_frame'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/stack.rb:79:in `with_base'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:158:in `visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:440:in `map'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/stack.rb:79:in `block in with_base'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/stack.rb:135:in `with_frame'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/stack.rb:79:in `with_base'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:158:in `visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:440:in `map'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/stack.rb:79:in `block in with_base'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/stack.rb:135:in `with_frame'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/stack.rb:79:in `with_base'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:158:in `visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:440:in `map'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/stack.rb:79:in `block in with_base'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/stack.rb:135:in `with_frame'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/stack.rb:79:in `with_base'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:158:in `visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/base.rb:52:in `map'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:157:in `visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/visitors/perform.rb:10:in `visit'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/root_node.rb:36:in `css_tree'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/engine.rb:307:in `render_with_sourcemap'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/plugin/compiler.rb:209:in `each'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/plugin.rb:82:in `update_stylesheets'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/exec/sass_scss.rb:338:in `watch_or_update'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/exec/sass_scss.rb:51:in `process_result'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/exec/base.rb:50:in `parse'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/lib/sass/exec/base.rb:18:in `parse!'
-C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.7/bin/scss:13:in `<top (required)>'
-C:/Ruby24-x64/bin/scss:23:in `load'
-C:/Ruby24-x64/bin/scss:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Undefined variable: \"$main_color\".\A         on line 75 of dentacoin-login-gateway-style.scss\A \A 70:             width: 100px;\A 71:             text-align: center;\A 72:             padding-top: 12px;\A 73:             font-size: 18px;\A 74:             font-family: 'Lato-Regular';\A 75:             color: $main_color;\A 76:             background-color: #dddddd;\A 77:             @include rounded(0 4px 4px 0);\A 78:         }\A 79:     }\A 80:     &.custom-google-select-style {"; }
+  .col-xxs-4 {
+    width: 33.33%; }
+
+  .col-xxs-3 {
+    width: 25%; }
+
+  .col-xxs-2 {
+    width: 16.67%; } }
+.module.suggester-parent .suggester-map-div {
+  height: 200px;
+  display: none;
+  background: transparent; }
+.module.custom-google-label-style {
+  position: relative; }
+  .module.custom-google-label-style label {
+    position: absolute;
+    font-size: 16px !important;
+    cursor: pointer;
+    margin: 0;
+    width: calc(100% - 20px) !important;
+    padding-bottom: 10px !important;
+    padding-top: 10px !important;
+    background-color: white;
+    left: 10px;
+    color: #888888;
+    font-weight: normal;
+    top: 50%;
+    font-family: 'Calibri-Regular';
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s; }
+    .module.custom-google-label-style label.active-label {
+      width: auto !important;
+      font-size: 14px !important;
+      top: -8px;
+      padding: 0 5px !important;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+      font-weight: bold; }
+  .module.custom-google-label-style .left-side {
+    width: calc(100% - 100px);
+    position: relative; }
+    .module.custom-google-label-style .left-side.error-field input, .module.custom-google-label-style .left-side.error-field label {
+      color: red; }
+  .module.custom-google-label-style input {
+    border: 2px solid #dddddd;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Lato-Regular';
+    width: 100%;
+    padding: 10px 15px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    -ms-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px; }
+    .module.custom-google-label-style input.full-rounded {
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      border-radius: 4px; }
+    .module.custom-google-label-style input.colorful-border {
+      border-style: solid;
+      border-width: 2px; }
+  .module.custom-google-label-style span {
+    width: 100px;
+    text-align: center;
+    padding-top: 12px;
+    font-size: 18px;
+    font-family: 'Lato-Regular';
+    color: black;
+    background-color: #dddddd;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    -ms-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0; }
+.module.custom-google-select-style {
+  position: relative; }
+  .module.custom-google-select-style label {
+    width: auto !important;
+    font-size: 14px !important;
+    top: -8px;
+    padding: 0 5px !important;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    font-weight: bold;
+    position: absolute;
+    cursor: pointer;
+    margin: 0;
+    background-color: white;
+    left: 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s; }
+  .module.custom-google-select-style select {
+    background-image: url("/assets/images/select-arrow.svg");
+    background-position: top 50% right 10px;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Lato-Regular';
+    width: 100%;
+    padding: 10px 30px 10px 15px;
+    -webkit-appearance: initial;
+    border-style: solid;
+    border-width: 2px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px; }
+
+#dentacoin-login-gateway-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  font-family: 'Calibri'; }
+
+.social-login-btn {
+  background-color: white;
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+  color: black;
+  font-size: 20px;
+  padding: 10px 15px 10px 60px;
+  max-width: 350px;
+  margin: 0 auto;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: 30px auto;
+  background-position: center left 15px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px; }
+
+.social-login-btn.civic-custom-btn {
+  background-image: url(/assets/images/civic.svg);
+  border: 1px solid #3bb03f; }
+
+.social-login-btn.facebook-custom-btn {
+  background-color: #4267B2;
+  color: white;
+  background-image: url(/assets/images/facebook-icon.svg); }
+
+#dentacoin-login-gateway-container * {
+  outline: none;
+  box-sizing: border-box; }
+
+#dentacoin-login-gateway-container a {
+  text-decoration: none; }
+
+.dentacoin-login-gateway-fs-0 {
+  font-size: 0px !important; }
+
+.dentacoin-login-gateway-fs-1 {
+  font-size: 1px !important; }
+
+.dentacoin-login-gateway-fs-2 {
+  font-size: 2px !important; }
+
+.dentacoin-login-gateway-fs-3 {
+  font-size: 3px !important; }
+
+.dentacoin-login-gateway-fs-4 {
+  font-size: 4px !important; }
+
+.dentacoin-login-gateway-fs-5 {
+  font-size: 5px !important; }
+
+.dentacoin-login-gateway-fs-6 {
+  font-size: 6px !important; }
+
+.dentacoin-login-gateway-fs-7 {
+  font-size: 7px !important; }
+
+.dentacoin-login-gateway-fs-8 {
+  font-size: 8px !important; }
+
+.dentacoin-login-gateway-fs-9 {
+  font-size: 9px !important; }
+
+.dentacoin-login-gateway-fs-10 {
+  font-size: 10px !important; }
+
+.dentacoin-login-gateway-fs-11 {
+  font-size: 11px !important; }
+
+.dentacoin-login-gateway-fs-12 {
+  font-size: 12px !important; }
+
+.dentacoin-login-gateway-fs-13 {
+  font-size: 13px !important; }
+
+.dentacoin-login-gateway-fs-14 {
+  font-size: 14px !important; }
+
+.dentacoin-login-gateway-fs-15 {
+  font-size: 15px !important; }
+
+.dentacoin-login-gateway-fs-16 {
+  font-size: 16px !important; }
+
+.dentacoin-login-gateway-fs-17 {
+  font-size: 17px !important; }
+
+.dentacoin-login-gateway-fs-18 {
+  font-size: 18px !important; }
+
+.dentacoin-login-gateway-fs-19 {
+  font-size: 19px !important; }
+
+.dentacoin-login-gateway-fs-20 {
+  font-size: 20px !important; }
+
+.dentacoin-login-gateway-fs-21 {
+  font-size: 21px !important; }
+
+.dentacoin-login-gateway-fs-22 {
+  font-size: 22px !important; }
+
+.dentacoin-login-gateway-fs-23 {
+  font-size: 23px !important; }
+
+.dentacoin-login-gateway-fs-24 {
+  font-size: 24px !important; }
+
+.dentacoin-login-gateway-fs-25 {
+  font-size: 25px !important; }
+
+.dentacoin-login-gateway-fs-26 {
+  font-size: 26px !important; }
+
+.dentacoin-login-gateway-fs-27 {
+  font-size: 27px !important; }
+
+.dentacoin-login-gateway-fs-28 {
+  font-size: 28px !important; }
+
+.dentacoin-login-gateway-fs-29 {
+  font-size: 29px !important; }
+
+.dentacoin-login-gateway-fs-30 {
+  font-size: 30px !important; }
+
+.dentacoin-login-gateway-fs-31 {
+  font-size: 31px !important; }
+
+.dentacoin-login-gateway-fs-32 {
+  font-size: 32px !important; }
+
+.dentacoin-login-gateway-fs-33 {
+  font-size: 33px !important; }
+
+.dentacoin-login-gateway-fs-34 {
+  font-size: 34px !important; }
+
+.dentacoin-login-gateway-fs-35 {
+  font-size: 35px !important; }
+
+.dentacoin-login-gateway-fs-36 {
+  font-size: 36px !important; }
+
+.dentacoin-login-gateway-fs-37 {
+  font-size: 37px !important; }
+
+.dentacoin-login-gateway-fs-38 {
+  font-size: 38px !important; }
+
+.dentacoin-login-gateway-fs-39 {
+  font-size: 39px !important; }
+
+.dentacoin-login-gateway-fs-40 {
+  font-size: 40px !important; }
+
+.dentacoin-login-gateway-fs-41 {
+  font-size: 41px !important; }
+
+.dentacoin-login-gateway-fs-42 {
+  font-size: 42px !important; }
+
+.dentacoin-login-gateway-fs-43 {
+  font-size: 43px !important; }
+
+.dentacoin-login-gateway-fs-44 {
+  font-size: 44px !important; }
+
+.dentacoin-login-gateway-fs-45 {
+  font-size: 45px !important; }
+
+.dentacoin-login-gateway-fs-46 {
+  font-size: 46px !important; }
+
+.dentacoin-login-gateway-fs-47 {
+  font-size: 47px !important; }
+
+.dentacoin-login-gateway-fs-48 {
+  font-size: 48px !important; }
+
+.dentacoin-login-gateway-fs-49 {
+  font-size: 49px !important; }
+
+.dentacoin-login-gateway-fs-50 {
+  font-size: 50px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-0 {
+  padding-bottom: 0px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-5 {
+  padding-bottom: 5px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-10 {
+  padding-bottom: 10px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-15 {
+  padding-bottom: 15px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-20 {
+  padding-bottom: 20px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-25 {
+  padding-bottom: 25px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-30 {
+  padding-bottom: 30px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-35 {
+  padding-bottom: 35px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-40 {
+  padding-bottom: 40px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-45 {
+  padding-bottom: 45px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-50 {
+  padding-bottom: 50px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-55 {
+  padding-bottom: 55px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-60 {
+  padding-bottom: 60px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-65 {
+  padding-bottom: 65px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-70 {
+  padding-bottom: 70px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-75 {
+  padding-bottom: 75px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-80 {
+  padding-bottom: 80px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-85 {
+  padding-bottom: 85px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-90 {
+  padding-bottom: 90px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-95 {
+  padding-bottom: 95px !important; }
+
+#dentacoin-login-gateway-container .padding-bottom-100 {
+  padding-bottom: 100px !important; }
+
+#dentacoin-login-gateway-container .padding-top-0 {
+  padding-top: 0px !important; }
+
+#dentacoin-login-gateway-container .padding-top-5 {
+  padding-top: 5px !important; }
+
+#dentacoin-login-gateway-container .padding-top-10 {
+  padding-top: 10px !important; }
+
+#dentacoin-login-gateway-container .padding-top-15 {
+  padding-top: 15px !important; }
+
+#dentacoin-login-gateway-container .padding-top-20 {
+  padding-top: 20px !important; }
+
+#dentacoin-login-gateway-container .padding-top-25 {
+  padding-top: 25px !important; }
+
+#dentacoin-login-gateway-container .padding-top-30 {
+  padding-top: 30px !important; }
+
+#dentacoin-login-gateway-container .padding-top-35 {
+  padding-top: 35px !important; }
+
+#dentacoin-login-gateway-container .padding-top-40 {
+  padding-top: 40px !important; }
+
+#dentacoin-login-gateway-container .padding-top-45 {
+  padding-top: 45px !important; }
+
+#dentacoin-login-gateway-container .padding-top-50 {
+  padding-top: 50px !important; }
+
+#dentacoin-login-gateway-container .padding-top-55 {
+  padding-top: 55px !important; }
+
+#dentacoin-login-gateway-container .padding-top-60 {
+  padding-top: 60px !important; }
+
+#dentacoin-login-gateway-container .padding-top-65 {
+  padding-top: 65px !important; }
+
+#dentacoin-login-gateway-container .padding-top-70 {
+  padding-top: 70px !important; }
+
+#dentacoin-login-gateway-container .padding-top-75 {
+  padding-top: 75px !important; }
+
+#dentacoin-login-gateway-container .padding-top-80 {
+  padding-top: 80px !important; }
+
+#dentacoin-login-gateway-container .padding-top-85 {
+  padding-top: 85px !important; }
+
+#dentacoin-login-gateway-container .padding-top-90 {
+  padding-top: 90px !important; }
+
+#dentacoin-login-gateway-container .padding-top-95 {
+  padding-top: 95px !important; }
+
+#dentacoin-login-gateway-container .padding-top-100 {
+  padding-top: 100px !important; }
+
+#dentacoin-login-gateway-container .padding-left-0 {
+  padding-left: 0px !important; }
+
+#dentacoin-login-gateway-container .padding-left-5 {
+  padding-left: 5px !important; }
+
+#dentacoin-login-gateway-container .padding-left-10 {
+  padding-left: 10px !important; }
+
+#dentacoin-login-gateway-container .padding-left-15 {
+  padding-left: 15px !important; }
+
+#dentacoin-login-gateway-container .padding-left-20 {
+  padding-left: 20px !important; }
+
+#dentacoin-login-gateway-container .padding-left-25 {
+  padding-left: 25px !important; }
+
+#dentacoin-login-gateway-container .padding-left-30 {
+  padding-left: 30px !important; }
+
+#dentacoin-login-gateway-container .padding-left-35 {
+  padding-left: 35px !important; }
+
+#dentacoin-login-gateway-container .padding-left-40 {
+  padding-left: 40px !important; }
+
+#dentacoin-login-gateway-container .padding-left-45 {
+  padding-left: 45px !important; }
+
+#dentacoin-login-gateway-container .padding-left-50 {
+  padding-left: 50px !important; }
+
+#dentacoin-login-gateway-container .padding-left-55 {
+  padding-left: 55px !important; }
+
+#dentacoin-login-gateway-container .padding-left-60 {
+  padding-left: 60px !important; }
+
+#dentacoin-login-gateway-container .padding-left-65 {
+  padding-left: 65px !important; }
+
+#dentacoin-login-gateway-container .padding-left-70 {
+  padding-left: 70px !important; }
+
+#dentacoin-login-gateway-container .padding-left-75 {
+  padding-left: 75px !important; }
+
+#dentacoin-login-gateway-container .padding-left-80 {
+  padding-left: 80px !important; }
+
+#dentacoin-login-gateway-container .padding-left-85 {
+  padding-left: 85px !important; }
+
+#dentacoin-login-gateway-container .padding-left-90 {
+  padding-left: 90px !important; }
+
+#dentacoin-login-gateway-container .padding-left-95 {
+  padding-left: 95px !important; }
+
+#dentacoin-login-gateway-container .padding-left-100 {
+  padding-left: 100px !important; }
+
+#dentacoin-login-gateway-container .padding-right-0 {
+  padding-right: 0px !important; }
+
+#dentacoin-login-gateway-container .padding-right-5 {
+  padding-right: 5px !important; }
+
+#dentacoin-login-gateway-container .padding-right-10 {
+  padding-right: 10px !important; }
+
+#dentacoin-login-gateway-container .padding-right-15 {
+  padding-right: 15px !important; }
+
+#dentacoin-login-gateway-container .padding-right-20 {
+  padding-right: 20px !important; }
+
+#dentacoin-login-gateway-container .padding-right-25 {
+  padding-right: 25px !important; }
+
+#dentacoin-login-gateway-container .padding-right-30 {
+  padding-right: 30px !important; }
+
+#dentacoin-login-gateway-container .padding-right-35 {
+  padding-right: 35px !important; }
+
+#dentacoin-login-gateway-container .padding-right-40 {
+  padding-right: 40px !important; }
+
+#dentacoin-login-gateway-container .padding-right-45 {
+  padding-right: 45px !important; }
+
+#dentacoin-login-gateway-container .padding-right-50 {
+  padding-right: 50px !important; }
+
+#dentacoin-login-gateway-container .padding-right-55 {
+  padding-right: 55px !important; }
+
+#dentacoin-login-gateway-container .padding-right-60 {
+  padding-right: 60px !important; }
+
+#dentacoin-login-gateway-container .padding-right-65 {
+  padding-right: 65px !important; }
+
+#dentacoin-login-gateway-container .padding-right-70 {
+  padding-right: 70px !important; }
+
+#dentacoin-login-gateway-container .padding-right-75 {
+  padding-right: 75px !important; }
+
+#dentacoin-login-gateway-container .padding-right-80 {
+  padding-right: 80px !important; }
+
+#dentacoin-login-gateway-container .padding-right-85 {
+  padding-right: 85px !important; }
+
+#dentacoin-login-gateway-container .padding-right-90 {
+  padding-right: 90px !important; }
+
+#dentacoin-login-gateway-container .padding-right-95 {
+  padding-right: 95px !important; }
+
+#dentacoin-login-gateway-container .padding-right-100 {
+  padding-right: 100px !important; }
+
+.dentacoin-login-gateway-response-layer {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999; }
+  .dentacoin-login-gateway-response-layer .dentacoin-login-gateway-response-layer-wrapper {
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    .dentacoin-login-gateway-response-layer .dentacoin-login-gateway-response-layer-wrapper img {
+      width: 95%;
+      margin-bottom: 15px;
+      max-width: 200px; }
+    .dentacoin-login-gateway-response-layer .dentacoin-login-gateway-response-layer-wrapper .dentacoin-login-gateway-response-message {
+      margin: 0 auto;
+      padding-top: 15px;
+      padding-left: 15px;
+      padding-right: 15px;
+      text-align: center;
+      font-weight: bold; }
+    @media screen and (max-width: 991px) {
+      .dentacoin-login-gateway-response-layer .dentacoin-login-gateway-response-layer-wrapper {
+        width: 100%; } }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .inline-block {
+  display: inline-block;
+  vertical-align: middle;
+  float: none; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .inline-block-top {
+  display: inline-block;
+  vertical-align: top;
+  float: none; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1000px; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a {
+  width: 50%;
+  font-size: 35px;
+  padding: 10px;
+  text-align: center;
+  border-top: 3px solid white;
+  border-left: 3px solid white;
+  border-right: 3px solid white;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  -ms-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a[data-type="patient"] {
+  color: white;
+  border-bottom: 1px solid white; }
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a[data-type="dentist"] {
+  color: black;
+  background-color: white;
+  border-bottom: 1px solid black; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body {
+  display: flex; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist {
+  background: white; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .call-sign-up {
+  font-weight: bold;
+  color: black; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .call-sign-up:hover {
+  color: black; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .call-sign-up .popup-half-footer {
+  padding: 30px 0;
+  margin-top: 50px;
+  text-align: center;
+  border-top: 1px solid black;
+  font-size: 16px; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .call-sign-up .popup-half-footer a {
+  font-weight: bold;
+  color: black;
+  font-size: 16px;
+  text-decoration: underline; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step {
+  display: none; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.visible {
+  display: block; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .user-type-container .user-type {
+  width: 50%; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .user-type-container .user-type .custom-button {
+  padding: 5px 10px;
+  display: block;
+  border: 2px solid #dddddd;
+  color: #dddddd;
+  font-size: 20px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .user-type-container .user-type .custom-button .custom-radio {
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border: 1px solid #dddddd;
+  text-align: center;
+  font-size: 0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .user-type-container .user-type .custom-button .custom-radio .circle {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  background-color: gray;
+  vertical-align: middle;
+  display: none;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .user-type-container .user-type.active .custom-button {
+  border-width: 2px;
+  border-style: solid; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .user-type-container .user-type.active .custom-button .custom-radio .circle {
+  display: inline-block; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .privacy-policy-row input[type='checkbox'] {
+  max-width: 170px; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .privacy-policy-row label {
+  display: block;
+  white-space: normal;
+  text-indent: 25px; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.third .phone {
+  display: flex;
+  align-items: center; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.third .phone .country-code {
+  font-size: 16px;
+  padding-right: 10px;
+  color: black; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.third .phone .input-phone {
+  flex: 1; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.third .phone input[type=number]::-webkit-inner-spin-button, #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.third .phone input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar {
+  width: 180px; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .specializations {
+  width: calc(100% - 180px);
+  padding-left: 20px;
+  color: black; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .specializations h4 {
+  width: calc(100% - 180px);
+  padding-left: 20px;
+  color: black;
+  padding-bottom: 10px; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .combobox-container .input-group {
+  display: block; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .combobox-container .input-group-addon.dropdown-toggle {
+  display: none; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .btns-container {
+  font-size: 0; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .btns-container .inline-block {
+  width: 50%; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .btns-container .inline-block .prev-step {
+  display: none;
+  color: black;
+  font-size: 14px;
+  font-family: 'Calibri Light';
+  border: 0;
+  background: transparent; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient {
+  color: white; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .popup-half-footer {
+  padding: 30px 0;
+  margin-top: 80px;
+  text-align: center;
+  border-top: 1px solid white;
+  color: white;
+  font-size: 16px; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .popup-half-footer a {
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: underline;
+  color: white; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient, #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist {
+  width: 50%;
+  padding-top: 50px;
+  border-bottom: 3px solid white;
+  border-left: 3px solid white;
+  border-right: 3px solid white;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  -ms-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .custom-input, #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .custom-input {
+  padding: 7px 12px; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient h2 {
+  color: white; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist h2 {
+  color: black; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient h2, #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist h2 {
+  font-size: 30px;
+  padding-bottom: 20px;
+  font-family: "Calibri Light"; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register, #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register {
+  display: none; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register .privacy-policy-row a {
+  color: white; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register, #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-login, #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register, #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-login {
+  width: 80%;
+  margin: 0 auto; }
+
+#dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient.custom-hide, #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist.custom-hide {
+  visibility: hidden; }
+
+/*# sourceMappingURL=dentacoin-login-gateway-style.css.map */
