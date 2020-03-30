@@ -36,7 +36,7 @@
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
         var jwtToken = event.response;
-        customCivicEvent('receivedCivicToken', 'Received civic token successfully.', jwtToken);
+        // customCivicEvent('receivedCivicToken', 'Received civic token successfully.', jwtToken);
 
         //ajax for exchanging received token from civic for user personal data
         $.ajax({

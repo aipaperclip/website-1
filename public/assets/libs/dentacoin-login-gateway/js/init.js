@@ -266,6 +266,41 @@ if (typeof jQuery == 'undefined') {
                             $('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder').html('');
                         });
 
+                        $(document).on('cannotLoginBecauseOfMissingCookies', function (event) {
+                            dcnGateway.utils.showPopup('Please accept the strictly necessary cookies in order to continue with logging in.', 'alert');
+                        });
+
+                        $(document).on('noUserIdReceived', function (event) {
+                            dcnGateway.utils.showPopup(event.message, 'alert');
+                        });
+
+                        $(document).on('noCoreDBApiConnection', function (event) {
+                            dcnGateway.utils.showPopup('Something went wrong, please try again later.', 'alert');
+                        });
+
+                        $(document).on('customCivicFbStopperTriggered', function (event) {
+                            customErrorHandle($('.login-signin-popup .patient .form-register .step-errors-holder'), 'Please agree with our privacy policy.');
+                        });
+
+                        $(document).on('successResponseCoreDBApi', async function (event) {
+                            console.log(event.response_data, 'successResponseCoreDBApi');
+                        });
+
+                        $(document).on('errorResponseCoreDBApi', function (event) {
+                            var error_popup_html = '';
+                            console.log(event.response_data, 'event.response_data');
+                            // I need type here or separated messages for each platform
+                            // currently the messages for not existing account or deleted one are WRONG
+                            if (event.response_data.errors) {
+                                for(var key in event.response_data.errors) {
+                                    error_popup_html += event.response_data.errors[key]+'<br>';
+                                }
+                            }
+
+                            dcnGateway.utils.hideLoader();
+                            dcnGateway.utils.showPopup(error_popup_html, 'alert');
+                        });
+
                         // ====================== /PATIENT LOGIN/ SIGNUP LOGIC ======================
 
                         // ====================== DENTIST LOGIN/ SIGNUP LOGIC ======================
