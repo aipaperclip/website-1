@@ -189,7 +189,7 @@ if (typeof jQuery == 'undefined') {
 
                         // init custom checkboxes style
                         for (var i = 0, len = $('.custom-checkbox-style').length; i < len; i+=1) {
-                            $('.custom-checkbox-style').prepend('<div class="custom-checkbox"></div>');
+                            $('.custom-checkbox-style').eq(i).prepend('<div class="custom-checkbox"></div>');
                         }
 
                         $('.custom-checkbox-style .custom-checkbox-input').on('change', function() {

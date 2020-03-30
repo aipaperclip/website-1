@@ -143,6 +143,10 @@
         display: inline-block;
         vertical-align: top;
         background-color: white;
+        color: white;
+        font-size: 14px;
+        text-align: center;
+        line-height: 20px;
         @include rounded(20%);
     }
     label {

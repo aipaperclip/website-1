@@ -28,7 +28,7 @@
             <div class="privacy-policy-row padding-top-20">
                 <div class="custom-checkbox-style">
                     <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration-patient"/>
-                    <label class="dentacoin-login-gateway-fs-14" for="privacy-policy-registration-patient">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
+                    <label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registration-patient">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
                 </div>
             </div>
             <div class="step-errors-holder"></div>
@@ -127,7 +127,7 @@
                     </div>
                     <div class="privacy-policy-row padding-bottom-20 custom-checkbox-style">
                         <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration"/>
-                        <label class="dentacoin-login-gateway-fs-14" for="privacy-policy-registration">I've read and agree to the <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
+                        <label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registration">I've read and agree to the <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
                     </div>
                 </div>
                 <div class="step third address-suggester-wrapper" data-step="third">
@@ -195,7 +195,7 @@
                             @foreach($api_enums->specialisations as $key => $specialisation)
                                 <div class="custom-checkbox-style">
                                     <input type="checkbox" class="custom-checkbox-input" name="specializations[]" value="{{$key}}"/>
-                                    <label class="dentacoin-login-gateway-fs-14">{{$specialisation}}</label>
+                                    <label class="dentacoin-login-gateway-fs-15">{{$specialisation}}</label>
                                 </div>
                             @endforeach
                         </div>

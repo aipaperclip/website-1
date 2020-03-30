@@ -258,6 +258,10 @@
     display: inline-block;
     vertical-align: top;
     background-color: white;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
     -webkit-border-radius: 20%;
     -moz-border-radius: 20%;
     -ms-border-radius: 20%;
