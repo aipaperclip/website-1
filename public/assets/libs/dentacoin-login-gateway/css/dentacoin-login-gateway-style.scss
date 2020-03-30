@@ -154,6 +154,10 @@
         padding-left: 10px;
         display: inline-block;
         vertical-align: top;
+        cursor: pointer;
+        a {
+            text-decoration: underline;
+        }
     }
 }
 

@@ -270,7 +270,10 @@
     width: calc(100% - 20px);
     padding-left: 10px;
     display: inline-block;
-    vertical-align: top; }
+    vertical-align: top;
+    cursor: pointer; }
+    .custom-checkbox-style label a {
+      text-decoration: underline; }
 
 .dentacoin-login-gateway-container .text-center {
   text-align: center; }

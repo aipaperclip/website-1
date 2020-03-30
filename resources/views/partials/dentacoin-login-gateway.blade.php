@@ -193,9 +193,9 @@
                         <div class="inline-block-top specializations">
                             <h4>Please select your specializations:</h4>
                             @foreach($api_enums->specialisations as $key => $specialisation)
-                                <div class="custom-checkbox-style">
-                                    <input type="checkbox" class="custom-checkbox-input" name="specializations[]" value="{{$key}}"/>
-                                    <label class="dentacoin-login-gateway-fs-15">{{$specialisation}}</label>
+                                <div class="custom-checkbox-style padding-bottom-5">
+                                    <input type="checkbox" class="custom-checkbox-input" name="specializations[]" id="specialization-{{$key}}" value="{{$key}}"/>
+                                    <label class="dentacoin-login-gateway-fs-15" for="specialization-{{$key}}">{{$specialisation}}</label>
                                 </div>
                             @endforeach
                         </div>
