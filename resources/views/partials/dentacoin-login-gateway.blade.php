@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="btn-container text-center">
-                    <input type="submit" value="Log in" class="white-black-btn dentacoin-login-gateway-fs-20"/>
+                    <input type="submit" value="Log in" class="platform-button gateway-platform-background-color dentacoin-login-gateway-fs-20"/>
                 </div>
                 <div class="text-center padding-top-40 dentacoin-login-gateway-fs-16">Don't have an account? <a href="javascript:void(0)" class="call-sign-up dentacoin-login-gateway-fs-20">Sign up</a></div>
             </form>
@@ -205,7 +205,7 @@
                         <input type="button" value="< back" class="prev-step"/>
                     </div>
                     <div class="inline-block text-right">
-                        <input type="button" value="Next" class="white-black-btn dentacoin-login-gateway-fs-20 next-step" data-current-step="first"/>
+                        <input type="button" value="Next" class="platform-button gateway-platform-background-color dentacoin-login-gateway-fs-20 next-step" data-current-step="first"/>
                         @if(isset($inviter))
                             <input type="hidden" name="inviter" value="{{\Illuminate\Support\Facades\Input::get('inviter')}}">
                         @endif
