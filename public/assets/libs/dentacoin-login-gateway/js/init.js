@@ -279,7 +279,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('customCivicFbStopperTriggered', function (event) {
-                            customErrorHandle($('.login-signin-popup .patient .form-register .step-errors-holder'), 'Please agree with our privacy policy.');
+                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder'), 'Please agree with our privacy policy.');
                         });
 
                         $(document).on('successResponseCoreDBApi', async function (event) {
