@@ -107,7 +107,7 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
 
-                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}</style>';
+                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}</style>';
 
                 $('head').append(platform_color_and_background);
 
@@ -265,6 +265,8 @@ if (typeof jQuery == 'undefined') {
                         $('#dentacoin-login-gateway-container .step.second .user-type-container .user-type').click(function() {
                             $('#dentacoin-login-gateway-container .step.second .user-type-container .user-type').removeClass('active');
                             $(this).addClass('active');
+                            $(this).find('.custom-button').addClass('gateway-platform-border-color-important');
+                            $(this).find('.user-type-label').addClass('gateway-platform-color');
                             $('#dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val($(this).attr('data-type'));
                         });
 
@@ -293,8 +295,8 @@ if (typeof jQuery == 'undefined') {
                                         } else if (first_step_inputs.eq(i).attr('type') == 'email' && dcnGateway.utils.validateEmail(first_step_inputs.eq(i).val().trim())) {
                                             //coredb check if email is free
                                             var check_email_if_free_response = await dcnGateway.dcnGatewayRequests.checkIfFreeEmail(first_step_inputs.eq(i).val().trim());
-                                            if (check_email_if_free_response.error) {
-                                                dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), 'The email has already been taken.');
+                                            if (check_email_if_free_response.success == false) {
+                                                dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), check_email_if_free_response.errors.email);
                                                 errors = true;
                                             }
                                         }

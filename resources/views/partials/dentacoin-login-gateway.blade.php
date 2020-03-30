@@ -90,13 +90,13 @@
                         <input type="hidden" name="user-type" value="dentist"/>
                         <div class="inline-block-top user-type active padding-right-15" data-type="dentist">
                             <a href="javascript:void(0)" class="custom-button">
-                                <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block">Dentist</span>
+                                <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block user-type-label">Dentist</span>
                             </a>
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color">For associate dentists OR independent practitioners</div>
                         </div>
                         <div class="inline-block-top user-type padding-left-15" data-type="clinic">
                             <a href="javascript:void(0)" class="custom-button">
-                                <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block">Clinic</span>
+                                <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block user-type-label">Clinic</span>
                             </a>
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color">For clinics with more than one dental practitioners</div>
                         </div>
