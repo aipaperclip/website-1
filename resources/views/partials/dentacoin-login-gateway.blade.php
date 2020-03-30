@@ -26,9 +26,9 @@
                 <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/register" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient" custom-stopper="true">Continue with Civic</a>
             </div>
             <div class="privacy-policy-row padding-top-20">
-                <div class="agree-with">
-                    <input type="checkbox" id="privacy-policy-registration-patient"/>
-                    <label class="dentacoin-login-gateway-fs-14">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
+                <div class="custom-checkbox-style">
+                    <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration-patient"/>
+                    <label class="dentacoin-login-gateway-fs-14" for="privacy-policy-registration-patient">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
                 </div>
             </div>
             <div class="step-errors-holder"></div>
@@ -125,9 +125,9 @@
                         </div>
                         <div class="dentacoin-login-gateway-fs-14 light-gray-color">Ex: Владимир Александрович</div>
                     </div>
-                    <div class="privacy-policy-row padding-bottom-20">
-                        <input type="checkbox" id="privacy-policy-registration"/>
-                        <label class="dentacoin-login-gateway-fs-14">I've read and agree to the <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
+                    <div class="privacy-policy-row padding-bottom-20 custom-checkbox-style">
+                        <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration"/>
+                        <label class="dentacoin-login-gateway-fs-14" for="privacy-policy-registration">I've read and agree to the <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
                     </div>
                 </div>
                 <div class="step third address-suggester-wrapper" data-step="third">
@@ -193,8 +193,10 @@
                         <div class="inline-block-top specializations">
                             <h4>Please select your specializations:</h4>
                             @foreach($api_enums->specialisations as $key => $specialisation)
-                                <input type="checkbox" name="specializations[]" value="{{$key}}"/>
-                                <label class="dentacoin-login-gateway-fs-14">{{$specialisation}}</label>
+                                <div class="custom-checkbox-style">
+                                    <input type="checkbox" class="custom-checkbox-input" name="specializations[]" value="{{$key}}"/>
+                                    <label class="dentacoin-login-gateway-fs-14">{{$specialisation}}</label>
+                                </div>
                             @endforeach
                         </div>
                         <div class="step-errors-holder padding-top-10"></div>

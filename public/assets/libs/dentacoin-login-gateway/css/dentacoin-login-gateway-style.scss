@@ -131,6 +131,28 @@
     }
 }
 
+.custom-checkbox-style {
+    font-size: 0;
+    input[type="checkbox"] {
+        display: none !important;
+    }
+    .custom-checkbox {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #bdc3c7;
+        display: inline-block;
+        vertical-align: top;
+        background-color: white;
+        @include rounded(20%);
+    }
+    label {
+        width: calc(100% - 20px);
+        padding-left: 10px;
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
 .dentacoin-login-gateway-container .text-center {
     text-align: center;
 }
@@ -293,7 +315,7 @@
     max-width: 1000px;
     &.popup {
         padding: 30px;
-        max-width: 600px;
+        max-width: 700px;
         background-color: white;
         @include vertical-horizontal-align(absolute);
         .popup-buttons {
@@ -413,17 +435,6 @@
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .user-type-container .user-type.active .custom-button .custom-radio .circle {
     display: inline-block;
-}
-
-.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .privacy-policy-row input[type='checkbox'] {
-    max-width: 170px;
-}
-
-.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .privacy-policy-row label {
-    display: block;
-    white-space: normal;
-    text-indent: 25px;
-
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.third .phone {

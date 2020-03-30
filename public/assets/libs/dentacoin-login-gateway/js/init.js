@@ -2,6 +2,7 @@ if (typeof jQuery == 'undefined') {
     // no jquery installed
     console.error('Dentacoin login gateway requires the usage of jQuery.');
 } else {
+    var loadedSocialLibs = false;
     var dcnGateway = {
         dcnGatewayRequests: {
             getPlatformsData: async function() {
@@ -160,7 +161,7 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
 
-                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-color-important{color:'+currentPlatformColor+' !important;}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}</style>';
+                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-color-important{color:'+currentPlatformColor+' !important;}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-background-color-important{background-color:'+currentPlatformColor+' !important;}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}</style>';
 
                 $('head').append(platform_color_and_background);
 
@@ -173,8 +174,31 @@ if (typeof jQuery == 'undefined') {
                 async function showGateway(type) {
                     var gatewayHtml = await dcnGateway.dcnGatewayRequests.getGatewayHtml(type, params.user_ip);
                     if (gatewayHtml.success) {
+                        if (!loadedSocialLibs) {
+                            console.log('loading social libs ===========');
+                            // =============================================== CIVIC =======================================================
+                            await $.getScript('/assets/libs/civic-login/civic.js?v='+new Date().getTime(), function() {});
+
+                            // =============================================== FACEBOOK ====================================================
+                            await $.getScript('/assets/libs/facebook-login/facebook.js?v='+new Date().getTime(), function() {});
+                            loadedSocialLibs = true;
+                        }
+
                         $('.dentacoin-login-gateway-container').remove();
                         $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
+
+                        // init custom checkboxes style
+                        for (var i = 0, len = $('.custom-checkbox-style').length; i < len; i+=1) {
+                            $('.custom-checkbox-style').prepend('<div class="custom-checkbox"></div>');
+                        }
+
+                        $('.custom-checkbox-style .custom-checkbox-input').on('change', function() {
+                            if ($(this).is(':checked')) {
+                                $(this).closest('.custom-checkbox-style').find('.custom-checkbox').addClass('gateway-platform-background-color-important').html('✓');
+                            } else {
+                                $(this).closest('.custom-checkbox-style').find('.custom-checkbox').removeClass('gateway-platform-background-color-important').html('');
+                            }
+                        });
                         
                         // init custom inputs styles
                         $('body').on('click', '.custom-google-label-style label', function() {
@@ -214,7 +238,7 @@ if (typeof jQuery == 'undefined') {
                             $('.dentacoin-login-gateway-container .form-register').hide();
                         });
 
-                        // ====================== PATIENT LOGIN/SIGNUP LOGIC ======================
+                        // ====================== PATIENT LOGIN/ SIGNUP LOGIC ======================
 
                         $('.dentacoin-login-gateway-container .patient .form-register #privacy-policy-registration-patient').on('change', function() {
                             if ($(this).is(':checked')) {
@@ -242,9 +266,9 @@ if (typeof jQuery == 'undefined') {
                             $('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder').html('');
                         });
 
-                        // ====================== /PATIENT LOGIN/SIGNUP LOGIC ======================
+                        // ====================== /PATIENT LOGIN/ SIGNUP LOGIC ======================
 
-                        // ====================== DENTIST LOGIN/SIGNUP LOGIC ======================
+                        // ====================== DENTIST LOGIN/ SIGNUP LOGIC ======================
                         //DENTIST LOGIN
                         $('.dentacoin-login-gateway-container form#dentist-login').on('submit', async function(event) {
                             var this_form_native = this;
@@ -522,7 +546,7 @@ if (typeof jQuery == 'undefined') {
                             }
                         });
                         return false;
-                        // ====================== /DENTIST LOGIN/SIGNUP LOGIC ======================
+                        // ====================== /DENTIST LOGIN/ SIGNUP LOGIC ======================
                     } else {
                         console.error('Something failed, please contact developer.');
                         return false;
