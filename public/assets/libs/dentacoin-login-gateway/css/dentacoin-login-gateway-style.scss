@@ -286,7 +286,7 @@
     float: none;
 }
 
-.dentacoin-login-gateway-container .error-handle, .alert.alert-warning {
+.dentacoin-login-gateway-container .error-handle, .dentacoin-login-gateway-container .alert.alert-warning {
     color: #a94442;
     background-color: #f2dede;
     border: 1px solid #a94442;
@@ -297,6 +297,10 @@
     @include rounded(4px);
     &.alert.alert-warning {
         display: none;
+    }
+    a {
+        color: #a94442;
+        text-decoration: underline;   
     }
 }
 
@@ -514,9 +518,19 @@
     color: white;
 }
 
+.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .have-old-account {
+    font-size: 16px;
+    color: white;
+    padding-top: 50px;
+    a {
+        text-decoration: underline;
+        color: white;
+    }
+}
+
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .popup-half-footer {
     padding: 30px 0;
-    margin-top: 80px;
+    margin-top: 15px;
     text-align: center;
     border-top: 1px solid white;
     color: white;

@@ -769,7 +769,7 @@
   vertical-align: top;
   float: none; }
 
-.dentacoin-login-gateway-container .error-handle, .alert.alert-warning {
+.dentacoin-login-gateway-container .error-handle, .dentacoin-login-gateway-container .alert.alert-warning {
   color: #a94442;
   background-color: #f2dede;
   border: 1px solid #a94442;
@@ -781,8 +781,11 @@
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px; }
-  .dentacoin-login-gateway-container .error-handle.alert.alert-warning, .alert.alert-warning.alert.alert-warning {
+  .dentacoin-login-gateway-container .error-handle.alert.alert-warning, .dentacoin-login-gateway-container .alert.alert-warning.alert.alert-warning {
     display: none; }
+  .dentacoin-login-gateway-container .error-handle a, .dentacoin-login-gateway-container .alert.alert-warning a {
+    color: #a94442;
+    text-decoration: underline; }
 
 .dentacoin-login-gateway-container {
   background-color: rgba(0, 0, 0, 0.6);
@@ -978,9 +981,17 @@
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient {
   color: white; }
 
+.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .have-old-account {
+  font-size: 16px;
+  color: white;
+  padding-top: 50px; }
+  .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .have-old-account a {
+    text-decoration: underline;
+    color: white; }
+
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .popup-half-footer {
   padding: 30px 0;
-  margin-top: 80px;
+  margin-top: 15px;
   text-align: center;
   border-top: 1px solid white;
   color: white;

@@ -172,6 +172,10 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
 
+                if (params.platform == 'assurance' || params.platform == 'trusted-reviews') {
+                    $('.popup-header-action a[data-type="patient"]').html('PATIENTS');
+                }
+
                 var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-color-important{color:'+currentPlatformColor+' !important;}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-background-color-important{background-color:'+currentPlatformColor+' !important;}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}</style>';
 
                 $('head').append(platform_color_and_background);
@@ -347,8 +351,7 @@ if (typeof jQuery == 'undefined') {
                                 }
 
                                 //check if existing account
-                                var check_account_response = dcnGateway.dcnGatewayRequests.checkDentistAccount($('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(), $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim());
-                                console.log(check_account_response, 'check_account_response');
+                                var check_account_response = await dcnGateway.dcnGatewayRequests.checkDentistAccount($('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(), $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim());
 
                                 if (submit_form && check_account_response.success) {
                                     dcnGateway.utils.fireGoogleAnalyticsEvent('DentistLogin', 'Click', 'Dentist Login');

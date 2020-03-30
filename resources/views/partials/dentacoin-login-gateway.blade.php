@@ -1,7 +1,7 @@
 @php($api_enums = (new \App\Http\Controllers\APIRequestsController())->getAllEnums())
 <div class="dentacoin-login-gateway-fs-0 popup-header-action">
-    <a href="javascript:void(0)" class="inline-block gateway-platform-background-color" data-type="patient">I'm a Patient</a>
-    <a href="javascript:void(0)" class="inline-block init-dentists-click-event" data-type="dentist">I'm a Dentist</a>
+    <a href="javascript:void(0)" class="inline-block gateway-platform-background-color" data-type="patient">USERS</a>
+    <a href="javascript:void(0)" class="inline-block init-dentists-click-event" data-type="dentist">DENTISTS</a>
 </div>
 <div class="dentacoin-login-gateway-fs-0 popup-body">
     <div class="patient inline-block gateway-platform-background-color">
@@ -12,6 +12,8 @@
             </div>
             <div>
                 <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient">Continue with Civic</a>
+            </div>
+            <div class="have-old-account">Have an old profile with email and password? Contact us
             </div>
             <div class="popup-half-footer">
                 Don't have an account? <a href="javascript:void(0)" class="call-sign-up">Sign up</a>
