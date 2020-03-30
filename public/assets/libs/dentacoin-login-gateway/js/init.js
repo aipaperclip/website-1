@@ -172,10 +172,6 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
 
-                if (params.platform == 'assurance' || params.platform == 'trusted-reviews') {
-                    $('.popup-header-action a[data-type="patient"]').html('PATIENTS');
-                }
-
                 var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-color-important{color:'+currentPlatformColor+' !important;}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-background-color-important{background-color:'+currentPlatformColor+' !important;}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}</style>';
 
                 $('head').append(platform_color_and_background);
@@ -201,6 +197,13 @@ if (typeof jQuery == 'undefined') {
 
                         $('.dentacoin-login-gateway-container').remove();
                         $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
+
+                        //setup forgotten password link
+                        $('.dentacoin-login-gateway-container #forgotten-password-link').attr('href', params.forgotten_password_link);
+
+                        if (params.platform == 'assurance' || params.platform == 'trusted-reviews') {
+                            $('.popup-header-action a[data-type="patient"]').html('PATIENTS');
+                        }
 
                         // init custom checkboxes style
                         for (var i = 0, len = $('.custom-checkbox-style').length; i < len; i+=1) {

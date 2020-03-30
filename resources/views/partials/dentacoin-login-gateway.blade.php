@@ -61,7 +61,7 @@
                 <div class="text-center padding-top-40 dentacoin-login-gateway-fs-16">Don't have an account? <a href="javascript:void(0)" class="call-sign-up dentacoin-login-gateway-fs-20">Sign up</a></div>
             </form>
             <div class="popup-half-footer">
-                <a href="#">Forgotten password?</a>
+                <a href="#" class="forgotten-password-link">Forgotten password?</a>
             </div>
         </div>
         <div class="form-register">
