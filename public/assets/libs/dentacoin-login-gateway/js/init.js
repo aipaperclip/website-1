@@ -173,6 +173,7 @@ if (typeof jQuery == 'undefined') {
                 async function showGateway(type) {
                     var gatewayHtml = await dcnGateway.dcnGatewayRequests.getGatewayHtml(type, params.user_ip);
                     if (gatewayHtml.success) {
+                        $('.dentacoin-login-gateway-container').remove();
                         $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
                         
                         // init custom inputs styles
@@ -534,7 +535,8 @@ if (typeof jQuery == 'undefined') {
 
                 $(document).on('click', '.dentacoin-login-gateway-container', function(event) {
                     if (event.target.className == 'dentacoin-login-gateway-container') {
-                        hideGateway();
+                        console.log(event.target, 'event.target');
+                        // hideGateway();
                     }
                 });
 
