@@ -68,7 +68,8 @@ if (typeof jQuery == 'undefined') {
                 el.append('<div class="error-handle">'+string+'</div>');
             },
             fireGoogleAnalyticsEvent: function(category, action, label, value) {
-                var event_obj = {
+                console.log('commenter fireGoogleAnalyticsEvent event');
+                /*var event_obj = {
                     'event_action' : action,
                     'event_category': category,
                     'event_label': label
@@ -78,7 +79,7 @@ if (typeof jQuery == 'undefined') {
                     event_obj.value = value;
                 }
 
-                gtag('event', label, event_obj);
+                gtag('event', label, event_obj);*/
             },
             validateEmail: function(email)   {
                 return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
