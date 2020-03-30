@@ -524,16 +524,7 @@ if (typeof jQuery == 'undefined') {
                                     }
 
                                     //check captcha
-                                    if (!$('.dentacoin-login-gateway-container .dentist .form-register .step.fourth .captcha-parent').length || !$('.dentacoin-login-gateway-container .dentist .form-register .step.fourth #register-captcha').length) {
-                                        errors = true;
-                                        window.location.reload();
-                                    } else {
-                                        var check_captcha_response = await checkCaptcha($('.dentacoin-login-gateway-container .dentist .form-register .step.fourth #register-captcha').val().trim());
-                                        if (check_captcha_response.error) {
-                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Please enter correct captcha.');
-                                            errors = true;
-                                        }
-                                    }
+                                    console.log( ' =-=-------------- check captcha ');
 
                                     if (!errors) {
                                         dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationComplete');
