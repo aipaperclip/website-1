@@ -535,8 +535,7 @@ if (typeof jQuery == 'undefined') {
 
                 $(document).on('click', '.dentacoin-login-gateway-container', function(event) {
                     if (event.target.className == 'dentacoin-login-gateway-container') {
-                        console.log(event.target, 'event.target');
-                        // hideGateway();
+                        $(event.target).remove();
                     }
                 });
 
