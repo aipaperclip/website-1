@@ -13,7 +13,7 @@
             <div>
                 <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient">Continue with Civic</a>
             </div>
-            <div class="have-old-account">Have an old profile with email and password? Contact us
+            <div class="have-old-account">Have an old profile with email and password? <a href="mailto:admin@dentacoin.com">Contact us</a>
             </div>
             <div class="popup-half-footer">
                 Don't have an account? <a href="javascript:void(0)" class="call-sign-up">Sign up</a>
