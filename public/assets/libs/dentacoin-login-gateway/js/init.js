@@ -177,10 +177,10 @@ if (typeof jQuery == 'undefined') {
                         if (!loadedSocialLibs) {
                             console.log('loading social libs ===========');
                             // =============================================== CIVIC =======================================================
-                            await $.getScript('/assets/libs/civic-login/civic.js?v='+new Date().getTime(), function() {});
+                            await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic.js?v='+new Date().getTime(), function() {});
 
                             // =============================================== FACEBOOK ====================================================
-                            await $.getScript('/assets/libs/facebook-login/facebook.js?v='+new Date().getTime(), function() {});
+                            await $.getScript('https://dentacoin.com/assets/libs/facebook-login/facebook.js?v='+new Date().getTime(), function() {});
                             loadedSocialLibs = true;
                         }
 
