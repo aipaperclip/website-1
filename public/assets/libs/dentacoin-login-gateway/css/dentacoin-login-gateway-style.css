@@ -32,7 +32,7 @@
     color: #888888;
     font-weight: normal;
     top: 50%;
-    font-family: 'Calibri';
+    font-family: 'Calibri-Regular';
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -63,7 +63,7 @@
     border: 2px solid #dddddd;
     cursor: pointer;
     font-size: 16px;
-    font-family: 'Calibri';
+    font-family: 'Lato-Regular';
     width: 100%;
     padding: 10px 15px;
     -webkit-border-radius: 4px 0 0 4px;
@@ -83,7 +83,7 @@
     text-align: center;
     padding-top: 12px;
     font-size: 18px;
-    font-family: 'Calibri';
+    font-family: 'Lato-Regular';
     color: black;
     background-color: #dddddd;
     -webkit-border-radius: 0 4px 4px 0;
@@ -122,7 +122,7 @@
     background-repeat: no-repeat;
     cursor: pointer;
     font-size: 16px;
-    font-family: 'Calibri';
+    font-family: 'Lato-Regular';
     width: 100%;
     padding: 10px 30px 10px 15px;
     -webkit-appearance: initial;
@@ -143,6 +143,15 @@
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px; }
+
+#dentacoin-login-gateway-container .text-center {
+  text-align: center; }
+
+#dentacoin-login-gateway-container .text-left {
+  text-align: left; }
+
+#dentacoin-login-gateway-container .text-right {
+  text-align: right; }
 
 #dentacoin-login-gateway-container {
   background-color: rgba(0, 0, 0, 0.6);
@@ -628,9 +637,6 @@
       .dentacoin-login-gateway-response-layer .dentacoin-login-gateway-response-layer-wrapper {
         width: 100%; } }
 
-#dentacoin-login-gateway-container .text-center {
-  text-align: center; }
-
 #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .inline-block {
   display: inline-block;
   vertical-align: middle;
@@ -806,6 +812,7 @@
   display: none;
   color: black;
   font-size: 14px;
+  font-family: 'Calibri Light';
   border: 0;
   background: transparent; }
 
@@ -848,7 +855,8 @@
 
 #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient h2, #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist h2 {
   font-size: 30px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  font-family: "Calibri Light"; }
 
 #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register, #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register {
   display: none; }
