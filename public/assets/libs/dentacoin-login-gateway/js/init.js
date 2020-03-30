@@ -126,7 +126,7 @@ if (typeof jQuery == 'undefined') {
                         $('body').on('click', '.custom-google-label-style label', function() {
                             $(this).addClass('active-label');
                             if ($('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
-                                $(this).parent().find('input').addClass('gateway-platform-border-color');
+                                $(this).parent().find('input').addClass('gateway-platform-border-color-important');
                             }
                         });
 
@@ -135,12 +135,12 @@ if (typeof jQuery == 'undefined') {
                             if (value.length) {
                                 $(this).closest('.custom-google-label-style').find('label').addClass('active-label');
                                 if ($(this).closest('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
-                                    $(this).addClass('gateway-platform-border-color');
+                                    $(this).addClass('gateway-platform-border-color-important');
                                 }
                             } else {
                                 $(this).closest('.custom-google-label-style').find('label').removeClass('active-label');
                                 if ($(this).closest('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
-                                    $(this).removeClass('gateway-platform-border-color');
+                                    $(this).removeClass('gateway-platform-border-color-important');
                                 }
                             }
                         });
@@ -264,6 +264,10 @@ if (typeof jQuery == 'undefined') {
                         //SECOND STEP INIT LOGIC
                         $('#dentacoin-login-gateway-container .step.second .user-type-container .user-type').click(function() {
                             $('#dentacoin-login-gateway-container .step.second .user-type-container .user-type').removeClass('active');
+                            $('#dentacoin-login-gateway-container .step.second .user-type-container .custom-button').removeClass('gateway-platform-border-color-important');
+                            $('#dentacoin-login-gateway-container .step.second .user-type-container .user-type-label').removeClass('gateway-platform-color');
+
+
                             $(this).addClass('active');
                             $(this).find('.custom-button').addClass('gateway-platform-border-color-important');
                             $(this).find('.user-type-label').addClass('gateway-platform-color');
