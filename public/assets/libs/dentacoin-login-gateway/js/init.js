@@ -199,7 +199,7 @@ if (typeof jQuery == 'undefined') {
                         $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
 
                         //setup forgotten password link
-                        $('.dentacoin-login-gateway-container #forgotten-password-link').attr('href', params.forgotten_password_link);
+                        $('.dentacoin-login-gateway-container .forgotten-password-link').attr('href', params.forgotten_password_link);
 
                         if (params.platform == 'assurance' || params.platform == 'trusted-reviews') {
                             $('.popup-header-action a[data-type="patient"]').html('PATIENTS');

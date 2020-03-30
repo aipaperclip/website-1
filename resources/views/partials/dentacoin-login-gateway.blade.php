@@ -129,7 +129,7 @@
                     </div>
                     <div class="privacy-policy-row padding-bottom-20 custom-checkbox-style">
                         <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration"/>
-                        <label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registration">I've read and agree to the <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
+                        <label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registration">I've read and agree to the <a href="//dentacoin.com/privacy-policy" class="gateway-platform-color" target="_blank">Privacy Policy</a></label>
                     </div>
                 </div>
                 <div class="step third address-suggester-wrapper" data-step="third">
