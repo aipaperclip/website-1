@@ -348,6 +348,7 @@ if (typeof jQuery == 'undefined') {
 
                                 //check if existing account
                                 var check_account_response = dcnGateway.dcnGatewayRequests.checkDentistAccount($('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(), $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim());
+                                console.log(check_account_response, 'check_account_response');
 
                                 if (submit_form && check_account_response.success) {
                                     dcnGateway.utils.fireGoogleAnalyticsEvent('DentistLogin', 'Click', 'Dentist Login');
