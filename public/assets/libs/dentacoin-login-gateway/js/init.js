@@ -106,7 +106,7 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
 
-                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-background-color{background-color:'+currentPlatformColor+';}</style>';
+                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-background-color{background-color:'+currentPlatformColor+'.gateway-platform-border-color{border-color:'+currentPlatformColor+';}</style>';
 
                 $('head').append(platform_color_and_background);
 
@@ -119,7 +119,30 @@ if (typeof jQuery == 'undefined') {
                 async function showGateway(type) {
                     var gatewayHtml = await dcnGateway.dcnGatewayRequests.getGatewayHtml(type, params.user_ip);
                     if (gatewayHtml.success) {
-                        $('body').append('<div id="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>')
+                        $('body').append('<div id="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
+                        
+                        // init custom inputs styles
+                        $('body').on('click', '.custom-google-label-style label', function() {
+                            $(this).addClass('active-label');
+                            if ($('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
+                                $(this).parent().find('input').addClass('gateway-platform-border-color');
+                            }
+                        });
+
+                        $('body').on('keyup change focusout', '.custom-google-label-style input', function() {
+                            var value = $(this).val().trim();
+                            if (value.length) {
+                                $(this).closest('.custom-google-label-style').find('label').addClass('active-label');
+                                if ($(this).closest('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
+                                    $(this).addClass('gateway-platform-border-color');
+                                }
+                            } else {
+                                $(this).closest('.custom-google-label-style').find('label').removeClass('active-label');
+                                if ($(this).closest('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
+                                    $(this).removeClass('gateway-platform-border-color');
+                                }
+                            }
+                        });
 
                         $('#dentacoin-login-gateway-container .popup-header-action a').click(function() {
                             $('#dentacoin-login-gateway-container .popup-body > .inline-block').addClass('custom-hide');
@@ -250,7 +273,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         //FOURTH STEP INIT LOGIC
-                        styleAvatarUploadButton();
+                        console.log('styleAvatarUploadButton');
 
                         //DENTIST REGISTERING FORM
                         $('#dentacoin-login-gateway-container .dentist .form-register .next-step').click(async function() {
