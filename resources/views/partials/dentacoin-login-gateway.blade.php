@@ -43,13 +43,13 @@
             <form method="POST" id="dentist-login">
                 <div class="padding-bottom-10 field-parent">
                     <div class="custom-google-label-style module" data-input-colorful-border="true">
-                        <label class="gateway-platform-color" for="dentist-login-email">Email address:</label>
+                        <label for="dentist-login-email">Email address:</label>
                         <input class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-login-email" placeholder=""/>
                     </div>
                 </div>
                 <div class="padding-bottom-20 field-parent">
                     <div class="custom-google-label-style module" data-input-colorful-border="true">
-                        <label class="gateway-platform-color" for="dentist-login-password">Password:</label>
+                        <label for="dentist-login-password">Password:</label>
                         <input class="full-rounded form-field" name="password" maxlength="50" id="dentist-login-password" type="password"/>
                     </div>
                 </div>
@@ -68,19 +68,19 @@
                 <div class="step first visible" data-step="first">
                     <div class="padding-bottom-10 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
-                            <label class="gateway-platform-color" for="dentist-register-email">Work Email Address:</label>
+                            <label for="dentist-register-email">Work Email Address:</label>
                             <input class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-register-email"/>
                         </div>
                     </div>
                     <div class="padding-bottom-10 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
-                            <label class="gateway-platform-color" for="dentist-register-password">Password:</label>
+                            <label for="dentist-register-password">Password:</label>
                             <input class="full-rounded form-field password" name="password" minlength="6" maxlength="50" type="password" id="dentist-register-password"/>
                         </div>
                     </div>
                     <div class="padding-bottom-20 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
-                            <label class="gateway-platform-color" for="dentist-register-repeat-password">Repeat password:</label>
+                            <label for="dentist-register-repeat-password">Repeat password:</label>
                             <input class="full-rounded form-field repeat-password" name="repeat-password" minlength="6" maxlength="50" type="password" id="dentist-register-repeat-password"/>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                     </div>
                     <div class="padding-bottom-25 field-parent">
                         <div class="custom-google-select-style module">
-                            <label class="gateway-platform-color">Title:</label>
+                            <label>Title:</label>
                             <select class="form-field required gateway-platform-border-color" name="dentist-title">
                                 @foreach($api_enums->titles as $key => $title)
                                     <option value="{{$key}}">{{$title}}</option>
@@ -113,14 +113,14 @@
                     </div>
                     <div class="padding-bottom-15 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
-                            <label class="gateway-platform-color" for="dentist-register-latin-name">Your Name (Latin letters):</label>
+                            <label for="dentist-register-latin-name">Your Name (Latin letters):</label>
                             <input class="full-rounded form-field required" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name"/>
                         </div>
                         <div class="dentacoin-login-gateway-fs-14 light-gray-color">Ex: Vladimir Alexandrovich (First name, Last name)</div>
                     </div>
                     <div class="padding-bottom-30 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
-                            <label class="gateway-platform-color" for="dentist-register-alternative-name">Alternative Spelling (optional):</label>
+                            <label for="dentist-register-alternative-name">Alternative Spelling (optional):</label>
                             <input class="full-rounded form-field" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name"/>
                         </div>
                         <div class="dentacoin-login-gateway-fs-14 light-gray-color">Ex: Владимир Александрович</div>
@@ -134,7 +134,7 @@
                     <div class="padding-bottom-20 field-parent">
                         <div class="custom-google-select-style module">
                             @php($countries = (new \App\Http\Controllers\APIRequestsController())->getAllCountries())
-                            <label class="gateway-platform-color">Select country:</label>
+                            <label>Select country:</label>
                             @php($current_phone_code = '+'.$countries[0]->phone_code)
                             @if(isset($client_ip) && $client_ip != '127.0.0.1')
                                 @php($current_user_country_code = (new \App\Http\Controllers\APIRequestsController())->getCountry($client_ip))
@@ -175,7 +175,7 @@
                         <div class="phone">
                             <div class="country-code" name="phone-code">{{$current_phone_code}}</div>
                             <div class="custom-google-label-style module input-phone" data-input-colorful-border="true">
-                                <label class="gateway-platform-color" for="dentist-register-phone">Phone number:</label>
+                                <label for="dentist-register-phone">Phone number:</label>
                                 <input class="full-rounded form-field required" name="phone" maxlength="50" type="number" id="dentist-register-phone"/>
                             </div>
                         </div>

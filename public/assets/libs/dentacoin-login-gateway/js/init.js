@@ -107,7 +107,7 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
 
-                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}</style>';
+                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-color-important{color:'+currentPlatformColor+' !important;}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}</style>';
 
                 $('head').append(platform_color_and_background);
 
@@ -124,7 +124,7 @@ if (typeof jQuery == 'undefined') {
                         
                         // init custom inputs styles
                         $('body').on('click', '.custom-google-label-style label', function() {
-                            $(this).addClass('active-label');
+                            $(this).addClass('gateway-platform-color-important');
                             if ($('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
                                 $(this).parent().find('input').addClass('gateway-platform-border-color-important');
                             }
@@ -133,12 +133,12 @@ if (typeof jQuery == 'undefined') {
                         $('body').on('keyup change focusout', '.custom-google-label-style input', function() {
                             var value = $(this).val().trim();
                             if (value.length) {
-                                $(this).closest('.custom-google-label-style').find('label').addClass('active-label');
+                                $(this).closest('.custom-google-label-style').find('label').addClass('gateway-platform-color-important');
                                 if ($(this).closest('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
                                     $(this).addClass('gateway-platform-border-color-important');
                                 }
                             } else {
-                                $(this).closest('.custom-google-label-style').find('label').removeClass('active-label');
+                                $(this).closest('.custom-google-label-style').find('label').removeClass('gateway-platform-color-important');
                                 if ($(this).closest('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
                                     $(this).removeClass('gateway-platform-border-color-important');
                                 }
