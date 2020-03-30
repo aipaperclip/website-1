@@ -1,5 +1,6 @@
 @import "../../../scss/additionals/responsive";
 @import "../../../scss/additionals/mixins";
+@import "../../../scss/additionals/fonts";
 
 .module {
     &.suggester-parent {
@@ -24,7 +25,7 @@
             color: #888888;
             font-weight: normal;
             top: 50%;
-            font-family: 'Calibri-Regular';
+            font-family: 'Calibri';
             -webkit-transform: translateY(-50%);
             -ms-transform: translateY(-50%);
             transform: translateY(-50%);
@@ -120,6 +121,7 @@
      padding: 10px 20px;
      font-weight: bold;
      border: 0;
+    cursor: pointer; 
      @include rounded(4px);
  }
 
@@ -493,7 +495,7 @@
 }
 
 #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient h2, #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist h2 {
-    font-size: 30px; 
+    font-size: 30px;
     padding-bottom: 20px;
     font-family: "Calibri Light";
 }
