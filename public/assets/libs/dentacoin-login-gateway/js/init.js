@@ -278,6 +278,7 @@ if (typeof jQuery == 'undefined') {
                         //DENTIST REGISTERING FORM
                         $('#dentacoin-login-gateway-container .dentist .form-register .next-step').click(async function() {
                             var this_btn = $(this);
+                            console.log(this_btn.attr('data-current-step'), 'this_btn.attr(\'data-current-step\')');
 
                             switch(this_btn.attr('data-current-step')) {
                                 case 'first':
