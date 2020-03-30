@@ -136,9 +136,9 @@
 .platform-button, input[type='submit'].platform-button {
   color: white;
   font-size: 16px;
-  padding: 6px 15px;
+  padding: 10px 20px;
   font-weight: bold;
-  border: 2px solid black;
+  border: 0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
@@ -627,6 +627,9 @@
     @media screen and (max-width: 991px) {
       .dentacoin-login-gateway-response-layer .dentacoin-login-gateway-response-layer-wrapper {
         width: 100%; } }
+
+#dentacoin-login-gateway-container .text-center {
+  text-align: center; }
 
 #dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .inline-block {
   display: inline-block;
