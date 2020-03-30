@@ -106,7 +106,7 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
 
-                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-background-color{background-color:'+currentPlatformColor+'.gateway-platform-border-color{border-color:'+currentPlatformColor+';}</style>';
+                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}</style>';
 
                 $('head').append(platform_color_and_background);
 
