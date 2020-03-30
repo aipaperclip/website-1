@@ -533,7 +533,7 @@ if (typeof jQuery == 'undefined') {
                 }
 
                 $(document).on('click', '.dentacoin-login-gateway-container', function(event) {
-                    if (event.target.id == 'dentacoin-login-gateway-container') {
+                    if (event.target.className == 'dentacoin-login-gateway-container') {
                         hideGateway();
                     }
                 });
