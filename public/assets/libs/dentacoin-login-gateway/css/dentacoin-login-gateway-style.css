@@ -772,24 +772,6 @@
   vertical-align: top;
   float: none; }
 
-.dentacoin-login-gateway-container .error-handle, .dentacoin-login-gateway-container .alert.alert-warning {
-  color: #a94442;
-  background-color: #f2dede;
-  border: 1px solid #a94442;
-  margin-top: 5px;
-  margin-bottom: 0;
-  font-size: 14px;
-  padding: 5px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px; }
-  .dentacoin-login-gateway-container .error-handle.alert.alert-warning, .dentacoin-login-gateway-container .alert.alert-warning.alert.alert-warning {
-    display: none; }
-  .dentacoin-login-gateway-container .error-handle a, .dentacoin-login-gateway-container .alert.alert-warning a {
-    color: #a94442;
-    text-decoration: underline; }
-
 .dentacoin-login-gateway-container {
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
@@ -800,6 +782,26 @@
   z-index: 9999;
   overflow: auto;
   font-family: 'Calibri'; }
+  .dentacoin-login-gateway-container ul, .dentacoin-login-gateway-container li, .dentacoin-login-gateway-container ol {
+    margin: 0;
+    padding: 0; }
+  .dentacoin-login-gateway-container .error-handle, .dentacoin-login-gateway-container .alert.alert-warning {
+    color: #a94442;
+    background-color: #f2dede;
+    border: 1px solid #a94442;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 14px;
+    padding: 5px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px; }
+    .dentacoin-login-gateway-container .error-handle.alert.alert-warning, .dentacoin-login-gateway-container .alert.alert-warning.alert.alert-warning {
+      display: none; }
+    .dentacoin-login-gateway-container .error-handle a, .dentacoin-login-gateway-container .alert.alert-warning a {
+      color: #a94442;
+      text-decoration: underline; }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper {
   position: absolute;
@@ -1037,7 +1039,12 @@
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register .optional-user-type {
   color: white; }
   .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register .optional-user-type ul {
-    display: block; }
+    display: block;
+    font-size: 0; }
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register .optional-user-type ul li {
+      display: inline-block; }
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register .optional-user-type ul li:first-child {
+        min-width: 130px; }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-login, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-login {
   width: 80%;

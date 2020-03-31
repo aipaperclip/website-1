@@ -290,24 +290,6 @@
     float: none;
 }
 
-.dentacoin-login-gateway-container .error-handle, .dentacoin-login-gateway-container .alert.alert-warning {
-    color: #a94442;
-    background-color: #f2dede;
-    border: 1px solid #a94442;
-    margin-top: 5px;
-    margin-bottom: 0;
-    font-size: 14px;
-    padding: 5px;
-    @include rounded(4px);
-    &.alert.alert-warning {
-        display: none;
-    }
-    a {
-        color: #a94442;
-        text-decoration: underline;
-    }
-}
-
 .dentacoin-login-gateway-container {
     background-color: rgba(0, 0, 0, .6);
     width: 100%;
@@ -318,6 +300,27 @@
     z-index: 9999;
     overflow: auto;
     font-family: 'Calibri';
+    ul, li, ol {
+        margin: 0;
+        padding: 0;
+    }
+    .error-handle, .alert.alert-warning {
+        color: #a94442;
+        background-color: #f2dede;
+        border: 1px solid #a94442;
+        margin-top: 5px;
+        margin-bottom: 0;
+        font-size: 14px;
+        padding: 5px;
+        @include rounded(4px);
+        &.alert.alert-warning {
+            display: none;
+        }
+        a {
+            color: #a94442;
+            text-decoration: underline;
+        }
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper {
@@ -583,7 +586,14 @@
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register .optional-user-type {
     color: white;
     ul {
-        display: block; 
+        display: block;
+        font-size: 0;
+        li {
+            display: inline-block;
+            &:first-child {
+                min-width: 130px; 
+            }
+        }
     }
 }
 
