@@ -5,7 +5,7 @@
 </div>
 <div class="dentacoin-login-gateway-fs-0 popup-body">
     <div class="patient inline-block gateway-platform-background-color @if($type == 'dentist-login' || $type == 'dentist-register') custom-hide @endif">
-        <div class="form-login @if($type == 'patient-register') display-none @endif">
+        <div class="form-login @if($type == 'patient-register' || 'dentist-register') display-none @endif">
             <h2>LOG IN</h2>
             <div class="padding-bottom-10">
                 <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient"><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">Continue with Facebook</span></a>
@@ -19,7 +19,7 @@
                 Don't have an account? <a href="javascript:void(0)" class="call-sign-up">Sign up</a>
             </div>
         </div>
-        <div class="form-register @if($type == 'patient-login') display-none @endif">
+        <div class="form-register @if($type == 'patient-login' || 'dentist-login') display-none @endif">
             <h2>SIGN UP</h2>
             <div class="padding-bottom-10">
                 <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/register" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif data-type="patient" custom-stopper="true"><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">Continue with Facebook</span></a>
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="dentist inline-block @if($type == 'patient-login' || $type == 'patient-register') custom-hide @endif">
-        <div class="form-login @if($type == 'dentist-register') display-none @endif">
+        <div class="form-login @if($type == 'dentist-register' || 'patient-register') display-none @endif">
             <h2>LOG IN</h2>
             <form method="POST" id="dentist-login">
                 <div class="padding-bottom-10 field-parent">
@@ -64,7 +64,7 @@
                 <a href="#" class="forgotten-password-link">Forgotten password?</a>
             </div>
         </div>
-        <div class="form-register @if($type == 'dentist-login') display-none @endif">
+        <div class="form-register @if($type == 'dentist-login' || 'patient-login') display-none @endif">
             <h2>Sign Up Now - Quick & Easy!</h2>
             <form method="POST" enctype="multipart/form-data" id="dentist-register">
                 <div class="step first visible" data-step="first">
