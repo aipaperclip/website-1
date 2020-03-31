@@ -1034,6 +1034,11 @@
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register .privacy-policy-row a {
   color: white; }
 
+.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register .optional-user-type {
+  color: white; }
+  .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register .optional-user-type ul {
+    display: block; }
+
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-login, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-login {
   width: 80%;
   margin: 0 auto; }
