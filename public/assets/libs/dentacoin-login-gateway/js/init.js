@@ -611,10 +611,18 @@ if (typeof jQuery == 'undefined') {
                     }
                 });
 
-
-                console.log(params, 'params');
-                console.log(platformsData, 'platformsData');
-                console.log(dcnGateway.utils.getGETParameters(), 'dcnGateway.utils.getGETParameters()');
+                // show login gateway by url
+                var getParams = dcnGateway.utils.getGETParameters();
+                console.log(getParams, 'getParams');
+                console.log(getParams['dcn-gateway-type'], 'getParams[\'dcn-gateway-type\']');
+                if (hasOwnProperty.call(getParams, 'dcn-gateway-type')) {
+                    console.log('asd');
+                    if (['patient-login', 'patient-register', 'dentist-login', 'dentist-register'].indexOf(getParams['dcn-gateway-type']) == -1) {
+                        console.error('Wrong dcn-gateway-type get parameter value in the url.');
+                    } else {
+                        showGateway(getParams['dcn-gateway-type']);
+                    }
+                }
             }
         }
     };
