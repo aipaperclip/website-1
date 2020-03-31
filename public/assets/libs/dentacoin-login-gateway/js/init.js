@@ -447,7 +447,7 @@ if (typeof jQuery == 'undefined') {
 
                                     var password = $('.dentacoin-login-gateway-container .dentist .form-register .step.first .form-field.password').val();
                                     if (password.trim().length < 8 || password.trim().length > 30 || !dcnGateway.utils.hasLowerCase(password) || !dcnGateway.utils.hasUpperCase(password) || !dcnGateway.utils.hasNumber(password)) {
-                                        dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.first .form-field.repeat-password').closest('.field-parent'), 'Your password must include at least one lowercase letter, one uppercase letter, one number and length of between 8 and 30 symbols.');
+                                        dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.first .form-field.repeat-password').closest('.field-parent'), 'Password must contain between 8 and 30 symbols with at least one uppercase letter, one lowercase letter and a number or a special character.');
                                         errors = true;
                                     }
 

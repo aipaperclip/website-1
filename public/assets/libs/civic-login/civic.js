@@ -55,10 +55,13 @@
                     setTimeout(function () {
                         var register_data = {
                             platform: civic_custom_btn.attr('data-platform'),
-                            social_network: civic_config.platform,
                             auth_token: jwtToken,
-                            type: civic_custom_btn.attr('data-type')
+                            social_network: 'civic',
+                            type: 'patient'
                         };
+
+                        console.log(register_data, 'register_data');
+                        return false;
 
                         if(civic_custom_btn.attr('data-inviter') != undefined) {
                             register_data.invited_by = civic_custom_btn.attr('data-inviter');

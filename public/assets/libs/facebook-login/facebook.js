@@ -1,8 +1,7 @@
 $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textStatus, jqxhr ) {
     const fb_config = {
         //app_id: '299398824049604',
-        app_id: '1906201509652855',
-        platform: 'fb'
+        app_id: '1906201509652855'
     };
 
     //application init
@@ -44,9 +43,9 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
 
                     var register_data = {
                         platform: this_btn.attr('data-platform'),
-                        social_network: fb_config.platform,
                         auth_token: response.authResponse.accessToken,
-                        type: this_btn.attr('data-type')
+                        social_network: 'fb',
+                        type: 'patient'
                     };
 
                     if (this_btn.attr('data-inviter') != undefined) {
