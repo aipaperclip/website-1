@@ -247,13 +247,13 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $('.dentacoin-login-gateway-container .call-sign-up').click(function() {
-                            $('.dentacoin-login-gateway-container .form-login').hide();
-                            $('.dentacoin-login-gateway-container .form-register').show();
+                            $('.dentacoin-login-gateway-container .form-login').addClass('display-none');
+                            $('.dentacoin-login-gateway-container .form-register').removeClass('display-none');
                         });
 
                         $('.dentacoin-login-gateway-container .call-log-in').click(function() {
-                            $('.dentacoin-login-gateway-container .form-login').show();
-                            $('.dentacoin-login-gateway-container .form-register').hide();
+                            $('.dentacoin-login-gateway-container .form-login').removeClass('display-none');
+                            $('.dentacoin-login-gateway-container .form-register').addClass('display-none');
                         });
 
                         // ====================== PATIENT LOGIN/ SIGNUP LOGIC ======================
@@ -603,9 +603,9 @@ if (typeof jQuery == 'undefined') {
                     } else if ($(this).hasClass('patient-register')) {
                         showGateway('patient-register');
                     } else if ($(this).hasClass('dentist-login')) {
-                        showGateway('patient-login');
+                        showGateway('dentist-login');
                     } else if ($(this).hasClass('dentist-register')) {
-                        showGateway('patient-register');
+                        showGateway('dentist-register');
                     } else {
                         showGateway('patient-login');
                     }

@@ -764,6 +764,9 @@
   vertical-align: middle;
   float: none; }
 
+.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .display-none {
+  display: none; }
+
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .inline-block-top {
   display: inline-block;
   vertical-align: top;
@@ -1027,9 +1030,6 @@
   font-size: 30px;
   padding-bottom: 20px;
   font-family: "Calibri Light"; }
-
-.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register {
-  display: none; }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register .privacy-policy-row a {
   color: white; }

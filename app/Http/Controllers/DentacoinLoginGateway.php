@@ -12,7 +12,7 @@ class DentacoinLoginGateway extends Controller
             return response()->json(['error' => false, 'message' => 'Missing user IP.']);
         }
 
-        $view = view('partials/dentacoin-login-gateway', ['client_ip' => $request->input('user_ip')]);
+        $view = view('partials/dentacoin-login-gateway', ['client_ip' => $request->input('user_ip'), 'type' => $request->input('type')]);
         $view = $view->render();
 
         return response()->json(['success' => true, 'data' => $view]);
