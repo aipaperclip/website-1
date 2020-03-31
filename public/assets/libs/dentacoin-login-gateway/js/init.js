@@ -57,6 +57,15 @@ if (typeof jQuery == 'undefined') {
             }
         },
         utils: {
+            hasNumber: function(myString) {
+                return /\d/.test(myString);
+            },
+            hasLowerCase: function(str) {
+                return (/[a-z]/.test(str));
+            },
+            hasUpperCase: function(str) {
+                return (/[A-Z]/.test(str));
+            },
             getGETParameters: function() {
                 var prmstr = window.location.search.substr(1);
                 return prmstr != null && prmstr != "" ? dcnGateway.utils.transformToAssocArray(prmstr) : {};
@@ -425,10 +434,10 @@ if (typeof jQuery == 'undefined') {
                                             }
                                         }
 
-                                        if (first_step_inputs.eq(i).attr('type') == 'password' && first_step_inputs.eq(i).val().length < 6) {
+                                        /*if (first_step_inputs.eq(i).attr('type') == 'password' && first_step_inputs.eq(i).val().length < 6) {
                                             dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), 'Passwords must be min length 6.');
                                             errors = true;
-                                        }
+                                        }*/
 
                                         if (first_step_inputs.eq(i).val().trim() == '') {
                                             dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), 'This field is required.');
@@ -436,7 +445,13 @@ if (typeof jQuery == 'undefined') {
                                         }
                                     }
 
-                                    if ($('.dentacoin-login-gateway-container .dentist .form-register .step.first .form-field.password').val().trim() != $('.dentacoin-login-gateway-container .step.first .form-field.repeat-password').val().trim()) {
+                                    var password = $('.dentacoin-login-gateway-container .dentist .form-register .step.first .form-field.password').val();
+                                    if (password.trim().length < 8 || password.trim().length > 30 || !dcnGateway.utils.hasLowerCase(password) || !dcnGateway.utils.hasUpperCase(password) || !dcnGateway.utils.hasNumber(password)) {
+                                        dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.first .form-field.repeat-password').closest('.field-parent'), 'Your password must include at least one lowercase letter, one uppercase letter, one number and length of between 8 and 30 symbols.');
+                                        errors = true;
+                                    }
+
+                                    if (password.trim() != $('.dentacoin-login-gateway-container .step.first .form-field.repeat-password').val().trim()) {
                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.first .form-field.repeat-password').closest('.field-parent'), 'Both passwords don\'t match.');
                                         errors = true;
                                     }
