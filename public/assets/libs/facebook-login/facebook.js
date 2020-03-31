@@ -60,6 +60,11 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                         data: register_data,
                         success: function(data) {
                             if (data.success) {
+                                if (data.data.email == '' || data.data.email == null) {
+                                    console.log('registeredAccountMissingEmail');
+                                    customFacebookEvent('registeredAccountMissingEmail', '', data);
+                                }
+
                                 //firing success event
                                 customFacebookEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
                             } else {

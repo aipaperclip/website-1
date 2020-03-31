@@ -309,6 +309,11 @@ if (typeof jQuery == 'undefined') {
                             dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder'), 'Please agree with our privacy policy.');
                         });
 
+                        $(document).on('registeredAccountMissingEmail', async function (event) {
+                            console.log(event.response_data, 'registeredAccountMissingEmail');
+                            console.log('====== request to save email and then fire successful login event =====');
+                        });
+
                         $(document).on('successResponseCoreDBApi', async function (event) {
                             console.log(event.response_data, 'successResponseCoreDBApi');
                         });
