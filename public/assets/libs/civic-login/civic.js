@@ -60,9 +60,6 @@
                             type: 'patient'
                         };
 
-                        console.log(register_data, 'register_data');
-                        return false;
-
                         if(civic_custom_btn.attr('data-inviter') != undefined) {
                             register_data.invited_by = civic_custom_btn.attr('data-inviter');
                         }
