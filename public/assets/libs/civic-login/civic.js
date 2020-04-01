@@ -70,16 +70,20 @@
                             url: civic_custom_btn.attr('data-url'),
                             data: register_data,
                             success: function(data){
-                                if (data.data.email == '' || data.data.email == null) {
-                                    console.log('registeredAccountMissingEmail');
-                                    customCivicEvent('registeredAccountMissingEmail', '', data);
-                                }
+                                console.log(data, 'data');
 
-                                if (data.success) {
-                                    customCivicEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
-                                } else {
-                                    customCivicEvent('errorResponseCoreDBApi', 'Request to CoreDB-API succeed, but conditions failed.', data);
-                                }
+                                setTimeout(function() {
+                                    if (data.data.email == '' || data.data.email == null) {
+                                        console.log('registeredAccountMissingEmail');
+                                        customCivicEvent('registeredAccountMissingEmail', '', data);
+                                    }
+
+                                    if (data.success) {
+                                        customCivicEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
+                                    } else {
+                                        customCivicEvent('errorResponseCoreDBApi', 'Request to CoreDB-API succeed, but conditions failed.', data);
+                                    }
+                                }, 10000);
                             },
                             error: function() {
                                 customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');

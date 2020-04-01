@@ -33,6 +33,16 @@ if (typeof jQuery == 'undefined') {
                     }
                 });
             },
+            editUserData: async function(email) {
+                return await $.ajax({
+                    type: 'POST',
+                    url: 'https://api.dentacoin.com/api/check-email',
+                    dataType: 'json',
+                    data: {
+                        email: email
+                    }
+                });
+            },
             checkDentistAccount: async function (email, password) {
                 return await $.ajax({
                     type: 'POST',
