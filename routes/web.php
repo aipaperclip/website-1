@@ -21,7 +21,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         var_dump(session('logged_user'));
         echo '<br><br><br><br><br>';
         die('hallo');
-    })->name('home');
+    })->name('dump');
 
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
