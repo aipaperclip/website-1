@@ -70,7 +70,7 @@
                             url: civic_custom_btn.attr('data-url'),
                             data: register_data,
                             success: function(data){
-                                console.log(data, 'data');
+                                console.log(data.token, 'data');
 
                                 setTimeout(function() {
                                     if (data.data.email == '' || data.data.email == null) {
