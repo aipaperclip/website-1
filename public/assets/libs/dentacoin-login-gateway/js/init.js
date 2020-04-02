@@ -201,6 +201,15 @@ if (typeof jQuery == 'undefined') {
                     return false;
                 }
 
+                // platform parameter
+                if (typeof($.fn.tooltip) == 'undefined') {
+                    console.log('bootstrap loaded');
+                    $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/dentacoin-login-gateway/libs/bootstrap/css/bootstrap.min.css">');
+                    $('body').append('<script src="https://dentacoin.com/assets/libs/dentacoin-login-gateway/libs/bootstrap/js/bootstrap.min.js"></script>');
+                } else {
+                    console.log('bootstrap not loaded');
+                }
+
                 async function showGateway(type) {
                     var gatewayHtml = await dcnGateway.dcnGatewayRequests.getGatewayHtml(type, params.user_ip);
                     if (gatewayHtml.success) {
@@ -216,6 +225,8 @@ if (typeof jQuery == 'undefined') {
 
                         $('.dentacoin-login-gateway-container').remove();
                         $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
+
+                        $('[data-toggle="tooltip"]').tooltip();
 
                         //setup forgotten password link
                         $('.dentacoin-login-gateway-container .forgotten-password-link').attr('href', params.forgotten_password_link);
