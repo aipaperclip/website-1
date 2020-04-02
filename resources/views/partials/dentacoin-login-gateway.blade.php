@@ -29,6 +29,12 @@
             </div>
             <div class="privacy-policy-row padding-top-20">
                 <div class="custom-checkbox-style">
+                    <input type="checkbox" class="custom-checkbox-input" id="agree-over-eighteen"/>
+                    <label class="dentacoin-login-gateway-fs-15" for="agree-over-eighteen">I confirm that I'm 18 years of age or older.</label>
+                </div>
+            </div>
+            <div class="privacy-policy-row padding-top-5">
+                <div class="custom-checkbox-style">
                     <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration-patient"/>
                     <label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registration-patient">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
                 </div>
