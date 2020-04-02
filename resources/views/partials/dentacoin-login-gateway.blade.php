@@ -73,9 +73,9 @@
             <h2>LOG IN</h2>
             <form method="POST" id="dentist-login">
                 <div class="padding-bottom-10 field-parent">
-                    <div class="custom-google-label-style module" data-input-colorful-border="true">
+                    <div class="custom-google-label-style module" data-input-colorful-border="true" data-toggle="tooltip" title="Hooray!" >
                         <label for="dentist-login-email">Email address:</label>
-                        <input data-toggle="tooltip" title="Hooray!" class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-login-email" placeholder=""/>
+                        <input class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-login-email" placeholder=""/>
                     </div>
                 </div>
                 <div class="padding-bottom-20 field-parent">
