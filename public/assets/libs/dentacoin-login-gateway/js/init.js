@@ -326,7 +326,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('customCivicFbStopperTriggered', function (event) {
-                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder'), 'Please agree with our privacy policy.');
+                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder'), 'Please confirm you\'re 18 years of age and agree with our privacy policy.');
                         });
 
                         $(document).on('registeredAccountMissingEmail', async function (event) {
