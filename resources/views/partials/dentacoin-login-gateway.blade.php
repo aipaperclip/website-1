@@ -73,7 +73,7 @@
             <h2>LOG IN</h2>
             <form method="POST" id="dentist-login">
                 <div class="padding-bottom-10 field-parent">
-                    <div class="custom-google-label-style module" data-input-colorful-border="true" data-toggle="tooltip" title="Hooray!" >
+                    <div class="custom-google-label-style module" data-input-colorful-border="true">
                         <label for="dentist-login-email">Email address:</label>
                         <input class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-login-email" placeholder=""/>
                     </div>
@@ -143,14 +143,14 @@
                         </div>
                     </div>
                     <div class="padding-bottom-15 field-parent">
-                        <div class="custom-google-label-style module" data-input-colorful-border="true">
+                        <div class="custom-google-label-style module" data-input-colorful-border="true" data-toggle="tooltip" title="Write your names in full! This ensures that patients who search for you will find you easily.">
                             <label for="dentist-register-latin-name">Your Name (Latin letters):</label>
                             <input class="full-rounded form-field required" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name"/>
                         </div>
                         <div class="dentacoin-login-gateway-fs-14 light-gray-color">Ex: Vladimir Alexandrovich (First name, Last name)</div>
                     </div>
                     <div class="padding-bottom-30 field-parent">
-                        <div class="custom-google-label-style module" data-input-colorful-border="true">
+                        <div class="custom-google-label-style module" data-input-colorful-border="true" data-toggle="tooltip" title="Patients who search for your name in your language will still find your profile.">
                             <label for="dentist-register-alternative-name">Alternative Spelling (optional):</label>
                             <input class="full-rounded form-field" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name"/>
                         </div>
