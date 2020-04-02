@@ -132,14 +132,20 @@
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color">For clinics with more than one dental practitioners</div>
                         </div>
                     </div>
-                    <div class="padding-bottom-25 field-parent">
-                        <div class="custom-google-select-style module">
-                            <label>Title:</label>
-                            <select class="form-field required gateway-platform-border-color" name="dentist-title">
-                                @foreach($api_enums->titles as $key => $title)
-                                    <option value="{{$key}}">{{$title}}</option>
-                                @endforeach
-                            </select>
+                    <div class="show-if-dentist">
+                        <div class="padding-bottom-15 field-parent">
+                            <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own-practise" id="own-practise"/> <label for="own-practise">I own a practise</label></div>
+                            <div><input type="radio" name="dentist-type" value="work-for-practise" id="work-for-practise"/> <label for="work-for-practise">I own a practise</label></div>
+                        </div>
+                        <div class="padding-bottom-25 field-parent">
+                            <div class="custom-google-select-style module">
+                                <label class="gateway-platform-color">Title:</label>
+                                <select class="form-field required gateway-platform-border-color" name="dentist-title">
+                                    @foreach($api_enums->titles as $key => $title)
+                                        <option value="{{$key}}">{{$title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="padding-bottom-15 field-parent">
@@ -165,7 +171,7 @@
                     <div class="padding-bottom-20 field-parent">
                         <div class="custom-google-select-style module">
                             @php($countries = (new \App\Http\Controllers\APIRequestsController())->getAllCountries())
-                            <label>Select country:</label>
+                            <label class="gateway-platform-color">Select country:</label>
                             @php($current_phone_code = '+'.$countries[0]->phone_code)
                             @if(isset($client_ip) && $client_ip != '127.0.0.1')
                                 @php($current_user_country_code = (new \App\Http\Controllers\APIRequestsController())->getCountry($client_ip))
