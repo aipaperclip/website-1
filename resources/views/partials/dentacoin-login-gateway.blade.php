@@ -133,7 +133,7 @@
                         </div>
                     </div>
                     <div class="show-if-dentist">
-                        <div class="padding-bottom-15 field-parent">
+                        <div class="padding-bottom-15 field-parent fs-18">
                             <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own-practise" id="own-practise"/> <label for="own-practise">I own a practise</label></div>
                             <div><input type="radio" name="dentist-type" value="work-for-practise" id="work-for-practise"/> <label for="work-for-practise">I own a practise</label></div>
                         </div>
