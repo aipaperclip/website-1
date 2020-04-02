@@ -119,7 +119,7 @@
                 <div class="step second" data-step="second">
                     <div class="padding-bottom-20 user-type-container dentacoin-login-gateway-fs-0">
                         <input type="hidden" name="user-type" value="dentist"/>
-                        <div class="inline-block-top user-type active padding-right-15" data-type="dentist">
+                        <div class="inline-block-top user-type padding-right-15" data-type="dentist">
                             <a href="javascript:void(0)" class="custom-button gateway-platform-border-color-important">
                                 <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block user-type-label gateway-platform-color">Dentist</span>
                             </a>
