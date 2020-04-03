@@ -191,7 +191,7 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
 
-                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-color-important{color:'+currentPlatformColor+' !important;}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-background-color-important{background-color:'+currentPlatformColor+' !important;}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}.tooltip-inner{background-color:white !important;color:'+currentPlatformColor+' !important;border: 1px solid '+currentPlatformColor+' !important;max-width: 250px !important;padding: 10px 15px !important;font-size: 14px;  !important;}.tooltip.in{opacity:1 !important;}.tooltip.top .tooltip-arrow{border-top-color:'+currentPlatformColor+' !important;}</style>';
+                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-color-important{color:'+currentPlatformColor+' !important;}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-background-color-important{background-color:'+currentPlatformColor+' !important;}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}</style>';
 
                 $('head').append(platform_color_and_background);
 
@@ -199,15 +199,6 @@ if (typeof jQuery == 'undefined') {
                 if (!validPlatform) {
                     console.error('False \'platform\' parameter passed to dentacoin login gateway.');
                     return false;
-                }
-
-                // platform parameter
-                if (typeof($.fn.tooltip) == 'undefined') {
-                    console.log('bootstrap loaded');
-                    $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/dentacoin-login-gateway/libs/bootstrap/css/bootstrap.min.css">');
-                    $('body').append('<script src="https://dentacoin.com/assets/libs/dentacoin-login-gateway/libs/bootstrap/js/bootstrap.min.js"></script>');
-                } else {
-                    console.log('bootstrap not loaded');
                 }
 
                 async function showGateway(type) {
@@ -226,7 +217,9 @@ if (typeof jQuery == 'undefined') {
                         $('.dentacoin-login-gateway-container').remove();
                         $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
 
-                        $('[data-toggle="tooltip"]').tooltip();
+                        for (var i = 0, len = $('.tooltip-init').length; i < len; i+=1) {
+
+                        }
 
                         //setup forgotten password link
                         $('.dentacoin-login-gateway-container .forgotten-password-link').attr('href', params.forgotten_password_link);

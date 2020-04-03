@@ -149,18 +149,20 @@
                         </div>
                     </div>
                     <div class="padding-bottom-15 field-parent">
-                        <div class="custom-google-label-style module" data-input-colorful-border="true" data-toggle="tooltip" title="Write your names in full! This ensures that patients who search for you will find you easily.">
-                            <label for="dentist-register-latin-name">Your Name (Latin letters):</label>
+                        <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
+                            <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Write your names in full! This ensures that patients who search for you will find you easily.</div>
+                            <label for="dentist-register-latin-name" class="latin-name-label">Your Name (Latin letters):</label>
                             <input class="full-rounded form-field required" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name"/>
                         </div>
-                        <div class="dentacoin-login-gateway-fs-14 light-gray-color">Ex: Vladimir Alexandrovich (First name, Last name)</div>
+                        <div class="dentacoin-login-gateway-fs-14 light-gray-color latin-name-example">Ex: Vladimir Alexandrovich (First name, Last name)</div>
                     </div>
                     <div class="padding-bottom-30 field-parent">
-                        <div class="custom-google-label-style module" data-input-colorful-border="true" data-toggle="tooltip" title="Patients who search for your name in your language will still find your profile.">
-                            <label for="dentist-register-alternative-name">Alternative Spelling (optional):</label>
+                        <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
+                            <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Patients who search for your name in your language will still find your profile.</div>
+                            <label for="dentist-register-alternative-name" class="alternative-name-label">Alternative Spelling (optional):</label>
                             <input class="full-rounded form-field" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name"/>
                         </div>
-                        <div class="dentacoin-login-gateway-fs-14 light-gray-color">Ex: Владимир Александрович</div>
+                        <div class="dentacoin-login-gateway-fs-14 light-gray-color alternative-name-example">Ex: Владимир Александрович</div>
                     </div>
                     <div class="privacy-policy-row padding-bottom-20 custom-checkbox-style">
                         <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration"/>
