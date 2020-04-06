@@ -120,7 +120,7 @@
                     <div class="padding-bottom-20 user-type-container dentacoin-login-gateway-fs-0">
                         <input type="hidden" name="user-type" value="dentist"/>
                         <div class="inline-block-top user-type padding-right-15" data-type="dentist">
-                            <a href="javascript:void(0)" class="custom-button gateway-platform-border-color-important">
+                            <a href="javascript:void(0)" class="custom-button">
                                 <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block user-type-label gateway-platform-color">Dentist</span>
                             </a>
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color">For associate dentists OR independent practitioners</div>
@@ -133,9 +133,9 @@
                         </div>
                     </div>
                     <div class="show-if-dentist">
-                        <div class="padding-bottom-15 field-parent fs-18">
-                            <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own-practise" id="own-practise"/> <label for="own-practise">I own a practise</label></div>
-                            <div><input type="radio" name="dentist-type" value="work-for-practise" id="work-for-practise"/> <label for="work-for-practise">I own a practise</label></div>
+                        <div class="padding-bottom-25 field-parent dentacoin-login-gateway-fs-18">
+                            <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own-practise" id="own-practise"/> <label for="own-practise">I own a practise.</label></div>
+                            <div><input type="radio" name="dentist-type" value="work-for-practise" id="work-for-practise"/> <label for="work-for-practise">I work for a practice.</label></div>
                         </div>
                         <div class="padding-bottom-25 field-parent">
                             <div class="custom-google-select-style module">

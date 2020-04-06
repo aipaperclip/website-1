@@ -812,6 +812,8 @@
       border-style: solid;
       font-size: 16px;
       background-color: white;
+      width: 100%;
+      max-width: 250px;
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
       -ms-border-radius: 5px;
