@@ -460,7 +460,8 @@ if (typeof jQuery == 'undefined') {
                             if ($(this).val() == 'other') {
                                 $(this).closest('.field-parent').append('<div class="custom-google-label-style module clinic-member-job-title-other-parent" data-input-colorful-border="true"><label for="clinic-member-job-title-other">Other:</label><input class="full-rounded form-field required" name="clinic-member-job-title-other" maxlength="50" type="text" id="clinic-member-job-title-other"/></div>');
 
-                                $('.dentacoin-login-gateway-container .step.second #clinic-member-job-title-other').focus();
+                                $('.dentacoin-login-gateway-container .step.second .clinic-member-job-title-other-parent #clinic-member-job-title-other').focus();
+                                $('.dentacoin-login-gateway-container .step.second .clinic-member-job-title-other-parent label[for="clinic-member-job-title-other"]').addClass('active-label');
                             } else {
                                 $(this).closest('.field-parent').find('.clinic-member-job-title-other-parent').remove();
                             }

@@ -178,7 +178,7 @@
                             <div class="padding-bottom-15 field-parent">
                                 <div class="custom-google-select-style module">
                                     <label class="gateway-platform-color">Job title:</label>
-                                    <select class="form-field required gateway-platform-border-color" name="clinic-member-job-title">
+                                    <select class="form-field gateway-platform-border-color" name="clinic-member-job-title">
                                         <option value="">Please, select</option>
                                         <option value="practise-manager">Practice manager</option>
                                         <option value="dentist">Dentist</option>
