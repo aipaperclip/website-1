@@ -462,6 +462,14 @@ if (typeof jQuery == 'undefined') {
                             }
                         });
 
+                        $('.dentacoin-login-gateway-container .step.second [name="dentist-type"]').on('change', function() {
+                            if ($(this).val() == 'work-for-practise') {
+                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practise').html('<div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practise-name">Practise name:</label><input class="full-rounded form-field" name="practise-name" maxlength="255" type="text" id="practise-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practise-email">Official email:</label><input class="full-rounded form-field" name="practise-email" maxlength="60" type="email" id="practise-email"/></div>');
+                            } else {
+                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practise').html('');
+                            }
+                        });
+
                         //THIRD STEP INIT LOGIC
                         $('.dentacoin-login-gateway-container #dentist-country').on('change', function() {
                             $('.dentacoin-login-gateway-container .step.third .phone .country-code').html('+'+$(this).find('option:selected').attr('data-code'));

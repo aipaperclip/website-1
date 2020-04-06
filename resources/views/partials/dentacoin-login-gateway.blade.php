@@ -166,17 +166,7 @@
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="Ex: Влади́мир Алекса́ндрович" data-clinic='Ex: Стоматологія "ВітаДент"'></div>
                         </div>
                         <div class="show-if-dentist">
-                            <div class="padding-bottom-15 field-parent">
-                                <div class="custom-google-label-style module" data-input-colorful-border="true">
-                                    <label for="practise-name">Practise name:</label>
-                                    <input class="full-rounded form-field" name="practise-name" maxlength="255" type="text" id="practise-name"/>
-                                </div>
-                            </div>
-                            <div class="padding-bottom-15 field-parent">
-                                <div class="custom-google-label-style module" data-input-colorful-border="true">
-                                    <label for="practise-email">Official email:</label>
-                                    <input class="full-rounded form-field" name="practise-email" maxlength="60" type="email" id="practise-email"/>
-                                </div>
+                            <div class="if-work-for-a-practise"></div>
                             </div>
                         </div>
                         <div class="show-if-clinic">
