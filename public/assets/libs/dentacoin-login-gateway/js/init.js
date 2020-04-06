@@ -579,9 +579,12 @@ if (typeof jQuery == 'undefined') {
                                         errors = true;
                                     }
 
-                                    if ($('.dentacoin-login-gateway-container .step.second [name="dentist-type"]:checked').val() == undefined) {
-                                        dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second .dentist-type-checkboxes'), 'Please select one of the options.');
-                                        errors = true;
+                                    // if dentist
+                                    if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'clinic') {
+                                        if ($('.dentacoin-login-gateway-container .step.second [name="dentist-type"]:checked').val() == undefined) {
+                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second .dentist-type-checkboxes'), 'Please select one of the options.');
+                                            errors = true;
+                                        }
                                     }
 
                                     // if clinic
