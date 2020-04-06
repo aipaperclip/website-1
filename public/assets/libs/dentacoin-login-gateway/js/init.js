@@ -421,6 +421,8 @@ if (typeof jQuery == 'undefined') {
 
                         //SECOND STEP INIT LOGIC
                         $('.dentacoin-login-gateway-container .step.second .user-type-container .user-type').click(function() {
+                            $('.dentacoin-login-gateway-container .step.second .show-on-user-type-first-change').show();
+
                             $('.dentacoin-login-gateway-container .step.second .user-type-container .user-type').removeClass('active');
                             $('.dentacoin-login-gateway-container .step.second .user-type-container .custom-button').removeClass('gateway-platform-border-color-important');
                             $('.dentacoin-login-gateway-container .step.second .user-type-container .custom-button .circle').removeClass('gateway-platform-background-important');
@@ -537,6 +539,11 @@ if (typeof jQuery == 'undefined') {
                                     //check if privacy policy checkbox is checked
                                     if (!$('.dentacoin-login-gateway-container .dentist .form-register .step.second #privacy-policy-registration').is(':checked')) {
                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .dentist .form-register .step.second .privacy-policy-row'), 'Please agree with our <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy policy</a>.');
+                                        errors = true;
+                                    }
+
+                                    if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == '') {
+                                        dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second .user-type-container'), 'Please select which type you\'re - Dentist or Clinic.');
                                         errors = true;
                                     }
 

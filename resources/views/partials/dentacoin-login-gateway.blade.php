@@ -118,10 +118,10 @@
                 </div>
                 <div class="step second" data-step="second">
                     <div class="padding-bottom-20 user-type-container dentacoin-login-gateway-fs-0">
-                        <input type="hidden" name="user-type" value="dentist"/>
+                        <input type="hidden" name="user-type"/>
                         <div class="inline-block-top user-type padding-right-15" data-type="dentist">
                             <a href="javascript:void(0)" class="custom-button">
-                                <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block user-type-label gateway-platform-color">Dentist</span>
+                                <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block user-type-label">Dentist</span>
                             </a>
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color">For associate dentists OR independent practitioners</div>
                         </div>
@@ -132,41 +132,43 @@
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color">For clinics with more than one dental practitioners</div>
                         </div>
                     </div>
-                    <div class="show-if-dentist">
-                        <div class="padding-bottom-25 field-parent dentacoin-login-gateway-fs-18">
-                            <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own-practise" id="own-practise"/> <label for="own-practise">I own a practise.</label></div>
-                            <div><input type="radio" name="dentist-type" value="work-for-practise" id="work-for-practise"/> <label for="work-for-practise">I work for a practice.</label></div>
-                        </div>
-                        <div class="padding-bottom-25 field-parent">
-                            <div class="custom-google-select-style module">
-                                <label class="gateway-platform-color">Title:</label>
-                                <select class="form-field required gateway-platform-border-color" name="dentist-title">
-                                    @foreach($api_enums->titles as $key => $title)
-                                        <option value="{{$key}}">{{$title}}</option>
-                                    @endforeach
-                                </select>
+                    <div class="show-on-user-type-first-change">
+                        <div class="show-if-dentist">
+                            <div class="padding-bottom-25 field-parent dentacoin-login-gateway-fs-18">
+                                <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own-practise" id="own-practise"/> <label for="own-practise">I own a practise.</label></div>
+                                <div><input type="radio" name="dentist-type" value="work-for-practise" id="work-for-practise"/> <label for="work-for-practise">I work for a practice.</label></div>
+                            </div>
+                            <div class="padding-bottom-25 field-parent">
+                                <div class="custom-google-select-style module">
+                                    <label class="gateway-platform-color">Title:</label>
+                                    <select class="form-field required gateway-platform-border-color" name="dentist-title">
+                                        @foreach($api_enums->titles as $key => $title)
+                                            <option value="{{$key}}">{{$title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="padding-bottom-15 field-parent">
-                        <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
-                            <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Write your names in full! This ensures that patients who search for you will find you easily.</div>
-                            <label for="dentist-register-latin-name" class="latin-name-label">Your Name (Latin letters):</label>
-                            <input class="full-rounded form-field required" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name"/>
+                        <div class="padding-bottom-15 field-parent">
+                            <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
+                                <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Write your names in full! This ensures that patients who search for you will find you easily.</div>
+                                <label for="dentist-register-latin-name" class="latin-name-label">Your Name (Latin letters):</label>
+                                <input class="full-rounded form-field required" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name"/>
+                            </div>
+                            <div class="dentacoin-login-gateway-fs-14 light-gray-color latin-name-example">Ex: Vladimir Alexandrovich (First name, Last name)</div>
                         </div>
-                        <div class="dentacoin-login-gateway-fs-14 light-gray-color latin-name-example">Ex: Vladimir Alexandrovich (First name, Last name)</div>
-                    </div>
-                    <div class="padding-bottom-30 field-parent">
-                        <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
-                            <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Patients who search for your name in your language will still find your profile.</div>
-                            <label for="dentist-register-alternative-name" class="alternative-name-label">Alternative Spelling (optional):</label>
-                            <input class="full-rounded form-field" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name"/>
+                        <div class="padding-bottom-30 field-parent">
+                            <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
+                                <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Patients who search for your name in your language will still find your profile.</div>
+                                <label for="dentist-register-alternative-name" class="alternative-name-label">Alternative Spelling (optional):</label>
+                                <input class="full-rounded form-field" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name"/>
+                            </div>
+                            <div class="dentacoin-login-gateway-fs-14 light-gray-color alternative-name-example">Ex: Владимир Александрович</div>
                         </div>
-                        <div class="dentacoin-login-gateway-fs-14 light-gray-color alternative-name-example">Ex: Владимир Александрович</div>
-                    </div>
-                    <div class="privacy-policy-row padding-bottom-20 custom-checkbox-style">
-                        <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration"/>
-                        <label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registration">I've read and agree to the <a href="//dentacoin.com/privacy-policy" class="gateway-platform-color" target="_blank">Privacy Policy</a></label>
+                        <div class="privacy-policy-row padding-bottom-20 custom-checkbox-style">
+                            <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration"/>
+                            <label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registration">I've read and agree to the <a href="//dentacoin.com/privacy-policy" class="gateway-platform-color" target="_blank">Privacy Policy</a></label>
+                        </div>
                     </div>
                 </div>
                 <div class="step third address-suggester-wrapper" data-step="third">
