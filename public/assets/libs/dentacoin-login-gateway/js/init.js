@@ -191,7 +191,7 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
 
-                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-color-important{color:'+currentPlatformColor+' !important;}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-background-color-important{background-color:'+currentPlatformColor+' !important;}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}</style>';
+                var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-color-important{color:'+currentPlatformColor+' !important;}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-background-color-important{background-color:'+currentPlatformColor+' !important;}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}.tooltip-label:after {border-top-color:'+currentPlatformColor+';}</style>';
 
                 $('head').append(platform_color_and_background);
 
@@ -429,6 +429,14 @@ if (typeof jQuery == 'undefined') {
                             $('.dentacoin-login-gateway-container .step.second .user-type-container .custom-button .circle').removeClass('gateway-platform-background-important');
                             $('.dentacoin-login-gateway-container .step.second .user-type-container .user-type-label').removeClass('gateway-platform-color');
 
+                            // change htmls based on the selected option
+                            for (var i = 0, len = $('.dentacoin-login-gateway-container .step.second .changeable-html-based-on-user-type').length; i < len; i+=1) {
+                                if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'dentist') {
+                                    $('.dentacoin-login-gateway-container .step.second .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .step.second .changeable-html-based-on-user-type').eq(i).attr('data-dentist'));
+                                } else {
+                                    $('.dentacoin-login-gateway-container .step.second .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .step.second .changeable-html-based-on-user-type').eq(i).attr('data-clinic'));
+                                }
+                            }
 
                             $(this).addClass('active');
                             $(this).find('.custom-button .circle').addClass('gateway-platform-background-important');
@@ -545,6 +553,11 @@ if (typeof jQuery == 'undefined') {
 
                                     if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == '') {
                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second .user-type-container'), 'Please select which type you\'re - Dentist or Clinic.');
+                                        errors = true;
+                                    }
+
+                                    if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="dentist-type"]').val() == '') {
+                                        dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second .dentist-type-checkboxes'), 'Please select one of the options.');
                                         errors = true;
                                     }
 

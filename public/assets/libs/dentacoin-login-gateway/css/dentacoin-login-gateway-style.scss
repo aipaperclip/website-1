@@ -325,7 +325,7 @@
         position: relative;
         .tooltip-label {
             display: none;
-            bottom: 100%;
+            bottom: calc(100% + 10px);
             padding: 10px 15px;
             border-width: 1.5px;
             border-style: solid;
@@ -339,8 +339,10 @@
             &:after {
                 content: '';
                 top: 100%;
-                border-color: red;
-                border-width: 5px 0 5px 5px;
+                border-color: transparent;  
+                border-width: -5px;
+                border-style: solid;
+                border-width: 8px 8px 0;
                 @include horizontal-align(absolute);
             }
         }

@@ -133,8 +133,8 @@
                         </div>
                     </div>
                     <div class="show-on-user-type-first-change">
-                        <div class="show-if-dentist">
-                            <div class="padding-bottom-25 field-parent dentacoin-login-gateway-fs-18">
+                        <div class="show-if-dentist padding-bottom-15">
+                            <div class="padding-bottom-10 field-parent dentacoin-login-gateway-fs-18 dentist-type-checkboxes">
                                 <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own-practise" id="own-practise"/> <label for="own-practise">I own a practise.</label></div>
                                 <div><input type="radio" name="dentist-type" value="work-for-practise" id="work-for-practise"/> <label for="work-for-practise">I work for a practice.</label></div>
                             </div>
@@ -151,19 +151,19 @@
                         </div>
                         <div class="padding-bottom-15 field-parent">
                             <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
-                                <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Write your names in full! This ensures that patients who search for you will find you easily.</div>
-                                <label for="dentist-register-latin-name" class="latin-name-label">Your Name (Latin letters):</label>
+                                <div class="tooltip-label gateway-platform-color gateway-platform-border-color changeable-html-based-on-user-type" data-dentist="Write your names in full! This ensures that patients who search for you will find you easily." data-clinic="Write the full names of the dental clinic! This ensures that patients who search for the clinic will find it easily."></div>
+                                <label for="dentist-register-latin-name" class="changeable-html-based-on-user-type" data-dentist="Your Name (Latin letters):" data-clinic="Clinic Name (Latin letters only):"></label>
                                 <input class="full-rounded form-field required" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name"/>
                             </div>
-                            <div class="dentacoin-login-gateway-fs-14 light-gray-color latin-name-example">Ex: Vladimir Alexandrovich (First name, Last name)</div>
+                            <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="Ex: Vladimir Alexandrovich (First name, Last name)" data-clinic="Ex: VitaDent Dental Clinic"></div>
                         </div>
                         <div class="padding-bottom-30 field-parent">
                             <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
                                 <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Patients who search for your name in your language will still find your profile.</div>
-                                <label for="dentist-register-alternative-name" class="alternative-name-label">Alternative Spelling (optional):</label>
+                                <label for="dentist-register-alternative-name" class="changeable-html-based-on-user-type" data-dentist="Your name in native language (All alphabets; optional):" data-clinic="Alternative Spelling (optional):"></label>
                                 <input class="full-rounded form-field" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name"/>
                             </div>
-                            <div class="dentacoin-login-gateway-fs-14 light-gray-color alternative-name-example">Ex: Владимир Александрович</div>
+                            <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="Ex: Влади́мир Алекса́ндрович" data-clinic='Ex: Стоматологія "ВітаДент"'></div>
                         </div>
                         <div class="privacy-policy-row padding-bottom-20 custom-checkbox-style">
                             <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration"/>
