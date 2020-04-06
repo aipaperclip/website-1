@@ -557,6 +557,16 @@ if (typeof jQuery == 'undefined') {
                                             if (second_step_inputs.eq(i).val().trim() == '') {
                                                 dcnGateway.utils.customErrorHandle(second_step_inputs.eq(i).closest('.field-parent'), 'This field is required.');
                                                 errors = true;
+                                            } else if (second_step_inputs.eq(i).attr('type') == 'email' && !dcnGateway.utils.validateEmail(second_step_inputs.eq(i).val().trim())) {
+                                                dcnGateway.utils.customErrorHandle(second_step_inputs.eq(i).closest('.field-parent'), 'Please use valid email address.');
+                                                errors = true;
+                                            } else if (second_step_inputs.eq(i).attr('type') == 'email' && dcnGateway.utils.validateEmail(second_step_inputs.eq(i).val().trim())) {
+                                                //coredb check if email is free
+                                                var check_email_if_free_response = await dcnGateway.dcnGatewayRequests.checkIfFreeEmail(second_step_inputs.eq(i).val().trim());
+                                                if (check_email_if_free_response.success == false) {
+                                                    dcnGateway.utils.customErrorHandle(second_step_inputs.eq(i).closest('.field-parent'), check_email_if_free_response.errors.email);
+                                                    errors = true;
+                                                }
                                             }
                                         }
                                     }
