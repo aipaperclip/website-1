@@ -439,9 +439,11 @@ if (typeof jQuery == 'undefined') {
                             if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'dentist') {
                                 $('.show-if-dentist').show();
                                 $('.show-if-clinic').hide();
+                                $('.show-if-clinic .to-be-required').removeClass('required');
                             } else {
                                 $('.show-if-dentist').hide();
                                 $('.show-if-clinic').show();
+                                $('.show-if-clinic .to-be-required').addClass('required');
                             }
 
                             // change htmls based on the selected option
@@ -456,7 +458,9 @@ if (typeof jQuery == 'undefined') {
 
                         $('.dentacoin-login-gateway-container .step.second select[name="clinic-member-job-title"]').on('change', function() {
                             if ($(this).val() == 'other') {
-                                $(this).closest('.field-parent').append('<div class="custom-google-label-style module clinic-member-job-title-other-parent" data-input-colorful-border="true"><label for="clinic-member-job-title-other">Other:</label><input class="full-rounded form-field" name="clinic-member-job-title-other" maxlength="50" type="text" id="clinic-member-job-title-other"/></div>');
+                                $(this).closest('.field-parent').append('<div class="custom-google-label-style module clinic-member-job-title-other-parent" data-input-colorful-border="true"><label for="clinic-member-job-title-other">Other:</label><input class="full-rounded form-field required" name="clinic-member-job-title-other" maxlength="50" type="text" id="clinic-member-job-title-other"/></div>');
+
+                                $('.dentacoin-login-gateway-container .step.second #clinic-member-job-title-other').focus();
                             } else {
                                 $(this).closest('.field-parent').find('.clinic-member-job-title-other-parent').remove();
                             }
@@ -464,7 +468,7 @@ if (typeof jQuery == 'undefined') {
 
                         $('.dentacoin-login-gateway-container .step.second [name="dentist-type"]').on('change', function() {
                             if ($(this).val() == 'work-for-practise') {
-                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practise').html('<div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practise-name">Practise name:</label><input class="full-rounded form-field" name="practise-name" maxlength="255" type="text" id="practise-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practise-email">Official email:</label><input class="full-rounded form-field" name="practise-email" maxlength="60" type="email" id="practise-email"/></div></div>');
+                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practise').html('<div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practise-name">Practise name:</label><input class="full-rounded form-field required" name="practise-name" maxlength="255" type="text" id="practise-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practise-email">Official email:</label><input class="full-rounded form-field required" name="practise-email" maxlength="60" type="email" id="practise-email"/></div></div>');
                             } else {
                                 $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practise').html('');
                             }
@@ -540,7 +544,7 @@ if (typeof jQuery == 'undefined') {
                                     $('.dentacoin-login-gateway-container .dentist .form-register .step.second').find('.error-handle').remove();
 
                                     //check form-field fields
-                                    for(var i = 0, len = second_step_inputs.length; i < len; i+=1) {
+                                    for (var i = 0, len = second_step_inputs.length; i < len; i+=1) {
                                         if (second_step_inputs.eq(i).is('select')) {
                                             //IF SELECT TAG
                                             if (second_step_inputs.eq(i).val().trim() == '') {
@@ -577,6 +581,14 @@ if (typeof jQuery == 'undefined') {
                                     if ($('.dentacoin-login-gateway-container .step.second [name="dentist-type"]:checked').val() == undefined) {
                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second .dentist-type-checkboxes'), 'Please select one of the options.');
                                         errors = true;
+                                    }
+
+                                    // if clinic
+                                    if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'clinic') {
+                                        if ($('.dentacoin-login-gateway-container .step.second [name="clinic-member-job-title"]').val() == '') {
+                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second [name="clinic-member-job-title"]').closest('.field-parent'), 'Please select job title.');
+                                            errors = true;
+                                        }
                                     }
 
                                     if (!errors) {

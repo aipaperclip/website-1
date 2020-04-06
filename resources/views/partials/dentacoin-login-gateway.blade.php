@@ -172,14 +172,14 @@
                             <div class="padding-bottom-15 field-parent">
                                 <div class="custom-google-label-style module" data-input-colorful-border="true">
                                     <label for="clinic-member-name">Your name:</label>
-                                    <input class="full-rounded form-field" name="clinic-member-name" maxlength="255" type="text" id="clinic-member-name"/>
+                                    <input class="full-rounded form-field to-be-required" name="clinic-member-name" maxlength="255" type="text" id="clinic-member-name"/>
                                 </div>
                             </div>
                             <div class="padding-bottom-15 field-parent">
                                 <div class="custom-google-select-style module">
-                                    <label class="gateway-platform-color">Title:</label>
+                                    <label class="gateway-platform-color">Job title:</label>
                                     <select class="form-field required gateway-platform-border-color" name="clinic-member-job-title">
-                                        <option>Please, select</option>
+                                        <option value="">Please, select</option>
                                         <option value="practise-manager">Practice manager</option>
                                         <option value="dentist">Dentist</option>
                                         <option value="dental-hygienist">Dental hygienist</option>
