@@ -422,6 +422,7 @@ if (typeof jQuery == 'undefined') {
                         //SECOND STEP INIT LOGIC
                         $('.dentacoin-login-gateway-container .step.second .user-type-container .user-type').click(function() {
                             $('.dentacoin-login-gateway-container .step.second .show-on-user-type-first-change').show();
+                            $('.dentacoin-login-gateway-container .step.second .user-type-container .error-handle').hide();
 
                             $('.dentacoin-login-gateway-container .step.second .user-type-container .user-type').removeClass('active');
                             $('.dentacoin-login-gateway-container .step.second .user-type-container .custom-button').removeClass('gateway-platform-border-color-important');
