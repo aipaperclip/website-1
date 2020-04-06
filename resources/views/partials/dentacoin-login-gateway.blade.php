@@ -167,7 +167,6 @@
                         </div>
                         <div class="show-if-dentist">
                             <div class="if-work-for-a-practise"></div>
-                            </div>
                         </div>
                         <div class="show-if-clinic">
                             <div class="padding-bottom-15 field-parent">
