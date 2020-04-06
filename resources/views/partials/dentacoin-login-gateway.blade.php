@@ -123,22 +123,22 @@
                             <a href="javascript:void(0)" class="custom-button">
                                 <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block user-type-label">Dentist</span>
                             </a>
-                            <div class="dentacoin-login-gateway-fs-14 light-gray-color">For associate dentists OR independent practitioners</div>
+                            <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">For associate dentists OR independent practitioners</div>
                         </div>
                         <div class="inline-block-top user-type padding-left-15" data-type="clinic">
                             <a href="javascript:void(0)" class="custom-button">
                                 <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block user-type-label">Clinic</span>
                             </a>
-                            <div class="dentacoin-login-gateway-fs-14 light-gray-color">For clinics with more than one dental practitioners</div>
+                            <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">For clinics with more than one dental practitioners</div>
                         </div>
                     </div>
                     <div class="show-on-user-type-first-change">
-                        <div class="show-if-dentist padding-bottom-15">
-                            <div class="padding-bottom-10 field-parent dentacoin-login-gateway-fs-18 dentist-type-checkboxes">
+                        <div class="show-if-dentist">
+                            <div class="padding-bottom-20 field-parent dentacoin-login-gateway-fs-18 dentist-type-checkboxes">
                                 <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own-practise" id="own-practise"/> <label for="own-practise">I own a practise.</label></div>
                                 <div><input type="radio" name="dentist-type" value="work-for-practise" id="work-for-practise"/> <label for="work-for-practise">I work for a practice.</label></div>
                             </div>
-                            <div class="padding-bottom-25 field-parent">
+                            <div class="padding-bottom-15 field-parent">
                                 <div class="custom-google-select-style module">
                                     <label class="gateway-platform-color">Title:</label>
                                     <select class="form-field required gateway-platform-border-color" name="dentist-title">
@@ -157,7 +157,7 @@
                             </div>
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="Ex: Vladimir Alexandrovich (First name, Last name)" data-clinic="Ex: VitaDent Dental Clinic"></div>
                         </div>
-                        <div class="padding-bottom-30 field-parent">
+                        <div class="padding-bottom-15 field-parent">
                             <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
                                 <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Patients who search for your name in your language will still find your profile.</div>
                                 <label for="dentist-register-alternative-name" class="changeable-html-based-on-user-type" data-dentist="Your name in native language (All alphabets; optional):" data-clinic="Alternative Spelling (optional):"></label>
@@ -165,7 +165,43 @@
                             </div>
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="Ex: Влади́мир Алекса́ндрович" data-clinic='Ex: Стоматологія "ВітаДент"'></div>
                         </div>
-                        <div class="privacy-policy-row padding-bottom-20 custom-checkbox-style">
+                        <div class="show-if-dentist">
+                            <div class="padding-bottom-15 field-parent">
+                                <div class="custom-google-label-style module" data-input-colorful-border="true">
+                                    <label for="practise-name">Practise name:</label>
+                                    <input class="full-rounded form-field" name="practise-name" maxlength="255" type="text" id="practise-name"/>
+                                </div>
+                            </div>
+                            <div class="padding-bottom-15 field-parent">
+                                <div class="custom-google-label-style module" data-input-colorful-border="true">
+                                    <label for="practise-email">Official email:</label>
+                                    <input class="full-rounded form-field" name="practise-email" maxlength="60" type="email" id="practise-email"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="show-if-clinic">
+                            <div class="padding-bottom-15 field-parent">
+                                <div class="custom-google-label-style module" data-input-colorful-border="true">
+                                    <label for="clinic-member-name">Your name:</label>
+                                    <input class="full-rounded form-field" name="clinic-member-name" maxlength="255" type="text" id="clinic-member-name"/>
+                                </div>
+                            </div>
+                            <div class="padding-bottom-15 field-parent">
+                                <div class="custom-google-select-style module">
+                                    <label class="gateway-platform-color">Title:</label>
+                                    <select class="form-field required gateway-platform-border-color" name="clinic-member-job-title">
+                                        <option>Please, select</option>
+                                        <option value="practise-manager">Practice manager</option>
+                                        <option value="dentist">Dentist</option>
+                                        <option value="dental-hygienist">Dental hygienist</option>
+                                        <option value="dental-assistant">Dental assistant</option>
+                                        <option value="marketing-specialist">Marketing specialist</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="privacy-policy-row padding-bottom-20 padding-top-10 custom-checkbox-style">
                             <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration"/>
                             <label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registration">I've read and agree to the <a href="//dentacoin.com/privacy-policy" class="gateway-platform-color" target="_blank">Privacy Policy</a></label>
                         </div>

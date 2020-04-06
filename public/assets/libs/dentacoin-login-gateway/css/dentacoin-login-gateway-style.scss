@@ -448,7 +448,7 @@
     width: 50%;
 }
 
-.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .show-if-dentist {
+.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .show-if-dentist, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .show-if-clinic {
     display: none;
     label {
         cursor: pointer;

@@ -426,11 +426,11 @@ if (typeof jQuery == 'undefined') {
 
                             $('.dentacoin-login-gateway-container .step.second .user-type-container .user-type').removeClass('active');
                             $('.dentacoin-login-gateway-container .step.second .user-type-container .custom-button').removeClass('gateway-platform-border-color-important');
-                            $('.dentacoin-login-gateway-container .step.second .user-type-container .custom-button .circle').removeClass('gateway-platform-background-important');
+                            $('.dentacoin-login-gateway-container .step.second .user-type-container .custom-button .circle').removeClass('gateway-platform-background-color-important');
                             $('.dentacoin-login-gateway-container .step.second .user-type-container .user-type-label').removeClass('gateway-platform-color');
 
                             $(this).addClass('active');
-                            $(this).find('.custom-button .circle').addClass('gateway-platform-background-important');
+                            $(this).find('.custom-button .circle').addClass('gateway-platform-background-color-important');
                             $(this).find('.custom-button').addClass('gateway-platform-border-color-important');
                             $(this).find('.user-type-label').addClass('gateway-platform-color');
                             $('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val($(this).attr('data-type'));
@@ -438,8 +438,10 @@ if (typeof jQuery == 'undefined') {
                             // show addition fields only if dentist
                             if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'dentist') {
                                 $('.show-if-dentist').show();
+                                $('.show-if-clinic').hide();
                             } else {
                                 $('.show-if-dentist').hide();
+                                $('.show-if-clinic').show();
                             }
 
                             // change htmls based on the selected option
@@ -449,6 +451,14 @@ if (typeof jQuery == 'undefined') {
                                 } else {
                                     $('.dentacoin-login-gateway-container .step.second .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .step.second .changeable-html-based-on-user-type').eq(i).attr('data-clinic'));
                                 }
+                            }
+                        });
+
+                        $('.dentacoin-login-gateway-container .step.second select[name="clinic-member-job-title"]').on('change', function() {
+                            if ($(this).val() == 'other') {
+                                $(this).closest('.field-parent').append('<div class="custom-google-label-style module margin-top-10 clinic-member-job-title-other-parent" data-input-colorful-border="true"><label for="clinic-member-job-title-other">Other:</label><input class="full-rounded form-field" name="clinic-member-job-title-other" maxlength="50" type="text" id="clinic-member-job-title-other"/></div>');
+                            } else {
+                                $(this).closest('.field-parent').find('.clinic-member-job-title-other-parent').remove();
                             }
                         });
 
