@@ -439,8 +439,19 @@ class UserController extends Controller {
     
     protected function getCountryCode() {
         $ip = $this->getClientIp();
-        var_dump(file_get_contents('https://ipinfo.io/' . $ip . '/country'));
-        var_dump(mb_strtolower(trim(@file_get_contents('https://ipinfo.io/' . $ip . '/country'))));
+        var_dump($ip);
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => 'https://ipinfo.io/' . $ip . '/country',
+            CURLOPT_SSL_VERIFYPEER => 0
+        ));
+        $resp = json_decode(curl_exec($curl));
+        curl_close($curl);
+
+        var_dump($resp);
+
         die('asd');
         return response()->json(['success' => (new APIRequestsController())->getCountry($this->getClientIp())]);
     }
