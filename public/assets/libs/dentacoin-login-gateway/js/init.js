@@ -336,6 +336,24 @@ if (typeof jQuery == 'undefined') {
                         $(document).on('registeredAccountMissingEmail', async function (event) {
                             console.log(event.response_data, 'registeredAccountMissingEmail');
                             console.log('====== request to save email and then fire successful login event =====');
+
+                            $('.dentacoin-login-gateway-container .patient .form-login .form-login-fields').hide();
+                            $('.dentacoin-login-gateway-container .patient .form-login').append('');
+
+                            $('.dentacoin-login-gateway-container .patient .form-login .save-registered-patient-without-email').click(function() {
+                                if ($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim() == '' || !dcnGateway.utils.validateEmail($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim())) {
+                                    dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').closest('.field-parent'), 'Please use valid email address.');
+                                } else {
+                                    console.log($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim());
+                                }
+                            });
+                            // on success save email to db
+                            /*$.event.trigger({
+                                type: 'successResponseCoreDBApi',
+                                response_data: event.response_data,
+                                platform_type: event.platform_type,
+                                time: new Date()
+                            });*/
                         });
 
                         $(document).on('successResponseCoreDBApi', async function (event) {
@@ -469,7 +487,7 @@ if (typeof jQuery == 'undefined') {
 
                         $('.dentacoin-login-gateway-container .step.second [name="dentist-type"]').on('change', function() {
                             if ($(this).val() == 'work-for-practise') {
-                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practise').html('<div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practise-name">Practise name:</label><input class="full-rounded form-field required" name="practise-name" maxlength="255" type="text" id="practise-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practise-email">Official email:</label><input class="full-rounded form-field required" name="practise-email" maxlength="60" type="email" id="practise-email"/></div></div>');
+                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practise').html('<div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practise-name">Practise name:</label><input class="full-rounded form-field required" name="practise-name" maxlength="255" type="text" id="practise-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practise-email">Official email:</label><input class="full-rounded form-field required" name="practise-email" maxlength="100" type="email" id="practise-email"/></div></div>');
                             } else {
                                 $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practise').html('');
                             }

@@ -7,16 +7,28 @@
     <div class="patient inline-block gateway-platform-background-color @if($type == 'dentist-login' || $type == 'dentist-register') custom-hide @endif">
         <div class="form-login @if($type == 'patient-register' || $type == 'dentist-register') display-none @endif">
             <h2>LOG IN</h2>
-            <div class="padding-bottom-10">
-                <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">Continue with Facebook</span></a>
+            <div class="form-login-fields">
+                <div class="padding-bottom-10">
+                    <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">Continue with Facebook</span></a>
+                </div>
+                <div>
+                    <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif>Continue with Civic</a>
+                </div>
+                <div class="have-old-account">Have an old profile with email and password? <a href="mailto:admin@dentacoin.com">Contact us</a>
+                </div>
+                <div class="popup-half-footer">
+                    Don't have an account? <a href="javascript:void(0)" class="call-sign-up">Sign up</a>
+                </div>
             </div>
-            <div>
-                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif>Continue with Civic</a>
-            </div>
-            <div class="have-old-account">Have an old profile with email and password? <a href="mailto:admin@dentacoin.com">Contact us</a>
-            </div>
-            <div class="popup-half-footer">
-                Don't have an account? <a href="javascript:void(0)" class="call-sign-up">Sign up</a>
+            <div class="padding-bottom-30 field-parent">
+                <div class="custom-google-label-style module" data-input-colorful-border="true">
+                    <label for="registered-patient-without-email">Email address:</label>
+                    <input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" />
+                </div>
+                <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5 padding-bottom-20">Please add your email address to continue.</div>
+                <div class="text-right">
+                    <a href="javascript:void(0);" class="platform-button gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email">CONTINUE</a>
+                </div>
             </div>
         </div>
         <div class="form-register @if($type == 'patient-login' || $type == 'dentist-login') display-none @endif">
@@ -75,7 +87,7 @@
                 <div class="padding-bottom-10 field-parent">
                     <div class="custom-google-label-style module" data-input-colorful-border="true">
                         <label for="dentist-login-email">Email address:</label>
-                        <input class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-login-email" placeholder=""/>
+                        <input class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-login-email" />
                     </div>
                 </div>
                 <div class="padding-bottom-20 field-parent">

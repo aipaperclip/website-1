@@ -246,6 +246,8 @@
     background-color: #d43f3a !important; }
   .platform-button.green-button, input[type='submit'].platform-button.green-button {
     background-color: #4cae4c !important; }
+  .platform-button.opposite, input[type='submit'].platform-button.opposite {
+    background-color: white; }
 
 .custom-checkbox-style {
   font-size: 0; }
