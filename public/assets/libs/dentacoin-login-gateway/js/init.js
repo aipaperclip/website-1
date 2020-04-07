@@ -4,6 +4,7 @@ if (typeof jQuery == 'undefined') {
 } else {
     var loadedSocialLibs = false;
     var croppie_instance;
+    var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
     var dcnGateway = {
         dcnGatewayRequests: {
             getPlatformsData: async function() {
@@ -149,6 +150,50 @@ if (typeof jQuery == 'undefined') {
                     $(this).closest('.dentacoin-login-gateway-container').remove();
                 });
             },
+            readURL: function(input, megaBytesLimit, allowedImagesExtensions, callback, failed_callback) {
+                if (input.files && input.files[0]) {
+                    var filename = input.files[0].name;
+
+                    // check file size
+                    if (megaBytesLimit < bytesToMegabytes(input.files[0].size)) {
+                        if (failed_callback != undefined) {
+                            failed_callback();
+                        }
+
+                        $(input).closest('.upload-btn-parent').append('<div class="error-handle task-error">The file you selected is large. Max size: '+megaBytesLimit+'MB.</div>');
+                        return false;
+                    } else {
+                        //check file extension
+                        if (jQuery.inArray(filename.split('.').pop().toLowerCase(), allowedImagesExtensions) !== -1) {
+                            if (callback != undefined) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    callback(e, filename);
+                                };
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                        } else {
+                            if (failed_callback != undefined) {
+                                failed_callback();
+                            }
+
+                            var allowedExtensionsHtml = '';
+                            var firstLoop = true;
+                            for(var i = 0, len = allowedImagesExtensions.length; i < len; i+=1) {
+                                if (firstLoop) {
+                                    firstLoop = false;
+                                    allowedExtensionsHtml += allowedImagesExtensions[i];
+                                } else {
+                                    allowedExtensionsHtml += ', ' + allowedImagesExtensions[i];
+                                }
+                            }
+
+                            $(input).closest('.upload-btn-parent').append('<div class="error-handle task-error">Please select file in '+allowedExtensionsHtml+' format.</div>');
+                            return false;
+                        }
+                    }
+                }
+            },
             styleAvatarUploadButton: function()    {
                 console.log('styleAvatarUploadButton');
                 if (jQuery('.upload-file.avatar').length) {
@@ -166,7 +211,7 @@ if (typeof jQuery == 'undefined') {
 
                         input.addEventListener('change', function(e) {
                             var this_input = $(this);
-                            readURL(this, 2, allowedImagesExtensions, function(e) {
+                            dcnGateway.utils.readURL(this, 2, allowedImagesExtensions, function(e) {
                                 $('#cropper-container').addClass('width-and-height');
                                 if (croppie_instance != undefined) {
                                     croppie_instance.croppie('destroy');
