@@ -26,7 +26,7 @@ if (typeof jQuery == 'undefined') {
             getUserCountry: async function() {
                 return await $.ajax({
                     type: 'POST',
-                    url: 'https://dentacoin.com/get-user-ip',
+                    url: 'https://dentacoin.com/get-country-code',
                     dataType: 'json'
                 });
             },
