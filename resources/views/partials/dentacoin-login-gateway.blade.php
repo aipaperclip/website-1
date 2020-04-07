@@ -1,7 +1,7 @@
 @php($api_enums = (new \App\Http\Controllers\APIRequestsController())->getAllEnums())
 <div class="dentacoin-login-gateway-fs-0 popup-header-action">
-    <a href="javascript:void(0)" class="inline-block gateway-platform-background-color" data-type="patient">USERS</a>
-    <a href="javascript:void(0)" class="inline-block init-dentists-click-event" data-type="dentist">DENTISTS</a>
+    <a href="javascript:void(0)" class="inline-block @if($type == 'patient-login' || $type == 'patient-register') gateway-platform-background-color-important active @endif" data-type="patient">USERS</a>
+    <a href="javascript:void(0)" class="inline-block init-dentists-click-event @if($type == 'dentist-login' || $type == 'dentist-register') active @endif" data-type="dentist">DENTISTS</a>
 </div>
 <div class="dentacoin-login-gateway-fs-0 popup-body">
     <div class="patient inline-block gateway-platform-background-color @if($type == 'dentist-login' || $type == 'dentist-register') custom-hide @endif">
