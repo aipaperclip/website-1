@@ -273,8 +273,8 @@ if (typeof jQuery == 'undefined') {
 
                         $('.dentacoin-login-gateway-container .popup-header-action a').click(function() {
                             $('.dentacoin-login-gateway-container .popup-header-action a').removeClass('active gateway-platform-background-color-important');
-                            if ($(this).attr('data-type') == 'patient gateway-platform-background-color-important') {
-                                $(this).addClass('active ');
+                            if ($(this).attr('data-type') == 'patient') {
+                                $(this).addClass('active gateway-platform-background-color-important');
                             } else {
                                 $(this).addClass('active');
                             }
