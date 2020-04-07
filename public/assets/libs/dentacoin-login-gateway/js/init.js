@@ -272,6 +272,13 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $('.dentacoin-login-gateway-container .popup-header-action a').click(function() {
+                            $('.dentacoin-login-gateway-container .popup-header-action a').removeClass('active gateway-platform-background-color-important');
+                            if ($(this).attr('data-type') == 'patient gateway-platform-background-color-important') {
+                                $(this).addClass('active ');
+                            } else {
+                                $(this).addClass('active');
+                            }
+
                             $('.dentacoin-login-gateway-container .popup-body > .inline-block').addClass('custom-hide');
                             $('.dentacoin-login-gateway-container .popup-body .'+$(this).attr('data-type')).removeClass('custom-hide');
                         });
@@ -676,7 +683,7 @@ if (typeof jQuery == 'undefined') {
 
                                     if (!errors) {
                                         if ($('#dentist-country').attr('data-current-user-country-code') != undefined && $('#dentist-country').val() != $('#dentist-country').attr('data-current-user-country-code')) {
-                                            dcnGateway.utils.showPopup('Please accept the strictly necessary cookies in order to continue with logging in.', 'warning', function() {
+                                            dcnGateway.utils.showPopup('Your IP thinks differently. Sure you\'ve entered the right country?', 'warning', function() {
                                                 dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationStep3');
 
                                                 $('.dentacoin-login-gateway-container .dentist .form-register .step').removeClass('visible');

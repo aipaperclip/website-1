@@ -393,17 +393,34 @@
     border-left: 3px solid white;
     border-right: 3px solid white;
     @include rounded(4px 4px 0 0);
+    &.active {
+        padding: 15px 10px;
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action {
     a[data-type="patient"] {
         color: white;
+        background-color: #ddd; 
         border-bottom: 1px solid white;
+        &.active {
+            padding: 15px 10px;
+            @include breakpoint($xs) {
+                padding: 15px 5px;
+            }
+        }
     }
     a[data-type="dentist"] {
         color: black;
-        background-color: white;
+        background-color: #ddd;
         border-bottom: 1px solid black;
+        &.active {
+            background-color: white;
+            padding: 15px 10px;
+            @include breakpoint($xs) {
+                padding: 15px 5px;
+            }
+        }
     }
 }
 
