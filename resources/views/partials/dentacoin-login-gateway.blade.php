@@ -222,9 +222,11 @@
                         </div>
                     </div>
                     <div class="padding-bottom-15 suggester-parent module field-parent">
-                        <div class="custom-google-label-style module" data-input-colorful-border="true">
-                            <label for="dentist-register-address">Address: Start typing street, No, city</label>
+                        <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
+                            <div class="tooltip-label gateway-platform-color gateway-platform-border-color changeable-html-based-on-user-type" data-dentist="Enter the full address of your workplace in the same way as it is displayed on your website/ Facebook page/ Google Business profile." data-clinic="Enter the full address of the clinic, the same way it is displayed on the website/ Facebook page or Google Business profile."></div>
+                            <label for="dentist-register-address" class="changeable-html-based-on-user-type" data-dentist="Workplace address: Start typing street, No, city" data-clinic="Address: Start typing street, No, city"></label>
                             <input type="text" name="address" class="full-rounded form-field required address-suggester dont-init" autocomplete="off" id="dentist-register-address">
+                            <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">Ex: 49 Pembroke Square, Kensington, London</div>
                         </div>
                         <div class="suggester-map-div margin-top-15 margin-bottom-10"></div>
                         <div class="alert alert-notice geoip-confirmation margin-top-10 margin-bottom-10 hide-this">Please check the map to make sure we got your correct address. If you're not happy - please drag the map to adjust it.</div>
@@ -235,7 +237,7 @@
                             <label for="dentist-register-website">Website: http(s)://:</label>
                             <input class="full-rounded form-field required" name="website" id="dentist-register-website" maxlength="250" type="url"/>
                         </div>
-                        <div class="dentacoin-login-gateway-fs-14 light-gray-color">No website? Add your most popular social page.</div>
+                        <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">No website? Add your most popular social page.</div>
                     </div>
                     <div class="padding-bottom-10 field-parent">
                         <div class="phone">

@@ -447,11 +447,11 @@ if (typeof jQuery == 'undefined') {
                             }
 
                             // change htmls based on the selected option
-                            for (var i = 0, len = $('.dentacoin-login-gateway-container .step.second .changeable-html-based-on-user-type').length; i < len; i+=1) {
+                            for (var i = 0, len = $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').length; i < len; i+=1) {
                                 if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'dentist') {
-                                    $('.dentacoin-login-gateway-container .step.second .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .step.second .changeable-html-based-on-user-type').eq(i).attr('data-dentist'));
+                                    $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).attr('data-dentist'));
                                 } else {
-                                    $('.dentacoin-login-gateway-container .step.second .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .step.second .changeable-html-based-on-user-type').eq(i).attr('data-clinic'));
+                                    $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).attr('data-clinic'));
                                 }
                             }
                         });
@@ -560,13 +560,6 @@ if (typeof jQuery == 'undefined') {
                                             } else if (second_step_inputs.eq(i).attr('type') == 'email' && !dcnGateway.utils.validateEmail(second_step_inputs.eq(i).val().trim())) {
                                                 dcnGateway.utils.customErrorHandle(second_step_inputs.eq(i).closest('.field-parent'), 'Please use valid email address.');
                                                 errors = true;
-                                            } else if (second_step_inputs.eq(i).attr('type') == 'email' && dcnGateway.utils.validateEmail(second_step_inputs.eq(i).val().trim())) {
-                                                //coredb check if email is free
-                                                var check_email_if_free_response = await dcnGateway.dcnGatewayRequests.checkIfFreeEmail(second_step_inputs.eq(i).val().trim());
-                                                if (check_email_if_free_response.success == false) {
-                                                    dcnGateway.utils.customErrorHandle(second_step_inputs.eq(i).closest('.field-parent'), check_email_if_free_response.errors.email);
-                                                    errors = true;
-                                                }
                                             }
                                         }
                                     }
