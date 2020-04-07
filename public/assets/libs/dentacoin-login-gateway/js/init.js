@@ -238,6 +238,10 @@ if (typeof jQuery == 'undefined') {
                                     url: e.target.result
                                 });
 
+                                croppie_instance.croppie('bind', 'url').then(function(){
+                                    croppie_instance.croppie('setZoom', 1)
+                                });
+
                                 $('#cropper-container').on('update.croppie', function(ev, cropData) {
                                     croppie_instance.croppie('result', {
                                         type: 'canvas',
@@ -335,10 +339,6 @@ if (typeof jQuery == 'undefined') {
 
                         $('.dentacoin-login-gateway-container').remove();
                         $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
-
-                        for (var i = 0, len = $('.tooltip-init').length; i < len; i+=1) {
-
-                        }
 
                         //setup forgotten password link
                         $('.dentacoin-login-gateway-container .forgotten-password-link').attr('href', params.forgotten_password_link);
