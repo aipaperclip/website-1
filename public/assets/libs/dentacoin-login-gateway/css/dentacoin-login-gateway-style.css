@@ -111,6 +111,54 @@
 .lato-regular {
   font-family: "Lato-Regular"; }
 
+.module.avatar input[type="file"] {
+  display: none; }
+.module.avatar .btn-wrapper {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  margin: 0; }
+  .module.avatar .btn-wrapper label {
+    background-color: #e3e3e3;
+    border: 2px dashed #777777;
+    color: #777777;
+    width: 100%;
+    padding-top: 100%;
+    display: block;
+    position: relative;
+    text-align: center;
+    margin-bottom: 0;
+    cursor: pointer;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat; }
+    .module.avatar .btn-wrapper label .inner {
+      left: 0;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+      .module.avatar .btn-wrapper label .inner i {
+        font-size: 30px; }
+      .module.avatar .btn-wrapper label .inner .inner-label {
+        font-size: 18px;
+        padding: 0 10px; }
+        @media screen and (max-width: 767px) {
+          .module.avatar .btn-wrapper label .inner .inner-label {
+            font-size: 16px; } }
+.module.avatar #cropper-container.width-and-height {
+  width: 180px;
+  height: 180px; }
+.module.avatar .max-size-label label {
+  display: none;
+  cursor: pointer; }
+.module.avatar .max-size-label.active {
+  margin-top: 40px !important; }
+  .module.avatar .max-size-label.active label {
+    display: inline-block; }
 .module.suggester-parent .suggester-map-div {
   height: 200px;
   display: none;

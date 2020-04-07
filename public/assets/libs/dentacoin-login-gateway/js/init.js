@@ -3,6 +3,7 @@ if (typeof jQuery == 'undefined') {
     console.error('Dentacoin login gateway requires the usage of jQuery.');
 } else {
     var loadedSocialLibs = false;
+    var croppie_instance;
     var dcnGateway = {
         dcnGatewayRequests: {
             getPlatformsData: async function() {
@@ -148,6 +149,65 @@ if (typeof jQuery == 'undefined') {
                     $(this).closest('.dentacoin-login-gateway-container').remove();
                 });
             },
+            styleAvatarUploadButton: function()    {
+                console.log('styleAvatarUploadButton');
+                if (jQuery('.upload-file.avatar').length) {
+                    console.log(1, 'styleAvatarUploadButton');
+                    var inputs = document.querySelectorAll('.inputfile');
+                    Array.prototype.forEach.call(inputs, function(input) {
+                        console.log(2, 'styleAvatarUploadButton');
+
+                        var this_file_btn_parent = $(input).parent();
+                        if (this_file_btn_parent.attr('data-current-user-avatar')) {
+                            this_file_btn_parent.find('.btn-wrapper').append('<label for="custom-upload-avatar" role="button" style="background-image:url('+this_file_btn_parent.attr('data-current-user-avatar')+');"><div class="inner"><div class="inner-label dentacoin-login-gateway-fs-0">Add profile photo</div></div></label>');
+                        } else {
+                            this_file_btn_parent.find('.btn-wrapper').append('<label for="custom-upload-avatar" role="button"><div class="inner"><i class="fa fa-plus" aria-hidden="true"></i><div class="inner-label">Add profile photo</div></div></label>');
+                        }
+
+                        input.addEventListener('change', function(e) {
+                            var this_input = $(this);
+                            readURL(this, 2, allowedImagesExtensions, function(e) {
+                                $('#cropper-container').addClass('width-and-height');
+                                if (croppie_instance != undefined) {
+                                    croppie_instance.croppie('destroy');
+                                    $('#cropper-container').html('');
+                                }
+
+                                croppie_instance = $('#cropper-container').croppie({
+                                    viewport: {
+                                        width: 120,
+                                        height: 120
+                                    },
+                                    boundary: { width: 120, height: 120 },
+                                    enableOrientation: true,
+                                    enforceBoundary: false
+                                });
+
+                                $('.avatar.module .btn-wrapper').hide();
+                                $('.max-size-label').addClass('active');
+
+                                croppie_instance.croppie('bind', {
+                                    url: e.target.result
+                                });
+
+                                $('#cropper-container').on('update.croppie', function(ev, cropData) {
+                                    croppie_instance.croppie('result', {
+                                        type: 'canvas',
+                                        size: {width: 300, height: 300}
+                                    }).then(function (src) {
+                                        $('#hidden-image').val(src);
+                                    });
+                                });
+                            }, function() {
+                                this_input.val('');
+                            });
+                        });
+                        // Firefox bug fix
+                        input.addEventListener('focus', function(){ input.classList.add('has-focus'); });
+                        input.addEventListener('blur', function(){ input.classList.remove('has-focus'); });
+                    });
+                }
+            },
             cookies: {
                 set: function(name, value) {
                     if(name == undefined){
@@ -198,9 +258,13 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
 
+                // load platform styles
                 var platform_color_and_background = '<style class="platform-colors">.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-color-important{color:'+currentPlatformColor+' !important;}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-background-color-important{background-color:'+currentPlatformColor+' !important;}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}.tooltip-label:after {border-top-color:'+currentPlatformColor+' !important;}</style>';
-
                 $('head').append(platform_color_and_background);
+
+                // load avatar cropper
+                $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');
+                await $.getScript('https://dentacoin.com/assets/libs/croppie/croppie.min.js', function() {});
 
                 // platform parameter
                 if (!validPlatform) {
@@ -513,7 +577,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         //FOURTH STEP INIT LOGIC
-                        console.log('styleAvatarUploadButton');
+                        dcnGateway.utils.styleAvatarUploadButton();
 
                         var userCountryCode;
                         //DENTIST REGISTERING FORM
