@@ -150,6 +150,9 @@ if (typeof jQuery == 'undefined') {
                     $(this).closest('.dentacoin-login-gateway-container').remove();
                 });
             },
+            bytesToMegabytes: function(bytes) {
+                return bytes / Math.pow(1024, 2);
+            },
             readURL: function(input, megaBytesLimit, allowedImagesExtensions, callback, failed_callback) {
                 if (input.files && input.files[0]) {
                     var filename = input.files[0].name;
