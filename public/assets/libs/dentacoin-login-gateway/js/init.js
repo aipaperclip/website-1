@@ -637,7 +637,7 @@ if (typeof jQuery == 'undefined') {
                                             $('.step.third #dentist-country').attr('data-current-user-country-code', userCountryCode.success);
                                             $('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').prop('selected', true);
                                         }
-                                        $('.step.third .country-code').attr('data-current-user-country-code', $('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').attr('data-code'));
+                                        $('.step.third .country-code').html('+'+$('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').attr('data-code'));
 
                                         this_btn.attr('data-current-step', 'third');
                                         this_btn.val('Next');
