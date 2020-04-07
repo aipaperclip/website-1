@@ -632,10 +632,12 @@ if (typeof jQuery == 'undefined') {
 
                                         // get user country code
                                         userCountryCode = await dcnGateway.dcnGatewayRequests.getUserCountry();
-                                        console.log(userCountryCode, 'userCountryCode');
-
-                                        $('.step.third #dentist-country').attr('data-current-user-country-code', '');
-                                        $('.step.third .country-code').attr('data-current-user-country-code', '');
+                                        // setup current country in the dropdown and phone number
+                                        if(userCountryCode.success) {
+                                            $('.step.third #dentist-country').attr('data-current-user-country-code', userCountryCode.success);
+                                            $('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').prop('selected', true);
+                                        }
+                                        $('.step.third .country-code').attr('data-current-user-country-code', $('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').attr('data-code'));
 
                                         this_btn.attr('data-current-step', 'third');
                                         this_btn.val('Next');
