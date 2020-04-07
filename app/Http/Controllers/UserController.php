@@ -436,4 +436,8 @@ class UserController extends Controller {
             return abort(404);
         }
     }
+    
+    protected function getUserIp() {
+        return response()->json(['success' => $this->getClientIp()]);
+    }
 }

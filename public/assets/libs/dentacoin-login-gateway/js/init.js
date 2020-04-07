@@ -23,6 +23,13 @@ if (typeof jQuery == 'undefined') {
                     }
                 });
             },
+            getUserIP: async function() {
+                return await $.ajax({
+                    type: 'POST',
+                    url: 'https://dentacoin.com/get-user-ip',
+                    dataType: 'json'
+                });
+            },
             checkIfFreeEmail: async function(email) {
                 return await $.ajax({
                     type: 'POST',
@@ -501,6 +508,7 @@ if (typeof jQuery == 'undefined') {
                         //FOURTH STEP INIT LOGIC
                         console.log('styleAvatarUploadButton');
 
+                        var userIp;
                         //DENTIST REGISTERING FORM
                         $('.dentacoin-login-gateway-container .dentist .form-register .next-step').click(async function() {
                             var this_btn = $(this);
@@ -622,6 +630,9 @@ if (typeof jQuery == 'undefined') {
                                         $('.dentacoin-login-gateway-container .dentist .form-register .step').removeClass('visible');
                                         $('.dentacoin-login-gateway-container .dentist .form-register .step.third').addClass('visible');
 
+                                        // get user IP
+                                        userIp = await dcnGateway.dcnGatewayRequests.getUserIP();
+
                                         this_btn.attr('data-current-step', 'third');
                                         this_btn.val('Next');
                                     }
@@ -657,7 +668,10 @@ if (typeof jQuery == 'undefined') {
                                         errors = true;
                                     }
 
+                                    errors = true;
                                     if (!errors) {
+                                        console.log(userIp, 'userIp');
+
                                         if ($('#dentist-country').attr('data-current-user-country-code') != undefined && $('#dentist-country').val() != $('#dentist-country').attr('data-current-user-country-code')) {
                                             dcnGateway.utils.showPopup('Please accept the strictly necessary cookies in order to continue with logging in.', 'warning', function() {
                                                 dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationStep3');
