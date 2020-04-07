@@ -444,7 +444,7 @@ class UserController extends Controller {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://ipinfo.io/' . $ip . '/country',
+            CURLOPT_URL => 'https://ipinfo.io/' . $ip . '/country?token='.getenv('IPINFO_TOKEN'),
             CURLOPT_SSL_VERIFYPEER => 0
         ));
         $resp = json_decode(curl_exec($curl));
