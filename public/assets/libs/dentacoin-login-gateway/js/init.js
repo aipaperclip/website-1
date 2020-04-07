@@ -158,7 +158,7 @@ if (typeof jQuery == 'undefined') {
                     var filename = input.files[0].name;
 
                     // check file size
-                    if (megaBytesLimit < bytesToMegabytes(input.files[0].size)) {
+                    if (megaBytesLimit < dcnGateway.utils.bytesToMegabytes(input.files[0].size)) {
                         if (failed_callback != undefined) {
                             failed_callback();
                         }
