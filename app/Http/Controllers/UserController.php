@@ -438,22 +438,6 @@ class UserController extends Controller {
     }
     
     protected function getCountryCode() {
-        $ip = $this->getClientIp();
-        var_dump($ip);
-        var_dump('https://ipinfo.io/' . $ip . '/country?token='.getenv('IPINFO_TOKEN'));
-
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://ipinfo.io/' . $ip . '/country?token='.getenv('IPINFO_TOKEN'),
-            CURLOPT_SSL_VERIFYPEER => 0
-        ));
-        $resp = curl_exec($curl);
-        curl_close($curl);
-
-        var_dump($resp);
-
-        die('asd');
         return response()->json(['success' => (new APIRequestsController())->getCountry($this->getClientIp())]);
     }
 }
