@@ -214,20 +214,10 @@
                             @php($countries = (new \App\Http\Controllers\APIRequestsController())->getAllCountries())
                             <label class="gateway-platform-color">Select country:</label>
                             @php($current_phone_code = '+'.$countries[0]->phone_code)
-                            @if(isset($client_ip) && $client_ip != '127.0.0.1')
-                                @php($current_user_country_code = (new \App\Http\Controllers\APIRequestsController())->getCountry($client_ip))
-                            @endif
-                            <select name="country-code" id="dentist-country" class="form-field required country-select gateway-platform-border-color" @if(!empty($current_user_country_code)) data-current-user-country-code="{{$current_user_country_code}}" @endif>
+                            <select name="country-code" id="dentist-country" class="form-field required country-select gateway-platform-border-color">
                                 @if(!empty($countries))
                                     @foreach($countries as $country)
-                                        @php($selected = '')
-                                        @if(!empty($current_user_country_code))
-                                            @if($current_user_country_code == $country->code)
-                                                @php($current_phone_code = '+'.$country->phone_code)
-                                                @php($selected = 'selected')
-                                            @endif
-                                        @endif
-                                        <option value="{{$country->code}}" data-code="{{$country->phone_code}}" {{$selected}}>{{$country->name}}</option>
+                                        <option value="{{$country->code}}" data-code="{{$country->phone_code}}">{{$country->name}}</option>
                                     @endforeach
                                 @endif
                             </select>

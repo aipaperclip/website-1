@@ -437,7 +437,7 @@ class UserController extends Controller {
         }
     }
     
-    protected function getUserIp() {
-        return response()->json(['success' => $this->getClientIp()]);
+    protected function getCountryCode() {
+        return response()->json(['success' => (new APIRequestsController())->getCountry($this->getClientIp())]);
     }
 }
