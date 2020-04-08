@@ -3,6 +3,7 @@ var checkAddress;
 var setupMap;
 var mapsLoaded = true;
 var mapsWaiting = [];
+var stopThirdRegistrationStep = false;
 
 var prepareMapFunction = function( callback ) {
     if(mapsLoaded) {
@@ -57,10 +58,6 @@ $(document).ready(function($){
         console.log('initAddressSuggesters');
         prepareMapFunction(function() {
             $('.address-suggester').each( function() {
-                //dont init map which are not supposed to be inited at this time
-                if($(this).hasClass('dont-init')) {
-                    return false;
-                }
                 var suggester_container = $(this).closest('.address-suggester-wrapper');
                 suggester_container.find('.country-select').change( function() {
                     var cc = $(this).find('option:selected').val();
@@ -146,10 +143,8 @@ $(document).ready(function($){
                 }
             }
 
-            console.log(address_country, 'address_country');
-            console.log(country_code_name, 'country_code_name');
-
-            if (address_country == country_code_name) {
+            if (address_country.toLowerCase() == country_code_name.toLowerCase()) {
+                stopThirdRegistrationStep = false;
                 gstring = gstring.replace(', '+country_name, '');
                 suggester_container.find('.address-suggester').val(gstring);
 
@@ -161,9 +156,11 @@ $(document).ready(function($){
 
                 suggester_container.find('.geoip-confirmation').show();
             } else {
+                stopThirdRegistrationStep = true;
                 suggester_container.find('.different-country-hint').show();
             }
         } else {
+            stopThirdRegistrationStep = true;
             suggester_container.find('.geoip-hint').show();
         }
     };
