@@ -758,12 +758,11 @@ if (typeof jQuery == 'undefined') {
                                         }
                                         $('.step.third .country-code').html('+'+$('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').attr('data-code'));
 
-                                        // init Google address suggester
+                                        // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
+                                        await $.getScript('https://dentacoin.com/assets/js/address.js?v='+new Date().getTime(), function() {});
+// init Google address suggester
                                         if (typeof initAddressSuggesters === 'function') {
-                                            // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
-                                            await $.getScript('https://dentacoin.com/assets/js/address.js?v='+new Date().getTime(), function() {});
-
-                                            console.log('Fire initAddressSuggesters.')
+                                            console.log('Fire initAddressSuggesters.');
                                             initAddressSuggesters();
                                         }
 
