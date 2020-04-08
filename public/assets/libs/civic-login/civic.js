@@ -73,7 +73,15 @@
                                 if (data.data.email == '' || data.data.email == null) {
                                     console.log('registeredAccountMissingEmail');
                                     customCivicEvent('registeredAccountMissingEmail', '', data);
-                                }
+                                }/* else {
+                                    if (data.success) {
+                                        customCivicEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
+                                    } else {
+                                        customCivicEvent('errorResponseCoreDBApi', 'Request to CoreDB-API succeed, but conditions failed.', data);
+                                    }
+                                }*/
+
+                                // uncopy this part above and remove this part below
 
                                 if (data.success) {
                                     customCivicEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
