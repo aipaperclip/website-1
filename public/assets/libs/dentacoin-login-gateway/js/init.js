@@ -856,7 +856,7 @@ if (typeof jQuery == 'undefined') {
                                     }
 
                                     //checking if no specialization checkbox selected
-                                    if (typeof(grecaptcha) != undefinedgrecaptcha.getResponse().length == 0) {
+                                    if (typeof(grecaptcha) != undefined && grecaptcha.getResponse().length == 0) {
                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Please prove that you\'re not robot.');
                                         errors = true;
                                     }
