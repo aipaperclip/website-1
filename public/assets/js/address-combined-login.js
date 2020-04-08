@@ -146,6 +146,9 @@ $(document).ready(function($){
                 }
             }
 
+            console.log(address_country, 'address_country');
+            console.log(country_code_name, 'country_code_name');
+
             if (address_country == country_code_name) {
                 gstring = gstring.replace(', '+country_name, '');
                 suggester_container.find('.address-suggester').val(gstring);
