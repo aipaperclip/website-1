@@ -362,12 +362,6 @@ if (typeof jQuery == 'undefined') {
                                 $(this).closest('.custom-checkbox-style').find('.custom-checkbox').removeClass('gateway-platform-background-color-important').html('');
                             }
                         });
-
-                        // init Google address suggester
-                        if (typeof initAddressSuggesters === 'function') {
-                            console.log('Fire initAddressSuggesters.')
-                            initAddressSuggesters();
-                        }
                         
                         // init custom inputs styles
                         $('body').on('click', '.custom-google-label-style label', function() {
@@ -766,6 +760,12 @@ if (typeof jQuery == 'undefined') {
                                             $('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').prop('selected', true);
                                         }
                                         $('.step.third .country-code').html('+'+$('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').attr('data-code'));
+
+                                        // init Google address suggester
+                                        if (typeof initAddressSuggesters === 'function') {
+                                            console.log('Fire initAddressSuggesters.')
+                                            initAddressSuggesters();
+                                        }
 
                                         this_btn.attr('data-current-step', 'third');
                                         this_btn.val('Next');
