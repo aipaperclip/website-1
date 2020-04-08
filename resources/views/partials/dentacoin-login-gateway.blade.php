@@ -227,7 +227,7 @@
                         <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
                             <div class="tooltip-label gateway-platform-color gateway-platform-border-color changeable-html-based-on-user-type" data-dentist="Enter the full address of your workplace in the same way as it is displayed on your website/ Facebook page/ Google Business profile." data-clinic="Enter the full address of the clinic, the same way it is displayed on the website/ Facebook page or Google Business profile."></div>
                             <label for="dentist-register-address" class="changeable-html-based-on-user-type" data-dentist="Workplace address: Start typing street, No, city" data-clinic="Address: Start typing street, No, city"></label>
-                            <input type="text" name="address" class="full-rounded form-field required address-suggester dont-init" autocomplete="off" id="dentist-register-address">
+                            <input type="text" name="address" class="full-rounded form-field required address-suggester" autocomplete="off" id="dentist-register-address">
                         </div>
                         <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">Ex: 49 Pembroke Square, Kensington, London</div>
                         <div class="suggester-map-div margin-top-15 margin-bottom-10"></div>
