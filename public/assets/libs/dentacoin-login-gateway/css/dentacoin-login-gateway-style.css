@@ -151,14 +151,18 @@
             font-size: 16px; } }
 .module.avatar #cropper-container.width-and-height {
   width: 180px;
-  height: 180px; }
+  height: 160px; }
+  .module.avatar #cropper-container.width-and-height .cr-viewport {
+    border: 2px dashed #777777; }
+  .module.avatar #cropper-container.width-and-height .cr-slider-wrap {
+    margin: 10px auto !important; }
 .module.avatar .max-size-label label {
   display: none;
-  cursor: pointer; }
-.module.avatar .max-size-label.active {
-  margin-top: 40px !important; }
-  .module.avatar .max-size-label.active label {
-    display: inline-block; }
+  cursor: pointer;
+  max-width: 30px;
+  margin-right: 10px; }
+.module.avatar .max-size-label.active label {
+  display: inline-block; }
 .module.suggester-parent .suggester-map-div {
   height: 200px;
   display: none;

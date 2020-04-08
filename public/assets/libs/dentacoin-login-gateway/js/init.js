@@ -223,10 +223,10 @@ if (typeof jQuery == 'undefined') {
 
                                 croppie_instance = $('#cropper-container').croppie({
                                     viewport: {
-                                        width: 120,
-                                        height: 120
+                                        width: 140,
+                                        height: 140
                                     },
-                                    boundary: { width: 120, height: 120 },
+                                    boundary: { width: 140, height: 140 },
                                     enableOrientation: true,
                                     enforceBoundary: false
                                 });

@@ -46,15 +46,22 @@
         }
         #cropper-container.width-and-height {
             width: 180px;
-            height: 180px;
+            height: 160px; 
+            .cr-viewport {
+                border: 2px dashed #777777;
+            }
+            .cr-slider-wrap {
+                margin: 10px auto !important;
+            }
         }
         .max-size-label {
             label {
                 display: none;
                 cursor: pointer;
+                max-width: 30px;
+                margin-right: 10px;
             }
             &.active {
-                margin-top: 40px !important;
                 label {
                     display: inline-block;
                 }
