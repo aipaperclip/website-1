@@ -759,7 +759,7 @@ if (typeof jQuery == 'undefined') {
                                         $('.step.third .country-code').html('+'+$('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').attr('data-code'));
 
                                         // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
-                                        await $.getScript('https://dentacoin.com/assets/js/address.js?v='+new Date().getTime(), function() {});
+                                        await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
 // init Google address suggester
                                         if (typeof initAddressSuggesters === 'function') {
                                             console.log('Fire initAddressSuggesters.');
