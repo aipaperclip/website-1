@@ -334,9 +334,6 @@ if (typeof jQuery == 'undefined') {
 
                             // =============================================== FACEBOOK ====================================================
                             await $.getScript('https://dentacoin.com/assets/libs/facebook-login/facebook.js?v='+new Date().getTime(), function() {});
-
-                            // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
-                            await $.getScript('https://dentacoin.com/assets/js/address.js?v='+new Date().getTime(), function() {});
                             loadedSocialLibs = true;
                         }
 
@@ -763,6 +760,9 @@ if (typeof jQuery == 'undefined') {
 
                                         // init Google address suggester
                                         if (typeof initAddressSuggesters === 'function') {
+                                            // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
+                                            await $.getScript('https://dentacoin.com/assets/js/address.js?v='+new Date().getTime(), function() {});
+
                                             console.log('Fire initAddressSuggesters.')
                                             initAddressSuggesters();
                                         }
