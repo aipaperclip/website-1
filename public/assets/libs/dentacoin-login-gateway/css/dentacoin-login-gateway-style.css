@@ -371,6 +371,9 @@
   outline: none;
   box-sizing: border-box; }
 
+.pac-container {
+  z-index: 50000; }
+
 .dentacoin-login-gateway-container a {
   text-decoration: none; }
 
