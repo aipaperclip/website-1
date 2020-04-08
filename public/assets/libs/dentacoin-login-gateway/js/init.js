@@ -296,6 +296,14 @@ if (typeof jQuery == 'undefined') {
                         $('.custom-checkbox-style').eq(i).addClass('already-custom-style');
                     }
                 }
+
+                $('.custom-checkbox-style .custom-checkbox-input').unbind('change').on('change', function() {
+                    if ($(this).is(':checked')) {
+                        $(this).closest('.custom-checkbox-style').find('.custom-checkbox').addClass('gateway-platform-background-color-important').html('✓');
+                    } else {
+                        $(this).closest('.custom-checkbox-style').find('.custom-checkbox').removeClass('gateway-platform-background-color-important').html('');
+                    }
+                });
             }
         },
         init: async function(params) {
@@ -359,14 +367,6 @@ if (typeof jQuery == 'undefined') {
 
                         // init custom checkboxes style
                         dcnGateway.utils.initCustomCheckboxes();
-
-                        $('.custom-checkbox-style .custom-checkbox-input').on('change', function() {
-                            if ($(this).is(':checked')) {
-                                $(this).closest('.custom-checkbox-style').find('.custom-checkbox').addClass('gateway-platform-background-color-important').html('✓');
-                            } else {
-                                $(this).closest('.custom-checkbox-style').find('.custom-checkbox').removeClass('gateway-platform-background-color-important').html('');
-                            }
-                        });
                         
                         // init custom inputs styles
                         $('body').on('click', '.custom-google-label-style label', function() {
@@ -471,7 +471,7 @@ if (typeof jQuery == 'undefined') {
                             dcnGateway.utils.hideLoader();
 
                             $('.dentacoin-login-gateway-container .patient .form-login .form-login-fields').hide();
-                            $('.dentacoin-login-gateway-container .patient .form-login').append('<div class="registered-user-without-email-parent"><div class="padding-bottom-30 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="registered-patient-without-email">Email address:</label><input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" /></div><div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5 padding-bottom-10">Please add your email address to continue.</div><div class="patient-register-checkboxes padding-top-5"><div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registered-user-without-email"/><label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registered-user-without-email">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label></div></div><div class="text-right padding-top-15"><a href="javascript:void(0);" class="platform-button opposite gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email inline-block">CONTINUE</a></div></div></div>');
+                            $('.dentacoin-login-gateway-container .patient .form-login').append('<div class="registered-user-without-email-parent"><div class="padding-bottom-30 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="registered-patient-without-email">Email address:</label><input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" /></div><div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5 padding-bottom-10">Please add your email address to continue.</div></div><div class="patient-register-checkboxes padding-top-5"><div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registered-user-without-email"/><label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registered-user-without-email">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label></div></div><div class="text-right padding-top-15"><a href="javascript:void(0);" class="platform-button opposite gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email inline-block">CONTINUE</a></div></div>');
 
                             dcnGateway.utils.initCustomCheckboxes();
 
