@@ -288,6 +288,14 @@ if (typeof jQuery == 'undefined') {
                     }
                     return "";
                 }
+            },
+            initCustomCheckboxes: function() {
+                for (var i = 0, len = $('.custom-checkbox-style').length; i < len; i+=1) {
+                    if (!$('.custom-checkbox-style').eq(i).hasClass('already-custom-style')) {
+                        $('.custom-checkbox-style').eq(i).prepend('<div class="custom-checkbox"></div>');
+                        $('.custom-checkbox-style').eq(i).addClass('already-custom-style');
+                    }
+                }
             }
         },
         init: async function(params) {
@@ -350,9 +358,7 @@ if (typeof jQuery == 'undefined') {
                         }
 
                         // init custom checkboxes style
-                        for (var i = 0, len = $('.custom-checkbox-style').length; i < len; i+=1) {
-                            $('.custom-checkbox-style').eq(i).prepend('<div class="custom-checkbox"></div>');
-                        }
+                        dcnGateway.utils.initCustomCheckboxes();
 
                         $('.custom-checkbox-style .custom-checkbox-input').on('change', function() {
                             if ($(this).is(':checked')) {
@@ -465,24 +471,26 @@ if (typeof jQuery == 'undefined') {
                             dcnGateway.utils.hideLoader();
 
                             $('.dentacoin-login-gateway-container .patient .form-login .form-login-fields').hide();
-                            $('.dentacoin-login-gateway-container .patient .form-login').append('<div class="registered-user-without-email-parent"><div class="padding-bottom-30 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="registered-patient-without-email">Email address:</label><input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" /></div><div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5 padding-bottom-20">Please add your email address to continue.</div><div class="text-right"><a href="javascript:void(0);" class="platform-button opposite gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email">CONTINUE</a></div></div><div class="patient-register-checkboxes padding-top-5"><div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registered-user-without-email"/><label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registered-user-without-email">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label></div></div></div>');
+                            $('.dentacoin-login-gateway-container .patient .form-login').append('<div class="registered-user-without-email-parent"><div class="padding-bottom-30 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="registered-patient-without-email">Email address:</label><input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" /></div><div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5 padding-bottom-20">Please add your email address to continue.</div><div class="patient-register-checkboxes padding-top-5"><div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registered-user-without-email"/><label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registered-user-without-email">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label></div></div><div class="text-right"><a href="javascript:void(0);" class="platform-button opposite gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email inline-block">CONTINUE</a></div></div></div>');
+
+                            dcnGateway.utils.initCustomCheckboxes();
 
                             $('.dentacoin-login-gateway-container .patient .form-login .save-registered-patient-without-email').click(function() {
                                 if ($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim() == '' || !dcnGateway.utils.validateEmail($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim())) {
                                     dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').closest('.field-parent'), 'Please use valid email address.');
                                 } else if (!$('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').is(':checked')) {
-                                    dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').closest('.patient-register-checkboxes'), 'Please agree with our <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy policy</a>.');
+                                    dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').closest('.patient-register-checkboxes'), 'Please agree with our Privacy policy.');
                                 } else {
                                     console.log($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim());
+                                    // on success save email to db
+                                    /*$.event.trigger({
+                                        type: 'successResponseCoreDBApi',
+                                        response_data: event.response_data,
+                                        platform_type: event.platform_type,
+                                        time: new Date()
+                                    });*/
                                 }
                             });
-                            // on success save email to db
-                            /*$.event.trigger({
-                                type: 'successResponseCoreDBApi',
-                                response_data: event.response_data,
-                                platform_type: event.platform_type,
-                                time: new Date()
-                            });*/
                         });
 
                         $(document).on('successResponseCoreDBApi', async function (event) {
