@@ -160,7 +160,8 @@
   display: none;
   cursor: pointer;
   max-width: 30px;
-  margin-right: 10px; }
+  margin-right: 10px;
+  width: 100%; }
 .module.avatar .max-size-label.active label {
   display: inline-block; }
 .module.suggester-parent .suggester-map-div {

@@ -23,6 +23,10 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         die('hallo');
     })->name('dump');
 
+    Route::get('/test-combined-login', function() {
+        return view('pages/test-combined-login');
+    })->name('test-combined-login');
+
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');

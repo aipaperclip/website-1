@@ -46,7 +46,7 @@
         }
         #cropper-container.width-and-height {
             width: 180px;
-            height: 160px; 
+            height: 160px;
             .cr-viewport {
                 border: 2px dashed #777777;
             }
@@ -60,6 +60,7 @@
                 cursor: pointer;
                 max-width: 30px;
                 margin-right: 10px;
+                width: 100%;
             }
             &.active {
                 label {

@@ -197,8 +197,7 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
             },
-            styleAvatarUploadButton: function()    {
-                console.log('styleAvatarUploadButton');
+            styleAvatarUploadButton: function() {
                 if (jQuery('.upload-file.avatar').length) {
                     console.log(1, 'styleAvatarUploadButton');
                     var inputs = document.querySelectorAll('.inputfile');
@@ -239,7 +238,8 @@ if (typeof jQuery == 'undefined') {
                                 });
 
                                 croppie_instance.croppie('bind', 'url').then(function(){
-                                    croppie_instance.croppie('setZoom', 1)
+                                    console.log('asdsasdadas');
+                                    croppie_instance.croppie('setZoom', 1);
                                 });
 
                                 $('#cropper-container').on('update.croppie', function(ev, cropData) {
@@ -334,6 +334,9 @@ if (typeof jQuery == 'undefined') {
 
                             // =============================================== FACEBOOK ====================================================
                             await $.getScript('https://dentacoin.com/assets/libs/facebook-login/facebook.js?v='+new Date().getTime(), function() {});
+
+                            // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
+                            await $.getScript('https://dentacoin.com/assets/js/address.js?v='+new Date().getTime(), function() {});
                             loadedSocialLibs = true;
                         }
 
@@ -359,6 +362,11 @@ if (typeof jQuery == 'undefined') {
                                 $(this).closest('.custom-checkbox-style').find('.custom-checkbox').removeClass('gateway-platform-background-color-important').html('');
                             }
                         });
+
+                        // init Google address suggester
+                        if (typeof initAddressSuggesters === 'function') {
+                            initAddressSuggesters();
+                        }
                         
                         // init custom inputs styles
                         $('body').on('click', '.custom-google-label-style label', function() {
