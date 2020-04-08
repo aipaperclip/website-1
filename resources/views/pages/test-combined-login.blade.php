@@ -29,6 +29,7 @@
 {{--<div id="dentacoin-login-gateway-container">
 
 </div>--}}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
 <script src="https://dentacoin.com/assets/libs/dentacoin-login-gateway/js/init.js"></script>
 <script>
     console.log('asd');

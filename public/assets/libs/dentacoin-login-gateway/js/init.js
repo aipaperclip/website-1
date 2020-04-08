@@ -328,7 +328,7 @@ if (typeof jQuery == 'undefined') {
                     var gatewayHtml = await dcnGateway.dcnGatewayRequests.getGatewayHtml(type, params.user_ip);
                     if (gatewayHtml.success) {
                         if (!loadedSocialLibs) {
-                            console.log('loading social libs ===========');
+                            console.log('Load external libraries.');
                             // =============================================== CIVIC =======================================================
                             await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic.js?v='+new Date().getTime(), function() {});
 
@@ -365,6 +365,7 @@ if (typeof jQuery == 'undefined') {
 
                         // init Google address suggester
                         if (typeof initAddressSuggesters === 'function') {
+                            console.log('Fire initAddressSuggesters.')
                             initAddressSuggesters();
                         }
                         
