@@ -14,6 +14,7 @@ var prepareMapFunction = function( callback ) {
 
 $(document).ready(function($){
     setupMap = function(suggester_container, coords) {
+        console.log('setupMap');
         suggester_container.find('.suggester-map-div').show();
         if(!suggester_container.find('.suggester-map-div').attr('inited') ) {
             var profile_address_map = new google.maps.Map( suggester_container.find('.suggester-map-div')[0], {
@@ -53,6 +54,7 @@ $(document).ready(function($){
     };
 
     initAddressSuggesters = function() {
+        console.log('initAddressSuggesters');
         prepareMapFunction(function() {
             $('.address-suggester').each( function() {
                 //dont init map which are not supposed to be inited at this time
