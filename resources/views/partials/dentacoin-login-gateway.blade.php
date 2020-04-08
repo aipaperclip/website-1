@@ -233,7 +233,7 @@
                         <div class="suggester-map-div margin-top-15 margin-bottom-10"></div>
                         <div class="alert alert-notice geoip-confirmation margin-top-10 margin-bottom-10 hide-this">Please check the map to make sure we got your correct address. If you're not happy - please drag the map to adjust it.</div>
                         <div class="alert alert-warning geoip-hint margin-top-10 margin-bottom-10">Please enter a valid address for your practice (including street name and number).</div>
-                        <div class="alert alert-warning geoip-hint margin-top-10 margin-bottom-10">Unable to proceed. Please, choose address from your country.</div>
+                        <div class="alert alert-warning different-country-hint margin-top-10 margin-bottom-10">Unable to proceed. Please, choose address from your country.</div>
                     </div>
                     <div class="padding-bottom-15 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
@@ -269,6 +269,9 @@
                                     <label class="dentacoin-login-gateway-fs-15" for="specialization-{{$key}}">{{$specialisation}}</label>
                                 </div>
                             @endforeach
+                        </div>
+                        <div class="captcha">
+                            <div class="g-recaptcha" id="g-recaptcha" data-callback="sendReCaptcha" style="display: inline-block;" data-size="compact" data-sitekey="6Ldf5-6LfS5-cUAAAAAFcqPKe4ArUQfv8znLMN9oU5e57A"></div>
                         </div>
                         <div class="step-errors-holder padding-top-10"></div>
                     </div>
