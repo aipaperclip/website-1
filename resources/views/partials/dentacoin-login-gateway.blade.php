@@ -271,7 +271,7 @@
                             @endforeach
                         </div>
                         <div class="captcha">
-                            <div class="g-recaptcha" id="g-recaptcha" data-callback="sendReCaptcha" style="display: inline-block;" data-size="compact" data-sitekey="6Ldf5-6LfS5-cUAAAAAFcqPKe4ArUQfv8znLMN9oU5e57A"></div>
+                            <div class="g-recaptcha" id="g-recaptcha" data-callback="sendReCaptcha" style="display: inline-block;" data-size="compact" data-sitekey="6LfS5-cUAAAAAFcqPKe4ArUQfv8znLMN9oU5e57A"></div>
                         </div>
                         <div class="step-errors-holder padding-top-10"></div>
                     </div>
