@@ -3,6 +3,8 @@ if (typeof jQuery == 'undefined') {
     console.error('Dentacoin login gateway requires the usage of jQuery.');
 } else {
     var loadedSocialLibs = false;
+    var loadedAddressSuggesterLib = false;
+    var loadedGooglereCaptchaLib = false;
     var croppie_instance;
     var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
     var dcnGateway = {
@@ -759,11 +761,14 @@ if (typeof jQuery == 'undefined') {
                                         $('.step.third .country-code').html('+'+$('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').attr('data-code'));
 
                                         // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
-                                        await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
+                                        if (!loadedAddressSuggesterLib) {
+                                            await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
 // init Google address suggester
-                                        if (typeof initAddressSuggesters === 'function') {
-                                            console.log('Fire initAddressSuggesters.');
-                                            initAddressSuggesters();
+                                            if (typeof initAddressSuggesters === 'function') {
+                                                console.log('Fire initAddressSuggesters.');
+                                                initAddressSuggesters();
+                                            }
+                                            loadedAddressSuggesterLib = false;
                                         }
 
                                         this_btn.attr('data-current-step', 'third');
@@ -826,6 +831,12 @@ if (typeof jQuery == 'undefined') {
 
                                             this_btn.attr('data-current-step', 'fourth');
                                             this_btn.val('Create account');
+                                        }
+
+                                        // load google reCAPTCHA v2 library
+                                        if (!loadedGooglereCaptchaLib) {
+                                            await $.getScript('https://www.google.com/recaptcha/api.js', function() {});
+                                            loadedGooglereCaptchaLib = true;
                                         }
                                     }
                                     break;
