@@ -20,16 +20,6 @@
                     Don't have an account? <a href="javascript:void(0)" class="call-sign-up">Sign up</a>
                 </div>
             </div>
-            <div class="padding-bottom-30 field-parent">
-                <div class="custom-google-label-style module" data-input-colorful-border="true">
-                    <label for="registered-patient-without-email">Email address:</label>
-                    <input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" />
-                </div>
-                <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5 padding-bottom-20">Please add your email address to continue.</div>
-                <div class="text-right">
-                    <a href="javascript:void(0);" class="platform-button gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email">CONTINUE</a>
-                </div>
-            </div>
         </div>
         <div class="form-register @if($type == 'patient-login' || $type == 'dentist-login') display-none @endif">
             <h2>SIGN UP</h2>
