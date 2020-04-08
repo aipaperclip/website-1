@@ -483,7 +483,7 @@ if (typeof jQuery == 'undefined') {
                                 } else if (!$('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').is(':checked')) {
                                     dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').closest('.patient-register-checkboxes'), 'Please agree with our Privacy policy.');
                                 } else {
-                                    console.log(event.token, 'event');
+                                    console.log(event, 'event');
                                     // on success save email to db
                                     /*$.event.trigger({
                                         type: 'successResponseCoreDBApi',
