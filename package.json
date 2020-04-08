@@ -12,7 +12,7 @@
   "devDependencies": {
     "admin-lte": "2.3.1",
     "bootbox.js": "^4.3.0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "bootstrap-datepicker": "^1.8.0",
     "bootstrap-select": "^1.13.2",
     "ckeditor-full": "^4.7.3",
