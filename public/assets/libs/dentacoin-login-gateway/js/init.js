@@ -46,7 +46,7 @@ if (typeof jQuery == 'undefined') {
             editUserData: async function(email, token) {
                 return await $.ajax({
                     type: 'POST',
-                    url: 'https://api.dentacoin.com/api/check-email',
+                    url: 'https://api.dentacoin.com/api/user/',
                     dataType: 'json',
                     data: {
                         email: email
