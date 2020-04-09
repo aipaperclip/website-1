@@ -498,7 +498,7 @@ if (typeof jQuery == 'undefined') {
 
                             dcnGateway.utils.initCustomCheckboxes();
 
-                            $('.dentacoin-login-gateway-container .patient .form-login .save-registered-patient-without-email').click(function() {
+                            $('.dentacoin-login-gateway-container .patient .form-login .save-registered-patient-without-email').click(async function() {
                                 $('.registered-user-without-email-parent .error-handle').remove();
 
                                 if ($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim() == '' || !dcnGateway.utils.validateEmail($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim())) {
@@ -506,7 +506,7 @@ if (typeof jQuery == 'undefined') {
                                 } else if (!$('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').is(':checked')) {
                                     dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').closest('.patient-register-checkboxes'), 'Please agree with our Privacy policy.');
                                 } else {
-                                    var editUserDataResponse = dcnGateway.dcnGatewayRequests.editUserData($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim(), event.response_data.token);
+                                    var editUserDataResponse = await dcnGateway.dcnGatewayRequests.editUserData($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim(), event.response_data.token);
                                     if (editUserDataResponse.success) {
                                         // on success save email to db
                                         $.event.trigger({
@@ -515,10 +515,17 @@ if (typeof jQuery == 'undefined') {
                                             platform_type: event.platform_type,
                                             time: new Date()
                                         });
+                                    } else if (editUserDataResponse.errors) {
+                                        var error_popup_html = '';
+                                        for(var key in editUserDataResponse.errors) {
+                                            error_popup_html += editUserDataResponse.errors[key]+'<br>';
+                                        }
+
+                                        dcnGateway.utils.hideLoader();
+                                        dcnGateway.utils.showPopup(error_popup_html, 'alert');
                                     } else {
                                         dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                                     }
-
                                 }
                             });
                         });
