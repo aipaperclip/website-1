@@ -548,8 +548,10 @@ if (typeof jQuery == 'undefined') {
                                     }
                                 }
 
-                                //check if existing account
-                                var check_account_response = await dcnGateway.dcnGatewayRequests.checkDentistAccount($('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(), $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim());
+                                if (submit_form) {
+                                    //check if existing account
+                                    var check_account_response = await dcnGateway.dcnGatewayRequests.checkDentistAccount($('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(), $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim());
+                                }
 
                                 if (submit_form && check_account_response.success) {
                                     dcnGateway.utils.fireGoogleAnalyticsEvent('DentistLogin', 'Click', 'Dentist Login');
