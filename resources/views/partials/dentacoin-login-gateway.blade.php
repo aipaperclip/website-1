@@ -182,12 +182,9 @@
                                     <label class="gateway-platform-color">Job title:</label>
                                     <select class="form-field gateway-platform-border-color" name="clinic-member-job-title">
                                         <option value="">Please, select</option>
-                                        <option value="practise-manager">Practice manager</option>
-                                        <option value="dentist">Dentist</option>
-                                        <option value="dental-hygienist">Dental hygienist</option>
-                                        <option value="dental-assistant">Dental assistant</option>
-                                        <option value="marketing-specialist">Marketing specialist</option>
-                                        <option value="other">Other</option>
+                                        @foreach($api_enums->working_position as $key => $title)
+                                            <option value="{{$key}}">{{$title}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

@@ -497,6 +497,7 @@ if (typeof jQuery == 'undefined') {
 
                         $(document).on('successResponseCoreDBApi', async function (event) {
                             console.log(event.response_data, 'successResponseCoreDBApi');
+                            dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
                         });
 
                         $(document).on('errorResponseCoreDBApi', function (event) {
@@ -553,6 +554,7 @@ if (typeof jQuery == 'undefined') {
 
                                 if (submit_form && check_account_response.success) {
                                     dcnGateway.utils.fireGoogleAnalyticsEvent('DentistLogin', 'Click', 'Dentist Login');
+                                    dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
 
                                     console.log('===== SUBMIT FORM =======');
                                     //this_form_native.submit();
@@ -875,8 +877,9 @@ if (typeof jQuery == 'undefined') {
                                     if (!errors) {
                                         dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationComplete');
 
+                                        dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
                                         //submit the form
-                                        dcnGateway.utils.showLoader();
+                                        //dcnGateway.utils.showLoader();
                                         console.log( ' =-=-------------- SUBMIT ');
                                     }
                                     break;
