@@ -16,14 +16,13 @@ if (typeof jQuery == 'undefined') {
                     dataType: 'json'
                 });
             },
-            getGatewayHtml: async function(type, user_ip) {
+            getGatewayHtml: async function(type) {
                 return await $.ajax({
                     type: 'POST',
                     url: 'https://dentacoin.com/dentacoin-login-gateway',
                     dataType: 'json',
                     data: {
-                        'type' : type,
-                        'user_ip' : user_ip
+                        'type' : type
                     }
                 });
             },
@@ -307,7 +306,7 @@ if (typeof jQuery == 'undefined') {
             }
         },
         init: async function(params) {
-            if ((typeof params !== 'object' && params === null) || (!hasOwnProperty.call(params, 'platform') || !hasOwnProperty.call(params, 'forgotten_password_link') || !hasOwnProperty.call(params, 'user_ip'))) {
+            if ((typeof params !== 'object' && params === null) || (!hasOwnProperty.call(params, 'platform') || !hasOwnProperty.call(params, 'forgotten_password_link'))) {
                 // false params
                 console.error('False params passed to dentacoin login gateway.');
             } else {
@@ -343,7 +342,7 @@ if (typeof jQuery == 'undefined') {
                 }
 
                 async function showGateway(type) {
-                    var gatewayHtml = await dcnGateway.dcnGatewayRequests.getGatewayHtml(type, params.user_ip);
+                    var gatewayHtml = await dcnGateway.dcnGatewayRequests.getGatewayHtml(type);
                     if (gatewayHtml.success) {
                         if (!loadedSocialLibs) {
                             console.log('Load external libraries.');

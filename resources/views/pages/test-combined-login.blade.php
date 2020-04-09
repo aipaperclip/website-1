@@ -35,9 +35,8 @@
     console.log('asd');
 
     dcnGateway.init({
-        'platform' : 'dentacoin',
-        'forgotten_password_link' : 'https://google.com',
-        'user_ip' : 'localhost'
+        'platform' : 'dentavox',
+        'forgotten_password_link' : 'https://google.com'
     });
 </script>
 </body>
