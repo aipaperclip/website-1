@@ -69,11 +69,8 @@
                             dataType: 'json',
                             url: civic_custom_btn.attr('data-url'),
                             data: register_data,
-                            success: function(data){
-                                if (data.data.email == '' || data.data.email == null) {
-                                    console.log('registeredAccountMissingEmail');
-                                    customCivicEvent('registeredAccountMissingEmail', '', data);
-                                }/* else {
+                            success: function(data) {
+                                /* else {
                                     if (data.success) {
                                         customCivicEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
                                     } else {
@@ -84,6 +81,11 @@
                                 // uncopy this part above and remove this part below
 
                                 if (data.success) {
+                                    if (data.data.email == '' || data.data.email == null) {
+                                        console.log('registeredAccountMissingEmail');
+                                        customCivicEvent('registeredAccountMissingEmail', '', data);
+                                    }
+
                                     customCivicEvent('successResponseCoreDBApi', 'Request to CoreDB-API succeed.', data);
                                 } else {
                                     customCivicEvent('errorResponseCoreDBApi', 'Request to CoreDB-API succeed, but conditions failed.', data);
