@@ -35,7 +35,7 @@
     console.log('asd');
 
     dcnGateway.init({
-        'platform' : 'assurance',
+        'platform' : 'dentacoin',
         'forgotten_password_link' : 'https://google.com',
         'user_ip' : 'localhost'
     });
