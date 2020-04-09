@@ -307,6 +307,23 @@ if (typeof jQuery == 'undefined') {
                         $(this).closest('.custom-checkbox-style').find('.custom-checkbox').removeClass('gateway-platform-background-color-important').html('');
                     }
                 });
+            },
+            hideGateway: function() {
+                // remove popup
+                $('.dentacoin-login-gateway-container').remove();
+
+                // reset the event listeners
+                $(document).off('civicCustomBtnClicked');
+                $(document).off('civicRead');
+                $(document).off('receivedFacebookToken');
+                $(document).off('facebookCustomBtnClicked');
+                $(document).off('cannotLoginBecauseOfMissingCookies');
+                $(document).off('noUserIdReceived');
+                $(document).off('noCoreDBApiConnection');
+                $(document).off('customCivicFbStopperTriggered');
+                $(document).off('registeredAccountMissingEmail');
+                $(document).off('successResponseCoreDBApi');
+                $(document).off('errorResponseCoreDBApi');
             }
         },
         init: async function(params) {
@@ -358,7 +375,7 @@ if (typeof jQuery == 'undefined') {
                             loadedSocialLibs = true;
                         }
 
-                        $('.dentacoin-login-gateway-container').remove();
+                        dcnGateway.utils.hideGateway();
                         $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
 
                         //setup forgotten password link
@@ -443,11 +460,11 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('civicRead', async function (event) {
-                            dcnGateway.utils.showLoader();
+                            dcnGateway.utils.showLoader('Receiving your details from Civic...');
                         });
 
                         $(document).on('receivedFacebookToken', async function (event) {
-                            dcnGateway.utils.showLoader();
+                            dcnGateway.utils.showLoader('Receiving your details from Facebook...');
                         });
 
                         $(document).on('facebookCustomBtnClicked', function (event) {
@@ -632,10 +649,10 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $('.dentacoin-login-gateway-container .step.second [name="dentist-type"]').on('change', function() {
-                            if ($(this).val() == 'work-for-practise') {
-                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practise').html('<div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practise-name">Practise name:</label><input class="full-rounded form-field required" name="practise-name" maxlength="255" type="text" id="practise-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practise-email">Official email:</label><input class="full-rounded form-field required" name="practise-email" maxlength="100" type="email" id="practise-email"/></div></div>');
+                            if ($(this).val() == 'work-for-practice') {
+                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practice').html('<div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practice-name">practice name:</label><input class="full-rounded form-field required" name="practice-name" maxlength="255" type="text" id="practice-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practice-email">Official email:</label><input class="full-rounded form-field required" name="practice-email" maxlength="100" type="email" id="practice-email"/></div></div>');
                             } else {
-                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practise').html('');
+                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practice').html('');
                             }
                         });
 
@@ -898,13 +915,9 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
 
-                function hideGateway() {
-                    $('.dentacoin-login-gateway-container').remove();
-                }
-
                 $(document).on('click', '.dentacoin-login-gateway-container', function(event) {
                     if (event.target.className == 'dentacoin-login-gateway-container') {
-                        $(event.target).remove();
+                        dcnGateway.utils.hideGateway();
                     }
                 });
 
