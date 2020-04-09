@@ -137,8 +137,8 @@
                     <div class="show-on-user-type-first-change">
                         <div class="show-if-dentist">
                             <div class="padding-bottom-20 field-parent dentacoin-login-gateway-fs-18 dentist-type-checkboxes">
-                                <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own-practice" id="own-practice"/> <label for="own-practice">I own a practice.</label></div>
-                                <div><input type="radio" name="dentist-type" value="work-for-practice" id="work-for-practice"/> <label for="work-for-practice">I work for a practice.</label></div>
+                                <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own_practice" id="own-practice"/> <label for="own-practice">I own a practice.</label></div>
+                                <div><input type="radio" name="dentist-type" value="work_at_practice" id="work-for-practice"/> <label for="work-for-practice">I work for a practice.</label></div>
                             </div>
                             <div class="padding-bottom-15 field-parent">
                                 <div class="custom-google-select-style module">

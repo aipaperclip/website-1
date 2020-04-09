@@ -43,13 +43,16 @@ if (typeof jQuery == 'undefined') {
                     }
                 });
             },
-            editUserData: async function(email) {
+            editUserData: async function(email, token) {
                 return await $.ajax({
                     type: 'POST',
                     url: 'https://api.dentacoin.com/api/check-email',
                     dataType: 'json',
                     data: {
                         email: email
+                    },
+                    headers: {
+                        'Authorization' : 'Bearer ' + token
                     }
                 });
             },
@@ -503,14 +506,19 @@ if (typeof jQuery == 'undefined') {
                                 } else if (!$('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').is(':checked')) {
                                     dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').closest('.patient-register-checkboxes'), 'Please agree with our Privacy policy.');
                                 } else {
-                                    console.log(event.response_data.token, 'event');
-                                    // on success save email to db
-                                    /*$.event.trigger({
-                                        type: 'successResponseCoreDBApi',
-                                        response_data: event.response_data,
-                                        platform_type: event.platform_type,
-                                        time: new Date()
-                                    });*/
+                                    var editUserDataResponse = dcnGateway.dcnGatewayRequests.editUserData($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim(), event.response_data.token);
+                                    if (editUserDataResponse.success) {
+                                        // on success save email to db
+                                        $.event.trigger({
+                                            type: 'successResponseCoreDBApi',
+                                            response_data: event.response_data,
+                                            platform_type: event.platform_type,
+                                            time: new Date()
+                                        });
+                                    } else {
+                                        dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                                    }
+
                                 }
                             });
                         });
@@ -649,7 +657,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $('.dentacoin-login-gateway-container .step.second [name="dentist-type"]').on('change', function() {
-                            if ($(this).val() == 'work-for-practice') {
+                            if ($(this).val() == 'work_at_practice') {
                                 $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practice').html('<div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practice-name">practice name:</label><input class="full-rounded form-field required" name="practice-name" maxlength="255" type="text" id="practice-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practice-email">Official email:</label><input class="full-rounded form-field required" name="practice-email" maxlength="100" type="email" id="practice-email"/></div></div>');
                             } else {
                                 $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practice').html('');
