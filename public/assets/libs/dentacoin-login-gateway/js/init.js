@@ -36,7 +36,7 @@ if (typeof jQuery == 'undefined') {
             checkIfFreeEmail: async function(email) {
                 return await $.ajax({
                     type: 'POST',
-                    url: 'https://api.dentacoin.com/api/check-email',
+                    url: 'https://dev-api.dentacoin.com/api/check-email',
                     dataType: 'json',
                     data: {
                         email: email
@@ -46,7 +46,7 @@ if (typeof jQuery == 'undefined') {
             editUserData: async function(email) {
                 return await $.ajax({
                     type: 'POST',
-                    url: 'https://api.dentacoin.com/api/check-email',
+                    url: 'https://dev-api.dentacoin.com/api/check-email',
                     dataType: 'json',
                     data: {
                         email: email
@@ -67,7 +67,7 @@ if (typeof jQuery == 'undefined') {
             validatePhone: async function (phone, country_code) {
                 return await $.ajax({
                     type: 'POST',
-                    url: 'https://api.dentacoin.com/api/phone/',
+                    url: 'https://dev-api.dentacoin.com/api/phone/',
                     dataType: 'json',
                     data: {
                         phone: phone,
