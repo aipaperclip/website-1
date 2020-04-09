@@ -946,20 +946,13 @@
   background-color: #ddd;
   border-bottom: 1px solid white; }
   .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a[data-type="patient"].active {
-    padding: 15px 10px; }
-    @media screen and (max-width: 767px) {
-      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a[data-type="patient"].active {
-        padding: 15px 5px; } }
+    color: white; }
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a[data-type="dentist"] {
   color: black;
   background-color: #ddd;
   border-bottom: 1px solid black; }
   .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a[data-type="dentist"].active {
-    background-color: white;
-    padding: 15px 10px; }
-    @media screen and (max-width: 767px) {
-      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a[data-type="dentist"].active {
-        padding: 15px 5px; } }
+    background-color: white; }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body {
   display: flex; }

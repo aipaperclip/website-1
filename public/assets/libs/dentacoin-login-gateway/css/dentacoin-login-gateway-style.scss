@@ -471,10 +471,7 @@
         background-color: #ddd;
         border-bottom: 1px solid white;
         &.active {
-            padding: 15px 10px;
-            @include breakpoint($xs) {
-                padding: 15px 5px;
-            }
+            color: white;  
         }
     }
     a[data-type="dentist"] {
@@ -483,10 +480,6 @@
         border-bottom: 1px solid black;
         &.active {
             background-color: white;
-            padding: 15px 10px;
-            @include breakpoint($xs) {
-                padding: 15px 5px;
-            }
         }
     }
 }
@@ -695,7 +688,7 @@
     border-bottom: 3px solid white;
     border-left: 3px solid white;
     border-right: 3px solid white;
-    @include rounded(0 0 4px 4px); 
+    @include rounded(0 0 4px 4px);
 
 }
 
