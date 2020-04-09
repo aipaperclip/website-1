@@ -515,13 +515,14 @@ if (typeof jQuery == 'undefined') {
                                             platform_type: event.platform_type,
                                             time: new Date()
                                         });
+
+                                        dcnGateway.utils.hideGateway();
                                     } else if (editUserDataResponse.errors) {
                                         var error_popup_html = '';
                                         for(var key in editUserDataResponse.errors) {
                                             error_popup_html += editUserDataResponse.errors[key]+'<br>';
                                         }
 
-                                        dcnGateway.utils.hideLoader();
                                         dcnGateway.utils.showPopup(error_popup_html, 'alert');
                                     } else {
                                         dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');

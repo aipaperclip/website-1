@@ -43,7 +43,7 @@
             </div>
             <div class="step-errors-holder"></div>
             <div class="optional-user-type">
-                <div class="dentacoin-login-gateway-fs-15 padding-top-35">Does any of the following apply to you (optional):</div>
+                <div class="dentacoin-login-gateway-fs-15 padding-top-50">Does any of the following apply to you (optional):</div>
                 <ul class="padding-top-10">
                     <li class="padding-bottom-5 custom-checkbox-style">
                         <input type="checkbox" class="custom-checkbox-input" id="user-type-journalist"/>
