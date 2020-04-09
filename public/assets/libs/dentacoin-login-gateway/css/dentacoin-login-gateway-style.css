@@ -946,16 +946,27 @@
   background-color: #ddd;
   border-bottom: 1px solid white; }
   .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a[data-type="patient"].active {
-    color: white; }
+    color: white;
+    position: relative;
+    -webkit-box-shadow: 0 5px 20px 10px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 5px 20px 10px rgba(0, 0, 0, 0.8);
+    -ms-box-shadow: 0 5px 20px 10px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 5px 20px 10px rgba(0, 0, 0, 0.8); }
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a[data-type="dentist"] {
   color: black;
   background-color: #ddd;
   border-bottom: 1px solid black; }
   .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a[data-type="dentist"].active {
-    background-color: white; }
+    background-color: white;
+    position: relative;
+    -webkit-box-shadow: 0 5px 20px 10px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 5px 20px 10px rgba(0, 0, 0, 0.8);
+    -ms-box-shadow: 0 5px 20px 10px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 5px 20px 10px rgba(0, 0, 0, 0.8); }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body {
-  display: flex; }
+  display: flex;
+  position: relative; }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist {
   background: white; }
