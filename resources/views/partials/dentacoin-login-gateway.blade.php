@@ -43,27 +43,17 @@
             </div>
             <div class="step-errors-holder"></div>
             <div class="optional-user-type">
-                <div class="dentacoin-login-gateway-fs-15 padding-top-50">Does any of the following apply to you (optional):</div>
-                <ul class="padding-top-10">
-                    <li class="padding-bottom-5 custom-checkbox-style">
-                        <input type="checkbox" class="custom-checkbox-input" id="user-type-journalist"/>
-                        <label class="dentacoin-login-gateway-fs-15" for="user-type-journalist">Journalist</label>
-                    </li>
-                    <li class="padding-bottom-5 custom-checkbox-style">
-                        <input type="checkbox" class="custom-checkbox-input" id="user-type-supplier"/>
-                        <label class="dentacoin-login-gateway-fs-15" for="user-type-supplier">Supplier/ Manufacturer</label>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="padding-bottom-5 custom-checkbox-style">
-                        <input type="checkbox" class="custom-checkbox-input" id="user-type-researcher"/>
-                        <label class="dentacoin-login-gateway-fs-15" for="user-type-researcher">Researcher</label>
-                    </li>
-                    <li class="padding-bottom-5 custom-checkbox-style">
-                        <input type="checkbox" class="custom-checkbox-input" id="user-type-student"/>
-                        <label class="dentacoin-login-gateway-fs-15" for="user-type-student">Dental/ Medical Student</label>
-                    </li>
-                </ul>
+                @if(!empty($api_enums->user_patient_type))
+                    <div class="dentacoin-login-gateway-fs-15 padding-top-50">Does any of the following apply to you (optional):</div>
+                    <ul class="padding-top-10">
+                        @foreach($api_enums->user_patient_type as $key => $title)
+                            <li class="padding-bottom-5 custom-checkbox-style">
+                                <input type="checkbox" name="user_patient_type" class="custom-checkbox-input" id="{{$key}}"/>
+                                <label class="dentacoin-login-gateway-fs-15" for="{{$key}}">{{$title}}</label>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
             <div class="popup-half-footer">
                 Already have an account? <a href="javascript:void(0)" class="call-log-in">Log in</a>

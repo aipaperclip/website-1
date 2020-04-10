@@ -490,7 +490,7 @@
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body {
     display: flex;
-    position: relative; 
+    position: relative;
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist {
@@ -722,12 +722,11 @@
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register .optional-user-type {
     color: white;
     ul {
-        display: block;
         font-size: 0;
         li {
             display: inline-block;
-            &:first-child {
-                min-width: 130px;
+            &:nth-child(odd) {
+                min-width: 140px;
             }
         }
     }

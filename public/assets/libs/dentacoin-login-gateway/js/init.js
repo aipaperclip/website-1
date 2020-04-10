@@ -325,8 +325,10 @@ if (typeof jQuery == 'undefined') {
                 $(document).off('noCoreDBApiConnection');
                 $(document).off('customCivicFbStopperTriggered');
                 $(document).off('registeredAccountMissingEmail');
-                $(document).off('successResponseCoreDBApi');
-                $(document).off('errorResponseCoreDBApi');
+                $(document).off('patientAuthSuccessResponse');
+                $(document).off('patientAuthErrorResponse');
+                $(document).off('noExternalLoginProviderConnection');
+                $(document).off('civicSipError');
             }
         },
         init: async function(params) {
@@ -371,10 +373,10 @@ if (typeof jQuery == 'undefined') {
                         if (!loadedSocialLibs) {
                             console.log('Load external libraries.');
                             // =============================================== CIVIC =======================================================
-                            await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic.js?v='+new Date().getTime(), function() {});
+                            await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
 
                             // =============================================== FACEBOOK ====================================================
-                            await $.getScript('https://dentacoin.com/assets/libs/facebook-login/facebook.js?v='+new Date().getTime(), function() {});
+                            await $.getScript('https://dentacoin.com/assets/libs/facebook-login/facebook-combined-login.js?v='+new Date().getTime(), function() {});
                             loadedSocialLibs = true;
                         }
 
@@ -483,7 +485,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('noCoreDBApiConnection', function (event) {
-                            dcnGateway.utils.showPopup('Something went wrong, please try again later.', 'alert');
+                            dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                         });
 
                         $(document).on('customCivicFbStopperTriggered', function (event) {
@@ -510,7 +512,7 @@ if (typeof jQuery == 'undefined') {
                                     if (editUserDataResponse.success) {
                                         // on success save email to db
                                         $.event.trigger({
-                                            type: 'successResponseCoreDBApi',
+                                            type: 'patientAuthSuccessResponse',
                                             response_data: event.response_data,
                                             platform_type: event.platform_type,
                                             time: new Date()
@@ -531,12 +533,12 @@ if (typeof jQuery == 'undefined') {
                             });
                         });
 
-                        $(document).on('successResponseCoreDBApi', async function (event) {
-                            console.log(event.response_data, 'successResponseCoreDBApi');
+                        $(document).on('patientAuthSuccessResponse', async function (event) {
+                            console.log(event.response_data, 'patientAuthSuccessResponse');
                             dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
                         });
 
-                        $(document).on('errorResponseCoreDBApi', function (event) {
+                        $(document).on('patientAuthErrorResponse', function (event) {
                             var error_popup_html = '';
                             console.log(event.response_data, 'event.response_data');
                             // I need type here or separated messages for each platform
@@ -549,6 +551,16 @@ if (typeof jQuery == 'undefined') {
 
                             dcnGateway.utils.hideLoader();
                             dcnGateway.utils.showPopup(error_popup_html, 'alert');
+                        });
+
+                        $(document).on('noExternalLoginProviderConnection', function (event) {
+                            dcnGateway.utils.hideLoader();
+                            dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                        });
+
+                        $(document).on('civicSipError', function (event) {
+                            dcnGateway.utils.hideLoader();
+                            dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                         });
 
                         // ====================== /PATIENT LOGIN/ SIGNUP LOGIC ======================
