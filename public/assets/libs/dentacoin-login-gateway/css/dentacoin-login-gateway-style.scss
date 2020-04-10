@@ -732,9 +732,9 @@
         font-size: 0;
         li {
             display: inline-block;
+            padding-right: 10px; 
             &:nth-child(odd) {
                 min-width: 140px;
-                padding-right: 10px;
             }
         }
     }
@@ -748,6 +748,6 @@
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient.custom-hide, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist.custom-hide {
     visibility: hidden;
     @include breakpoint($xs) {
-        display: none;  
+        display: none;
     }
 }

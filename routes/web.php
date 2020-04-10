@@ -17,12 +17,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/dump', function() {
-        var_dump(session('logged_user'));
-        echo '<br><br><br><br><br>';
-        die('hallo');
-    })->name('dump');
-
     Route::get('/test-combined-login', function() {
         return view('pages/test-combined-login');
     })->name('test-combined-login');
