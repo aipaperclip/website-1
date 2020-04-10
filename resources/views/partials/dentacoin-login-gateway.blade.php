@@ -48,7 +48,7 @@
                     <ul class="padding-top-10">
                         @foreach($api_enums->user_patient_type as $key => $title)
                             <li class="padding-bottom-5 custom-checkbox-style">
-                                <input type="checkbox" name="user_patient_type[]" class="custom-checkbox-input" id="{{$key}}"/>
+                                <input type="checkbox" name="user_patient_type[]" class="custom-checkbox-input" id="{{$key}}" value="{{$key}}"/>
                                 <label class="dentacoin-login-gateway-fs-15" for="{{$key}}">{{$title}}</label>
                             </li>
                         @endforeach
