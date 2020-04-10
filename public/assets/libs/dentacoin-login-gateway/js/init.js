@@ -534,7 +534,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('patientAuthSuccessResponse', async function (event) {
-                            console.log(event.response_data, 'patientAuthSuccessResponse');
+                            console.log(event.response_data.token, 'patientAuthSuccessResponse');
                             dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
                         });
 

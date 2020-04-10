@@ -43,12 +43,12 @@
             </div>
             <div class="step-errors-holder"></div>
             <div class="optional-user-type">
-                @if(!empty($api_enums->user_patient_type))
+                @if(!empty($api_enums) && property_exists($api_enums, 'user_patient_type') && !empty($api_enums->user_patient_type))
                     <div class="dentacoin-login-gateway-fs-15 padding-top-50">Does any of the following apply to you (optional):</div>
                     <ul class="padding-top-10">
                         @foreach($api_enums->user_patient_type as $key => $title)
                             <li class="padding-bottom-5 custom-checkbox-style">
-                                <input type="checkbox" name="user_patient_type" class="custom-checkbox-input" id="{{$key}}"/>
+                                <input type="checkbox" name="user_patient_type[]" class="custom-checkbox-input" id="{{$key}}"/>
                                 <label class="dentacoin-login-gateway-fs-15" for="{{$key}}">{{$title}}</label>
                             </li>
                         @endforeach
@@ -130,16 +130,18 @@
                                 <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own_practice" id="own-practice"/> <label for="own-practice">I own a practice.</label></div>
                                 <div><input type="radio" name="dentist-type" value="work_at_practice" id="work-for-practice"/> <label for="work-for-practice">I work for a practice.</label></div>
                             </div>
-                            <div class="padding-bottom-15 field-parent">
-                                <div class="custom-google-select-style module">
-                                    <label class="gateway-platform-color">Title:</label>
-                                    <select class="form-field required gateway-platform-border-color" name="dentist-title">
-                                        @foreach($api_enums->titles as $key => $title)
-                                            <option value="{{$key}}">{{$title}}</option>
-                                        @endforeach
-                                    </select>
+                            @if(!empty($api_enums) && property_exists($api_enums, 'titles') && !empty($api_enums->titles))
+                                <div class="padding-bottom-15 field-parent">
+                                    <div class="custom-google-select-style module">
+                                        <label class="gateway-platform-color">Title:</label>
+                                        <select class="form-field required gateway-platform-border-color" name="dentist-title">
+                                            @foreach($api_enums->titles as $key => $title)
+                                                <option value="{{$key}}">{{$title}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                         <div class="padding-bottom-15 field-parent">
                             <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
@@ -167,17 +169,19 @@
                                     <input class="full-rounded form-field to-be-required" name="clinic-member-name" maxlength="255" type="text" id="clinic-member-name"/>
                                 </div>
                             </div>
-                            <div class="padding-bottom-15 field-parent">
-                                <div class="custom-google-select-style module">
-                                    <label class="gateway-platform-color">Job title:</label>
-                                    <select class="form-field gateway-platform-border-color" name="clinic-member-job-title">
-                                        <option value="">Please, select</option>
-                                        @foreach($api_enums->working_position as $key => $title)
-                                            <option value="{{$key}}">{{$title}}</option>
-                                        @endforeach
-                                    </select>
+                            @if(!empty($api_enums) && property_exists($api_enums, 'working_position') && !empty($api_enums->working_position))
+                                <div class="padding-bottom-15 field-parent">
+                                    <div class="custom-google-select-style module">
+                                        <label class="gateway-platform-color">Job title:</label>
+                                        <select class="form-field gateway-platform-border-color" name="clinic-member-job-title">
+                                            <option value="">Please, select</option>
+                                            @foreach($api_enums->working_position as $key => $title)
+                                                <option value="{{$key}}">{{$title}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                         <div class="privacy-policy-row padding-bottom-20 padding-top-10 custom-checkbox-style">
                             <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration"/>
@@ -238,15 +242,17 @@
                             <div id="cropper-container"></div>
                             <div class="dentacoin-login-gateway-fs-14 padding-top-25 italic max-size-label"><label for="custom-upload-avatar" class="inline-block margin-right-10 max-width-30"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="upload" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="width-100"><path fill="currentColor" d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z" class=""></path></svg></label>Max size: 2MB</div>
                         </div>
-                        <div class="inline-block-top specializations">
-                            <h4>Please select your specializations:</h4>
-                            @foreach($api_enums->specialisations as $key => $specialisation)
-                                <div class="custom-checkbox-style padding-bottom-5">
-                                    <input type="checkbox" class="custom-checkbox-input" name="specializations[]" id="specialization-{{$key}}" value="{{$key}}"/>
-                                    <label class="dentacoin-login-gateway-fs-15" for="specialization-{{$key}}">{{$specialisation}}</label>
-                                </div>
-                            @endforeach
-                        </div>
+                        @if(!empty($api_enums) && property_exists($api_enums, 'specialisations') && !empty($api_enums->specialisations))
+                            <div class="inline-block-top specializations">
+                                <h4>Please select your specializations:</h4>
+                                @foreach($api_enums->specialisations as $key => $specialisation)
+                                    <div class="custom-checkbox-style padding-bottom-5">
+                                        <input type="checkbox" class="custom-checkbox-input" name="specializations[]" id="specialization-{{$key}}" value="{{$key}}"/>
+                                        <label class="dentacoin-login-gateway-fs-15" for="specialization-{{$key}}">{{$specialisation}}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
                         <div class="captcha-container">
                             <div class="g-recaptcha" id="g-recaptcha" data-callback="sendReCaptcha" style="display: inline-block;" data-size="compact" data-sitekey="6LfS5-cUAAAAAFcqPKe4ArUQfv8znLMN9oU5e57A"></div>
                         </div>

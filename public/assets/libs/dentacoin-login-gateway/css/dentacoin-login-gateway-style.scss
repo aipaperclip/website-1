@@ -727,6 +727,7 @@
             display: inline-block;
             &:nth-child(odd) {
                 min-width: 140px;
+                padding-right: 10px;
             }
         }
     }
