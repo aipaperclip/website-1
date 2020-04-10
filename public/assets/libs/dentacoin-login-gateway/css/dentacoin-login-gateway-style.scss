@@ -463,6 +463,10 @@
     border-left: 3px solid white;
     border-right: 3px solid white;
     @include rounded(4px 4px 0 0);
+    @include breakpoint($xs) {
+        font-size: 20px;
+        padding: 10px 5px;
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action {
@@ -694,6 +698,9 @@
     border-left: 3px solid white;
     border-right: 3px solid white;
     @include rounded(0 0 4px 4px);
+    @include breakpoint($xs) {
+        width: 100%;
+    }
 
 }
 
@@ -740,4 +747,7 @@
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient.custom-hide, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist.custom-hide {
     visibility: hidden;
+    @include breakpoint($xs) {
+        display: none;  
+    }
 }
