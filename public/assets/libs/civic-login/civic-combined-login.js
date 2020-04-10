@@ -51,15 +51,23 @@
                     customCivicEvent('noUserIdReceived', 'No userId found after civic token/data exchange.', ret);
                 } else {
                     customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret);
+                    var register_data = {
+                        platform: civic_custom_btn.attr('data-platform'),
+                        auth_token: jwtToken,
+                        social_network: 'civic',
+                        type: 'patient'
+                    };
+
+                    if ($('.patient .form-register [name="user_patient_type[]"]:checked').val() != 'undefined') {
+                        var tempArr = [];
+                        for (var i = 0, len = $('.patient .form-register [name="user_patient_type[]"]:checked').length; i < len; i+=1) {
+                            tempArr.push($('.patient .form-register [name="user_patient_type[]"]:checked').eq(i).val());
+                        }
+
+                        register_data.user_patient_type = JSON.stringify(tempArr);
+                    }
 
                     setTimeout(function () {
-                        var register_data = {
-                            platform: civic_custom_btn.attr('data-platform'),
-                            auth_token: jwtToken,
-                            social_network: 'civic',
-                            type: 'patient'
-                        };
-
                         if(civic_custom_btn.attr('data-inviter') != undefined) {
                             register_data.invited_by = civic_custom_btn.attr('data-inviter');
                         }
@@ -70,6 +78,7 @@
                             url: civic_custom_btn.attr('data-url'),
                             data: register_data,
                             success: function(data) {
+                                console.log(data, 'data');
                                 if (data.success) {
                                     if (data.data.email == '' || data.data.email == null) {
                                         console.log('registeredAccountMissingEmail');
