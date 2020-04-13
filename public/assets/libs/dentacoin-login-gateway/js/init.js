@@ -556,7 +556,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('dentistAuthSuccessResponse', async function (event) {
-                            console.log(event.response_data.token, 'dentistAuthSuccessResponse');
+                            console.log(event.response_data, 'dentistAuthSuccessResponse');
                             dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
                         });
 
