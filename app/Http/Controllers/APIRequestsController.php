@@ -47,9 +47,14 @@ class APIRequestsController extends Controller {
             'avatar' => curl_file_create($data['image-path'], 'image/png', $data['image-name']),
             'phone' => $data['phone'],
             'website' => $data['website'],
-            'specialisations' => $data['specializations'],
             'client_ip' => $this->getClientIp()
         );
+
+        if(is_array($data['specializations'])) {
+            $post_fields_arr['specialisations'] = json_encode($data['specializations']);
+        } else {
+            $post_fields_arr['specialisations'] = $data['specializations'];
+        }
 
         if(!empty($data['alternative-name'])) {
             $post_fields_arr['name_alternative'] = trim($data['alternative-name']);
