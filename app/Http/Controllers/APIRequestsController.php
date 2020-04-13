@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 class APIRequestsController extends Controller {
-    public function dentistLogin($data, $dontCountLogin = false) {
+    public function dentistLogin($data, $dontCountLogin = false, $url = 'https://api.dentacoin.com/api/login') {
         $postData = array(
             'platform' => 'dentacoin',
             'type' => 'dentist',
@@ -20,7 +20,7 @@ class APIRequestsController extends Controller {
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/login',
+            CURLOPT_URL => $url,
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_POSTFIELDS => $postData
         ));
@@ -35,7 +35,7 @@ class APIRequestsController extends Controller {
         }
     }
 
-    public function dentistRegister($data) {
+    public function dentistRegister($data, $url = 'https://api.dentacoin.com/api/register') {
         $post_fields_arr = array(
             'platform' => 'dentacoin',
             'name' => trim($data['latin-name']),
@@ -100,7 +100,7 @@ class APIRequestsController extends Controller {
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/register',
+            CURLOPT_URL => $url,
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_POSTFIELDS => $post_fields_arr
         ));

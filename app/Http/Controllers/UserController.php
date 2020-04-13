@@ -459,7 +459,7 @@ class UserController extends Controller {
         }
 
         //handle the API response
-        $api_response = (new APIRequestsController())->dentistLogin($data);
+        $api_response = (new APIRequestsController())->dentistLogin($data, 'https://dev-api.dentacoin.com/api/login');
 
         if ($api_response['success']) {
             $approved_statuses = array('approved', 'pending', 'test');
@@ -588,7 +588,7 @@ class UserController extends Controller {
         file_put_contents($data['image-path'], $img_data);
 
         //handle the API response
-        $api_response = (new APIRequestsController())->dentistRegister($data);
+        $api_response = (new APIRequestsController())->dentistRegister($data, 'https://dev-api.dentacoin.com/api/register');
         //deleting the dummy image
         unlink($data['image-path']);
 
