@@ -1018,7 +1018,7 @@ if (typeof jQuery == 'undefined') {
 
                                         console.log(registerParams, 'registerParams');
 
-                                        var registeringDentistResponse = await dcnGateway.dcnGatewayRequests.dentistLogin(registerParams);
+                                        var registeringDentistResponse = await dcnGateway.dcnGatewayRequests.dentistRegistration(registerParams);
                                         if (registeringDentistResponse.success) {
                                             $.event.trigger({
                                                 type: 'dentistAuthSuccessResponse',
