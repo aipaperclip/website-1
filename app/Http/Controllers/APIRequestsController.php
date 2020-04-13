@@ -35,10 +35,9 @@ class APIRequestsController extends Controller {
         }
     }
 
-    public function dentistRegister($data, $files) {
+    public function dentistRegister($data) {
         $post_fields_arr = array(
             'platform' => 'dentacoin',
-            'title' => trim($data['dentist-title']),
             'name' => trim($data['latin-name']),
             'email' => $data['email'],
             'password' => $data['password'],
@@ -46,19 +45,42 @@ class APIRequestsController extends Controller {
             'country_code' => $data['country-code'],
             'address' => $data['address'],
             'avatar' => curl_file_create($data['image-path'], 'image/png', $data['image-name']),
-            /*'avatar' => curl_file_create($files['image']->getPathName(), 'image/'.pathinfo($files['image']->getClientOriginalName(), PATHINFO_EXTENSION), $files['image']->getClientOriginalName()),*/
             'phone' => $data['phone'],
             'website' => $data['website'],
-            'specialisations' => json_encode($data['specializations']),
-            'client_ip' => $this->getClientIp()/*,
-            'clinic_data' => json_encode(array(
-                'email' => $clinic_email,
-                'name' => $clinic_name
-            ))*/
+            'specialisations' => $data['specializations'],
+            'client_ip' => $this->getClientIp()
         );
 
         if(!empty($data['alternative-name'])) {
             $post_fields_arr['name_alternative'] = trim($data['alternative-name']);
+        }
+
+        if(!empty($data['dentist-title'])) {
+            $post_fields_arr['title'] = trim($data['dentist-title']);
+        }
+
+        if(!empty($data['dentist_practice'])) {
+            $post_fields_arr['dentist_practice'] = trim($data['dentist_practice']);
+        }
+
+        if(!empty($data['clinic_name'])) {
+            $post_fields_arr['clinic_name'] = trim($data['clinic_name']);
+        }
+
+        if(!empty($data['clinic_email'])) {
+            $post_fields_arr['clinic_email'] = trim($data['clinic_email']);
+        }
+
+        if(!empty($data['worker_name'])) {
+            $post_fields_arr['worker_name'] = trim($data['worker_name']);
+        }
+
+        if(!empty($data['working_position'])) {
+            $post_fields_arr['working_position'] = trim($data['working_position']);
+        }
+
+        if(!empty($data['working_position_label'])) {
+            $post_fields_arr['working_position_label'] = trim($data['working_position_label']);
         }
 
         if(!empty($data['inviter'])) {

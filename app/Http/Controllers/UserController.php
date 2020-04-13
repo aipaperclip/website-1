@@ -314,7 +314,7 @@ class UserController extends Controller {
         file_put_contents($data['image-path'], $img_data);
 
         //handle the API response
-        $api_response = (new APIRequestsController())->dentistRegister($data, $files);
+        $api_response = (new APIRequestsController())->dentistRegister($data);
         //deleting the dummy image
         unlink($data['image-path']);
 
@@ -477,6 +477,8 @@ class UserController extends Controller {
 
     protected function handleDentistRegister(Request $request) {
         $customMessages = [
+            'platform.required' => 'Platform is required.',
+            'grecaptcha.required' => 'Captcha is required.',
             'latin-name.required' => 'Dentist or Practice Name is required.',
             'dentist-title.required' => 'Dentist title is required.',
             'email.required' => 'Email address is required.',
@@ -488,10 +490,11 @@ class UserController extends Controller {
             'phone.required' => 'Phone number is required.',
             'website.required' => 'Website is required.',
             'specializations.required' => 'Specialization is required.',
-            'captcha.required' => 'Captcha is required.',
             'hidden-image.required' => 'Image is required.'
         ];
         $this->validate($request, [
+            'platform' => 'required',
+            'grecaptcha' => 'required',
             'latin-name' => 'required|max:250',
             'dentist-title' => 'required|max:250',
             'email' => 'required|max:100',
@@ -514,38 +517,68 @@ class UserController extends Controller {
         }
 
         $data = $request->input();
-        $files = $request->file();
+
+        $captcha = false;
+        $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt ($ch, CURLOPT_POST, 1);
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query(array(
+            'secret' => env('GOOGLE_reCAPTCHA_SECRET'),
+            'response' => $data['grecaptcha'],
+            'remoteip' => $this->getClientIp()
+        )));
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        if ($response) {
+            $api_response = json_decode($response, true);
+            if (!empty($api_response['success'])) {
+                $captcha = true;
+            }
+        }
+
+        if (!$captcha) {
+            return response()->json(['error' => true, 'message' => 'Wrong captcha, please try again.']);
+        }
+
+        if ($data['user-type'] == 'dentist') {
+            if(empty($data['dentist-title'])) {
+                return response()->json(['error' => true, 'message' => 'Missing dentist title.']);
+            }
+
+            if(empty($data['dentist_practice'])) {
+                return response()->json(['error' => true, 'message' => 'Missing dentist_practice.']);
+            } else {
+                if ($data['dentist_practice'] == 'work_at_practice') {
+                    if(empty($data['clinic_name'])) {
+                        return response()->json(['error' => true, 'message' => 'Missing clinic_name.']);
+                    }
+
+                    if(empty($data['clinic_email'])) {
+                        return response()->json(['error' => true, 'message' => 'Missing clinic_email.']);
+                    }
+                }
+            }
+        } else if ($data['user-type'] == 'clinic') {
+            if(empty($data['worker_name'])) {
+                return response()->json(['error' => true, 'message' => 'Missing worker_name.']);
+            }
+
+            if(empty($data['working_position'])) {
+                return response()->json(['error' => true, 'message' => 'Missing working_position.']);
+            } else {
+                if ($data['working_position'] == 'other') {
+                    if(empty($data['working_position_label'])) {
+                        return response()->json(['error' => true, 'message' => 'Missing working_position_label.']);
+                    }
+                }
+            }
+        }
 
         //check email validation
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL))   {
             return response()->json(['error' => true, 'message' => 'Your form was not sent. Please try again with valid email.']);
-        }
-
-        if (!empty($files)) {
-            $fileCounter = 0;
-            $allowed = array('png', 'jpg', 'jpeg', 'svg', 'bmp');
-            foreach($files as $file)  {
-                // doing this check to prevent people submitting move than one file
-                $fileCounter+=1;
-                if($fileCounter > 2) {
-                    return abort(404);
-                }
-
-                //checking the file size
-                if ($file->getSize() > MAX_UPL_SIZE) {
-                    return response()->json(['error' => true, 'message' => 'Your form was not sent. Files can be only with with maximum size of '.number_format(MAX_UPL_SIZE / 1048576).'MB. Please try again.']);
-                }
-                //checking file format
-                if (!in_array(strtolower(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION)), $allowed)) {
-                    return response()->json(['error' => true, 'message' => 'Your form was not sent. Files can be only with .png, .jpg, .jpeg, .svg, .bmp formats. Please try again.']);
-                }
-                //checking if error in file
-                if ($file->getError()) {
-                    return response()->json(['error' => true, 'message' => 'Your form was not sent. There is error with one or more of the files, please try with other files. Please try again.']);
-                }
-            }
-        } else {
-            return response()->json(['error' => true, 'message' => 'Please select avatar and try again.']);
         }
 
         //creating dummy image with full path to pass it to CORE DB
@@ -555,7 +588,7 @@ class UserController extends Controller {
         file_put_contents($data['image-path'], $img_data);
 
         //handle the API response
-        $api_response = (new APIRequestsController())->dentistRegister($data, $files);
+        $api_response = (new APIRequestsController())->dentistRegister($data);
         //deleting the dummy image
         unlink($data['image-path']);
 
