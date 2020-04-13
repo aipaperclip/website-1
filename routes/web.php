@@ -21,10 +21,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return view('pages/test-combined-login');
     })->name('test-combined-login');
 
-    Route::get('/test-combined-login-iframe', function() {
-        return view('pages/test-combined-login-iframe');
-    })->name('test-combined-login-iframe');
-
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
