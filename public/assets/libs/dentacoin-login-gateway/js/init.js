@@ -980,7 +980,7 @@ if (typeof jQuery == 'undefined') {
                                             'password' : $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-password').val().trim(),
                                             'repeat-password' : $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-repeat-password').val().trim(),
                                             'latin-name' : $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-latin-name').val().trim(),
-                                            'user-type' : ('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val(),
+                                            'user-type' : $('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val(),
                                             'country-code' : $('.dentacoin-login-gateway-container .step.third [name="country-code"]').val(),
                                             'address' : $('.dentacoin-login-gateway-container .step.third #dentist-register-address').val().trim(),
                                             'website' : $('.dentacoin-login-gateway-container .step.third #dentist-register-website').val().trim(),
