@@ -440,4 +440,129 @@ class UserController extends Controller {
     protected function getCountryCode() {
         return response()->json(['success' => (new APIRequestsController())->getCountry($this->getClientIp())]);
     }
+
+    protected function handleDentistLogin(Request $request) {
+        $customMessages = [
+            'email.required' => 'Email address is required.',
+            'password.required' => 'Password is required.',
+        ];
+        $this->validate($request, [
+            'email' => 'required|max:100',
+            'password' => 'required|max:50'
+        ], $customMessages);
+
+        $data = $request->input();
+
+        //check email validation
+        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            return response()->json(['error' => true, 'message' => 'Your form was not sent. Please try again with valid email.']);
+        }
+
+        //handle the API response
+        $api_response = (new APIRequestsController())->dentistLogin($data);
+
+        if ($api_response['success']) {
+            $approved_statuses = array('approved', 'pending', 'test');
+            if ($api_response['data']['self_deleted'] != NULL) {
+                return response()->json(['error' => true, 'message' => 'This account has been deleted by its owner and cannot be restored.']);
+            } else if (!in_array($api_response['data']['status'], $approved_statuses)) {
+                return response()->json(['error' => true, 'message' => 'This account is not approved by Dentacoin team yet, please try again later.']);
+            } else {
+                return response()->json(['success' => true, 'data' => $api_response]);
+            }
+        } else {
+            return response()->json(['error' => true, 'message' => $api_response['errors']]);
+        }
+    }
+
+    protected function handleDentistRegister(Request $request) {
+        $customMessages = [
+            'latin-name.required' => 'Dentist or Practice Name is required.',
+            'dentist-title.required' => 'Dentist title is required.',
+            'email.required' => 'Email address is required.',
+            'password.required' => 'Password is required.',
+            'repeat-password.required' => 'Repeat password is required.',
+            'user-type.required' => 'User type is required.',
+            'country-code.required' => 'Country is required.',
+            'address.required' => 'City, Street is required.',
+            'phone.required' => 'Phone number is required.',
+            'website.required' => 'Website is required.',
+            'specializations.required' => 'Specialization is required.',
+            'captcha.required' => 'Captcha is required.',
+            'hidden-image.required' => 'Image is required.'
+        ];
+        $this->validate($request, [
+            'latin-name' => 'required|max:250',
+            'dentist-title' => 'required|max:250',
+            'email' => 'required|max:100',
+            'password' => 'required|max:50',
+            'repeat-password' => 'required|max:50',
+            'user-type' => 'required',
+            'country-code' => 'required',
+            'address' => 'required|max:300',
+            'phone' => 'required|max:50',
+            'website' => 'required|max:250',
+            'specializations' => 'required',
+            'hidden-image' => 'required'
+        ], $customMessages);
+
+        // if user didn't enter http/ https append it to his website
+        if ($request->input('website') && mb_strpos(mb_strtolower($request->input('website')), 'http') !== 0) {
+            request()->merge([
+                'website' => 'http://' . $request->input('website')
+            ]);
+        }
+
+        $data = $request->input();
+        $files = $request->file();
+
+        //check email validation
+        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL))   {
+            return response()->json(['error' => true, 'message' => 'Your form was not sent. Please try again with valid email.']);
+        }
+
+        if (!empty($files)) {
+            $fileCounter = 0;
+            $allowed = array('png', 'jpg', 'jpeg', 'svg', 'bmp');
+            foreach($files as $file)  {
+                // doing this check to prevent people submitting move than one file
+                $fileCounter+=1;
+                if($fileCounter > 2) {
+                    return abort(404);
+                }
+
+                //checking the file size
+                if ($file->getSize() > MAX_UPL_SIZE) {
+                    return response()->json(['error' => true, 'message' => 'Your form was not sent. Files can be only with with maximum size of '.number_format(MAX_UPL_SIZE / 1048576).'MB. Please try again.']);
+                }
+                //checking file format
+                if (!in_array(strtolower(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION)), $allowed)) {
+                    return response()->json(['error' => true, 'message' => 'Your form was not sent. Files can be only with .png, .jpg, .jpeg, .svg, .bmp formats. Please try again.']);
+                }
+                //checking if error in file
+                if ($file->getError()) {
+                    return response()->json(['error' => true, 'message' => 'Your form was not sent. There is error with one or more of the files, please try with other files. Please try again.']);
+                }
+            }
+        } else {
+            return response()->json(['error' => true, 'message' => 'Please select avatar and try again.']);
+        }
+
+        //creating dummy image with full path to pass it to CORE DB
+        $data['image-name'] = 'dentist-'.time().'.png';
+        $data['image-path'] = UPLOADS . $data['image-name'];
+        $img_data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data['hidden-image']));
+        file_put_contents($data['image-path'], $img_data);
+
+        //handle the API response
+        $api_response = (new APIRequestsController())->dentistRegister($data, $files);
+        //deleting the dummy image
+        unlink($data['image-path']);
+
+        if ($api_response['success']) {
+            return response()->json(['success' => true, 'data' => $api_response]);
+        } else {
+            return response()->json(['error' => true, 'message' => $api_response['errors']]);
+        }
+    }
 }

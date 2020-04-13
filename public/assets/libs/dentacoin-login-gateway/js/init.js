@@ -77,6 +77,22 @@ if (typeof jQuery == 'undefined') {
                         country_code: country_code
                     }
                 });
+            },
+            dentistRegistration: async function (data) {
+                return await $.ajax({
+                    type: 'POST',
+                    url: 'https://dentacoin.com/dentacoin-login-gateway/handle-dentist-register',
+                    dataType: 'json',
+                    data: data
+                });
+            },
+            dentistLogin: async function (data) {
+                return await $.ajax({
+                    type: 'POST',
+                    url: 'https://dentacoin.com/dentacoin-login-gateway/handle-dentist-login',
+                    dataType: 'json',
+                    data: data
+                });
             }
         },
         utils: {
@@ -327,6 +343,7 @@ if (typeof jQuery == 'undefined') {
                 $(document).off('registeredAccountMissingEmail');
                 $(document).off('patientAuthSuccessResponse');
                 $(document).off('patientAuthErrorResponse');
+                $(document).off('dentistAuthSuccessResponse');
                 $(document).off('noExternalLoginProviderConnection');
                 $(document).off('civicSipError');
             }
@@ -538,6 +555,11 @@ if (typeof jQuery == 'undefined') {
                             dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
                         });
 
+                        $(document).on('dentistAuthSuccessResponse', async function (event) {
+                            console.log(event.response_data.token, 'dentistAuthSuccessResponse');
+                            dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
+                        });
+
                         $(document).on('patientAuthErrorResponse', function (event) {
                             var error_popup_html = '';
                             console.log(event.response_data, 'event.response_data');
@@ -568,6 +590,8 @@ if (typeof jQuery == 'undefined') {
                         // ====================== DENTIST LOGIN/ SIGNUP LOGIC ======================
                         //DENTIST LOGIN
                         $('.dentacoin-login-gateway-container form#dentist-login').on('submit', async function(event) {
+                            $('.dentist-login-errors').html('');
+
                             var this_form_native = this;
                             var this_form = $(this_form_native);
                             event.preventDefault();
@@ -606,7 +630,32 @@ if (typeof jQuery == 'undefined') {
                                     dcnGateway.utils.fireGoogleAnalyticsEvent('DentistLogin', 'Click', 'Dentist Login');
                                     dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
 
-                                    console.log('===== SUBMIT FORM =======');
+                                    var loggingDentistResponse = await dcnGateway.dcnGatewayRequests.dentistLogin({
+                                        'email' : $('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(),
+                                        'password' : $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim()
+                                    });
+
+                                    if (loggingDentistResponse.success) {
+                                        $.event.trigger({
+                                            type: 'dentistAuthSuccessResponse',
+                                            response_data: loggingDentistResponse,
+                                            platform_type: params.platform,
+                                            time: new Date()
+                                        });
+                                    } else if (loggingDentistResponse.error) {
+                                        if (typeof(loggingDentistResponse.message) === 'object' && loggingDentistResponse.message !== null) {
+                                            var error_popup_html = '';
+                                            for(var key in loggingDentistResponse.message) {
+                                                error_popup_html += loggingDentistResponse.message[key]+'<br>';
+                                            }
+                                            $('.dentist-login-errors').html('<div class="error-handle">'+error_popup_html+'</div>');
+                                        } else {
+                                            $('.dentist-login-errors').html('<div class="error-handle">'+loggingDentistResponse.message+'</div>');
+                                        }
+                                    } else {
+                                        dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                                    }
+
                                     //this_form_native.submit();
                                 } else if (check_account_response.error) {
                                     dcnGateway.utils.customErrorHandle(this_form.find('input[name="password"]').closest('.field-parent'), check_account_response.message);
@@ -930,6 +979,9 @@ if (typeof jQuery == 'undefined') {
                                         dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
                                         //submit the form
                                         //dcnGateway.utils.showLoader();
+
+                                        // request to CoreDB
+
                                         console.log( ' =-=-------------- SUBMIT ');
                                     }
                                     break;

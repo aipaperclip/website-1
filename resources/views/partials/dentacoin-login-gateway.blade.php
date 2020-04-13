@@ -76,6 +76,7 @@
                         <input class="full-rounded form-field" name="password" maxlength="50" id="dentist-login-password" type="password"/>
                     </div>
                 </div>
+                <div class="dentist-login-errors"></div>
                 <div class="btn-container text-center">
                     <input type="submit" value="Log in" class="platform-button gateway-platform-background-color dentacoin-login-gateway-fs-20"/>
                 </div>

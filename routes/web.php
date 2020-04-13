@@ -109,6 +109,10 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::group(['prefix' => 'dentacoin-login-gateway'], function () {
         Route::post('/', 'DentacoinLoginGateway@getView')->name('dentacoin-login-gateway');
+
+        Route::post('/handle-dentist-register', 'UserController@handleDentistRegister')->name('handle-dentist-register');
+
+        Route::post('/handle-dentist-login', 'UserController@handleDentistLogin')->name('handle-dentist-login');
     });
 
     Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');
