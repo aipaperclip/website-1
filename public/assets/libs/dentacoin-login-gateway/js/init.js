@@ -681,6 +681,14 @@ if (typeof jQuery == 'undefined') {
                             $('.dentacoin-login-gateway-container .dentist .form-register .next-step').attr('data-current-step', current_prev_step.attr('data-step'));
                         });
 
+                        $('.changeable-color-on-selected-value').on('change', function() {
+                            if ($(this).val() == '') {
+                                $(this).addClass('dcn-gateway-gray-color');
+                            } else {
+                                $(this).removeClass('dcn-gateway-gray-color');
+                            }
+                        });
+
                         //SECOND STEP INIT LOGIC
                         $('.dentacoin-login-gateway-container .step.second .user-type-container .user-type').click(function() {
                             $('.dentacoin-login-gateway-container .step.second .show-on-user-type-first-change').show();
@@ -716,6 +724,15 @@ if (typeof jQuery == 'undefined') {
                                     $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).attr('data-clinic'));
                                 }
                             }
+
+                            // change htmls based on the selected option
+                            for (var i = 0, len = $('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').length; i < len; i+=1) {
+                                if ($(window).width() < 1200) {
+                                    $('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').eq(i).attr('data-mobile'));
+                                } else {
+                                    $('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').eq(i).attr('data-desktop'));
+                                }
+                            }
                         });
 
                         $('.dentacoin-login-gateway-container .step.second select[name="clinic-member-job-title"]').on('change', function() {
@@ -730,6 +747,8 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $('.dentacoin-login-gateway-container .step.second [name="dentist-type"]').on('change', function() {
+                            $('.dentacoin-login-gateway-container .step.second .show-if-dentist-type-selected').show();
+
                             if ($(this).val() == 'work_at_practice') {
                                 $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practice').html('<div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practice-name">Practice name:</label><input class="full-rounded form-field required" name="practice-name" maxlength="255" type="text" id="practice-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practice-email">Official email:</label><input class="full-rounded form-field required" name="practice-email" maxlength="100" type="email" id="practice-email"/></div></div>');
                             } else {
@@ -827,7 +846,7 @@ if (typeof jQuery == 'undefined') {
                                     }
 
                                     //check if latin name accepts only LATIN characters
-                                    if (!/^[a-z A-Z]+$/.test($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="latin-name"]').val().trim())) {
+                                    if (!/^[a-z A-Z.&-]+$/.test($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="latin-name"]').val().trim())) {
 
                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="latin-name"]').closest('.field-parent'), 'This field should contain only latin characters.');
                                         errors = true;

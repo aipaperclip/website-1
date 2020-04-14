@@ -131,37 +131,41 @@
                                 <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own_practice" id="own-practice"/> <label for="own-practice">I own a practice.</label></div>
                                 <div><input type="radio" name="dentist-type" value="work_at_practice" id="work-for-practice"/> <label for="work-for-practice">I work for a practice.</label></div>
                             </div>
-                            @if(!empty($api_enums) && property_exists($api_enums, 'titles') && !empty($api_enums->titles))
-                                <div class="padding-bottom-15 field-parent">
-                                    <div class="custom-google-select-style module">
-                                        <label class="gateway-platform-color">Title:</label>
-                                        <select class="form-field required gateway-platform-border-color" name="dentist-title">
-                                            @foreach($api_enums->titles as $key => $title)
-                                                <option value="{{$key}}">{{$title}}</option>
-                                            @endforeach
-                                        </select>
+                            <div class="show-if-dentist-type-selected">
+                                @if(!empty($api_enums) && property_exists($api_enums, 'titles') && !empty($api_enums->titles))
+                                    <div class="padding-bottom-15 field-parent">
+                                        <div class="custom-google-select-style module">
+                                            <label class="gateway-platform-color">Title:</label>
+                                            <select class="form-field required gateway-platform-border-color" name="dentist-title">
+                                                @foreach($api_enums->titles as $key => $title)
+                                                    <option value="{{$key}}">{{$title}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="show-if-dentist-type-selected">
+                            <div class="padding-bottom-15 field-parent">
+                                <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
+                                    <div class="tooltip-label gateway-platform-color gateway-platform-border-color changeable-html-based-on-user-type" data-dentist="Write your names in full! This ensures that patients who search for you will find you easily." data-clinic="Write the full names of the dental clinic! This ensures that patients who search for the clinic will find it easily."></div>
+                                    <label for="dentist-register-latin-name" class="changeable-html-based-on-user-type" data-dentist="Your Name (Latin letters):" data-clinic="Clinic Name (Latin letters only):"></label>
+                                    <input class="full-rounded form-field required" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name"/>
                                 </div>
-                            @endif
-                        </div>
-                        <div class="padding-bottom-15 field-parent">
-                            <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
-                                <div class="tooltip-label gateway-platform-color gateway-platform-border-color changeable-html-based-on-user-type" data-dentist="Write your names in full! This ensures that patients who search for you will find you easily." data-clinic="Write the full names of the dental clinic! This ensures that patients who search for the clinic will find it easily."></div>
-                                <label for="dentist-register-latin-name" class="changeable-html-based-on-user-type" data-dentist="Your Name (Latin letters):" data-clinic="Clinic Name (Latin letters only):"></label>
-                                <input class="full-rounded form-field required" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name"/>
+                                <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="Ex: Vladimir Alexandrovich (First name, Last name)" data-clinic="Ex: VitaDent Dental Clinic"></div>
                             </div>
-                            <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="Ex: Vladimir Alexandrovich (First name, Last name)" data-clinic="Ex: VitaDent Dental Clinic"></div>
-                        </div>
-                        <div class="padding-bottom-15 field-parent">
-                            <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
-                                <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Patients who search for your name in your language will still find your profile.</div>
-                                <label for="dentist-register-alternative-name" class="changeable-html-based-on-user-type" data-dentist="Your name in native language (All alphabets; optional):" data-clinic="Alternative Spelling (optional):"></label>
-                                <input class="full-rounded form-field" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name"/>
+                            <div class="padding-bottom-15 field-parent">
+                                <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
+                                    <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Patients who search for your name in your language will still find your profile.</div>
+                                    <label for="dentist-register-alternative-name" class="changeable-html-based-on-resolution" data-desktop="Name in local language (All alphabets, optional)" data-mobile="Name in local language (Optional)"></label>
+                                    <input class="full-rounded form-field" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name"/>
+                                </div>
+                                <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="Ex: Влади́мир Алекса́ндрович" data-clinic='Ex: Стоматологія "ВітаДент"'></div>
                             </div>
-                            <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="Ex: Влади́мир Алекса́ндрович" data-clinic='Ex: Стоматологія "ВітаДент"'></div>
-                        </div>
-                        <div class="show-if-dentist">
-                            <div class="if-work-for-a-practice"></div>
+                            <div class="show-if-dentist">
+                                <div class="if-work-for-a-practice"></div>
+                            </div>
                         </div>
                         <div class="show-if-clinic">
                             <div class="padding-bottom-15 field-parent">
@@ -174,7 +178,7 @@
                                 <div class="padding-bottom-15 field-parent">
                                     <div class="custom-google-select-style module">
                                         <label class="gateway-platform-color">Job title:</label>
-                                        <select class="form-field gateway-platform-border-color" name="clinic-member-job-title">
+                                        <select class="form-field gateway-platform-border-color changeable-color-on-selected-value" name="clinic-member-job-title">
                                             <option value="">Please, select</option>
                                             @foreach($api_enums->working_position as $key => $title)
                                                 <option value="{{$key}}">{{$title}}</option>
