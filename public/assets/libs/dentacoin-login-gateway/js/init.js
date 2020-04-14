@@ -257,7 +257,7 @@ if (typeof jQuery == 'undefined') {
                                 } else {
                                     croppieParams.viewport = {
                                         width: 140,
-                                            height: 140
+                                        height: 140
                                     };
                                     croppieParams.boundary = {width: 140, height: 140};
                                 }
@@ -266,6 +266,10 @@ if (typeof jQuery == 'undefined') {
 
                                 $('.avatar.module .btn-wrapper').hide();
                                 $('.max-size-label').addClass('active');
+
+                                croppie_instance.croppie('bind', {
+                                    url: e.target.result
+                                });
 
                                 croppie_instance.croppie('bind', 'url').then(function(){
                                     console.log('asdsasdadas');
