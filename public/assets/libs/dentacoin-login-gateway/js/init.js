@@ -4,7 +4,6 @@ if (typeof jQuery == 'undefined') {
 } else {
     var loadedSocialLibs = false;
     var loadedAddressSuggesterLib = false;
-    var loadedGooglereCaptchaLib = false;
     var croppie_instance;
     var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
     var dcnGateway = {
@@ -941,11 +940,7 @@ if (typeof jQuery == 'undefined') {
                                             this_btn.val('Create account');
                                         }
 
-                                        // load google reCAPTCHA v2 library
-                                        if (!loadedGooglereCaptchaLib) {
-                                            await $.getScript('https://www.google.com/recaptcha/api.js', function() {});
-                                            loadedGooglereCaptchaLib = true;
-                                        }
+                                        await $.getScript('https://www.google.com/recaptcha/api.js', function() {});
                                     }
                                     break;
                                 case 'fourth':
