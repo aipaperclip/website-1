@@ -235,7 +235,6 @@ class UserController extends Controller {
     protected function dentistRegister(Request $request) {
         $customMessages = [
             'latin-name.required' => 'Dentist or Practice Name is required.',
-            'dentist-title.required' => 'Dentist title is required.',
             'email.required' => 'Email address is required.',
             'password.required' => 'Password is required.',
             'repeat-password.required' => 'Repeat password is required.',
@@ -251,7 +250,6 @@ class UserController extends Controller {
         ];
         $this->validate($request, [
             'latin-name' => 'required|max:250',
-            'dentist-title' => 'required|max:250',
             'email' => 'required|max:100',
             'password' => 'required|max:50',
             'repeat-password' => 'required|max:50',
