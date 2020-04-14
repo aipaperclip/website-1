@@ -970,7 +970,7 @@ if (typeof jQuery == 'undefined') {
                                     }
 
                                     if (!errors) {
-                                        $('.dentist-register-errors').html('');
+                                        $('.dentacoin-login-gateway-container form#dentist-register .step.fourth .step-errors-holder').html('');
                                         dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationComplete');
 
                                         var registerParams = {
@@ -1032,9 +1032,9 @@ if (typeof jQuery == 'undefined') {
                                                 for(var key in registeringDentistResponse.message) {
                                                     error_popup_html += registeringDentistResponse.message[key]+'<br>';
                                                 }
-                                                $('.dentist-register-errors').html('<div class="error-handle">'+error_popup_html+'</div>');
+                                                $('.dentacoin-login-gateway-container form#dentist-register .step.fourth .step-errors-holder').html('<div class="error-handle">'+error_popup_html+'</div>');
                                             } else {
-                                                $('.dentist-register-errors').html('<div class="error-handle">'+registeringDentistResponse.message+'</div>');
+                                                $('.dentacoin-login-gateway-container form#dentist-register .step.fourth .step-errors-holder').html('<div class="error-handle">'+registeringDentistResponse.message+'</div>');
                                             }
                                         } else {
                                             dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
