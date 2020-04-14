@@ -1125,7 +1125,7 @@
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .btns-container .inline-block {
   width: 50%; }
   @media screen and (max-width: 767px) {
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .btns-container .inline-block.prev-step {
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .btns-container .inline-block.back-btn-container {
       width: 30%; }
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .btns-container .inline-block.next-or-continue-btn-container {
       width: 70%; }
