@@ -158,7 +158,7 @@
                             <div class="padding-bottom-15 field-parent">
                                 <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
                                     <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Patients who search for your name in your language will still find your profile.</div>
-                                    <label for="dentist-register-alternative-name" class="changeable-html-based-on-resolution" data-desktop="Name in local language (All alphabets, optional)" data-mobile="Name in local language (Optional)"></label>
+                                    <label for="dentist-register-alternative-name" class="changeable-html-based-on-resolution" data-desktop="Name in local language (All alphabets, optional):" data-mobile="Name in local language (Optional):"></label>
                                     <input class="full-rounded form-field" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name"/>
                                 </div>
                                 <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="Ex: Влади́мир Алекса́ндрович" data-clinic='Ex: Стоматологія "ВітаДент"'></div>
