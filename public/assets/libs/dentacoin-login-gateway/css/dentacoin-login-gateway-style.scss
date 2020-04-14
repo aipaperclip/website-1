@@ -645,6 +645,7 @@
     padding-left: 20px;
     color: black;
     @include breakpoint($xs) {
+        padding-left: 10px;
         width: calc(100% - 150px);
     }
 }
@@ -670,6 +671,17 @@
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .btns-container .inline-block {
     width: 50%;
+    @include breakpoint($xs) {
+        &.prev-step {
+            width: 30%;
+        } 
+        &.next-or-continue-btn-container {
+            width: 70%;
+            .platform-button {
+                font-size: 16px !important;
+            }
+        }
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .btns-container .inline-block .prev-step {
@@ -740,7 +752,7 @@
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient h2, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist h2 {
     font-size: 30px;
     padding-bottom: 20px;
-    margin-top: 20px; 
+    margin-top: 20px;
     font-family: "Calibri Light";
     @include breakpoint($xs) {
         padding-bottom: 0;
