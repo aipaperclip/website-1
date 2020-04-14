@@ -6,7 +6,7 @@
 <div class="dentacoin-login-gateway-fs-0 popup-body">
     <div class="patient inline-block gateway-platform-background-color @if($type == 'dentist-login' || $type == 'dentist-register') custom-hide @endif">
         <div class="form-login @if($type == 'patient-register' || $type == 'dentist-register') display-none @endif">
-            <h2>LOG IN</h2>
+            <h2 class="login-section-title">LOG IN</h2>
             <div class="form-login-fields">
                 <div class="padding-bottom-10">
                     <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//dev-api.dentacoin.com/api/login" data-platform="dentacoin" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">Continue with Facebook</span></a>
@@ -48,7 +48,7 @@
                     <ul class="padding-top-10">
                         @foreach($api_enums->user_patient_type as $key => $title)
                             <li class="padding-bottom-5 custom-checkbox-style">
-                                <input type="checkbox" name="user_patient_type[]" class="custom-checkbox-input" id="{{$key}}" value="{{$key}}"/>
+                                <input type="checkbox" data-radio-group="user_patient_type" name="user_patient_type[]" class="custom-checkbox-input" id="{{$key}}" value="{{$key}}"/>
                                 <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="{{$key}}">{{$title}}</label>
                             </li>
                         @endforeach
@@ -83,7 +83,7 @@
                 <div class="text-center padding-top-40 dentacoin-login-gateway-fs-16">Don't have an account? <a href="javascript:void(0)" class="call-sign-up dentacoin-login-gateway-fs-20">Sign up</a></div>
             </form>
             <div class="popup-half-footer">
-                <a href="#" class="forgotten-password-link">Forgotten password?</a>
+                <a href="#" target="_blank" class="forgotten-password-link">Forgotten password?</a>
             </div>
         </div>
         <div class="form-register @if($type == 'dentist-login' || $type == 'patient-login') display-none @endif">
@@ -208,7 +208,7 @@
                     <div class="padding-bottom-15 suggester-parent module field-parent">
                         <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
                             <div class="tooltip-label gateway-platform-color gateway-platform-border-color changeable-html-based-on-user-type" data-dentist="Enter the full address of your workplace in the same way as it is displayed on your website/ Facebook page/ Google Business profile." data-clinic="Enter the full address of the clinic, the same way it is displayed on the website/ Facebook page or Google Business profile."></div>
-                            <label for="dentist-register-address" class="changeable-html-based-on-user-type" data-dentist="Workplace address: Start typing street, No, city" data-clinic="Address: Start typing street, No, city"></label>
+                            <label for="dentist-register-address" class="changeable-html-based-on-user-type" data-dentist="Workplace address: Street, No, city" data-clinic="Address: Street, No, city"></label>
                             <input type="text" name="address" class="full-rounded form-field required address-suggester" autocomplete="off" id="dentist-register-address">
                         </div>
                         <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">Ex: 49 Pembroke Square, Kensington, London</div>

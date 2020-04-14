@@ -324,6 +324,14 @@ if (typeof jQuery == 'undefined') {
                     } else {
                         $(this).closest('.custom-checkbox-style').find('.custom-checkbox').removeClass('gateway-platform-background-color-important').html('');
                     }
+
+                    if ($(this).attr('data-radio-group') != undefined) {
+                        for (var i = 0, len = $('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').length; i < len; i+=1) {
+                            if (!$(this).is($('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').eq(i))) {
+                                $('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').eq(i).prop('checked', false).trigger('change');
+                            }
+                        }
+                    }
                 });
             },
             hideGateway: function() {
@@ -511,6 +519,8 @@ if (typeof jQuery == 'undefined') {
                         $(document).on('registeredAccountMissingEmail', async function (event) {
                             dcnGateway.utils.hideLoader();
 
+                            $('.login-section-title').html('UPDATE YOUR EMAIL');
+
                             $('.dentacoin-login-gateway-container .patient .form-login .form-login-fields').hide();
                             $('.dentacoin-login-gateway-container .patient .form-login').append('<div class="registered-user-without-email-parent"><div class="padding-bottom-10 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="registered-patient-without-email">Email address:</label><input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" /></div><div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">Please add your email address to continue.</div></div><div class="patient-register-checkboxes padding-top-5"><div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registered-user-without-email"/><label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registered-user-without-email">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label></div></div><div class="text-right padding-top-15"><a href="javascript:void(0);" class="platform-button opposite gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email inline-block">CONTINUE</a></div></div>');
 
@@ -522,7 +532,7 @@ if (typeof jQuery == 'undefined') {
                                 if ($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim() == '' || !dcnGateway.utils.validateEmail($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim())) {
                                     dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').closest('.field-parent'), 'Please use valid email address.');
                                 } else if (!$('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').is(':checked')) {
-                                    dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').closest('.patient-register-checkboxes'), 'Please agree with our Privacy policy.');
+                                    dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').closest('.patient-register-checkboxes'), 'Please agree with our Privacy Policy.');
                                 } else {
                                     var editUserDataResponse = await dcnGateway.dcnGatewayRequests.editUserData($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim(), event.response_data.token);
                                     if (editUserDataResponse.success) {
@@ -608,9 +618,6 @@ if (typeof jQuery == 'undefined') {
                                 for(var i = 0, len = form_fields.length; i < len; i+=1) {
                                     if (form_fields.eq(i).attr('type') == 'email' && !dcnGateway.utils.validateEmail(form_fields.eq(i).val().trim())) {
                                         dcnGateway.utils.customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please use valid email address.');
-                                        submit_form = false;
-                                    } else if (form_fields.eq(i).attr('type') == 'password' && form_fields.eq(i).val().length < 6) {
-                                        dcnGateway.utils.customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Passwords must be min length 6.');
                                         submit_form = false;
                                     }
 
@@ -712,7 +719,7 @@ if (typeof jQuery == 'undefined') {
 
                         $('.dentacoin-login-gateway-container .step.second select[name="clinic-member-job-title"]').on('change', function() {
                             if ($(this).val() == 'other') {
-                                $(this).closest('.field-parent').append('<div class="custom-google-label-style module clinic-member-job-title-other-parent" data-input-colorful-border="true"><label for="clinic-member-job-title-other">Other:</label><input class="full-rounded form-field required" name="clinic-member-job-title-other" maxlength="50" type="text" id="clinic-member-job-title-other"/></div>');
+                                $(this).closest('.field-parent').append('<div class="custom-google-label-style module clinic-member-job-title-other-parent" data-input-colorful-border="true"><label for="clinic-member-job-title-other">Please specify:</label><input class="full-rounded form-field required" name="clinic-member-job-title-other" maxlength="50" type="text" id="clinic-member-job-title-other"/></div>');
 
                                 $('.dentacoin-login-gateway-container .step.second .clinic-member-job-title-other-parent #clinic-member-job-title-other').focus();
                                 $('.dentacoin-login-gateway-container .step.second .clinic-member-job-title-other-parent label[for="clinic-member-job-title-other"]').addClass('active-label');
@@ -827,7 +834,7 @@ if (typeof jQuery == 'undefined') {
 
                                     //check if privacy policy checkbox is checked
                                     if (!$('.dentacoin-login-gateway-container .dentist .form-register .step.second #privacy-policy-registration').is(':checked')) {
-                                        dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .dentist .form-register .step.second .privacy-policy-row'), 'Please agree with our <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy policy</a>.');
+                                        dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .dentist .form-register .step.second .privacy-policy-row'), 'Please agree with our <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a>.');
                                         errors = true;
                                     }
 
@@ -948,7 +955,7 @@ if (typeof jQuery == 'undefined') {
                                     var errors = false;
                                     //checking if empty avatar
                                     if ($('.dentist .form-register .step.fourth #custom-upload-avatar').val().trim() == '') {
-                                        dcnGateway.utils.customErrorHandle($('.step.fourth .step-errors-holder'), 'Please select avatar.');
+                                        dcnGateway.utils.customErrorHandle($('.step.fourth .step-errors-holder'), 'Please add a profile photo.');
                                         errors = true;
                                     }
 
@@ -960,7 +967,7 @@ if (typeof jQuery == 'undefined') {
 
                                     //checking if no specialization checkbox selected
                                     if (typeof(grecaptcha) != undefined && grecaptcha.getResponse().length == 0) {
-                                        dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Please prove that you\'re not robot.');
+                                        dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Please prove that you\'re not a robot.');
                                         errors = true;
                                     }
 

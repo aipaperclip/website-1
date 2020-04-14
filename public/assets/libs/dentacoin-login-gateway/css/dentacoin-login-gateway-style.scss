@@ -218,6 +218,9 @@
         line-height: 20px;
         @include rounded(20%);
     }
+    label {
+        cursor: pointer;
+    }
     .custom-checkbox-label {
         width: calc(100% - 20px);
         padding-left: 10px;
@@ -477,7 +480,7 @@
         &.active {
             color: white;
             position: relative;
-            @include box-shadow(0 5px 20px 10px rgba(0,0,0,.8));
+            @include box-shadow(0 2px 15px 4px rgba(0, 0, 0, 0.8));
         }
     }
     a[data-type="dentist"] {
@@ -487,7 +490,7 @@
         &.active {
             background-color: white;
             position: relative;
-            @include box-shadow(0 5px 20px 10px rgba(0,0,0,.8));
+            @include box-shadow(0 2px 15px 4px rgba(0, 0, 0, 0.8));
         }
     }
 }
@@ -557,7 +560,7 @@
     padding: 5px 10px;
     display: block;
     border: 2px solid #dddddd;
-    color: #dddddd;
+    color: #555;
     font-size: 20px;
     @include rounded(4px);
 }
@@ -567,7 +570,7 @@
     width: 20px;
     height: 20px;
     line-height: 20px;
-    border: 1px solid #dddddd;
+    border: 1px solid #888;
     text-align: center;
     font-size: 0;
     @include rounded(50%);
@@ -698,10 +701,11 @@
     border-left: 3px solid white;
     border-right: 3px solid white;
     @include rounded(0 0 4px 4px);
+    @include box-shadow(0 15px 17px 4px rgba(0, 0, 0, 0.8));
     @include breakpoint($xs) {
         width: 100%;
+        @include box-shadow(none);
     }
-
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .custom-input, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .custom-input {
@@ -741,7 +745,7 @@
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-login, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-login {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
 }
 
