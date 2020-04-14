@@ -325,9 +325,6 @@
     left: 0;
     z-index: 99999;
     font-family: 'Calibri';
-    .dcn-gateway-gray-color {
-        color: #888888 !important;
-    }
     .dentacoin-login-gateway-response-layer-wrapper {
         text-align: center;
         padding-left: 15px;
@@ -399,6 +396,9 @@
             color: #a94442;
             text-decoration: underline;
         }
+    }
+    .dcn-gateway-gray-color {
+        color: #888888 !important;
     }
     .tooltip-init {
         position: relative;
@@ -626,6 +626,9 @@
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar {
     width: 180px;
+    @include breakpoint($xs) {
+        width: 140px;
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .captcha-container {
@@ -637,6 +640,9 @@
     width: calc(100% - 180px);
     padding-left: 20px;
     color: black;
+    @include breakpoint($xs) {
+        width: calc(100% - 140px);
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .specializations h4 {

@@ -87,7 +87,7 @@
             </div>
         </div>
         <div class="form-register @if($type == 'dentist-login' || $type == 'patient-login') display-none @endif">
-            <h2>Sign Up Now - Quick & Easy!</h2>
+            <h2>SIGN UP</h2>
             <form method="POST" enctype="multipart/form-data" id="dentist-register">
                 <div class="step first visible" data-step="first">
                     <div class="padding-bottom-10 field-parent">
@@ -178,7 +178,7 @@
                                 <div class="padding-bottom-15 field-parent">
                                     <div class="custom-google-select-style module">
                                         <label class="gateway-platform-color">Job title:</label>
-                                        <select class="form-field gateway-platform-border-color changeable-color-on-selected-value" name="clinic-member-job-title">
+                                        <select class="form-field gateway-platform-border-color changeable-color-on-selected-value dcn-gateway-gray-color" name="clinic-member-job-title">
                                             <option value="">Please, select</option>
                                             @foreach($api_enums->working_position as $key => $title)
                                                 <option value="{{$key}}">{{$title}}</option>

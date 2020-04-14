@@ -523,7 +523,7 @@ if (typeof jQuery == 'undefined') {
                             $('.login-section-title').html('UPDATE YOUR EMAIL');
 
                             $('.dentacoin-login-gateway-container .patient .form-login .form-login-fields').hide();
-                            $('.dentacoin-login-gateway-container .patient .form-login').append('<div class="registered-user-without-email-parent"><div class="padding-bottom-10 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="registered-patient-without-email">Email address:</label><input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" /></div><div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">Please add your email address to continue.</div></div><div class="patient-register-checkboxes padding-top-5"><div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registered-user-without-email"/><label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registered-user-without-email">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label></div></div><div class="text-right padding-top-15"><a href="javascript:void(0);" class="platform-button opposite gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email inline-block">CONTINUE</a></div></div>');
+                            $('.dentacoin-login-gateway-container .patient .form-login').append('<div class="registered-user-without-email-parent"><div class="padding-bottom-10 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="registered-patient-without-email">Email address:</label><input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" /></div><div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">Please add your email address to continue.</div></div><div class="patient-register-checkboxes padding-top-5"><div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registered-user-without-email"/><label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registered-user-without-email">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label></div></div><div class="text-right padding-top-15"><a href="javascript:void(0);" class="platform-button opposite gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email inline-block">CONTINUE</a></div></div>');
 
                             dcnGateway.utils.initCustomCheckboxes();
 
@@ -710,9 +710,14 @@ if (typeof jQuery == 'undefined') {
                                 $('.show-if-dentist').show();
                                 $('.show-if-clinic').hide();
                                 $('.show-if-clinic .to-be-required').removeClass('required');
+
+                                if ($('.dentacoin-login-gateway-container .step.second [name="dentist-type"]:checked').val() == undefined) {
+                                    $('.show-if-dentist-type-selected').hide();
+                                }
                             } else {
                                 $('.show-if-dentist').hide();
                                 $('.show-if-clinic').show();
+                                $('.show-if-dentist-type-selected').show();
                                 $('.show-if-clinic .to-be-required').addClass('required');
                             }
 
