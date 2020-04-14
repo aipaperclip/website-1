@@ -243,22 +243,29 @@ if (typeof jQuery == 'undefined') {
                                     $('#cropper-container').html('');
                                 }
 
-                                croppie_instance = $('#cropper-container').croppie({
-                                    viewport: {
-                                        width: 140,
-                                        height: 140
-                                    },
-                                    boundary: { width: 140, height: 140 },
+                                var croppieParams = {
                                     enableOrientation: true,
                                     enforceBoundary: false
-                                });
+                                };
+
+                                if ($(window).width() < 768) {
+                                    croppieParams.viewport = {
+                                        width: 110,
+                                        height: 110
+                                    };
+                                    croppieParams.boundary = {width: 110, height: 110};
+                                } else {
+                                    croppieParams.viewport = {
+                                        width: 140,
+                                            height: 140
+                                    };
+                                    croppieParams.boundary = {width: 140, height: 140};
+                                }
+
+                                croppie_instance = $('#cropper-container').croppie(croppieParams);
 
                                 $('.avatar.module .btn-wrapper').hide();
                                 $('.max-size-label').addClass('active');
-
-                                croppie_instance.croppie('bind', {
-                                    url: e.target.result
-                                });
 
                                 croppie_instance.croppie('bind', 'url').then(function(){
                                     console.log('asdsasdadas');

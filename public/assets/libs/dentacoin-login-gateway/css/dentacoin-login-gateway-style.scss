@@ -53,6 +53,10 @@
             .cr-slider-wrap {
                 margin: 10px auto !important;
             }
+            @include breakpoint($xs) {
+                width: 150px;
+                height: 150px;
+            }
         }
         .max-size-label {
             label {
@@ -627,7 +631,7 @@
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar {
     width: 180px;
     @include breakpoint($xs) {
-        width: 140px;
+        width: 150px;
     }
 }
 
@@ -641,7 +645,7 @@
     padding-left: 20px;
     color: black;
     @include breakpoint($xs) {
-        width: calc(100% - 140px);
+        width: calc(100% - 150px);
     }
 }
 
@@ -751,7 +755,7 @@
             display: inline-block;
             padding-right: 10px;
             &:nth-child(odd) {
-                min-width: 140px;
+                min-width: 150px;
             }
         }
     }
