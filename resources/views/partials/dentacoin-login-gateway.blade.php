@@ -32,13 +32,13 @@
             <div class="padding-top-20">
                 <div class="custom-checkbox-style">
                     <input type="checkbox" class="custom-checkbox-input" id="agree-over-eighteen"/>
-                    <label class="dentacoin-login-gateway-fs-15" for="agree-over-eighteen">I confirm that I'm 18 years of age or older.</label>
+                    <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="agree-over-eighteen">I confirm that I'm 18 years of age or older.</label>
                 </div>
             </div>
             <div class="patient-register-checkboxes padding-top-5">
                 <div class="custom-checkbox-style">
                     <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration-patient"/>
-                    <label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registration-patient">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
+                    <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registration-patient">I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></label>
                 </div>
             </div>
             <div class="step-errors-holder"></div>
@@ -49,7 +49,7 @@
                         @foreach($api_enums->user_patient_type as $key => $title)
                             <li class="padding-bottom-5 custom-checkbox-style">
                                 <input type="checkbox" name="user_patient_type[]" class="custom-checkbox-input" id="{{$key}}" value="{{$key}}"/>
-                                <label class="dentacoin-login-gateway-fs-15" for="{{$key}}">{{$title}}</label>
+                                <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="{{$key}}">{{$title}}</label>
                             </li>
                         @endforeach
                     </ul>
@@ -186,7 +186,7 @@
                         </div>
                         <div class="privacy-policy-row padding-bottom-20 padding-top-10 custom-checkbox-style">
                             <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration"/>
-                            <label class="dentacoin-login-gateway-fs-15" for="privacy-policy-registration">I've read and agree to the <a href="//dentacoin.com/privacy-policy" class="gateway-platform-color" target="_blank">Privacy Policy</a></label>
+                            <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registration">I've read and agree to the <a href="//dentacoin.com/privacy-policy" class="gateway-platform-color" target="_blank">Privacy Policy</a></label>
                         </div>
                     </div>
                 </div>
@@ -249,7 +249,7 @@
                                 @foreach($api_enums->specialisations as $key => $specialisation)
                                     <div class="custom-checkbox-style padding-bottom-5">
                                         <input type="checkbox" class="custom-checkbox-input" name="specializations[]" id="specialization-{{$key}}" value="{{$key}}"/>
-                                        <label class="dentacoin-login-gateway-fs-15" for="specialization-{{$key}}">{{$specialisation}}</label>
+                                        <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="specialization-{{$key}}">{{$specialisation}}</label>
                                     </div>
                                 @endforeach
                             </div>

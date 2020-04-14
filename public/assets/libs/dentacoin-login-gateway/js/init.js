@@ -313,7 +313,7 @@ if (typeof jQuery == 'undefined') {
             initCustomCheckboxes: function() {
                 for (var i = 0, len = $('.custom-checkbox-style').length; i < len; i+=1) {
                     if (!$('.custom-checkbox-style').eq(i).hasClass('already-custom-style')) {
-                        $('.custom-checkbox-style').eq(i).prepend('<div class="custom-checkbox"></div>');
+                        $('.custom-checkbox-style').eq(i).prepend('<label for="'+$('.custom-checkbox-style').eq(i).find('input[type="checkbox"]').attr('id')+'" class="custom-checkbox"></label>');
                         $('.custom-checkbox-style').eq(i).addClass('already-custom-style');
                     }
                 }
