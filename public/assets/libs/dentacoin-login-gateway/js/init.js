@@ -328,7 +328,7 @@ if (typeof jQuery == 'undefined') {
                     if ($(this).attr('data-radio-group') != undefined) {
                         for (var i = 0, len = $('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').length; i < len; i+=1) {
                             if (!$(this).is($('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').eq(i))) {
-                                $('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').eq(i).prop('checked', false).trigger('change');
+                                $('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').eq(i).prop('checked', false);
                             }
                         }
                     }
