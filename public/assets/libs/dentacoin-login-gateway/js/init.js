@@ -1281,7 +1281,7 @@ if (typeof jQuery == 'undefined') {
                 } else if (hasOwnProperty.call(getParams, 'inviter')) {
                     showGateway('patient-register');
                 } else if (hasOwnProperty.call(getParams, 'temp-data-key') && hasOwnProperty.call(getParams, 'temp-data-id')) {
-                    showGateway('incompleted-patient-register', {
+                    showGateway('incompleted-dentist-register', {
                         key: getParams['temp-data-key'],
                         id: getParams['temp-data-id']
                     });
