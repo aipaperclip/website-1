@@ -20,8 +20,9 @@ class DentacoinLoginGateway extends Controller
             }
         }
 
-        var_dump($incompletedRegistrationData);
-        die('asd');
+        if (!empty($incompletedRegistrationData) && is_object($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'success') && $incompletedRegistrationData->success) {
+            $params['incompletedRegistrationData'] = $incompletedRegistrationData->data;
+        }
 
         $inviter = $request->input('inviter');
         if (!empty($inviter)) {

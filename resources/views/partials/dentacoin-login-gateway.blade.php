@@ -1,4 +1,11 @@
 @php($api_enums = (new \App\Http\Controllers\APIRequestsController())->getAllEnums())
+@if(!empty($incompletedRegistrationData))
+    @if(property_exists($incompletedRegistrationData, 'phone') && property_exists($incompletedRegistrationData, 'website') && property_exists($incompletedRegistrationData, 'address') && property_exists($incompletedRegistrationData, 'country_id'))
+        @php($currentActiveStep = 'fourth')
+    @else
+        @php($currentActiveStep = 'third')
+    @endif
+@endif
 <div class="dentacoin-login-gateway-fs-0 popup-header-action">
     <a href="javascript:void(0)" class="inline-block @if($type == 'patient-login' || $type == 'patient-register') gateway-platform-background-color-important active @endif" data-type="patient">USERS</a>
     <a href="javascript:void(0)" class="inline-block init-dentists-click-event @if($type == 'dentist-login' || $type == 'dentist-register') active @endif" data-type="dentist">DENTISTS</a>
@@ -89,11 +96,11 @@
         <div class="form-register @if($type == 'dentist-login' || $type == 'patient-login') display-none @endif">
             <h2>SIGN UP</h2>
             <form method="POST" enctype="multipart/form-data" id="dentist-register">
-                <div class="step first visible" data-step="first">
+            <div class="step first @if(empty($currentActiveStep)) visible @endif" data-step="first">
                     <div class="padding-bottom-10 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
                             <label for="dentist-register-email">Work Email Address:</label>
-                            <input class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-register-email"/>
+                            <input class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-register-email" @if(!empty($currentActiveStep) && $currentActiveStep == 'third') value="{{$currentActiveStep->email}}" @endif/>
                         </div>
                     </div>
                     <div class="padding-bottom-10 field-parent">
@@ -194,7 +201,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="step third address-suggester-wrapper" data-step="third">
+                <div class="step third address-suggester-wrapper @if(!empty($currentActiveStep) && $currentActiveStep == 'third') visible @endif" data-step="third">
                     <div class="padding-bottom-20 field-parent">
                         <div class="custom-google-select-style module">
                             @php($countries = (new \App\Http\Controllers\APIRequestsController())->getAllCountries())
@@ -238,7 +245,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="step fourth" data-step="fourth">
+                <div class="step fourth @if(!empty($currentActiveStep) && $currentActiveStep == 'fourth') visible @endif" data-step="fourth">
                     <div class="padding-bottom-20 dentacoin-login-gateway-fs-0">
                         <div class="inline-block-top avatar module upload-file">
                             <input type="file" class="visualise-image inputfile" id="custom-upload-avatar" name="image" accept=".jpg,.png,.jpeg,.svg,.bmp"/>
