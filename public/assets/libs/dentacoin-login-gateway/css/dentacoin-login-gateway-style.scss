@@ -630,6 +630,24 @@
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar {
     width: 180px;
+    .avatar-name {
+        display: none;
+        font-size: 0;
+        label {
+            color: red;
+            font-size: 20px;
+            width: 30px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: right;
+        }
+        span {
+            font-size: 14px;
+            display: inline-block;
+            vertical-align: top;
+            width: calc(100% - 30px);
+        }
+    }
     @include breakpoint($xs) {
         width: 150px;
     }

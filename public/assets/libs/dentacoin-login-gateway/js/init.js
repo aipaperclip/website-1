@@ -234,10 +234,11 @@ if (typeof jQuery == 'undefined') {
 
                         input.addEventListener('change', function(e) {
                             var this_input = $(this);
-                            console.log(this_input, 'this_input');
-                            console.log(e.target.value, 'e.target.value');
-                            console.log(e.target.value.split('\\').pop(), 'e.target.value.split(\'\\\\\').pop()');
-                            dcnGateway.utils.readURL(this, 2, allowedImagesExtensions, function(e) {
+                            dcnGateway.utils.readURL(this, 2, allowedImagesExtensions, function(e, filename) {
+                                if (filename != '' && filename != undefined) {
+                                    $('.avatar-name').show().find('span').html(filename.slice(0, 10) + '...');
+                                }
+
                                 $('#cropper-container').addClass('width-and-height');
                                 if (croppie_instance != undefined) {
                                     croppie_instance.croppie('destroy');
