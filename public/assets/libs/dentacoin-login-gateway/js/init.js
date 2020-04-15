@@ -15,14 +15,12 @@ if (typeof jQuery == 'undefined') {
                     dataType: 'json'
                 });
             },
-            getGatewayHtml: async function(type) {
+            getGatewayHtml: async function(data) {
                 return await $.ajax({
                     type: 'POST',
                     url: 'https://dentacoin.com/dentacoin-login-gateway',
                     dataType: 'json',
-                    data: {
-                        'type' : type
-                    }
+                    data: data
                 });
             },
             getUserCountry: async function() {
@@ -403,8 +401,20 @@ if (typeof jQuery == 'undefined') {
                     return false;
                 }
 
+                // show login gateway by url
+                var getParams = dcnGateway.utils.getGETParameters();
+
                 async function showGateway(type) {
-                    var gatewayHtml = await dcnGateway.dcnGatewayRequests.getGatewayHtml(type);
+                    var gatewayData = {
+                        'type' : type
+                    };
+
+                    // if inviter in the URL pass it to the gateway
+                    if (getParams.hasOwnProperty('inviter')) {
+                        gatewayData.inviter = getParams.inviter;
+                    }
+
+                    var gatewayHtml = await dcnGateway.dcnGatewayRequests.getGatewayHtml(gatewayData);
                     if (gatewayHtml.success) {
                         if (!loadedSocialLibs) {
                             console.log('Load external libraries.');
@@ -1110,8 +1120,6 @@ if (typeof jQuery == 'undefined') {
                     }
                 });
 
-                // show login gateway by url
-                var getParams = dcnGateway.utils.getGETParameters();
                 if (hasOwnProperty.call(getParams, 'dcn-gateway-type')) {
                     if (['patient-login', 'patient-register', 'dentist-login', 'dentist-register'].indexOf(getParams['dcn-gateway-type']) == -1) {
                         console.error('Wrong dcn-gateway-type get parameter value in the url.');

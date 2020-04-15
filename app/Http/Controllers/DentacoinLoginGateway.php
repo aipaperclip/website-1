@@ -7,7 +7,15 @@ use Illuminate\Http\Request;
 class DentacoinLoginGateway extends Controller
 {
     public function getView(Request $request)   {
-        $view = view('partials/dentacoin-login-gateway', ['client_ip' => $request->input('user_ip'), 'type' => $request->input('type')]);
+        $params = array(
+            'type' => $request->input('type')
+        );
+        $inviter = $request->input('inviter');
+        if (!empty($inviter)) {
+            $params['inviter'] = urldecode($inviter);
+        }
+
+        $view = view('partials/dentacoin-login-gateway', $params);
         $view = $view->render();
 
         return response()->json(['success' => true, 'data' => $view]);

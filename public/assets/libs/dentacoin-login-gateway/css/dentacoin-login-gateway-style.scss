@@ -672,7 +672,7 @@
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .btns-container .inline-block {
     width: 50%;
     @include breakpoint($xs) {
-        &.back-btn-container {  
+        &.back-btn-container {
             width: 30%;
         }
         &.next-or-continue-btn-container {

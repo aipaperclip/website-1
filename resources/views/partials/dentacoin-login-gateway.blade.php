@@ -271,7 +271,7 @@
                     <div class="inline-block text-right next-or-continue-btn-container">
                         <input type="button" value="Next" class="platform-button gateway-platform-background-color dentacoin-login-gateway-fs-20 next-step" data-current-step="first"/>
                         @if(isset($inviter))
-                            <input type="hidden" name="inviter" value="{{\Illuminate\Support\Facades\Input::get('inviter')}}">
+                            <input type="hidden" name="inviter" value="{{$inviter}}">
                         @endif
                     </div>
                 </div>
