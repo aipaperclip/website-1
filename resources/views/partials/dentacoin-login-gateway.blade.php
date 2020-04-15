@@ -99,20 +99,20 @@
             <div class="step first @if(!isset($currentActiveStep)) visible @endif" data-step="first">
                     <div class="padding-bottom-10 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
-                            <label for="dentist-register-email" @if(!empty($incompletedRegistrationData) && !empty($incompletedRegistrationData->email)) class="active-label gateway-platform-color-important" @endif>Work Email Address:</label>
-                            <input class="full-rounded form-field  @if(!empty($incompletedRegistrationData) && !empty($incompletedRegistrationData->email)) gateway-platform-border-color-important @endif" name="email" maxlength="100" type="email" id="dentist-register-email" @if(!empty($incompletedRegistrationData) && $incompletedRegistrationData == 'third') value="{{$incompletedRegistrationData->email}}" @endif/>
+                            <label for="dentist-register-email" @if(!empty($incompletedRegistrationData)) class="active-label gateway-platform-color-important" @endif>Work Email Address:</label>
+                            <input class="full-rounded form-field  @if(!empty($incompletedRegistrationData)) gateway-platform-border-color-important @endif" name="email" maxlength="100" type="email" id="dentist-register-email" @if(!empty($incompletedRegistrationData)) value="{{$incompletedRegistrationData->email}}" @endif/>
                         </div>
                     </div>
                     <div class="padding-bottom-10 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
-                            <label for="dentist-register-password">Password:</label>
-                            <input class="full-rounded form-field password" name="password" minlength="6" maxlength="50" type="password" id="dentist-register-password"/>
+                            <label for="dentist-register-password" @if(!empty($incompletedRegistrationData)) class="active-label gateway-platform-color-important" @endif>Password:</label>
+                            <input class="full-rounded form-field password @if(!empty($incompletedRegistrationData)) gateway-platform-border-color-important @endif" name="password" minlength="6" maxlength="50" type="password" id="dentist-register-password" @if(!empty($incompletedRegistrationData)) value="{{$incompletedRegistrationData->password}}" @endif/>
                         </div>
                     </div>
                     <div class="padding-bottom-20 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
-                            <label for="dentist-register-repeat-password">Repeat password:</label>
-                            <input class="full-rounded form-field repeat-password" name="repeat-password" minlength="6" maxlength="50" type="password" id="dentist-register-repeat-password"/>
+                            <label for="dentist-register-repeat-password" @if(!empty($incompletedRegistrationData)) class="active-label gateway-platform-color-important" @endif>Repeat password:</label>
+                            <input class="full-rounded form-field repeat-password @if(!empty($incompletedRegistrationData)) gateway-platform-border-color-important @endif" name="repeat-password" minlength="6" maxlength="50" type="password" id="dentist-register-repeat-password" @if(!empty($incompletedRegistrationData)) value="{{$incompletedRegistrationData->password}}" @endif/>
                         </div>
                     </div>
                 </div>
