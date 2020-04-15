@@ -171,7 +171,7 @@ class UserController extends Controller {
 
         $data = $request->input();
 
-        $staging = $data['staging'];
+        $staging = $request->input('staging');
         if (!empty($staging)) {
             $api_response = (new APIRequestsController())->dentistLogin($data, true, 'https://dev-api.dentacoin.com/api/login');
         } else {
