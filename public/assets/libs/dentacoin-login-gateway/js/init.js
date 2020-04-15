@@ -111,7 +111,7 @@ if (typeof jQuery == 'undefined') {
                 return (/[A-Z]/.test(str));
             },
             validatePassword: function(password) {
-                return password.trim().length > 8 && password.trim().length < 30 && dcnGateway.utils.hasLowerCase(password) && dcnGateway.utils.hasUpperCase(password) && dcnGateway.utils.hasNumber(password);
+                return password.trim().length >= 8 && password.trim().length <= 30 && dcnGateway.utils.hasLowerCase(password) && dcnGateway.utils.hasUpperCase(password) && dcnGateway.utils.hasNumber(password);
             },
             getGETParameters: function() {
                 var prmstr = window.location.search.substr(1);
@@ -726,7 +726,7 @@ if (typeof jQuery == 'undefined') {
                                                         'password': password,
                                                         'password-repeat': $('.dentist .form-login #dentist-update-password #dentist-update-repeat-password-field').val().trim()
                                                     };
-                                                    var editUserDataResponse = await dcnGateway.dcnGatewayRequests.editUserData(editUserDataData, loggingDentistResponse.success.data.token);
+                                                    var editUserDataResponse = await dcnGateway.dcnGatewayRequests.editUserData(editUserDataData, loggingDentistResponse.data.token);
                                                     if (editUserDataResponse.success) {
                                                         // on success save email to db
                                                         $.event.trigger({
