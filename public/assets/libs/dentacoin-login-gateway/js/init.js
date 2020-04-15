@@ -432,10 +432,18 @@ if (typeof jQuery == 'undefined') {
                 var getParams = dcnGateway.utils.getGETParameters();
                 console.log(getParams, 'getParams');
 
-                async function showGateway(type) {
+                async function showGateway(type, data) {
                     var gatewayData = {
                         'type' : type
                     };
+
+                    if (data != undefined) {
+                        gatewayData.data = data;
+                    }
+
+                    if (environment == 'staging') {
+                        gatewayData.staging = true;
+                    }
 
                     // if inviter in the URL pass it to the gateway
                     if (getParams.hasOwnProperty('inviter')) {
@@ -1272,6 +1280,11 @@ if (typeof jQuery == 'undefined') {
                     }
                 } else if (hasOwnProperty.call(getParams, 'inviter')) {
                     showGateway('patient-register');
+                } else if (hasOwnProperty.call(getParams, 'temp-data-key') && hasOwnProperty.call(getParams, 'temp-data-id')) {
+                    showGateway('incompleted-patient-register', {
+                        key: getParams['temp-data-key'],
+                        id: getParams['temp-data-id']
+                    });
                 }
             }
         }
