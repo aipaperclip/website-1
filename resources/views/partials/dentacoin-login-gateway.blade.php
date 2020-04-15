@@ -232,6 +232,9 @@
                         <div class="alert alert-warning different-country-hint margin-top-10 margin-bottom-10">Unable to proceed. Please, choose address from your country.</div>
                     </div>
                     <div class="padding-bottom-15 field-parent">
+                        {{var_dump(!empty($incompletedRegistrationData))}}
+                        {{var_dump(property_exists($incompletedRegistrationData, 'website'))}}
+                        {{var_dump(!empty($incompletedRegistrationData->website))}}
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
                             <label for="dentist-register-website">Website: http(s)://:</label>
                             <input class="full-rounded form-field required" name="website" id="dentist-register-website" maxlength="250" type="url" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'website') && !empty($incompletedRegistrationData->website)) value="{{$incompletedRegistrationData->website}}" @endif/>
