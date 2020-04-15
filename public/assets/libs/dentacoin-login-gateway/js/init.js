@@ -237,6 +237,7 @@ if (typeof jQuery == 'undefined') {
                             dcnGateway.utils.readURL(this, 2, allowedImagesExtensions, function(e, filename) {
                                 if (filename != '' && filename != undefined) {
                                     $('.avatar-name').show().find('span').html(filename.slice(0, 15) + '...');
+                                    $('.upload-label-btn').addClass('less-padding');
                                 }
 
                                 $('#cropper-container').addClass('width-and-height');
@@ -249,12 +250,20 @@ if (typeof jQuery == 'undefined') {
                                     enableOrientation: true,
                                     enforceBoundary: false
                                 };
-                                
-                                croppieParams.viewport = {
-                                    width: 140,
-                                    height: 140
-                                };
-                                croppieParams.boundary = {width: 140, height: 140};
+
+                                if ($(window).width() < 768) {
+                                    croppieParams.viewport = {
+                                        width: 200,
+                                        height: 200
+                                    };
+                                    croppieParams.boundary = {width: 110, height: 110};
+                                } else {
+                                    croppieParams.viewport = {
+                                        width: 140,
+                                        height: 140
+                                    };
+                                    croppieParams.boundary = {width: 200, height: 200};
+                                }
 
                                 croppie_instance = $('#cropper-container').croppie(croppieParams);
 

@@ -649,6 +649,12 @@
             width: calc(100% - 30px);
         }
     }
+    .upload-label-btn {
+        padding-top: 25px;
+        &.less-padding {
+            padding-top: 10px;
+        }
+    }
     @include breakpoint($xs) {
         width: 100%;
     }

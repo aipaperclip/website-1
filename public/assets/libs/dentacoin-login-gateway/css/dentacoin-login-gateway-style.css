@@ -1106,6 +1106,10 @@
       display: inline-block;
       vertical-align: middle;
       width: calc(100% - 30px); }
+  .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .upload-label-btn {
+    padding-top: 25px; }
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .upload-label-btn.less-padding {
+      padding-top: 10px; }
   @media screen and (max-width: 767px) {
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar {
       width: 100%; } }
