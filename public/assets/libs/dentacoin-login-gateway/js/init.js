@@ -1110,7 +1110,7 @@ if (typeof jQuery == 'undefined') {
                 $('.open-dentacoin-gateway').click(function() {
                     if ($(this).hasClass('patient-login')) {
                         showGateway('patient-login');
-                    } else if ($(this).hasClass('patient-register')) {
+                    } else if ($(this).hasClass('patient-register') || $(this).hasClass('inviter')) {
                         showGateway('patient-register');
                     } else if ($(this).hasClass('dentist-login')) {
                         showGateway('dentist-login');
