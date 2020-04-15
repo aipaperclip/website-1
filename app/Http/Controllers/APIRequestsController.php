@@ -531,8 +531,8 @@ class APIRequestsController extends Controller {
             CURLOPT_URL => $url,
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_POSTFIELDS => array(
-                'key' => $key,
-                'id' => $id
+                'temp-data-key' => $key,
+                'temp-data-id' => $id
             )
         ));
 
