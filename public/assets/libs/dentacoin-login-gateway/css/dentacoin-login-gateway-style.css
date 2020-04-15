@@ -1092,18 +1092,19 @@
   width: 180px; }
   .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name {
     display: none;
+    padding-top: 25px;
     font-size: 0; }
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name label {
       color: red;
       font-size: 20px;
       width: 30px;
       display: inline-block;
-      vertical-align: top;
+      vertical-align: middle;
       text-align: right; }
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name span {
-      font-size: 14px;
+      font-size: 30px;
       display: inline-block;
-      vertical-align: top;
+      vertical-align: middle;
       width: calc(100% - 30px); }
   @media screen and (max-width: 767px) {
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar {
