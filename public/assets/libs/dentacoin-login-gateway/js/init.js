@@ -1110,7 +1110,7 @@ if (typeof jQuery == 'undefined') {
                 $('.open-dentacoin-gateway').click(function() {
                     if ($(this).hasClass('patient-login')) {
                         showGateway('patient-login');
-                    } else if ($(this).hasClass('patient-register') || $(this).hasClass('inviter')) {
+                    } else if ($(this).hasClass('patient-register')) {
                         showGateway('patient-register');
                     } else if ($(this).hasClass('dentist-login')) {
                         showGateway('dentist-login');
@@ -1127,6 +1127,8 @@ if (typeof jQuery == 'undefined') {
                     } else {
                         showGateway(getParams['dcn-gateway-type']);
                     }
+                } else if (hasOwnProperty.call(getParams, 'inviter')) {
+                    showGateway('patient-register');
                 }
             }
         }
