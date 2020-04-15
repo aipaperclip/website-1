@@ -11,7 +11,7 @@
     <a href="javascript:void(0)" class="inline-block init-dentists-click-event @if($type == 'dentist-login' || $type == 'dentist-register') active @endif" data-type="dentist">DENTISTS</a>
 </div>
 <div class="dentacoin-login-gateway-fs-0 popup-body">
-    <div class="patient inline-block gateway-platform-background-color @if($type == 'dentist-login' || $type == 'dentist-register') custom-hide @endif">
+    <div class="patient inline-block gateway-platform-background-color @if($type == 'dentist-login' || $type == 'dentist-register' || $type == 'incompleted-patient-register') custom-hide @endif">
         <div class="form-login @if($type == 'patient-register' || $type == 'dentist-register') display-none @endif">
             <h2 class="login-section-title">LOG IN</h2>
             <div class="form-login-fields">
@@ -68,7 +68,7 @@
         </div>
     </div>
     <div class="dentist inline-block @if($type == 'patient-login' || $type == 'patient-register') custom-hide @endif">
-        <div class="form-login @if($type == 'dentist-register' || $type == 'patient-register') display-none @endif">
+        <div class="form-login @if($type == 'dentist-register' || $type == 'patient-register' || $type = 'incompleted-patient-register') display-none @endif">
             <h2>LOG IN</h2>
             <form method="POST" id="dentist-login">
                 <div class="padding-bottom-10 field-parent">
@@ -99,8 +99,8 @@
             <div class="step first @if(empty($currentActiveStep)) visible @endif" data-step="first">
                     <div class="padding-bottom-10 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
-                            <label for="dentist-register-email">Work Email Address:</label>
-                            <input class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-register-email" @if(!empty($currentActiveStep) && $currentActiveStep == 'third') value="{{$currentActiveStep->email}}" @endif/>
+                            <label for="dentist-register-email" @if(!empty($currentActiveStep) && !empty($currentActiveStep->email)) class="active-label gateway-platform-color-important" @endif>Work Email Address:</label>
+                            <input class="full-rounded form-field  @if(!empty($currentActiveStep) && !empty($currentActiveStep->email)) gateway-platform-border-color-important @endif" name="email" maxlength="100" type="email" id="dentist-register-email" @if(!empty($currentActiveStep) && $currentActiveStep == 'third') value="{{$currentActiveStep->email}}" @endif/>
                         </div>
                     </div>
                     <div class="padding-bottom-10 field-parent">
