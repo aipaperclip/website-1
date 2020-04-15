@@ -256,13 +256,13 @@ if (typeof jQuery == 'undefined') {
                                         width: 200,
                                         height: 200
                                     };
-                                    croppieParams.boundary = {width: 110, height: 110};
+                                    croppieParams.boundary = {width: 200, height: 200};
                                 } else {
                                     croppieParams.viewport = {
                                         width: 140,
                                         height: 140
                                     };
-                                    croppieParams.boundary = {width: 200, height: 200};
+                                    croppieParams.boundary = {width: 140, height: 140};
                                 }
 
                                 croppie_instance = $('#cropper-container').croppie(croppieParams);

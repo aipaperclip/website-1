@@ -1125,7 +1125,8 @@
   @media screen and (max-width: 767px) {
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .specializations {
       padding-left: 0;
-      width: 100%; } }
+      width: 100%;
+      padding-top: 30px; } }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .specializations h4 {
   width: calc(100% - 180px);

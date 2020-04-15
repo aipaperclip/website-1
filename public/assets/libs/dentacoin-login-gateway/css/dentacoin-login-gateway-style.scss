@@ -672,6 +672,7 @@
     @include breakpoint($xs) {
         padding-left: 0;
         width: 100%;
+        padding-top: 30px;
     }
 }
 
