@@ -1100,12 +1100,16 @@
       width: 30px;
       display: inline-block;
       vertical-align: middle;
-      text-align: right; }
+      text-align: right;
+      cursor: pointer; }
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name span {
       font-size: 14px;
       display: inline-block;
       vertical-align: middle;
       width: calc(100% - 30px); }
+    @media screen and (max-width: 767px) {
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name {
+        padding-top: 10px; } }
   .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .upload-label-btn {
     padding-top: 25px; }
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .upload-label-btn.less-padding {

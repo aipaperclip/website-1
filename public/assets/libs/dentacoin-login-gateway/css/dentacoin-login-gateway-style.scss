@@ -55,7 +55,7 @@
             }
             @include breakpoint($xs) {
                 width: 100%;
-                height: auto; 
+                height: auto;
             }
         }
         .max-size-label {
@@ -641,12 +641,16 @@
             display: inline-block;
             vertical-align: middle;
             text-align: right;
+            cursor: pointer;  
         }
         span {
             font-size: 14px;
             display: inline-block;
             vertical-align: middle;
             width: calc(100% - 30px);
+        }
+        @include breakpoint($xs) {
+            padding-top: 10px;
         }
     }
     .upload-label-btn {
