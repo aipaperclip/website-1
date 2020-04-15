@@ -703,7 +703,7 @@ if (typeof jQuery == 'undefined') {
                                     } else {
                                         dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                                     }
-                                } else if (check_account_response.error) {
+                                } else if (submit_form && check_account_response.error) {
                                     dcnGateway.utils.customErrorHandle(this_form.find('input[name="password"]').closest('.field-parent'), check_account_response.message);
                                 }
                             }
