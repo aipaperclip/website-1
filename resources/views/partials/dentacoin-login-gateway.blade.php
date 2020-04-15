@@ -96,11 +96,11 @@
         <div class="form-register @if($type == 'dentist-login' || $type == 'patient-login') display-none @endif">
             <h2>SIGN UP</h2>
             <form method="POST" enctype="multipart/form-data" id="dentist-register">
-            <div class="step first @if(empty($currentActiveStep)) visible @endif" data-step="first">
+            <div class="step first @if(!isset($currentActiveStep)) visible @endif" data-step="first">
                     <div class="padding-bottom-10 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
-                            <label for="dentist-register-email" @if(!empty($currentActiveStep) && !empty($currentActiveStep->email)) class="active-label gateway-platform-color-important" @endif>Work Email Address:</label>
-                            <input class="full-rounded form-field  @if(!empty($currentActiveStep) && !empty($currentActiveStep->email)) gateway-platform-border-color-important @endif" name="email" maxlength="100" type="email" id="dentist-register-email" @if(!empty($currentActiveStep) && $currentActiveStep == 'third') value="{{$currentActiveStep->email}}" @endif/>
+                            <label for="dentist-register-email" @if(!empty($incompletedRegistrationData) && !empty($incompletedRegistrationData->email)) class="active-label gateway-platform-color-important" @endif>Work Email Address:</label>
+                            <input class="full-rounded form-field  @if(!empty($incompletedRegistrationData) && !empty($incompletedRegistrationData->email)) gateway-platform-border-color-important @endif" name="email" maxlength="100" type="email" id="dentist-register-email" @if(!empty($incompletedRegistrationData) && $incompletedRegistrationData == 'third') value="{{$incompletedRegistrationData->email}}" @endif/>
                         </div>
                     </div>
                     <div class="padding-bottom-10 field-parent">
