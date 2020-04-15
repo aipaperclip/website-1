@@ -43,6 +43,8 @@ if (typeof jQuery == 'undefined') {
                 });
             },
             editUserData: async function(data, token) {
+                console.log(data, 'data');
+                console.log(token, 'token');
                 return await $.ajax({
                     type: 'POST',
                     url: apiDomain + '/api/user/',
@@ -688,7 +690,8 @@ if (typeof jQuery == 'undefined') {
                                     if (loggingDentistResponse.success) {
                                         // if password is weak force dentist to update it
                                         if (!dcnGateway.utils.validatePassword($('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim())) {
-                                            $('.dentist .form-login').html('<h2>UPDATE YOUR PASSWORD</h2><form method="POST" id="dentist-update-password"><div class="padding-bottom-10 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="dentist-register-password">Password:</label><input class="full-rounded form-field required password" minlength="8" maxlength="30" type="password" id="dentist-update-password-field"/></div></div><div class="padding-bottom-20 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="dentist-register-repeat-password">Repeat password:</label><input class="full-rounded form-field required repeat-password" minlength="8" maxlength="30" type="password" id="dentist-update-repeat-password-field"/></div></div><div class="dentist-update-password-errors"></div><div class="btn-container text-center padding-top-20 padding-bottom-50"><input type="submit" value="SAVE" class="platform-button gateway-platform-background-color dentacoin-login-gateway-fs-20"/></div></form>');
+                                            console.log(loggingDentistResponse.success, 'loggingDentistResponse.success');
+                                            $('.dentist .form-login').html('<h2>UPDATE YOUR PASSWORD</h2><form method="POST" id="dentist-update-password"><div class="padding-bottom-10 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="dentist-update-password-field">Password:</label><input class="full-rounded form-field required password" minlength="8" maxlength="30" type="password" id="dentist-update-password-field"/></div></div><div class="padding-bottom-20 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="dentist-update-repeat-password-field">Repeat password:</label><input class="full-rounded form-field required repeat-password" minlength="8" maxlength="30" type="password" id="dentist-update-repeat-password-field"/></div></div><div class="dentist-update-password-errors"></div><div class="btn-container text-center padding-top-20 padding-bottom-50"><input type="submit" value="SAVE" class="platform-button gateway-platform-background-color dentacoin-login-gateway-fs-20"/></div></form>');
                                             
                                             $('.dentist .form-login #dentist-update-password').on('submit', async function(event) {
                                                 var this_form_native = this;
