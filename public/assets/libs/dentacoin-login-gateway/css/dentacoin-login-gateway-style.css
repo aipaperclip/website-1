@@ -158,8 +158,8 @@
     margin: 10px auto !important; }
   @media screen and (max-width: 767px) {
     .module.avatar #cropper-container.width-and-height {
-      width: 150px;
-      height: 150px; } }
+      width: 100%;
+      height: 160px; } }
 .module.avatar .max-size-label label {
   display: none;
   cursor: pointer;
@@ -1096,19 +1096,19 @@
     font-size: 0; }
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name label {
       color: red;
-      font-size: 20px;
+      font-size: 36px;
       width: 30px;
       display: inline-block;
       vertical-align: middle;
       text-align: right; }
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name span {
-      font-size: 30px;
+      font-size: 14px;
       display: inline-block;
       vertical-align: middle;
       width: calc(100% - 30px); }
   @media screen and (max-width: 767px) {
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar {
-      width: 150px; } }
+      width: 100%; } }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .captcha-container {
   text-align: center;
@@ -1120,14 +1120,17 @@
   color: black; }
   @media screen and (max-width: 767px) {
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .specializations {
-      padding-left: 10px;
-      width: calc(100% - 150px); } }
+      padding-left: 0;
+      width: 100%; } }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .specializations h4 {
   width: calc(100% - 180px);
   padding-left: 20px;
   color: black;
   padding-bottom: 10px; }
+  @media screen and (max-width: 767px) {
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .specializations h4 {
+      width: 100%; } }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .combobox-container .input-group {
   display: block; }

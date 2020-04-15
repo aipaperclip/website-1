@@ -249,20 +249,12 @@ if (typeof jQuery == 'undefined') {
                                     enableOrientation: true,
                                     enforceBoundary: false
                                 };
-
-                                if ($(window).width() < 768) {
-                                    croppieParams.viewport = {
-                                        width: 110,
-                                        height: 110
-                                    };
-                                    croppieParams.boundary = {width: 110, height: 110};
-                                } else {
-                                    croppieParams.viewport = {
-                                        width: 140,
-                                        height: 140
-                                    };
-                                    croppieParams.boundary = {width: 140, height: 140};
-                                }
+                                
+                                croppieParams.viewport = {
+                                    width: 140,
+                                    height: 140
+                                };
+                                croppieParams.boundary = {width: 140, height: 140};
 
                                 croppie_instance = $('#cropper-container').croppie(croppieParams);
 
