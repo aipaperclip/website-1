@@ -39,6 +39,7 @@
 
     dcnGateway.init({
         'platform' : 'dentacoin',
+        'environment' : 'staging',
         'forgotten_password_link' : 'https://google.com'
     });
 </script>
