@@ -726,7 +726,7 @@ if (typeof jQuery == 'undefined') {
                                                         'password': password,
                                                         'password-repeat': $('.dentist .form-login #dentist-update-password #dentist-update-repeat-password-field').val().trim()
                                                     };
-                                                    var editUserDataResponse = await dcnGateway.dcnGatewayRequests.editUserData(editUserDataData, loggingDentistResponse.success.token);
+                                                    var editUserDataResponse = await dcnGateway.dcnGatewayRequests.editUserData(editUserDataData, loggingDentistResponse.success.data.token);
                                                     if (editUserDataResponse.success) {
                                                         // on success save email to db
                                                         $.event.trigger({
