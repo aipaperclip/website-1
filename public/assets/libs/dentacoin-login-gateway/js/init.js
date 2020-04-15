@@ -987,17 +987,19 @@ if (typeof jQuery == 'undefined') {
                                             errors = true;
                                         }
 
-                                        if ($('.dentacoin-login-gateway-container .step.second #practice-name').val().trim() == '') {
-                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-name').closest('.field-parent'), 'This field is required.');
-                                            errors = true;
-                                        }
+                                        if ($('.dentacoin-login-gateway-container .step.second [name="dentist-type"]:checked').val() == 'work_at_practice') {
+                                            if ($('.dentacoin-login-gateway-container .step.second #practice-name').val().trim() == '') {
+                                                dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-name').closest('.field-parent'), 'This field is required.');
+                                                errors = true;
+                                            }
 
-                                        if ($('.dentacoin-login-gateway-container .step.second #practice-email').val().trim() == '') {
-                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-email').closest('.field-parent'), 'This field is required.');
-                                            errors = true;
-                                        } else if (!dcnGateway.utils.validateEmail($('.dentacoin-login-gateway-container .step.second #practice-email').val().trim())) {
-                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-email').closest('.field-parent'), 'Please use valid email address.');
-                                            errors = true;
+                                            if ($('.dentacoin-login-gateway-container .step.second #practice-email').val().trim() == '') {
+                                                dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-email').closest('.field-parent'), 'This field is required.');
+                                                errors = true;
+                                            } else if (!dcnGateway.utils.validateEmail($('.dentacoin-login-gateway-container .step.second #practice-email').val().trim())) {
+                                                dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-email').closest('.field-parent'), 'Please use valid email address.');
+                                                errors = true;
+                                            }
                                         }
                                     }
 
@@ -1028,7 +1030,7 @@ if (typeof jQuery == 'undefined') {
                                             secondStepIncompleteRegistrationParams['title'] = $('.dentacoin-login-gateway-container form#dentist-register select[name="dentist-title"]').val().trim();
                                             secondStepIncompleteRegistrationParams['dentist_practice'] = $('.dentacoin-login-gateway-container .step.second [name="dentist-type"]:checked').val();
 
-                                            if (registerParams['dentist_practice'] == 'work_at_practice') {
+                                            if (secondStepIncompleteRegistrationParams['dentist_practice'] == 'work_at_practice') {
                                                 secondStepIncompleteRegistrationParams['clinic_name'] = $('.dentacoin-login-gateway-container .step.second #practice-name').val().trim();
                                                 secondStepIncompleteRegistrationParams['clinic_email'] = $('.dentacoin-login-gateway-container .step.second #practice-email').val().trim();
                                             }
