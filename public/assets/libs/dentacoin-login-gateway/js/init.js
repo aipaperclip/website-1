@@ -236,7 +236,7 @@ if (typeof jQuery == 'undefined') {
                             var this_input = $(this);
                             dcnGateway.utils.readURL(this, 2, allowedImagesExtensions, function(e, filename) {
                                 if (filename != '' && filename != undefined) {
-                                    $('.avatar-name').show().find('span').html(filename.slice(0, 15) + '...');
+                                    $('.avatar-name').show().find('span').html(filename.slice(0, 20) + '...');
                                     $('.upload-label-btn').addClass('less-padding');
                                 }
 
