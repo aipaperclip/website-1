@@ -523,14 +523,17 @@ class APIRequestsController extends Controller {
         }
     }
 
-    public function getIncompletedRegistrationData($url = 'https://api.dentacoin.com/api/get-incomplete-registration/')  {
+    public function getIncompletedRegistrationData($key, $id, $url = 'https://api.dentacoin.com/api/get-incomplete-registration/')  {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/user-anonymous/',
+            CURLOPT_URL => $url,
             CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_POSTFIELDS => $data
+            CURLOPT_POSTFIELDS => array(
+                'key' => $key,
+                'id' => $id
+            )
         ));
 
         $resp = json_decode(curl_exec($curl));

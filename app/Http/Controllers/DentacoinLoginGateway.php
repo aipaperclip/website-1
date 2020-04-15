@@ -11,17 +11,17 @@ class DentacoinLoginGateway extends Controller
             'type' => $request->input('type')
         );
 
-        var_dump($request->input());
-        die('asd');
-
         if ($params['type'] == 'incompleted-patient-register') {
             $staging = $request->input('staging');
             if (!empty($staging)) {
-                $incompletedRegistrationData = (new APIRequestsController())->getIncompletedRegistrationData('https://dev-api.dentacoin.com/api/get-incomplete-registration/');
+                $incompletedRegistrationData = (new APIRequestsController())->getIncompletedRegistrationData($request->input('data')['key'], $request->input('data')['id'], 'https://dev-api.dentacoin.com/api/get-incomplete-registration/');
             } else {
-                $incompletedRegistrationData = (new APIRequestsController())->getIncompletedRegistrationData();
+                $incompletedRegistrationData = (new APIRequestsController())->getIncompletedRegistrationData($request->input('data')['key'], $request->input('data')['id']);
             }
         }
+
+        var_dump($incompletedRegistrationData);
+        die('asd');
 
         $inviter = $request->input('inviter');
         if (!empty($inviter)) {
