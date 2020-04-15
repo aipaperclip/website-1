@@ -171,7 +171,13 @@ class UserController extends Controller {
 
         $data = $request->input();
 
-        $api_response = (new APIRequestsController())->dentistLogin($data, true);
+        $staging = $data['staging'];
+        if (!empty($staging)) {
+            $api_response = (new APIRequestsController())->dentistLogin($data, true, 'https://dev-api.dentacoin.com/api/login');
+        } else {
+            $api_response = (new APIRequestsController())->dentistLogin($data, true);
+        }
+
         if ($api_response['success']) {
             $approved_statuses = array('approved', 'pending', 'test');
             if ($api_response['data']['self_deleted'] != NULL) {

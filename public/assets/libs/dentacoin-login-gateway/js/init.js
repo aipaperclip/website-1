@@ -6,6 +6,8 @@ if (typeof jQuery == 'undefined') {
     var loadedAddressSuggesterLib = false;
     var croppie_instance;
     var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
+    var apiDomain = 'https://api.dentacoin.com';
+    var environment = 'live';
     var dcnGateway = {
         dcnGatewayRequests: {
             getPlatformsData: async function() {
@@ -33,7 +35,7 @@ if (typeof jQuery == 'undefined') {
             checkIfFreeEmail: async function(email) {
                 return await $.ajax({
                     type: 'POST',
-                    url: 'https://api.dentacoin.com/api/check-email',
+                    url: apiDomain + '/api/check-email',
                     dataType: 'json',
                     data: {
                         email: email
@@ -43,7 +45,7 @@ if (typeof jQuery == 'undefined') {
             editUserData: async function(email, token) {
                 return await $.ajax({
                     type: 'POST',
-                    url: 'https://api.dentacoin.com/api/user/',
+                    url: apiDomain + '/api/user/',
                     dataType: 'json',
                     data: {
                         email: email
@@ -54,20 +56,28 @@ if (typeof jQuery == 'undefined') {
                 });
             },
             checkDentistAccount: async function (email, password) {
+                var data = {
+                    email: email,
+                    password: password
+                };
+
+                if (environment == 'staging') {
+                    data.staging = true;
+                }
+
+                console.log(data, 'data');
+
                 return await $.ajax({
                     type: 'POST',
                     url: 'https://dentacoin.com/check-dentist-account',
                     dataType: 'json',
-                    data: {
-                        email: email,
-                        password: password
-                    }
+                    data: data
                 })
             },
             validatePhone: async function (phone, country_code) {
                 return await $.ajax({
                     type: 'POST',
-                    url: 'https://api.dentacoin.com/api/phone/',
+                    url: apiDomain + '/api/phone/',
                     dataType: 'json',
                     data: {
                         phone: phone,
@@ -379,6 +389,11 @@ if (typeof jQuery == 'undefined') {
                 if (!navigator.onLine) {
                     console.error('Dentacoin login gateway requires internet connection.');
                     return false;
+                }
+
+                if (hasOwnProperty.call(params, 'environment') && params.environment == 'staging') {
+                    apiDomain = 'https://dev-api.dentacoin.com';
+                    environment = 'staging';
                 }
 
                 var platformsData = await dcnGateway.dcnGatewayRequests.getPlatformsData();
