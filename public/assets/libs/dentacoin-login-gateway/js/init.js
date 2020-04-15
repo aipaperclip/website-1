@@ -685,8 +685,42 @@ if (typeof jQuery == 'undefined') {
                                     });
 
                                     if (loggingDentistResponse.success) {
+                                        // if password is weak force dentist to update it
                                         if (!dcnGateway.utils.validatePassword($('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim())) {
                                             console.log('update password');
+                                            $('.dentist .form-login').html('<h2>UPDATE YOUR PASSWORD</h2><form method="POST" id="dentist-update-password"><div class="padding-bottom-10 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="dentist-register-password">Password:</label><input class="full-rounded form-field required password" minlength="8" maxlength="30" type="password" id="dentist-update-password-field"/></div></div><div class="padding-bottom-20 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="dentist-register-repeat-password">Repeat password:</label><input class="full-rounded form-field required repeat-password" minlength="8" maxlength="30" type="password" id="dentist-update-repeat-password-field"/></div></div><div class="dentist-update-password-errors"></div><div class="btn-container text-center"><input type="submit" value="SAVE" class="platform-button gateway-platform-background-color dentacoin-login-gateway-fs-20"/></div></form>');
+                                            
+                                            $('.dentist .form-login #dentist-update-password').on('submit', function(event) {
+                                                var this_form_native = this;
+                                                var this_form = $(this_form_native);
+                                                var errors = false;
+                                                event.preventDefault();
+                                                $('.dentist .form-login #dentist-update-password .error-handle').remove();
+                                                var dentist_update_password_inputs = $('.dentist .form-login #dentist-update-password .form-field.required');
+                                                
+                                                for(var i = 0, len = dentist_update_password_inputs.length; i < len; i+=1) {
+                                                    if (dentist_update_password_inputs.eq(i).val().trim() == '') {
+                                                        dcnGateway.utils.customErrorHandle(dentist_update_password_inputs.eq(i).closest('.field-parent'), 'This field is required.');
+                                                        errors = true;
+                                                    }
+                                                }
+
+                                                var password = $('.dentist .form-login #dentist-update-password #dentist-update-password-field').val().trim();
+
+                                                if (password != $('.dentist .form-login #dentist-update-password #dentist-update-repeat-password-field').val().trim()) {
+                                                    dcnGateway.utils.customErrorHandle($('.dentist .form-login #dentist-update-password .dentist-update-password-errors'), 'Both passwords don\'t match.');
+                                                    errors = true;
+                                                }
+
+                                                if (!dcnGateway.utils.validatePassword(password)) {
+                                                    dcnGateway.utils.customErrorHandle($('.dentist .form-login #dentist-update-password .dentist-update-password-errors'), 'Password must contain between 8 and 30 symbols with at least one uppercase letter, one lowercase letter and a number or a special character.');
+                                                    errors = true;
+                                                }
+                                                
+                                                if (!errors) {
+                                                    // update pass
+                                                }
+                                            });
                                         } else {
                                             $.event.trigger({
                                                 type: 'dentistAuthSuccessResponse',
@@ -839,24 +873,19 @@ if (typeof jQuery == 'undefined') {
                                             }
                                         }
 
-                                        /*if (first_step_inputs.eq(i).attr('type') == 'password' && first_step_inputs.eq(i).val().length < 6) {
-                                            dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), 'Passwords must be min length 6.');
-                                            errors = true;
-                                        }*/
-
                                         if (first_step_inputs.eq(i).val().trim() == '') {
                                             dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), 'This field is required.');
                                             errors = true;
                                         }
                                     }
 
-                                    var password = $('.dentacoin-login-gateway-container .dentist .form-register .step.first .form-field.password').val();
+                                    var password = $('.dentacoin-login-gateway-container .dentist .form-register .step.first .form-field.password').val().trim();
                                     if (!dcnGateway.utils.validatePassword(password)) {
                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.first .form-field.repeat-password').closest('.field-parent'), 'Password must contain between 8 and 30 symbols with at least one uppercase letter, one lowercase letter and a number or a special character.');
                                         errors = true;
                                     }
 
-                                    if (password.trim() != $('.dentacoin-login-gateway-container .step.first .form-field.repeat-password').val().trim()) {
+                                    if (password != $('.dentacoin-login-gateway-container .step.first .form-field.repeat-password').val().trim()) {
                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.first .form-field.repeat-password').closest('.field-parent'), 'Both passwords don\'t match.');
                                         errors = true;
                                     }
