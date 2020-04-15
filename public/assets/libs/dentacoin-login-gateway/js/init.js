@@ -403,6 +403,7 @@ if (typeof jQuery == 'undefined') {
 
                 // show login gateway by url
                 var getParams = dcnGateway.utils.getGETParameters();
+                console.log(getParams, 'getParams');
 
                 async function showGateway(type) {
                     var gatewayData = {
