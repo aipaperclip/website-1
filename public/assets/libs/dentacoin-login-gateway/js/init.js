@@ -777,7 +777,7 @@ if (typeof jQuery == 'undefined') {
                             $('.dentacoin-login-gateway-container .step.second .show-if-dentist-type-selected').show();
 
                             if ($(this).val() == 'work_at_practice') {
-                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practice').html('<div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practice-name">Practice name:</label><input class="full-rounded form-field required" name="practice-name" maxlength="255" type="text" id="practice-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practice-email">Official email:</label><input class="full-rounded form-field required" name="practice-email" maxlength="100" type="email" id="practice-email"/></div></div>');
+                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practice').html('<div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practice-name">Practice name:</label><input class="full-rounded form-field" name="practice-name" maxlength="255" type="text" id="practice-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practice-email">Official email:</label><input class="full-rounded form-field" name="practice-email" maxlength="100" type="text" id="practice-email"/></div></div>');
                             } else {
                                 $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practice').html('');
                             }
@@ -894,6 +894,19 @@ if (typeof jQuery == 'undefined') {
                                     if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'dentist') {
                                         if ($('.dentacoin-login-gateway-container .step.second [name="dentist-type"]:checked').val() == undefined) {
                                             dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second .dentist-type-checkboxes'), 'Please select one of the options.');
+                                            errors = true;
+                                        }
+
+                                        if ($('.dentacoin-login-gateway-container .step.second #practice-name').val().trim() == '') {
+                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-name').closest('.field-parent'), 'This field is required.');
+                                            errors = true;
+                                        }
+
+                                        if ($('.dentacoin-login-gateway-container .step.second #practice-email').val().trim() == '') {
+                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-email').closest('.field-parent'), 'This field is required.');
+                                            errors = true;
+                                        } else if (!dcnGateway.utils.validateEmail($('.dentacoin-login-gateway-container .step.second #practice-email').val().trim())) {
+                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-email').closest('.field-parent'), 'Please use valid email address.');
                                             errors = true;
                                         }
                                     }
