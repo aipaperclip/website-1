@@ -65,8 +65,6 @@ if (typeof jQuery == 'undefined') {
                     data.staging = true;
                 }
 
-                console.log(data, 'data');
-
                 return await $.ajax({
                     type: 'POST',
                     url: 'https://dentacoin.com/check-dentist-account',
@@ -111,6 +109,9 @@ if (typeof jQuery == 'undefined') {
             },
             hasUpperCase: function(str) {
                 return (/[A-Z]/.test(str));
+            },
+            validatePassword: function(password) {
+                return password.trim().length > 8 && password.trim().length < 30 && dcnGateway.utils.hasLowerCase(password) && dcnGateway.utils.hasUpperCase(password) && dcnGateway.utils.hasNumber(password);
             },
             getGETParameters: function() {
                 var prmstr = window.location.search.substr(1);
@@ -684,12 +685,16 @@ if (typeof jQuery == 'undefined') {
                                     });
 
                                     if (loggingDentistResponse.success) {
-                                        $.event.trigger({
-                                            type: 'dentistAuthSuccessResponse',
-                                            response_data: loggingDentistResponse.success,
-                                            platform_type: params.platform,
-                                            time: new Date()
-                                        });
+                                        if (!dcnGateway.utils.validatePassword($('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim())) {
+                                            console.log('update password');
+                                        } else {
+                                            $.event.trigger({
+                                                type: 'dentistAuthSuccessResponse',
+                                                response_data: loggingDentistResponse.success,
+                                                platform_type: params.platform,
+                                                time: new Date()
+                                            });
+                                        }
                                     } else if (loggingDentistResponse.error) {
                                         if (typeof(loggingDentistResponse.message) === 'object' && loggingDentistResponse.message !== null) {
                                             var error_popup_html = '';
@@ -846,7 +851,7 @@ if (typeof jQuery == 'undefined') {
                                     }
 
                                     var password = $('.dentacoin-login-gateway-container .dentist .form-register .step.first .form-field.password').val();
-                                    if (password.trim().length < 8 || password.trim().length > 30 || !dcnGateway.utils.hasLowerCase(password) || !dcnGateway.utils.hasUpperCase(password) || !dcnGateway.utils.hasNumber(password)) {
+                                    if (!dcnGateway.utils.validatePassword(password)) {
                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.first .form-field.repeat-password').closest('.field-parent'), 'Password must contain between 8 and 30 symbols with at least one uppercase letter, one lowercase letter and a number or a special character.');
                                         errors = true;
                                     }
