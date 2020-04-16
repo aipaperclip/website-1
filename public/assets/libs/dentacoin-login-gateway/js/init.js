@@ -248,6 +248,8 @@ if (typeof jQuery == 'undefined') {
                             }
                         }
                     });
+                } else if (type == 'enrich-profile-response') {
+                    $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper enrich-profile">'+message+'</div></div>');
                 }
             },
             bytesToMegabytes: function(bytes) {
