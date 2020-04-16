@@ -121,7 +121,7 @@ if (typeof jQuery == 'undefined') {
                     data: data
                 });
             },
-            createPatientSession: async function (url, data) {
+            createUserSession: async function (url, data) {
                 return await $.ajax({
                     type: 'POST',
                     url: url,
@@ -698,7 +698,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('patientAuthSuccessResponse', async function (event) {
-                            var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createPatientSession(currentPlatformDomain + 'patient-login', {
+                            var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(currentPlatformDomain + 'patient-login', {
                                 token: event.response_data.token,
                                 id: event.response_data.data.id
                             });
@@ -712,8 +712,20 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('dentistAuthSuccessResponse', async function (event) {
-                            console.log(event.response_data, 'dentistAuthSuccessResponse');
-                            console.log(event.response_data.data.is_clinic, 'event.response_data.data.is_clinic');
+                            var createDentistSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(currentPlatformDomain + 'dentist-login', {
+                                token: event.response_data.token,
+                                id: event.response_data.data.id
+                            });
+
+                            if (createDentistSessionResponse.success) {
+                                window.location.reload();
+                            } else {
+                                dcnGateway.utils.hideLoader();
+                                dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                            }
+                        });
+
+                        $(document).on('dentistRegisterSuccessResponse', async function (event) {
                             if (event.response_data.data.is_clinic) {
                                 $.event.trigger({
                                     type: 'getAfterDentistRegistrationPopupForClinic',
@@ -1390,7 +1402,7 @@ if (typeof jQuery == 'undefined') {
                                         var registeringDentistResponse = await dcnGateway.dcnGatewayRequests.dentistRegistration(registerParams);
                                         if (registeringDentistResponse.success) {
                                             $.event.trigger({
-                                                type: 'dentistAuthSuccessResponse',
+                                                type: 'dentistRegisterSuccessResponse',
                                                 response_data: registeringDentistResponse.data,
                                                 platform_type: params.platform,
                                                 time: new Date()

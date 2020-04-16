@@ -91,8 +91,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/dentist-login', 'UserController@dentistLogin')->name('dentist-login');
 
-    Route::post('/dentist-register', 'UserController@dentistRegister')->name('dentist-register');
-
     Route::post('/patient-login', 'UserController@patientLogin')->name('patient-login');
 
     Route::get('/password-recover', 'UserController@getRecoverPassword')->name('password-recover');

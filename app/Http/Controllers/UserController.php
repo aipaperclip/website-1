@@ -672,4 +672,24 @@ class UserController extends Controller {
 
         return response()->json(['success' => true]);
     }
+
+    protected function dentistLogin(Request $request) {
+        $this->validate($request, [
+            'token' => 'required',
+            'id' => 'required'
+        ], [
+            'token.required' => 'Token is required.',
+            'id.required' => 'ID is required.'
+        ]);
+
+        $session_arr = [
+            'token' => $request->input('token'),
+            'id' => $request->input('id'),
+            'type' => 'dentist'
+        ];
+
+        session(['logged_user' => $session_arr]);
+
+        return response()->json(['success' => true]);
+    }
 }
