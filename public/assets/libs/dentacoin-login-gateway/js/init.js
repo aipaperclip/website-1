@@ -837,10 +837,16 @@ if (typeof jQuery == 'undefined') {
                                 if (submit_form && check_account_response.success) {
                                     dcnGateway.utils.fireGoogleAnalyticsEvent('DentistLogin', 'Click', 'Dentist Login');
 
-                                    var loggingDentistResponse = await dcnGateway.dcnGatewayRequests.dentistLogin({
+                                    var dentistLoginParams = {
                                         'email' : $('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(),
                                         'password' : $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim()
-                                    });
+                                    };
+
+                                    if (environment == 'staging') {
+                                        dentistLoginParams.staging = true;
+                                    }
+
+                                    var loggingDentistResponse = await dcnGateway.dcnGatewayRequests.dentistLogin(dentistLoginParams);
 
                                     if (loggingDentistResponse.success) {
                                         // if password is weak force dentist to update it
@@ -1397,6 +1403,10 @@ if (typeof jQuery == 'undefined') {
                                             if (registerParams['working_position'] == 'other') {
                                                 registerParams['working_position_label'] = $('.dentacoin-login-gateway-container .step.second #clinic-member-job-title-other').val().trim();
                                             }
+                                        }
+
+                                        if (environment == 'staging') {
+                                            registerParams.staging = true;
                                         }
 
                                         var registeringDentistResponse = await dcnGateway.dcnGatewayRequests.dentistRegistration(registerParams);
