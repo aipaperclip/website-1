@@ -13,7 +13,7 @@
 </div>
 <div class="dentacoin-login-gateway-fs-0 popup-body">
     <div class="patient inline-block gateway-platform-background-color @if($type == 'dentist-login' || $type == 'dentist-register' || $type == 'incompleted-dentist-register') custom-hide @endif">
-        <div class="form-login @if($type == 'patient-register' || $type == 'dentist-register') display-none @endif">
+        <div class="form-login @if($type == 'patient-register' || $type == 'dentist-register' || $type == 'incompleted-dentist-register') display-none @endif">
             <h2 class="login-section-title">LOG IN</h2>
             <div class="form-login-fields">
                 <div class="padding-bottom-10">
