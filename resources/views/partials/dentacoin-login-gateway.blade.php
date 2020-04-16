@@ -6,6 +6,7 @@
         @php($currentActiveStep = 'third')
     @endif
 @endif
+{{var_dump($type)}}
 <div class="dentacoin-login-gateway-fs-0 popup-header-action">
     <a href="javascript:void(0)" class="inline-block @if($type == 'patient-login' || $type == 'patient-register') gateway-platform-background-color-important active @endif" data-type="patient">USERS</a>
     <a href="javascript:void(0)" class="inline-block init-dentists-click-event @if($type == 'dentist-login' || $type == 'dentist-register' || $type == 'incompleted-dentist-register') active @endif" data-type="dentist">DENTISTS</a>
@@ -120,14 +121,14 @@
                     <div class="padding-bottom-20 user-type-container dentacoin-login-gateway-fs-0">
                         <input type="hidden" name="user-type" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode)) value="{{$incompletedRegistrationData->mode}}" @endif/>
                         <div class="inline-block-top user-type padding-right-15 @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'dentist') active @endif" data-type="dentist">
-                            <a href="javascript:void(0)" class="custom-button">
-                                <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block user-type-label">Dentist</span>
+                            <a href="javascript:void(0)" class="custom-button @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'dentist') gateway-platform-border-color-important @endif">
+                                <span class="custom-radio inline-block"><span class="circle @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'dentist') gateway-platform-background-color-important @endif"></span></span> <span class="inline-block user-type-label">Dentist</span>
                             </a>
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">For associate dentists OR independent practitioners</div>
                         </div>
                         <div class="inline-block-top user-type padding-left-15 @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'clinic') active @endif" data-type="clinic">
-                            <a href="javascript:void(0)" class="custom-button">
-                                <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block user-type-label">Clinic</span>
+                            <a href="javascript:void(0)" class="custom-button @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'clinic') gateway-platform-border-color-important @endif">
+                                <span class="custom-radio inline-block"><span class="circle @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'clinic') gateway-platform-background-color-important @endif"></span></span> <span class="inline-block user-type-label">Clinic</span>
                             </a>
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">For clinics with more than one dental practitioners</div>
                         </div>
