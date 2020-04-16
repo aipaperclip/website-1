@@ -47,13 +47,13 @@ $(document).ready(async function() {
         }
     }, 2000);
 
-    if (!$('body').hasClass('logged-in')) {
+    /*if (!$('body').hasClass('logged-in')) {
         // =============================================== CIVIC =======================================================
         await $.getScript('/assets/libs/civic-login/civic.js?v='+new Date().getTime(), function() {});
 
         // =============================================== FACEBOOK ====================================================
         await $.getScript('/assets/libs/facebook-login/facebook.js?v='+new Date().getTime(), function() {});
-    }
+    }*/
 });
 
 $(window).on('load', function() {
