@@ -1129,6 +1129,16 @@ if (typeof jQuery == 'undefined') {
                                         if ($('#dentist-country').attr('data-current-user-country-code') != undefined && $('#dentist-country').val() != $('#dentist-country').attr('data-current-user-country-code')) {
                                             dcnGateway.utils.showPopup('Your IP thinks differently. Sure you\'ve entered the right country?', 'warning', function() {
                                                 dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationStep3');
+// save incomplete account creation data
+                                                var thirdStepIncompleteRegistrationParams = {
+                                                    'platform' : params.platform,
+                                                    'email' : $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-email').val().trim(),
+                                                    'country-code' : $('.dentacoin-login-gateway-container .step.third [name="country-code"]').val(),
+                                                    'address' : $('.dentacoin-login-gateway-container .step.third #dentist-register-address').val().trim(),
+                                                    'website' : $('.dentacoin-login-gateway-container .step.third #dentist-register-website').val().trim(),
+                                                    'phone' : $('.dentacoin-login-gateway-container .step.third #dentist-register-phone').val().trim()
+                                                };
+                                                dcnGateway.dcnGatewayRequests.saveIncompleteRegistration(thirdStepIncompleteRegistrationParams);
 
                                                 $('.dentacoin-login-gateway-container .dentist .form-register .step').removeClass('visible');
                                                 $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').addClass('visible');
