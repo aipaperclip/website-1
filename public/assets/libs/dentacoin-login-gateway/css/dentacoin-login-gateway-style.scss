@@ -2,6 +2,10 @@
 @import "../../../scss/additionals/mixins";
 @import "../../../scss/additionals/fonts";
 
+.dentacoin-login-gateway-overflow-hidden {
+    overflow: hidden;
+}
+
 .module {
     &.avatar {
         input[type="file"] {

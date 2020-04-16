@@ -111,6 +111,9 @@
 .lato-regular {
   font-family: "Lato-Regular"; }
 
+.dentacoin-login-gateway-overflow-hidden {
+  overflow: hidden; }
+
 .module.avatar input[type="file"] {
   display: none; }
 .module.avatar .btn-wrapper {
