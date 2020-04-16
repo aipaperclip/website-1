@@ -702,11 +702,10 @@ if (typeof jQuery == 'undefined') {
                                 id: event.response_data.data.id
                             });
 
-                            dcnGateway.utils.hideLoader();
-
                             if (createPatientSessionResponse.success) {
                                 window.location.reload();
                             } else {
+                                dcnGateway.utils.hideLoader();
                                 dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                             }
                         });
