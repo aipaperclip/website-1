@@ -122,8 +122,6 @@ if (typeof jQuery == 'undefined') {
                 });
             },
             createPatientSession: async function (url, data) {
-                console.log(url, 'url');
-                console.log(data, 'data');
                 return await $.ajax({
                     type: 'POST',
                     url: url,
@@ -697,14 +695,12 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('patientAuthSuccessResponse', async function (event) {
-                            dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
-
                             var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createPatientSession(currentPlatformDomain + 'patient-login', {
                                 token: event.response_data.token,
                                 id: event.response_data.data.id
                             });
 
-                            console.log(createPatientSessionResponse, 'createPatientSessionResponse');
+                            dcnGateway.utils.hideLoader();
 
                             if (createPatientSessionResponse.success) {
                                 window.location.reload();
