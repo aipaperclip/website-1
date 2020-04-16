@@ -1022,7 +1022,7 @@
             padding: 0; } }
   @media screen and (max-width: 767px) {
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper {
-      margin-top: 100px;
+      margin-top: 50px;
       margin-bottom: 100px; } }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a {
