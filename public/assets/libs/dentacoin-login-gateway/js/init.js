@@ -655,8 +655,8 @@ if (typeof jQuery == 'undefined') {
                                 'user-type': 'clinic'
                             });
 
-                            if (afterDentistRegistrationPopupForClinic.success, 'enrich-profile') {
-                                dcnGateway.utils.showPopup(afterDentistRegistrationPopupForClinic.data);
+                            if (afterDentistRegistrationPopupForClinic.success) {
+                                dcnGateway.utils.showPopup(afterDentistRegistrationPopupForClinic.data, 'enrich-profile');
                             }
                         });
 
