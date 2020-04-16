@@ -190,7 +190,7 @@
     color: #888888;
     font-weight: normal;
     top: 50%;
-    font-family: 'Calibri';
+    font-family: "Calibri-Regular";
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -802,7 +802,7 @@
   top: 0;
   left: 0;
   z-index: 99999;
-  font-family: 'Calibri'; }
+  font-family: "Calibri-Regular"; }
   .dentacoin-login-gateway-response-layer .dentacoin-login-gateway-response-layer-wrapper {
     text-align: center;
     padding-left: 15px;
@@ -851,7 +851,7 @@
   left: 0;
   z-index: 9999;
   overflow: auto;
-  font-family: 'Calibri'; }
+  font-family: "Calibri-Regular"; }
   .dentacoin-login-gateway-container ul, .dentacoin-login-gateway-container li, .dentacoin-login-gateway-container ol {
     margin: 0;
     padding: 0; }
@@ -1237,7 +1237,7 @@
   display: none;
   color: black;
   font-size: 14px;
-  font-family: 'Calibri Light';
+  font-family: "Calibri Light";
   border: 0;
   background: transparent; }
   .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .btns-container .inline-block .prev-step.show {
