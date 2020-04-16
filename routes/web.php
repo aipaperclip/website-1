@@ -109,6 +109,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         Route::post('/handle-dentist-register', 'UserController@handleDentistRegister')->name('handle-dentist-register');
 
         Route::post('/handle-dentist-login', 'UserController@handleDentistLogin')->name('handle-dentist-login');
+
+        Route::post('/get-after-dentist-registration-popup', 'UserController@getAfterDentistRegistrationPopup')->name('get-after-dentist-registration-popup');
     });
 
     Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');

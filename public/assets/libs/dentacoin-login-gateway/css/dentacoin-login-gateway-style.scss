@@ -462,6 +462,50 @@
             }
         }
     }
+    &.enrich-profile {
+        padding: 30px;
+        max-width: 900px;
+        background-color: white;
+        @include vertical-horizontal-align(absolute);
+        .border-bottom {
+            border-bottom: 1px solid black;
+        }
+        .line-crossed {
+            position: relative;
+            text-align: center;
+            span {
+                background-color: white;
+                z-index: 5;
+                padding: 0 10px;
+                position: relative;
+            }
+            &:after {
+                content: '';
+                height: 1px;
+                left: 0;
+                width: 100%;
+                background-color: black;
+                @include vertical-align(absolute);
+            }
+        }
+        form {
+            padding: 0 50px;
+            text-align: left;
+            .error-handle {
+                display: block;
+            }
+            &#enrich-profile {
+                color: #888888;
+                textarea {
+                    border: 1px solid #cccccc;
+                    font-size: 16px;
+                    width: 100%;
+                    padding: 10px;
+                    @include rounded(4px);
+                }
+            }
+        }
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a {

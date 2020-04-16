@@ -104,6 +104,14 @@ if (typeof jQuery == 'undefined') {
                     dataType: 'json',
                     data: data
                 });
+            },
+            getAfterDentistRegistrationPopup: async function (data) {
+                return await $.ajax({
+                    type: 'POST',
+                    url: 'https://dentacoin.com/dentacoin-login-gateway/get-after-dentist-registration-popup',
+                    dataType: 'json',
+                    data: data
+                });
             }
         },
         utils: {
@@ -174,6 +182,10 @@ if (typeof jQuery == 'undefined') {
             showPopup: function(message, type, callback) {
                 if (type == 'alert') {
                     $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup">'+message+'<div class="popup-buttons"><button class="platform-button gateway-platform-background-color cancel-custom-popup">OK</button></div></div></div>');
+
+                    $('.cancel-custom-popup').click(function() {
+                        $(this).closest('.dentacoin-login-gateway-container').remove();
+                    });
                 } else if (type == 'warning') {
                     $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup">'+message+'<div class="popup-buttons"><button class="platform-button proceed-custom-popup green-button">YES</button><button class="platform-button cancel-custom-popup red-button">NO</button></div></div></div>');
                     
@@ -182,11 +194,13 @@ if (typeof jQuery == 'undefined') {
                         callback();
                         $(this).closest('.dentacoin-login-gateway-container').remove();
                     });
-                }
 
-                $('.cancel-custom-popup').click(function() {
-                    $(this).closest('.dentacoin-login-gateway-container').remove();
-                });
+                    $('.cancel-custom-popup').click(function() {
+                        $(this).closest('.dentacoin-login-gateway-container').remove();
+                    });
+                } else if (type == 'enrich-profile') {
+                    $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper enrich-profile">'+message+'</div></div>');
+                }
             },
             bytesToMegabytes: function(bytes) {
                 return bytes / Math.pow(1024, 2);
@@ -624,6 +638,26 @@ if (typeof jQuery == 'undefined') {
                         $(document).on('dentistAuthSuccessResponse', async function (event) {
                             console.log(event.response_data, 'dentistAuthSuccessResponse');
                             dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
+                        });
+
+                        $(document).on('getAfterDentistRegistrationPopupForDentist', async function (event) {
+                            var afterDentistRegistrationPopupForDentist = dcnGateway.dcnGatewayRequests.getAfterDentistRegistrationPopup({
+                                'user-type': 'dentist'
+                            });
+
+                            if (afterDentistRegistrationPopupForDentist.success) {
+                                dcnGateway.dcnGatewayRequests.showPopup(afterDentistRegistrationPopupForDentist.data, 'enrich-profile');
+                            }
+                        });
+
+                        $(document).on('getAfterDentistRegistrationPopupForClinic', async function (event) {
+                            var afterDentistRegistrationPopupForClinic = dcnGateway.dcnGatewayRequests.getAfterDentistRegistrationPopup({
+                                'user-type': 'clinic'
+                            });
+
+                            if (afterDentistRegistrationPopupForClinic.success, 'enrich-profile') {
+                                dcnGateway.dcnGatewayRequests.showPopup(afterDentistRegistrationPopupForClinic.data);
+                            }
                         });
 
                         $(document).on('patientAuthErrorResponse', function (event) {

@@ -602,4 +602,23 @@ class UserController extends Controller {
             return response()->json(['error' => true, 'message' => $api_response['errors']]);
         }
     }
+
+    protected function getAfterDentistRegistrationPopup(Request $request) {
+        $customMessages = [
+            'user-type.required' => 'User type is required.'
+        ];
+        $this->validate($request, [
+            'user-type' => 'required'
+        ], $customMessages);
+
+        if ($request->input('user-type') == 'dentist') {
+            $popup_view = view('partials/popup-dentist-profile-verification-combined-login');
+            return response()->json(['success' => true, 'data' => $popup_view->render()]);
+        }else if ($request->input('user-type') == 'clinic') {
+            $popup_view = view('partials/popup-clinic-profile-verification-combined-login');
+            return response()->json(['success' => true, 'data' => $popup_view->render()]);
+        }
+
+        return response()->json(['error' => true]);
+    }
 }
