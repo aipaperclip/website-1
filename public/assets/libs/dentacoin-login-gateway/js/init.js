@@ -427,29 +427,30 @@ if (typeof jQuery == 'undefined') {
                     }
                 });
             },
-            hideGateway: function() {
+            hideGateway: function(removeEvents) {
                 // remove popup
                 $('.dentacoin-login-gateway-container').remove();
-
-                // reset the event listeners
-                $(document).off('civicCustomBtnClicked');
-                $(document).off('civicRead');
-                $(document).off('receivedFacebookToken');
-                $(document).off('facebookCustomBtnClicked');
-                $(document).off('cannotLoginBecauseOfMissingCookies');
-                $(document).off('noUserIdReceived');
-                $(document).off('noCoreDBApiConnection');
-                $(document).off('customCivicFbStopperTriggered');
-                $(document).off('registeredAccountMissingEmail');
-                $(document).off('patientAuthSuccessResponse');
-                $(document).off('patientAuthErrorResponse');
-                $(document).off('dentistAuthSuccessResponse');
-                $(document).off('noExternalLoginProviderConnection');
-                $(document).off('civicSipError');
-                $(document).off('getAfterDentistRegistrationPopupForDentist');
-                $(document).off('getAfterDentistRegistrationPopupForClinic');
-
                 $('body').removeClass('dentacoin-login-gateway-overflow-hidden');
+
+                if (removeEvents != undefined && removeEvents == true) {
+                    // reset the event listeners
+                    $(document).off('civicCustomBtnClicked');
+                    $(document).off('civicRead');
+                    $(document).off('receivedFacebookToken');
+                    $(document).off('facebookCustomBtnClicked');
+                    $(document).off('cannotLoginBecauseOfMissingCookies');
+                    $(document).off('noUserIdReceived');
+                    $(document).off('noCoreDBApiConnection');
+                    $(document).off('customCivicFbStopperTriggered');
+                    $(document).off('registeredAccountMissingEmail');
+                    $(document).off('patientAuthSuccessResponse');
+                    $(document).off('patientAuthErrorResponse');
+                    $(document).off('dentistAuthSuccessResponse');
+                    $(document).off('noExternalLoginProviderConnection');
+                    $(document).off('civicSipError');
+                    $(document).off('getAfterDentistRegistrationPopupForDentist');
+                    $(document).off('getAfterDentistRegistrationPopupForClinic');
+                }
             },
             hidePopup: function() {
                 // remove popup
@@ -535,7 +536,7 @@ if (typeof jQuery == 'undefined') {
                             loadedSocialLibs = true;
                         }
 
-                        dcnGateway.utils.hideGateway();
+                        dcnGateway.utils.hideGateway(true);
 
                         $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
 
@@ -681,7 +682,7 @@ if (typeof jQuery == 'undefined') {
                                             time: new Date()
                                         });
 
-                                        dcnGateway.utils.hideGateway();
+                                        dcnGateway.utils.hideGateway(true);
                                     } else if (editUserDataResponse.errors) {
                                         var error_popup_html = '';
                                         for(var key in editUserDataResponse.errors) {
@@ -878,7 +879,7 @@ if (typeof jQuery == 'undefined') {
                                                             time: new Date()
                                                         });
 
-                                                        dcnGateway.utils.hideGateway();
+                                                        dcnGateway.utils.hideGateway(true);
                                                     } else if (editUserDataResponse.errors) {
                                                         var error_popup_html = '';
                                                         for(var key in editUserDataResponse.errors) {
@@ -899,7 +900,7 @@ if (typeof jQuery == 'undefined') {
                                                 time: new Date()
                                             });
 
-                                            dcnGateway.utils.hideGateway();
+                                            dcnGateway.utils.hideGateway(true);
                                         }
                                     } else if (loggingDentistResponse.error) {
                                         if (typeof(loggingDentistResponse.message) === 'object' && loggingDentistResponse.message !== null) {
@@ -1395,7 +1396,7 @@ if (typeof jQuery == 'undefined') {
                                                 time: new Date()
                                             });
 
-                                            dcnGateway.utils.hideGateway();
+                                            dcnGateway.utils.hideGateway(true);
                                         } else if (registeringDentistResponse.error) {
                                             if (typeof(registeringDentistResponse.message) === 'object' && registeringDentistResponse.message !== null) {
                                                 var error_popup_html = '';
@@ -1423,7 +1424,7 @@ if (typeof jQuery == 'undefined') {
 
                 $(document).on('click', '.dentacoin-login-gateway-container', function(event) {
                     if (event.target.className == 'dentacoin-login-gateway-container') {
-                        dcnGateway.utils.hideGateway();
+                        dcnGateway.utils.hideGateway(true);
                     }
                 });
 
