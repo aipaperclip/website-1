@@ -238,8 +238,10 @@ if (typeof jQuery == 'undefined') {
                             if (enrichProfileResponse.success) {
                                 $('form#enrich-profile').html('<div class="alert alert-success">'+enrichProfileResponse.data+'</div>')
                             } else if (enrichProfileResponse.error) {
+                                dcnGateway.utils.hidePopup();
                                 dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                             } else {
+                                dcnGateway.utils.hidePopup();
                                 dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                             }
                         }
