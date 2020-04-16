@@ -207,6 +207,7 @@ if (typeof jQuery == 'undefined') {
                         $(this).closest('.dentacoin-login-gateway-container').remove();
                     });
                 } else if (type == 'enrich-profile') {
+                    console.log(data, 'data');
                     $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper enrich-profile">'+message+'</div></div>');
 
                     $('form#enrich-profile').on('submit', async function(event) {
@@ -223,6 +224,12 @@ if (typeof jQuery == 'undefined') {
                                 description: this_form.find('#description').val().trim()
                             });
 
+                            console.log({
+                                user: data.user,
+                                description: this_form.find('#description').val().trim()
+                            });
+
+                            console.log(enrichProfileResponse, 'enrichProfileResponse');
                             if (enrichProfileResponse.success) {
                                 dcnGateway.utils.showPopup(enrichProfileResponse.data, 'alert');
                             } else if (enrichProfileResponse.error) {
@@ -673,10 +680,28 @@ if (typeof jQuery == 'undefined') {
 
                         $(document).on('dentistAuthSuccessResponse', async function (event) {
                             console.log(event.response_data, 'dentistAuthSuccessResponse');
-                            dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
+                            console.log(event.response_data.data.is_clinic, 'event.response_data.data.is_clinic');
+                            if (event.response_data.data.is_clinic) {
+                                $.event.trigger({
+                                    type: 'getAfterDentistRegistrationPopupForClinic',
+                                    time: new Date(),
+                                    response_data: {
+                                        user: event.response_data.data.id
+                                    }
+                                });
+                            } else {
+                                $.event.trigger({
+                                    type: 'getAfterDentistRegistrationPopupForDentist',
+                                    time: new Date(),
+                                    response_data: {
+                                        user: event.response_data.data.id
+                                    }
+                                });
+                            }
                         });
 
                         $(document).on('getAfterDentistRegistrationPopupForDentist', async function (event) {
+                            console.log('getAfterDentistRegistrationPopupForDentist');
                             var afterDentistRegistrationPopupForDentist = await dcnGateway.dcnGatewayRequests.getAfterDentistRegistrationPopup({
                                 'user-type': 'dentist'
                             });
@@ -689,6 +714,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('getAfterDentistRegistrationPopupForClinic', async function (event) {
+                            console.log('getAfterDentistRegistrationPopupForClinic');
                             var afterDentistRegistrationPopupForClinic = await dcnGateway.dcnGatewayRequests.getAfterDentistRegistrationPopup({
                                 'user-type': 'clinic'
                             });
@@ -1030,6 +1056,8 @@ if (typeof jQuery == 'undefined') {
                                 }
                                 loadedAddressSuggesterLib = false;
                             }
+
+                            await $.getScript('https://www.google.com/recaptcha/api.js', function() {});
                         }
 
                         if ($('.next-step').attr('data-cached-step') == 'true') {
