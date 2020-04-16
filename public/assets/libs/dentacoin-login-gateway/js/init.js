@@ -1138,7 +1138,7 @@ if (typeof jQuery == 'undefined') {
                                                 var thirdStepIncompleteRegistrationParams = collectFirstAndSecondStepData();
                                                 thirdStepIncompleteRegistrationParams.platform = params.platform;
                                                 thirdStepIncompleteRegistrationParams.email = $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-email').val().trim();
-                                                thirdStepIncompleteRegistrationParams['country-code'] = $('.dentacoin-login-gateway-container .step.third [name="country-code"]').val();
+                                                thirdStepIncompleteRegistrationParams['country-id'] = $('.dentacoin-login-gateway-container .step.third [name="country-code"] option:selected').attr('data-code');
                                                 thirdStepIncompleteRegistrationParams.address = $('.dentacoin-login-gateway-container .step.third #dentist-register-address').val().trim();
                                                 thirdStepIncompleteRegistrationParams.website = $('.dentacoin-login-gateway-container .step.third #dentist-register-website').val().trim();
                                                 thirdStepIncompleteRegistrationParams.phone = $('.dentacoin-login-gateway-container .step.third #dentist-register-phone').val().trim();
@@ -1156,7 +1156,7 @@ if (typeof jQuery == 'undefined') {
                                             var thirdStepIncompleteRegistrationParams = collectFirstAndSecondStepData();
                                             thirdStepIncompleteRegistrationParams.platform = params.platform;
                                             thirdStepIncompleteRegistrationParams.email = $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-email').val().trim();
-                                            thirdStepIncompleteRegistrationParams['country-code'] = $('.dentacoin-login-gateway-container .step.third [name="country-code"]').val();
+                                            thirdStepIncompleteRegistrationParams['country-id'] = $('.dentacoin-login-gateway-container .step.third [name="country-code"] option:selected').attr('data-code');
                                             thirdStepIncompleteRegistrationParams.address = $('.dentacoin-login-gateway-container .step.third #dentist-register-address').val().trim();
                                             thirdStepIncompleteRegistrationParams.website = $('.dentacoin-login-gateway-container .step.third #dentist-register-website').val().trim();
                                             thirdStepIncompleteRegistrationParams.phone = $('.dentacoin-login-gateway-container .step.third #dentist-register-phone').val().trim();
