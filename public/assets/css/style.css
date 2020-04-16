@@ -4584,7 +4584,325 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
     display: flex !important;
     align-items: center;
     justify-content: center;
-}*/ }
+}*/
+    /*&.login-signin-popup {
+        .bootbox-close-button {
+            display: none;
+        }
+        .modal-dialog {
+            width: 95%;
+            max-width: 1000px;
+            .modal-content {
+                background: transparent;
+                border: 0;
+                @include box-shadow(none);
+                .modal-body {
+                    padding: 0;
+                    .popup-header-action {
+                        a {
+                            width: 50%;
+                            font-size: 35px;
+                            padding: 10px;
+                            text-align: center;
+                            border-top: 3px solid white;
+                            border-left: 3px solid white;
+                            border-right: 3px solid white;
+                            @include rounded(4px 4px 0 0);
+                            &[data-type="patient"] {
+                                color: white;
+                                background-color: $dark_blue;
+                                border-bottom: 1px solid white;
+                            }
+                            &[data-type="dentist"] {
+                                color: black;
+                                background-color: white;
+                                border-bottom: 1px solid black;
+                            }
+                            @include breakpoint($xs) {
+                                font-size: 20px;
+                                padding: 10px 5px;
+                            }
+                        }
+                    }
+                    .popup-body {
+                        display: flex;
+                        .dentist {
+                            background: white;
+                            .call-sign-up {
+                                font-family: 'Calibri-Bold';
+                                color: black;
+                                &:hover {
+                                    color: black;
+                                }
+                            }
+                            .popup-half-footer {
+                                padding: 30px 0;
+                                margin-top: 50px;
+                                margin-left: -15%;
+                                margin-right: -15%;
+                                text-align: center;
+                                border-top: 1px solid black;
+                                font-size: 16px;
+                                a {
+                                    font-family: 'Calibri-Bold';
+                                    color: black;
+                                    font-size: 16px;
+                                    text-decoration: underline;
+                                }
+                                @include breakpoint($xs) {
+                                    margin-top: 30px;
+                                    margin-left: auto;
+                                    margin-right: auto;
+                                }
+                            }
+                            .form-register {
+                                .step {
+                                    display: none;
+                                    .pretty {
+                                        white-space: normal;
+                                        padding-bottom: 5px;
+                                        margin-bottom: 0 !important;
+                                        .state {
+                                            position: relative;
+                                            color: black;
+                                            svg.svg {
+                                                left: 0;
+                                                top: 0;
+                                                width: 18px;
+                                                height: 18px;
+                                            }
+                                            i {
+                                                left: 1px;
+                                                top: 1px;
+                                                position: absolute;
+                                            }
+                                            label {
+                                                line-height: 20px;
+                                                &:before, &:after {
+                                                    left: 0;
+                                                    top: 0;
+                                                    width: 18px;
+                                                    height: 18px;
+                                                }
+                                            }
+                                        }
+                                        input:checked~.state.p-success label:after, &.p-toggle .state.p-success label:after {
+                                            background-color: black !important;
+                                        }
+                                    }
+                                    &.visible {
+                                        display: block;
+                                    }
+                                    &.second {
+                                        .user-type-container {
+                                            .user-type {
+                                                width: 50%;
+                                                .custom-button {
+                                                    padding: 5px 10px;
+                                                    display: block;
+                                                    border: 2px solid #dddddd;
+                                                    color: #dddddd;
+                                                    font-size: 20px;
+                                                    @include rounded(4px);
+                                                    .custom-radio {
+                                                        margin-right: 5px;
+                                                        width: 20px;
+                                                        height: 20px;
+                                                        line-height: 20px;
+                                                        border: 1px solid #dddddd;
+                                                        text-align: center;
+                                                        font-size: 0;
+                                                        @include rounded(50%);
+                                                        .circle {
+                                                            width: 10px;
+                                                            height: 10px;
+                                                            background-color: black;
+                                                            background-color: gray;
+                                                            vertical-align: middle;
+                                                            display: none;
+                                                            @include rounded(50%);
+                                                        }
+                                                    }
+                                                }
+                                                &.active {
+                                                    .custom-button {
+                                                        color: $dark_blue;
+                                                        border: 2px solid $dark_blue;
+                                                        .custom-radio {
+                                                            .circle {
+                                                                display: inline-block;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        .privacy-policy-row {
+                                            input[type='checkbox'] {
+                                                max-width: 170px;
+                                            }
+                                            label {
+                                                display: block;
+                                                white-space: normal;
+                                                text-indent: 25px;
+                                            }
+                                        }
+                                    }
+                                    &.third {
+                                        .phone {
+                                            display: flex;
+                                            align-items: center;
+                                            .country-code {
+                                                font-size: 16px;
+                                                padding-right: 10px;
+                                                color: black;
+                                            }
+                                            .input-phone {
+                                                flex: 1;
+                                            }
+                                            input[type=number]::-webkit-inner-spin-button,
+                                            input[type=number]::-webkit-outer-spin-button {
+                                                -webkit-appearance: none;
+                                                -moz-appearance: none;
+                                                appearance: none;
+                                                margin: 0;
+                                            }
+                                        }
+                                    }
+                                    &.fourth {
+                                        .avatar {
+                                            width: 180px;
+                                        }
+                                        .specializations {
+                                            width: calc(100% - 180px);
+                                            padding-left: 20px;
+                                            color: black;
+                                            h4 {
+                                                padding-bottom: 10px;
+                                            }
+                                            .pretty {
+                                                margin-bottom: 15px;
+                                                display: block;
+                                                svg.svg {
+                                                    border-color: #126585 !important;
+                                                }
+                                                label {
+                                                    text-indent: 25px;
+                                                }
+                                            }
+                                            @include breakpoint($xs) {
+                                                padding-left: 10px;
+                                            }
+                                        }
+                                        .combobox-container {
+                                            .input-group {
+                                                display: block;
+                                            }
+                                            .input-group-addon.dropdown-toggle {
+                                                display: none;
+                                            }
+                                        }
+                                    }
+                                }
+                                .btns-container {
+                                    font-size: 0;
+                                    .inline-block {
+                                        width: 50%;
+                                        .prev-step {
+                                            display: none;
+                                            color: black;
+                                            font-size: 14px;
+                                            font-family: 'Calibri Light';
+                                            border: 0;
+                                            background: transparent;
+                                        }
+                                        .next-step {
+                                            @include breakpoint($xs) {
+                                                font-size: 16px;
+                                                padding: 10px 0;
+                                                width: 100%;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .patient {
+                            background-color: $dark_blue;
+                            color: white;
+                            .popup-half-footer {
+                                padding: 30px 0;
+                                margin-top: 80px;
+                                margin-left: -15%;
+                                margin-right: -15%;
+                                text-align: center;
+                                border-top: 1px solid white;
+                                color: white;
+                                font-size: 16px;
+                                a {
+                                    font-family: 'Calibri-Bold';
+                                    font-size: 20px;
+                                    text-decoration: underline;
+                                }
+                                @include breakpoint($xs) {
+                                    margin-top: 30px;
+                                    margin-left: auto;
+                                    margin-right: auto;
+                                }
+                            }
+                        }
+                        .dentist, .patient {
+                            width: 50%;
+                            padding-top: 50px;
+                            border-bottom: 3px solid white;
+                            border-left: 3px solid white;
+                            border-right: 3px solid white;
+                            @include rounded(0 0 4px 4px);
+                            .custom-input {
+                                padding: 7px 12px;
+                            }
+                            h2 {
+                                font-size: 30px;
+                                padding-bottom: 20px;
+                                font-family: "Calibri Light";
+                            }
+                            &.patient {
+                                h2 {
+                                    color: white;
+                                }
+                            }
+                            &.dentist {
+                                h2 {
+                                    color: black;
+                                }
+                            }
+                            .form-register {
+                                display: none;
+                            }
+                            .form-register, .form-login {
+                                width: 80%;
+                                margin: 0 auto;
+                                @include breakpoint($xs) {
+                                    width: 95%;
+                                }
+                            }
+                            &.custom-hide {
+                                visibility: hidden;
+                                @include breakpoint($xs) {
+                                    display: none;
+                                }
+                            }
+                            @include breakpoint($xs) {
+                                padding-top: 30px;
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }*/ }
   .bootbox .bootbox-close-button {
     position: absolute;
     right: 10px;
@@ -4594,257 +4912,6 @@ body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimoni
   .bootbox.style-anchors .modal-dialog .modal-content .modal-body a {
     font-weight: bold;
     text-decoration: underline; }
-  .bootbox.login-signin-popup .bootbox-close-button {
-    display: none; }
-  .bootbox.login-signin-popup .modal-dialog {
-    width: 95%;
-    max-width: 1000px; }
-    .bootbox.login-signin-popup .modal-dialog .modal-content {
-      background: transparent;
-      border: 0;
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      -ms-box-shadow: none;
-      box-shadow: none; }
-      .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body {
-        padding: 0; }
-        .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-header-action a {
-          width: 50%;
-          font-size: 35px;
-          padding: 10px;
-          text-align: center;
-          border-top: 3px solid white;
-          border-left: 3px solid white;
-          border-right: 3px solid white;
-          -webkit-border-radius: 4px 4px 0 0;
-          -moz-border-radius: 4px 4px 0 0;
-          -ms-border-radius: 4px 4px 0 0;
-          border-radius: 4px 4px 0 0; }
-          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-header-action a[data-type="patient"] {
-            color: white;
-            background-color: #041e42;
-            border-bottom: 1px solid white; }
-          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-header-action a[data-type="dentist"] {
-            color: black;
-            background-color: white;
-            border-bottom: 1px solid black; }
-          @media screen and (max-width: 767px) {
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-header-action a {
-              font-size: 20px;
-              padding: 10px 5px; } }
-        .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body {
-          display: flex; }
-          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist {
-            background: white; }
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .call-sign-up {
-              font-family: 'Calibri-Bold';
-              color: black; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .call-sign-up:hover {
-                color: black; }
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .popup-half-footer {
-              padding: 30px 0;
-              margin-top: 50px;
-              margin-left: -15%;
-              margin-right: -15%;
-              text-align: center;
-              border-top: 1px solid black;
-              font-size: 16px; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .popup-half-footer a {
-                font-family: 'Calibri-Bold';
-                color: black;
-                font-size: 16px;
-                text-decoration: underline; }
-              @media screen and (max-width: 767px) {
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .popup-half-footer {
-                  margin-top: 30px;
-                  margin-left: auto;
-                  margin-right: auto; } }
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step {
-              display: none; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step .pretty {
-                white-space: normal;
-                padding-bottom: 5px;
-                margin-bottom: 0 !important; }
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step .pretty .state {
-                  position: relative;
-                  color: black; }
-                  .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step .pretty .state svg.svg {
-                    left: 0;
-                    top: 0;
-                    width: 18px;
-                    height: 18px; }
-                  .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step .pretty .state i {
-                    left: 1px;
-                    top: 1px;
-                    position: absolute; }
-                  .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step .pretty .state label {
-                    line-height: 20px; }
-                    .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step .pretty .state label:before, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step .pretty .state label:after {
-                      left: 0;
-                      top: 0;
-                      width: 18px;
-                      height: 18px; }
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step .pretty input:checked ~ .state.p-success label:after, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step .pretty.p-toggle .state.p-success label:after {
-                  background-color: black !important; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.visible {
-                display: block; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .user-type-container .user-type {
-                width: 50%; }
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .user-type-container .user-type .custom-button {
-                  padding: 5px 10px;
-                  display: block;
-                  border: 2px solid #dddddd;
-                  color: #dddddd;
-                  font-size: 20px;
-                  -webkit-border-radius: 4px;
-                  -moz-border-radius: 4px;
-                  -ms-border-radius: 4px;
-                  border-radius: 4px; }
-                  .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .user-type-container .user-type .custom-button .custom-radio {
-                    margin-right: 5px;
-                    width: 20px;
-                    height: 20px;
-                    line-height: 20px;
-                    border: 1px solid #dddddd;
-                    text-align: center;
-                    font-size: 0;
-                    -webkit-border-radius: 50%;
-                    -moz-border-radius: 50%;
-                    -ms-border-radius: 50%;
-                    border-radius: 50%; }
-                    .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .user-type-container .user-type .custom-button .custom-radio .circle {
-                      width: 10px;
-                      height: 10px;
-                      background-color: black;
-                      background-color: gray;
-                      vertical-align: middle;
-                      display: none;
-                      -webkit-border-radius: 50%;
-                      -moz-border-radius: 50%;
-                      -ms-border-radius: 50%;
-                      border-radius: 50%; }
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .user-type-container .user-type.active .custom-button {
-                  color: #041e42;
-                  border: 2px solid #041e42; }
-                  .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .user-type-container .user-type.active .custom-button .custom-radio .circle {
-                    display: inline-block; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .privacy-policy-row input[type='checkbox'] {
-                max-width: 170px; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.second .privacy-policy-row label {
-                display: block;
-                white-space: normal;
-                text-indent: 25px; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .phone {
-                display: flex;
-                align-items: center; }
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .phone .country-code {
-                  font-size: 16px;
-                  padding-right: 10px;
-                  color: black; }
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .phone .input-phone {
-                  flex: 1; }
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .phone input[type=number]::-webkit-inner-spin-button,
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.third .phone input[type=number]::-webkit-outer-spin-button {
-                  -webkit-appearance: none;
-                  -moz-appearance: none;
-                  appearance: none;
-                  margin: 0; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .avatar {
-                width: 180px; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .specializations {
-                width: calc(100% - 180px);
-                padding-left: 20px;
-                color: black; }
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .specializations h4 {
-                  padding-bottom: 10px; }
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .specializations .pretty {
-                  margin-bottom: 15px;
-                  display: block; }
-                  .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .specializations .pretty svg.svg {
-                    border-color: #126585 !important; }
-                  .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .specializations .pretty label {
-                    text-indent: 25px; }
-                @media screen and (max-width: 767px) {
-                  .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .specializations {
-                    padding-left: 10px; } }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .combobox-container .input-group {
-                display: block; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .step.fourth .combobox-container .input-group-addon.dropdown-toggle {
-                display: none; }
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .btns-container {
-              font-size: 0; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .btns-container .inline-block {
-                width: 50%; }
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .btns-container .inline-block .prev-step {
-                  display: none;
-                  color: black;
-                  font-size: 14px;
-                  font-family: 'Calibri Light';
-                  border: 0;
-                  background: transparent; }
-                @media screen and (max-width: 767px) {
-                  .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register .btns-container .inline-block .next-step {
-                    font-size: 16px;
-                    padding: 10px 0;
-                    width: 100%; } }
-          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient {
-            background-color: #041e42;
-            color: white; }
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .popup-half-footer {
-              padding: 30px 0;
-              margin-top: 80px;
-              margin-left: -15%;
-              margin-right: -15%;
-              text-align: center;
-              border-top: 1px solid white;
-              color: white;
-              font-size: 16px; }
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .popup-half-footer a {
-                font-family: 'Calibri-Bold';
-                font-size: 20px;
-                text-decoration: underline; }
-              @media screen and (max-width: 767px) {
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .popup-half-footer {
-                  margin-top: 30px;
-                  margin-left: auto;
-                  margin-right: auto; } }
-          .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient {
-            width: 50%;
-            padding-top: 50px;
-            border-bottom: 3px solid white;
-            border-left: 3px solid white;
-            border-right: 3px solid white;
-            -webkit-border-radius: 0 0 4px 4px;
-            -moz-border-radius: 0 0 4px 4px;
-            -ms-border-radius: 0 0 4px 4px;
-            border-radius: 0 0 4px 4px; }
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .custom-input, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .custom-input {
-              padding: 7px 12px; }
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist h2, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient h2 {
-              font-size: 30px;
-              padding-bottom: 20px;
-              font-family: "Calibri Light"; }
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist.patient h2, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient.patient h2 {
-              color: white; }
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist.dentist h2, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient.dentist h2 {
-              color: black; }
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-register {
-              display: none; }
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-login, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-login {
-              width: 80%;
-              margin: 0 auto; }
-              @media screen and (max-width: 767px) {
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist .form-login, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-register, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient .form-login {
-                  width: 95%; } }
-            .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist.custom-hide, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient.custom-hide {
-              visibility: hidden; }
-              @media screen and (max-width: 767px) {
-                .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist.custom-hide, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient.custom-hide {
-                  display: none; } }
-            @media screen and (max-width: 767px) {
-              .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .dentist, .bootbox.login-signin-popup .modal-dialog .modal-content .modal-body .popup-body .patient {
-                padding-top: 30px;
-                width: 100%; } }
   .bootbox.popup-html .bootbox-close-button {
     font-size: 45px;
     margin-top: -20px;
@@ -5727,114 +5794,175 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
 .solid-gray {
   color: #aaaaaa; }
 
-.module.profile-menu li a {
-  display: block;
-  font-size: 16px;
-  padding: 10px;
-  color: #1d1d1d;
-  border-left: 3px solid transparent;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  -ms-transition: 0.3s;
-  transition: 0.3s; }
-  .module.profile-menu li a.active {
-    border-left: 3px solid #041e42;
-    background: #f0f9ff;
-    color: #041e42; }
-  .module.profile-menu li a:hover {
-    border-left: 3px solid #041e42;
-    background: #f0f9ff;
-    color: #041e42; }
-  .module.profile-menu li a figure {
-    padding-right: 10px;
-    padding-left: 10px;
-    vertical-align: middle; }
-    .module.profile-menu li a figure img {
-      width: 20px; }
-  .module.profile-menu li a span {
-    vertical-align: middle; }
-.module.avatar input[type="file"] {
-  display: none; }
-.module.avatar .btn-wrapper {
-  display: block;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  margin: 0; }
-  .module.avatar .btn-wrapper label {
-    background-color: #e3e3e3;
-    border: 2px dashed #777777;
-    color: #777777;
-    width: 100%;
-    padding-top: 100%;
+.module {
+  /*&.avatar {
+      input[type="file"] {
+          display: none;
+      }
+      .btn-wrapper {
+          display: block;
+          width: 100%;
+          padding: 0;
+          border: 0;
+          margin: 0;
+          label {
+              background-color: #e3e3e3;
+              border: 2px dashed #777777;
+              color: #777777;
+              width: 100%;
+              padding-top: 100%;
+              display: block;
+              position: relative;
+              text-align: center;
+              margin-bottom: 0;
+              cursor: pointer;
+              background-position: center center;
+              background-size: cover;
+              background-repeat: no-repeat;
+              .inner {
+                  left: 0;
+                  width: 100%;
+                  @include vertical-align(absolute);
+                  i {
+                      font-size: 30px;
+                  }
+                  .inner-label {
+                      font-size: 18px;
+                      padding: 0 10px;
+                      @include breakpoint($xs) {
+                          font-size: 16px;
+                      }
+                  }
+              }
+          }
+      }
+      #cropper-container.width-and-height {
+          width: 180px;
+          height: 180px;
+      }
+      .max-size-label {
+          label {
+              display: none;
+              cursor: pointer;
+          }
+          &.active {
+              margin-top: 40px !important;
+              label {
+                  display: inline-block;
+              }
+          }
+      }
+  }
+  &.suggester-parent {
+      .suggester-map-div {
+          height: 200px;
+          display: none;
+          background: transparent;
+      }
+  }*/ }
+  .module.profile-menu li a {
     display: block;
-    position: relative;
-    text-align: center;
-    margin-bottom: 0;
-    cursor: pointer;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat; }
-    .module.avatar .btn-wrapper label .inner {
-      left: 0;
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%); }
-      .module.avatar .btn-wrapper label .inner i {
-        font-size: 30px; }
-      .module.avatar .btn-wrapper label .inner .inner-label {
-        font-size: 18px;
-        padding: 0 10px; }
-        @media screen and (max-width: 767px) {
-          .module.avatar .btn-wrapper label .inner .inner-label {
-            font-size: 16px; } }
-.module.avatar #cropper-container.width-and-height {
-  width: 180px;
-  height: 180px; }
-.module.avatar .max-size-label label {
-  display: none;
-  cursor: pointer; }
-.module.avatar .max-size-label.active {
-  margin-top: 40px !important; }
-  .module.avatar .max-size-label.active label {
-    display: inline-block; }
-.module.suggester-parent .suggester-map-div {
-  height: 200px;
-  display: none;
-  background: transparent; }
-.module.custom-google-label-style {
-  position: relative; }
-  .module.custom-google-label-style label {
-    position: absolute;
-    font-size: 16px !important;
-    cursor: pointer;
-    margin: 0;
-    width: calc(100% - 20px) !important;
-    padding-bottom: 10px !important;
-    padding-top: 10px !important;
-    background-color: white;
-    left: 10px;
-    color: #888888;
-    font-weight: normal;
-    top: 50%;
-    font-family: 'Calibri-Regular';
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    border-radius: 4px;
+    font-size: 16px;
+    padding: 10px;
+    color: #1d1d1d;
+    border-left: 3px solid transparent;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
     -o-transition: 0.3s;
     -ms-transition: 0.3s;
     transition: 0.3s; }
-    .module.custom-google-label-style label.active-label {
+    .module.profile-menu li a.active {
+      border-left: 3px solid #041e42;
+      background: #f0f9ff;
+      color: #041e42; }
+    .module.profile-menu li a:hover {
+      border-left: 3px solid #041e42;
+      background: #f0f9ff;
+      color: #041e42; }
+    .module.profile-menu li a figure {
+      padding-right: 10px;
+      padding-left: 10px;
+      vertical-align: middle; }
+      .module.profile-menu li a figure img {
+        width: 20px; }
+    .module.profile-menu li a span {
+      vertical-align: middle; }
+  .module.custom-google-label-style {
+    position: relative; }
+    .module.custom-google-label-style label {
+      position: absolute;
+      font-size: 16px !important;
+      cursor: pointer;
+      margin: 0;
+      width: calc(100% - 20px) !important;
+      padding-bottom: 10px !important;
+      padding-top: 10px !important;
+      background-color: white;
+      left: 10px;
+      color: #888888;
+      font-weight: normal;
+      top: 50%;
+      font-family: 'Calibri-Regular';
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-transition: 0.3s;
+      -moz-transition: 0.3s;
+      -o-transition: 0.3s;
+      -ms-transition: 0.3s;
+      transition: 0.3s; }
+      .module.custom-google-label-style label.active-label {
+        width: auto !important;
+        font-size: 14px !important;
+        top: -8px;
+        padding: 0 5px !important;
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
+        color: #041e42;
+        font-weight: bold; }
+    .module.custom-google-label-style .left-side {
+      width: calc(100% - 100px);
+      position: relative; }
+      .module.custom-google-label-style .left-side.error-field input, .module.custom-google-label-style .left-side.error-field label {
+        color: red; }
+    .module.custom-google-label-style input {
+      border: 2px solid #dddddd;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: 'Lato-Regular';
+      width: 100%;
+      padding: 10px 15px;
+      -webkit-border-radius: 4px 0 0 4px;
+      -moz-border-radius: 4px 0 0 4px;
+      -ms-border-radius: 4px 0 0 4px;
+      border-radius: 4px 0 0 4px; }
+      .module.custom-google-label-style input.full-rounded {
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        border-radius: 4px; }
+      .module.custom-google-label-style input.blue-green-border {
+        border: 2px solid #041e42; }
+    .module.custom-google-label-style span {
+      width: 100px;
+      text-align: center;
+      padding-top: 12px;
+      font-size: 18px;
+      font-family: 'Lato-Regular';
+      color: #1d1d1d;
+      background-color: #dddddd;
+      -webkit-border-radius: 0 4px 4px 0;
+      -moz-border-radius: 0 4px 4px 0;
+      -ms-border-radius: 0 4px 4px 0;
+      border-radius: 0 4px 4px 0; }
+  .module.custom-google-select-style {
+    position: relative; }
+    .module.custom-google-select-style label {
       width: auto !important;
       font-size: 14px !important;
       top: -8px;
@@ -5843,84 +5971,37 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
       -ms-transform: none;
       transform: none;
       color: #041e42;
-      font-weight: bold; }
-  .module.custom-google-label-style .left-side {
-    width: calc(100% - 100px);
-    position: relative; }
-    .module.custom-google-label-style .left-side.error-field input, .module.custom-google-label-style .left-side.error-field label {
-      color: red; }
-  .module.custom-google-label-style input {
-    border: 2px solid #dddddd;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: 'Lato-Regular';
-    width: 100%;
-    padding: 10px 15px;
-    -webkit-border-radius: 4px 0 0 4px;
-    -moz-border-radius: 4px 0 0 4px;
-    -ms-border-radius: 4px 0 0 4px;
-    border-radius: 4px 0 0 4px; }
-    .module.custom-google-label-style input.full-rounded {
+      font-weight: bold;
+      position: absolute;
+      cursor: pointer;
+      margin: 0;
+      background-color: white;
+      left: 10px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-transition: 0.3s;
+      -moz-transition: 0.3s;
+      -o-transition: 0.3s;
+      -ms-transition: 0.3s;
+      transition: 0.3s; }
+    .module.custom-google-select-style select {
+      background-image: url("/assets/images/select-arrow.svg");
+      background-position: top 50% right 10px;
+      background-size: 15px;
+      background-repeat: no-repeat;
+      border: 2px solid #041e42;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: 'Lato-Regular';
+      width: 100%;
+      padding: 10px 30px 10px 15px;
+      -webkit-appearance: initial;
       -webkit-border-radius: 4px;
       -moz-border-radius: 4px;
       -ms-border-radius: 4px;
       border-radius: 4px; }
-    .module.custom-google-label-style input.blue-green-border {
-      border: 2px solid #041e42; }
-  .module.custom-google-label-style span {
-    width: 100px;
-    text-align: center;
-    padding-top: 12px;
-    font-size: 18px;
-    font-family: 'Lato-Regular';
-    color: #1d1d1d;
-    background-color: #dddddd;
-    -webkit-border-radius: 0 4px 4px 0;
-    -moz-border-radius: 0 4px 4px 0;
-    -ms-border-radius: 0 4px 4px 0;
-    border-radius: 0 4px 4px 0; }
-.module.custom-google-select-style {
-  position: relative; }
-  .module.custom-google-select-style label {
-    width: auto !important;
-    font-size: 14px !important;
-    top: -8px;
-    padding: 0 5px !important;
-    -webkit-transform: none;
-    -ms-transform: none;
-    transform: none;
-    color: #041e42;
-    font-weight: bold;
-    position: absolute;
-    cursor: pointer;
-    margin: 0;
-    background-color: white;
-    left: 10px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -o-transition: 0.3s;
-    -ms-transition: 0.3s;
-    transition: 0.3s; }
-  .module.custom-google-select-style select {
-    background-image: url("/assets/images/select-arrow.svg");
-    background-position: top 50% right 10px;
-    background-size: 15px;
-    background-repeat: no-repeat;
-    border: 2px solid #041e42;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: 'Lato-Regular';
-    width: 100%;
-    padding: 10px 30px 10px 15px;
-    -webkit-appearance: initial;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    border-radius: 4px; }
 
 header {
   padding-top: 30px; }
