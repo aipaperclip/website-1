@@ -132,6 +132,7 @@
             font-family: 'Lato-Regular';
             width: 100%;
             padding: 10px 15px;
+            color: black;
             @include rounded(4px 0 0 4px);
             &.full-rounded {
                 @include rounded(4px);
@@ -147,7 +148,7 @@
             padding-top: 12px;
             font-size: 18px;
             font-family: 'Lato-Regular';
-            color: black;
+            color: black; 
             background-color: #dddddd;
             @include rounded(0 4px 4px 0);
         }
