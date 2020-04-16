@@ -201,7 +201,7 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="privacy-policy-row padding-bottom-20 padding-top-10 custom-checkbox-style show-if-dentist-type-selected @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode)) show @endif">
+                        <div class="privacy-policy-row padding-bottom-20 padding-top-10 custom-checkbox-style show-if-dentist-type-selected @if(!empty($incompletedRegistrationData)) already-custom-style @endif/ @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode)) show @endif">
                             @if(!empty($incompletedRegistrationData))
                                 <label for="privacy-policy-registration" class="custom-checkbox gateway-platform-background-color-important">✓</label>
                             @endif
