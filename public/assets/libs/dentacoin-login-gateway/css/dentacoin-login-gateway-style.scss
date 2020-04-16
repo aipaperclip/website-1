@@ -408,6 +408,15 @@
             text-decoration: underline;
         }
     }
+    .alert.alert-success {
+        padding: 15px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        border: 1px solid #d6e9c6;
+        border-radius: 4px;
+        color: #3c763d;
+        background-color: #dff0d8;
+    }
     .dcn-gateway-gray-color {
         color: #888888 !important;
     }

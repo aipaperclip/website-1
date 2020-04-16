@@ -872,6 +872,14 @@
     .dentacoin-login-gateway-container .error-handle a, .dentacoin-login-gateway-container .alert.alert-warning a {
       color: #a94442;
       text-decoration: underline; }
+  .dentacoin-login-gateway-container .alert.alert-success {
+    padding: 15px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+    color: #3c763d;
+    background-color: #dff0d8; }
   .dentacoin-login-gateway-container .dcn-gateway-gray-color {
     color: #888888 !important; }
   .dentacoin-login-gateway-container .tooltip-init {

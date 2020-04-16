@@ -237,10 +237,8 @@ if (typeof jQuery == 'undefined') {
                             }
 
                             var enrichProfileResponse = await dcnGateway.dcnGatewayRequests.enrichProfile(enrichProfileData);
-
-                            console.log(enrichProfileResponse, 'enrichProfileResponse');
                             if (enrichProfileResponse.success) {
-                                dcnGateway.utils.showPopup(enrichProfileResponse.data, 'alert');
+                                $('form#enrich-profile').html('<div class="alert alert-success">'+enrichProfileResponse.data+'</div>')
                             } else if (enrichProfileResponse.error) {
                                 dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                             } else {
