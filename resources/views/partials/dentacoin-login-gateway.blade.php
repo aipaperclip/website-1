@@ -245,8 +245,8 @@
                     <div class="padding-bottom-15 suggester-parent module field-parent">
                         <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
                             <div class="tooltip-label gateway-platform-color gateway-platform-border-color changeable-html-based-on-user-type" data-dentist="Enter the full address of your workplace in the same way as it is displayed on your website/ Facebook page/ Google Business profile." data-clinic="Enter the full address of the clinic, the same way it is displayed on the website/ Facebook page or Google Business profile."></div>
-                            <label for="dentist-register-address" class="changeable-html-based-on-user-type" data-dentist="Workplace address: Street, No, city" data-clinic="Address: Street, No, city"></label>
-                            <input type="text" name="address" class="full-rounded form-field required address-suggester" autocomplete="off" id="dentist-register-address" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'address') && !empty($incompletedRegistrationData->address)) value="{{$incompletedRegistrationData->address}}" @endif>
+                            <label for="dentist-register-address" class="changeable-html-based-on-user-type @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'address') && !empty($incompletedRegistrationData->address)) active-label gateway-platform-color-important @endif" data-dentist="Workplace address: Street, No, city" data-clinic="Address: Street, No, city"></label>
+                            <input type="text" name="address" class="full-rounded form-field required address-suggester @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'address') && !empty($incompletedRegistrationData->address)) gateway-platform-border-color-important @endif" autocomplete="off" id="dentist-register-address" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'address') && !empty($incompletedRegistrationData->address)) value="{{$incompletedRegistrationData->address}}" @endif>
                         </div>
                         <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">Ex: 49 Pembroke Square, Kensington, London</div>
                         <div class="suggester-map-div margin-top-15 margin-bottom-10"></div>
@@ -256,8 +256,8 @@
                     </div>
                     <div class="padding-bottom-15 field-parent">
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
-                            <label for="dentist-register-website">Website: http(s)://:</label>
-                            <input class="full-rounded form-field required" name="website" id="dentist-register-website" maxlength="250" type="url" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'website') && !empty($incompletedRegistrationData->website)) value="{{$incompletedRegistrationData->website}}" @endif/>
+                            <label for="dentist-register-website" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'website') && !empty($incompletedRegistrationData->website)) class="active-label gateway-platform-color-important" @endif>Website: http(s)://:</label>
+                            <input class="full-rounded form-field required @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'website') && !empty($incompletedRegistrationData->website)) gateway-platform-border-color-important @endif" name="website" id="dentist-register-website" maxlength="250" type="url" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'website') && !empty($incompletedRegistrationData->website)) value="{{$incompletedRegistrationData->website}}" @endif/>
                         </div>
                         <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">No website? Add your most popular social page.</div>
                     </div>
@@ -265,8 +265,8 @@
                         <div class="phone">
                             <div class="country-code" name="phone-code">{{$current_phone_code}}</div>
                             <div class="custom-google-label-style module input-phone" data-input-colorful-border="true">
-                                <label for="dentist-register-phone">Phone number:</label>
-                                <input class="full-rounded form-field required" name="phone" maxlength="50" type="number" id="dentist-register-phone" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'phone') && !empty($incompletedRegistrationData->phone)) value="{{$incompletedRegistrationData->phone}}" @endif/>
+                                <label for="dentist-register-phone" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'phone') && !empty($incompletedRegistrationData->phone)) class="active-label gateway-platform-color-important" @endif>Phone number:</label>
+                                <input class="full-rounded form-field required @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'phone') && !empty($incompletedRegistrationData->phone)) gateway-platform-border-color-important @endif" name="phone" maxlength="50" type="number" id="dentist-register-phone" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'phone') && !empty($incompletedRegistrationData->phone)) value="{{$incompletedRegistrationData->phone}}" @endif/>
                             </div>
                         </div>
                     </div>

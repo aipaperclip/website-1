@@ -946,13 +946,25 @@ if (typeof jQuery == 'undefined') {
                             }
                         }
 
+                        async function initFourthStepLogic() {
+                            // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
+                            if (!loadedAddressSuggesterLib) {
+                                await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
+// init Google address suggester
+                                if (typeof initAddressSuggesters === 'function') {
+                                    initAddressSuggesters();
+                                }
+                                loadedAddressSuggesterLib = false;
+                            }
+                        }
+
                         if ($('.next-step').attr('data-cached-step') == 'true') {
                             switch($('.next-step').attr('data-current-step')) {
                                 case 'third':
                                     initThirdStepLogic();
                                     break;
                                 case 'fourth':
-                                    initThirdStepLogic();
+                                    initFourthStepLogic();
                                     break;
                             }
                         }
