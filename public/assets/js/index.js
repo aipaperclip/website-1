@@ -2607,7 +2607,7 @@ async function loggedOrNotLogic() {
     } else {
         //IF NOT LOGGED LOGIC
         if ($('body').hasClass('home') || $('body').hasClass('foundation')) {
-            $('.info-section .show-login-signin').offset({left: $('header .show-login-signin').offset().left});
+            $('.info-section .open-dentacoin-gateway').offset({left: $('header .open-dentacoin-gateway').offset().left});
         }
     }
 }
