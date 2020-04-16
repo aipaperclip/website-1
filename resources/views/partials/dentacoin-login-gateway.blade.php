@@ -200,7 +200,7 @@
                                 <div class="padding-bottom-15 field-parent">
                                     <div class="custom-google-select-style module">
                                         <label class="gateway-platform-color">Job title:</label>
-                                        <select class="form-field gateway-platform-border-color changeable-color-on-selected-value dcn-gateway-gray-color" name="clinic-member-job-title">
+                                        <select class="form-field gateway-platform-border-color changeable-color-on-selected-value @if(empty($incompletedRegistrationData) && !property_exists($incompletedRegistrationData, 'working_position') && empty($incompletedRegistrationData->working_position)) dcn-gateway-gray-color @endif" name="clinic-member-job-title">
                                             <option value="">Please, select</option>
                                             @foreach($api_enums->working_position as $key => $title)
                                                 <option value="{{$key}}" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'working_position') && !empty($incompletedRegistrationData->working_position) && $incompletedRegistrationData->working_position == $key) selected @endif>{{$title}}</option>
