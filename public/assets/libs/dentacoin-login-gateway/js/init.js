@@ -641,7 +641,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('getAfterDentistRegistrationPopupForDentist', async function (event) {
-                            var afterDentistRegistrationPopupForDentist = dcnGateway.dcnGatewayRequests.getAfterDentistRegistrationPopup({
+                            var afterDentistRegistrationPopupForDentist = await dcnGateway.dcnGatewayRequests.getAfterDentistRegistrationPopup({
                                 'user-type': 'dentist'
                             });
 
@@ -651,7 +651,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('getAfterDentistRegistrationPopupForClinic', async function (event) {
-                            var afterDentistRegistrationPopupForClinic = dcnGateway.dcnGatewayRequests.getAfterDentistRegistrationPopup({
+                            var afterDentistRegistrationPopupForClinic = await dcnGateway.dcnGatewayRequests.getAfterDentistRegistrationPopup({
                                 'user-type': 'clinic'
                             });
 
