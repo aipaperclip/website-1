@@ -236,7 +236,7 @@
                                         @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'country_id') && !empty($incompletedRegistrationData->country_id) && $incompletedRegistrationData->country_id == $country->id)
                                             @php($current_phone_code = '+'.$country->phone_code)
                                         @endif
-                                        <option value="{{$country->code}}" data-code="{{$country->phone_code}}" @if(!empty($incompletedRegistrationData->country_id) && $incompletedRegistrationData->country_id == $country->id) selected @endif>{{$country->name}}</option>
+                                        <option value="{{$country->code}}" data-id="{{$country->id}}" data-code="{{$country->phone_code}}" @if(!empty($incompletedRegistrationData->country_id) && $incompletedRegistrationData->country_id == $country->id) selected @endif>{{$country->name}}</option>
                                     @endforeach
                                 @endif
                             </select>
