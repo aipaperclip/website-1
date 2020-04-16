@@ -699,9 +699,10 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('patientAuthSuccessResponse', async function (event) {
-                            var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(currentPlatformDomain + 'patient-login', {
+                            var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(currentPlatformDomain + 'authenticate-user', {
                                 token: event.response_data.token,
-                                id: event.response_data.data.id
+                                id: event.response_data.data.id,
+                                type: 'patient'
                             });
 
                             if (createPatientSessionResponse.success) {
@@ -713,9 +714,10 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('dentistAuthSuccessResponse', async function (event) {
-                            var createDentistSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(currentPlatformDomain + 'dentist-login', {
+                            var createDentistSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(currentPlatformDomain + 'authenticate-user', {
                                 token: event.response_data.token,
-                                id: event.response_data.data.id
+                                id: event.response_data.data.id,
+                                type: 'dentist'
                             });
 
                             if (createDentistSessionResponse.success) {
