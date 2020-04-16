@@ -438,6 +438,8 @@ if (typeof jQuery == 'undefined') {
                 $(document).off('dentistAuthSuccessResponse');
                 $(document).off('noExternalLoginProviderConnection');
                 $(document).off('civicSipError');
+                $(document).off('getAfterDentistRegistrationPopupForDentist');
+                $(document).off('getAfterDentistRegistrationPopupForClinic');
 
                 $('body').removeClass('dentacoin-login-gateway-overflow-hidden');
             },
