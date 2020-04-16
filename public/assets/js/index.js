@@ -20,11 +20,11 @@ var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
 var get_params = getGETParameters();
 
 $(document).ready(async function() {
-    if ((basic.property_exists(get_params, 'show-login') || basic.property_exists(get_params, 'inviter')) && !$('body').hasClass('logged-in')) {
+    /*if ((basic.property_exists(get_params, 'show-login') || basic.property_exists(get_params, 'inviter')) && !$('body').hasClass('logged-in')) {
         openLoginSigninPopup();
     } else if (basic.property_exists(get_params, 'show-patient-register')) {
         openLoginSigninPopup('show-patient-register');
-    }
+    }*/
 
     if ($('body.corporate-design.allow-draw-lines').length > 0) {
         drawNavToBottomSectionLine();
@@ -1909,14 +1909,20 @@ function initCaptchaRefreshEvent()  {
 }
 initCaptchaRefreshEvent();
 
-var hidden_popup_content = $('.hidden-login-form').html();
+/*var hidden_popup_content = $('.hidden-login-form').html();
 //call the popup for login/sign for patient and dentist
 function bindLoginSigninPopupShow() {
     $(document).on('click', '.show-login-signin', function() {
         openLoginSigninPopup();
     });
 }
-bindLoginSigninPopupShow();
+bindLoginSigninPopupShow();*/
+
+dcnGateway.init({
+    'platform' : 'dentacoin',
+    'environment' : 'staging',
+    'forgotten_password_link' : 'https://google.com'
+});
 
 function openLoginSigninPopup(type) {
     basic.closeDialog();
