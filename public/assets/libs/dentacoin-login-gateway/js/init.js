@@ -219,15 +219,17 @@ if (typeof jQuery == 'undefined') {
                             dcnGateway.utils.customErrorHandle(this_form.find('#description').closest('.form-row'), 'This field is required.');
                         } else {
                             dcnGateway.utils.hidePopup();
-                            var enrichProfileResponse = await dcnGateway.dcnGatewayRequests.enrichProfile({
-                                user: data.user,
-                                description: this_form.find('#description').val().trim()
-                            });
 
-                            console.log({
+                            var enrichProfileData = {
                                 user: data.user,
                                 description: this_form.find('#description').val().trim()
-                            });
+                            };
+
+                            if (environment == 'staging') {
+                                enrichProfileData.staging = true;
+                            }
+                            
+                            var enrichProfileResponse = await dcnGateway.dcnGatewayRequests.enrichProfile(enrichProfileData);
 
                             console.log(enrichProfileResponse, 'enrichProfileResponse');
                             if (enrichProfileResponse.success) {

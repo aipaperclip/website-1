@@ -637,7 +637,14 @@ class UserController extends Controller {
             'id' => $this->encrypt($data['user'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')),
             'description' => $this->encrypt($data['description'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
         );
-        $update_method_response = (new APIRequestsController())->updateAnonymousUserData($post_api_data);
+
+        $staging = $request->input('staging');
+        if (!empty($staging)) {
+            $update_method_response = (new APIRequestsController())->updateAnonymousUserData($post_api_data, 'https://dev-api.dentacoin.com/api/user-anonymous/');
+        } else {
+            $update_method_response = (new APIRequestsController())->updateAnonymousUserData($post_api_data);
+        }
+
         if ($update_method_response->success) {
             return response()->json(['success' => true, 'Your short description was saved successfully.']);
         } else {
