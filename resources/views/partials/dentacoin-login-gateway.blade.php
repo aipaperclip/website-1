@@ -1,6 +1,6 @@
 @php($api_enums = (new \App\Http\Controllers\APIRequestsController())->getAllEnums())
 @if(!empty($incompletedRegistrationData))
-    @if(property_exists($incompletedRegistrationData, 'phone') && property_exists($incompletedRegistrationData, 'website') && property_exists($incompletedRegistrationData, 'address') && property_exists($incompletedRegistrationData, 'country_id'))
+    @if(property_exists($incompletedRegistrationData, 'phone') && !empty($incompletedRegistrationData->phone) && property_exists($incompletedRegistrationData, 'website') && !empty($incompletedRegistrationData->website) && property_exists($incompletedRegistrationData, 'address')  && !empty($incompletedRegistrationData->address) && property_exists($incompletedRegistrationData, 'country_id' && !empty($incompletedRegistrationData->country_id)))
         @php($currentActiveStep = 'fourth')
     @else
         @php($currentActiveStep = 'third')
@@ -132,13 +132,13 @@
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">For clinics with more than one dental practitioners</div>
                         </div>
                     </div>
-                    <div class="show-on-user-type-first-change">
+                    <div class="show-on-user-type-first-change @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode)) show @endif">
                         <div class="show-if-dentist @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'dentist') show @endif">
                             <div class="padding-bottom-20 field-parent dentacoin-login-gateway-fs-18 dentist-type-checkboxes">
                                 <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own_practice" id="own-practice" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'dentist_practice') && !empty($incompletedRegistrationData->dentist_practice) && $incompletedRegistrationData->dentist_practice == 'own_practice') checked @endif/> <label for="own-practice">I own a practice.</label></div>
                                 <div><input type="radio" name="dentist-type" value="work_at_practice" id="work-for-practice" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'dentist_practice') && !empty($incompletedRegistrationData->dentist_practice) && $incompletedRegistrationData->dentist_practice == 'work_at_practice') checked @endif/> <label for="work-for-practice">I work for a practice.</label></div>
                             </div>
-                            <div class="show-if-dentist-type-selected @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode)) show @endif">
+                            <div class="show-if-dentist-type-selected @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'dentist') show @endif">
                                 @if(!empty($api_enums) && property_exists($api_enums, 'titles') && !empty($api_enums->titles))
                                     <div class="padding-bottom-15 field-parent">
                                         <div class="custom-google-select-style module">
@@ -286,10 +286,10 @@
                 </div>
                 <div class="btns-container">
                     <div class="inline-block back-btn-container">
-                        <input type="button" value="< back" class="prev-step"/>
+                        <input type="button" value="< back" class="prev-step @if(!empty($incompletedRegistrationData)) show @endif"/>
                     </div>
                     <div class="inline-block text-right next-or-continue-btn-container">
-                        <input type="button" value="Next" class="platform-button gateway-platform-background-color dentacoin-login-gateway-fs-20 next-step" data-current-step="first"/>
+                        <input type="button" @if(!empty($currentActiveStep) && $currentActiveStep == 'fourth') value="Create account" @else value="Next" @endif class="platform-button gateway-platform-background-color dentacoin-login-gateway-fs-20 next-step" @if(!empty($currentActiveStep)) data-current-step="{{$currentActiveStep}}" @else data-current-step="first" @endif/>
                         @if(isset($inviter))
                             <input type="hidden" name="inviter" value="{{$inviter}}">
                         @endif

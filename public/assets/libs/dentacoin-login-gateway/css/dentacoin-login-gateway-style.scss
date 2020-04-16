@@ -571,6 +571,9 @@
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .show-on-user-type-first-change {
     display: none;
+    &.show {
+        display: block;
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .user-type-container .user-type .custom-button {
@@ -730,6 +733,9 @@
     font-family: 'Calibri Light';
     border: 0;
     background: transparent;
+    &.show {
+        display: block;
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient {
