@@ -237,11 +237,8 @@ if (typeof jQuery == 'undefined') {
             },
             styleAvatarUploadButton: function() {
                 if (jQuery('.upload-file.avatar').length) {
-                    console.log(1, 'styleAvatarUploadButton');
                     var inputs = document.querySelectorAll('.inputfile');
                     Array.prototype.forEach.call(inputs, function(input) {
-                        console.log(2, 'styleAvatarUploadButton');
-
                         var this_file_btn_parent = $(input).parent();
                         if (this_file_btn_parent.attr('data-current-user-avatar')) {
                             this_file_btn_parent.find('.btn-wrapper').append('<label for="custom-upload-avatar" role="button" style="background-image:url('+this_file_btn_parent.attr('data-current-user-avatar')+');"><div class="inner"><div class="inner-label dentacoin-login-gateway-fs-0">Add profile photo</div></div></label>');
@@ -292,7 +289,6 @@ if (typeof jQuery == 'undefined') {
                                 });
 
                                 croppie_instance.croppie('bind', 'url').then(function(){
-                                    console.log('asdsasdadas');
                                     croppie_instance.croppie('setZoom', 1);
                                 });
 
@@ -895,6 +891,32 @@ if (typeof jQuery == 'undefined') {
                         dcnGateway.utils.styleAvatarUploadButton();
 
                         var userCountryCode;
+
+                        if ($('.next-step').attr('data-cached-step') == 'true') {
+                            switch($('.next-step').attr('data-current-step')) {
+                                case 'third':
+                                    if (!loadedAddressSuggesterLib) {
+                                        await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
+// init Google address suggester
+                                        if (typeof initAddressSuggesters === 'function') {
+                                            initAddressSuggesters();
+                                        }
+                                        loadedAddressSuggesterLib = false;
+                                    }
+                                    break;
+                                case 'fourth':
+                                    if (!loadedAddressSuggesterLib) {
+                                        await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
+// init Google address suggester
+                                        if (typeof initAddressSuggesters === 'function') {
+                                            initAddressSuggesters();
+                                        }
+                                        loadedAddressSuggesterLib = false;
+                                    }
+                                    break;
+                            }
+                        }
+
                         //DENTIST REGISTERING FORM
                         $('.dentacoin-login-gateway-container .dentist .form-register .next-step').click(async function() {
                             var this_btn = $(this);
@@ -1069,7 +1091,6 @@ if (typeof jQuery == 'undefined') {
                                             await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
 // init Google address suggester
                                             if (typeof initAddressSuggesters === 'function') {
-                                                console.log('Fire initAddressSuggesters.');
                                                 initAddressSuggesters();
                                             }
                                             loadedAddressSuggesterLib = false;

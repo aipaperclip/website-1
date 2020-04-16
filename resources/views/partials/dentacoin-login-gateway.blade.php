@@ -6,7 +6,6 @@
         @php($currentActiveStep = 'third')
     @endif
 @endif
-{{var_dump($type)}}
 <div class="dentacoin-login-gateway-fs-0 popup-header-action">
     <a href="javascript:void(0)" class="inline-block @if($type == 'patient-login' || $type == 'patient-register') gateway-platform-background-color-important active @endif" data-type="patient">USERS</a>
     <a href="javascript:void(0)" class="inline-block init-dentists-click-event @if($type == 'dentist-login' || $type == 'dentist-register' || $type == 'incompleted-dentist-register') active @endif" data-type="dentist">DENTISTS</a>
@@ -304,7 +303,7 @@
                         <input type="button" value="< back" class="prev-step @if(!empty($incompletedRegistrationData)) show @endif"/>
                     </div>
                     <div class="inline-block text-right next-or-continue-btn-container">
-                        <input type="button" @if(!empty($currentActiveStep) && $currentActiveStep == 'fourth') value="Create account" @else value="Next" @endif class="platform-button gateway-platform-background-color dentacoin-login-gateway-fs-20 next-step" @if(!empty($currentActiveStep)) data-current-step="{{$currentActiveStep}}" @else data-current-step="first" @endif/>
+                        <input type="button" @if(!empty($currentActiveStep) && $currentActiveStep == 'fourth') value="Create account" @else value="Next" @endif class="platform-button gateway-platform-background-color dentacoin-login-gateway-fs-20 next-step" @if(!empty($currentActiveStep)) data-current-step="{{$currentActiveStep}}" data-cached-step="true" @else data-current-step="first" @endif/>
                         @if(isset($inviter))
                             <input type="hidden" name="inviter" value="{{$inviter}}">
                         @endif
