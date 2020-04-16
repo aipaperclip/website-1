@@ -992,6 +992,15 @@ if (typeof jQuery == 'undefined') {
                             $(this).find('.user-type-label').addClass('gateway-platform-color');
                             $('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val($(this).attr('data-type'));
 
+                            // change htmls based on the selected option
+                            for (var i = 0, len = $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').length; i < len; i+=1) {
+                                if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'dentist') {
+                                    $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).attr('data-dentist'));
+                                } else {
+                                    $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).attr('data-clinic'));
+                                }
+                            }
+
                             // show addition fields only if dentist
                             if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'dentist') {
                                 $('.show-if-dentist').show();
