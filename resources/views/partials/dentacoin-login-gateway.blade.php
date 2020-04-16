@@ -118,14 +118,14 @@
                 </div>
                 <div class="step second" data-step="second">
                     <div class="padding-bottom-20 user-type-container dentacoin-login-gateway-fs-0">
-                        <input type="hidden" name="user-type"/>
-                        <div class="inline-block-top user-type padding-right-15" data-type="dentist">
+                        <input type="hidden" name="user-type" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode)) value="{{$incompletedRegistrationData->mode}}" @endif/>
+                        <div class="inline-block-top user-type padding-right-15 @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'dentist') active @endif" data-type="dentist">
                             <a href="javascript:void(0)" class="custom-button">
                                 <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block user-type-label">Dentist</span>
                             </a>
                             <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">For associate dentists OR independent practitioners</div>
                         </div>
-                        <div class="inline-block-top user-type padding-left-15" data-type="clinic">
+                        <div class="inline-block-top user-type padding-left-15 @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'clinic') active @endif" data-type="clinic">
                             <a href="javascript:void(0)" class="custom-button">
                                 <span class="custom-radio inline-block"><span class="circle"></span></span> <span class="inline-block user-type-label">Clinic</span>
                             </a>
@@ -133,19 +133,19 @@
                         </div>
                     </div>
                     <div class="show-on-user-type-first-change">
-                        <div class="show-if-dentist">
+                        <div class="show-if-dentist @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'dentist') show @endif">
                             <div class="padding-bottom-20 field-parent dentacoin-login-gateway-fs-18 dentist-type-checkboxes">
-                                <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own_practice" id="own-practice"/> <label for="own-practice">I own a practice.</label></div>
-                                <div><input type="radio" name="dentist-type" value="work_at_practice" id="work-for-practice"/> <label for="work-for-practice">I work for a practice.</label></div>
+                                <div class="padding-bottom-5"><input type="radio" name="dentist-type" value="own_practice" id="own-practice" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'dentist_practice') && !empty($incompletedRegistrationData->dentist_practice) && $incompletedRegistrationData->dentist_practice == 'own_practice') checked @endif/> <label for="own-practice">I own a practice.</label></div>
+                                <div><input type="radio" name="dentist-type" value="work_at_practice" id="work-for-practice" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'dentist_practice') && !empty($incompletedRegistrationData->dentist_practice) && $incompletedRegistrationData->dentist_practice == 'work_at_practice') checked @endif/> <label for="work-for-practice">I work for a practice.</label></div>
                             </div>
-                            <div class="show-if-dentist-type-selected">
+                            <div class="show-if-dentist-type-selected @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode)) show @endif">
                                 @if(!empty($api_enums) && property_exists($api_enums, 'titles') && !empty($api_enums->titles))
                                     <div class="padding-bottom-15 field-parent">
                                         <div class="custom-google-select-style module">
                                             <label class="gateway-platform-color">Title:</label>
                                             <select class="form-field required gateway-platform-border-color" name="dentist-title">
                                                 @foreach($api_enums->titles as $key => $title)
-                                                    <option value="{{$key}}">{{$title}}</option>
+                                                    <option value="{{$key}}" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'title') && !empty($incompletedRegistrationData->title) && $incompletedRegistrationData->title == $key) selected value="{{$incompletedRegistrationData->website}}" @endif>{{$title}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -153,32 +153,32 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="show-if-dentist-type-selected">
+                        <div class="show-if-dentist-type-selected @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode)) show @endif">
                             <div class="padding-bottom-15 field-parent">
                                 <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
                                     <div class="tooltip-label gateway-platform-color gateway-platform-border-color changeable-html-based-on-user-type" data-dentist="Write your names in full! This ensures that patients who search for you will find you easily." data-clinic="Write the full names of the dental clinic! This ensures that patients who search for the clinic will find it easily."></div>
-                                    <label for="dentist-register-latin-name" class="changeable-html-based-on-user-type" data-dentist="Your Name (Latin letters):" data-clinic="Clinic Name (Latin letters only):"></label>
-                                    <input class="full-rounded form-field required" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name"/>
+                                    <label for="dentist-register-latin-name" class="changeable-html-based-on-user-type @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'name') && !empty($incompletedRegistrationData->name)) active-label gateway-platform-color-important @endif" data-dentist="Your Name (Latin letters):" data-clinic="Clinic Name (Latin letters only):"></label>
+                                    <input class="full-rounded form-field required @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'name') && !empty($incompletedRegistrationData->name)) gateway-platform-border-color-important @endif" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'name') && !empty($incompletedRegistrationData->name)) value="{{$incompletedRegistrationData->name}}" @endif/>
                                 </div>
                                 <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="Ex: Vladimir Alexandrovich (First name, Last name)" data-clinic="Ex: VitaDent Dental Clinic"></div>
                             </div>
                             <div class="padding-bottom-15 field-parent">
                                 <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
                                     <div class="tooltip-label gateway-platform-color gateway-platform-border-color">Patients who search for your name in your language will still find your profile.</div>
-                                    <label for="dentist-register-alternative-name" class="changeable-html-based-on-resolution" data-desktop="Name in local language (All alphabets, optional):" data-mobile="Name in local language (Optional):"></label>
-                                    <input class="full-rounded form-field" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name"/>
+                                    <label for="dentist-register-alternative-name" class="changeable-html-based-on-resolution @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'name_alternative') && !empty($incompletedRegistrationData->name_alternative)) active-label gateway-platform-color-important @endif" data-desktop="Name in local language (All alphabets, optional):" data-mobile="Name in local language (Optional):"></label>
+                                    <input class="full-rounded form-field @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'name_alternative') && !empty($incompletedRegistrationData->name_alternative)) gateway-platform-border-color-important @endif" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'name_alternative') && !empty($incompletedRegistrationData->name_alternative)) value="{{$incompletedRegistrationData->name_alternative}}" @endif/>
                                 </div>
                                 <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="Ex: Влади́мир Алекса́ндрович" data-clinic='Ex: Стоматологія "ВітаДент"'></div>
                             </div>
-                            <div class="show-if-dentist">
+                            <div class="show-if-dentist @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'dentist') show @endif">
                                 <div class="if-work-for-a-practice"></div>
                             </div>
                         </div>
-                        <div class="show-if-clinic">
+                        <div class="show-if-clinic @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'clinic') show @endif">
                             <div class="padding-bottom-15 field-parent">
                                 <div class="custom-google-label-style module" data-input-colorful-border="true">
-                                    <label for="clinic-member-name">Your name:</label>
-                                    <input class="full-rounded form-field to-be-required" name="clinic-member-name" maxlength="255" type="text" id="clinic-member-name"/>
+                                    <label for="clinic-member-name" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'worker_name') && !empty($incompletedRegistrationData->worker_name)) class="active-label gateway-platform-color-important" @endif>Your name:</label>
+                                    <input class="full-rounded form-field to-be-required @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'worker_name') && !empty($incompletedRegistrationData->worker_name)) gateway-platform-border-color-important @endif" name="clinic-member-name" maxlength="255" type="text" id="clinic-member-name" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'worker_name') && !empty($incompletedRegistrationData->worker_name)) value="{{$incompletedRegistrationData->worker_name}}" @endif/>
                                 </div>
                             </div>
                             @if(!empty($api_enums) && property_exists($api_enums, 'working_position') && !empty($api_enums->working_position))
@@ -188,15 +188,24 @@
                                         <select class="form-field gateway-platform-border-color changeable-color-on-selected-value dcn-gateway-gray-color" name="clinic-member-job-title">
                                             <option value="">Please, select</option>
                                             @foreach($api_enums->working_position as $key => $title)
-                                                <option value="{{$key}}">{{$title}}</option>
+                                                <option value="{{$key}}" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'working_position') && !empty($incompletedRegistrationData->working_position) && $incompletedRegistrationData->working_position == $key) selected @endif>{{$title}}</option>
                                             @endforeach
                                         </select>
                                     </div>
+                                    @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'working_position') && !empty($incompletedRegistrationData->working_position) && $incompletedRegistrationData->working_position == 'other')
+                                        <div class="custom-google-label-style module clinic-member-job-title-other-parent" data-input-colorful-border="true">
+                                            <label for="clinic-member-job-title-other" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'working_position_label') && !empty($incompletedRegistrationData->working_position_label)) class="active-label gateway-platform-color-important" @endif>Please specify:</label>
+                                            <input class="full-rounded form-field required @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'working_position_label') && !empty($incompletedRegistrationData->working_position_label)) gateway-platform-border-color-important @endif" name="clinic-member-job-title-other" maxlength="50" type="text" id="clinic-member-job-title-other" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'working_position_label') && !empty($incompletedRegistrationData->working_position_label)) value="{{$incompletedRegistrationData->working_position_label}}" @endif/>
+                                        </div>
+                                    @endif
                                 </div>
                             @endif
                         </div>
-                        <div class="privacy-policy-row padding-bottom-20 padding-top-10 custom-checkbox-style show-if-dentist-type-selected">
-                            <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration"/>
+                        <div class="privacy-policy-row padding-bottom-20 padding-top-10 custom-checkbox-style show-if-dentist-type-selected @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode)) show @endif">
+                            @if(!empty($incompletedRegistrationData))
+                                <label for="privacy-policy-registration" class="custom-checkbox gateway-platform-background-color-important">✓</label>
+                            @endif
+                            <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration" @if(!empty($incompletedRegistrationData)) checked @endif/>
                             <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registration">I've read and agree to the <a href="//dentacoin.com/privacy-policy" class="gateway-platform-color" target="_blank">Privacy Policy</a></label>
                         </div>
                     </div>
@@ -232,9 +241,6 @@
                         <div class="alert alert-warning different-country-hint margin-top-10 margin-bottom-10">Unable to proceed. Please, choose address from your country.</div>
                     </div>
                     <div class="padding-bottom-15 field-parent">
-                        {{var_dump(!empty($incompletedRegistrationData))}}
-                        {{var_dump(property_exists($incompletedRegistrationData, 'website'))}}
-                        {{var_dump(!empty($incompletedRegistrationData->website))}}
                         <div class="custom-google-label-style module" data-input-colorful-border="true">
                             <label for="dentist-register-website">Website: http(s)://:</label>
                             <input class="full-rounded form-field required" name="website" id="dentist-register-website" maxlength="250" type="url" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'website') && !empty($incompletedRegistrationData->website)) value="{{$incompletedRegistrationData->website}}" @endif/>

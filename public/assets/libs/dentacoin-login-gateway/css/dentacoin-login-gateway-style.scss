@@ -553,10 +553,16 @@
     label {
         cursor: pointer;
     }
+    &.show {
+        display: block;
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .show-if-dentist-type-selected {
     display: none;
+    &.show {
+        display: block;
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.second .clinic-member-job-title-other-parent {
