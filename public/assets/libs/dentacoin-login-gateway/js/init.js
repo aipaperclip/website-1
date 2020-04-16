@@ -621,10 +621,12 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('civicRead', async function (event) {
+                            dcnGateway.utils.hideGateway();
                             dcnGateway.utils.showLoader('Receiving your details from Civic...');
                         });
 
                         $(document).on('receivedFacebookToken', async function (event) {
+                            dcnGateway.utils.hideGateway();
                             dcnGateway.utils.showLoader('Receiving your details from Facebook...');
                         });
 
