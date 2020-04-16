@@ -646,7 +646,7 @@ if (typeof jQuery == 'undefined') {
                             });
 
                             if (afterDentistRegistrationPopupForDentist.success) {
-                                dcnGateway.dcnGatewayRequests.showPopup(afterDentistRegistrationPopupForDentist.data, 'enrich-profile');
+                                dcnGateway.utils.showPopup(afterDentistRegistrationPopupForDentist.data, 'enrich-profile');
                             }
                         });
 
@@ -656,7 +656,7 @@ if (typeof jQuery == 'undefined') {
                             });
 
                             if (afterDentistRegistrationPopupForClinic.success, 'enrich-profile') {
-                                dcnGateway.dcnGatewayRequests.showPopup(afterDentistRegistrationPopupForClinic.data);
+                                dcnGateway.utils.showPopup(afterDentistRegistrationPopupForClinic.data);
                             }
                         });
 
