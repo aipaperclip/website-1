@@ -1918,11 +1918,13 @@ function bindLoginSigninPopupShow() {
 }
 bindLoginSigninPopupShow();*/
 
-dcnGateway.init({
-    'platform' : 'dentacoin',
-    /*'environment' : 'staging',*/
-    'forgotten_password_link' : 'https://dentacoin.com/forgotten-password'
-});
+if (!$('body').hasClass('logged-in')) {
+    dcnGateway.init({
+        'platform' : 'dentacoin',
+        /*'environment' : 'staging',*/
+        'forgotten_password_link' : 'https://dentacoin.com/forgotten-password'
+    });
+}
 
 function openLoginSigninPopup(type) {
     basic.closeDialog();

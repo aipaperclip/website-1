@@ -197,24 +197,21 @@ if (typeof jQuery == 'undefined') {
             },
             showPopup: function(message, type, callback, data) {
                 if (type == 'alert') {
-                    $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button gateway-platform-background-color cancel-custom-popup">OK</button></div></div></div>');
+                    $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button gateway-platform-background-color cancel-custom-popup">OK</button></div></div></div>');
 
                     $('.cancel-custom-popup').click(function() {
-                        $('body').removeClass('dentacoin-login-gateway-overflow-hidden');
                         $(this).closest('.dentacoin-login-gateway-container').remove();
                     });
                 } else if (type == 'warning') {
-                    $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button proceed-custom-popup green-button">YES</button><button class="platform-button cancel-custom-popup red-button">NO</button></div></div></div>');
+                    $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button proceed-custom-popup green-button">YES</button><button class="platform-button cancel-custom-popup red-button">NO</button></div></div></div>');
                     
 
                     $('.proceed-custom-popup').click(function() {
                         callback();
-                        $('body').removeClass('dentacoin-login-gateway-overflow-hidden');
                         $(this).closest('.dentacoin-login-gateway-container').remove();
                     });
 
                     $('.cancel-custom-popup').click(function() {
-                        $('body').removeClass('dentacoin-login-gateway-overflow-hidden');
                         $(this).closest('.dentacoin-login-gateway-container').remove();
                     });
                 } else if (type == 'enrich-profile') {
@@ -1471,8 +1468,10 @@ if (typeof jQuery == 'undefined') {
                     } else {
                         showGateway(getParams['dcn-gateway-type']);
                     }
-                } else if (hasOwnProperty.call(getParams, 'inviter')) {
+                } else if (hasOwnProperty.call(getParams, 'inviter') || hasOwnProperty.call(getParams, 'show-patient-register')) {
                     showGateway('patient-register');
+                } else if (hasOwnProperty.call(getParams, 'show-login')) {
+                    showGateway('patient-login');
                 } else if (hasOwnProperty.call(getParams, 'temp-data-key') && hasOwnProperty.call(getParams, 'temp-data-id')) {
                     showGateway('incompleted-dentist-register', {
                         key: getParams['temp-data-key'],
