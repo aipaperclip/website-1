@@ -10,7 +10,7 @@
             <div class="dentacoin-login-gateway-fs-14 calibri-light">This will make your profile stand out and improve your positions in Google.</div>
         </div>
         <div class="btn-container padding-top-30 text-center">
-            <input type="submit" class="platform-button gateway-platform-background-color dentacoin-login-gateway-fs-20" value="SAVE"/>
+            <input type="submit" class="platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20" value="SAVE"/>
         </div>
     </form>
 </div>
