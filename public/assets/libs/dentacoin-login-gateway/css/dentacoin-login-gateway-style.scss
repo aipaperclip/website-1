@@ -516,8 +516,14 @@
                         @include rounded(4px);
                     }
                 }
+                @include breakpoint($xs) {
+                    padding: 0;
+                }
             }
         }
+    }
+    @include breakpoint($xs) {
+        margin-top: 100px;  
     }
 }
 

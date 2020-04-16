@@ -990,6 +990,12 @@
           -moz-border-radius: 4px;
           -ms-border-radius: 4px;
           border-radius: 4px; }
+      @media screen and (max-width: 767px) {
+        .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form {
+          padding: 0; } }
+  @media screen and (max-width: 767px) {
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper {
+      margin-top: 100px; } }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a {
   width: 50%;
