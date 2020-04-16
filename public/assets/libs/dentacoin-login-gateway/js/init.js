@@ -1209,7 +1209,7 @@ if (typeof jQuery == 'undefined') {
                                     }
 
                                     //check if latin name accepts only LATIN characters
-                                    if (!/^[a-z A-Z.&'-]+$/.test($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="latin-name"]').val().trim())) {
+                                    if (!/^[a-z A-Z.&‘'-]+$/.test($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="latin-name"]').val().trim())) {
 
                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="latin-name"]').closest('.field-parent'), 'This field should contain only latin characters.');
                                         errors = true;
@@ -1462,7 +1462,7 @@ if (typeof jQuery == 'undefined') {
                 });
 
                 // bind gateway showing event
-                $('.open-dentacoin-gateway').click(function() {
+                $(document).on('click', '.open-dentacoin-gateway', function() {
                     if ($(this).hasClass('patient-login')) {
                         showGateway('patient-login');
                     } else if ($(this).hasClass('patient-register')) {
