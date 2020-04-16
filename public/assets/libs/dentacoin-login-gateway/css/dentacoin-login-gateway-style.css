@@ -945,17 +945,25 @@
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .border-bottom {
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .check-icon {
+      width: 50px; }
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .popup-title {
+      margin-top: 20px;
+      margin-bottom: 0; }
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .above-form-title {
+      margin-top: 0;
+      margin-bottom: 20px; }
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .border-bottom {
       border-bottom: 1px solid black; }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .line-crossed {
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .line-crossed {
       position: relative;
       text-align: center; }
-      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .line-crossed span {
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .line-crossed span {
         background-color: white;
         z-index: 5;
         padding: 0 10px;
         position: relative; }
-      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .line-crossed:after {
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .line-crossed:after {
         content: '';
         height: 1px;
         left: 0;
@@ -966,14 +974,14 @@
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(-50%); }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile form {
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form {
       padding: 0 50px;
       text-align: left; }
-      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile form .error-handle {
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form .error-handle {
         display: block; }
-      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile form#enrich-profile {
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form#enrich-profile {
         color: #888888; }
-        .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile form#enrich-profile textarea {
+        .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form#enrich-profile textarea {
           border: 1px solid #cccccc;
           font-size: 16px;
           width: 100%;
