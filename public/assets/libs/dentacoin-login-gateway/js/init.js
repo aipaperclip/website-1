@@ -225,8 +225,6 @@ if (typeof jQuery == 'undefined') {
                         if (this_form.find('#description').val().trim() == '') {
                             dcnGateway.utils.customErrorHandle(this_form.find('#description').closest('.form-row'), 'This field is required.');
                         } else {
-                            dcnGateway.utils.hidePopup();
-
                             var enrichProfileData = {
                                 user: data.user,
                                 description: this_form.find('#description').val().trim()
