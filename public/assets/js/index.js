@@ -1920,8 +1920,8 @@ bindLoginSigninPopupShow();*/
 
 dcnGateway.init({
     'platform' : 'dentacoin',
-    'environment' : 'staging',
-    'forgotten_password_link' : 'https://google.com'
+    /*'environment' : 'staging',*/
+    'forgotten_password_link' : 'https://dentacoin.com/forgotten-password'
 });
 
 function openLoginSigninPopup(type) {
