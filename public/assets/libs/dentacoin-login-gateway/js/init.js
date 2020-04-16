@@ -814,6 +814,24 @@ if (typeof jQuery == 'undefined') {
                             }
                         });
 
+                        // change htmls based on the selected option
+                        for (var i = 0, len = $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').length; i < len; i+=1) {
+                            if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'dentist') {
+                                $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).attr('data-dentist'));
+                            } else {
+                                $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).attr('data-clinic'));
+                            }
+                        }
+
+                        // change htmls based on the selected option
+                        for (var i = 0, len = $('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').length; i < len; i+=1) {
+                            if ($(window).width() < 1200) {
+                                $('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').eq(i).attr('data-mobile'));
+                            } else {
+                                $('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').eq(i).attr('data-desktop'));
+                            }
+                        }
+
                         //SECOND STEP INIT LOGIC
                         $('.dentacoin-login-gateway-container .step.second .user-type-container .user-type').click(function() {
                             $('.dentacoin-login-gateway-container .step.second .show-on-user-type-first-change').show();
@@ -844,24 +862,6 @@ if (typeof jQuery == 'undefined') {
                                 $('.show-if-clinic').show();
                                 $('.show-if-dentist-type-selected').show();
                                 $('.show-if-clinic .to-be-required').addClass('required');
-                            }
-
-                            // change htmls based on the selected option
-                            for (var i = 0, len = $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').length; i < len; i+=1) {
-                                if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'dentist') {
-                                    $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).attr('data-dentist'));
-                                } else {
-                                    $('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-user-type').eq(i).attr('data-clinic'));
-                                }
-                            }
-
-                            // change htmls based on the selected option
-                            for (var i = 0, len = $('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').length; i < len; i+=1) {
-                                if ($(window).width() < 1200) {
-                                    $('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').eq(i).attr('data-mobile'));
-                                } else {
-                                    $('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').eq(i).html($('.dentacoin-login-gateway-container .changeable-html-based-on-resolution').eq(i).attr('data-desktop'));
-                                }
                             }
                         });
 
