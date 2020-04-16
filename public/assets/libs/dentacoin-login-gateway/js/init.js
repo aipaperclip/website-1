@@ -112,6 +112,14 @@ if (typeof jQuery == 'undefined') {
                     dataType: 'json',
                     data: data
                 });
+            },
+            enrichProfile: async function (data) {
+                return await $.ajax({
+                    type: 'POST',
+                    url: 'https://dentacoin.com/dentacoin-login-gateway/handle-enrich-profile',
+                    dataType: 'json',
+                    data: data
+                });
             }
         },
         utils: {
@@ -179,7 +187,7 @@ if (typeof jQuery == 'undefined') {
             hideLoader: function() {
                 $('.dentacoin-login-gateway-response-layer').hide();
             },
-            showPopup: function(message, type, callback) {
+            showPopup: function(message, type, callback, data) {
                 if (type == 'alert') {
                     $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup">'+message+'<div class="popup-buttons"><button class="platform-button gateway-platform-background-color cancel-custom-popup">OK</button></div></div></div>');
 
@@ -200,6 +208,30 @@ if (typeof jQuery == 'undefined') {
                     });
                 } else if (type == 'enrich-profile') {
                     $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper enrich-profile">'+message+'</div></div>');
+
+                    $('form#enrich-profile').on('submit', async function(event) {
+                        event.preventDefault();
+                        var this_form = $(this);
+                        this_form.find('.error-handle').remove();
+
+                        if (this_form.find('#description').val().trim() == '') {
+                            dcnGateway.utils.customErrorHandle(this_form.find('#description').closest('.form-row'), 'This field is required.');
+                        } else {
+                            dcnGateway.utils.hidePopup();
+                            var enrichProfileResponse = await dcnGateway.dcnGatewayRequests.enrichProfile({
+                                user: data.user,
+                                description: this_form.find('#description').val().trim()
+                            });
+
+                            if (enrichProfileResponse.success) {
+                                dcnGateway.utils.showPopup(enrichProfileResponse.data, 'alert');
+                            } else if (enrichProfileResponse.error) {
+                                dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                            } else {
+                                dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                            }
+                        }
+                    });
                 }
             },
             bytesToMegabytes: function(bytes) {
@@ -395,6 +427,10 @@ if (typeof jQuery == 'undefined') {
                 $(document).off('dentistAuthSuccessResponse');
                 $(document).off('noExternalLoginProviderConnection');
                 $(document).off('civicSipError');
+            },
+            hidePopup: function() {
+                // remove popup
+                $('.dentacoin-login-gateway-container').remove();
             }
         },
         init: async function(params) {
@@ -646,7 +682,9 @@ if (typeof jQuery == 'undefined') {
                             });
 
                             if (afterDentistRegistrationPopupForDentist.success) {
-                                dcnGateway.utils.showPopup(afterDentistRegistrationPopupForDentist.data, 'enrich-profile');
+                                dcnGateway.utils.showPopup(afterDentistRegistrationPopupForDentist.data, 'enrich-profile', null, {
+                                    user: event.response_data.user
+                                });
                             }
                         });
 
@@ -656,7 +694,9 @@ if (typeof jQuery == 'undefined') {
                             });
 
                             if (afterDentistRegistrationPopupForClinic.success) {
-                                dcnGateway.utils.showPopup(afterDentistRegistrationPopupForClinic.data, 'enrich-profile');
+                                dcnGateway.utils.showPopup(afterDentistRegistrationPopupForClinic.data, 'enrich-profile', null, {
+                                    user: event.response_data.user
+                                });
                             }
                         });
 
@@ -775,7 +815,7 @@ if (typeof jQuery == 'undefined') {
                                                         // on success save email to db
                                                         $.event.trigger({
                                                             type: 'dentistAuthSuccessResponse',
-                                                            response_data: loggingDentistResponse.success,
+                                                            response_data: loggingDentistResponse.data,
                                                             platform_type: params.platform,
                                                             time: new Date()
                                                         });
@@ -796,7 +836,7 @@ if (typeof jQuery == 'undefined') {
                                         } else {
                                             $.event.trigger({
                                                 type: 'dentistAuthSuccessResponse',
-                                                response_data: loggingDentistResponse.success,
+                                                response_data: loggingDentistResponse.data,
                                                 platform_type: params.platform,
                                                 time: new Date()
                                             });
@@ -1290,7 +1330,7 @@ if (typeof jQuery == 'undefined') {
                                         if (registeringDentistResponse.success) {
                                             $.event.trigger({
                                                 type: 'dentistAuthSuccessResponse',
-                                                response_data: registeringDentistResponse.success,
+                                                response_data: registeringDentistResponse.data,
                                                 platform_type: params.platform,
                                                 time: new Date()
                                             });

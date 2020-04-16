@@ -621,4 +621,26 @@ class UserController extends Controller {
 
         return response()->json(['error' => true]);
     }
+
+    protected function handleEnrichProfile(Request $request) {
+        $this->validate($request, [
+            'user' => 'required',
+            'description' => 'required'
+        ], [
+            'user.required' => 'User is required.',
+            'description.required' => 'Description is required.'
+        ]);
+
+        $data = $request->input();
+        $post_api_data = array(
+            'id' => $this->encrypt($data['user'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')),
+            'short_description' => $this->encrypt($data['description'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
+        );
+        $update_method_response = (new APIRequestsController())->updateAnonymousUserData($post_api_data);
+        if ($update_method_response->success) {
+            return response()->json(['success' => true, 'Your short description was saved successfully.']);
+        } else {
+            return response()->json(['error' => true]);
+        }
+    }
 }

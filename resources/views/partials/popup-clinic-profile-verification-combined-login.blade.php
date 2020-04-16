@@ -43,7 +43,7 @@
     </form>--}}
     <form method="POST" id="enrich-profile">
         <div class="form-row">
-            <textarea rows="4" name="description" maxlength="512" placeholder="Add short description (max. 512 characters)"></textarea>
+            <textarea rows="4" id="description" maxlength="512" placeholder="Add short description (max. 512 characters)"></textarea>
             <div class="dentacoin-login-gateway-fs-14 calibri-light">This will make your profile stand out and improve your positions in Google.</div>
         </div>
         <div class="btn-container text-center padding-bottom-30 padding-top-30">

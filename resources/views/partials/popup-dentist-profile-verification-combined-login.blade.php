@@ -6,7 +6,7 @@
     <h2 class="lato-bold dentacoin-login-gateway-fs-30 above-form-title lato-bold dentacoin-login-gateway-fs-30">While waiting, why don’t you enrich your profile?</h2>
     <form method="POST" id="enrich-profile">
         <div class="form-row">
-            <textarea rows="4" name="description" maxlength="200" placeholder="Add your short description (140 characters):"></textarea>
+            <textarea rows="4" id="description" maxlength="512" placeholder="Add short description (max. 512 characters)"></textarea>
             <div class="dentacoin-login-gateway-fs-14 calibri-light">This will make your profile stand out and improve your positions in Google.</div>
         </div>
         <div class="btn-container padding-top-30 text-center">
