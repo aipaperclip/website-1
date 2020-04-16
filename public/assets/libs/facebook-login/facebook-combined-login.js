@@ -66,7 +66,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                                     customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data);
                                 }
 
-                            } else if (data.error) {
+                            } else if (!data.success) {
                                 customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data);
                             } else {
                                 customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');

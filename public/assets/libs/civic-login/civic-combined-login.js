@@ -87,7 +87,7 @@
                                         customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data);
                                     }
 
-                                } else if (data.error) {
+                                } else if (!data.success) {
                                     customCivicEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data);
                                 } else {
                                     customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
