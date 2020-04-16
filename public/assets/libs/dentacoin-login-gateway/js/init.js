@@ -892,27 +892,34 @@ if (typeof jQuery == 'undefined') {
 
                         var userCountryCode;
 
+                        async function initThirdStepLogic() {
+                            // get user country code
+                            userCountryCode = await dcnGateway.dcnGatewayRequests.getUserCountry();
+                            // setup current country in the dropdown and phone number
+                            if(userCountryCode.success) {
+                                $('.step.third #dentist-country').attr('data-current-user-country-code', userCountryCode.success);
+                                $('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').prop('selected', true);
+                            }
+                            $('.step.third .country-code').html('+'+$('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').attr('data-code'));
+
+                            // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
+                            if (!loadedAddressSuggesterLib) {
+                                await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
+// init Google address suggester
+                                if (typeof initAddressSuggesters === 'function') {
+                                    initAddressSuggesters();
+                                }
+                                loadedAddressSuggesterLib = false;
+                            }
+                        }
+
                         if ($('.next-step').attr('data-cached-step') == 'true') {
                             switch($('.next-step').attr('data-current-step')) {
                                 case 'third':
-                                    if (!loadedAddressSuggesterLib) {
-                                        await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
-// init Google address suggester
-                                        if (typeof initAddressSuggesters === 'function') {
-                                            initAddressSuggesters();
-                                        }
-                                        loadedAddressSuggesterLib = false;
-                                    }
+                                    initThirdStepLogic();
                                     break;
                                 case 'fourth':
-                                    if (!loadedAddressSuggesterLib) {
-                                        await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
-// init Google address suggester
-                                        if (typeof initAddressSuggesters === 'function') {
-                                            initAddressSuggesters();
-                                        }
-                                        loadedAddressSuggesterLib = false;
-                                    }
+                                    initThirdStepLogic();
                                     break;
                             }
                         }
@@ -1077,24 +1084,7 @@ if (typeof jQuery == 'undefined') {
                                         $('.dentacoin-login-gateway-container .dentist .form-register .step').removeClass('visible');
                                         $('.dentacoin-login-gateway-container .dentist .form-register .step.third').addClass('visible');
 
-                                        // get user country code
-                                        userCountryCode = await dcnGateway.dcnGatewayRequests.getUserCountry();
-                                        // setup current country in the dropdown and phone number
-                                        if(userCountryCode.success) {
-                                            $('.step.third #dentist-country').attr('data-current-user-country-code', userCountryCode.success);
-                                            $('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').prop('selected', true);
-                                        }
-                                        $('.step.third .country-code').html('+'+$('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').attr('data-code'));
-
-                                        // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
-                                        if (!loadedAddressSuggesterLib) {
-                                            await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
-// init Google address suggester
-                                            if (typeof initAddressSuggesters === 'function') {
-                                                initAddressSuggesters();
-                                            }
-                                            loadedAddressSuggesterLib = false;
-                                        }
+                                        await initThirdStepLogic();
 
                                         this_btn.attr('data-current-step', 'third');
                                         this_btn.val('Next');
