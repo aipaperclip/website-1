@@ -135,6 +135,18 @@ var basic = {
             '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
         return !!pattern.test(url);
     },
+    hasNumber: function(myString) {
+        return /\d/.test(myString);
+    },
+    hasLowerCase: function(str) {
+        return (/[a-z]/.test(str));
+    },
+    hasUpperCase: function(str) {
+        return (/[A-Z]/.test(str));
+    },
+    validatePassword: function(password) {
+        return password.trim().length >= 8 && password.trim().length <= 30 && basic.hasLowerCase(password) && basic.hasUpperCase(password) && basic.hasNumber(password);
+    },
     isInViewport: function(el) {
         var elementTop = $(el).offset().top;
         var elementBottom = elementTop + $(el).outerHeight();
