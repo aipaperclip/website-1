@@ -228,7 +228,7 @@ if (typeof jQuery == 'undefined') {
                             if (environment == 'staging') {
                                 enrichProfileData.staging = true;
                             }
-                            
+
                             var enrichProfileResponse = await dcnGateway.dcnGatewayRequests.enrichProfile(enrichProfileData);
 
                             console.log(enrichProfileResponse, 'enrichProfileResponse');

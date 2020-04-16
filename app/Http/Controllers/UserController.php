@@ -646,7 +646,7 @@ class UserController extends Controller {
         }
 
         if ($update_method_response->success) {
-            return response()->json(['success' => true, 'Your short description was saved successfully.']);
+            return response()->json(['success' => true, 'data' => 'Your short description was saved successfully.']);
         } else {
             return response()->json(['error' => true]);
         }
