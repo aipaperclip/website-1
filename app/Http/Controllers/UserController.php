@@ -632,6 +632,8 @@ class UserController extends Controller {
         ]);
 
         $data = $request->input();
+
+        var_dump($data);
         $post_api_data = array(
             'id' => $this->encrypt($data['user'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')),
             'description' => $this->encrypt($data['description'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
