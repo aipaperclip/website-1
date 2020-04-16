@@ -675,6 +675,7 @@ class UserController extends Controller {
         ]);
 
         $checkToken = (new APIRequestsController())->checkUserIdAndToken($request->input('id'), $request->input('token'));
+        var_dump($request->input());
         var_dump($checkToken);
         die('asd');
         if(is_object($checkToken) && property_exists($checkToken, 'success') && $checkToken->success) {
