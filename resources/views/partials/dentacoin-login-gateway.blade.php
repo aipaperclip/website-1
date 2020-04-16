@@ -68,6 +68,7 @@
         </div>
     </div>
     <div class="dentist inline-block @if($type == 'patient-login' || $type == 'patient-register') custom-hide @endif">
+        {{var_dump($type)}}
         <div class="form-login @if($type == 'dentist-register' || $type == 'patient-register' || $type = 'incompleted-dentist-register') display-none @endif">
             <h2>LOG IN</h2>
             <form method="POST" id="dentist-login">
