@@ -120,6 +120,16 @@ if (typeof jQuery == 'undefined') {
                     dataType: 'json',
                     data: data
                 });
+            },
+            createPatientSession: async function (url, data) {
+                console.log(url, 'url');
+                console.log(data, 'data');
+                return await $.ajax({
+                    type: 'POST',
+                    url: url,
+                    dataType: 'json',
+                    data: data
+                });
             }
         },
         utils: {
@@ -189,14 +199,14 @@ if (typeof jQuery == 'undefined') {
             },
             showPopup: function(message, type, callback, data) {
                 if (type == 'alert') {
-                    $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup">'+message+'<div class="popup-buttons"><button class="platform-button gateway-platform-background-color cancel-custom-popup">OK</button></div></div></div>');
+                    $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button gateway-platform-background-color cancel-custom-popup">OK</button></div></div></div>');
 
                     $('.cancel-custom-popup').click(function() {
                         $('body').removeClass('dentacoin-login-gateway-overflow-hidden');
                         $(this).closest('.dentacoin-login-gateway-container').remove();
                     });
                 } else if (type == 'warning') {
-                    $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup">'+message+'<div class="popup-buttons"><button class="platform-button proceed-custom-popup green-button">YES</button><button class="platform-button cancel-custom-popup red-button">NO</button></div></div></div>');
+                    $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button proceed-custom-popup green-button">YES</button><button class="platform-button cancel-custom-popup red-button">NO</button></div></div></div>');
                     
 
                     $('.proceed-custom-popup').click(function() {
@@ -469,10 +479,12 @@ if (typeof jQuery == 'undefined') {
                 var platformsData = await dcnGateway.dcnGatewayRequests.getPlatformsData();
                 var validPlatform = false;
                 var currentPlatformColor;
+                var currentPlatformDomain;
                 for (var i = 0, len = platformsData.length; i < len; i+=1) {
                     if (platformsData[i].slug == params.platform) {
                         validPlatform = true;
                         currentPlatformColor = platformsData[i].color;
+                        currentPlatformDomain = platformsData[i].link;
                         break;
                     }
                 }
@@ -685,8 +697,20 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('patientAuthSuccessResponse', async function (event) {
-                            console.log(event.response_data.token, 'patientAuthSuccessResponse');
                             dcnGateway.utils.showPopup('Ready to pass data to websites backend', 'alert');
+
+                            var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createPatientSession(currentPlatformDomain + 'patient-login', {
+                                token: event.response_data.token,
+                                id: event.response_data.data.id
+                            });
+
+                            console.log(createPatientSessionResponse, 'createPatientSessionResponse');
+
+                            if (createPatientSessionResponse.success) {
+                                window.location.reload();
+                            } else {
+                                dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                            }
                         });
 
                         $(document).on('dentistAuthSuccessResponse', async function (event) {

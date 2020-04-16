@@ -83,6 +83,12 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/get-current-user-data', 'UserController@getCurrentUserData')->middleware('HandleUserSession')->name('get-current-user-data');
 
+    /*Route::post('/dentist-login', 'UserController@dentistLogin')->name('dentist-login');
+
+    Route::post('/dentist-register', 'UserController@dentistRegister')->name('dentist-register');
+
+    Route::post('/patient-login', 'UserController@patientLogin')->name('patient-login');*/
+
     Route::post('/dentist-login', 'UserController@dentistLogin')->name('dentist-login');
 
     Route::post('/dentist-register', 'UserController@dentistRegister')->name('dentist-register');

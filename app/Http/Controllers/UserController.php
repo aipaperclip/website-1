@@ -192,7 +192,7 @@ class UserController extends Controller {
         }
     }
 
-    protected function dentistLogin(Request $request) {
+    /*protected function dentistLogin(Request $request) {
         $customMessages = [
             'email.required' => 'Email address is required.',
             'password.required' => 'Password is required.',
@@ -372,7 +372,7 @@ class UserController extends Controller {
                 return redirect()->route('home');
             }
         }
-    }
+    }*/
 
     //dentist can add profile description while waiting for approval from Dentacoin admin
     protected function enrichProfile(Request $request) {
@@ -650,5 +650,26 @@ class UserController extends Controller {
         } else {
             return response()->json(['error' => true]);
         }
+    }
+
+    protected function patientLogin(Request $request) {
+        $this->validate($request, [
+            'token' => 'required',
+            'id' => 'required'
+        ], [
+            'token.required' => 'Token is required.',
+            'id.required' => 'ID is required.'
+        ]);
+
+        $session_arr = [
+            'token' => $request->input('token'),
+            'id' => $request->input('id'),
+            'type' => 'patient'
+        ];
+
+
+        session(['logged_user' => $session_arr]);
+
+        return response()->json(['success' => true]);
     }
 }
