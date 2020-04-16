@@ -463,6 +463,15 @@
     transform: translateX(-50%);
     width: 95%;
     max-width: 1000px;
+    .close-custom-popup {
+        position: absolute;
+        right: 0;
+        font-size: 40px;
+        border: 0;
+        background: transparent;
+        padding: 5px;
+        line-height: 20px;
+    }
     &.popup {
         padding: 30px;
         max-width: 700px;
@@ -487,6 +496,7 @@
         background-color: white;
         @include vertical-horizontal-align(absolute);
         .enrich-profile-container {
+            position: relative;
             .check-icon {
                 width: 50px;
             }

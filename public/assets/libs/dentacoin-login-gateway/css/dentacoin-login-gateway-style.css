@@ -932,6 +932,14 @@
   transform: translateX(-50%);
   width: 95%;
   max-width: 1000px; }
+  .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .close-custom-popup {
+    position: absolute;
+    right: 0;
+    font-size: 40px;
+    border: 0;
+    background: transparent;
+    padding: 5px;
+    line-height: 20px; }
   .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.popup {
     padding: 30px;
     max-width: 700px;
@@ -961,54 +969,56 @@
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .check-icon {
-      width: 50px; }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .popup-title {
-      margin-top: 20px;
-      margin-bottom: 0; }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .above-form-title {
-      margin-top: 0;
-      margin-bottom: 20px; }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .border-bottom {
-      border-bottom: 1px solid black; }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .line-crossed {
-      position: relative;
-      text-align: center; }
-      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .line-crossed span {
-        background-color: white;
-        z-index: 5;
-        padding: 0 10px;
-        position: relative; }
-      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .line-crossed:after {
-        content: '';
-        height: 1px;
-        left: 0;
-        width: 100%;
-        background-color: black;
-        position: absolute;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%); }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form {
-      padding: 0 50px;
-      text-align: left; }
-      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form .error-handle {
-        display: block; }
-      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form#enrich-profile {
-        color: #888888; }
-        .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form#enrich-profile textarea {
-          border: 1px solid #cccccc;
-          font-size: 16px;
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container {
+      position: relative; }
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .check-icon {
+        width: 50px; }
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .popup-title {
+        margin-top: 20px;
+        margin-bottom: 0; }
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .above-form-title {
+        margin-top: 0;
+        margin-bottom: 20px; }
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .border-bottom {
+        border-bottom: 1px solid black; }
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .line-crossed {
+        position: relative;
+        text-align: center; }
+        .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .line-crossed span {
+          background-color: white;
+          z-index: 5;
+          padding: 0 10px;
+          position: relative; }
+        .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container .line-crossed:after {
+          content: '';
+          height: 1px;
+          left: 0;
           width: 100%;
-          padding: 10px;
-          -webkit-border-radius: 4px;
-          -moz-border-radius: 4px;
-          -ms-border-radius: 4px;
-          border-radius: 4px; }
-      @media screen and (max-width: 767px) {
-        .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form {
-          padding: 0; } }
+          background-color: black;
+          position: absolute;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%); }
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form {
+        padding: 0 50px;
+        text-align: left; }
+        .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form .error-handle {
+          display: block; }
+        .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form#enrich-profile {
+          color: #888888; }
+          .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form#enrich-profile textarea {
+            border: 1px solid #cccccc;
+            font-size: 16px;
+            width: 100%;
+            padding: 10px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -ms-border-radius: 4px;
+            border-radius: 4px; }
+        @media screen and (max-width: 767px) {
+          .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper.enrich-profile .enrich-profile-container form {
+            padding: 0; } }
   @media screen and (max-width: 767px) {
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper {
       margin-top: 100px; } }

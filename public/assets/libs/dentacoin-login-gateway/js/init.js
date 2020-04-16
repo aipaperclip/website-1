@@ -217,6 +217,10 @@ if (typeof jQuery == 'undefined') {
                 } else if (type == 'enrich-profile') {
                     $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper enrich-profile">'+message+'</div></div>');
 
+                    $('.cancel-custom-popup').click(function() {
+                        $(this).closest('.dentacoin-login-gateway-container').remove();
+                    });
+
                     $('form#enrich-profile').on('submit', async function(event) {
                         event.preventDefault();
                         var this_form = $(this);
