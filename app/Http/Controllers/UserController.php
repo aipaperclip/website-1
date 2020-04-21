@@ -372,7 +372,7 @@ class UserController extends Controller {
                 return redirect()->route('home');
             }
         }
-    }*/
+    }
 
     //dentist can add profile description while waiting for approval from Dentacoin admin
     protected function enrichProfile(Request $request) {
@@ -395,7 +395,7 @@ class UserController extends Controller {
         } else {
             return redirect()->route('home')->with(['error' => 'Something went wrong, please try again later.']);
         }
-    }
+    }*/
 
     protected function inviteYourClinic(Request $request) {
         $data = $request->input();

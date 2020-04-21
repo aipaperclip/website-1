@@ -97,9 +97,9 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/forgotten-password-submit', 'UserController@forgottenPasswordSubmit')->name('forgotten-password-submit');
 
-    Route::post('/password-recover-submit', 'UserController@changePasswordSubmit')->name('password-recover-submit');*/
+    Route::post('/password-recover-submit', 'UserController@changePasswordSubmit')->name('password-recover-submit');
 
-    Route::post('/enrich-profile', 'UserController@enrichProfile')->name('enrich-profile');
+    Route::post('/enrich-profile', 'UserController@enrichProfile')->name('enrich-profile');*/
 
     Route::post('/invite-your-clinic', 'UserController@inviteYourClinic')->name('invite-your-clinic');
 
