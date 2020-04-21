@@ -1922,7 +1922,7 @@ if (!$('body').hasClass('logged-in')) {
     dcnGateway.init({
         'platform' : 'dentacoin',
         /*'environment' : 'staging',*/
-        'forgotten_password_link' : 'https://dentacoin.com/forgotten-password'
+        'forgotten_password_link' : 'https://account.dentacoin.com/forgotten-password'
     });
 }
 

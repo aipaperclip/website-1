@@ -91,13 +91,13 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/authenticate-user', 'UserController@authenticateUser')->name('authenticate-user');
 
-    Route::get('/password-recover', 'UserController@getRecoverPassword')->name('password-recover');
+    /*Route::get('/password-recover', 'UserController@getRecoverPassword')->name('password-recover');
 
     Route::get('/forgotten-password', 'UserController@getForgottenPasswordView')->name('forgotten-password');
 
     Route::post('/forgotten-password-submit', 'UserController@forgottenPasswordSubmit')->name('forgotten-password-submit');
 
-    Route::post('/password-recover-submit', 'UserController@changePasswordSubmit')->name('password-recover-submit');
+    Route::post('/password-recover-submit', 'UserController@changePasswordSubmit')->name('password-recover-submit');*/
 
     Route::post('/enrich-profile', 'UserController@enrichProfile')->name('enrich-profile');
 

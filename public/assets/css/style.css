@@ -6049,7 +6049,7 @@ header {
     font-size: 0;
     color: black;
     display: inline-block;
-    padding: 15px 0; }
+    padding: 10px 0; }
     header .logged-user-right-nav > .hidden-box-parent > span.user-name {
       vertical-align: middle;
       padding-top: 25px;
@@ -6177,7 +6177,7 @@ body.home {
     font-size: 0;
     color: black;
     display: inline-block;
-    padding: 15px 0; }
+    padding: 10px 0; }
     body.home.logged-in .logged-user-right-nav > .hidden-box-parent .color-white-on-hub {
       color: white; }
 
