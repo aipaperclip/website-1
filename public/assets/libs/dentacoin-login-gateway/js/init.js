@@ -486,7 +486,13 @@ if (typeof jQuery == 'undefined') {
                     if (platformsData[i].slug == params.platform) {
                         validPlatform = true;
                         currentPlatformColor = platformsData[i].color;
-                        currentPlatformDomain = platformsData[i].link;
+
+                        // TEMPORALLY, DELETE THIS
+                        if (platformsData[i].slug == 'dentavox') {
+                            currentPlatformDomain = 'https://urgent.dentacoin.com/';
+                        } else {
+                            currentPlatformDomain = platformsData[i].link;
+                        }
                         break;
                     }
                 }

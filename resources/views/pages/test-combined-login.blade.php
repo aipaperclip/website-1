@@ -38,7 +38,7 @@
     console.log('asd');
 
     dcnGateway.init({
-        'platform' : 'dentacoin',
+        'platform' : 'dentavox',
         'environment' : 'staging',
         'forgotten_password_link' : 'https://google.com'
     });
