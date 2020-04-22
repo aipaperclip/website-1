@@ -507,7 +507,6 @@ if (typeof jQuery == 'undefined') {
 
                 // show login gateway by url
                 var getParams = dcnGateway.utils.getGETParameters();
-                console.log(getParams, 'getParams');
 
                 async function showGateway(type, data) {
                     var gatewayData = {
@@ -795,9 +794,6 @@ if (typeof jQuery == 'undefined') {
 
                         $(document).on('patientAuthErrorResponse', function (event) {
                             var error_popup_html = '';
-                            console.log(event.response_data, 'event.response_data');
-                            // I need type here or separated messages for each platform
-                            // currently the messages for not existing account or deleted one are WRONG
                             if (event.response_data.errors) {
                                 for(var key in event.response_data.errors) {
                                     error_popup_html += event.response_data.errors[key]+'<br>';

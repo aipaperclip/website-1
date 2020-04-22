@@ -78,7 +78,6 @@
                             url: civic_custom_btn.attr('data-url'),
                             data: register_data,
                             success: function(data) {
-                                console.log(data, 'data');
                                 if (data.success) {
                                     if (data.data.email == '' || data.data.email == null) {
                                         console.log('registeredAccountMissingEmail');
