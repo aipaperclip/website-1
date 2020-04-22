@@ -84,7 +84,7 @@
                                         console.log('registeredAccountMissingEmail');
                                         customCivicEvent('registeredAccountMissingEmail', '', data);
                                     } else {
-                                        customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data);
+                                        customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
                                     }
 
                                 } else if (!data.success) {

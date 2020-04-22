@@ -1924,6 +1924,16 @@ if (!$('body').hasClass('logged-in')) {
         /*'environment' : 'staging',*/
         'forgotten_password_link' : 'https://account.dentacoin.com/forgotten-password'
     });
+
+    $(document).on('dentistAuthSuccessResponse', async function (event) {
+        console.log('dentistAuthSuccessResponse');
+        window.location.reload();
+    });
+
+    $(document).on('patientAuthSuccessResponse', async function (event) {
+        console.log('patientAuthSuccessResponse');
+        window.location.reload();
+    });
 }
 
 function openLoginSigninPopup(type) {

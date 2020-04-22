@@ -14,7 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        'get-holiday-calendar-participants', 'dentacoin-login-gateway', 'dentacoin-login-gateway/*', 'check-dentist-account', 'get-country-code', 'authenticate-user'
+        'get-holiday-calendar-participants', 'dentacoin-login-gateway', 'dentacoin-login-gateway/*', 'check-dentist-account', 'get-country-code'
     ];
 
     protected function addCookieToResponse($request, $response) {

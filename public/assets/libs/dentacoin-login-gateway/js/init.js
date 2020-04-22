@@ -126,7 +126,10 @@ if (typeof jQuery == 'undefined') {
                     type: 'POST',
                     url: url,
                     dataType: 'json',
-                    data: data
+                    data: data,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
                 });
             }
         },
@@ -160,8 +163,7 @@ if (typeof jQuery == 'undefined') {
                 el.append('<div class="error-handle">'+string+'</div>');
             },
             fireGoogleAnalyticsEvent: function(category, action, label, value) {
-                console.log('commenter fireGoogleAnalyticsEvent event');
-                /*var event_obj = {
+                var event_obj = {
                     'event_action' : action,
                     'event_category': category,
                     'event_label': label
@@ -171,7 +173,7 @@ if (typeof jQuery == 'undefined') {
                     event_obj.value = value;
                 }
 
-                gtag('event', label, event_obj);*/
+                gtag('event', label, event_obj);
             },
             validateUrl: function(url)   {
                 var pattern = new RegExp(/*'^(https?:\\/\\/)?' +*/ // protocol
@@ -444,9 +446,9 @@ if (typeof jQuery == 'undefined') {
                     $(document).off('noCoreDBApiConnection');
                     $(document).off('customCivicFbStopperTriggered');
                     $(document).off('registeredAccountMissingEmail');
-                    $(document).off('patientAuthSuccessResponse');
+                    $(document).off('patientProceedWithCreatingSession');
                     $(document).off('patientAuthErrorResponse');
-                    $(document).off('dentistAuthSuccessResponse');
+                    $(document).off('dentistProceedWithCreatingSession');
                     $(document).off('noExternalLoginProviderConnection');
                     $(document).off('civicSipError');
                     $(document).off('getAfterDentistRegistrationPopupForDentist');
@@ -550,7 +552,7 @@ if (typeof jQuery == 'undefined') {
 
                         // init custom checkboxes style
                         dcnGateway.utils.initCustomCheckboxes();
-                        
+
                         // init custom inputs styles
                         $('body').on('click', '.custom-google-label-style label', function() {
                             $(this).addClass('active-label gateway-platform-color-important');
@@ -677,7 +679,7 @@ if (typeof jQuery == 'undefined') {
                                     if (editUserDataResponse.success) {
                                         // on success save email to db
                                         $.event.trigger({
-                                            type: 'patientAuthSuccessResponse',
+                                            type: 'patientProceedWithCreatingSession',
                                             response_data: event.response_data,
                                             platform_type: event.platform_type,
                                             time: new Date()
@@ -698,7 +700,7 @@ if (typeof jQuery == 'undefined') {
                             });
                         });
 
-                        $(document).on('patientAuthSuccessResponse', async function (event) {
+                        $(document).on('patientProceedWithCreatingSession', async function (event) {
                             var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(currentPlatformDomain + 'authenticate-user', {
                                 token: event.response_data.token,
                                 id: event.response_data.data.id,
@@ -706,14 +708,19 @@ if (typeof jQuery == 'undefined') {
                             });
 
                             if (createPatientSessionResponse.success) {
-                                window.location.reload();
+                                $.event.trigger({
+                                    type: 'patientAuthSuccessResponse',
+                                    response_data: event.response_data,
+                                    platform_type: params.platform,
+                                    time: new Date()
+                                });
                             } else {
                                 dcnGateway.utils.hideLoader();
                                 dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                             }
                         });
 
-                        $(document).on('dentistAuthSuccessResponse', async function (event) {
+                        $(document).on('dentistProceedWithCreatingSession', async function (event) {
                             var createDentistSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(currentPlatformDomain + 'authenticate-user', {
                                 token: event.response_data.token,
                                 id: event.response_data.data.id,
@@ -721,7 +728,12 @@ if (typeof jQuery == 'undefined') {
                             });
 
                             if (createDentistSessionResponse.success) {
-                                window.location.reload();
+                                $.event.trigger({
+                                    type: 'dentistAuthSuccessResponse',
+                                    response_data: event.response_data,
+                                    platform_type: params.platform,
+                                    time: new Date()
+                                });
                             } else {
                                 dcnGateway.utils.hideLoader();
                                 dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
@@ -729,27 +741,35 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('dentistRegisterSuccessResponse', async function (event) {
-                            if (event.response_data.data.is_clinic) {
+                            if (params.platform == 'trusted-reviews') {
                                 $.event.trigger({
-                                    type: 'getAfterDentistRegistrationPopupForClinic',
-                                    time: new Date(),
-                                    response_data: {
-                                        user: event.response_data.data.id
-                                    }
+                                    type: 'dentistRegisterSuccessResponseTrustedReviews',
+                                    response_data: event.response_data,
+                                    platform_type: params.platform,
+                                    time: new Date()
                                 });
                             } else {
-                                $.event.trigger({
-                                    type: 'getAfterDentistRegistrationPopupForDentist',
-                                    time: new Date(),
-                                    response_data: {
-                                        user: event.response_data.data.id
-                                    }
-                                });
+                                if (event.response_data.data.is_clinic) {
+                                    $.event.trigger({
+                                        type: 'getAfterDentistRegistrationPopupForClinic',
+                                        time: new Date(),
+                                        response_data: {
+                                            user: event.response_data.data.id
+                                        }
+                                    });
+                                } else {
+                                    $.event.trigger({
+                                        type: 'getAfterDentistRegistrationPopupForDentist',
+                                        time: new Date(),
+                                        response_data: {
+                                            user: event.response_data.data.id
+                                        }
+                                    });
+                                }
                             }
                         });
 
                         $(document).on('getAfterDentistRegistrationPopupForDentist', async function (event) {
-                            console.log('getAfterDentistRegistrationPopupForDentist');
                             var afterDentistRegistrationPopupForDentist = await dcnGateway.dcnGatewayRequests.getAfterDentistRegistrationPopup({
                                 'user-type': 'dentist'
                             });
@@ -762,7 +782,6 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         $(document).on('getAfterDentistRegistrationPopupForClinic', async function (event) {
-                            console.log('getAfterDentistRegistrationPopupForClinic');
                             var afterDentistRegistrationPopupForClinic = await dcnGateway.dcnGatewayRequests.getAfterDentistRegistrationPopup({
                                 'user-type': 'clinic'
                             });
@@ -855,7 +874,7 @@ if (typeof jQuery == 'undefined') {
                                         // if password is weak force dentist to update it
                                         if (!dcnGateway.utils.validatePassword($('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim())) {
                                             $('.dentist .form-login').html('<h2>UPDATE YOUR PASSWORD</h2><form method="POST" id="dentist-update-password"><div class="padding-bottom-10 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="dentist-update-password-field">Password:</label><input class="full-rounded form-field required password" minlength="8" maxlength="30" type="password" id="dentist-update-password-field"/></div></div><div class="padding-bottom-20 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="dentist-update-repeat-password-field">Repeat password:</label><input class="full-rounded form-field required repeat-password" minlength="8" maxlength="30" type="password" id="dentist-update-repeat-password-field"/></div></div><div class="dentist-update-password-errors"></div><div class="btn-container text-center padding-top-20 padding-bottom-50"><input type="submit" value="SAVE" class="platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20"/></div></form>');
-                                            
+
                                             $('.dentist .form-login #dentist-update-password').on('submit', async function(event) {
                                                 var this_form_native = this;
                                                 var this_form = $(this_form_native);
@@ -863,7 +882,7 @@ if (typeof jQuery == 'undefined') {
                                                 event.preventDefault();
                                                 $('.dentist .form-login #dentist-update-password .error-handle').remove();
                                                 var dentist_update_password_inputs = $('.dentist .form-login #dentist-update-password .form-field.required');
-                                                
+
                                                 for(var i = 0, len = dentist_update_password_inputs.length; i < len; i+=1) {
                                                     if (dentist_update_password_inputs.eq(i).val().trim() == '') {
                                                         dcnGateway.utils.customErrorHandle(dentist_update_password_inputs.eq(i).closest('.field-parent'), 'This field is required.');
@@ -882,7 +901,7 @@ if (typeof jQuery == 'undefined') {
                                                     dcnGateway.utils.customErrorHandle($('.dentist .form-login #dentist-update-password .dentist-update-password-errors'), 'Password must contain between 8 and 30 symbols with at least one uppercase letter, one lowercase letter and a number or a special character.');
                                                     errors = true;
                                                 }
-                                                
+
                                                 if (!errors) {
                                                     // update pass
                                                     var editUserDataData = {
@@ -893,7 +912,7 @@ if (typeof jQuery == 'undefined') {
                                                     if (editUserDataResponse.success) {
                                                         // on success save email to db
                                                         $.event.trigger({
-                                                            type: 'dentistAuthSuccessResponse',
+                                                            type: 'dentistProceedWithCreatingSession',
                                                             response_data: loggingDentistResponse.data,
                                                             platform_type: params.platform,
                                                             time: new Date()
@@ -914,7 +933,7 @@ if (typeof jQuery == 'undefined') {
                                             });
                                         } else {
                                             $.event.trigger({
-                                                type: 'dentistAuthSuccessResponse',
+                                                type: 'dentistProceedWithCreatingSession',
                                                 response_data: loggingDentistResponse.data,
                                                 platform_type: params.platform,
                                                 time: new Date()

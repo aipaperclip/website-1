@@ -63,7 +63,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                                 if (data.data.email == '' || data.data.email == null) {
                                     customFacebookEvent('registeredAccountMissingEmail', '', data);
                                 } else {
-                                    customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data);
+                                    customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
                                 }
 
                             } else if (!data.success) {
