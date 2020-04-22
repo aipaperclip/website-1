@@ -42,6 +42,8 @@
         'environment' : 'staging',
         'forgotten_password_link' : 'https://google.com'
     });
+
+    dcnGateway.init()
 </script>
 </body>
 </html>
