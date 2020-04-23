@@ -199,13 +199,13 @@ if (typeof jQuery == 'undefined') {
             },
             showPopup: function(message, type, callback, data) {
                 if (type == 'alert') {
-                    $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button gateway-platform-background-color cancel-custom-popup">OK</button></div></div></div>');
+                    $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper dcn-gateway-popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button gateway-platform-background-color cancel-custom-popup">OK</button></div></div></div>');
 
                     $('.cancel-custom-popup').click(function() {
                         $(this).closest('.dentacoin-login-gateway-container').remove();
                     });
                 } else if (type == 'warning') {
-                    $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button proceed-custom-popup green-button">YES</button><button class="platform-button cancel-custom-popup red-button">NO</button></div></div></div>');
+                    $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper dcn-gateway-popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button proceed-custom-popup green-button">YES</button><button class="platform-button cancel-custom-popup red-button">NO</button></div></div></div>');
                     
 
                     $('.proceed-custom-popup').click(function() {
@@ -463,6 +463,8 @@ if (typeof jQuery == 'undefined') {
             }
         },
         init: async function(params) {
+            console.log(dcnGateway.utils.cookies.get('first_test'), 'dcnGateway.utils.cookies.get(\'first_test\')');
+
             if ((typeof params !== 'object' && params === null) || (!hasOwnProperty.call(params, 'platform') || !hasOwnProperty.call(params, 'forgotten_password_link'))) {
                 // false params
                 console.error('False params passed to dentacoin login gateway.');
