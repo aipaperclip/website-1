@@ -25,7 +25,7 @@ $(document).ready(function($){
             });
             var marker = new google.maps.Marker({
                 map: profile_address_map,
-                icon: '/assets/images/map-pin-inactive.png',
+                icon: 'https://dentacoin.com/assets/images/map-pin-inactive.png',
                 draggable:true,
                 position: coords,
             });

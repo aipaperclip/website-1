@@ -58,6 +58,10 @@
                         type: 'patient'
                     };
 
+                    if (dcnGateway.utils.cookies.get('first_test') != '') {
+                        console.log(dcnGateway.utils.cookies.get('first_test'), 'dcnGateway.utils.cookies.get(\'first_test\')');
+                    }
+
                     if ($('.patient .form-register [name="user_patient_type[]"]:checked').val() != 'undefined') {
                         var tempArr = [];
                         for (var i = 0, len = $('.patient .form-register [name="user_patient_type[]"]:checked').length; i < len; i+=1) {
