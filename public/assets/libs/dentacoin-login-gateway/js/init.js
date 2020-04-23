@@ -327,7 +327,6 @@ if (typeof jQuery == 'undefined') {
                                 if (croppie_instance != undefined) {
                                     croppie_instance.croppie('destroy');
                                     $('#cropper-container').html('');
-                                    $('#cropper-container').removeClass('width-and-height');
                                 }
 
                                 var croppieParams = {
@@ -360,7 +359,6 @@ if (typeof jQuery == 'undefined') {
                                 });
 
                                 $('.avatar.module .btn-wrapper').hide();
-                                $('.max-size-label').addClass('active');
 
                                 croppie_instance.croppie('bind', {
                                     url: e.target.result
