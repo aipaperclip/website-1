@@ -4,6 +4,7 @@ if (typeof jQuery == 'undefined') {
 } else {
     var loadedSocialLibs = false;
     var loadedAddressSuggesterLib = false;
+    var loadedGoogleMapLib = false;
     var croppie_instance;
     var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
     var apiDomain = 'https://api.dentacoin.com';
@@ -1129,6 +1130,13 @@ if (typeof jQuery == 'undefined') {
                                 $('.step.third .country-code').html('+'+$('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').attr('data-code'));
                             }
 
+                            // ====================================== GOOGLE MAP LIB =============================================
+                            if (!loadedGoogleMapLib) {
+                                await $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en', function() {});
+// init Google address suggester
+                                loadedGoogleMapLib = false;
+                            }
+
                             // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
                             if (!loadedAddressSuggesterLib) {
                                 await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
@@ -1141,6 +1149,13 @@ if (typeof jQuery == 'undefined') {
                         }
 
                         async function initFourthStepLogic() {
+                            // ====================================== GOOGLE MAP LIB =============================================
+                            if (!loadedGoogleMapLib) {
+                                await $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en', function() {});
+// init Google address suggester
+                                loadedGoogleMapLib = false;
+                            }
+
                             // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
                             if (!loadedAddressSuggesterLib) {
                                 await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
