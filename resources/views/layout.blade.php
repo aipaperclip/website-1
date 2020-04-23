@@ -517,7 +517,10 @@
     <!--End of Schema Markup-->
 
     {{--<script src="/assets/js/basic.js"></script>--}}
-    {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>--}}
+    @if(!empty(Route::current()) && Route::current()->getName() == 'partner-network')
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
+    @endif
+    {{----}}
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
     --}}<script src="/dist/js/front-libs-script.js?v=1.0.99"></script>
     <script src="https://dentacoin.com/assets/libs/dentacoin-login-gateway/js/init.js?v=1.0.99"></script>
