@@ -356,6 +356,7 @@ if (typeof jQuery == 'undefined') {
                                     $('#cropper-container').removeClass('width-and-height');
                                     $('.avatar.module .btn-wrapper').show();
                                     $('.avatar-name').hide();
+                                    $('.dentist .form-register .step.fourth #custom-upload-avatar').val('');
                                 });
 
                                 $('.avatar.module .btn-wrapper').hide();
