@@ -165,8 +165,7 @@ $(document).ready(function($){
         }
     };
 
-    console.log($('.address-suggester').length, '$(\'.address-suggester\').length');
-    if($('.address-suggester').length) {
+    if($('.init-address-suggester').length) {
         initAddressSuggesters();
     }
 });
