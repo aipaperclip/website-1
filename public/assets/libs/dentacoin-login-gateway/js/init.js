@@ -463,7 +463,15 @@ if (typeof jQuery == 'undefined') {
             }
         },
         init: async function(params) {
-            console.log(dcnGateway.utils.cookies.get('first_test'), 'dcnGateway.utils.cookies.get(\'first_test\')');
+            console.log(dcnGateway.utils.cookies.get('first_test123'), 'dcnGateway.utils.cookies.get(\'first_test\')');
+            var dentavoxCookie = dcnGateway.utils.cookies.get('first_test');
+            var predefinedCountryId;
+            if (dentavoxCookie != undefined) {
+                console.log(JSON.parse(dentavoxCookie), 'JSON.parse(dentavoxCookie)');
+                predefinedCountryId = JSON.parse(dentavoxCookie)['location'];
+            }
+
+            console.log(predefinedCountryId, 'predefinedCountryId');
 
             if ((typeof params !== 'object' && params === null) || (!hasOwnProperty.call(params, 'platform') || !hasOwnProperty.call(params, 'forgotten_password_link'))) {
                 // false params
