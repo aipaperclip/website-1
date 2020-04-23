@@ -466,10 +466,8 @@ if (typeof jQuery == 'undefined') {
             var dentavoxCookie = dcnGateway.utils.cookies.get('first_test');
             var predefinedCountryId;
             if (dentavoxCookie != '') {
-                predefinedCountryId = JSON.parse(dentavoxCookie)['location'];
+                predefinedCountryId = JSON.parse(decodeURIComponent(dentavoxCookie))['location'];
             }
-
-            console.log(predefinedCountryId, 'predefinedCountryId');
 
             if ((typeof params !== 'object' && params === null) || (!hasOwnProperty.call(params, 'platform') || !hasOwnProperty.call(params, 'forgotten_password_link'))) {
                 // false params
@@ -1117,14 +1115,19 @@ if (typeof jQuery == 'undefined') {
                         var userCountryCode;
 
                         async function initThirdStepLogic() {
-                            // get user country code
-                            userCountryCode = await dcnGateway.dcnGatewayRequests.getUserCountry();
-                            // setup current country in the dropdown and phone number
-                            if(userCountryCode.success) {
-                                $('.step.third #dentist-country').attr('data-current-user-country-code', userCountryCode.success);
-                                $('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').prop('selected', true);
+                            if (predefinedCountryId != undefined) {
+                                $('.step.third #dentist-country option[data-id="'+predefinedCountryId+'"]').prop('selected', true)
+                                $('.step.third .country-code').html('+'+$('.step.third #dentist-country option[data-id="'+predefinedCountryId+'"]').attr('data-code'));
+                            } else {
+                                // get user country code
+                                userCountryCode = await dcnGateway.dcnGatewayRequests.getUserCountry();
+                                // setup current country in the dropdown and phone number
+                                if(userCountryCode.success) {
+                                    $('.step.third #dentist-country').attr('data-current-user-country-code', userCountryCode.success);
+                                    $('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').prop('selected', true);
+                                }
+                                $('.step.third .country-code').html('+'+$('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').attr('data-code'));
                             }
-                            $('.step.third .country-code').html('+'+$('.step.third #dentist-country option[value="'+userCountryCode.success+'"]').attr('data-code'));
 
                             // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
                             if (!loadedAddressSuggesterLib) {
