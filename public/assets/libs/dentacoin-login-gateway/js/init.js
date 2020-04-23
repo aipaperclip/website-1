@@ -489,7 +489,7 @@ if (typeof jQuery == 'undefined') {
 
                         // TEMPORALLY, DELETE THIS
                         if (platformsData[i].slug == 'dentavox') {
-                            currentPlatformDomain = 'https://urgent.dentacoin.com/';
+                            currentPlatformDomain = 'https://urgent.dentavox.dentacoin.com/';
                         } else {
                             currentPlatformDomain = platformsData[i].link;
                         }
