@@ -463,11 +463,9 @@ if (typeof jQuery == 'undefined') {
             }
         },
         init: async function(params) {
-            console.log(dcnGateway.utils.cookies.get('first_test123'), 'dcnGateway.utils.cookies.get(\'first_test\')');
             var dentavoxCookie = dcnGateway.utils.cookies.get('first_test');
             var predefinedCountryId;
-            if (dentavoxCookie != undefined) {
-                console.log(JSON.parse(dentavoxCookie), 'JSON.parse(dentavoxCookie)');
+            if (dentavoxCookie != '') {
                 predefinedCountryId = JSON.parse(dentavoxCookie)['location'];
             }
 
