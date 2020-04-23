@@ -1131,7 +1131,7 @@ if (typeof jQuery == 'undefined') {
                             }
 
                             // ====================================== GOOGLE MAP LIB =============================================
-                            if (!loadedGoogleMapLib) {
+                            if (!loadedGoogleMapLib && typeof(google) == 'undefined') {
                                 await $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en', function() {});
 // init Google address suggester
                                 loadedGoogleMapLib = false;
@@ -1150,7 +1150,7 @@ if (typeof jQuery == 'undefined') {
 
                         async function initFourthStepLogic() {
                             // ====================================== GOOGLE MAP LIB =============================================
-                            if (!loadedGoogleMapLib) {
+                            if (!loadedGoogleMapLib && typeof(google) == 'undefined') {
                                 await $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en', function() {});
 // init Google address suggester
                                 loadedGoogleMapLib = false;
