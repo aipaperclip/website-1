@@ -1191,7 +1191,7 @@
     display: none;
     padding-top: 25px;
     font-size: 0; }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name label {
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name button {
       color: red;
       font-size: 36px;
       width: 30px;
