@@ -563,7 +563,10 @@ if (typeof jQuery == 'undefined') {
 
                         $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
 
-                        //setup forgotten password link
+                        // setup platform
+                        $('.patient .social-login-btn').attr('data-platform', params.platform);
+
+                        // setup forgotten password link
                         $('.dentacoin-login-gateway-container .forgotten-password-link').attr('href', params.forgotten_password_link);
 
                         if (params.platform == 'assurance' || params.platform == 'trusted-reviews') {
@@ -877,6 +880,7 @@ if (typeof jQuery == 'undefined') {
                                     dcnGateway.utils.fireGoogleAnalyticsEvent('DentistLogin', 'Click', 'Dentist Login');
 
                                     var dentistLoginParams = {
+                                        'platform' : params.platform,
                                         'email' : $('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(),
                                         'password' : $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim()
                                     };

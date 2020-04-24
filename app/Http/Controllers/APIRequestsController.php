@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 class APIRequestsController extends Controller {
     public function dentistLogin($data, $dontCountLogin = false, $url = 'https://api.dentacoin.com/api/login') {
         $postData = array(
-            'platform' => 'dentacoin',
+            'platform' => $data['platform'],
             'type' => 'dentist',
             'email' => $data['email'],
             'password' => $data['password'],
@@ -37,7 +37,7 @@ class APIRequestsController extends Controller {
 
     public function dentistRegister($data, $url = 'https://api.dentacoin.com/api/register') {
         $post_fields_arr = array(
-            'platform' => 'dentacoin',
+            'platform' => $data['platform'],
             'name' => trim($data['latin-name']),
             'email' => $data['email'],
             'password' => $data['password'],

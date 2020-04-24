@@ -449,11 +449,12 @@ class UserController extends Controller {
 
     protected function handleDentistLogin(Request $request) {
         $customMessages = [
+            'platform.required' => 'Platform is required.',
             'email.required' => 'Email address is required.',
             'password.required' => 'Password is required.',
         ];
         $this->validate($request, [
-            'email' => 'required|max:100',
+            'platform' => 'required|max:100',
             'password' => 'required|max:50'
         ], $customMessages);
 

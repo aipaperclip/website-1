@@ -59,7 +59,7 @@
                     };
 
                     if (dcnGateway.utils.cookies.get('first_test') != '') {
-                        console.log(dcnGateway.utils.cookies.get('first_test'), 'dcnGateway.utils.cookies.get(\'first_test\')');
+                        register_data.country_id = JSON.parse(decodeURIComponent(dcnGateway.utils.cookies.get('first_test')))['location'];
                     }
 
                     if ($('.patient .form-register [name="user_patient_type[]"]:checked').val() != 'undefined') {
@@ -70,6 +70,8 @@
 
                         register_data.user_patient_type = JSON.stringify(tempArr);
                     }
+
+                    console.log(register_data, 'register_data');
 
                     setTimeout(function () {
                         if(civic_custom_btn.attr('data-inviter') != undefined) {

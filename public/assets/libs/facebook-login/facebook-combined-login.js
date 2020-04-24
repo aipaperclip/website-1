@@ -48,9 +48,15 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                         type: 'patient'
                     };
 
+                    if (dcnGateway.utils.cookies.get('first_test') != '') {
+                        register_data.country_id = JSON.parse(decodeURIComponent(dcnGateway.utils.cookies.get('first_test')))['location'];
+                    }
+
                     if (this_btn.attr('data-inviter') != undefined) {
                         register_data.invited_by = this_btn.attr('data-inviter');
                     }
+
+                    console.log(register_data, 'register_data');
 
                     //exchanging the token for user data
                     $.ajax({
