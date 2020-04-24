@@ -161,10 +161,12 @@ class UserController extends Controller {
 
     protected function checkDentistAccount(Request $request) {
         $customMessages = [
+            'platform.required' => 'Platform is required.',
             'email.required' => 'Email address is required.',
             'password.required' => 'Password is required.',
         ];
         $this->validate($request, [
+            'platform' => 'required',
             'email' => 'required|max:100',
             'password' => 'required|max:50'
         ], $customMessages);
@@ -454,7 +456,8 @@ class UserController extends Controller {
             'password.required' => 'Password is required.',
         ];
         $this->validate($request, [
-            'platform' => 'required|max:100',
+            'platform' => 'required',
+            'email' => 'required',
             'password' => 'required|max:50'
         ], $customMessages);
 

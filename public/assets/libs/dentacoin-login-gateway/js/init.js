@@ -62,10 +62,11 @@ if (typeof jQuery == 'undefined') {
                     data: data
                 });
             },
-            checkDentistAccount: async function (email, password) {
+            checkDentistAccount: async function (email, password, platform) {
                 var data = {
                     email: email,
-                    password: password
+                    password: password,
+                    platform: platform
                 };
 
                 if (environment == 'staging') {
@@ -873,7 +874,7 @@ if (typeof jQuery == 'undefined') {
 
                                 if (submit_form) {
                                     //check if existing account
-                                    var check_account_response = await dcnGateway.dcnGatewayRequests.checkDentistAccount($('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(), $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim());
+                                    var check_account_response = await dcnGateway.dcnGatewayRequests.checkDentistAccount($('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(), $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim(), params.platform);
                                 }
 
                                 if (submit_form && check_account_response.success) {
