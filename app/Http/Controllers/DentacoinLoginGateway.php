@@ -12,11 +12,11 @@ class DentacoinLoginGateway extends Controller
         $params = array(
             'type' => $request->input('type')
         );
-        App::setlocale('en');
+        /*App::setlocale('en');
 
         $translations = Lang::get('login-register');
         var_dump($translations);die('asd');
-        $params['translations'] = $translations;
+        $params['translations'] = $translations;*/
 
         if ($params['type'] == 'incompleted-dentist-register') {
             $staging = $request->input('staging');
