@@ -21,9 +21,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return view('pages/test-combined-login');
     })->name('test-combined-login');
 
-    Route::get('/test-translation', function() {
-
-    })->name('test-translation');
+    Route::get('/test-translation', 'DentacoinLoginGateway@testTranslation')->name('test-translation');
 
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
