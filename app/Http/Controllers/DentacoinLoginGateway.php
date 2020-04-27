@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
 use Illuminate\Support\Facades\Lang;
 
 class DentacoinLoginGateway extends Controller
@@ -11,6 +12,7 @@ class DentacoinLoginGateway extends Controller
         $params = array(
             'type' => $request->input('type')
         );
+        App::setlocale('en');
 
         $translations = Lang::get('login-register');
         var_dump($translations);die('asd');
