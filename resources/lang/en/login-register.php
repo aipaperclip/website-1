@@ -48,6 +48,7 @@ return [
     'please-select' => 'Please, select',
     'please-specify-field' => 'Please specify:',
     'i-ve-read' => 'I\'ve read and agree to the',
+    'i-agree' => 'I agree with ',
     'privacy-policy' => 'Privacy Policy',
     'select-country-field' => 'Select country:',
     'dentist-address-field-tooltip' => 'Enter the full address of your workplace in the same way as it is displayed on your website/ Facebook page/ Google Business profile.',
