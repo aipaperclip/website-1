@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Lang;
 
 class DentacoinLoginGateway extends Controller
 {
+    public function testTranslation(Request $request)
+    {
+        $translations = Lang::get('login-register');
+        var_dump($translations);
+        die('asd');
+    }
+
     public function getView(Request $request)   {
         $params = array(
             'type' => $request->input('type')
