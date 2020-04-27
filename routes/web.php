@@ -17,9 +17,9 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/test-combined-login', function() {
+    /*Route::get('/test-combined-login', function() {
         return view('pages/test-combined-login');
-    })->name('test-combined-login');
+    })->name('test-combined-login');*/
 
     Route::post('/test-translation', 'DentacoinLoginGateway@testTranslation')->name('test-translation');
 
