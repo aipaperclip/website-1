@@ -2620,6 +2620,18 @@ async function loggedOrNotLogic() {
         //IF NOT LOGGED LOGIC
         if ($('body').hasClass('home') || $('body').hasClass('foundation')) {
             $('.info-section .open-dentacoin-gateway').offset({left: $('header .open-dentacoin-gateway').offset().left});
+        } else if ($('body').hasClass('claim-dentacoin')) {
+            $('.redeem-dcn').click(function() {
+                var errors = false;
+                if ($('#wallet-address').val().trim().length != 42) {
+                    customErrorHandle($('#wallet-address').closest('.field-parent'), 'Please enter valid Wallet Address.');
+                    errors = true;
+                }
+
+                if (!errors) {
+                    console.log(' ===== withdraw ===== ');
+                }
+            });
         }
     }
 }
