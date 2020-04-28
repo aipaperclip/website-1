@@ -19,8 +19,7 @@ class ClaimDentacoin extends Controller
                 $rewardedOrders = DB::connection('mysql3')->table('already_rewarded_orders')->select('already_rewarded_orders.*')->where(array('already_rewarded_orders.user_id' => $withdrawingUser->id))->get()->all();
                 if (!empty($rewardedOrders)) {
                     foreach($rewardedOrders as $order) {
-                        var_dump($order);die('asd');
-                        if (strtotime('+'.$lockedPeriod->days.' days', $order->created_at) > time()) {
+                        if (strtotime('+'.$lockedPeriod->days.' days', strtotime($order->created_at)) > time()) {
                             $currentBalance -= $order->amount;
                         }
                     }
