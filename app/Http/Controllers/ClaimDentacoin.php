@@ -11,7 +11,10 @@ class ClaimDentacoin extends Controller
 {
     public function toothbrushzone() {
         if (!empty(Input::get('withdraw-key'))) {
-            $withdrawingUser = DB::connection('mysql3')->select(DB::raw("SELECT * FROM users WHERE `randomKey` = '" . trim(Input::get('withdraw-key'))) . "'");
+            var_dump("SELECT * FROM users WHERE `randomKey` = '" . trim(Input::get('withdraw-key')) . "'");
+            $withdrawingUser = DB::connection('mysql3')->select(DB::raw("SELECT * FROM users WHERE `randomKey` = '" . trim(Input::get('withdraw-key')) . "'"));
+            var_dump($withdrawingUser);
+            die('aasdsad');
             if (!empty($withdrawingUser)) {
                 return view('pages/');
             } else {
