@@ -8,8 +8,8 @@
                     <h2>for a purchase at <a href="https://toothbrushzone.com/" target="_blank" class="light_blue">toothbrushzone.com</a></h2>
                     <div class="changeable-on-success padding-top-30">
                         <div class="padding-bottom-40 fs-28 lato-black">You can claim: <img src="/assets/images/logo.svg" class="width-100 inline-block max-width-30" alt="Dentacoin logo"/> <span>{{$amount}}</span></div>
-                        <div class="field-parent">
-                            <div class="custom-google-label-style module max-width-450 margin-0-auto">
+                        <div class="field-parent max-width-450 margin-0-auto">
+                            <div class="custom-google-label-style module">
                                 <label for="wallet-address" class="text-left">Dentacoin Wallet Address:</label>
                                 <input class="full-rounded" maxlength="42" type="text" id="wallet-address"/>
                             </div>

@@ -2531,6 +2531,7 @@ function customJavascriptForm(path, params, method) {
 }
 
 async function loggedOrNotLogic() {
+    console.log('loggedOrNotLogic');
     if ($('body').hasClass('logged-in')) {
         var add_overflow_hidden_on_hidden_box_show = false;
         var sm_screen_width = false;
@@ -2621,6 +2622,8 @@ async function loggedOrNotLogic() {
         if ($('body').hasClass('home') || $('body').hasClass('foundation')) {
             $('.info-section .open-dentacoin-gateway').offset({left: $('header .open-dentacoin-gateway').offset().left});
         } else if ($('body').hasClass('claim-dentacoin')) {
+            console.log('claim-dentacoin');
+
             var redeemExecute = true;
             $('.redeem-dcn').click(function() {
                 if (redeemExecute) {
