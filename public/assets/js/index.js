@@ -2622,8 +2622,10 @@ async function loggedOrNotLogic() {
             $('.info-section .open-dentacoin-gateway').offset({left: $('header .open-dentacoin-gateway').offset().left});
         } else if ($('body').hasClass('claim-dentacoin')) {
             $('.redeem-dcn').click(function() {
+                $('#wallet-address').closest('.field-parent').find('.error-handle').remove();
+
                 var errors = false;
-                if ($('#wallet-address').val().trim().length != 42) {
+                if ($('#wallet-address').val().trim().length != 42 || !validateInputAddresses($('#wallet-address').val().trim())) {
                     customErrorHandle($('#wallet-address').closest('.field-parent'), 'Please enter valid Wallet Address.');
                     errors = true;
                 }
@@ -2637,18 +2639,8 @@ async function loggedOrNotLogic() {
 }
 loggedOrNotLogic();
 
-function initDataTable()    {
-    if ($('table.table.table-without-reorder').length > 0) {
-        $('table.table.table-without-reorder').DataTable({
-            ordering: true,
-            order: [],
-            columnDefs: [{
-                orderable: false,
-                targets: 'no-sort'
-            }],
-            aaSorting: []
-        });
-    }
+function validateInputAddresses(address) {
+    return (/^(0x){1}[0-9a-fA-F]{40}$/i.test(address));
 }
 
 function bindGoogleAlikeButtonsEvents() {
