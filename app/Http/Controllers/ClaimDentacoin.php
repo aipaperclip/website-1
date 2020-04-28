@@ -12,11 +12,8 @@ class ClaimDentacoin extends Controller
     public function getView() {
         if (!empty(Input::get('withdraw-key'))) {
             $withdrawingUser = DB::connection('mysql3')->table('users')->select('users.*')->where(array('users.randomKey' => trim(Input::get('withdraw-key'))))->get()->first();
-            var_dump($withdrawingUser);
-            var_dump($withdrawingUser->dcnBalance);
-            die('asd');
             if (!empty($withdrawingUser)) {
-                return view('pages/claim-dentacoin', array('amount' => $withdrawingUser['dcnBalance']));
+                return view('pages/claim-dentacoin', array('amount' => $withdrawingUser->dcnBalance));
             } else {
                 return abort(404);
             }
