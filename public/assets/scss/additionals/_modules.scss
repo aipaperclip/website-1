@@ -254,6 +254,17 @@
     @include rounded(4px);
 }
 
+.success-handle {
+    border: 1px solid #d6e9c6;
+    color: #3c763d;
+    background-color: #dff0d8;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 14px;
+    padding: 5px;
+    @include rounded(4px);
+}
+
 .section-title {
     color: $dark_gray;
     font-size: 35px;

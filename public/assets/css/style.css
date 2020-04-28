@@ -5729,6 +5729,19 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
   -ms-border-radius: 4px;
   border-radius: 4px; }
 
+.success-handle {
+  border: 1px solid #d6e9c6;
+  color: #3c763d;
+  background-color: #dff0d8;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 14px;
+  padding: 5px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px; }
+
 .section-title {
   color: #333333;
   font-size: 35px;
@@ -6049,7 +6062,7 @@ header {
     font-size: 0;
     color: black;
     display: inline-block;
-    padding: 10px 0; }
+    padding: 15px 0; }
     header .logged-user-right-nav > .hidden-box-parent > span.user-name {
       vertical-align: middle;
       padding-top: 25px;
@@ -6177,7 +6190,7 @@ body.home {
     font-size: 0;
     color: black;
     display: inline-block;
-    padding: 10px 0; }
+    padding: 15px 0; }
     body.home.logged-in .logged-user-right-nav > .hidden-box-parent .color-white-on-hub {
       color: white; }
 
