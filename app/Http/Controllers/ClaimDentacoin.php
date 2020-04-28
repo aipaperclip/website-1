@@ -11,7 +11,7 @@ class ClaimDentacoin extends Controller
 {
     public function getView() {
         if (!empty(Input::get('withdraw-key'))) {
-            $withdrawingUser = DB::connection('mysql3')->select(DB::raw("SELECT * FROM users WHERE `randomKey` = '" . trim(Input::get('withdraw-key')) . "'"));
+            $withdrawingUser = DB::connection('mysql3')->table('users')->select('users.*')->where(array('users.randomKey ASC' => trim(Input::get('withdraw-key'))))->get();
             var_dump($withdrawingUser);
             die('asd');
             if (!empty($withdrawingUser)) {
