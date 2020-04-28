@@ -5,25 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class ClaimDentacoin extends Controller
 {
     public function toothbrushzone() {
-        if (!empty(Input::get('order_number')) || !empty(Input::get('email')) ) {
-            $curl = curl_init();
-            curl_setopt_array($curl, array(
-                CURLOPT_RETURNTRANSFER => 1,
-                CURLOPT_POST => 0,
-                CURLOPT_URL => 'https://toothbrushzone.com/84D/denta-reward_json_key.php?customer_email='.Input::get('email').'&order_number='.Input::get('order_number').'&key='.hash('sha256', getenv('TOOTHBRUSHZONE_SALT') . Input::get('order_number')),
-                CURLOPT_SSL_VERIFYPEER => 0
-            ));
-
-            $resp = json_decode(curl_exec($curl));
-            curl_close($curl);
-
-            var_dump($resp);
-            die('asd');
-            return view('pages/claim-dentacoin/toothbrushzone');
+        if (!empty(Input::get('withdraw-key'))) {
+            $withdrawingUser = DB::connection('mysql3')->select(DB::raw("SELECT * FROM users WHERE `randomKey` = " . trim(Input::get('withdraw-key'))));
+            if (!empty($withdrawingUser)) {
+                return view('pages/');
+            } else {
+                return abort(404);
+            }
         } else {
             return abort(404);
         }
@@ -31,13 +24,11 @@ class ClaimDentacoin extends Controller
 
     public function validateToothbrushzoneWithdraw(Request $request) {
         $validator = Validator::make($request->all(), [
-            'email.required' => 'Email is required.',
-            'order_number.required' => 'Order number is required.',
-            'wallet_address.required' => 'Wallet Address is required.',
+            'withdrawKey.required' => 'Key is required.',
+            'walletAddress.required' => 'Wallet Address is required.',
         ], [
-            'email' => 'required|email',
-            'order_number' => 'required',
-            'wallet_address' => 'required',
+            'withdrawKey' => 'required',
+            'walletAddress' => 'required',
         ]);
 
         if ($validator->fails()) {
