@@ -2637,24 +2637,28 @@ async function loggedOrNotLogic() {
                     }
 
                     if (!errors) {
-                        $.ajax({
-                            type: 'POST',
-                            url: 'https://external-payment-server.dentacoin.com/withdraw-by-key',
-                            dataType: 'json',
-                            data: {
-                                key: get_params['withdraw-key'],
-                                walletAddress: $('#wallet-address').val().trim()
-                            },
-                            success: function(response) {
-                                redeemExecute = true;
+                        $('.response-layer').show();
+                        setTimeout(function() {
+                            $.ajax({
+                                type: 'POST',
+                                url: 'https://external-payment-server.dentacoin.com/withdraw-by-key',
+                                dataType: 'json',
+                                data: {
+                                    key: get_params['withdraw-key'],
+                                    walletAddress: $('#wallet-address').val().trim()
+                                },
+                                success: function(response) {
+                                    $('.response-layer').hide();
+                                    redeemExecute = true;
 
-                                if (response.success) {
-                                    $('.changeable-on-success').html('<div class="success-handle margin-bottom-50 margin-top-30 fs-18">Your transaction is being processed... <b><a href="https://etherscan.io/tx/'+response.transactionHash+'" target="_blank" style="color: #3c763d; text-decoration: underline;">CHECK STATUS</a></b></div>.');
-                                } else {
-                                    basic.showAlert('Something went wrong. Please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a> with description of the problem.', '', true);
+                                    if (response.success) {
+                                        $('.changeable-on-success').html('<div class="success-handle margin-bottom-50 margin-top-30 fs-18">Your transaction is being processed... <b><a href="https://etherscan.io/tx/'+response.transactionHash+'" target="_blank" style="color: #3c763d; text-decoration: underline;">CHECK STATUS</a></b></div>.');
+                                    } else {
+                                        basic.showAlert('Something went wrong. Please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a> with description of the problem.', '', true);
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        }, 2000);
                     }
                 }
             });
