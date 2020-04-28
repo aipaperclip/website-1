@@ -2649,7 +2649,7 @@ async function loggedOrNotLogic() {
                                 redeemExecute = true;
 
                                 if (response.success) {
-                                    $('.changeable-on-success').html('<div class="success-handle margin-bottom-20">Your transaction is being processed... <b><a href="https://etherscan.io/tx/'+response.transactionHash+'" target="_blank" style="color: #3c763d; text-decoration: underline;">CHECK STATUS</a></b></div>.');
+                                    $('.changeable-on-success').html('<div class="success-handle margin-bottom-50 margin-top-30 fs-18">Your transaction is being processed... <b><a href="https://etherscan.io/tx/'+response.transactionHash+'" target="_blank" style="color: #3c763d; text-decoration: underline;">CHECK STATUS</a></b></div>.');
                                 } else {
                                     basic.showAlert('Something went wrong. Please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a> with description of the problem.', '', true);
                                 }
