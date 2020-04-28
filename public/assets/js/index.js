@@ -2621,17 +2621,34 @@ async function loggedOrNotLogic() {
         if ($('body').hasClass('home') || $('body').hasClass('foundation')) {
             $('.info-section .open-dentacoin-gateway').offset({left: $('header .open-dentacoin-gateway').offset().left});
         } else if ($('body').hasClass('claim-dentacoin')) {
+            var redeemExecute = true;
             $('.redeem-dcn').click(function() {
-                $('#wallet-address').closest('.field-parent').find('.error-handle').remove();
+                if (redeemExecute) {
+                    redeemExecute = false;
+                    $('#wallet-address').closest('.field-parent').find('.error-handle').remove();
 
-                var errors = false;
-                if ($('#wallet-address').val().trim().length != 42 || !validateInputAddresses($('#wallet-address').val().trim())) {
-                    customErrorHandle($('#wallet-address').closest('.field-parent'), 'Please enter valid Wallet Address.');
-                    errors = true;
-                }
+                    var errors = false;
+                    if ($('#wallet-address').val().trim().length != 42 || !validateInputAddresses($('#wallet-address').val().trim())) {
+                        customErrorHandle($('#wallet-address').closest('.field-parent'), 'Please enter valid Wallet Address.');
+                        errors = true;
+                    }
 
-                if (!errors) {
-                    console.log(' ===== withdraw ===== ');
+                    if (!errors) {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'https://external-payment-server.dentacoin.com/withdraw-by-key',
+                            dataType: 'json',
+                            data: {
+                                key: get_params['withdraw-key'],
+                                walletAddress: $('#wallet-address').val().trim()
+                            },
+                            success: function(response) {
+                                redeemExecute = true;
+
+                                console.log(response, 'response');
+                            }
+                        });
+                    }
                 }
             });
         }

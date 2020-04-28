@@ -13,7 +13,19 @@ class ClaimDentacoin extends Controller
         if (!empty(Input::get('withdraw-key'))) {
             $withdrawingUser = DB::connection('mysql3')->table('users')->select('users.*')->where(array('users.randomKey' => trim(Input::get('withdraw-key'))))->get()->first();
             if (!empty($withdrawingUser)) {
-                return view('pages/claim-dentacoin', array('amount' => $withdrawingUser->dcnBalance));
+                $currentBalance = $withdrawingUser->dcnBalance;
+
+                $lockedPeriod = DB::connection('mysql3')->table('locked_periods')->select('locked_periods.*')->where(array('locked_periods.type' => $withdrawingUser->type))->get()->first();
+                $rewardedOrders = DB::connection('mysql3')->table('already_rewarded_orders')->select('already_rewarded_orders.*')->where(array('already_rewarded_orders.user_id' => $withdrawingUser->id))->get()->all();
+                if (!empty($rewardedOrders)) {
+                    foreach($rewardedOrders as $order) {
+                        if (strtotime('+'.$lockedPeriod->days.' days', $order->created_at->timestamp) > time()) {
+                            $currentBalance -= $order->amount;
+                        }
+                    }
+                }
+
+                return view('pages/claim-dentacoin', array('amount' => $currentBalance));
             } else {
                 return abort(404);
             }
