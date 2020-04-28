@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 class ClaimDentacoin extends Controller
 {
     public function toothbrushzone() {
+        var_dump(Input::get('withdraw-key'));
+        die('asd');
         if (!empty(Input::get('withdraw-key'))) {
             var_dump("SELECT * FROM users WHERE `randomKey` = '" . trim(Input::get('withdraw-key')) . "'");
             $withdrawingUser = DB::connection('mysql3')->select(DB::raw("SELECT * FROM users WHERE `randomKey` = '" . trim(Input::get('withdraw-key')) . "'"));
