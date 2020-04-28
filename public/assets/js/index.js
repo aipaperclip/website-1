@@ -2531,7 +2531,6 @@ function customJavascriptForm(path, params, method) {
 }
 
 async function loggedOrNotLogic() {
-    console.log('loggedOrNotLogic');
     if ($('body').hasClass('logged-in')) {
         var add_overflow_hidden_on_hidden_box_show = false;
         var sm_screen_width = false;
@@ -2634,6 +2633,7 @@ async function loggedOrNotLogic() {
                     if ($('#wallet-address').val().trim().length != 42 || !validateInputAddresses($('#wallet-address').val().trim())) {
                         customErrorHandle($('#wallet-address').closest('.field-parent'), 'Please enter valid Wallet Address.');
                         errors = true;
+                        redeemExecute = true;
                     }
 
                     if (!errors) {
