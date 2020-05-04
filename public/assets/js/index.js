@@ -1844,6 +1844,8 @@ function checkIfCookie()    {
             basic.cookies.set('strictly_necessary_policy', 1);
 
             $('#google-analytics-script').html("window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-97167262-1');");
+
+            $('.privacy-policy-cookie').remove();
         });
 
         $('.adjust-cookies').click(function() {
@@ -1874,7 +1876,7 @@ function checkIfCookie()    {
                     $('#google-analytics-script').html("window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-97167262-1');");
                 }
 
-                window.location.reload();
+                $('.privacy-policy-cookie').remove();
             });
         });
     }

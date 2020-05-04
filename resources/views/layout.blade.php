@@ -51,7 +51,7 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97167262-1"></script>
-    <script class="google-analytics-script">
+    <script id="google-analytics-script">
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
