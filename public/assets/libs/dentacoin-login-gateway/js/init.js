@@ -590,7 +590,7 @@ if (typeof jQuery == 'undefined') {
                         });
 
                         // stop form submits on enter press
-                        $('.dentacoin-login-gateway-container .form#dentist-login, .dentacoin-login-gateway-container .form#dentist-register').bind('keypress', function (e) {
+                        $('.dentacoin-login-gateway-container form#dentist-login, .dentacoin-login-gateway-container form#dentist-register').bind('keypress', function (e) {
                             if (e.keyCode == 13) {
                                 return false;
                             }
@@ -855,7 +855,7 @@ if (typeof jQuery == 'undefined') {
                         // ====================== DENTIST LOGIN/ SIGNUP LOGIC ======================
                         //DENTIST LOGIN
                         $('.dentacoin-login-gateway-container form#dentist-login').on('submit', async function(event) {
-                            $('.dentist-login-errors').html(''); 
+                            $('.dentist-login-errors').html('');
 
                             var this_form_native = this;
                             var this_form = $(this_form_native);
