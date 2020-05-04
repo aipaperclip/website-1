@@ -276,6 +276,10 @@ if (typeof jQuery == 'undefined') {
                     } else {
                         //check file extension
                         if (jQuery.inArray(filename.split('.').pop().toLowerCase(), allowedImagesExtensions) !== -1) {
+                            if ($('.avatar.module .error-handle').length) {
+                                $('.avatar.module .error-handle').remove();
+                            }
+
                             if (callback != undefined) {
                                 var reader = new FileReader();
                                 reader.onload = function (e) {
