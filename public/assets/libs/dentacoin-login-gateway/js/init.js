@@ -855,7 +855,7 @@ if (typeof jQuery == 'undefined') {
                         // ====================== DENTIST LOGIN/ SIGNUP LOGIC ======================
                         //DENTIST LOGIN
                         $('.dentacoin-login-gateway-container form#dentist-login').on('submit', async function(event) {
-                            $('.dentist-login-errors').html('');
+                            $('.dentist-login-errors').html(''); 
 
                             var this_form_native = this;
                             var this_form = $(this_form_native);

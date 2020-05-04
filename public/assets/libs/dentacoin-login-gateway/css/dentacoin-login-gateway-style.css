@@ -1200,7 +1200,9 @@
       text-align: right;
       cursor: pointer;
       margin: 0;
-      line-height: 22px; }
+      line-height: 22px;
+      border: 0;
+      background: transparent; }
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name span {
       font-size: 14px;
       display: inline-block;
