@@ -366,13 +366,14 @@ if (typeof jQuery == 'undefined') {
 
                                 $('.gateway-avatar.module .btn-wrapper').hide();
 
-                                /*croppie_instance.croppie('bind', {
-                                    url: e.target.result
-                                });*/
-
-                                croppie_instance.croppie('bind', 'url').then(function(){
-                                    croppie_instance.croppie('setZoom', 1);
+                                croppie_instance.croppie('bind', {
+                                    url: e.target.result,
+                                    zoom: 1
                                 });
+
+                                /*croppie_instance.croppie('bind', 'url').then(function(){
+                                    croppie_instance.croppie('setZoom', 1);
+                                });*/
 
                                 $('#cropper-container').on('update.croppie', function(ev, cropData) {
                                     croppie_instance.croppie('result', {
