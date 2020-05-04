@@ -271,7 +271,7 @@ if (typeof jQuery == 'undefined') {
                             failed_callback();
                         }
 
-                        $(input).closest('.upload-btn-parent').append('<div class="error-handle task-error">The file you selected is large. Max size: '+megaBytesLimit+'MB.</div>');
+                        $(input).closest('.avatar.module').append('<div class="error-handle task-error">The file you selected is large. Max size: '+megaBytesLimit+'MB.</div>');
                         return false;
                     } else {
                         //check file extension
@@ -578,23 +578,23 @@ if (typeof jQuery == 'undefined') {
                         dcnGateway.utils.initCustomCheckboxes();
 
                         // init custom inputs styles
-                        $('body').on('click', '.custom-google-label-style label', function() {
+                        $('body').on('click', '.custom-gateway-google-label-style label', function() {
                             $(this).addClass('active-label gateway-platform-color-important');
-                            if ($('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
+                            if ($('.custom-gateway-google-label-style').attr('data-input-colorful-border') == 'true') {
                                 $(this).parent().find('input').addClass('gateway-platform-border-color-important');
                             }
                         });
 
-                        $('body').on('keyup change focusout', '.custom-google-label-style input', function() {
+                        $('body').on('keyup change focusout', '.custom-gateway-google-label-style input', function() {
                             var value = $(this).val().trim();
                             if (value.length) {
-                                $(this).closest('.custom-google-label-style').find('label').addClass('active-label gateway-platform-color-important');
-                                if ($(this).closest('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
+                                $(this).closest('.custom-gateway-google-label-style').find('label').addClass('active-label gateway-platform-color-important');
+                                if ($(this).closest('.custom-gateway-google-label-style').attr('data-input-colorful-border') == 'true') {
                                     $(this).addClass('gateway-platform-border-color-important');
                                 }
                             } else {
-                                $(this).closest('.custom-google-label-style').find('label').removeClass('active-label gateway-platform-color-important');
-                                if ($(this).closest('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
+                                $(this).closest('.custom-gateway-google-label-style').find('label').removeClass('active-label gateway-platform-color-important');
+                                if ($(this).closest('.custom-gateway-google-label-style').attr('data-input-colorful-border') == 'true') {
                                     $(this).removeClass('gateway-platform-border-color-important');
                                 }
                             }
@@ -684,7 +684,7 @@ if (typeof jQuery == 'undefined') {
                             $('.login-section-title').html($('.popup-body.translations').attr('data-translation-update-email'));
 
                             $('.dentacoin-login-gateway-container .patient .form-login .form-login-fields').hide();
-                            $('.dentacoin-login-gateway-container .patient .form-login').append('<div class="registered-user-without-email-parent"><div class="padding-bottom-10 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="registered-patient-without-email">'+$('.popup-body.translations').attr('data-translation-email-field')+'</label><input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" /></div><div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">'+$('.popup-body.translations').attr('data-translation-please-add-email')+'</div></div><div class="patient-register-checkboxes padding-top-5"><div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registered-user-without-email"/><label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registered-user-without-email">'+$('.popup-body.translations').attr('data-translation-i-agree')+'<a href="//dentacoin.com/privacy-policy" target="_blank">'+$('.popup-body.translations').attr('data-translation-privacy-policy')+'</a></label></div></div><div class="text-right padding-top-15"><a href="javascript:void(0);" class="platform-button opposite gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email inline-block">'+$('.popup-body.translations').attr('data-translation-continue')+'</a></div></div>');
+                            $('.dentacoin-login-gateway-container .patient .form-login').append('<div class="registered-user-without-email-parent"><div class="padding-bottom-10 field-parent"><div class="custom-gateway-google-label-style module" data-input-colorful-border="true"><label for="registered-patient-without-email">'+$('.popup-body.translations').attr('data-translation-email-field')+'</label><input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" /></div><div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">'+$('.popup-body.translations').attr('data-translation-please-add-email')+'</div></div><div class="patient-register-checkboxes padding-top-5"><div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registered-user-without-email"/><label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registered-user-without-email">'+$('.popup-body.translations').attr('data-translation-i-agree')+'<a href="//dentacoin.com/privacy-policy" target="_blank">'+$('.popup-body.translations').attr('data-translation-privacy-policy')+'</a></label></div></div><div class="text-right padding-top-15"><a href="javascript:void(0);" class="platform-button opposite gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email inline-block">'+$('.popup-body.translations').attr('data-translation-continue')+'</a></div></div>');
 
                             dcnGateway.utils.initCustomCheckboxes();
 
@@ -895,7 +895,7 @@ if (typeof jQuery == 'undefined') {
                                     if (loggingDentistResponse.success) {
                                         // if password is weak force dentist to update it
                                         if (!dcnGateway.utils.validatePassword($('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim())) {
-                                            $('.dentist .form-login').html('<h2>'+$('.popup-body.translations').attr('data-translation-update-password')+'</h2><form method="POST" id="dentist-update-password"><div class="padding-bottom-10 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="dentist-update-password-field">'+$('.popup-body.translations').attr('data-translation-password-field')+'</label><input class="full-rounded form-field required password" minlength="8" maxlength="30" type="password" id="dentist-update-password-field"/></div></div><div class="padding-bottom-20 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="dentist-update-repeat-password-field">'+$('.popup-body.translations').attr('data-translation-repeat-password-field')+'</label><input class="full-rounded form-field required repeat-password" minlength="8" maxlength="30" type="password" id="dentist-update-repeat-password-field"/></div></div><div class="dentist-update-password-errors"></div><div class="btn-container text-center padding-top-20 padding-bottom-50"><input type="submit" value="'+$('.popup-body.translations').attr('data-translation-save')+'" class="platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20"/></div></form>');
+                                            $('.dentist .form-login').html('<h2>'+$('.popup-body.translations').attr('data-translation-update-password')+'</h2><form method="POST" id="dentist-update-password"><div class="padding-bottom-10 field-parent"><div class="custom-gateway-google-label-style module" data-input-colorful-border="true"><label for="dentist-update-password-field">'+$('.popup-body.translations').attr('data-translation-password-field')+'</label><input class="full-rounded form-field required password" minlength="8" maxlength="30" type="password" id="dentist-update-password-field"/></div></div><div class="padding-bottom-20 field-parent"><div class="custom-gateway-google-label-style module" data-input-colorful-border="true"><label for="dentist-update-repeat-password-field">'+$('.popup-body.translations').attr('data-translation-repeat-password-field')+'</label><input class="full-rounded form-field required repeat-password" minlength="8" maxlength="30" type="password" id="dentist-update-repeat-password-field"/></div></div><div class="dentist-update-password-errors"></div><div class="btn-container text-center padding-top-20 padding-bottom-50"><input type="submit" value="'+$('.popup-body.translations').attr('data-translation-save')+'" class="platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20"/></div></form>');
 
                                             $('.dentist .form-login #dentist-update-password').on('submit', async function(event) {
                                                 var this_form_native = this;
@@ -1066,7 +1066,7 @@ if (typeof jQuery == 'undefined') {
 
                         $('.dentacoin-login-gateway-container .step.second select[name="clinic-member-job-title"]').on('change', function() {
                             if ($(this).val() == 'other') {
-                                $(this).closest('.field-parent').append('<div class="custom-google-label-style module clinic-member-job-title-other-parent" data-input-colorful-border="true"><label for="clinic-member-job-title-other">'+$('.popup-body.translations').attr('data-translation-please-specify-field')+'</label><input class="full-rounded form-field required" name="clinic-member-job-title-other" maxlength="50" type="text" id="clinic-member-job-title-other"/></div>');
+                                $(this).closest('.field-parent').append('<div class="custom-gateway-google-label-style module clinic-member-job-title-other-parent" data-input-colorful-border="true"><label for="clinic-member-job-title-other">'+$('.popup-body.translations').attr('data-translation-please-specify-field')+'</label><input class="full-rounded form-field required" name="clinic-member-job-title-other" maxlength="50" type="text" id="clinic-member-job-title-other"/></div>');
 
                                 $('.dentacoin-login-gateway-container .step.second .clinic-member-job-title-other-parent #clinic-member-job-title-other').focus();
                                 $('.dentacoin-login-gateway-container .step.second .clinic-member-job-title-other-parent label[for="clinic-member-job-title-other"]').addClass('active-label');
@@ -1079,7 +1079,7 @@ if (typeof jQuery == 'undefined') {
                             $('.dentacoin-login-gateway-container .step.second .show-if-dentist-type-selected').show();
 
                             if ($(this).val() == 'work_at_practice') {
-                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practice').html('<div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practice-name">'+$('.popup-body.translations').attr('data-translation-practise-name-field')+'</label><input class="full-rounded form-field" name="practice-name" maxlength="255" type="text" id="practice-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true"><label for="practice-email">'+$('.popup-body.translations').attr('data-translation-official-email-field')+'</label><input class="full-rounded form-field" name="practice-email" maxlength="100" type="text" id="practice-email"/></div></div>');
+                                $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practice').html('<div class="padding-bottom-15 field-parent"><div class="custom-gateway-google-label-style module" data-input-colorful-border="true"><label for="practice-name">'+$('.popup-body.translations').attr('data-translation-practise-name-field')+'</label><input class="full-rounded form-field" name="practice-name" maxlength="255" type="text" id="practice-name"/></div></div><div class="padding-bottom-15 field-parent"><div class="custom-gateway-google-label-style module" data-input-colorful-border="true"><label for="practice-email">'+$('.popup-body.translations').attr('data-translation-official-email-field')+'</label><input class="full-rounded form-field" name="practice-email" maxlength="100" type="text" id="practice-email"/></div></div>');
                             } else {
                                 $('.dentacoin-login-gateway-container .step.second .if-work-for-a-practice').html('');
                             }
@@ -1269,7 +1269,7 @@ if (typeof jQuery == 'undefined') {
                                     }
 
                                     //check if latin name accepts only LATIN characters
-                                    if (!/^[a-z A-Z.&‘'-]+$/.test($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="latin-name"]').val().trim())) {
+                                    if (!/^[0-9a-z A-Z.&‘'-]+$/.test($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="latin-name"]').val().trim())) {
 
                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="latin-name"]').closest('.field-parent'), 'This field should contain only latin characters.');
                                         errors = true;

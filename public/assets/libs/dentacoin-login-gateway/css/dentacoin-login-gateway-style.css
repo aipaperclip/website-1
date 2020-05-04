@@ -175,9 +175,9 @@
   height: 200px;
   display: none;
   background: transparent; }
-.module.custom-google-label-style {
+.module.custom-gateway-google-label-style {
   position: relative; }
-  .module.custom-google-label-style label {
+  .module.custom-gateway-google-label-style label {
     position: absolute;
     font-size: 16px !important;
     cursor: pointer;
@@ -203,7 +203,7 @@
     -o-transition: 0.3s;
     -ms-transition: 0.3s;
     transition: 0.3s; }
-    .module.custom-google-label-style label.active-label {
+    .module.custom-gateway-google-label-style label.active-label {
       width: auto !important;
       font-size: 14px !important;
       top: -8px;
@@ -212,12 +212,12 @@
       -ms-transform: none;
       transform: none;
       font-weight: bold; }
-  .module.custom-google-label-style .left-side {
+  .module.custom-gateway-google-label-style .left-side {
     width: calc(100% - 100px);
     position: relative; }
-    .module.custom-google-label-style .left-side.error-field input, .module.custom-google-label-style .left-side.error-field label {
+    .module.custom-gateway-google-label-style .left-side.error-field input, .module.custom-gateway-google-label-style .left-side.error-field label {
       color: red; }
-  .module.custom-google-label-style input {
+  .module.custom-gateway-google-label-style input {
     border: 2px solid #dddddd;
     cursor: pointer;
     font-size: 16px;
@@ -229,15 +229,15 @@
     -moz-border-radius: 4px 0 0 4px;
     -ms-border-radius: 4px 0 0 4px;
     border-radius: 4px 0 0 4px; }
-    .module.custom-google-label-style input.full-rounded {
+    .module.custom-gateway-google-label-style input.full-rounded {
       -webkit-border-radius: 4px;
       -moz-border-radius: 4px;
       -ms-border-radius: 4px;
       border-radius: 4px; }
-    .module.custom-google-label-style input.colorful-border {
+    .module.custom-gateway-google-label-style input.colorful-border {
       border-style: solid;
       border-width: 2px; }
-  .module.custom-google-label-style span {
+  .module.custom-gateway-google-label-style span {
     width: 100px;
     text-align: center;
     padding-top: 12px;
@@ -1302,10 +1302,10 @@
   -moz-border-radius: 0 0 4px 4px;
   -ms-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
-  -webkit-box-shadow: 0 15px 17px 4px rgba(0, 0, 0, 0.8);
-  -moz-box-shadow: 0 15px 17px 4px rgba(0, 0, 0, 0.8);
-  -ms-box-shadow: 0 15px 17px 4px rgba(0, 0, 0, 0.8);
-  box-shadow: 0 15px 17px 4px rgba(0, 0, 0, 0.8); }
+  -webkit-box-shadow: 0 15px 17px 4px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 15px 17px 4px rgba(0, 0, 0, 0.3);
+  -ms-box-shadow: 0 15px 17px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 17px 4px rgba(0, 0, 0, 0.3); }
   @media screen and (max-width: 767px) {
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist {
       width: 100%;

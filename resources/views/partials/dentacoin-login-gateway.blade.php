@@ -72,13 +72,13 @@
             <h2>LOG IN</h2>
             <form method="POST" id="dentist-login">
                 <div class="padding-bottom-10 field-parent">
-                    <div class="custom-google-label-style module" data-input-colorful-border="true">
+                    <div class="custom-gateway-google-label-style module" data-input-colorful-border="true">
                         <label for="dentist-login-email">{{ __('login-register.email-field') }}</label>
                         <input class="full-rounded form-field" name="email" maxlength="100" type="email" id="dentist-login-email" />
                     </div>
                 </div>
                 <div class="padding-bottom-20 field-parent">
-                    <div class="custom-google-label-style module" data-input-colorful-border="true">
+                    <div class="custom-gateway-google-label-style module" data-input-colorful-border="true">
                         <label for="dentist-login-password">{{ __('login-register.password-field') }}</label>
                         <input class="full-rounded form-field" name="password" maxlength="50" id="dentist-login-password" type="password"/>
                     </div>
@@ -98,19 +98,19 @@
             <form method="POST" enctype="multipart/form-data" id="dentist-register">
             <div class="step first @if(!isset($currentActiveStep)) visible @endif" data-step="first">
                     <div class="padding-bottom-10 field-parent">
-                        <div class="custom-google-label-style module" data-input-colorful-border="true">
+                        <div class="custom-gateway-google-label-style module" data-input-colorful-border="true">
                             <label for="dentist-register-email" @if(!empty($incompletedRegistrationData)) class="active-label gateway-platform-color-important" @endif>{{ __('login-register.work-email-field') }}</label>
                             <input class="full-rounded form-field  @if(!empty($incompletedRegistrationData)) gateway-platform-border-color-important @endif" name="email" maxlength="100" type="email" id="dentist-register-email" @if(!empty($incompletedRegistrationData)) value="{{$incompletedRegistrationData->email}}" @endif/>
                         </div>
                     </div>
                     <div class="padding-bottom-10 field-parent">
-                        <div class="custom-google-label-style module" data-input-colorful-border="true">
+                        <div class="custom-gateway-google-label-style module" data-input-colorful-border="true">
                             <label for="dentist-register-password" @if(!empty($incompletedRegistrationData)) class="active-label gateway-platform-color-important" @endif>{{ __('login-register.password-field') }}</label>
                             <input class="full-rounded form-field password @if(!empty($incompletedRegistrationData)) gateway-platform-border-color-important @endif" name="password" minlength="6" maxlength="50" type="password" id="dentist-register-password" @if(!empty($incompletedRegistrationData)) value="{{$incompletedRegistrationData->password}}" @endif/>
                         </div>
                     </div>
                     <div class="padding-bottom-20 field-parent">
-                        <div class="custom-google-label-style module" data-input-colorful-border="true">
+                        <div class="custom-gateway-google-label-style module" data-input-colorful-border="true">
                             <label for="dentist-register-repeat-password" @if(!empty($incompletedRegistrationData)) class="active-label gateway-platform-color-important" @endif>{{ __('login-register.repeat-password-field') }}</label>
                             <input class="full-rounded form-field repeat-password @if(!empty($incompletedRegistrationData)) gateway-platform-border-color-important @endif" name="repeat-password" minlength="6" maxlength="50" type="password" id="dentist-register-repeat-password" @if(!empty($incompletedRegistrationData)) value="{{$incompletedRegistrationData->password}}" @endif/>
                         </div>
@@ -155,7 +155,7 @@
                         </div>
                         <div class="show-if-dentist-type-selected @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode)) show @endif">
                             <div class="padding-bottom-15 field-parent">
-                                <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
+                                <div class="custom-gateway-google-label-style module tooltip-init" data-input-colorful-border="true">
                                     <div class="tooltip-label gateway-platform-color gateway-platform-border-color changeable-html-based-on-user-type" data-dentist="{{ __('login-register.dentist-latin-name-tooltip') }}" data-clinic="{{ __('login-register.clinic-latin-name-tooltip') }}"></div>
                                     <label for="dentist-register-latin-name" class="changeable-html-based-on-user-type @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'name') && !empty($incompletedRegistrationData->name)) active-label gateway-platform-color-important @endif" data-dentist="{{ __('login-register.dentist-latin-name-label') }}" data-clinic="{{ __('login-register.clinic-latin-name-label') }}"></label>
                                     <input class="full-rounded form-field required @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'name') && !empty($incompletedRegistrationData->name)) gateway-platform-border-color-important @endif" name="latin-name" maxlength="100" type="text" id="dentist-register-latin-name" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'name') && !empty($incompletedRegistrationData->name)) value="{{$incompletedRegistrationData->name}}" @endif/>
@@ -163,7 +163,7 @@
                                 <div class="dentacoin-login-gateway-fs-14 light-gray-color changeable-html-based-on-user-type" data-dentist="{{ __('login-register.dentist-latin-name-example') }}" data-clinic="{{ __('login-register.clinic-latin-name-example') }}"></div>
                             </div>
                             <div class="padding-bottom-15 field-parent">
-                                <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
+                                <div class="custom-gateway-google-label-style module tooltip-init" data-input-colorful-border="true">
                                     <div class="tooltip-label gateway-platform-color gateway-platform-border-color">{{ __('login-register.searching-patients') }}</div>
                                     <label for="dentist-register-alternative-name" class="changeable-html-based-on-resolution @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'name_alternative') && !empty($incompletedRegistrationData->name_alternative)) active-label gateway-platform-color-important @endif" data-desktop="{{ __('login-register.local-name-desktop') }}" data-mobile="{{ __('login-register.local-name-mobile') }}"></label>
                                     <input class="full-rounded form-field @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'name_alternative') && !empty($incompletedRegistrationData->name_alternative)) gateway-platform-border-color-important @endif" name="alternative-name" maxlength="100" type="text" id="dentist-register-alternative-name" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'name_alternative') && !empty($incompletedRegistrationData->name_alternative)) value="{{$incompletedRegistrationData->name_alternative}}" @endif/>
@@ -174,12 +174,12 @@
                                 <div class="if-work-for-a-practice">
                                     @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'dentist_practice') && !empty($incompletedRegistrationData->dentist_practice) && $incompletedRegistrationData->dentist_practice == 'work_at_practice')
                                         <div class="padding-bottom-15 field-parent">
-                                            <div class="custom-google-label-style module" data-input-colorful-border="true">
+                                            <div class="custom-gateway-google-label-style module" data-input-colorful-border="true">
                                                 <label for="practice-name" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'clinic_name') && !empty($incompletedRegistrationData->clinic_name)) class="active-label gateway-platform-color-important" @endif>{{ __('login-register.practise-name-field') }}</label>
                                                 <input class="full-rounded form-field @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'clinic_name') && !empty($incompletedRegistrationData->clinic_name)) gateway-platform-border-color-important @endif" name="practice-name" maxlength="255" type="text" id="practice-name" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'clinic_name') && !empty($incompletedRegistrationData->clinic_name)) value="{{$incompletedRegistrationData->clinic_name}}" @endif/>
                                             </div>
                                         </div>
-                                        <div class="padding-bottom-15 field-parent"><div class="custom-google-label-style module" data-input-colorful-border="true">
+                                        <div class="padding-bottom-15 field-parent"><div class="custom-gateway-google-label-style module" data-input-colorful-border="true">
                                                 <label for="practice-email" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'clinic_email') && !empty($incompletedRegistrationData->clinic_email)) class="active-label gateway-platform-color-important" @endif>{{ __('login-register.official-email-field') }}</label>
                                                 <input class="full-rounded form-field @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'clinic_email') && !empty($incompletedRegistrationData->clinic_email)) gateway-platform-border-color-important @endif" name="practice-email" maxlength="100" type="text" id="practice-email" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'clinic_email') && !empty($incompletedRegistrationData->clinic_email)) value="{{$incompletedRegistrationData->clinic_email}}" @endif/>
                                             </div>
@@ -190,7 +190,7 @@
                         </div>
                         <div class="show-if-clinic @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'clinic') show @endif">
                             <div class="padding-bottom-15 field-parent">
-                                <div class="custom-google-label-style module" data-input-colorful-border="true">
+                                <div class="custom-gateway-google-label-style module" data-input-colorful-border="true">
                                     <label for="clinic-member-name" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'worker_name') && !empty($incompletedRegistrationData->worker_name)) class="active-label gateway-platform-color-important" @endif>{{ __('login-register.your-name-field') }}</label>
                                     <input class="full-rounded form-field to-be-required @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'worker_name') && !empty($incompletedRegistrationData->worker_name)) gateway-platform-border-color-important @endif" name="clinic-member-name" maxlength="255" type="text" id="clinic-member-name" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'worker_name') && !empty($incompletedRegistrationData->worker_name)) value="{{$incompletedRegistrationData->worker_name}}" @endif/>
                                 </div>
@@ -207,7 +207,7 @@
                                         </select>
                                     </div>
                                     @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'working_position') && !empty($incompletedRegistrationData->working_position) && $incompletedRegistrationData->working_position == 'other')
-                                        <div class="custom-google-label-style module clinic-member-job-title-other-parent" data-input-colorful-border="true">
+                                        <div class="custom-gateway-google-label-style module clinic-member-job-title-other-parent" data-input-colorful-border="true">
                                             <label for="clinic-member-job-title-other" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'working_position_label') && !empty($incompletedRegistrationData->working_position_label)) class="active-label gateway-platform-color-important" @endif>{{ __('login-register.please-specify-field') }}</label>
                                             <input class="full-rounded form-field required @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'working_position_label') && !empty($incompletedRegistrationData->working_position_label)) gateway-platform-border-color-important @endif" name="clinic-member-job-title-other" maxlength="50" type="text" id="clinic-member-job-title-other" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'working_position_label') && !empty($incompletedRegistrationData->working_position_label)) value="{{$incompletedRegistrationData->working_position_label}}" @endif/>
                                         </div>
@@ -243,7 +243,7 @@
                         </div>
                     </div>
                     <div class="padding-bottom-15 suggester-parent module field-parent">
-                        <div class="custom-google-label-style module tooltip-init" data-input-colorful-border="true">
+                        <div class="custom-gateway-google-label-style module tooltip-init" data-input-colorful-border="true">
                             <div class="tooltip-label gateway-platform-color gateway-platform-border-color changeable-html-based-on-user-type" data-dentist="{{ __('login-register.dentist-address-field-tooltip') }}" data-clinic="{{ __('login-register.clinic-address-field-tooltip') }}"></div>
                             <label for="dentist-register-address" class="changeable-html-based-on-user-type @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'address') && !empty($incompletedRegistrationData->address)) active-label gateway-platform-color-important @endif" data-dentist="{{ __('login-register.dentist-address-field-label') }}" data-clinic="{{ __('login-register.clinic-address-field-label') }}"></label>
                             <input type="text" name="address" class="full-rounded form-field required address-suggester @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'address') && !empty($incompletedRegistrationData->address)) gateway-platform-border-color-important @endif" autocomplete="off" id="dentist-register-address" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'address') && !empty($incompletedRegistrationData->address)) value="{{$incompletedRegistrationData->address}}" @endif>
@@ -255,7 +255,7 @@
                         <div class="alert alert-warning different-country-hint margin-top-10 margin-bottom-10">{{ __('login-register.different-country-hint') }}</div>
                     </div>
                     <div class="padding-bottom-15 field-parent">
-                        <div class="custom-google-label-style module" data-input-colorful-border="true">
+                        <div class="custom-gateway-google-label-style module" data-input-colorful-border="true">
                             <label for="dentist-register-website" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'website') && !empty($incompletedRegistrationData->website)) class="active-label gateway-platform-color-important" @endif>{{ __('login-register.website-field') }}</label>
                             <input class="full-rounded form-field required @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'website') && !empty($incompletedRegistrationData->website)) gateway-platform-border-color-important @endif" name="website" id="dentist-register-website" maxlength="250" type="url" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'website') && !empty($incompletedRegistrationData->website)) value="{{$incompletedRegistrationData->website}}" @endif/>
                         </div>
@@ -264,9 +264,9 @@
                     <div class="padding-bottom-10 field-parent">
                         <div class="phone">
                             <div class="country-code" name="phone-code">{{$current_phone_code}}</div>
-                            <div class="custom-google-label-style module input-phone" data-input-colorful-border="true">
+                            <div class="custom-gateway-google-label-style module input-phone" data-input-colorful-border="true">
                                 <label for="dentist-register-phone" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'phone') && !empty($incompletedRegistrationData->phone)) class="active-label gateway-platform-color-important" @endif>{{ __('login-register.phone-number-field') }}</label>
-                                <input class="full-rounded form-field required @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'phone') && !empty($incompletedRegistrationData->phone)) gateway-platform-border-color-important @endif" name="phone" maxlength="50" type="number" id="dentist-register-phone" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'phone') && !empty($incompletedRegistrationData->phone)) value="{{$incompletedRegistrationData->phone}}" @endif/>
+                                <input class="full-rounded form-field required @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'phone') && !empty($incompletedRegistrationData->phone)) gateway-platform-border-color-important @endif" name="phone" maxlength="50" type="text" id="dentist-register-phone" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'phone') && !empty($incompletedRegistrationData->phone)) value="{{$incompletedRegistrationData->phone}}" @endif/>
                             </div>
                         </div>
                     </div>

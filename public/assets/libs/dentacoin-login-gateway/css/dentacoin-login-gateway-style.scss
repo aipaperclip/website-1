@@ -84,7 +84,7 @@
             background: transparent;
         }
     }
-    &.custom-google-label-style {
+    &.custom-gateway-google-label-style {
         position: relative;
         label {
             position: absolute;
@@ -871,7 +871,7 @@
     border-left: 3px solid white;
     border-right: 3px solid white;
     @include rounded(0 0 4px 4px);
-    @include box-shadow(0 15px 17px 4px rgba(0, 0, 0, 0.8));
+    @include box-shadow(0 15px 17px 4px rgba(0, 0, 0, 0.3));
     @include breakpoint($xs) {
         width: 100%;
         @include box-shadow(none);
