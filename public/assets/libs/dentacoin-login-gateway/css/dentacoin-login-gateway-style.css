@@ -1184,13 +1184,13 @@
   appearance: none;
   margin: 0; }
 
-.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar {
+.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .gateway-avatar {
   width: 180px; }
-  .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name {
+  .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .gateway-avatar .avatar-name {
     display: none;
     padding-top: 25px;
     font-size: 0; }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name button {
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .gateway-avatar .avatar-name button {
       color: red;
       font-size: 36px;
       width: 30px;
@@ -1202,20 +1202,20 @@
       line-height: 22px;
       border: 0;
       background: transparent; }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name span {
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .gateway-avatar .avatar-name span {
       font-size: 14px;
       display: inline-block;
       vertical-align: middle;
       width: calc(100% - 30px); }
     @media screen and (max-width: 767px) {
-      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .avatar-name {
+      .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .gateway-avatar .avatar-name {
         padding-top: 10px; } }
-  .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .upload-label-btn {
+  .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .gateway-avatar .upload-label-btn {
     padding-top: 25px; }
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar .upload-label-btn.less-padding {
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .gateway-avatar .upload-label-btn.less-padding {
       padding-top: 10px; }
   @media screen and (max-width: 767px) {
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .avatar {
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .gateway-avatar {
       width: 100%; } }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .step.fourth .captcha-container {
