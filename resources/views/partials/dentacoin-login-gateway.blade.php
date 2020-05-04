@@ -141,7 +141,7 @@
                             <div class="show-if-dentist-type-selected @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'dentist') show @endif">
                                 @if(!empty($api_enums) && property_exists($api_enums, 'titles') && !empty($api_enums->titles))
                                     <div class="padding-bottom-15 field-parent">
-                                        <div class="custom-google-select-style module">
+                                        <div class="custom-gateway-google-select-style module">
                                             <label class="gateway-platform-color">{{ __('login-register.title-field') }}</label>
                                             <select class="form-field required gateway-platform-border-color" name="dentist-title">
                                                 @foreach($api_enums->titles as $key => $title)
@@ -197,7 +197,7 @@
                             </div>
                             @if(!empty($api_enums) && property_exists($api_enums, 'working_position') && !empty($api_enums->working_position))
                                 <div class="padding-bottom-15 field-parent">
-                                    <div class="custom-google-select-style module">
+                                    <div class="custom-gateway-google-select-style module">
                                         <label class="gateway-platform-color">{{ __('login-register.job-title-field') }}</label>
                                         <select class="form-field gateway-platform-border-color changeable-color-on-selected-value @if(empty($incompletedRegistrationData)) dcn-gateway-gray-color @endif" name="clinic-member-job-title">
                                             <option value="">{{ __('login-register.please-select') }}</option>
@@ -226,7 +226,7 @@
                 </div>
                 <div class="step third address-suggester-wrapper @if(!empty($currentActiveStep) && $currentActiveStep == 'third') visible @endif" data-step="third">
                     <div class="padding-bottom-20 field-parent">
-                        <div class="custom-google-select-style module">
+                        <div class="custom-gateway-google-select-style module">
                             @php($countries = (new \App\Http\Controllers\APIRequestsController())->getAllCountries())
                             <label class="gateway-platform-color">{{ __('login-register.select-country-field') }}</label>
                             @php($current_phone_code = '+'.$countries[0]->phone_code)
@@ -273,7 +273,7 @@
                 </div>
                 <div class="step fourth @if(!empty($currentActiveStep) && $currentActiveStep == 'fourth') visible @endif" data-step="fourth">
                     <div class="padding-bottom-20 dentacoin-login-gateway-fs-0">
-                        <div class="inline-block-top avatar module upload-file">
+                        <div class="inline-block-top gateway-avatar module upload-file">
                             <input type="file" class="visualise-image inputfile" id="custom-upload-avatar" name="image" accept=".jpg,.png,.jpeg,.svg,.bmp"/>
                             <input type="hidden" id="hidden-image" name="hidden-image"/>
                             <div class="btn-wrapper"></div>

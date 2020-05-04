@@ -7,7 +7,7 @@
 }
 
 .module {
-    &.avatar {
+    &.gateway-avatar {
         input[type="file"] {
             display: none;
         }
@@ -50,7 +50,6 @@
         }
         #cropper-container.width-and-height {
             width: 180px;
-            height: 160px;
             .cr-viewport {
                 border: 2px dashed #777777;
             }
@@ -153,7 +152,7 @@
             @include rounded(0 4px 4px 0);
         }
     }
-    &.custom-google-select-style {
+    &.custom-gateway-google-select-style {
         position: relative;
         label {
             width: auto !important;

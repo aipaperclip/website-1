@@ -271,13 +271,13 @@ if (typeof jQuery == 'undefined') {
                             failed_callback();
                         }
 
-                        $(input).closest('.avatar.module').append('<div class="error-handle task-error">The file you selected is large. Max size: '+megaBytesLimit+'MB.</div>');
+                        $(input).closest('.gateway-avatar.module').append('<div class="error-handle task-error">The file you selected is large. Max size: '+megaBytesLimit+'MB.</div>');
                         return false;
                     } else {
                         //check file extension
                         if (jQuery.inArray(filename.split('.').pop().toLowerCase(), allowedImagesExtensions) !== -1) {
-                            if ($('.avatar.module .error-handle').length) {
-                                $('.avatar.module .error-handle').remove();
+                            if ($('.gateway-avatar.module .error-handle').length) {
+                                $('.gateway-avatar.module .error-handle').remove();
                             }
 
                             if (callback != undefined) {
@@ -310,7 +310,7 @@ if (typeof jQuery == 'undefined') {
                 }
             },
             styleAvatarUploadButton: function() {
-                if (jQuery('.upload-file.avatar').length) {
+                if (jQuery('.upload-file.gateway-avatar').length) {
                     var inputs = document.querySelectorAll('.inputfile');
                     Array.prototype.forEach.call(inputs, function(input) {
                         var this_file_btn_parent = $(input).parent();
@@ -359,16 +359,16 @@ if (typeof jQuery == 'undefined') {
                                     croppie_instance.croppie('destroy');
                                     $('#cropper-container').html('');
                                     $('#cropper-container').removeClass('width-and-height');
-                                    $('.avatar.module .btn-wrapper').show();
+                                    $('.gateway-avatar.module .btn-wrapper').show();
                                     $('.avatar-name').hide();
                                     $('.dentist .form-register .step.fourth #custom-upload-avatar').val('');
                                 });
 
-                                $('.avatar.module .btn-wrapper').hide();
+                                $('.gateway-avatar.module .btn-wrapper').hide();
 
-                                croppie_instance.croppie('bind', {
+                                /*croppie_instance.croppie('bind', {
                                     url: e.target.result
-                                });
+                                });*/
 
                                 croppie_instance.croppie('bind', 'url').then(function(){
                                     croppie_instance.croppie('setZoom', 1);
