@@ -366,9 +366,9 @@ if (typeof jQuery == 'undefined') {
 
                                 $('.gateway-avatar.module .btn-wrapper').hide();
 
-                                croppie_instance.croppie('bind', {
+                                /*croppie_instance.croppie('bind', {
                                     url: e.target.result
-                                });
+                                });*/
 
                                 croppie_instance.croppie('bind', 'url').then(function(){
                                     croppie_instance.croppie('setZoom', 1);
