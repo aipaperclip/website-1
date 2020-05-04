@@ -5,7 +5,7 @@ if (typeof jQuery == 'undefined') {
     var loadedSocialLibs = false;
     var loadedAddressSuggesterLib = false;
     var loadedGoogleMapLib = false;
-    var croppie_instance;
+    var gateway_croppie_instance;
     var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
     var apiDomain = 'https://api.dentacoin.com';
     var environment = 'live';
@@ -328,10 +328,10 @@ if (typeof jQuery == 'undefined') {
                                     $('.upload-label-btn').addClass('less-padding');
                                 }
 
-                                $('#cropper-container').addClass('width-and-height');
-                                if (croppie_instance != undefined) {
-                                    croppie_instance.croppie('destroy');
-                                    $('#cropper-container').html('');
+                                $('#gateway-cropper-container').addClass('width-and-height');
+                                if (gateway_croppie_instance != undefined) {
+                                    gateway_croppie_instance.croppie('destroy');
+                                    $('#gateway-cropper-container').html('');
                                 }
 
                                 var croppieParams = {
@@ -353,12 +353,12 @@ if (typeof jQuery == 'undefined') {
                                     croppieParams.boundary = {width: 180, height: 180};
                                 }
 
-                                croppie_instance = $('#cropper-container').croppie(croppieParams);
+                                gateway_croppie_instance = $('#gateway-cropper-container').croppie(croppieParams);
 
                                 $('.destroy-croppie').unbind().click(function() {
-                                    croppie_instance.croppie('destroy');
-                                    $('#cropper-container').html('');
-                                    $('#cropper-container').removeClass('width-and-height');
+                                    gateway_croppie_instance.croppie('destroy');
+                                    $('#gateway-cropper-container').html('');
+                                    $('#gateway-cropper-container').removeClass('width-and-height');
                                     $('.gateway-avatar.module .btn-wrapper').show();
                                     $('.avatar-name').hide();
                                     $('.dentist .form-register .step.fourth #custom-upload-avatar').val('');
@@ -366,17 +366,17 @@ if (typeof jQuery == 'undefined') {
 
                                 $('.gateway-avatar.module .btn-wrapper').hide();
 
-                                croppie_instance.croppie('bind', {
+                                gateway_croppie_instance.croppie('bind', {
                                     url: e.target.result,
                                     zoom: 1
                                 });
 
-                                /*croppie_instance.croppie('bind', 'url').then(function(){
-                                    croppie_instance.croppie('setZoom', 1);
+                                /*gateway_croppie_instance.croppie('bind', 'url').then(function(){
+                                    gateway_croppie_instance.croppie('setZoom', 1);
                                 });*/
 
-                                $('#cropper-container').on('update.croppie', function(ev, cropData) {
-                                    croppie_instance.croppie('result', {
+                                $('#gateway-cropper-container').on('update.croppie', function(ev, cropData) {
+                                    gateway_croppie_instance.croppie('result', {
                                         type: 'canvas',
                                         size: {width: 300, height: 300}
                                     }).then(function (src) {
