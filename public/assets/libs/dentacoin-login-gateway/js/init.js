@@ -347,10 +347,10 @@ if (typeof jQuery == 'undefined') {
                                     croppieParams.boundary = {width: 200, height: 200};
                                 } else {
                                     croppieParams.viewport = {
-                                        width: 140,
-                                        height: 140
+                                        width: 180,
+                                        height: 180
                                     };
-                                    croppieParams.boundary = {width: 140, height: 140};
+                                    croppieParams.boundary = {width: 180, height: 180};
                                 }
 
                                 croppie_instance = $('#cropper-container').croppie(croppieParams);
