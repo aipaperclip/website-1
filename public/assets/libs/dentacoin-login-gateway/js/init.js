@@ -366,9 +366,9 @@ if (typeof jQuery == 'undefined') {
 
                                 $('.gateway-avatar.module .btn-wrapper').hide();
 
-                                /*croppie_instance.croppie('bind', {
+                                croppie_instance.croppie('bind', {
                                     url: e.target.result
-                                });*/
+                                });
 
                                 croppie_instance.croppie('bind', 'url').then(function(){
                                     croppie_instance.croppie('setZoom', 1);
@@ -506,13 +506,7 @@ if (typeof jQuery == 'undefined') {
                     if (platformsData[i].slug == params.platform) {
                         validPlatform = true;
                         currentPlatformColor = platformsData[i].color;
-
-                        // TEMPORALLY, DELETE THIS
-                        if (platformsData[i].slug == 'dentavox') {
-                            currentPlatformDomain = 'https://urgent.dentavox.dentacoin.com/';
-                        } else {
-                            currentPlatformDomain = platformsData[i].link;
-                        }
+                        currentPlatformDomain = platformsData[i].link;
                         break;
                     }
                 }

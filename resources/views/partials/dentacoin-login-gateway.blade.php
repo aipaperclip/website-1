@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="form-register @if($type == 'patient-login' || $type == 'dentist-login') display-none @endif">
-            <h2>{{ __('login-register.sign-up-upper-case') }}</h2>
+            <h2>{{ __('login-register.sign-up-uppercase') }}</h2>
             <div class="padding-bottom-10">
                 <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif custom-stopper="true"><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">{{ __('login-register.continue-with-fb') }}</span></a>
             </div>
