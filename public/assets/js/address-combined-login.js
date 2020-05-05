@@ -127,15 +127,7 @@ $(document).ready(function($){
         suggester_container.find('.different-country-hint').hide();
         suggester_container.find('.suggester-map-div').hide();
 
-        console.log(place, 'place');
-        console.log(place.geometry, 'place.geometry');
-        console.log(place.types, 'place.types');
-        console.log(place.types.indexOf('street_address'), 'place.types.indexOf(\'street_address\')');
-        console.log(place.types.indexOf('establishment'), 'place.types.indexOf(\'establishment\')');
-        console.log(place.types.indexOf('point_of_interest'), 'place.types.indexOf(\'point_of_interest\')');
-        console.log(place.types.indexOf('premise'), 'place.types.indexOf(\'premise\')');
-
-        if (place && place.geometry /*&& place.types && (place.types.indexOf('street_address') != -1 || place.types.indexOf('establishment') != -1 || place.types.indexOf('point_of_interest') != -1 || place.types.indexOf('premise') != -1)*/) {
+        if (place && hasOwnProperty.call(place, 'geometry') && place.geometry /*&& place.types && (place.types.indexOf('street_address') != -1 || place.types.indexOf('establishment') != -1 || place.types.indexOf('point_of_interest') != -1 || place.types.indexOf('premise') != -1)*/) {
             //address_components
             var gstring = suggester_container.find('.address-suggester').val();
             var country_name = suggester_container.find('.country-select option:selected').text();
