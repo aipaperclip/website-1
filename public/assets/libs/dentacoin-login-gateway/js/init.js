@@ -507,8 +507,10 @@ if (typeof jQuery == 'undefined') {
                 if (params.platform == 'urgent.dentavox' || params.platform == 'urgent.reviews') {
                     if (params.platform == 'urgent.dentavox') {
                         currentPlatformDomain = 'https://urgent.dentavox.dentacoin.com/';
+                        params.platform = 'dentavox';
                     } else if (params.platform == 'urgent.reviews') {
                         currentPlatformDomain = 'https://urgent.reviews.dentacoin.com/';
+                        params.platform = 'trusted-reviews';
                     }
 
                     for (var i = 0, len = platformsData.length; i < len; i+=1) {
