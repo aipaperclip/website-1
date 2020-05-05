@@ -1531,7 +1531,7 @@ if (typeof jQuery == 'undefined') {
                             }
                         });
                         // ====================== /DENTIST LOGIN/ SIGNUP LOGIC ======================
-                        
+
                         $.event.trigger({
                             type: 'dentacoinLoginGatewayLoaded',
                             time: new Date()
