@@ -6,7 +6,7 @@ var mapsWaiting = [];
 var stopThirdRegistrationStep = false;
 
 var prepareMapFunction = function( callback ) {
-    if(mapsLoaded) {
+    if (mapsLoaded) {
         callback();
     } else {
         mapsWaiting.push(callback);
@@ -17,7 +17,7 @@ $(document).ready(function($){
     setupMap = function(suggester_container, coords) {
         console.log('setupMap');
         suggester_container.find('.suggester-map-div').show();
-        if(!suggester_container.find('.suggester-map-div').attr('inited') ) {
+        if (!suggester_container.find('.suggester-map-div').attr('inited') ) {
             var profile_address_map = new google.maps.Map( suggester_container.find('.suggester-map-div')[0], {
                 center: coords,
                 zoom: 14,
@@ -66,7 +66,7 @@ $(document).ready(function($){
                     });
                 });
 
-                if( suggester_container.find('.suggester-map-div').attr('lat') ) {
+                if ( suggester_container.find('.suggester-map-div').attr('lat') ) {
                     var coords = {
                         lat: parseFloat(suggester_container.find('.suggester-map-div').attr('lat')),
                         lng: parseFloat(suggester_container.find('.suggester-map-div').attr('lon'))
@@ -127,7 +127,7 @@ $(document).ready(function($){
         suggester_container.find('.different-country-hint').hide();
         suggester_container.find('.suggester-map-div').hide();
 
-        if( place && place.geometry && place.types && (place.types.indexOf('street_address') != -1 || place.types.indexOf('establishment') != -1 || place.types.indexOf('point_of_interest') != -1 || place.types.indexOf('premise') != -1) ) {
+        if (place && place.geometry && place.types && (/*place.types.indexOf('street_address') != -1 || */place.types.indexOf('establishment') != -1 || place.types.indexOf('point_of_interest') != -1 || place.types.indexOf('premise') != -1)) {
             //address_components
             var gstring = suggester_container.find('.address-suggester').val();
             var country_name = suggester_container.find('.country-select option:selected').text();
@@ -165,7 +165,7 @@ $(document).ready(function($){
         }
     };
 
-    if($('.init-address-suggester').length) {
+    if ($('.init-address-suggester').length) {
         initAddressSuggesters();
     }
 });

@@ -261,17 +261,15 @@ if (typeof jQuery == 'undefined') {
             bytesToMegabytes: function(bytes) {
                 return bytes / Math.pow(1024, 2);
             },
-            readURL: function(input, megaBytesLimit, allowedImagesExtensions, callback, failed_callback) {
+            readURL: function(input, megaBytesLimit, allowedImagesExtensions, callback, failedMaxSizeCallback, failedExtensionsCallback) {
                 if (input.files && input.files[0]) {
                     var filename = input.files[0].name;
 
                     // check file size
                     if (megaBytesLimit < dcnGateway.utils.bytesToMegabytes(input.files[0].size)) {
-                        if (failed_callback != undefined) {
-                            failed_callback();
+                        if (failedMaxSizeCallback != undefined) {
+                            failedMaxSizeCallback();
                         }
-
-                        $(input).closest('.gateway-avatar.module').append('<div class="error-handle task-error">The file you selected is large. Max size: '+megaBytesLimit+'MB.</div>');
                         return false;
                     } else {
                         //check file extension
@@ -288,11 +286,11 @@ if (typeof jQuery == 'undefined') {
                                 reader.readAsDataURL(input.files[0]);
                             }
                         } else {
-                            if (failed_callback != undefined) {
-                                failed_callback();
+                            if (failedExtensionsCallback != undefined) {
+                                failedExtensionsCallback();
                             }
 
-                            var allowedExtensionsHtml = '';
+                            /*var allowedExtensionsHtml = '';
                             var firstLoop = true;
                             for(var i = 0, len = allowedImagesExtensions.length; i < len; i+=1) {
                                 if (firstLoop) {
@@ -303,7 +301,7 @@ if (typeof jQuery == 'undefined') {
                                 }
                             }
 
-                            $(input).closest('.upload-btn-parent').append('<div class="error-handle task-error">'+$('.popup-body.translations').attr('data-translation-file-size-error')+allowedExtensionsHtml+' format.</div>');
+                            $(input).closest('.upload-btn-parent').append('<div class="error-handle task-error">'+$('.popup-body.translations').attr('data-translation-file-size-error')+allowedExtensionsHtml+' format.</div>');*/
                             return false;
                         }
                     }
@@ -314,11 +312,7 @@ if (typeof jQuery == 'undefined') {
                     var inputs = document.querySelectorAll('.inputfile');
                     Array.prototype.forEach.call(inputs, function(input) {
                         var this_file_btn_parent = $(input).parent();
-                        if (this_file_btn_parent.attr('data-current-user-avatar')) {
-                            this_file_btn_parent.find('.btn-wrapper').append('<label for="custom-upload-avatar" role="button" style="background-image:url('+this_file_btn_parent.attr('data-current-user-avatar')+');"><div class="inner"><div class="inner-label dentacoin-login-gateway-fs-0">'+$('.popup-body.translations').attr('data-translation-add-profile-photo')+'</div></div></label>');
-                        } else {
-                            this_file_btn_parent.find('.btn-wrapper').append('<label for="custom-upload-avatar" role="button"><div class="inner"><i class="fa fa-plus" aria-hidden="true"></i><div class="inner-label">'+$('.popup-body.translations').attr('data-translation-add-profile-photo')+'</div></div></label>');
-                        }
+                        this_file_btn_parent.find('.btn-wrapper').append('<label for="custom-upload-avatar" role="button"><div class="inner"><i class="fa fa-plus" aria-hidden="true"></i><div class="inner-label">'+$('.popup-body.translations').attr('data-translation-add-profile-photo')+'</div></div></label>');
 
                         input.addEventListener('change', function(e) {
                             var this_input = $(this);
@@ -385,6 +379,12 @@ if (typeof jQuery == 'undefined') {
                                 });
                             }, function() {
                                 this_input.val('');
+
+                                $('.gateway-avatar.module').append('<div class="error-handle task-error">The file you selected is large. Max size: 2MB.</div>');
+                            }, function() {
+                                this_input.val('');
+
+                                $('.gateway-avatar.module').append('<div class="error-handle task-error">Allowed file formats are only .png, .jpeg and .jpg.</div>');
                             });
                         });
                         // Firefox bug fix
@@ -503,12 +503,29 @@ if (typeof jQuery == 'undefined') {
                 var validPlatform = false;
                 var currentPlatformColor;
                 var currentPlatformDomain;
-                for (var i = 0, len = platformsData.length; i < len; i+=1) {
-                    if (platformsData[i].slug == params.platform) {
-                        validPlatform = true;
-                        currentPlatformColor = platformsData[i].color;
-                        currentPlatformDomain = platformsData[i].link;
-                        break;
+
+                if (params.platform == 'urgent.dentavox' || params.platform == 'urgent.reviews') {
+                    if (params.platform == 'urgent.dentavox') {
+                        currentPlatformDomain = 'https://urgent.dentavox.dentacoin.com/';
+                    } else if (params.platform == 'urgent.reviews') {
+                        currentPlatformDomain = 'https://urgent.reviews.dentacoin.com/';
+                    }
+
+                    for (var i = 0, len = platformsData.length; i < len; i+=1) {
+                        if (platformsData[i].slug == 'dentavox') {
+                            currentPlatformColor = platformsData[i].color;
+                            break;
+                        }
+                    }
+                    validPlatform = true;
+                } else {
+                    for (var i = 0, len = platformsData.length; i < len; i+=1) {
+                        if (platformsData[i].slug == params.platform) {
+                            validPlatform = true;
+                            currentPlatformColor = platformsData[i].color;
+                            currentPlatformDomain = platformsData[i].link;
+                            break;
+                        }
                     }
                 }
 
@@ -1513,8 +1530,14 @@ if (typeof jQuery == 'undefined') {
                                     break;
                             }
                         });
-                        return false;
                         // ====================== /DENTIST LOGIN/ SIGNUP LOGIC ======================
+                        
+                        $.event.trigger({
+                            type: 'dentacoinLoginGatewayLoaded',
+                            time: new Date()
+                        });
+
+                        return false;
                     } else {
                         console.error('Something failed, please contact developer.');
                         return false;
