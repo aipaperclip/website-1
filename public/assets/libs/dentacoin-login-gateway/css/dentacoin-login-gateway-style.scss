@@ -834,6 +834,13 @@
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient {
     color: white;
+    .cta {
+        color: white;
+        display: none;
+        opacity: 1;
+        font-size: 16px;
+        padding-top: 15px;
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .have-old-account {

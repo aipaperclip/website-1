@@ -21,6 +21,7 @@
                 <div>
                     <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
                 </div>
+                <div class="cta"> <i class="fas fa-sign-in-alt"></i> You need to log in or register to do this action.</div>
                 <div class="have-old-account text-center">{{ __('login-register.have-old-profile') }} <a href="mailto:admin@dentacoin.com">{{ __('login-register.contact-us') }}</a>
                 </div>
                 <div class="popup-half-footer">
@@ -49,6 +50,7 @@
                 </div>
             </div>
             <div class="step-errors-holder"></div>
+            <div class="cta"> <i class="fas fa-sign-in-alt"></i> You need to log in or register to do this action.</div>
             <div class="optional-user-type">
                 @if(!empty($api_enums) && property_exists($api_enums, 'user_patient_type') && !empty($api_enums->user_patient_type))
                     <div class="dentacoin-login-gateway-fs-15 padding-top-50">{{ __('login-register.does-any') }}</div>
