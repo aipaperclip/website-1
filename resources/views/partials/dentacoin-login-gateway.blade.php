@@ -252,7 +252,7 @@
                         </div>
                         <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">{{ __('login-register.address-field-example') }}</div>
                         <div class="suggester-map-div margin-top-15 margin-bottom-10"></div>
-                        <div class="alert alert-notice geoip-confirmation margin-top-10 margin-bottom-10 hide-this">{{ __('login-register.geoip-confirmation') }}</div>
+                        <div class="alert alert-notice geoip-confirmation margin-top-10 margin-bottom-10">{{ __('login-register.geoip-confirmation') }}</div>
                         <div class="alert alert-warning geoip-hint margin-top-10 margin-bottom-10">{{ __('login-register.geoip-hint') }}</div>
                         <div class="alert alert-warning different-country-hint margin-top-10 margin-bottom-10">{{ __('login-register.different-country-hint') }}</div>
                     </div>
