@@ -912,6 +912,19 @@
     border-radius: 4px;
     color: #3c763d;
     background-color: #dff0d8; }
+  .dentacoin-login-gateway-container .alert.alert-notice {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 14px;
+    padding: 5px;
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    display: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px; }
   .dentacoin-login-gateway-container .dcn-gateway-gray-color {
     color: #888888 !important; }
   .dentacoin-login-gateway-container .tooltip-init {
