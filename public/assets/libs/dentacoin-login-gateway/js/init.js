@@ -1323,6 +1323,10 @@ if (typeof jQuery == 'undefined') {
                                             if ($('.dentacoin-login-gateway-container .step.second #practice-name').val().trim() == '') {
                                                 dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-name').closest('.field-parent'), 'This field is required.');
                                                 errors = true;
+                                            } else if (!/^[0-9a-z A-Z.&‘'-]+$/.test($('.dentacoin-login-gateway-container .step.second #practice-name').val().trim())) {
+
+                                                dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-name').closest('.field-parent'), 'This field should contain only latin characters.');
+                                                errors = true;
                                             }
 
                                             if ($('.dentacoin-login-gateway-container .step.second #practice-email').val().trim() == '') {
@@ -1337,7 +1341,7 @@ if (typeof jQuery == 'undefined') {
 
                                     // if clinic
                                     if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'clinic') {
-                                        if (!/^[0-9a-z A-Z.&‘'-]+$/.test($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="clinic-member-name"]').val().trim())) {
+                                        if (!/^[a-z A-Z.&‘'-]+$/.test($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="clinic-member-name"]').val().trim())) {
 
                                             dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="clinic-member-name"]').closest('.field-parent'), 'This field should contain only latin characters.');
                                             errors = true;
