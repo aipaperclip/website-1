@@ -166,8 +166,8 @@ if (typeof jQuery == 'undefined') {
             },
             fireGoogleAnalyticsEvent: function(category, action, label, value) {
                 var event_obj = {
-                    'event_action' : action,
                     'event_category': category,
+                    'event_action' : action,
                     'event_label': label
                 };
 
@@ -176,6 +176,9 @@ if (typeof jQuery == 'undefined') {
                 }
 
                 gtag('event', label, event_obj);
+            },
+            fireFacebookPixelEvent: function(label) {
+                fbq('track', label)
             },
             validateUrl: function(url)   {
                 var pattern = new RegExp(/*'^(https?:\\/\\/)?' +*/ // protocol
@@ -244,6 +247,12 @@ if (typeof jQuery == 'undefined') {
 
                             var enrichProfileResponse = await dcnGateway.dcnGatewayRequests.enrichProfile(enrichProfileData);
                             if (enrichProfileResponse.success) {
+                                if (data.type == 'dentist') {
+                                    dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickSave', 'DentDescr');
+                                } else if (data.type == 'clinic') {
+                                    dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickSave', 'ClinicDescr');
+                                }
+
                                 $('form#enrich-profile').addClass('padding-bottom-50').html('<div class="alert alert-success">'+enrichProfileResponse.data+'</div>')
                             } else if (enrichProfileResponse.error) {
                                 dcnGateway.utils.hidePopup();
@@ -254,8 +263,6 @@ if (typeof jQuery == 'undefined') {
                             }
                         }
                     });
-                } else if (type == 'enrich-profile-response') {
-                    $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper enrich-profile">'+message+'</div></div>');
                 }
             },
             bytesToMegabytes: function(bytes) {
@@ -462,6 +469,10 @@ if (typeof jQuery == 'undefined') {
                     $(document).off('customCivicFbStopperTriggered');
                     $(document).off('registeredAccountMissingEmail');
                     $(document).off('patientProceedWithCreatingSession');
+                    $(document).off('successfulFacebookPatientRegistration');
+                    $(document).off('successfulFacebookPatientLogin');
+                    $(document).off('successfulCivicPatientRegistration');
+                    $(document).off('successfulCivicPatientLogin');
                     $(document).off('patientAuthErrorResponse');
                     $(document).off('dentistProceedWithCreatingSession');
                     $(document).off('noExternalLoginProviderConnection');
@@ -758,6 +769,8 @@ if (typeof jQuery == 'undefined') {
                             });
 
                             if (createPatientSessionResponse.success) {
+
+
                                 $.event.trigger({
                                     type: 'patientAuthSuccessResponse',
                                     response_data: event.response_data,
@@ -768,6 +781,26 @@ if (typeof jQuery == 'undefined') {
                                 dcnGateway.utils.hideLoader();
                                 dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                             }
+                        });
+
+                        $(document).on('successfulFacebookPatientLogin', async function (event) {
+                            dcnGateway.utils.fireGoogleAnalyticsEvent('PatientLogin', 'ClickFB', 'PatientLoginFB');
+                            dcnGateway.utils.fireFacebookPixelEvent('PatientLogin');
+                        });
+
+                        $(document).on('successfulFacebookPatientRegistration', async function (event) {
+                            dcnGateway.utils.fireGoogleAnalyticsEvent('PatientRegistration', 'ClickFB', 'PatientRegistrationFB');
+                            dcnGateway.utils.fireFacebookPixelEvent('PatientRegistration');
+                        });
+
+                        $(document).on('successfulCivicPatientLogin', async function (event) {
+                            dcnGateway.utils.fireGoogleAnalyticsEvent('PatientLogin', 'ClickCivic', 'PatientLoginCivic');
+                            dcnGateway.utils.fireFacebookPixelEvent('PatientLogin');
+                        });
+
+                        $(document).on('successfulCivicPatientRegistration', async function (event) {
+                            dcnGateway.utils.fireGoogleAnalyticsEvent('PatientRegistration', 'ClickCivic', ' PatientRegistrationCivic');
+                            dcnGateway.utils.fireFacebookPixelEvent('PatientRegistration');
                         });
 
                         $(document).on('dentistProceedWithCreatingSession', async function (event) {
@@ -826,7 +859,8 @@ if (typeof jQuery == 'undefined') {
 
                             if (afterDentistRegistrationPopupForDentist.success) {
                                 dcnGateway.utils.showPopup(afterDentistRegistrationPopupForDentist.data, 'enrich-profile', null, {
-                                    user: event.response_data.user
+                                    user: event.response_data.user,
+                                    type: 'dentist'
                                 });
                             }
                         });
@@ -838,7 +872,8 @@ if (typeof jQuery == 'undefined') {
 
                             if (afterDentistRegistrationPopupForClinic.success) {
                                 dcnGateway.utils.showPopup(afterDentistRegistrationPopupForClinic.data, 'enrich-profile', null, {
-                                    user: event.response_data.user
+                                    user: event.response_data.user,
+                                    type: 'clinic'
                                 });
                             }
                         });
@@ -904,7 +939,8 @@ if (typeof jQuery == 'undefined') {
                                 }
 
                                 if (submit_form && check_account_response.success) {
-                                    dcnGateway.utils.fireGoogleAnalyticsEvent('DentistLogin', 'Click', 'Dentist Login');
+                                    dcnGateway.utils.fireGoogleAnalyticsEvent('DentistLogin', 'Click', 'DentistLogin');
+                                    dcnGateway.utils.fireFacebookPixelEvent('DentistLogin');
 
                                     var dentistLoginParams = {
                                         'platform' : params.platform,
@@ -1260,6 +1296,7 @@ if (typeof jQuery == 'undefined') {
 
                                     if (!errors) {
                                         dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationStep1');
+                                        dcnGateway.utils.fireFacebookPixelEvent('DentistRegistrationStep1');
 
                                         $('.dentacoin-login-gateway-container .dentist .form-register .step').removeClass('visible');
                                         $('.dentacoin-login-gateway-container .dentist .form-register .step.second').addClass('visible');
@@ -1355,6 +1392,7 @@ if (typeof jQuery == 'undefined') {
 
                                     if (!errors) {
                                         dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationStep2');
+                                        dcnGateway.utils.fireFacebookPixelEvent('DentistRegistrationStep2');
                                         // save incomplete account creation data
                                         dcnGateway.dcnGatewayRequests.saveIncompleteRegistration(collectFirstAndSecondStepData());
 
@@ -1406,6 +1444,7 @@ if (typeof jQuery == 'undefined') {
                                         if ($('#dentist-country').attr('data-current-user-country-code') != undefined && $('#dentist-country').val() != $('#dentist-country').attr('data-current-user-country-code')) {
                                             dcnGateway.utils.showPopup('Your IP thinks differently. Sure you\'ve entered the right country?', 'warning', function() {
                                                 dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationStep3');
+                                                dcnGateway.utils.fireFacebookPixelEvent('DentistRegistrationStep3');
                                                 // save incomplete account creation data
                                                 var thirdStepIncompleteRegistrationParams = collectFirstAndSecondStepData();
                                                 thirdStepIncompleteRegistrationParams.platform = params.platform;
@@ -1424,6 +1463,7 @@ if (typeof jQuery == 'undefined') {
                                             });
                                         } else {
                                             dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationStep3');
+                                            dcnGateway.utils.fireFacebookPixelEvent('DentistRegistrationStep3');
 // save incomplete account creation data
                                             var thirdStepIncompleteRegistrationParams = collectFirstAndSecondStepData();
                                             thirdStepIncompleteRegistrationParams.platform = params.platform;
@@ -1468,6 +1508,7 @@ if (typeof jQuery == 'undefined') {
                                     if (!errors) {
                                         $('.dentacoin-login-gateway-container form#dentist-register .step.fourth .step-errors-holder').html('');
                                         dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationComplete');
+                                        dcnGateway.utils.fireFacebookPixelEvent('DentistRegistrationComplete');
 
                                         var registerParams = {
                                             'platform' : params.platform,

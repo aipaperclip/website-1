@@ -71,8 +71,6 @@
                         register_data.user_patient_type = JSON.stringify(tempArr);
                     }
 
-                    console.log(register_data, 'register_data');
-
                     setTimeout(function () {
                         if(civic_custom_btn.attr('data-inviter') != undefined) {
                             register_data.invited_by = civic_custom_btn.attr('data-inviter');
@@ -85,8 +83,13 @@
                             data: register_data,
                             success: function(data) {
                                 if (data.success) {
+                                    if (data.new_account) {
+                                        customFacebookEvent('successfulCivicPatientRegistration', '');
+                                    } else {
+                                        customFacebookEvent('successfulCivicPatientLogin', '');
+                                    }
+
                                     if (data.data.email == '' || data.data.email == null) {
-                                        console.log('registeredAccountMissingEmail');
                                         customCivicEvent('registeredAccountMissingEmail', '', data);
                                     } else {
                                         customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);

@@ -56,8 +56,6 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                         register_data.invited_by = this_btn.attr('data-inviter');
                     }
 
-                    console.log(register_data, 'register_data');
-
                     //exchanging the token for user data
                     $.ajax({
                         type: 'POST',
@@ -66,6 +64,12 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                         data: register_data,
                         success: function(data) {
                             if (data.success) {
+                                if (data.new_account) {
+                                    customFacebookEvent('successfulFacebookPatientRegistration', '');
+                                } else {
+                                    customFacebookEvent('successfulFacebookPatientLogin', '');
+                                }
+
                                 if (data.data.email == '' || data.data.email == null) {
                                     customFacebookEvent('registeredAccountMissingEmail', '', data);
                                 } else {
