@@ -606,6 +606,7 @@ if (typeof jQuery == 'undefined') {
                         // stop form submits on enter press
                         $('.dentacoin-login-gateway-container form#dentist-login, .dentacoin-login-gateway-container form#dentist-register').bind('keypress', function (e) {
                             if (e.keyCode == 13) {
+                                $('.dentacoin-login-gateway-container .dentist .form-register .next-step').click();
                                 return false;
                             }
                         });
@@ -1336,6 +1337,12 @@ if (typeof jQuery == 'undefined') {
 
                                     // if clinic
                                     if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'clinic') {
+                                        if (!/^[0-9a-z A-Z.&‘'-]+$/.test($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="clinic-member-name"]').val().trim())) {
+
+                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .dentist .form-register .step.second input[name="clinic-member-name"]').closest('.field-parent'), 'This field should contain only latin characters.');
+                                            errors = true;
+                                        }
+
                                         if ($('.dentacoin-login-gateway-container .step.second [name="clinic-member-job-title"]').val() == '') {
                                             dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second [name="clinic-member-job-title"]').closest('.field-parent'), 'Please select job title.');
                                             errors = true;
