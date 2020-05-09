@@ -178,7 +178,7 @@ if (typeof jQuery == 'undefined') {
                 gtag('event', label, event_obj);
             },
             fireFacebookPixelEvent: function(label) {
-                fbq('track', label)
+                fbq('track', label);
             },
             validateUrl: function(url)   {
                 var pattern = new RegExp(/*'^(https?:\\/\\/)?' +*/ // protocol
