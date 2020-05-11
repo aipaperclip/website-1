@@ -16,9 +16,6 @@ class APIRequestsController extends Controller {
             $postData['dont_count_login'] = true;
         }
 
-        var_dump($postData);
-        die('asd');
-
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
