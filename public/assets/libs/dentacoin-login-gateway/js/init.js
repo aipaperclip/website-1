@@ -73,6 +73,8 @@ if (typeof jQuery == 'undefined') {
                     data.staging = true;
                 }
 
+                console.log(data, 'data');
+
                 return await $.ajax({
                     type: 'POST',
                     url: 'https://dentacoin.com/check-dentist-account',
@@ -951,6 +953,8 @@ if (typeof jQuery == 'undefined') {
                                     if (environment == 'staging') {
                                         dentistLoginParams.staging = true;
                                     }
+
+                                    console.log(dentistLoginParams, 'dentistLoginParams');
 
                                     var loggingDentistResponse = await dcnGateway.dcnGatewayRequests.dentistLogin(dentistLoginParams);
 

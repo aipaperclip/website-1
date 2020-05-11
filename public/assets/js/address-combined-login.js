@@ -143,7 +143,8 @@ $(document).ready(function($){
                 }
             }
 
-            if (address_country.toLowerCase() == country_code_name.toLowerCase()) {
+            /*if (address_country.toLowerCase() == country_code_name.toLowerCase()) {*/
+            if ( (country_code_name == 'XK' && (address_country == 'XK' || typeof address_country === 'undefined') ) || (address_country.toLowerCase() == country_code_name.toLowerCase()) ) {
                 stopThirdRegistrationStep = false;
                 gstring = gstring.replace(', '+country_name, '');
                 suggester_container.find('.address-suggester').val(gstring);
