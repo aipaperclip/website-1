@@ -2,6 +2,7 @@ if (typeof jQuery == 'undefined') {
     // no jquery installed
     console.error('Dentacoin login gateway requires the usage of jQuery.');
 } else {
+    var fireAjax = true;
     var loadedSocialLibs = false;
     var loadedAddressSuggesterLib = false;
     var loadedGoogleMapLib = false;
@@ -12,129 +13,217 @@ if (typeof jQuery == 'undefined') {
     var dcnGateway = {
         dcnGatewayRequests: {
             getPlatformsData: async function() {
-                return await $.ajax({
-                    type: 'GET',
-                    url: 'https://dentacoin.com/info/platforms',
-                    dataType: 'json'
-                });
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'GET',
+                        url: 'https://dentacoin.com/info/platforms',
+                        dataType: 'json'
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
             },
             getGatewayHtml: async function(data) {
-                return await $.ajax({
-                    type: 'POST',
-                    url: 'https://dentacoin.com/dentacoin-login-gateway',
-                    dataType: 'json',
-                    data: data
-                });
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: 'https://dentacoin.com/dentacoin-login-gateway',
+                        dataType: 'json',
+                        data: data
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
             },
             getUserCountry: async function() {
-                return await $.ajax({
-                    type: 'POST',
-                    url: 'https://dentacoin.com/get-country-code',
-                    dataType: 'json'
-                });
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: 'https://dentacoin.com/get-country-code',
+                        dataType: 'json'
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
             },
             checkIfFreeEmail: async function(email) {
-                return await $.ajax({
-                    type: 'POST',
-                    url: apiDomain + '/api/check-email',
-                    dataType: 'json',
-                    data: {
-                        email: email
-                    }
-                });
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: apiDomain + '/api/check-email',
+                        dataType: 'json',
+                        data: {
+                            email: email
+                        }
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
             },
             editUserData: async function(data, token) {
-                return await $.ajax({
-                    type: 'POST',
-                    url: apiDomain + '/api/user/',
-                    dataType: 'json',
-                    data: data,
-                    headers: {
-                        'Authorization' : 'Bearer ' + token
-                    }
-                });
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: apiDomain + '/api/user/',
+                        dataType: 'json',
+                        data: data,
+                        headers: {
+                            'Authorization' : 'Bearer ' + token
+                        }
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
             },
             saveIncompleteRegistration: async function(data) {
-                return await $.ajax({
-                    type: 'POST',
-                    url: apiDomain + '/api/incomplete-registration/',
-                    dataType: 'json',
-                    data: data
-                });
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: apiDomain + '/api/incomplete-registration/',
+                        dataType: 'json',
+                        data: data
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
             },
             checkDentistAccount: async function (email, password, platform) {
-                var data = {
-                    email: email,
-                    password: password,
-                    platform: platform
-                };
+                if (fireAjax) {
+                    fireAjax = false;
+                    var data = {
+                        email: email,
+                        password: password,
+                        platform: platform
+                    };
 
-                if (environment == 'staging') {
-                    data.staging = true;
+                    if (environment == 'staging') {
+                        data.staging = true;
+                    }
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: 'https://dentacoin.com/check-dentist-account',
+                        dataType: 'json',
+                        data: data
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
                 }
-
-                console.log(data, 'data');
-
-                return await $.ajax({
-                    type: 'POST',
-                    url: 'https://dentacoin.com/check-dentist-account',
-                    dataType: 'json',
-                    data: data
-                })
             },
             validatePhone: async function (phone, country_code) {
-                return await $.ajax({
-                    type: 'POST',
-                    url: apiDomain + '/api/phone/',
-                    dataType: 'json',
-                    data: {
-                        phone: phone,
-                        country_code: country_code
-                    }
-                });
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: apiDomain + '/api/phone/',
+                        dataType: 'json',
+                        data: {
+                            phone: phone,
+                            country_code: country_code
+                        }
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
             },
             dentistRegistration: async function (data) {
-                return await $.ajax({
-                    type: 'POST',
-                    url: 'https://dentacoin.com/dentacoin-login-gateway/handle-dentist-register',
-                    dataType: 'json',
-                    data: data
-                });
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: 'https://dentacoin.com/dentacoin-login-gateway/handle-dentist-register',
+                        dataType: 'json',
+                        data: data
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
             },
             dentistLogin: async function (data) {
-                return await $.ajax({
-                    type: 'POST',
-                    url: 'https://dentacoin.com/dentacoin-login-gateway/handle-dentist-login',
-                    dataType: 'json',
-                    data: data
-                });
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: 'https://dentacoin.com/dentacoin-login-gateway/handle-dentist-login',
+                        dataType: 'json',
+                        data: data
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
             },
             getAfterDentistRegistrationPopup: async function (data) {
-                return await $.ajax({
-                    type: 'POST',
-                    url: 'https://dentacoin.com/dentacoin-login-gateway/get-after-dentist-registration-popup',
-                    dataType: 'json',
-                    data: data
-                });
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: 'https://dentacoin.com/dentacoin-login-gateway/get-after-dentist-registration-popup',
+                        dataType: 'json',
+                        data: data
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
             },
             enrichProfile: async function (data) {
-                return await $.ajax({
-                    type: 'POST',
-                    url: 'https://dentacoin.com/dentacoin-login-gateway/handle-enrich-profile',
-                    dataType: 'json',
-                    data: data
-                });
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: 'https://dentacoin.com/dentacoin-login-gateway/handle-enrich-profile',
+                        dataType: 'json',
+                        data: data
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
             },
             createUserSession: async function (url, data) {
-                return await $.ajax({
-                    type: 'POST',
-                    url: url,
-                    dataType: 'json',
-                    data: data,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: url,
+                        dataType: 'json',
+                        data: data,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
             }
         },
         utils: {
@@ -953,8 +1042,6 @@ if (typeof jQuery == 'undefined') {
                                     if (environment == 'staging') {
                                         dentistLoginParams.staging = true;
                                     }
-
-                                    console.log(dentistLoginParams, 'dentistLoginParams');
 
                                     var loggingDentistResponse = await dcnGateway.dcnGatewayRequests.dentistLogin(dentistLoginParams);
 
