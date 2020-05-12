@@ -5,8 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Input;
+use Log;
 
 class UserController extends Controller {
+
+    public function __construct() {
+        parent::__construct();
+
+        Log::useDailyFiles(storage_path().'/logs/dcn-login-gateway.log');
+    }
+
+
     public static function instance() {
         return new UserController();
     }
@@ -81,6 +90,8 @@ class UserController extends Controller {
     }
 
     protected function checkDentistAccount(Request $request) {
+        Log::info('checkDentistAccount request.', ['data' => json_encode($request->input())]);
+
         $customMessages = [
             'platform.required' => 'Platform is required.',
             'email.required' => 'Email address is required.',
@@ -100,6 +111,8 @@ class UserController extends Controller {
         } else {
             $api_response = (new APIRequestsController())->dentistLogin($data, true);
         }
+
+        Log::info('dentistLogin response.', ['data' => json_encode($api_response)]);
 
         if ($api_response['success']) {
             $approved_statuses = array('approved', 'pending', 'test');
@@ -160,12 +173,17 @@ class UserController extends Controller {
             return abort(404);
         }
     }
-    
+
     protected function getCountryCode() {
-        return response()->json(['success' => (new APIRequestsController())->getCountry($this->getClientIp())]);
+        $getCountryResponse = (new APIRequestsController())->getCountry($this->getClientIp());
+
+        Log::info('getCountryCode request.', ['data' => json_encode($getCountryResponse)]);
+        return response()->json(['success' => $getCountryResponse]);
     }
 
     protected function handleDentistLogin(Request $request) {
+        Log::info('handleDentistLogin request.', ['data' => json_encode($request->input())]);
+
         $customMessages = [
             'platform.required' => 'Platform is required.',
             'email.required' => 'Email address is required.',
@@ -192,6 +210,8 @@ class UserController extends Controller {
             $api_response = (new APIRequestsController())->dentistLogin($data, true);
         }
 
+        Log::info('dentistLogin response.', ['data' => json_encode($api_response)]);
+
         if ($api_response['success']) {
             $approved_statuses = array('approved', 'pending', 'test');
             if ($api_response['data']['self_deleted'] != NULL) {
@@ -207,6 +227,8 @@ class UserController extends Controller {
     }
 
     protected function handleDentistRegister(Request $request) {
+        Log::info('handleDentistRegister request.', ['data' => json_encode($request->input())]);
+
         $customMessages = [
             'platform.required' => 'Platform is required.',
             'grecaptcha.required' => 'Captcha is required.',
@@ -324,6 +346,8 @@ class UserController extends Controller {
             $api_response = (new APIRequestsController())->dentistRegister($data);
         }
 
+        Log::info('dentistRegister response.', ['data' => json_encode($api_response)]);
+
         //deleting the dummy image
         unlink($data['image-path']);
 
@@ -335,6 +359,8 @@ class UserController extends Controller {
     }
 
     protected function getAfterDentistRegistrationPopup(Request $request) {
+        Log::info('getAfterDentistRegistrationPopup request.', ['data' => json_encode($request->input())]);
+
         $customMessages = [
             'user-type.required' => 'User type is required.'
         ];
@@ -350,10 +376,13 @@ class UserController extends Controller {
             return response()->json(['success' => true, 'data' => $popup_view->render()]);
         }
 
+        Log::error('Failed getAfterDentistRegistrationPopup request.');
         return response()->json(['error' => true]);
     }
 
     protected function handleEnrichProfile(Request $request) {
+        Log::info('handleEnrichProfile request.', ['data' => json_encode($request->input())]);
+
         $this->validate($request, [
             'user' => 'required',
             'description' => 'required'
@@ -376,6 +405,8 @@ class UserController extends Controller {
             $update_method_response = (new APIRequestsController())->updateAnonymousUserData($post_api_data);
         }
 
+        Log::info('updateAnonymousUserData response.', ['data' => json_encode($update_method_response)]);
+
         if ($update_method_response->success) {
             return response()->json(['success' => true, 'data' => 'Your short description was saved successfully.']);
         } else {
@@ -384,6 +415,8 @@ class UserController extends Controller {
     }
 
     protected function authenticateUser(Request $request) {
+        Log::info('authenticateUser request.', ['data' => json_encode($request->input())]);
+
         $this->validate($request, [
             'token' => 'required',
             'type' => 'required|in:patient,dentist',
@@ -395,6 +428,7 @@ class UserController extends Controller {
         ]);
 
         $checkToken = (new APIRequestsController())->checkUserIdAndToken($request->input('id'), $request->input('token'));
+        Log::info('checkUserIdAndToken response.', ['data' => json_encode($checkToken)]);
         if(is_object($checkToken) && property_exists($checkToken, 'success') && $checkToken->success) {
             $session_arr = [
                 'token' => $request->input('token'),
