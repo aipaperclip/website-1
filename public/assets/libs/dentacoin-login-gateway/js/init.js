@@ -3,6 +3,10 @@ if (typeof jQuery == 'undefined') {
     console.error('Dentacoin login gateway requires the usage of jQuery.');
 } else {
     var fireAjax = true;
+
+    setInterval(function() {
+        console.log(fireAjax, 'fireAjax');
+    }, 1000);
     var loadedSocialLibs = false;
     var loadedAddressSuggesterLib = false;
     var loadedGoogleMapLib = false;
