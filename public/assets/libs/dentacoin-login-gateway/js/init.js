@@ -1540,7 +1540,7 @@ if (typeof jQuery == 'undefined') {
 
                                     if (!errors) {
                                         if ($('#dentist-country').attr('data-current-user-country-code') != undefined && $('#dentist-country').val() != $('#dentist-country').attr('data-current-user-country-code')) {
-                                            dcnGateway.utils.showPopup('Your IP thinks differently. Sure you\'ve entered the right country?', 'warning', function() {
+                                            dcnGateway.utils.showPopup('Your IP thinks differently. Sure you\'ve entered the right country?', 'warning', async function() {
                                                 dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationStep3');
                                                 dcnGateway.utils.fireFacebookPixelEvent('DentistRegistrationStep3');
                                                 // save incomplete account creation data
