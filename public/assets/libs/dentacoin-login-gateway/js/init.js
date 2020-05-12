@@ -6,7 +6,7 @@ if (typeof jQuery == 'undefined') {
 
     setInterval(function() {
         console.log(fireAjax, 'fireAjax');
-    }, 1000);
+    }, 300);
     var loadedSocialLibs = false;
     var loadedAddressSuggesterLib = false;
     var loadedGoogleMapLib = false;
@@ -46,6 +46,7 @@ if (typeof jQuery == 'undefined') {
                 }
             },
             getUserCountry: async function() {
+                console.log(fireAjax, 'getUserCountry')
                 if (fireAjax) {
                     fireAjax = false;
 
@@ -54,6 +55,7 @@ if (typeof jQuery == 'undefined') {
                         url: 'https://dentacoin.com/get-country-code',
                         dataType: 'json'
                     });
+                    console.log(ajaxCall, 'ajaxCall')
 
                     fireAjax = true;
                     return ajaxCall;
@@ -1292,6 +1294,7 @@ if (typeof jQuery == 'undefined') {
                             } else {
                                 // get user country code
                                 userCountryCode = await dcnGateway.dcnGatewayRequests.getUserCountry();
+                                console.log(userCountryCode, 'userCountryCode');
                                 // setup current country in the dropdown and phone number
                                 if(userCountryCode.success) {
                                     $('.step.third #dentist-country').attr('data-current-user-country-code', userCountryCode.success);
