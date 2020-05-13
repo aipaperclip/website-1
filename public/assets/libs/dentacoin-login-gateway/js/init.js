@@ -1294,7 +1294,6 @@ if (typeof jQuery == 'undefined') {
                             } else {
                                 // get user country code
                                 userCountryCode = await dcnGateway.dcnGatewayRequests.getUserCountry();
-                                console.log(userCountryCode, 'userCountryCode');
                                 // setup current country in the dropdown and phone number
                                 if(userCountryCode.success) {
                                     $('.step.third #dentist-country').attr('data-current-user-country-code', userCountryCode.success);
@@ -1528,10 +1527,19 @@ if (typeof jQuery == 'undefined') {
                                         }
                                     }
 
-                                    var validate_phone = await dcnGateway.dcnGatewayRequests.validatePhone($('.dentacoin-login-gateway-container .dentist .form-register .step.third input[name="phone"]').val().trim(), $('.dentacoin-login-gateway-container .dentist .form-register .step.third select[name="country-code"]').val());
-                                    if (hasOwnProperty.call(validate_phone, 'success') && !validate_phone.success) {
-                                        dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .dentist .form-register .step.third input[name="phone"]').closest('.field-parent'), 'Please use valid phone.');
-                                        errors = true;
+                                    var countryCode = $('.dentacoin-login-gateway-container .dentist .form-register .step.third select[name="country-code"]').val();
+                                    var phoneNumber = $('.dentacoin-login-gateway-container .dentist .form-register .step.third input[name="phone"]').val().trim();
+                                    if (countryCode != 'xk') {
+                                        var validate_phone = await dcnGateway.dcnGatewayRequests.validatePhone(phoneNumber, countryCode);
+                                        if (hasOwnProperty.call(validate_phone, 'success') && !validate_phone.success) {
+                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .dentist .form-register .step.third input[name="phone"]').closest('.field-parent'), 'Please use valid phone.');
+                                            errors = true;
+                                        }
+                                    } else {
+                                        if (!/^[0-9 -]+$/.test(phoneNumber) && phoneNumber.length > 12) {
+                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .dentist .form-register .step.third input[name="phone"]').closest('.field-parent'), 'Please use valid phone.');
+                                            errors = true;
+                                        }
                                     }
 
                                     if (stopThirdRegistrationStep == true) {
