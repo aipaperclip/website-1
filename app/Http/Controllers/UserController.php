@@ -204,9 +204,9 @@ class UserController extends Controller {
         //handle the API response
         $staging = $request->input('staging');
         if (!empty($staging)) {
-            $api_response = (new APIRequestsController())->dentistLogin($data, true, 'https://dev-api.dentacoin.com/api/login');
+            $api_response = (new APIRequestsController())->dentistLogin($data, false, 'https://dev-api.dentacoin.com/api/login');
         } else {
-            $api_response = (new APIRequestsController())->dentistLogin($data, true);
+            $api_response = (new APIRequestsController())->dentistLogin($data, false);
         }
 
         Log::info('dentistLogin response.', ['data' => json_encode($api_response)]);
