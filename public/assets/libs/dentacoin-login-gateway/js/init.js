@@ -135,6 +135,29 @@ if (typeof jQuery == 'undefined') {
                     return ajaxCall;
                 }
             },
+            checkPracticeEmail: async function (email, practiseEmail) {
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var url = 'https://api.dentacoin.com/api/check-practice-email';
+                    if (environment == 'staging') {
+                        url = 'https://dev-api.dentacoin.com/api/check-practice-email';
+                    }
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: url,
+                        dataType: 'json',
+                        data: {
+                            email: email,
+                            clinic_email: practiseEmail
+                        }
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
+            },
             validatePhone: async function (phone, country_code) {
                 if (fireAjax) {
                     fireAjax = false;
@@ -1469,6 +1492,15 @@ if (typeof jQuery == 'undefined') {
                                             } else if (!dcnGateway.utils.validateEmail($('.dentacoin-login-gateway-container .step.second #practice-email').val().trim())) {
                                                 dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-email').closest('.field-parent'), 'Please use valid email address.');
                                                 errors = true;
+                                            } else {
+                                                var checkPracticeEmailResponse = await dcnGateway.dcnGatewayRequests.checkPracticeEmail($('.dentacoin-login-gateway-container form#dentist-register #dentist-register-email').val().trim(), $('.dentacoin-login-gateway-container .step.second #practice-email').val().trim());
+                                                if (checkPracticeEmailResponse.success && checkPracticeEmailResponse.message) {
+                                                    $('.step.third .prepend-notice-popup .alert-notice').remove();
+                                                    $('.step.third .prepend-notice-popup').prepend('<div class="alert alert-notice show">'+checkPracticeEmailResponse.message+'</div>');
+                                                } else if (!checkPracticeEmailResponse.success) {
+                                                    dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-email').closest('.field-parent'), checkPracticeEmailResponse.errors.clinic_email);
+                                                    errors = true;
+                                                }
                                             }
                                         }
                                     }

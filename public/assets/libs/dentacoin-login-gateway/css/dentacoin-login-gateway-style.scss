@@ -455,7 +455,7 @@
     }
     .alert.alert-notice {
         margin-top: 5px;
-        margin-bottom: 0;
+        margin-bottom: 10px;
         font-size: 14px;
         padding: 5px;
         color: #31708f;
@@ -463,6 +463,9 @@
         border-color: #bce8f1;
         display: none;
         @include rounded(4px);
+        &.show {
+            display: block;
+        }
     }
     .dcn-gateway-gray-color {
         color: #888888 !important;
