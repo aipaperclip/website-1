@@ -141,7 +141,7 @@ class APIRequestsController extends Controller {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://dev-api.dentacoin.com/api/enums/',
+            CURLOPT_URL => 'https://api.dentacoin.com/api/enums/',
             CURLOPT_SSL_VERIFYPEER => 0
         ));
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
