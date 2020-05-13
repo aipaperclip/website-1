@@ -1536,7 +1536,7 @@ if (typeof jQuery == 'undefined') {
                                             errors = true;
                                         }
                                     } else {
-                                        if (!/^[0-9 -]+$/.test(phoneNumber) && phoneNumber.length > 12) {
+                                        if (!/^[0-9 -]+$/.test(phoneNumber) || phoneNumber.length > 12) {
                                             dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .dentist .form-register .step.third input[name="phone"]').closest('.field-parent'), 'Please use valid phone.');
                                             errors = true;
                                         }
