@@ -87,8 +87,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/authenticate-user', 'UserController@authenticateUser')->name('authenticate-user');
 
-    Route::post('/invite-your-clinic', 'UserController@inviteYourClinic')->name('invite-your-clinic');
-
     Route::post('/check-dentist-account', 'UserController@checkDentistAccount')->name('check-dentist-account');
 
     Route::group(['prefix' => 'dentacoin-login-gateway'], function () {

@@ -90,7 +90,10 @@ class UserController extends Controller {
     }
 
     protected function checkDentistAccount(Request $request) {
-        Log::info('checkDentistAccount request.', ['data' => json_encode($request->input())]);
+        $logData = $request->input();
+        // removing password from logs
+        unset($logData['password']);
+        Log::info('checkDentistAccount request.', ['data' => json_encode($logData)]);
 
         $customMessages = [
             'platform.required' => 'Platform is required.',
@@ -126,13 +129,6 @@ class UserController extends Controller {
         } else {
             return response()->json(['error' => true, 'message' => 'Wrong email or password.']);
         }
-    }
-
-    protected function inviteYourClinic(Request $request) {
-        $data = $request->input();
-
-        var_dump($data);
-        die();
     }
 
     protected function manageCustomCookie(Request $request) {
@@ -182,7 +178,10 @@ class UserController extends Controller {
     }
 
     protected function handleDentistLogin(Request $request) {
-        Log::info('handleDentistLogin request.', ['data' => json_encode($request->input())]);
+        $logData = $request->input();
+        // removing password from logs
+        unset($logData['password']);
+        Log::info('handleDentistLogin request.', ['data' => json_encode($logData)]);
 
         $customMessages = [
             'platform.required' => 'Platform is required.',
@@ -227,7 +226,11 @@ class UserController extends Controller {
     }
 
     protected function handleDentistRegister(Request $request) {
-        Log::info('handleDentistRegister request.', ['data' => json_encode($request->input())]);
+        $logData = $request->input();
+        // removing password from logs
+        unset($logData['password']);
+        unset($logData['repeat-password']);
+        Log::info('handleDentistRegister request.', ['data' => json_encode($logData)]);
 
         $customMessages = [
             'platform.required' => 'Platform is required.',
@@ -415,7 +418,10 @@ class UserController extends Controller {
     }
 
     protected function authenticateUser(Request $request) {
-        Log::info('authenticateUser request.', ['data' => json_encode($request->input())]);
+        $logData = $request->input();
+        // removing token from logs
+        unset($logData['token']);
+        Log::info('authenticateUser request.', ['data' => json_encode($logData)]);
 
         $this->validate($request, [
             'token' => 'required',
