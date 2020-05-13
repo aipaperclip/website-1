@@ -1494,9 +1494,11 @@ if (typeof jQuery == 'undefined') {
                                                 errors = true;
                                             } else {
                                                 var checkPracticeEmailResponse = await dcnGateway.dcnGatewayRequests.checkPracticeEmail($('.dentacoin-login-gateway-container form#dentist-register #dentist-register-email').val().trim(), $('.dentacoin-login-gateway-container .step.second #practice-email').val().trim());
-                                                if (checkPracticeEmailResponse.success && checkPracticeEmailResponse.message) {
+                                                if (checkPracticeEmailResponse.success) {
                                                     $('.step.third .prepend-notice-popup .alert-notice').remove();
-                                                    $('.step.third .prepend-notice-popup').prepend('<div class="alert alert-notice show">'+checkPracticeEmailResponse.message+'</div>');
+                                                    if (checkPracticeEmailResponse.message) {
+                                                        $('.step.third .prepend-notice-popup').prepend('<div class="alert alert-notice show">'+checkPracticeEmailResponse.message+'</div>');
+                                                    }
                                                 } else if (!checkPracticeEmailResponse.success) {
                                                     dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.second #practice-email').closest('.field-parent'), checkPracticeEmailResponse.errors.clinic_email);
                                                     errors = true;
