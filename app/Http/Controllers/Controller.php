@@ -301,7 +301,7 @@ class Controller extends BaseController
                 return json_encode($testimonials);
                 break;
             case 'applications':
-                $applications = DB::connection('mysql')->table('applications')->leftJoin('media', 'applications.logo_id', '=', 'media.id')->select('applications.title', 'applications.link', 'media.name as media_name', 'media.alt as media_alt')->orderByRaw('applications.order_id ASC')->get()->toArray();
+                $applications = DB::connection('mysql')->table('applications')->leftJoin('media', 'applications.logo_id', '=', 'media.id')->select('applications.title', 'applications.link', 'applications.slug', 'media.name as media_name', 'media.alt as media_alt')->orderByRaw('applications.order_id ASC')->get()->toArray();
                 foreach ($applications as $application) {
                     if (!empty($application->media_name)) {
                         $application->media_name = route('home') . UPLOADS_FRONT_END . $application->media_name;
