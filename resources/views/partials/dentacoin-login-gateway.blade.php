@@ -13,6 +13,7 @@
 <div class="dentacoin-login-gateway-fs-0 popup-body translations" data-translation-update-email="{{ __('login-register.update-email') }}" data-translation-update-password="{{ __('login-register.update-password') }}" data-translation-password-field="{{ __('login-register.password-field') }}" data-translation-repeat-password-field="{{ __('login-register.repeat-password-field') }}" data-translation-save="{{ __('login-register.save') }}" data-translation-practise-name-field="{{ __('login-register.practise-name-field') }}" data-translation-official-email-field="{{ __('login-register.official-email-field') }}" data-translation-file-size-error="{{ __('login-register.file-size-error') }}" data-translation-add-profile-photo="{{ __('login-register.add-profile-photo') }}" data-translation-email-field="{{ __('login-register.email-field') }}" data-translation-please-add-email="{{ __('login-register.please-add-email') }}" data-translation-privacy-policy="{{ __('login-register.privacy-policy') }}" data-translation-i-agree="{{ __('login-register.i-agree') }}" data-translation-continue="{{ __('login-register.continue') }}" data-translation-please-specify-field="{{ __('login-register.please-specify-field') }}">
     <div class="patient inline-block gateway-platform-background-color @if($type == 'dentist-login' || $type == 'dentist-register' || $type == 'incompleted-dentist-register') custom-hide @endif">
         <div class="form-login @if($type == 'patient-register' || $type == 'dentist-register' || $type == 'incompleted-dentist-register') display-none @endif">
+            <div class="cta"> <i class="fas fa-sign-in-alt"></i> You need to log in or register to do this action.</div>
             <h2 class="login-section-title">{{ __('login-register.log-in-uppercase') }}</h2>
             <div class="form-login-fields">
                 <div class="padding-bottom-10">
@@ -21,7 +22,6 @@
                 <div>
                     <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
                 </div>
-                <div class="cta"> <i class="fas fa-sign-in-alt"></i> You need to log in or register to do this action.</div>
                 <div class="have-old-account text-center">{{ __('login-register.have-old-profile') }} <a href="mailto:admin@dentacoin.com">{{ __('login-register.contact-us') }}</a>
                 </div>
                 <div class="popup-half-footer">
@@ -30,6 +30,7 @@
             </div>
         </div>
         <div class="form-register @if($type == 'patient-login' || $type == 'dentist-login') display-none @endif">
+            <div class="cta"> <i class="fas fa-sign-in-alt"></i> You need to log in or register to do this action.</div>
             <h2>{{ __('login-register.sign-up-uppercase') }}</h2>
             <div class="padding-bottom-10">
                 <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif custom-stopper="true"><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">{{ __('login-register.continue-with-fb') }}</span></a>
@@ -50,7 +51,6 @@
                 </div>
             </div>
             <div class="step-errors-holder"></div>
-            <div class="cta"> <i class="fas fa-sign-in-alt"></i> You need to log in or register to do this action.</div>
             <div class="optional-user-type">
                 @if(!empty($api_enums) && property_exists($api_enums, 'user_patient_type') && !empty($api_enums->user_patient_type))
                     <div class="dentacoin-login-gateway-fs-15 padding-top-50">{{ __('login-register.does-any') }}</div>
