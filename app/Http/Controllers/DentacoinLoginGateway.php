@@ -35,6 +35,11 @@ class DentacoinLoginGateway extends Controller
             $params['inviter'] = urldecode($inviter);
         }
 
+        $inviteid = $request->input('inviteid');
+        if (!empty($inviteid)) {
+            $params['inviteid'] = urldecode($inviteid);
+        }
+
         $view = view('partials/dentacoin-login-gateway', $params);
         $view = $view->render();
 

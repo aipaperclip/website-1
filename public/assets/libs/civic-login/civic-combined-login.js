@@ -76,6 +76,10 @@
                             register_data.invited_by = civic_custom_btn.attr('data-inviter');
                         }
 
+                        if (civic_custom_btn.attr('data-inviteid') != undefined) {
+                            register_data.inviteid = civic_custom_btn.attr('data-inviteid');
+                        }
+
                         $.ajax({
                             type: 'POST',
                             dataType: 'json',

@@ -17,10 +17,10 @@
             <h2 class="login-section-title">{{ __('login-register.log-in-uppercase') }}</h2>
             <div class="form-login-fields">
                 <div class="padding-bottom-10">
-                    <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">{{ __('login-register.continue-with-fb') }}</span></a>
+                    <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">{{ __('login-register.continue-with-fb') }}</span></a>
                 </div>
                 <div>
-                    <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
+                    <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
                 </div>
                 <div class="have-old-account text-center">{{ __('login-register.have-old-profile') }} <a href="mailto:admin@dentacoin.com">{{ __('login-register.contact-us') }}</a>
                 </div>
@@ -33,10 +33,10 @@
             <div class="cta"> <i class="fas fa-sign-in-alt"></i> You need to log in or register to do this action.</div>
             <h2>{{ __('login-register.sign-up-uppercase') }}</h2>
             <div class="padding-bottom-10">
-                <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif custom-stopper="true"><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">{{ __('login-register.continue-with-fb') }}</span></a>
+                <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true"><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">{{ __('login-register.continue-with-fb') }}</span></a>
             </div>
             <div>
-                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif custom-stopper="true">{{ __('login-register.continue-with-civic') }}</a>
+                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-civic') }}</a>
             </div>
             <div class="padding-top-20">
                 <div class="custom-checkbox-style">

@@ -697,6 +697,11 @@ if (typeof jQuery == 'undefined') {
                         gatewayData.inviter = getParams.inviter;
                     }
 
+                    // if inviteid in the URL pass it to the gateway
+                    if (getParams.hasOwnProperty('inviteid')) {
+                        gatewayData.inviteid = getParams.inviteid;
+                    }
+
                     var gatewayHtml = await dcnGateway.dcnGatewayRequests.getGatewayHtml(gatewayData);
                     if (gatewayHtml.success) {
                         if (!loadedSocialLibs) {

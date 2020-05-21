@@ -52,6 +52,10 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                         register_data.invited_by = this_btn.attr('data-inviter');
                     }
 
+                    if (this_btn.attr('data-inviteid') != undefined) {
+                        register_data.inviteid = this_btn.attr('data-inviteid');
+                    }
+
                     //exchanging the token for user data
                     $.ajax({
                         type: 'POST',
