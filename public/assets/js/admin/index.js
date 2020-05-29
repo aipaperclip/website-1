@@ -419,6 +419,50 @@ if($('body').hasClass('add-application'))   {
     $("input[name='title']").on('input', function()    {
         $("input[name='slug']").val(generateUrl($(this).val()));
     });
+} else if($('body').hasClass('add-dcn-hub-element'))   {
+    $("input[name='title']").on('input', function()    {
+        $("input[name='slug']").val(generateUrl($(this).val()));
+    });
+
+    $("input[name='logged_in']").on('change', function()    {
+        if ($(this).val() == 'only_not_logged_in') {
+            $('.if-logged-in-different-than-only_not_logged_in').addClass('hide');
+        } else {
+            $('.if-logged-in-different-than-only_not_logged_in').removeClass('hide');
+        }
+    });
+} else if($('body').hasClass('edit-dcn-hub-element'))   {
+    if($('.sortable-container').length) {
+        for(var i = 0, len = $('.sortable-container').length; i < len; i+=1) {
+            if($('.sortable-container').eq(i).hasClass('update-menu-children-order')) {
+                $('.sortable-container').eq(i).sortable({
+                    stop: function() {
+                        var array_with_menu_chilren = {};
+                        for(var y = 0, len_y = $('.single-child').length; y < len_y; y+=1) {
+                            array_with_menu_chilren[$('.single-child').eq(y).attr('data-id')] = parseInt($('.single-child').eq(y).index());
+                        }
+
+                        $.ajax({
+                            type: 'POST',
+                            url: SITE_URL + '/dcn-hub-elements/update-order',
+                            data: {
+                                'order_object' : array_with_menu_chilren
+                            },
+                            dataType: 'json',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function (response) {
+                                if(response.success)    {
+                                    basic.showAlert(response.success, '', true);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        }
+    }
 }
 
 function generateUrl(str)  {
