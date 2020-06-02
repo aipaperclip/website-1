@@ -71,6 +71,8 @@ var basic = {
             vertical_center = null;
         }
 
+        console.log(params, 'params');
+
         var atrs = {
             "message": message,
             "animate": false,
@@ -92,9 +94,14 @@ var basic = {
         }
         if(params != undefined){
             for (var key in params) {
+                console.log(key, 'key');
                 atrs[key] = params[key];
+                console.log(key, 'key');
+                console.log(params[key], 'params[key]');
             }
         }
+
+        console.log(atrs, 'atrs');
 
         var dialog = eval("bootbox." + dialog_type)(atrs);
         dialog.on('hidden.bs.modal', function(){
