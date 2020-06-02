@@ -4,9 +4,6 @@ if (typeof jQuery == 'undefined') {
 } else {
     var fireAjax = true;
 
-    setInterval(function() {
-        console.log(fireAjax, 'fireAjax');
-    }, 300);
     var loadedSocialLibs = false;
     var loadedAddressSuggesterLib = false;
     var loadedGoogleMapLib = false;

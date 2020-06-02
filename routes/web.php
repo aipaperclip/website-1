@@ -17,13 +17,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    /*Route::get('/test-combined-login', function() {
-        var_dump(session('logged_user'));
-        die('asd');
-    })->name('test-combined-login');*/
-
-    Route::post('/test-translation', 'DentacoinLoginGateway@testTranslation')->name('test-translation');
-
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
@@ -104,7 +97,14 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');
 
+
     //======================================= AJAX ========================================
+
+    Route::group(['prefix' => 'combined-hub'], function () {
+        Route::post('/get-hub-data/{userType}/{hubType}', 'Controller@getHubData')->name('get-hub-data');
+
+        Route::post('/get-hub-children/{userType}/{parentSlug}', 'Controller@getHubChildren')->name('get-hub-children');
+    });
 
     Route::post('/press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
 

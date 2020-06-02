@@ -493,6 +493,62 @@ padding: 8px;
         }
     }
 
+    protected function getHubData($userType, $hubType) {
+        if ($userType == 'dentist') {
+            $visibility_arr = array('only_dentist', 'all');
+        } else if ($userType == 'patient') {
+            $visibility_arr = array('only_patient', 'all');
+        }
+
+        $hubElements = DB::table('dcn_hubs')
+            ->leftJoin('dcn_hub_dcn_hub_element', 'dcn_hubs.id', '=', 'dcn_hub_dcn_hub_element.dcn_hub_id')
+            ->leftJoin('dentacoin_hub_elements', 'dcn_hub_dcn_hub_element.dcn_hub_element_id', '=', 'dentacoin_hub_elements.id')
+            ->leftJoin('media', 'dentacoin_hub_elements.media_id', '=', 'media.id')
+            ->select('dcn_hub_dcn_hub_element.order_id', 'dentacoin_hub_elements.*', 'media.name as media_name', 'media.alt')
+            ->where(array('dcn_hubs.slug' => $hubType))
+            ->whereIn('dentacoin_hub_elements.visibility_type', $visibility_arr)
+            ->get()->toArray();
+
+        foreach ($hubElements as $hubElement) {
+            if ($hubElement->type == 'folder') {
+                $hubElement->children = DB::table('dcn_hub_element_folder')
+                    ->leftJoin('dentacoin_hub_elements', 'dcn_hub_element_folder.dcn_hub_element_id', '=', 'dentacoin_hub_elements.id')
+                    ->leftJoin('media', 'dentacoin_hub_elements.media_id', '=', 'media.id')
+                    ->select('dcn_hub_element_folder.order_id', 'dentacoin_hub_elements.slug', 'dentacoin_hub_elements.title', 'dentacoin_hub_elements.link', 'dentacoin_hub_elements.type', 'media.name as media_name', 'media.alt')
+                    ->where(array('dcn_hub_element_folder.dcn_hub_folder_id' => $hubElement->id))
+                    ->whereIn('dentacoin_hub_elements.visibility_type', $visibility_arr)
+                    ->orderByRaw('dcn_hub_element_folder.order_id ASC')
+                    ->get()->toArray();
+            }
+        }
+
+        return response()->json(['success' => true, 'data' => $hubElements]);
+    }
+
+    protected function getHubChildren($userType, $parentSlug) {
+        if ($userType == 'dentist') {
+            $visibility_arr = array('only_dentist', 'all');
+        } else if ($userType == 'patient') {
+            $visibility_arr = array('only_patient', 'all');
+        }
+
+        $children = DB::table('dcn_hub_element_folder')
+            ->leftJoin('dentacoin_hub_elements', 'dcn_hub_element_folder.dcn_hub_folder_id', '=', 'dentacoin_hub_elements.id')
+            ->leftJoin('dentacoin_hub_elements as element', 'dcn_hub_element_folder.dcn_hub_element_id', '=', 'element.id')
+            ->leftJoin('media', 'element.media_id', '=', 'media.id')
+            ->select('dcn_hub_element_folder.order_id', 'element.slug', 'element.title', 'element.link', 'element.type', 'media.name as media_name', 'media.alt')
+            ->where(array('dentacoin_hub_elements.slug' => $parentSlug))
+            ->whereIn('dentacoin_hub_elements.visibility_type', $visibility_arr)
+            ->orderByRaw('dcn_hub_element_folder.order_id ASC')
+            ->get()->toArray();
+
+        if (!empty($children)) {
+            return json_encode(array('success' => true, 'data' => $children));
+        } else {
+            return json_encode(array('error' => true));
+        }
+    }
+
     protected function clearPostData($data)
     {
         foreach ($data as &$value) {
