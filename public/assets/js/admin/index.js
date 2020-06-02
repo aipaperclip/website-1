@@ -419,49 +419,103 @@ if($('body').hasClass('add-application'))   {
     $("input[name='title']").on('input', function()    {
         $("input[name='slug']").val(generateUrl($(this).val()));
     });
-} else if($('body').hasClass('add-dcn-hub-element'))   {
-    $("input[name='title']").on('input', function()    {
-        $("input[name='slug']").val(generateUrl($(this).val()));
-    });
+} else if($('body').hasClass('add-dcn-hub-element') || $('body').hasClass('edit-dcn-hub-element'))   {
+    if ($('body').hasClass('add-dcn-hub-element')) {
+        $("input[name='title']").on('input', function()    {
+            $("input[name='slug']").val(generateUrl($(this).val()));
+        });
+    }
 
-    $("input[name='logged_in']").on('change', function()    {
-        if ($(this).val() == 'only_not_logged_in') {
-            $('.if-logged-in-different-than-only_not_logged_in').addClass('hide');
+    $("input[name='type']").on('change', function()    {
+        if ($(this).val() == 'folder') {
+            $('.if-folder-type').removeClass('hide');
         } else {
-            $('.if-logged-in-different-than-only_not_logged_in').removeClass('hide');
+            $('.if-folder-type').addClass('hide');
         }
     });
-} else if($('body').hasClass('edit-dcn-hub-element'))   {
-    if($('.sortable-container').length) {
-        for(var i = 0, len = $('.sortable-container').length; i < len; i+=1) {
-            if($('.sortable-container').eq(i).hasClass('update-menu-children-order')) {
-                $('.sortable-container').eq(i).sortable({
-                    stop: function() {
-                        var array_with_menu_chilren = {};
-                        for(var y = 0, len_y = $('.single-child').length; y < len_y; y+=1) {
-                            array_with_menu_chilren[$('.single-child').eq(y).attr('data-id')] = parseInt($('.single-child').eq(y).index());
-                        }
 
-                        $.ajax({
-                            type: 'POST',
-                            url: SITE_URL + '/dcn-hub-elements/update-order',
-                            data: {
-                                'order_object' : array_with_menu_chilren
-                            },
-                            dataType: 'json',
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success: function (response) {
-                                if(response.success)    {
-                                    basic.showAlert(response.success, '', true);
-                                }
-                            }
-                        });
+    $(document).on('click', '.remove-hub-element', function() {
+        $(this).closest('.single-child').remove();
+    });
+
+    $('.add-hub-element-to-folder').click(function() {
+        if ($('select.all-hub-elements option:selected').attr('value') != undefined) {
+            var selectedOption = $('select.all-hub-elements option:selected');
+            var imgHtml = '';
+            if (selectedOption.attr('data-image') != undefined) {
+                imgHtml = '<img src="/assets/uploads/'+selectedOption.attr('data-image')+'" style="margin-right: 15px;width: 100px;"/>';
+            }
+
+            if ($('.content').attr('data-post') != undefined) {
+                // if editing
+                $.ajax({
+                    type: 'POST',
+                    url: SITE_URL + '/dcn-hub-elements/add-dcn-element-to-folder/'+$('select.all-hub-elements').attr('data-dcn-folder')+'/'+selectedOption.val(),
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        if(response.success) {
+                            selectedOption.addClass('hide');
+
+                            $('.sortable-container').append('<div class="single-child" data-id="'+selectedOption.val()+'">'+imgHtml+selectedOption.html()+'<div style="float: right;"><a href="'+SITE_URL+'/dcn-hub-elements/edit/'+selectedOption.val()+'" target="_blank" class="btn">Edit</a> <a href="'+SITE_URL+'/dcn-hub-elements/remove-dcn-element-from-folder/'+$('select.all-hub-elements').attr('data-dcn-folder')+'/'+selectedOption.val()+'" onclick="return confirm(\'Are you sure you want to delete this resource?\')" class="btn">Remove</a></div></div>');
+                        } else {
+                            basic.showAlert(response.error, '', true);
+                        }
                     }
                 });
+            } else {
+                // if adding
+                $('.sortable-container').append('<div class="single-child" data-id="'+selectedOption.val()+'"><input type="hidden" name="sub_elements[]" value="'+selectedOption.val()+'"/>'+imgHtml+selectedOption.html()+'<div style="float: right;"><a href="'+SITE_URL+'/dcn-hub-elements/edit/'+selectedOption.val()+'" class="btn" target="_blank">Edit</a> <a href="javascript:void(0);" class="btn remove-hub-element">Remove</a></div></div>');
             }
+        } else {
+            basic.showAlert('Please select hub element.', '', true);
         }
+    });
+} else if($('body').hasClass('view-dcn-hub'))   {
+    if ($('.add-hub-element').length) {
+        $('.add-hub-element').click(function() {
+            if ($('select.all-hub-elements option:selected').attr('value') != undefined) {
+                var selectedOption = $('select.all-hub-elements option:selected');
+                var imgHtml = '';
+                if (selectedOption.attr('data-image') != undefined) {
+                    imgHtml = '<img src="/assets/uploads/'+selectedOption.attr('data-image')+'" style="margin-right: 15px;width: 100px;"/>';
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: SITE_URL + '/dcn-hub-elements/add-dcn-element-to-dcn-hub/'+$('select.all-hub-elements').attr('data-dcn-hub')+'/'+selectedOption.val(),
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        if(response.success) {
+                            selectedOption.addClass('hide');
+                            $('.sortable-container').append('<div class="single-child" data-id="'+selectedOption.val()+'">'+imgHtml+selectedOption.html()+'<div style="float: right;"><a href="'+SITE_URL+'/dcn-hub-elements/edit/'+selectedOption.val()+'" target="_blank" class="btn">Edit</a> <a href="'+SITE_URL+'/dcn-hub-elements/remove-dcn-element-from-dcn-hub/'+$('select.all-hub-elements').attr('data-dcn-hub')+'/'+selectedOption.val()+'" onclick="return confirm(\'Are you sure you want to delete this resource?\')" class="btn">Remove</a></div></div>');
+
+                            var changedValue = false;
+                            for (var i = 0, len = $('select.all-hub-elements option[value]').length; i < len; i+=1) {
+                                if (!$('select.all-hub-elements option[value]').eq(i).hasClass('hide')) {
+                                    $('select.all-hub-elements').val($('select.all-hub-elements option[value]').eq(i).val());
+                                    changedValue = true;
+                                    break;
+                                }
+                            }
+
+                            if (!changedValue) {
+                                $('select.all-hub-elements').prop('selectedIndex', 0);
+                            }
+                        } else {
+                            basic.showAlert(response.error, '', true);
+                        }
+                    }
+                });
+            } else {
+                basic.showAlert('Please select hub element.', '', true);
+            }
+        });
     }
 }
 
@@ -683,3 +737,35 @@ function initUploadMediaLogic() {
     }
 }
 initUploadMediaLogic();
+
+if($('.sortable-container').length) {
+    for(var i = 0, len = $('.sortable-container').length; i < len; i+=1) {
+        if($('.sortable-container').eq(i).hasClass('update-menu-children-order')) {
+            $('.sortable-container').eq(i).sortable({
+                stop: function() {
+                    var array_with_menu_chilren = {};
+                    for(var y = 0, len_y = $('.single-child').length; y < len_y; y+=1) {
+                        array_with_menu_chilren[$('.single-child').eq(y).attr('data-id')] = parseInt($('.single-child').eq(y).index());
+                    }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: SITE_URL + $('.sortable-container').attr('data-route-update-order'),
+                        data: {
+                            'order_object' : array_with_menu_chilren
+                        },
+                        dataType: 'json',
+                        success: function (response) {
+                            if(response.success)    {
+                                basic.showAlert(response.success, '', true);
+                            }
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                }
+            });
+        }
+    }
+}

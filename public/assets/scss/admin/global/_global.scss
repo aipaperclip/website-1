@@ -287,31 +287,29 @@ body.add-job-offer, body.edit-job-offer {
     }
 }
 
-body.additionals {
-    .box.api-endpoints {
-        .margin-bottom-10 {
-            margin-bottom: 10px;
+.box {
+    .margin-bottom-10 {
+        margin-bottom: 10px;
+    }
+    .box-title.primary-title {
+        font-weight: bold;
+        font-size: 18px;
+        margin: 0;
+        padding: 10px 10px 0;
+    }
+    .box-header {
+        padding: 5px 10px;
+        .btn-box-tool {
+            padding: 0;
+            width: 20px;
         }
-        .box-title.primary-title {
+        .box-title {
             font-weight: bold;
-            font-size: 18px;
-            margin: 0;
-            padding: 10px 10px 0;
+            font-size: 16px;
         }
-        .box-header {
-            padding: 5px 10px;
-            .btn-box-tool {
-                padding: 0;
-                width: 20px;
-            }
-            .box-title {
-                font-weight: bold;
-                font-size: 16px;
-            }
-        }
-        a {
-            text-decoration: underline;
-        }
+    }
+    a {
+        text-decoration: underline;
     }
 }
 
