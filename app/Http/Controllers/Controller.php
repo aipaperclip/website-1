@@ -503,11 +503,11 @@ padding: 8px;
         $hubElements = DB::table('dcn_hubs')
             ->leftJoin('dcn_hub_dcn_hub_element', 'dcn_hubs.id', '=', 'dcn_hub_dcn_hub_element.dcn_hub_id')
             ->leftJoin('dentacoin_hub_elements', 'dcn_hub_dcn_hub_element.dcn_hub_element_id', '=', 'dentacoin_hub_elements.id')
-            ->leftJoin('dcn_hub_dcn_hub_element as element_order', 'dentacoin_hub_elements.id', '=', 'element_order.dcn_hub_element_id')
             ->leftJoin('media', 'dentacoin_hub_elements.media_id', '=', 'media.id')
-            ->select('element_order.order_id', 'dentacoin_hub_elements.*', 'media.name as media_name', 'media.alt')
+            ->select('element_order.order_id as order_in_hub', 'dentacoin_hub_elements.*', 'media.name as media_name', 'media.alt')
             ->where(array('dcn_hubs.slug' => $hubType))
             ->whereIn('dentacoin_hub_elements.visibility_type', $visibility_arr)
+            ->orderByRaw('order_in_hub ASC')
             ->get()->toArray();
 
         foreach ($hubElements as $hubElement) {
