@@ -752,7 +752,8 @@ if($('.sortable-container').length) {
                         type: 'POST',
                         url: SITE_URL + $('.sortable-container').attr('data-route-update-order'),
                         data: {
-                            'order_object' : array_with_menu_chilren
+                            'order_object' : array_with_menu_chilren,
+                            'binded_to' : $('.sortable-container').attr('data-binded-to')
                         },
                         dataType: 'json',
                         success: function (response) {

@@ -1,186 +1,171 @@
+.overflow-hidden {
+    overflow: hidden !important;
+}
+
 .dcn-hub-mini {
-     .up-arrow {
-         color: #669ccc;
-         position: absolute;
-         top: calc(100% - 15px);
-         font-size: 16px;
-         z-index: 5000000000;
-         right: 20px;
-         &.show-this {
-             display: block;
-         }
-     }
-     .hidden-box {
-         position: absolute;
-         min-width: 270px;
-         width: 450px;
-         top: 100%;
-         right: 0;
-         background-color: white;
-         overflow: hidden;
-         z-index: 1000;
-         -webkit-box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
-         -moz-box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
-         -ms-box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
-         box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
-         -webkit-border-radius: 15px;
-         -moz-border-radius: 15px; 
-         -ms-border-radius: 15px;
-         border-radius: 15px;
-         .hidden-box-hub {
-             background-image: url('//dentacoin.com/assets/images/small-dentacoin-ecosystem-background.jpg');
-             background-position: center center;
-             background-repeat: no-repeat;
-             background-size: cover;
-             position: relative;
-             padding: 30px 50px 15px;
-             text-align: left;
-             .close-btn {
-                 display: none;
-                 text-align: right;
-                 padding-bottom: 15px;
-                 a {
-                     font-size: 20px;
-                     color: white;
-                     span {
-                         background: white;
-                         color: black;
-                         width: 25px;
-                         height: 25px;
-                         display: inline-block;
-                         text-align: center;
-                         line-height: 25px;
-                         -webkit-border-radius: 50%;
-                         -moz-border-radius: 50%;
-                         -ms-border-radius: 50%;
-                         border-radius: 50%;
-                     }
-                 }
-             }
-             .list-with-apps {
-                 font-size: 0;
-                 .dcn-min-hub-application {
-                     display: inline-block;
-                     vertical-align: top;
-                     width: 25%;
-                     padding-left: 10px;
-                     padding-right: 10px;
-                     text-align: center;
-                     opacity: 0;
-                     figcaption {
-                         color: white;
-                         font-size: 14px;
-                         padding-bottom: 15px;
-                     }
-                     &.folder {
-                         .hub-folder {
-                             max-width: 100%;
-                             background-color: rgba(0, 0, 0, 0.5);
-                             position: relative;
-                             -webkit-border-radius: 10px;
-                             -moz-border-radius: 10px;
-                             -ms-border-radius: 10px;
-                             border-radius: 10px;
-                             text-align: left;
-                             .apps-in-folder-list {
-                                 position: absolute;
-                                 width: 90%;
-                                 left: 5%;
-                                 top: 5px;
-                                 img {
-                                     width: 24%;
-                                     margin: 3px 4.66666667%;
-                                 }
-                             }
-                             &:after {
-                                 content: "";
-                                 display: block;
-                                 padding-bottom: 100%;
-                             }
-                         }
-                         .folder-title {
-                             color: white;
-                             font-size: 14px;
-                             padding-bottom: 15px;
-                         }
-                     }
-                     &.go-back {
-                         padding-top: 15px;
-                     }
-                 }
-             }
-         }
-         .hidden-box-footer {
-             padding-top: 10px;
-             padding-bottom: 10px;
-             background: white;
-             text-align: center;
-             font-size: 0;
-             .logout-btn-parent, .my-account-btn-parent {
-                 width: 50%;
-                 display: inline-block;
-             }
-             .logout-btn-parent {
-                 a {
-                     font-size: 16px;
-                     color: black;
-                     i {
-                         font-size: 24px;
-                         vertical-align: middle;
-                         margin-right: 5px;
-                     }
-                 }
-             }
-             .my-account-btn-parent {
-                 a {
-                     padding: 7px 10px;
-                     display: inline-block;
-                     background-color: #041e42;
-                     color: white !important;;
-                     font-size: 16px;
-                     font-weight: bold;
-                     border: 2px solid #041e42;
-                     text-decoration: none !important;
-                     -webkit-border-radius: 4px;
-                     -moz-border-radius: 4px;
-                     -ms-border-radius: 4px;
-                     border-radius: 4px;
-                     -webkit-transition: .3s;
-                     -moz-transition: .3s;
-                     -o-transition: .3s;
-                     -ms-transition: .3s;
-                     transition: .3s;
-                 }
-             }
-         }
-         &.show-this {
-             display: block;
-             visibility: visible;
-         }
-     }
-     /*
-     @include breakpoint($xs) {
-         &.with-hub {
-             position: static;
-             >.hidden-box-parent {
-                 .up-arrow {
-                     display: none;
-                 }
-                 .hidden-box {
-                     min-width: 0;
-                     max-width: none;
-                     width: 100%;
-                     top: 0;
-                     height: 100vh;
-                     background-color: rgba(0, 0, 0, 0.6);
-                     overflow: auto;
-                     .hidden-box-hub {
-                         padding: 10px 15px 15px;
-                     }
-                 }
-             }
-         }
-     }*/
+    display: none;
+    &.custom-show {
+        display: block;
+    }
+    .up-arrow {
+        color: #669ccc;
+        position: absolute;
+        top: calc(100% - 15px);
+        font-size: 16px;
+        z-index: 5000000000;
+        right: 20px;
+        &.show-this {
+            display: block;
+        }
+    }
+    .hidden-box {
+        position: absolute;
+        min-width: 270px;
+        width: 450px;
+        top: 100%;
+        right: 0;
+        background-color: white;
+        overflow: hidden;
+        z-index: 1000;
+        -webkit-box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
+        -ms-box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        border-radius: 15px;
+        .hidden-box-hub {
+            background-image: url('//dentacoin.com/assets/images/small-dentacoin-ecosystem-background.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            padding: 30px 50px 15px;
+            text-align: left;
+            .dcn-hub-mini-close-btn {
+                display: none;
+                text-align: right;
+                padding-bottom: 15px;
+                a {
+                    font-size: 20px;
+                    color: white;
+                    span {
+                        background: white;
+                        color: black;
+                        width: 25px;
+                        height: 25px;
+                        display: inline-block;
+                        text-align: center;
+                        line-height: 25px;
+                        -webkit-border-radius: 50%;
+                        -moz-border-radius: 50%;
+                        -ms-border-radius: 50%;
+                        border-radius: 50%;
+                    }
+                }
+            }
+            .list-with-apps {
+                font-size: 0;
+                .dcn-min-hub-application {
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 25%;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    text-align: center;
+                    opacity: 0;
+                    figcaption {
+                        color: white;
+                        font-size: 14px;
+                        padding-bottom: 15px;
+                    }
+                    &.folder {
+                        .hub-folder {
+                            max-width: 100%;
+                            background-color: rgba(0, 0, 0, 0.5);
+                            position: relative;
+                            -webkit-border-radius: 10px;
+                            -moz-border-radius: 10px;
+                            -ms-border-radius: 10px;
+                            border-radius: 10px;
+                            text-align: left;
+                            .apps-in-folder-list {
+                                position: absolute;
+                                width: 90%;
+                                left: 5%;
+                                top: 5px;
+                                img {
+                                    width: 24%;
+                                    margin: 3px 4.66666667%;
+                                }
+                            }
+                            &:after {
+                                content: "";
+                                display: block;
+                                padding-bottom: 100%;
+                            }
+                        }
+                        .folder-title {
+                            color: white;
+                            font-size: 14px;
+                            padding-bottom: 15px;
+                        }
+                    }
+                    &.go-back {
+                        padding-top: 15px;
+                    }
+                }
+            }
+        }
+        .hidden-box-footer {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background: white;
+            text-align: center;
+            font-size: 0;
+            .logout-btn-parent, .my-account-btn-parent {
+                width: 50%;
+                display: inline-block;
+            }
+            .logout-btn-parent {
+                a {
+                    font-size: 16px;
+                    color: black;
+                    i {
+                        font-size: 24px;
+                        vertical-align: middle;
+                        margin-right: 5px;
+                    }
+                }
+            }
+            .my-account-btn-parent {
+                a {
+                    padding: 7px 10px;
+                    display: inline-block;
+                    background-color: #041e42;
+                    color: white !important;;
+                    font-size: 16px;
+                    font-weight: bold;
+                    border: 2px solid #041e42;
+                    text-decoration: none !important;
+                    -webkit-border-radius: 4px;
+                    -moz-border-radius: 4px;
+                    -ms-border-radius: 4px;
+                    border-radius: 4px;
+                    -webkit-transition: .3s;
+                    -moz-transition: .3s;
+                    -o-transition: .3s;
+                    -ms-transition: .3s;
+                    transition: .3s;
+                }
+            }
+        }
+        &.show-this {
+            display: block;
+            visibility: visible;
+        }
+    }
 }
 
 @media screen and (min-width: 992px) {
@@ -201,14 +186,43 @@
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 992px) {
     .dcn-hub-mini {
+        position: absolute;
+        top: 0 !important;
+        left: 0 !important;
+        min-width: 0;
+        max-width: none;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        overflow: auto;
+        .up-arrow {
+            display: none;
+        }
         .hidden-box {
+            width: 100%;
+            top: 0;
+            left: 0;
+            -webkit-border-radius: 0 0 15px 15px;
+            -moz-border-radius: 0 0 15px 15px;
+            -ms-border-radius: 0 0 15px 15px;
+            border-radius: 0 0 15px 15px;
             .hidden-box-hub {
+                padding: 10px 15px 15px;
+                .dcn-hub-mini-close-btn {
+                    display: block;
+                }
                 .list-with-apps {
+                    max-width: 500px;
+                    margin: 0 auto;
                     .dcn-min-hub-application {
+                        width: 33.33333333%;
                         figcaption {
                             font-size: 20px;
+                        }
+                        &.go-back {
+                            padding-top: 30px;
                         }
                     }
                 }
@@ -219,27 +233,42 @@
 
 @keyframes dcnMiniHubfadeIn {
     from {
-        opacity: 0; }
+        opacity: 0;
+    }
     to {
-        opacity: 1; } }
+        opacity: 1;
+    }
+}
+
 @-moz-keyframes dcnMiniHubfadeIn {
     /* Firefox */
     from {
-        opacity: 0; }
+        opacity: 0;
+    }
     to {
-        opacity: 1; } }
+        opacity: 1;
+    }
+}
+
 @-webkit-keyframes dcnMiniHubfadeIn {
     /* Safari and Chrome */
     from {
-        opacity: 0; }
+        opacity: 0;
+    }
     to {
-        opacity: 1; } }
+        opacity: 1;
+    }
+}
+
 @-o-keyframes dcnMiniHubfadeIn {
     /* Opera */
     from {
-        opacity: 0; }
+        opacity: 0;
+    }
     to {
-        opacity: 1; } }
+        opacity: 1;
+    }
+}
 
 .dcn-min-hub-fade-in-animation {
     -webkit-animation-fill-mode: forwards;
@@ -261,4 +290,5 @@
     -o-animation-timing-function: ease;
     -webkit-animation-timing-function: ease;
     -moz-animation-timing-function: ease;
-    animation-timing-function: ease; }
+    animation-timing-function: ease;
+}
