@@ -77,17 +77,44 @@
             border-radius: 50%; }
       .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps {
         font-size: 0; }
-        .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .application {
+        .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application {
           display: inline-block;
           vertical-align: top;
           width: 25%;
-          padding-left: 15px;
-          padding-right: 15px;
+          padding-left: 10px;
+          padding-right: 10px;
           text-align: center; }
-          .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .application figcaption {
+          .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application figcaption {
             color: white;
             font-size: 14px;
             padding-bottom: 15px; }
+          .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application.folder .hub-folder {
+            max-width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: relative;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            border-radius: 10px;
+            text-align: left; }
+            .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application.folder .hub-folder .apps-in-folder-list {
+              position: absolute;
+              width: 90%;
+              left: 5%;
+              top: 5px; }
+              .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application.folder .hub-folder .apps-in-folder-list img {
+                width: 24%;
+                margin: 3px 4.66666667%; }
+            .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application.folder .hub-folder:after {
+              content: "";
+              display: block;
+              padding-bottom: 100%; }
+          .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application.folder .folder-title {
+            color: white;
+            font-size: 14px;
+            padding-bottom: 15px; }
+          .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application.folder.go-back {
+            padding-top: 15px; }
     .dcn-hub-mini .hidden-box .hidden-box-footer {
       padding-top: 10px;
       padding-bottom: 10px;
@@ -132,7 +159,51 @@
     background-color: white;
     text-decoration: none !important; } }
 @media screen and (max-width: 767px) {
-  .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .application figcaption {
+  .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application figcaption {
     font-size: 20px; } }
+@keyframes dcnMiniHubfadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-moz-keyframes dcnMiniHubfadeIn {
+  /* Firefox */
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-webkit-keyframes dcnMiniHubfadeIn {
+  /* Safari and Chrome */
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-o-keyframes dcnMiniHubfadeIn {
+  /* Opera */
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+.dcn-min-hub-fade-in-animation {
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0s;
+  -moz-animation-delay: 0s;
+  animation-delay: 0s;
+  -o-animation-delay: 0s;
+  -webkit-animation-name: dcnMiniHubfadeIn;
+  -moz-animation-name: dcnMiniHubfadeIn;
+  animation-name: dcnMiniHubfadeIn;
+  -o-animation-name: dcnMiniHubfadeIn;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
+  -o-animation-duration: 1s;
+  -o-animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  animation-timing-function: ease; }
 
 /*# sourceMappingURL=style.css.map */

@@ -59,17 +59,52 @@
              }
              .list-with-apps {
                  font-size: 0;
-                 .application {
-                     display: inline-block;
+                 .dcn-min-hub-application {
+                     display: inline-block; 
                      vertical-align: top;
                      width: 25%;
-                     padding-left: 15px;
-                     padding-right: 15px;
+                     padding-left: 10px;
+                     padding-right: 10px;
                      text-align: center;
                      figcaption {
                          color: white;
                          font-size: 14px;
                          padding-bottom: 15px;
+                     }
+                     &.folder {
+                         .hub-folder {
+                             max-width: 100%;
+                             background-color: rgba(0, 0, 0, 0.5);
+                             position: relative;
+                             -webkit-border-radius: 10px;
+                             -moz-border-radius: 10px;
+                             -ms-border-radius: 10px;
+                             border-radius: 10px;
+                             text-align: left;
+                             .apps-in-folder-list {
+                                 position: absolute;
+                                 width: 90%;
+                                 left: 5%;
+                                 top: 5px;
+                                 img {
+                                     width: 24%;
+                                     margin: 3px 4.66666667%;
+                                 }
+                             }
+                             &:after {
+                                 content: "";
+                                 display: block;
+                                 padding-bottom: 100%;
+                             }
+                         }
+                         .folder-title {
+                             color: white;
+                             font-size: 14px;
+                             padding-bottom: 15px;
+                         }
+                         &.go-back {
+                             padding-top: 15px;
+                         }
                      }
                  }
              }
@@ -170,7 +205,7 @@
         .hidden-box {
             .hidden-box-hub {
                 .list-with-apps {
-                    .application {
+                    .dcn-min-hub-application {
                         figcaption {
                             font-size: 20px;
                         }
@@ -180,3 +215,49 @@
         }
     }
 }
+
+@keyframes dcnMiniHubfadeIn {
+    from {
+        opacity: 0; }
+    to {
+        opacity: 1; } }
+@-moz-keyframes dcnMiniHubfadeIn {
+    /* Firefox */
+    from {
+        opacity: 0; }
+    to {
+        opacity: 1; } }
+@-webkit-keyframes dcnMiniHubfadeIn {
+    /* Safari and Chrome */
+    from {
+        opacity: 0; }
+    to {
+        opacity: 1; } }
+@-o-keyframes dcnMiniHubfadeIn {
+    /* Opera */
+    from {
+        opacity: 0; }
+    to {
+        opacity: 1; } }
+
+.dcn-min-hub-fade-in-animation {
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+    -moz-animation-delay: 0s;
+    animation-delay: 0s;
+    -o-animation-delay: 0s;
+    -webkit-animation-name: dcnMiniHubfadeIn;
+    -moz-animation-name: dcnMiniHubfadeIn;
+    animation-name: dcnMiniHubfadeIn;
+    -o-animation-name: dcnMiniHubfadeIn;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+    -o-animation-duration: 1s;
+    -o-animation-timing-function: ease;
+    -webkit-animation-timing-function: ease;
+    -moz-animation-timing-function: ease;
+    animation-timing-function: ease; }
