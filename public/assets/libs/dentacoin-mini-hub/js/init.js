@@ -46,7 +46,7 @@ if (typeof jQuery == 'undefined') {
                 var historyChildren = [];
                 var elementToBind = $('#'+params.element_id_to_bind);
                 if (elementToBind.length) {
-                    var miniHubHtml = '<div class="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"> <div class="hidden-box-hub"><div class="close-btn"><a href="javascript:void(0)">Close <span>X</span></a></div><div class="list-with-apps"> <a href="https://dentacare.dentacoin.com/" target="_blank" class="dcn-min-hub-application" data-platform="Dentacare"> <figure itemtype="http://schema.org/ImageObject"> <img src="https://dentacoin.com/assets/uploads/dentacare.svg" itemprop="contentUrl" alt="Dentacare – App Logo Icon"> <figcaption>Dentacare</figcaption> </figure> </a>';
+                    var miniHubHtml = '<div class="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"> <div class="hidden-box-hub"><div class="close-btn"><a href="javascript:void(0)">Close <span>X</span></a></div><div class="list-with-apps"><div class="apps-wrapper">';
 
                     var hubData = await dcnHub.dcnHubRequests.getHubData(params.type_user, 'hub-dentacoin');
                     historyChildren.push(JSON.stringify(hubData.data));
@@ -79,15 +79,22 @@ if (typeof jQuery == 'undefined') {
                         }
                     }
 
-                    miniHubHtml += '</div> </div> <div class="hidden-box-footer"><div class="logout-btn-parent"> <a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a> </div> <div class="my-account-btn-parent"><a href="//account.dentacoin.com?platform='+params.platform+'">My Account</a></div></div></div></div>';
+                    miniHubHtml += '</div></div></div><div class="hidden-box-footer"><div class="logout-btn-parent"> <a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a> </div> <div class="my-account-btn-parent"><a href="//account.dentacoin.com?platform='+params.platform+'">My Account</a></div></div></div></div>';
 
                     $('body').append(miniHubHtml);
+                    playApplicationsAnimation();
+
+                    $(document).on('click', '.go-back', function() {
+                        $('.dcn-hub-mini .list-with-apps .apps-wrapper:last-child').remove();
+                        $('.dcn-hub-mini .list-with-apps .apps-wrapper:last-child').show();
+                    });
+
                     $(document).on('click', '.dcn-hub-mini .dcn-min-hub-application.folder', async function() {
                         var thisBtn = $(this);
                         var children = JSON.parse(thisBtn.attr('data-children'));
                         historyChildren.push(thisBtn.attr('data-children'));
 
-                        var refreshedMiniHubHtml = "<a href='javascript:void(0);' class='go-back dcn-min-hub-application folder' data-children='"+historyChildren[historyChildren.length - 2]+"'><figure itemtype='http://schema.org/ImageObject'><img src='//dentacoin.com/assets/images/dcn-mini-hub-back-arrow.png' itemprop='contentUrl' alt='Go back icon'></figure></a>";
+                        var refreshedMiniHubHtml = "<div class='apps-wrapper'><a href='javascript:void(0);' class='go-back dcn-min-hub-application'><figure itemtype='http://schema.org/ImageObject'><img src='//dentacoin.com/assets/images/dcn-mini-hub-back-arrow.png' itemprop='contentUrl' alt='Go back icon'></figure></a>";
                         for (var i = 0, len = children.length; i < len; i+=1) {
                             if (children[i].type == 'link') {
                                 var hrefHtml = '';
@@ -99,6 +106,7 @@ if (typeof jQuery == 'undefined') {
 
                                 refreshedMiniHubHtml += '<a href="'+hrefHtml+'" target="_blank" class="dcn-min-hub-application"><figure itemtype="http://schema.org/ImageObject"><img src="//dentacoin.com/assets/uploads/'+children[i].media_name+'" itemprop="contentUrl" alt="'+children[i].alt+'"> <figcaption>'+children[i].title+'</figcaption></figure></a>';
                             } else if (children[i].type == 'folder') {
+                                console.log(children[i], 'children[i]');
                                 // ajax to take the children
                                 var hubChildren = await dcnHub.dcnHubRequests.getHubChildren(params.type_user, children[i].slug);
                                 if (hubChildren.success) {
@@ -113,15 +121,18 @@ if (typeof jQuery == 'undefined') {
                                         refreshedMiniHubHtml += '</div></div><div class="folder-title">'+children[i].title+'</div></a></li>';
                                     } else {
                                         // if folder image saved in the admin
-                                        refreshedMiniHubHtml += "<a href='javascript:void(0);' data-children='"+JSON.stringify(children[i].children)+"' class='dcn-min-hub-application inner "+children[i].type+"><figure itemtype='http://schema.org/ImageObject'><img src='//dentacoin.com/assets/uploads/"+children[i].media_name+"' itemprop='contentUrl' alt='"+children[i].alt+"'> <figcaption>"+children[i].title+"</figcaption></figure></a>";
+                                        refreshedMiniHubHtml += "<a href='javascript:void(0);' data-children='"+JSON.stringify(children[i].children)+"' class='dcn-min-hub-application inner "+children[i].type+"'><figure itemtype='http://schema.org/ImageObject'><img src='//dentacoin.com/assets/uploads/"+children[i].media_name+"' itemprop='contentUrl' alt='"+children[i].alt+"'> <figcaption>"+children[i].title+"</figcaption></figure></a>";
                                     }
                                 }
                             }
                         }
 
-                        $('.dcn-hub-mini .list-with-apps').html(refreshedMiniHubHtml);
+                        refreshedMiniHubHtml += "</div>";
+                        $('.dcn-hub-mini .list-with-apps .apps-wrapper').hide();
+                        $('.dcn-hub-mini .list-with-apps').append(refreshedMiniHubHtml);
+                        $('.dcn-hub-mini .list-with-apps .apps-wrapper:last-child').show();
 
-                        // add dcn-min-hub-fade-in-animation
+                        playApplicationsAnimation();
                     });
 
                     function setHubPosition() {
@@ -135,6 +146,21 @@ if (typeof jQuery == 'undefined') {
                     $(window).on('resize', function() {
                         setHubPosition();
                     });
+
+                    function playApplicationsAnimation() {
+                        var elementsToAddAnimation = $('.dcn-hub-mini .list-with-apps .apps-wrapper:last-child .dcn-min-hub-application');
+                        var animationSeconds = 150;
+                        for (var i = 0, lenz = elementsToAddAnimation.length; i < lenz; i+=1) {
+                            fadeInAnimation(elementsToAddAnimation.eq(i), animationSeconds);
+                            animationSeconds += 150;
+                        }
+                    }
+
+                    function fadeInAnimation(selector, animationSeconds) {
+                        setTimeout(function() {
+                            selector.addClass('dcn-min-hub-fade-in-animation');
+                        }, animationSeconds);
+                    }
                 } else {
                     console.error('False element to bind passed to Dentacoin hub.');
                     return false;

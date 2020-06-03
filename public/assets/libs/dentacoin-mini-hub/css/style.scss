@@ -60,12 +60,13 @@
              .list-with-apps {
                  font-size: 0;
                  .dcn-min-hub-application {
-                     display: inline-block; 
+                     display: inline-block;
                      vertical-align: top;
                      width: 25%;
                      padding-left: 10px;
                      padding-right: 10px;
                      text-align: center;
+                     opacity: 0;
                      figcaption {
                          color: white;
                          font-size: 14px;
@@ -102,9 +103,9 @@
                              font-size: 14px;
                              padding-bottom: 15px;
                          }
-                         &.go-back {
-                             padding-top: 15px;
-                         }
+                     }
+                     &.go-back {
+                         padding-top: 15px;
                      }
                  }
              }
