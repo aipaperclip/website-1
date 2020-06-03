@@ -125,9 +125,9 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     //======================================= AJAX ========================================
 
     Route::group(['prefix' => 'combined-hub'], function () {
-        Route::post('/get-hub-data/{userType}/{hubType}', 'Controller@getHubData')->name('get-hub-data');
+        Route::post('/get-hub-data/{hubType}', 'Controller@getHubData')->name('get-hub-data');
 
-        Route::post('/get-hub-children/{userType}/{parentSlug}', 'Controller@getHubChildren')->name('get-hub-children');
+        Route::post('/get-hub-children/{parentSlug}', 'Controller@getHubChildren')->name('get-hub-children');
     });
 
     Route::post('/press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
