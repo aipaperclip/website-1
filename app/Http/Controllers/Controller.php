@@ -543,19 +543,6 @@ padding: 8px;
             ->orderByRaw('dcn_hub_element_folder.order_id ASC')
             ->get()->toArray();
 
-        foreach ($children as $hubElement) {
-            if ($hubElement->type == 'folder') {
-                $hubElement->children = DB::table('dcn_hub_element_folder')
-                    ->leftJoin('dentacoin_hub_elements', 'dcn_hub_element_folder.dcn_hub_element_id', '=', 'dentacoin_hub_elements.id')
-                    ->leftJoin('media', 'dentacoin_hub_elements.media_id', '=', 'media.id')
-                    ->select('dcn_hub_element_folder.order_id', 'dentacoin_hub_elements.slug', 'dentacoin_hub_elements.title', 'dentacoin_hub_elements.link', 'dentacoin_hub_elements.type', 'media.name as media_name', 'media.alt')
-                    ->where(array('dcn_hub_element_folder.dcn_hub_folder_id' => $hubElement->id))
-                    ->whereIn('dentacoin_hub_elements.visibility_type', $visibility_arr)
-                    ->orderByRaw('dcn_hub_element_folder.order_id ASC')
-                    ->get()->toArray();
-            }
-        }
-
         if (!empty($children)) {
             return json_encode(array('success' => true, 'data' => $children));
         } else {
