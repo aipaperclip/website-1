@@ -112,7 +112,7 @@ if (typeof jQuery == 'undefined') {
                                 if (hubChildren.success) {
                                     if (children[i].media_name == null) {
                                         // if no folder image saved in the admin
-                                        refreshedMiniHubHtml += "<a href='javascript:void(0);' data-children='"+JSON.stringify(children[i].children)+"' class='dcn-min-hub-application inner "+children[i].type+"'><div class='hub-folder all-width'><div class='apps-in-folder-list'>";
+                                        refreshedMiniHubHtml += "<a href='javascript:void(0);' data-children='"+JSON.stringify(hubChildren)+"' class='dcn-min-hub-application inner "+children[i].type+"'><div class='hub-folder all-width'><div class='apps-in-folder-list'>";
 
                                         for (var y = 0, leny = hubChildren.data[i].children.length; y < leny; y+=1) {
                                             refreshedMiniHubHtml += '<img src="//dentacoin.com/assets/uploads/'+hubChildren.data[i].children[y].media_name+'" alt="'+hubChildren.data[i].children[y].alt+'"/>';
