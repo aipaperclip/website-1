@@ -1,0 +1,138 @@
+.dcn-hub-mini {
+  /*
+  @include breakpoint($xs) {
+      &.with-hub {
+          position: static;
+          >.hidden-box-parent {
+              .up-arrow {
+                  display: none;
+              }
+              .hidden-box {
+                  min-width: 0;
+                  max-width: none;
+                  width: 100%;
+                  top: 0;
+                  height: 100vh;
+                  background-color: rgba(0, 0, 0, 0.6);
+                  overflow: auto;
+                  .hidden-box-hub {
+                      padding: 10px 15px 15px;
+                  }
+              }
+          }
+      }
+  }*/ }
+  .dcn-hub-mini .up-arrow {
+    color: #669ccc;
+    position: absolute;
+    top: calc(100% - 15px);
+    font-size: 16px;
+    z-index: 5000000000;
+    right: 20px; }
+    .dcn-hub-mini .up-arrow.show-this {
+      display: block; }
+  .dcn-hub-mini .hidden-box {
+    position: absolute;
+    min-width: 270px;
+    width: 450px;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    overflow: hidden;
+    z-index: 1000;
+    -webkit-box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
+    -ms-box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    border-radius: 15px; }
+    .dcn-hub-mini .hidden-box .hidden-box-hub {
+      background-image: url("//dentacoin.com/assets/images/small-dentacoin-ecosystem-background.jpg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      padding: 30px 50px 15px;
+      text-align: left; }
+      .dcn-hub-mini .hidden-box .hidden-box-hub .close-btn {
+        display: none;
+        text-align: right;
+        padding-bottom: 15px; }
+        .dcn-hub-mini .hidden-box .hidden-box-hub .close-btn a {
+          font-size: 20px;
+          color: white; }
+          .dcn-hub-mini .hidden-box .hidden-box-hub .close-btn a span {
+            background: white;
+            color: black;
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            text-align: center;
+            line-height: 25px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            border-radius: 50%; }
+      .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps {
+        font-size: 0; }
+        .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .application {
+          display: inline-block;
+          vertical-align: top;
+          width: 25%;
+          padding-left: 15px;
+          padding-right: 15px;
+          text-align: center; }
+          .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .application figcaption {
+            color: white;
+            font-size: 14px;
+            padding-bottom: 15px; }
+    .dcn-hub-mini .hidden-box .hidden-box-footer {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background: white;
+      text-align: center;
+      font-size: 0; }
+      .dcn-hub-mini .hidden-box .hidden-box-footer .logout-btn-parent, .dcn-hub-mini .hidden-box .hidden-box-footer .my-account-btn-parent {
+        width: 50%;
+        display: inline-block; }
+      .dcn-hub-mini .hidden-box .hidden-box-footer .logout-btn-parent a {
+        font-size: 16px;
+        color: black; }
+        .dcn-hub-mini .hidden-box .hidden-box-footer .logout-btn-parent a i {
+          font-size: 24px;
+          vertical-align: middle;
+          margin-right: 5px; }
+      .dcn-hub-mini .hidden-box .hidden-box-footer .my-account-btn-parent a {
+        padding: 7px 10px;
+        display: inline-block;
+        background-color: #041e42;
+        color: white !important;
+        font-size: 16px;
+        font-weight: bold;
+        border: 2px solid #041e42;
+        text-decoration: none !important;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-transition: .3s;
+        -moz-transition: .3s;
+        -o-transition: .3s;
+        -ms-transition: .3s;
+        transition: .3s; }
+    .dcn-hub-mini .hidden-box.show-this {
+      display: block;
+      visibility: visible; }
+
+@media screen and (min-width: 992px) {
+  .dcn-hub-mini .hidden-box .hidden-box-footer .my-account-btn-parent a:hover {
+    color: #041e42 !important;
+    background-color: white;
+    text-decoration: none !important; } }
+@media screen and (max-width: 767px) {
+  .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .application figcaption {
+    font-size: 20px; } }
+
+/*# sourceMappingURL=style.css.map */
