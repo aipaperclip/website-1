@@ -493,7 +493,7 @@ padding: 8px;
         }
     }
 
-    protected function getHubData($userType, $hubType) {
+    protected function getHubData($hubType) {
         /*if ($userType == 'dentist') {
             $visibility_arr = array('only_dentist', 'all');
         } else if ($userType == 'patient') {
@@ -526,7 +526,7 @@ padding: 8px;
         return response()->json(['success' => true, 'data' => $hubElements]);
     }
 
-    protected function getHubChildren($userType, $parentSlug) {
+    protected function getHubChildren($parentSlug) {
         /*if ($userType == 'dentist') {
             $visibility_arr = array('only_dentist', 'all');
         } else if ($userType == 'patient') {

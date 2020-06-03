@@ -8,13 +8,13 @@ if (typeof jQuery == 'undefined') {
     var fireAjax = true;
     var dcnHub = {
         dcnHubRequests: {
-            getHubData: async function(userType, hubType) {
+            getHubData: async function(hubType) {
                 if (fireAjax) {
                     fireAjax = false;
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'https://dentacoin.com/combined-hub/get-hub-data/'+userType+'/'+hubType,
+                        url: 'https://dentacoin.com/combined-hub/get-hub-data/'+hubType,
                         dataType: 'json'
                     });
 
@@ -22,13 +22,13 @@ if (typeof jQuery == 'undefined') {
                     return ajaxCall;
                 }
             },
-            getHubChildren: async function(userType, folderSlug) {
+            getHubChildren: async function(folderSlug) {
                 if (fireAjax) {
                     fireAjax = false;
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'https://dentacoin.com/combined-hub/get-hub-children/'+userType+'/'+folderSlug,
+                        url: 'https://dentacoin.com/combined-hub/get-hub-children/'+folderSlug,
                         dataType: 'json'
                     });
 
@@ -38,7 +38,7 @@ if (typeof jQuery == 'undefined') {
             }
         },
         initMiniHub: async function(params) {
-            if ((typeof params !== 'object' && params === undefined) || (!hasOwnProperty.call(params, 'element_id_to_bind') || !hasOwnProperty.call(params, 'type_user') || !hasOwnProperty.call(params, 'platform') || !hasOwnProperty.call(params, 'log_out_link'))) {
+            if ((typeof params !== 'object' && params === undefined) || (!hasOwnProperty.call(params, 'element_id_to_bind') || !hasOwnProperty.call(params, 'type_hub') || !hasOwnProperty.call(params, 'platform') || !hasOwnProperty.call(params, 'log_out_link'))) {
                 // false params
                 console.error('False params passed to Dentacoin hub.');
             } else {
@@ -69,7 +69,7 @@ if (typeof jQuery == 'undefined') {
                     async function showMiniHub() {
                         var miniHubHtml = '<div class="dcn-hub-mini" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"> <div class="hidden-box-hub"><div class="dcn-hub-mini-close-btn"><a href="javascript:void(0)">Close <span>X</span></a></div><div class="list-with-apps"><div class="apps-wrapper">';
 
-                        var hubData = await dcnHub.dcnHubRequests.getHubData(params.type_user, 'hub-dentacoin');
+                        var hubData = await dcnHub.dcnHubRequests.getHubData(params.type_hub);
                         historyChildren.push(JSON.stringify(hubData.data));
                         if (hubData.success) {
                             for (var i = 0, len = hubData.data.length; i < len; i+=1) {
@@ -129,7 +129,7 @@ if (typeof jQuery == 'undefined') {
                                 } else if (children[i].type == 'folder') {
                                     console.log(children[i], 'children[i]');
                                     // ajax to take the children
-                                    var hubChildren = await dcnHub.dcnHubRequests.getHubChildren(params.type_user, children[i].slug);
+                                    var hubChildren = await dcnHub.dcnHubRequests.getHubChildren(children[i].slug);
                                     if (hubChildren.success) {
                                         if (children[i].media_name == null) {
                                             // if no folder image saved in the admin
