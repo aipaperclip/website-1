@@ -507,7 +507,7 @@ padding: 8px;
             ->select('dcn_hub_dcn_hub_element.order_id as order_in_hub', 'dentacoin_hub_elements.*', 'media.name as media_name', 'media.alt')
             ->where(array('dcn_hubs.slug' => $hubType))
             ->whereIn('dentacoin_hub_elements.visibility_type', $visibility_arr)
-            ->orderByRaw('dcn_hub_dcn_hub_element.order_in_hub ASC')
+            ->orderByRaw('order_in_hub ASC')
             ->get()->toArray();
 
         foreach ($hubElements as $hubElement) {
