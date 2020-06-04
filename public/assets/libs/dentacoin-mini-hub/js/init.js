@@ -59,6 +59,8 @@ if (typeof jQuery == 'undefined') {
 
                             if (!hasOwnProperty.call(params, 'without_apps')) {
                                 $('body').addClass('overflow-hidden');
+
+                                window.scrollTo(0, 0);
                             }
                         });
                     } else {
