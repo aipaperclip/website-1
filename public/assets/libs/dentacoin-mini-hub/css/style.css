@@ -168,7 +168,9 @@
       -webkit-border-radius: 0 0 15px 15px;
       -moz-border-radius: 0 0 15px 15px;
       -ms-border-radius: 0 0 15px 15px;
-      border-radius: 0 0 15px 15px; }
+      border-radius: 0 0 15px 15px;
+      padding-bottom: 200px;
+      background-color: transparent; }
       .dcn-hub-mini.with-apps .hidden-box .hidden-box-hub {
         padding: 10px 15px 15px; }
         .dcn-hub-mini.with-apps .hidden-box .hidden-box-hub .dcn-hub-mini-close-btn {
