@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AvailableBuyingOptionsController;
 use App\Publications;
 use App\UserExpressions;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -40,7 +41,8 @@ class HomeController extends Controller
 
     public function getView() {
         if((new UserController())->checkSession()) {
-            return $this->getLoggedView();
+            //return $this->getLoggedView();
+            return Redirect::to('http://hub.dentacoin.com');
         } else {
             return $this->getNotLoggedView();
         }
