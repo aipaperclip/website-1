@@ -17,14 +17,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/test123', function() {
-        $slug = (new \App\Http\Controllers\Controller())->encrypt(70134, getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
-        $type = (new \App\Http\Controllers\Controller())->encrypt('dentist', getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
-        $token = (new \App\Http\Controllers\Controller())->encrypt('eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijg1OTczNGQ5MjRmYjU1ODgwODA5ZTRiY2I4ZWRiMjVhMTEwZDRmODc3YTkxYzM1ZmZlMDI2YzJiYjEzZDE3NDIwZjQxYmIxNWI2NGQ5Y2RiIn0.eyJhdWQiOiIxIiwianRpIjoiODU5NzM0ZDkyNGZiNTU4ODA4MDllNGJjYjhlZGIyNWExMTBkNGY4NzdhOTFjMzVmZmUwMjZjMmJiMTNkMTc0MjBmNDFiYjE1YjY0ZDljZGIiLCJpYXQiOjE1OTA3NTUwODAsIm5iZiI6MTU5MDc1NTA4MCwiZXhwIjoxNjIyMjkxMDgwLCJzdWIiOiI3MDEzNCIsInNjb3BlcyI6W119.BHWHGWH7wrccaf4N8WI1tCf14ddYJv5R8j204ovdisDL0mwjqIIokk-izPu1NRttCxePe0FTOQD8Vvxy3bnaZaviUV8MODfp2EVXNuPXmPoDWt9Kb3LQ4mctt10MPihcqTx8iOZaTzddAVsNepbGacVELvV5mPyJk737zT3fxZq9HH3VtJcp8Sh9GjNQuOw9elvZrHmdW5ZeGzZa4AgLbw2fQ29A8vpSPbfyzKWg4enxUs5M-8BT4_njAhuyufsatG_3ahvuH6h3BiE2unEaWiu-OlzOFU8yY4bu6IVvzmw6znMm4mLLIrzCrzylMaAcswqN32eR3WfYcV5untz9jZ2Rrc6Ch1Nf1TWuPwtv3Fkkit6RBKK4m5vMtNMVdxz8n-lgcai8gR7P0eoKrcPOkjM2s5s5_jn01eza-KxRULyxh68TQiHIgLVSbVOC1NNuZv7ZVq7mJfCE03Nn9bfevnViKutFp3b8VoTAt5Fr3ah339buHYdxvDCluO-jLdVihNuy5W7tgUlVHfH6BXW4IKCvUWKzuqv2zvetz_fokDF5mV7tQpzU3Xk3xnnr6L51gDruUME4ZTqyS6J_1pBhYNy1fIkb81wo2MuA7rO4JZPRob03L4NAbP4Bc1Ys0d5os-oYLUz7sDhkxuHmv_fRd0Bct94T5sOAcJVtHhc1eLg', getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
-        print_r('//dentacoin.test/custom-cookie?slug='.urlencode($slug).'&type='.urlencode($type).'&token='.urlencode($token));
-        die();
-    })->name('test123');
-
     /*Route::get('/test', function() {
         $curl = curl_init();
 
