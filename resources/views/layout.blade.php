@@ -42,14 +42,14 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.3">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.3">
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.4">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.4">
 
 
     @if((new \App\Http\Controllers\UserController())->checkSession())
         <link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/dentacoin-mini-hub/css/style.css">
     @else
-        <link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v=1.1.3"/>
+        <link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v=1.1.4"/>
     @endif
     <script>
         var HOME_URL = '{{ route("home") }}';
@@ -554,14 +554,14 @@
     @endif
     {{----}}
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.1.3"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.1.4"></script>
     @if((new \App\Http\Controllers\UserController())->checkSession())
-        <script src="https://dentacoin.com/assets/libs/dentacoin-mini-hub/js/init.js?v=1.1.3"></script>
+        <script src="https://dentacoin.com/assets/libs/dentacoin-mini-hub/js/init.js?v=1.1.4"></script>
     @else
-        <script src="https://dentacoin.com/assets/libs/dentacoin-login-gateway/js/init.js?v=1.1.3"></script>
+        <script src="https://dentacoin.com/assets/libs/dentacoin-login-gateway/js/init.js?v=1.1.4"></script>
     @endif
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.1.3"></script>
+    <script src="/dist/js/front-script.js?v=1.1.4"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/address.js"></script>
