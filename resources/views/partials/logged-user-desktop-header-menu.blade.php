@@ -12,14 +12,14 @@
                 <div>{{$dcn_balance}} DCN</div>
             @endif
         </div>
-        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block header-avatar">
+        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block header-avatar" id="header-avatar">
             @if(!empty($user_data->thumbnail_url))
                 <img alt="" itemprop="contentUrl" src="{{$user_data->thumbnail_url}}"/>
             @else
                 <img alt="" itemprop="contentUrl" src="/assets/images/avatar-icon.svg"/>
             @endif
         </figure>
-        <span class="up-arrow">▲</span>
+        {{--<span class="up-arrow">▲</span>
         <div class="hidden-box">
             @if(!empty(Route::current()))
                 @if(Route::current()->getName() != 'home')
@@ -48,11 +48,11 @@
                         <a href="{{ route('user-logout') }}" class="logout"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a>
                     </div>
                     <div class="col-xs-6 inline-block">
-                        {{--<a href="{{ route('my-profile') }}" class="fs-16 white-blue-rounded-btn">My account</a>--}}
+                        --}}{{--<a href="{{ route('my-profile') }}" class="fs-16 white-blue-rounded-btn">My account</a>--}}{{--
                         <a href="//account.dentacoin.com?platform=dentacoin" class="fs-16 white-blue-rounded-btn">My Account</a>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--}}
     </div>
 </div>

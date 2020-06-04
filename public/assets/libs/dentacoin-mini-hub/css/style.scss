@@ -166,6 +166,17 @@
             visibility: visible;
         }
     }
+    &.without-apps {
+        .up-arrow {
+            color: white;
+            &.show-this {
+                display: block;
+            }
+        }
+        .hidden-box {
+            width: 290px;
+        }
+    }
 }
 
 @media screen and (min-width: 992px) {
@@ -187,7 +198,7 @@
 }
 
 @media screen and (max-width: 992px) {
-    .dcn-hub-mini {
+    .dcn-hub-mini.with-apps {
         position: absolute;
         top: 0 !important;
         left: 0 !important;

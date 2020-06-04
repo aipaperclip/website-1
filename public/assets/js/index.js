@@ -2000,7 +2000,7 @@ async function checkCaptcha(captcha) {
 
 async function loggedOrNotLogic() {
     if ($('body').hasClass('logged-in')) {
-        var add_overflow_hidden_on_hidden_box_show = false;
+        /*var add_overflow_hidden_on_hidden_box_show = false;
         var sm_screen_width = false;
         $('body').addClass('overflow-hidden');
         if ($(window).width() < 992) {
@@ -2083,7 +2083,28 @@ async function loggedOrNotLogic() {
             } else {
                 $('.logged-user-right-nav .up-arrow').removeClass('show-this');
             }
-        });
+        });*/
+
+        var miniHubParams = {
+            'type_hub': 'mini-hub-dentists',
+            'element_id_to_bind' : 'header-avatar',
+            'platform' : 'dentacoin',
+            'log_out_link' : 'https://dentacoin.com/user-logout'
+        };
+
+        if ($('body').hasClass('logged-patient')) {
+            miniHubParams.type_user = 'patient';
+            if ($('body').hasClass('home')) {
+                miniHubParams.without_apps = true;
+            }
+        } else if ($('body').hasClass('logged-dentist')) {
+            miniHubParams.type_user = 'dentist';
+            if ($('body').hasClass('home')) {
+                miniHubParams.without_apps = true;
+            }
+        }
+
+        dcnHub.initMiniHub(miniHubParams);
     } else {
         //IF NOT LOGGED LOGIC
         if ($('body').hasClass('home') || $('body').hasClass('foundation')) {

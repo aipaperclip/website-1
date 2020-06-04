@@ -44,7 +44,13 @@
     </style>
     <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.3">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.3">
-    <link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v=1.1.3"/>
+
+
+    @if((new \App\Http\Controllers\UserController())->checkSession())
+        <link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/dentacoin-mini-hub/css/style.css">
+    @else
+        <link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v=1.1.3"/>
+    @endif
     <script>
         var HOME_URL = '{{ route("home") }}';
     </script>
@@ -87,7 +93,7 @@
     </noscript>
     <!-- End Facebook Pixel Code -->
 </head>
-<body data-current="one" class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif @if(!empty(Route::current()) && ((Route::current()->getName() == 'careers' && empty(request()->route()->parameters) || Route::current()->getName() == 'corporate-design'))) allow-draw-lines @endif">
+<body data-current="one" class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @if((new \App\Http\Controllers\UserController())->checkPatientSession()) logged-patient @elseif((new \App\Http\Controllers\UserController())->checkDentistSession()) logged-dentist @endif @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif @if(!empty(Route::current()) && ((Route::current()->getName() == 'careers' && empty(request()->route()->parameters) || Route::current()->getName() == 'corporate-design'))) allow-draw-lines @endif">
     <svg class="svg-with-lines">
         <line class="first" x1="0" y1="0" x2="0" y2="0"/>
         <line class="second" x1="0" y1="0" x2="0" y2="0"/>
@@ -549,7 +555,11 @@
     {{----}}
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
     --}}<script src="/dist/js/front-libs-script.js?v=1.1.3"></script>
-    <script src="https://dentacoin.com/assets/libs/dentacoin-login-gateway/js/init.js?v=1.1.3"></script>
+    @if((new \App\Http\Controllers\UserController())->checkSession())
+        <script src="https://dentacoin.com/assets/libs/dentacoin-mini-hub/js/init.js?v=1.1.3"></script>
+    @else
+        <script src="https://dentacoin.com/assets/libs/dentacoin-login-gateway/js/init.js?v=1.1.3"></script>
+    @endif
     @yield("script_block")
     <script src="/dist/js/front-script.js?v=1.1.3"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
