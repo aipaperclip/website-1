@@ -201,6 +201,7 @@ if (typeof jQuery == 'undefined') {
                     
                     $(document).on('click', '.dcn-hub-mini-close-btn', function() {
                         $('.dcn-hub-mini').removeClass('custom-show');
+                        $('.dcn-hub-mini').removeClass('overflow-hidden');
                     });
 
                     function playApplicationsAnimation() {
