@@ -38,7 +38,6 @@ if (typeof jQuery == 'undefined') {
             }
         },
         initMiniHub: async function(params) {
-            console.log(params, 'params');
             if ((typeof params !== 'object' && params === undefined) || (!hasOwnProperty.call(params, 'element_id_to_bind') || !hasOwnProperty.call(params, 'type_hub') || !hasOwnProperty.call(params, 'platform') || !hasOwnProperty.call(params, 'log_out_link'))) {
                 // false params
                 console.error('False params passed to Dentacoin hub.');
@@ -171,6 +170,10 @@ if (typeof jQuery == 'undefined') {
                         $(document).bind('click', checkIfClickedOutsideSearchResult);
 
                         $(window).on('resize', function() {
+                            setHubPosition();
+                        });
+
+                        $(window).on('scroll', function() {
                             setHubPosition();
                         });
                     }
