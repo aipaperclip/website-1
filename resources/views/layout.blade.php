@@ -45,9 +45,8 @@
     <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.4">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.4">
 
-
     @if((new \App\Http\Controllers\UserController())->checkSession())
-        <link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/dentacoin-mini-hub/css/style.css">
+        <link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/dentacoin-mini-hub/css/style.css?v=1.1.4">
     @else
         <link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v=1.1.4"/>
     @endif

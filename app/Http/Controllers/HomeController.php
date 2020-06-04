@@ -45,7 +45,7 @@ class HomeController extends Controller
             $slug = (new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['id'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
             $type = (new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['type'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
             $token = (new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['token'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
-            return Redirect::to('http://hub.dentacoin.com/custom-cookie?slug='.urlencode($slug).'&type='.urlencode($type).'&token='.urlencode($token));
+            return Redirect::to('https://hub.dentacoin.com/custom-cookie?slug='.urlencode($slug).'&type='.urlencode($type).'&token='.urlencode($token));
         } else {
             return $this->getNotLoggedView();
         }
