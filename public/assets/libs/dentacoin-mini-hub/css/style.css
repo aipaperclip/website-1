@@ -185,6 +185,8 @@
             width: 33.33333333%; }
             .dcn-hub-mini.with-apps .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application figcaption {
               font-size: 20px; }
+            .dcn-hub-mini.with-apps .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application.folder .folder-title {
+              font-size: 20px; }
             .dcn-hub-mini.with-apps .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application.go-back {
               padding-top: 30px; } }
 @keyframes dcnMiniHubfadeIn {
