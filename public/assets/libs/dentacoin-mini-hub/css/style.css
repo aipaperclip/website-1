@@ -68,7 +68,9 @@
           padding-right: 10px;
           text-align: center;
           opacity: 0; }
-          .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application figcaption {
+          .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application figure img {
+            max-width: 100%; }
+          .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application figure figcaption {
             color: white;
             font-size: 14px;
             padding-bottom: 15px; }
@@ -158,7 +160,8 @@
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
-    overflow: auto; }
+    overflow: auto;
+    z-index: 100; }
     .dcn-hub-mini.with-apps .up-arrow {
       display: none; }
     .dcn-hub-mini.with-apps .hidden-box {
