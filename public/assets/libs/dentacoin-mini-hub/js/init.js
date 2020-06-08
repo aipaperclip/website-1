@@ -38,7 +38,7 @@ if (typeof jQuery == 'undefined') {
             }
         },
         initMiniHub: async function(params) {
-            if ((typeof params !== 'object' && params === undefined) || (!hasOwnProperty.call(params, 'element_id_to_bind') || !hasOwnProperty.call(params, 'type_hub') || !hasOwnProperty.call(params, 'platform') || !hasOwnProperty.call(params, 'log_out_link'))) {
+            if ((typeof params !== 'object' && params === undefined) || (!hasOwnProperty.call(params, 'element_id_to_bind') || !hasOwnProperty.call(params, 'platform') || !hasOwnProperty.call(params, 'log_out_link'))) {
                 // false params
                 console.error('False params passed to Dentacoin hub.');
             } else {
@@ -76,7 +76,7 @@ if (typeof jQuery == 'undefined') {
                             var miniHubHtml = '<div class="dcn-hub-mini without-apps" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"><div class="hidden-box-footer"><div class="logout-btn-parent"> <a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a> </div> <div class="my-account-btn-parent"><a href="//account.dentacoin.com?platform='+params.platform+'">My Account</a></div></div></div></div>';
 
                             $('body').append(miniHubHtml);
-                        } else {
+                        } else if (hasOwnProperty.call(params, 'type_hub')) {
                             var miniHubHtml = '<div class="dcn-hub-mini with-apps" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"> <div class="hidden-box-hub"><div class="dcn-hub-mini-close-btn"><a href="javascript:void(0)">Close <span>X</span></a></div><div class="list-with-apps"><div class="apps-wrapper">';
 
                             var hubData = await dcnHub.dcnHubRequests.getHubData(params.type_hub);
