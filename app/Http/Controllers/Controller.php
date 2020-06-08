@@ -569,8 +569,12 @@ padding: 8px;
 
                         if (strpos($menu_element->class_attribute, 'scrolling-to-section') !== false) {
                             $directTo = ' href="/dentists.dentacoin.com/#'.$menu_element->id_attribute.'" ';
-                        } else if ($menu_element->new_window) {
-                            $directTo = ' target="_blank" href="'.$menu_element->url.'" ';
+                        } else {
+                            $directTo = ' href="'.$menu_element->url.'" ';
+                        }
+
+                        if ($menu_element->new_window) {
+                            $directTo .= ' target="_blank" ';
                         }
 
                         $html .= '<li><a itemprop="url" class="'.$menu_element->class_attribute.'" '.$id_attribute.' '.$directTo.'><span itemprop="name">'.$menu_element->name.'</span></a></li>';
