@@ -553,11 +553,37 @@ padding: 8px;
     protected function getPlatformMenu($menu) {
         switch ($menu) {
             case 'dentists':
-                $menu = DB::connection('mysql4')->table('menus')->leftJoin('menu_elements', 'menus.id', '=', 'menu_elements.menu_id')->select('menu_elements.*')->where(array('menus.slug' => 'footer'))->get()->toArray();
+                $menu = DB::connection('mysql4')->table('menus')
+                    ->leftJoin('menu_elements', 'menus.id', '=', 'menu_elements.menu_id')
+                    ->leftJoin('media', 'menu_elements.media_id', '=', 'media.id')
+                    ->select('menu_elements.*', 'media.name as media_name', 'media.alt')
+                    ->where(array('menus.slug' => 'header'))->get()->toArray();
+
+                if (!empty($menu)) {
+                    $html = '<div class="hub-page-menu"><ul itemscope="" itemtype="http://schema.org/SiteNavigationElement">';
+                    foreach ($menu as $menu_element) {
+                        $id_attribute = '';
+                        $directTo = '';
+                        if (!empty($menu_element->id_attribute)) {
+                            $id_attribute = ' id="'.$menu_element->id_attribute.'" ';
+                        }
+
+                        if (strpos($menu_element->class_attribute, 'scrolling-to-section') !== false) {
+                            $directTo = ' href="/dentists.dentacoin.com/#'.$menu_element->id_attribute.'" ';
+                        } else if ($menu_element->new_window) {
+                            $directTo = ' target="_blank" href="'.$menu_element->url.'" ';
+                        }
+
+                        $html .= '<li><a itemprop="url" class="'.$menu_element->class_attribute.'" '.$id_attribute.' '.$directTo.'><span itemprop="name">'.$menu_element->name.'</span></a></li>';
+                    }
+                    $html .= '</ul></div>';
 
 
-                return json_encode(array('success' => true, 'data' => $menu));
-                break;
+                    return json_encode(array('success' => true, 'data' => $html));
+                    break;
+                } else {
+                    return json_encode(array('error' => true));
+                }
             default:
                 return json_encode(array('error' => true));
         }
