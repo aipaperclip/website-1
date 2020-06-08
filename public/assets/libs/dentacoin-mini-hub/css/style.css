@@ -147,7 +147,6 @@
     overflow: visible; }
     .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer {
       padding: 10px;
-      position: relative;
       -webkit-border-radius: 15px;
       -moz-border-radius: 15px;
       -ms-border-radius: 15px;
@@ -166,23 +165,25 @@
               color: #002248; }
           .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hub-page-menu li:last-child a {
             border-bottom: none; }
-      .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .home-btn {
-        display: inline-block;
-        width: 100px; }
-        .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .home-btn img {
-          width: 80px;
-          left: 10px;
-          position: absolute;
-          top: 50%;
-          -webkit-transform: translateY(-50%);
-          -ms-transform: translateY(-50%);
-          transform: translateY(-50%); }
-      .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .logout-btn-parent {
-        width: 110px; }
-      .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .my-account-btn-parent {
-        width: 140px; }
-        .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .my-account-btn-parent a {
-          display: block; }
+      .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hidden-box-wrapper {
+        position: relative; }
+        .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hidden-box-wrapper .home-btn {
+          display: inline-block;
+          width: 100px; }
+          .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hidden-box-wrapper .home-btn img {
+            width: 80px;
+            left: 10px;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%); }
+        .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hidden-box-wrapper .logout-btn-parent {
+          width: 110px; }
+        .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hidden-box-wrapper .my-account-btn-parent {
+          width: 140px; }
+          .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hidden-box-wrapper .my-account-btn-parent a {
+            display: block; }
 
 @media screen and (min-width: 992px) {
   .dcn-hub-mini .hidden-box .hidden-box-footer .my-account-btn-parent a:hover {

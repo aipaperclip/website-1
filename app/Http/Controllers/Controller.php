@@ -555,8 +555,7 @@ padding: 8px;
             case 'dentists':
                 $menu = DB::connection('mysql4')->table('menus')
                     ->leftJoin('menu_elements', 'menus.id', '=', 'menu_elements.menu_id')
-                    ->leftJoin('media', 'menu_elements.media_id', '=', 'media.id')
-                    ->select('menu_elements.*', 'media.name as media_name', 'media.alt')
+                    ->select('menu_elements.*')
                     ->where(array('menus.slug' => 'header'))->get()->toArray();
 
                 if (!empty($menu)) {
@@ -577,7 +576,6 @@ padding: 8px;
                         $html .= '<li><a itemprop="url" class="'.$menu_element->class_attribute.'" '.$id_attribute.' '.$directTo.'><span itemprop="name">'.$menu_element->name.'</span></a></li>';
                     }
                     $html .= '</ul></div>';
-
 
                     return json_encode(array('success' => true, 'data' => $html));
                     break;

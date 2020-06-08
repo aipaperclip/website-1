@@ -87,7 +87,15 @@ if (typeof jQuery == 'undefined') {
                     async function showMiniHub() {
                         console.log(params, 'showMiniHub');
                         if (hasOwnProperty.call(params, 'without_apps') && hasOwnProperty.call(params, 'platform_home_link') && params.without_apps) {
-                            var miniHubHtml = '<div class="dcn-hub-mini without-apps" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"><div class="hidden-box-footer"><div class="home-btn"><a href="'+params.platform_home_link+'"><img src="//dentacoin.com/assets/images/home-btn-dentacoin-hub.svg" alt="Home button"/></a></div><div class="logout-btn-parent"> <a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a> </div> <div class="my-account-btn-parent"><a href="//account.dentacoin.com?platform='+params.platform+'">My Account</a></div></div></div></div>';
+                            var platformMenu = '';
+                            if (params.platform == 'dentists') {
+                                var dentistsMenu = await dcnHub.dcnHubRequests.getPlatformMenu('dentists');
+                                if (dentistsMenu.success) {
+                                    platformMenu = dentistsMenu.data;
+                                }
+                            }
+                            
+                            var miniHubHtml = '<div class="dcn-hub-mini without-apps" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"><div class="hidden-box-footer">'+platformMenu+'<div class="hidden-box-wrapper"><div class="home-btn"><a href="'+params.platform_home_link+'"><img src="//dentacoin.com/assets/images/home-btn-dentacoin-hub.svg" alt="Home button"/></a></div><div class="logout-btn-parent"> <a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a> </div> <div class="my-account-btn-parent"><a href="//account.dentacoin.com?platform='+params.platform+'">My Account</a></div></div></div></div></div>';
 
                             $('body').append(miniHubHtml);
                         } else if (hasOwnProperty.call(params, 'type_hub')) {
