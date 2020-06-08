@@ -128,6 +128,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         Route::post('/get-hub-data/{hubType}', 'Controller@getHubData')->name('get-hub-data');
 
         Route::post('/get-hub-children/{parentSlug}', 'Controller@getHubChildren')->name('get-hub-children');
+
+        Route::post('/get-platform-menu/{menu}', 'Controller@getPlatformMenu')->name('get-platform-menu');
     });
 
     Route::post('/press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');

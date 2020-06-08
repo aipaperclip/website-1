@@ -143,13 +143,68 @@
     .dcn-hub-mini.without-apps .up-arrow.show-this {
       display: block; }
   .dcn-hub-mini.without-apps .hidden-box {
-    width: 290px; }
+    width: 380px;
+    overflow: visible; }
+    .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer {
+      padding: 10px;
+      position: relative;
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      -ms-border-radius: 15px;
+      border-radius: 15px; }
+      .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hub-page-menu {
+        padding-bottom: 15px; }
+        .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hub-page-menu li {
+          display: block; }
+          .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hub-page-menu li a {
+            font-size: 18px;
+            text-align: center;
+            display: block;
+            padding: 5px 0;
+            border-bottom: 1px solid #002248; }
+            .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hub-page-menu li a span {
+              color: #002248; }
+          .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hub-page-menu li:last-child a {
+            border-bottom: none; }
+      .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .home-btn {
+        display: inline-block;
+        width: 100px; }
+        .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .home-btn img {
+          width: 80px;
+          left: 10px;
+          position: absolute;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%); }
+      .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .logout-btn-parent {
+        width: 110px; }
+      .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .my-account-btn-parent {
+        width: 140px; }
+        .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .my-account-btn-parent a {
+          display: block; }
 
 @media screen and (min-width: 992px) {
   .dcn-hub-mini .hidden-box .hidden-box-footer .my-account-btn-parent a:hover {
     color: #041e42 !important;
     background-color: white;
     text-decoration: none !important; } }
+@media screen and (max-width: 768px) {
+  .dcn-hub-mini.without-apps .hidden-box {
+    width: 300px; }
+    .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .home-btn {
+      width: 100%;
+      display: block;
+      padding-bottom: 15px; }
+      .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .home-btn img {
+        position: static;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none; }
+    .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .logout-btn-parent, .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .my-account-btn-parent {
+      width: 50%; } }
 @media screen and (max-width: 992px) {
   .dcn-hub-mini.with-apps {
     position: absolute;

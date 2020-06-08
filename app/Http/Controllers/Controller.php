@@ -550,6 +550,19 @@ padding: 8px;
         }
     }
 
+    protected function getPlatformMenu($menu) {
+        switch ($menu) {
+            case 'dentists':
+                $menu = DB::connection('mysql4')->table('menus')->leftJoin('menu_elements', 'menus.id', '=', 'menu_elements.menu_id')->select('menu_elements.*')->orderByRaw('socials.order_id ASC')->where(array('menus.slug' => 'footer'))->get()->toArray();
+
+
+                return json_encode(array('success' => true, 'data' => $menu));
+                break;
+            default:
+                return json_encode(array('error' => true));
+        }
+    }
+
     protected function clearPostData($data)
     {
         foreach ($data as &$value) {

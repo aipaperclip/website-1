@@ -179,7 +179,59 @@
             }
         }
         .hidden-box {
-            width: 290px;
+            width: 380px;
+            overflow: visible;
+            .hidden-box-footer {
+                padding: 10px;
+                position: relative;
+                -webkit-border-radius: 15px;
+                -moz-border-radius: 15px;
+                -ms-border-radius: 15px;
+                border-radius: 15px;
+                .hub-page-menu {
+                    padding-bottom: 15px;
+                    li {
+                        display: block;
+                        a {
+                            font-size: 18px;
+                            text-align: center;
+                            display: block;
+                            padding: 5px 0;
+                            border-bottom: 1px solid #002248;
+                            span {
+                                color: #002248;
+                            }
+                        }
+                        &:last-child {
+                            a {
+                                border-bottom: none;
+                            }
+                        }
+                    }
+                }
+                .home-btn {
+                    display: inline-block;
+                    width: 100px;
+                    img {
+                        width: 80px;
+                        left: 10px;
+                        position: absolute;
+                        top: 50%;
+                        -webkit-transform: translateY(-50%);
+                        -ms-transform: translateY(-50%);
+                        transform: translateY(-50%);
+                    }
+                }
+                .logout-btn-parent {
+                    width: 110px;
+                }
+                .my-account-btn-parent {
+                    width: 140px;
+                    a {
+                        display: block;
+                    }
+                }
+            }
         }
     }
 }
@@ -196,6 +248,32 @@
                             text-decoration: none !important;
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dcn-hub-mini.without-apps {
+        .hidden-box {
+            width: 300px;
+            .hidden-box-footer {
+                .home-btn {
+                    width: 100%;
+                    display: block;
+                    padding-bottom: 15px;
+                    img {
+                        position: static;
+                        -webkit-transform: none;
+                        -moz-transform: none;
+                        -ms-transform: none;
+                        -o-transform: none;
+                        transform: none;
+                    }
+                }
+                .logout-btn-parent, .my-account-btn-parent {
+                    width: 50%;
                 }
             }
         }
