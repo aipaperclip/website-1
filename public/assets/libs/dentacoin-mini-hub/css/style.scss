@@ -188,7 +188,7 @@
                 -ms-border-radius: 15px;
                 border-radius: 15px;
                 .hub-page-menu {
-                    padding-bottom: 15px;
+                    padding-bottom: 25px;
                     li {
                         display: block;
                         a {
@@ -259,7 +259,7 @@
 @media screen and (max-width: 768px) {
     .dcn-hub-mini.without-apps {
         .hidden-box {
-            width: 300px;
+            width: 300px; 
             .hidden-box-footer {
                 .home-btn {
                     width: 100%;
