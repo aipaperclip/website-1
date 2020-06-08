@@ -568,9 +568,9 @@ padding: 8px;
                         }
 
                         if (strpos($menu_element->class_attribute, 'scrolling-to-section') !== false) {
-                            $directTo = ' href="/dentists.dentacoin.com/#'.$menu_element->id_attribute.'" ';
+                            $directTo = ' href="//dentists.dentacoin.com/#'.$menu_element->id_attribute.'" ';
                         } else {
-                            $directTo = ' href="'.$menu_element->url.'" ';
+                            $directTo = ' href="//dentists.dentacoin.com/'.$menu_element->url.'" ';
                         }
 
                         if ($menu_element->new_window) {
