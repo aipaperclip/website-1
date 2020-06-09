@@ -53,6 +53,15 @@ $(document).ready(async function() {
 $(window).on('load', function() {
     //HOMEPAGE
     if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && !basic.isMobile()) {
+        if ($('#append-big-hub-dentacoin').length) {
+            var bigHubParams = {
+                'element_id_to_append' : 'append-big-hub-dentacoin',
+                'type_hub' : 'dentacoin'
+            };
+
+            dcnHub.initBigHub(bigHubParams);
+        }
+
         setLinesDots();
 
         if ($('body').hasClass('home')) {
@@ -93,15 +102,6 @@ $(window).on('load', function() {
             }, {
                 duration: 500
             });
-        }
-
-        if ($('#append-big-hub-dentacoin').length) {
-            var bigHubParams = {
-                'element_id_to_append' : 'append-big-hub-dentacoin',
-                'type_hub' : 'dentacoin'
-            };
-
-            dcnHub.initBigHub(bigHubParams);
         }
     }
 });
