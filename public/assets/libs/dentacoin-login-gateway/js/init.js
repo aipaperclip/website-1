@@ -628,6 +628,7 @@ if (typeof jQuery == 'undefined') {
                 }
 
                 var platformsData = await dcnGateway.dcnGatewayRequests.getPlatformsData();
+                console.log(platformsData, 'platformsData');
                 var validPlatform = false;
                 var currentPlatformColor;
                 var currentPlatformDomain;
@@ -649,6 +650,7 @@ if (typeof jQuery == 'undefined') {
                     }
                     validPlatform = true;
                 } else {
+                    console.log(platformsData.length, 'platformsData.length');
                     for (var i = 0, len = platformsData.length; i < len; i+=1) {
                         if (platformsData[i].slug == params.platform) {
                             validPlatform = true;
