@@ -17,6 +17,12 @@ if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body
         };
 
         dcnHub.initBigHub(bigHubParams);
+
+        $(window).on('click', '.dcn-big-hub .single-application', function() {
+            if (!basic.isMobile()) {
+                setLinesDots(true);
+            }
+        });
     }
 }
 
