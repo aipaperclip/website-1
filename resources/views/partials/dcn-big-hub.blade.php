@@ -44,7 +44,7 @@
     </div>
     <div class="info-section">
         <a href="javascript:void(0)" class="close-application">×</a>
-        <figure class="logo"><img src="" alt=""></figure>
+        <figure class="logo"><img></figure>
         <h3 class="title"></h3>
         <div class="video-content"></div>
         <div class="html-content"></div>
