@@ -212,7 +212,7 @@ function addHTMLEditor(){
                     height: 350,
                     allowedContent: true,
                     disallowedContent: 'script',
-                    contentsCss : ['/dist/css/front-libs-style.css', '/assets/css/style.css']
+                    contentsCss : ['/dist/css/front-libs-style.css', '/assets/css/style.css', '/assets/libs/dentacoin-mini-hub/css/styles-big-hub.css']
                 }, {on: {
                         pluginsLoaded: function() {
                             var editor = this,

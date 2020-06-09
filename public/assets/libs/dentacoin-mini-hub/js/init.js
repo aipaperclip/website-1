@@ -14,7 +14,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'https://dentacoin.com/combined-hub/get-hub-data/'+hubType,
+                        url: 'http://dentacoin.test/combined-hub/get-hub-data/'+hubType,
                         dataType: 'json'
                     });
 
@@ -28,7 +28,21 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'https://dentacoin.com/combined-hub/get-hub-children/'+folderSlug,
+                        url: 'http://dentacoin.test/combined-hub/get-hub-children/'+folderSlug,
+                        dataType: 'json'
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
+            },
+            getBigHubHtml: async function(hubType) {
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: 'http://dentacoin.test/combined-hub/get-big-hub-html/'+hubType,
                         dataType: 'json'
                     });
 
@@ -42,12 +56,122 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'https://dentacoin.com/combined-hub/get-platform-menu/'+menu,
+                        url: 'http://dentacoin.test/combined-hub/get-platform-menu/'+menu,
                         dataType: 'json'
                     });
 
                     fireAjax = true;
                     return ajaxCall;
+                }
+            }
+        },
+        initBigHub: async function(params) {
+            if ((typeof params !== 'object' && params === undefined) || (!hasOwnProperty.call(params, 'element_id_to_append') || !hasOwnProperty.call(params, 'type_hub'))) {
+                // false params
+                console.error('False params passed to Dentacoin hub.');
+            } else {
+                var elementToAppend = $('#' + params.element_id_to_append);
+                if (elementToAppend.length) {
+                    var getBigHubHtml = await dcnHub.dcnHubRequests.getBigHubHtml(params.type_hub);
+
+                    if (getBigHubHtml.success) {
+                        elementToAppend.html(getBigHubHtml.data);
+
+                        elementToAppend.find('.single-application.link').click(function() {
+                            var extra_html = '';
+                            elementToAppend.find('.single-application.link').removeClass('active');
+                            $(this).addClass('active');
+
+                            elementToAppend.find('.info-section .logo img').attr('alt', $(this).attr('data-image-alt')).attr('src', $(this).attr('data-image'));
+                            elementToAppend.find('.info-section .title').html($(this).attr('data-title'));
+
+                            if ($(this).attr('data-articles') != undefined)    {
+                                extra_html+='<div class="extra-html"><div class="extra-title">Latest Blog articles:</div><div class="slider-with-tool-data">';
+                                var articles_arr = $.parseJSON($(this).attr('data-articles'));
+                                for(var i = 0, len = articles_arr.length; i < len; i+=1)    {
+                                    var post_title = articles_arr[i]['post_title'];
+                                    if (post_title.length > 35) {
+                                        post_title = post_title.substring(0, 35) + '...';
+                                    }
+                                    extra_html+='<a target="_blank" href="'+articles_arr[i]['link']+'"><div class="single-slide"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="'+articles_arr[i]['thumb']+'" alt="" itemprop="contentUrl"/></figure><div class="content"><div class="slide-title">'+post_title+'</div><time>'+dateObjToFormattedDate(new Date(parseInt(articles_arr[i]['date']) * 1000))+'</time></div></div></a>';
+                                }
+                                extra_html+='</div><div class="go-to-all"><a href="//blog.dentacoin.com/" class="dcn-big-hub-btn" target="_blank">GO TO ALL</a></div></div>';
+
+                                elementToAppend.find('.extra-html-content').html(extra_html);
+
+                                initToolsPostsSlider();
+                            } else {
+                                $('.extra-html-content').html('');
+                            }
+
+                            elementToAppend.find('.info-section .html-content').html($.parseJSON($(this).attr('data-html')));
+
+                            if ($(this).attr('data-video') != '') {
+                                var youtubeVideoId = getYoutubeVideoId($(this).attr('data-video'));
+                                if (youtubeVideoId) {
+                                    elementToAppend.find('.video-content').html('<iframe src="https://www.youtube.com/embed/'+youtubeVideoId+'"></iframe>');
+                                }
+                            } else {
+                                elementToAppend.find('.video-content').html('');
+                            }
+
+                            $('body').addClass('overflow-hidden');
+                            if ($(window).width() < 992) {
+                                 elementToAppend.find('.app-list').hide();
+                                 elementToAppend.find('.info-section').fadeIn(500);
+
+                                $('html').animate({
+                                    scrollTop: $('.info-section').offset().top
+                                }, {
+                                    duration: 500
+                                });
+                            }
+                            $('body').removeClass('overflow-hidden');
+                        });
+
+                        $('body').addClass('overflow-hidden');
+                        if ($(window).width() > 992) {
+                            elementToAppend.find('.single-application.link').eq(0).click();
+                        } else {
+                            elementToAppend.find('.info-section .close-application').click(function() {
+                                elementToAppend.find('.app-list').fadeIn(500);
+                                elementToAppend.find('.info-section').hide();
+                            });
+                        }
+                        $('body').removeClass('overflow-hidden');
+
+                        if ($('img[data-defer-src]').length) {
+                            for(var i = 0, len = $('img[data-defer-src]').length; i < len; i+=1) {
+                                $('img[data-defer-src]').eq(i).attr('src', $('img[data-defer-src]').eq(i).attr('data-defer-src'));
+                            }
+                        }
+                    }
+                }
+
+                function getYoutubeVideoId(link) {
+                    var video_id = link.split('v=')[1];
+                    var ampersandPosition = video_id.indexOf('&');
+                    if (ampersandPosition != -1) {
+                        video_id.substring(0, ampersandPosition);
+                    }
+
+                    return video_id;
+                }
+
+                function initToolsPostsSlider()   {
+                    //init slider for most popular posts
+                    jQuery('.slider-with-tool-data').slick({
+                        slidesToShow: 2,
+                        infinite: false,
+                        responsive: [
+                            {
+                                breakpoint: 1200,
+                                settings: {
+                                    slidesToShow: 1
+                                }
+                            }
+                        ]
+                    });
                 }
             }
         },
@@ -85,7 +209,6 @@ if (typeof jQuery == 'undefined') {
                     }
 
                     async function showMiniHub() {
-                        console.log(params, 'showMiniHub');
                         if (hasOwnProperty.call(params, 'without_apps') && params.without_apps) {
                             var platformMenu = '';
                             var platform_home_link = '';

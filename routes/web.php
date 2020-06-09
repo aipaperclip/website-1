@@ -17,6 +17,18 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
+    Route::get('/test-big-hub', function() {
+        return view('test-big-hub');
+    })->name('test-big-hub');
+
+    Route::get('/test-big-hub-dentists', function() {
+        return view('test-big-hub-dentists');
+    })->name('test-big-hub-dentists');
+
+    Route::get('/test-big-hub-ids', function() {
+        return view('test-big-hub-ids');
+    })->name('test-big-hub-ids');
+
     /*Route::get('/test', function() {
         $curl = curl_init();
 
@@ -125,11 +137,13 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     //======================================= AJAX ========================================
 
     Route::group(['prefix' => 'combined-hub'], function () {
-        Route::post('/get-hub-data/{hubType}', 'Controller@getHubData')->name('get-hub-data');
+        Route::post('/get-hub-data/{hubType}', 'DentacoinHubController@getHubData')->name('get-hub-data');
 
-        Route::post('/get-hub-children/{parentSlug}', 'Controller@getHubChildren')->name('get-hub-children');
+        Route::post('/get-hub-children/{parentSlug}', 'DentacoinHubController@getHubChildren')->name('get-hub-children');
 
-        Route::post('/get-platform-menu/{menu}', 'Controller@getPlatformMenu')->name('get-platform-menu');
+        Route::post('/get-platform-menu/{menu}', 'DentacoinHubController@getPlatformMenu')->name('get-platform-menu');
+
+        Route::post('/get-big-hub-html/{hubType}', 'DentacoinHubController@getBigHubHtml')->name('get-big-hub-html');
     });
 
     Route::post('/press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
