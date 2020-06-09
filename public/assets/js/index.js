@@ -638,8 +638,8 @@ if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body
     }
     // ===== /first section video logic =====
 
-    var start_clicking_from_num = 1;
-    /*var init_apps_interval_slide;*/
+    /*var start_clicking_from_num = 1;
+    /!*var init_apps_interval_slide;*!/
     //logic for open application popup
     $('.single-application').click(function()   {
         singleApplicationClick($(this), true);
@@ -673,7 +673,7 @@ if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body
 
         $('body').addClass('overflow-hidden');
         if ($(window).width() > 992) {
-            /*clearInterval(init_apps_interval_slide);
+            /!*clearInterval(init_apps_interval_slide);
 
             if (stop_interval_sliding == undefined) {
                 start_clicking_from_num = element.index() + 1;
@@ -684,7 +684,7 @@ if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body
                 init_apps_interval_slide = setTimeout(function() {
                     singleApplicationClick($('.dentacoin-ecosystem .single-application').eq(start_clicking_from_num));
                 }, 10000);
-            }*/
+            }*!/
         } else {
             $('.dentacoin-ecosystem .apps-list').hide();
             $('.dentacoin-ecosystem .info-section').fadeIn(500);
@@ -702,7 +702,7 @@ if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body
     if ($(window).width() > 992) {
         singleApplicationClick($('.dentacoin-ecosystem .single-application').eq(0));
     }
-    $('body').removeClass('overflow-hidden');
+    $('body').removeClass('overflow-hidden');*/
 
     // logic for open testimonials and close the ones that are too near to the current opening one (TESTIMONIALS)
     $('.homepage-container .testimonials .circle-wrapper').click(function()   {

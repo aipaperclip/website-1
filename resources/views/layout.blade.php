@@ -48,7 +48,7 @@
     @if((new \App\Http\Controllers\UserController())->checkSession())
         <link rel="stylesheet" type="text/css" href="//dentacoin.com/assets/libs/dentacoin-mini-hub/css/style.css?v=1.1.6">
     @endif
-    @if((!(new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'foundation' || Route::current()->getName() == 'test-big-hub' || Route::current()->getName() == 'test-big-hub-ids' || Route::current()->getName() == 'test-big-hub-dentists')))
+    @if((!(new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'test-big-hub' || Route::current()->getName() == 'test-big-hub-ids' || Route::current()->getName() == 'test-big-hub-dentists')))
         <link rel="stylesheet" type="text/css" href="//dentacoin.com/assets/libs/dentacoin-mini-hub/css/styles-big-hub.css?v=1.1.6">
     @endif
     @if (!(new \App\Http\Controllers\UserController())->checkSession())
@@ -295,7 +295,7 @@
     {{----}}
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
     --}}<script src="/dist/js/front-libs-script.js?v=1.1.6"></script>
-    @if((new \App\Http\Controllers\UserController())->checkSession() || (!(new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'foundation' || Route::current()->getName() == 'test-big-hub' || Route::current()->getName() == 'test-big-hub-ids' || Route::current()->getName() == 'test-big-hub-dentists')))
+    @if((new \App\Http\Controllers\UserController())->checkSession() || (!(new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'test-big-hub' || Route::current()->getName() == 'test-big-hub-ids' || Route::current()->getName() == 'test-big-hub-dentists')))
         <script src="//dentacoin.com/assets/libs/dentacoin-mini-hub/js/init.js?v=1.1.6"></script>
     @endif
     @if (!(new \App\Http\Controllers\UserController())->checkSession())
