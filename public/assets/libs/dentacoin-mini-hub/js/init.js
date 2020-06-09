@@ -77,6 +77,10 @@ if (typeof jQuery == 'undefined') {
                     if (getBigHubHtml.success) {
                         elementToAppend.html(getBigHubHtml.data);
 
+                        if (params.type_hub == 'dentists') {
+                            elementToAppend.find('.app-list').addClass('dark-blue-background');
+                        }
+
                         elementToAppend.find('.single-application.link').click(function() {
                             var extra_html = '';
                             elementToAppend.find('.single-application.link').removeClass('active');

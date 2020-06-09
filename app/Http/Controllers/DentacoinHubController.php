@@ -29,7 +29,7 @@ class DentacoinHubController extends Controller
             }
         }
 
-        $params = ['hubElements' => $hubElements];
+        $params = ['hubElements' => $hubElements, 'hubType' => $hubType];
 
         $curl = curl_init();
         curl_setopt_array($curl, array(

@@ -39,10 +39,15 @@
         padding-bottom: 50px;
         min-height: 750px;
         width: 50%;
-        background-image: url('//dentacoin.com/assets/images/dentacoin-ecosystem-background.jpg');
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
+        &.light-blue-background {
+            background-image: url('//dentacoin.com/assets/images/dentacoin-ecosystem-background.jpg');
+        }
+        &.dark-blue-background {
+            background-image: url('//dentacoin.com/assets/images/dark-blue-background.svg');
+        }
         .rotated-text {
             color: white;
             font-weight: bold;
@@ -146,7 +151,7 @@
     .info-section {
         width: 50%;
         background-color: white;
-        padding-top: 100px;
+        padding-top: 50px;
         padding-bottom: 100px;
         padding-left: 15px;
         padding-right: 15px;
@@ -342,7 +347,6 @@
         .info-section {
             display: none;
             width: 100%;
-            padding-top: 50px;
             padding-bottom: 50px;
             position: relative;
             .close-application {

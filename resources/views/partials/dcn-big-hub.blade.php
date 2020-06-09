@@ -1,5 +1,5 @@
 <div class="dcn-big-hub">
-    <div class="app-list">
+    <div class="app-list @if (!empty($hubType)) @if ($hubType == 'dentists') dark-blue-background @else light-blue-background @endif @endif">
         <div>
             <h3 class="rotated-text">DENTACOIN ECOSYSTEM</h3>
         </div>
@@ -20,9 +20,9 @@
                     </button>
                 @elseif ($hubElement->type == 'folder')
                     <button class="single-application folder">
-                        @if(!empty($hubElement->media_name))
+                        @if (!empty($hubElement->media_name))
                             <figure class="wrapper" itemscope="" itemtype="http://schema.org/ImageObject">
-                                @if(!empty($hubElement->media_name))
+                                @if (!empty($hubElement->media_name))
                                     <img src="{{DEFAULT_IMG_ON_LOAD}}" data-defer-src="{{URL::asset('assets/uploads/'.$hubElement->media_name) }}" itemprop="contentUrl" @if (!empty($hubElement->alt)) alt="{{$hubElement->alt}}" @endif/>
                                 @endif
                                 <figcaption class="hub-element-title">{{$hubElement->title}}</figcaption>
