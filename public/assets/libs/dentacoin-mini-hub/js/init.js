@@ -1,6 +1,6 @@
-if (typeof jQuery == 'undefined') {
-    // no jquery installed
-    console.error('Dentacoin hub requires the usage of jQuery.');
+if (typeof $ == 'undefined') {
+    // no $ installed
+    console.error('Dentacoin hub requires the usage of $.');
 } else if (!navigator.onLine) {
     // check internet connection
     console.error('Dentacoin hub requires internet connection.');
@@ -143,15 +143,38 @@ if (typeof jQuery == 'undefined') {
                             });
                         }
                         $('body').removeClass('overflow-hidden');
+                    }
+                }
 
-                        if ($('img[data-defer-src]').length) {
-                            for(var i = 0, len = $('img[data-defer-src]').length; i < len; i+=1) {
-                                $('img[data-defer-src]').eq(i).attr('src', $('img[data-defer-src]').eq(i).attr('data-defer-src'));
-                            }
+                // check if element is visible in the screen viewport
+                function isInViewport(el) {
+                    var elementTop = $(el).offset().top;
+                    var elementBottom = elementTop + $(el).outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+                    return elementBottom > viewportTop && elementTop < viewportBottom;
+                }
+
+                // method for loading images only when they are visible in the viewport
+                function loadDeferImages() {
+                    for(var i = 0, len = elementToAppend.find('img[data-defer-src]').length; i < len; i+=1) {
+                        if(isInViewport(elementToAppend.find('img[data-defer-src]').eq(i)) && elementToAppend.find('img[data-defer-src]').eq(i).attr('src') == undefined) {
+                            elementToAppend.find('img[data-defer-src]').eq(i).attr('src', elementToAppend.find('img[data-defer-src]').eq(i).attr('data-defer-src'));
                         }
                     }
                 }
 
+                //load images which are visible in the viewport on page load
+                loadDeferImages();
+
+                //load images which are visible in the viewport on scroll
+                if(elementToAppend.find('img[data-defer-src]').length) {
+                    $(window).on('scroll', function(){
+                        loadDeferImages();
+                    });
+                }
+
+                // get youtube link id from youtube URL
                 function getYoutubeVideoId(link) {
                     var video_id = link.split('v=')[1];
                     var ampersandPosition = video_id.indexOf('&');
@@ -164,7 +187,7 @@ if (typeof jQuery == 'undefined') {
 
                 function initToolsPostsSlider()   {
                     //init slider for most popular posts
-                    jQuery('.slider-with-tool-data').slick({
+                    $('.slider-with-tool-data').slick({
                         slidesToShow: 2,
                         infinite: false,
                         responsive: [

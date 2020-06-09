@@ -119,8 +119,8 @@
   .dcn-big-hub .info-section {
     width: 50%;
     background-color: white;
-    padding-top: 50px;
-    padding-bottom: 100px;
+    padding-top: 30px;
+    padding-bottom: 50px;
     padding-left: 15px;
     padding-right: 15px; }
     .dcn-big-hub .info-section .close-application {
@@ -267,7 +267,6 @@
     .dcn-big-hub .info-section {
       display: none;
       width: 100%;
-      padding-bottom: 50px;
       position: relative; }
       .dcn-big-hub .info-section .close-application {
         display: block; } }
