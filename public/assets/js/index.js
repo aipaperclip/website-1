@@ -97,7 +97,7 @@ $(window).on('load', function() {
     }
 });
 
-$('body').bind('wheel', onMousewheel);
+/*$('body').bind('wheel', onMousewheel);*/
 
 $(window).on('resize', function(){
     if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && !basic.isMobile()) {
