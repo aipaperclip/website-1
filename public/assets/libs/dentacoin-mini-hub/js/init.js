@@ -86,7 +86,7 @@ if (typeof $ == 'undefined') {
                             elementToAppend.find('.single-application.link').removeClass('active');
                             $(this).addClass('active');
 
-                            elementToAppend.find('.info-section .logo img').attr('alt', $(this).attr('data-image-alt')).attr('data-defer-src', $(this).attr('data-image'));
+                            elementToAppend.find('.info-section .logo img').attr('alt', $(this).attr('data-image-alt')).attr('src', $(this).attr('data-image'));
                             elementToAppend.find('.info-section .title').html($(this).attr('data-title'));
 
                             if ($(this).attr('data-articles') != undefined) {

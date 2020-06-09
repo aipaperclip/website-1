@@ -6720,7 +6720,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           .homepage-container .intro .bg-wrapper .video .video-wrapper .close-video img {
             width: 14px; }
 .homepage-container .dentacoin-ecosystem .app-list {
-  min-height: 950px !important; }
+  min-height: 900px !important; }
   @media screen and (min-width: 992px) and (max-width: 1199px) {
     .homepage-container .dentacoin-ecosystem .app-list {
       min-height: 750px !important; } }
