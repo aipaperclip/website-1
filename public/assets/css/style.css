@@ -6719,14 +6719,14 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
           cursor: pointer; }
           .homepage-container .intro .bg-wrapper .video .video-wrapper .close-video img {
             width: 14px; }
-.homepage-container .dentacoin-ecosystem {
-  min-height: 950px; }
+.homepage-container .dentacoin-ecosystem .app-list {
+  min-height: 950px !important; }
   @media screen and (min-width: 992px) and (max-width: 1199px) {
-    .homepage-container .dentacoin-ecosystem {
-      min-height: 750px; } }
+    .homepage-container .dentacoin-ecosystem .app-list {
+      min-height: 750px !important; } }
   @media screen and (max-width: 991px) {
-    .homepage-container .dentacoin-ecosystem {
-      min-height: 0; } }
+    .homepage-container .dentacoin-ecosystem .app-list {
+      min-height: 0 !important; } }
 .homepage-container .successful-practices .dots {
   height: 80px; }
   .homepage-container .successful-practices .dots .first-dot-wrapper {
