@@ -5,12 +5,12 @@ if (typeof $ == 'undefined') {
     // check internet connection
     console.error('Dentacoin hub requires internet connection.');
 } else {
-    var fireAjax = true;
+    var fireHubAjax = true;
     var dcnHub = {
         dcnHubRequests: {
             getHubData: async function(hubType) {
-                if (fireAjax) {
-                    fireAjax = false;
+                if (fireHubAjax) {
+                    fireHubAjax = false;
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
@@ -18,13 +18,13 @@ if (typeof $ == 'undefined') {
                         dataType: 'json'
                     });
 
-                    fireAjax = true;
+                    fireHubAjax = true;
                     return ajaxCall;
                 }
             },
             getHubChildren: async function(folderSlug) {
-                if (fireAjax) {
-                    fireAjax = false;
+                if (fireHubAjax) {
+                    fireHubAjax = false;
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
@@ -32,13 +32,13 @@ if (typeof $ == 'undefined') {
                         dataType: 'json'
                     });
 
-                    fireAjax = true;
+                    fireHubAjax = true;
                     return ajaxCall;
                 }
             },
             getBigHubHtml: async function(hubType) {
-                if (fireAjax) {
-                    fireAjax = false;
+                if (fireHubAjax) {
+                    fireHubAjax = false;
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
@@ -46,13 +46,13 @@ if (typeof $ == 'undefined') {
                         dataType: 'json'
                     });
 
-                    fireAjax = true;
+                    fireHubAjax = true;
                     return ajaxCall;
                 }
             },
             getPlatformMenu: async function(menu) {
-                if (fireAjax) {
-                    fireAjax = false;
+                if (fireHubAjax) {
+                    fireHubAjax = false;
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
@@ -60,7 +60,7 @@ if (typeof $ == 'undefined') {
                         dataType: 'json'
                     });
 
-                    fireAjax = true;
+                    fireHubAjax = true;
                     return ajaxCall;
                 }
             }
