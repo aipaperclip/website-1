@@ -6,6 +6,7 @@ if (typeof $ == 'undefined') {
     console.error('Dentacoin hub requires internet connection.');
 } else {
     var fireHubAjax = true;
+    var fireBigHubAjax = true;
     var dcnHub = {
         dcnHubRequests: {
             getHubData: async function(hubType) {
@@ -36,23 +37,9 @@ if (typeof $ == 'undefined') {
                     return ajaxCall;
                 }
             },
-            getBigHubHtml: async function(hubType) {
-                if (fireHubAjax) {
-                    fireHubAjax = false;
-
-                    var ajaxCall = await $.ajax({
-                        type: 'POST',
-                        url: 'https://dentacoin.com/combined-hub/get-big-hub-html/'+hubType,
-                        dataType: 'json'
-                    });
-
-                    fireHubAjax = true;
-                    return ajaxCall;
-                }
-            },
             getPlatformMenu: async function(menu) {
-                if (fireHubAjax) {
-                    fireHubAjax = false;
+                if (fireBigHubAjax) {
+                    fireBigHubAjax = false;
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
@@ -60,10 +47,24 @@ if (typeof $ == 'undefined') {
                         dataType: 'json'
                     });
 
-                    fireHubAjax = true;
+                    fireBigHubAjax = true;
                     return ajaxCall;
                 }
-            }
+            },
+            getBigHubHtml: async function(hubType) {
+                if (fireBigHubAjax) {
+                    fireBigHubAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: 'https://dentacoin.com/combined-hub/get-big-hub-html/'+hubType,
+                        dataType: 'json'
+                    });
+
+                    fireBigHubAjax = true;
+                    return ajaxCall;
+                }
+            },
         },
         initBigHub: async function(params) {
             if ((typeof params !== 'object' && params === undefined) || (!hasOwnProperty.call(params, 'element_id_to_append') || !hasOwnProperty.call(params, 'type_hub'))) {
@@ -256,8 +257,9 @@ if (typeof $ == 'undefined') {
                             var miniHubHtml = '<div class="dcn-hub-mini with-apps" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"> <div class="hidden-box-hub"><div class="dcn-hub-mini-close-btn"><a href="javascript:void(0)">Close <span>X</span></a></div><div class="list-with-apps"><div class="apps-wrapper">';
 
                             var hubData = await dcnHub.dcnHubRequests.getHubData(params.type_hub);
-                            historyChildren.push(JSON.stringify(hubData.data));
+                            console.log(hubData, 'hubData');
                             if (hubData.success) {
+                                historyChildren.push(JSON.stringify(hubData.data));
                                 for (var i = 0, len = hubData.data.length; i < len; i+=1) {
                                     if (hubData.data[i].type == 'link') {
                                         var hrefHtml = '';
