@@ -46,7 +46,7 @@
                 </div>
             </div>
         </section>
-        <section class="dentacoin-ecosystem container-fluid" data-section="two">
+        <section class="dentacoin-ecosystem" data-section="two">
             <div id="append-big-hub-dentacoin"></div>
             {{--<div class="row">
                 <div class="apps-list fullpage-section two col-xs-12 col-md-6">

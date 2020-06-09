@@ -9,6 +9,17 @@ if ($('img[data-defer-src]').length) {
     }
 }
 
+if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) {
+    if ($('#append-big-hub-dentacoin').length) {
+        var bigHubParams = {
+            'element_id_to_append' : 'append-big-hub-dentacoin',
+            'type_hub' : 'dentacoin'
+        };
+
+        dcnHub.initBigHub(bigHubParams);
+    }
+}
+
 var is_mac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
 var intervals_arr = [];
 var stoppers = [];
@@ -628,15 +639,6 @@ if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body
         $('.homepage-container .intro .bg-wrapper .section-description').hide();
     }
     // ===== /first section video logic =====
-
-    if ($('#append-big-hub-dentacoin').length) {
-        var bigHubParams = {
-            'element_id_to_append' : 'append-big-hub-dentacoin',
-            'type_hub' : 'dentacoin'
-        };
-
-        dcnHub.initBigHub(bigHubParams);
-    }
 
     /*var start_clicking_from_num = 1;
     /!*var init_apps_interval_slide;*!/
