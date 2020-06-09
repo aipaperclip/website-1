@@ -122,11 +122,16 @@ if (typeof $ == 'undefined') {
 
                             $('body').addClass('overflow-hidden');
                             if ($(window).width() < 992) {
-                                 elementToAppend.find('.app-list').hide();
-                                 elementToAppend.find('.info-section').fadeIn(500);
+                                elementToAppend.find('.app-list').hide();
+                                elementToAppend.find('.info-section').fadeIn(500);
+
+                                var scrollTop = $('.info-section').offset().top;
+                                if ($('header.sticky-header').length) {
+                                    scrollTop = scrollTop - $('header.sticky-header').outerHeight();
+                                }
 
                                 $('html').animate({
-                                    scrollTop: $('.info-section').offset().top
+                                    scrollTop: scrollTop
                                 }, {
                                     duration: 500
                                 });
