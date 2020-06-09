@@ -50,7 +50,7 @@
                     }
                 }
             }
-        }
+        }  
         .successful-practices {
             .section-title {
                 padding-bottom: 40px;
@@ -514,6 +514,15 @@
                     }
                 }
             }
+        }
+    }
+    .dentacoin-ecosystem {
+        min-height: 950px;
+        @include breakpoint($md-only) {
+            min-height: 750px;
+        }
+        @include breakpoint($sm-down) {
+            min-height: 0;
         }
     }
     .successful-practices {
