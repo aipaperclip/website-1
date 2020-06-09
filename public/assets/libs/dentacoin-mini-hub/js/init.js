@@ -14,7 +14,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'http://dentacoin.test/combined-hub/get-hub-data/'+hubType,
+                        url: 'https://dentacoin.com/combined-hub/get-hub-data/'+hubType,
                         dataType: 'json'
                     });
 
@@ -28,7 +28,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'http://dentacoin.test/combined-hub/get-hub-children/'+folderSlug,
+                        url: 'https://dentacoin.com/combined-hub/get-hub-children/'+folderSlug,
                         dataType: 'json'
                     });
 
@@ -42,7 +42,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'http://dentacoin.test/combined-hub/get-big-hub-html/'+hubType,
+                        url: 'https://dentacoin.com/combined-hub/get-big-hub-html/'+hubType,
                         dataType: 'json'
                     });
 
@@ -56,7 +56,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'http://dentacoin.test/combined-hub/get-platform-menu/'+menu,
+                        url: 'https://dentacoin.com/combined-hub/get-platform-menu/'+menu,
                         dataType: 'json'
                     });
 
