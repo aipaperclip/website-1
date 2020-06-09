@@ -84,6 +84,7 @@
             border-radius: 10px;
             text-align: left; }
             .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application.folder .hub-folder .apps-in-folder-list {
+              background: transparent;
               position: absolute;
               width: 90%;
               left: 5%;

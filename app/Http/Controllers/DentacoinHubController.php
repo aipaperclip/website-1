@@ -52,12 +52,6 @@ class DentacoinHubController extends Controller
     }
 
     protected function getHubData($hubType) {
-        /*if ($userType == 'dentist') {
-            $visibility_arr = array('only_dentist', 'all');
-        } else if ($userType == 'patient') {
-            $visibility_arr = array('only_patient', 'all');
-        }*/
-
         $hubElements = DB::table('dcn_hubs')
             ->leftJoin('dcn_hub_dcn_hub_element', 'dcn_hubs.id', '=', 'dcn_hub_dcn_hub_element.dcn_hub_id')
             ->leftJoin('dentacoin_hub_elements', 'dcn_hub_dcn_hub_element.dcn_hub_element_id', '=', 'dentacoin_hub_elements.id')
@@ -83,12 +77,6 @@ class DentacoinHubController extends Controller
     }
 
     protected function getHubChildren($parentSlug) {
-        /*if ($userType == 'dentist') {
-            $visibility_arr = array('only_dentist', 'all');
-        } else if ($userType == 'patient') {
-            $visibility_arr = array('only_patient', 'all');
-        }*/
-
         $children = DB::table('dcn_hub_element_folder')
             ->leftJoin('dentacoin_hub_elements', 'dcn_hub_element_folder.dcn_hub_folder_id', '=', 'dentacoin_hub_elements.id')
             ->leftJoin('dentacoin_hub_elements as element', 'dcn_hub_element_folder.dcn_hub_element_id', '=', 'element.id')
