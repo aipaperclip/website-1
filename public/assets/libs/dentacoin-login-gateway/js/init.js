@@ -637,7 +637,7 @@ if (typeof jQuery == 'undefined') {
                     environment = 'staging';
                 }
 
-                await dcnGateway.dcnGatewayRequests.getPlatformsData(function(platformsData) {
+                await dcnGateway.dcnGatewayRequests.getPlatformsData(async function(platformsData) {
                     var validPlatform = false;
                     var currentPlatformColor;
                     var currentPlatformDomain;
