@@ -14,13 +14,11 @@ if (typeof jQuery == 'undefined') {
     var dcnGateway = {
         dcnGatewayRequests: {
             getPlatformsData: async function(callback) {
-                console.log('getPlatformsData');
                 $.ajax({
                     type: 'GET',
                     url: 'https://dentacoin.com/info/platforms',
                     dataType: 'json',
                     success: function(response) {
-                        console.log(response, 'response');
                         callback(response);
                     },
                     error: function() {
@@ -725,7 +723,6 @@ if (typeof jQuery == 'undefined') {
                         }
 
                         await dcnGateway.dcnGatewayRequests.getGatewayHtml(gatewayData, async function(gatewayHtml) {
-                            console.log(gatewayHtml, 'gatewayHtm');
                             if (gatewayHtml.success) {
                                 if (!loadedSocialLibs) {
                                     console.log('Load external libraries.');

@@ -262,7 +262,6 @@ if (typeof $ == 'undefined') {
                             var miniHubHtml = '<div class="dcn-hub-mini with-apps" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"> <div class="hidden-box-hub"><div class="dcn-hub-mini-close-btn"><a href="javascript:void(0)">Close <span>X</span></a></div><div class="list-with-apps"><div class="apps-wrapper">';
 
                             var hubData = await dcnHub.dcnHubRequests.getHubData(params.type_hub);
-                            console.log(hubData, 'hubData');
                             if (hubData.success) {
                                 historyChildren.push(JSON.stringify(hubData.data));
                                 for (var i = 0, len = hubData.data.length; i < len; i+=1) {
@@ -320,7 +319,6 @@ if (typeof $ == 'undefined') {
 
                                         refreshedMiniHubHtml += '<a href="'+hrefHtml+'" target="_blank" class="dcn-min-hub-application"><figure itemtype="http://schema.org/ImageObject"><img src="//dentacoin.com/assets/uploads/'+children[i].media_name+'" itemprop="contentUrl" alt="'+children[i].alt+'"> <figcaption>'+children[i].title+'</figcaption></figure></a>';
                                     } else if (children[i].type == 'folder') {
-                                        console.log(children[i], 'children[i]');
                                         // ajax to take the children
                                         var hubChildren = await dcnHub.dcnHubRequests.getHubChildren(children[i].slug);
                                         if (hubChildren.success) {
@@ -367,9 +365,6 @@ if (typeof $ == 'undefined') {
                     function setHubPosition() {
                         var topToAppear = elementToBind.offset().top + elementToBind.outerHeight();
                         var leftToAppear = elementToBind.offset().left + elementToBind.outerWidth();
-
-                        console.log(topToAppear, 'topToAppear');
-                        console.log(leftToAppear, 'leftToAppear');
 
                         $('.dcn-hub-mini').offset({top: topToAppear + $('.dcn-hub-mini .up-arrow').outerHeight(), left: leftToAppear - $('.dcn-hub-mini').outerWidth() + ($('.dcn-hub-mini .up-arrow').outerWidth() / 2)});
                     }
