@@ -1452,6 +1452,8 @@ if (typeof jQuery == 'undefined') {
                                             var first_step_inputs = $('.dentacoin-login-gateway-container .dentist .form-register .step.first .form-field');
                                             var errors = false;
                                             $('.dentacoin-login-gateway-container .dentist .form-register .step.first').parent().find('.error-handle').remove();
+                                            $('#dentist-register-email').closest('.field-parent').find('.alert-success').remove();
+
                                             for(var i = 0, len = first_step_inputs.length; i < len; i+=1) {
                                                 if (first_step_inputs.eq(i).attr('type') == 'email' && !dcnGateway.utils.validateEmail(first_step_inputs.eq(i).val().trim())) {
                                                     dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), 'Please use valid email address.');
