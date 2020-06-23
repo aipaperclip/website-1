@@ -1466,9 +1466,7 @@ if (typeof jQuery == 'undefined') {
                                                     });
 
                                                     if (check_email_if_free_response.success) {
-                                                        dcnGateway.utils.customSuccessHandle($('#dentist-register-email').closest('.field-parent'), claim_email_response.message);
-                                                    } else {
-                                                        dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), check_email_if_free_response.errors.email);
+                                                        dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), check_email_if_free_response.message);
                                                         errors = true;
                                                     }
                                                 }
