@@ -1418,6 +1418,8 @@ if (typeof jQuery == 'undefined') {
                                 }
 
                                 $(document).on('click', '.step.first .register-claim', async function() {
+                                    $('#dentist-register-email').closest('.field-parent').find('.error-handle').remove();
+
                                     $(this).unbind();
                                     var claim_email_response = await dcnGateway.dcnGatewayRequests.claimEmail({
                                         email: $('#dentist-register-email').val().trim()
