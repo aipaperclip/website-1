@@ -1452,6 +1452,7 @@ if (typeof jQuery == 'undefined') {
                                             var first_step_inputs = $('.dentacoin-login-gateway-container .dentist .form-register .step.first .form-field');
                                             var errors = false;
                                             $('.dentacoin-login-gateway-container .dentist .form-register .step.first').parent().find('.error-handle').remove();
+                                            $('#dentist-register-email').closest('.field-parent').find('.alert-success').remove();
 
                                             for(var i = 0, len = first_step_inputs.length; i < len; i+=1) {
                                                 if (first_step_inputs.eq(i).attr('type') == 'email' && !dcnGateway.utils.validateEmail(first_step_inputs.eq(i).val().trim())) {
@@ -1464,7 +1465,9 @@ if (typeof jQuery == 'undefined') {
                                                         for_register: true
                                                     });
 
-                                                    if (check_email_if_free_response.success == false) {
+                                                    if (check_email_if_free_response.success) {
+                                                        dcnGateway.utils.customSuccessHandle($('#dentist-register-email').closest('.field-parent'), claim_email_response.message);
+                                                    } else {
                                                         dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), check_email_if_free_response.errors.email);
                                                         errors = true;
                                                     }
