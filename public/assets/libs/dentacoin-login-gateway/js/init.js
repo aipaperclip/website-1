@@ -1465,8 +1465,8 @@ if (typeof jQuery == 'undefined') {
                                                         for_register: true
                                                     });
 
-                                                    if (check_email_if_free_response.success) {
-                                                        dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), check_email_if_free_response.message);
+                                                    if (check_email_if_free_response.success == false) {
+                                                        dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), check_email_if_free_response.errors.email);
                                                         errors = true;
                                                     }
                                                 }
