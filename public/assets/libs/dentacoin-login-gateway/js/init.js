@@ -360,7 +360,12 @@ if (typeof jQuery == 'undefined') {
             },
             showPopup: function(message, type, callback, data) {
                 if (type == 'alert') {
-                    $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper dcn-gateway-popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button gateway-platform-background-color cancel-custom-popup">OK</button></div></div></div>');
+                    var buttonHtml = '<button class="platform-button gateway-platform-background-color cancel-custom-popup">OK</button>';
+                    if (hasOwnProperty.call(data, 'log_button')) {
+                        buttonHtml = '<button class="platform-button gateway-platform-background-color cancel-custom-popup open-dentacoin-gateway patient-login">LOG IN</button>';
+                    }
+
+                    $('body').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper dcn-gateway-popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons">'+buttonHtml+'</div></div></div>');
 
                     $('.cancel-custom-popup').click(function() {
                         $(this).closest('.dentacoin-login-gateway-container').remove();
@@ -1048,8 +1053,13 @@ if (typeof jQuery == 'undefined') {
                                         }
                                     }
 
+                                    var params = {};
+                                    if (event.response_data.log_button) {
+                                        params.log_button = true;
+                                    }
+
                                     dcnGateway.utils.hideLoader();
-                                    dcnGateway.utils.showPopup(error_popup_html, 'alert');
+                                    dcnGateway.utils.showPopup(error_popup_html, 'alert', null, params);
                                 });
 
                                 $(document).on('noExternalLoginProviderConnection', function (event) {
