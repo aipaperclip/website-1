@@ -81,7 +81,7 @@ if (typeof jQuery == 'undefined') {
                     return ajaxCall;
                 }
             },
-            checkIfFreeEmail: async function(email) {
+            checkIfFreeEmail: async function(data) {
                 if (fireAjax) {
                     fireAjax = false;
 
@@ -89,9 +89,22 @@ if (typeof jQuery == 'undefined') {
                         type: 'POST',
                         url: apiDomain + '/api/check-email',
                         dataType: 'json',
-                        data: {
-                            email: email
-                        }
+                        data: data
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }
+            },
+            claimEmail: async function(data) {
+                if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'POST',
+                        url: apiDomain + '/api/claim-email',
+                        dataType: 'json',
+                        data: data
                     });
 
                     fireAjax = true;
@@ -303,6 +316,9 @@ if (typeof jQuery == 'undefined') {
             },
             customErrorHandle: function(el, string) {
                 el.append('<div class="error-handle">'+string+'</div>');
+            },
+            customSuccessHandle: function(el, string) {
+                el.append('<div class="alert alert-success">'+string+'</div>');
             },
             fireGoogleAnalyticsEvent: function(category, action, label, value) {
                 var event_obj = {
@@ -734,6 +750,7 @@ if (typeof jQuery == 'undefined') {
                                     loadedSocialLibs = true;
                                 }
 
+                                // hide previous gateways on showing
                                 dcnGateway.utils.hideGateway(true);
 
                                 $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
@@ -1400,6 +1417,19 @@ if (typeof jQuery == 'undefined') {
                                     }
                                 }
 
+                                $(document).on('click', '.step.first .register-claim', async function() {
+                                    $(this).unbind();
+                                    var claim_email_response = await dcnGateway.dcnGatewayRequests.claimEmail({
+                                        email: $('#dentist-register-email').val().trim()
+                                    });
+
+                                    if (claim_email_response.success) {
+                                        dcnGateway.utils.customSuccessHandle($('#dentist-register-email').closest('.field-parent'), claim_email_response.message);
+                                    } else {
+                                        dcnGateway.utils.customErrorHandle($('#dentist-register-email').closest('.field-parent'), 'Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.');
+                                    }
+                                });
+
                                 //DENTIST REGISTERING FORM
                                 $('.dentacoin-login-gateway-container .dentist .form-register .next-step').click(async function() {
                                     var this_btn = $(this);
@@ -1415,7 +1445,11 @@ if (typeof jQuery == 'undefined') {
                                                     errors = true;
                                                 } else if (first_step_inputs.eq(i).attr('type') == 'email' && dcnGateway.utils.validateEmail(first_step_inputs.eq(i).val().trim())) {
                                                     //coredb check if email is free
-                                                    var check_email_if_free_response = await dcnGateway.dcnGatewayRequests.checkIfFreeEmail(first_step_inputs.eq(i).val().trim());
+                                                    var check_email_if_free_response = await dcnGateway.dcnGatewayRequests.checkIfFreeEmail({
+                                                        email: first_step_inputs.eq(i).val().trim(),
+                                                        for_register: true
+                                                    });
+
                                                     if (check_email_if_free_response.success == false) {
                                                         dcnGateway.utils.customErrorHandle(first_step_inputs.eq(i).closest('.field-parent'), check_email_if_free_response.errors.email);
                                                         errors = true;

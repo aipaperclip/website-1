@@ -911,7 +911,8 @@
     border: 1px solid #d6e9c6;
     border-radius: 4px;
     color: #3c763d;
-    background-color: #dff0d8; }
+    background-color: #dff0d8;
+    font-size: 14px; }
   .dentacoin-login-gateway-container .alert.alert-notice {
     margin-top: 5px;
     margin-bottom: 10px;
