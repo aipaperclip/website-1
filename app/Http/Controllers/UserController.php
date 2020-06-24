@@ -118,7 +118,7 @@ class UserController extends Controller {
         Log::info('dentistLogin response.', ['data' => json_encode($api_response)]);
 
         if ($api_response['success']) {
-            $approved_statuses = array('approved', 'pending', 'test');
+            $approved_statuses = array('approved', 'pending', 'test', 'added_by_clinic_claimed', 'added_by_dentist_claimed');
             if ($api_response['data']['self_deleted'] != NULL) {
                 return response()->json(['error' => true, 'message' => 'This account is deleted, you cannot log in with this account anymore.']);
             } else if (!in_array($api_response['data']['status'], $approved_statuses)) {
@@ -140,7 +140,7 @@ class UserController extends Controller {
 
             $user = (new APIRequestsController())->getUserData($slug);
             if ($user) {
-                $approved_statuses = array('approved', 'pending', 'test');
+                $approved_statuses = array('approved', 'pending', 'test', 'added_by_clinic_claimed', 'added_by_dentist_claimed');
                 if ($user->self_deleted != NULL) {
                     return abort(404);
                 } else if (!in_array($user->status, $approved_statuses)) {
@@ -214,7 +214,7 @@ class UserController extends Controller {
         Log::info('dentistLogin response.', ['data' => json_encode($api_response)]);
 
         if ($api_response['success']) {
-            $approved_statuses = array('approved', 'pending', 'test');
+            $approved_statuses = array('approved', 'pending', 'test', 'added_by_clinic_claimed', 'added_by_dentist_claimed');
             if ($api_response['data']['self_deleted'] != NULL) {
                 return response()->json(['error' => true, 'message' => 'This account has been deleted by its owner and cannot be restored.']);
             } else if (!in_array($api_response['data']['status'], $approved_statuses)) {
