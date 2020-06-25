@@ -79,7 +79,7 @@ $(document).ready(function($){
                 if (cc == undefined && $('#hidden-country-code').length) {
                     cc = $('#hidden-country-code').val();
                 }
-                
+
                 var options = {
                     componentRestrictions: {
                         country: cc
@@ -97,7 +97,13 @@ $(document).ready(function($){
                 $(this).blur( function(e) {
                     var suggester_container = $(this).closest('.address-suggester-wrapper');
                     var country_name = suggester_container.find('.country-select option:selected').text();
+                    if (country_name == undefined && $('#hidden-country-name').length) {
+                        country_name = $('#hidden-country-name').val();
+                    }
                     var country_code = suggester_container.find('.country-select option:selected').val();
+                    if (country_code == undefined && $('#hidden-country-code').length) {
+                        country_code = $('#hidden-country-code').val();
+                    }
 
                     var geocoder = new google.maps.Geocoder();
                     var address = $(this).val();
@@ -135,7 +141,13 @@ $(document).ready(function($){
             //address_components
             var gstring = suggester_container.find('.address-suggester').val();
             var country_name = suggester_container.find('.country-select option:selected').text();
+            if (country_name == undefined && $('#hidden-country-name').length) {
+                country_name = $('#hidden-country-name').val();
+            }
             var country_code_name = suggester_container.find('.country-select option:selected').val();
+            if (country_code_name == undefined && $('#hidden-country-code').length) {
+                country_code_name = $('#hidden-country-code').val();
+            }
 
             var address_country;
             for (var i in place.address_components) {
