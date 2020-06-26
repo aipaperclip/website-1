@@ -114,11 +114,6 @@ var basic = {
                 }
             }
         });
-
-        dialog.on('onEscape', function(){
-            console.log('closed');
-        });
-
         dialog.on('shown.bs.modal', function(){
             if(vertical_center != null) {
                 basic.verticalAlignModal();
