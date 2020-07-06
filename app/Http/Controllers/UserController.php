@@ -118,13 +118,15 @@ class UserController extends Controller {
         Log::info('dentistLogin response.', ['data' => json_encode($api_response)]);
 
         if ($api_response['success']) {
-            $approved_statuses = array('approved','test','added_by_clinic_claimed','added_by_dentist_claimed');
-            if (!in_array($api_response['data']['status'], $approved_statuses)) {
+            $approved_statuses = array('approved', 'test', 'added_by_clinic_claimed', 'added_by_dentist_claimed');
+            if ($api_response['data']['self_deleted'] != NULL) {
+                return response()->json(['error' => true, 'message' => 'This account is deleted, you cannot log in with this account anymore.']);
+            } else if (!in_array($api_response['data']['status'], $approved_statuses)) {
                 return response()->json(['error' => true, 'message' => 'This account is not approved by Dentacoin team yet, please try again later.']);
             } else {
                 if (array_key_exists('deleted', $api_response) && $api_response['deleted']) {
                     if (array_key_exists('appeal', $api_response) && $api_response['appeal']) {
-                        $redirect_to = 'https://account.dentacoin.com/blocked-account?platform=' . $data['platform'];
+                        $redirect_to = 'https://account.dentacoin.com/blocked-account-thank-you?platform=' . $data['platform'];
                     } else {
                         $redirect_to = 'https://account.dentacoin.com/blocked-account?platform=' . $data['platform'] . '&key=' . urlencode($this->encrypt($api_response['data']['id'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')));
                     }
