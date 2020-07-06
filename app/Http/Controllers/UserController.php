@@ -128,7 +128,7 @@ class UserController extends Controller {
                     } else {
                         $redirect_to = 'https://account.dentacoin.com/blocked-account?platform=' . $data['platform'] . '&token=' . urlencode($this->encrypt($api_response['token'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')));
                     }
-                    return response()->json(['success' => true, 'redirect_to' => $redirect_to]);
+                    return response()->json(['success' => true, 'redirect_to' => $redirect_to, 'token' => $api_response['token']]);
                 } else {
                     return response()->json(['success' => true]);
                 }
