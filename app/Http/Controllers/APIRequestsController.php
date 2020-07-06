@@ -154,64 +154,6 @@ class APIRequestsController extends Controller {
         }
     }
 
-    public function getAllClinicsByName($name = null) {
-        $post_fields_arr = array(
-            'type' => 'all-dentists',
-            'items_per_page' => 2000,
-            'status' => 'approved'
-        );
-
-        if(!empty($name)) {
-            $post_fields_arr['name'] = $name;
-        }
-
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/users/',
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_POSTFIELDS => $post_fields_arr
-        ));
-
-        $resp = json_decode(curl_exec($curl));
-        curl_close($curl);
-
-        if(!empty($resp))   {
-            return $resp->data;
-        }else {
-
-            return response()->json(['error' => 'API not working at this moment. Try again later.']);
-        }
-    }
-
-    public function getPatientsByEmail($email) {
-        $post_fields_arr = array(
-            'type' => 'dentist',
-            'email' => $email,
-            'is_approved' => true
-        );
-
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/users/',
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_POSTFIELDS => $post_fields_arr
-        ));
-
-        $resp = json_decode(curl_exec($curl));
-        curl_close($curl);
-
-        if(!empty($resp))   {
-            return $resp->data;
-        }else {
-
-            return response()->json(['error' => 'API not working at this moment. Try again later.']);
-        }
-    }
-
     public function getUserData($id, $fullResponse = false) {
         $curl = curl_init();
         curl_setopt_array($curl, array(
