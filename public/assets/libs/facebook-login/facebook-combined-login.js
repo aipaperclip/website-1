@@ -69,6 +69,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                         success: function(data) {
                             if (data.success) {
                                 if (data.deleted) {
+                                    console.log(data.data, 'data.data');
                                     if (data.appeal) {
                                         window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform'));
                                     } else {
