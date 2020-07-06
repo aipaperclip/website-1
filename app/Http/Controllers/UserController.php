@@ -119,12 +119,10 @@ class UserController extends Controller {
 
         if ($api_response['success']) {
             $approved_statuses = array('approved','test','added_by_clinic_claimed','added_by_dentist_claimed');
-            if ($api_response['data']['self_deleted'] != NULL) {
-                return response()->json(['error' => true, 'message' => 'This account is deleted, you cannot log in with this account anymore.']);
-            } else if (!in_array($api_response['data']['status'], $approved_statuses)) {
+            if (!in_array($api_response['data']['status'], $approved_statuses)) {
                 return response()->json(['error' => true, 'message' => 'This account is not approved by Dentacoin team yet, please try again later.']);
             } else {
-                return response()->json(['success' => true]);
+                return response()->json(['success' => true, 'data' => $api_response]);
             }
         } else {
             return response()->json(['error' => true, 'message' => 'Wrong email or password.']);

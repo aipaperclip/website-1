@@ -1109,11 +1109,11 @@ if (typeof jQuery == 'undefined') {
                                             //check if existing account
                                             var check_account_response = await dcnGateway.dcnGatewayRequests.checkDentistAccount($('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(), $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim(), params.platform);
 
-                                            if (check_account_response.success && check_account_response.deleted) {
-                                                if (check_account_response.appeal) {
+                                            if (check_account_response.success && check_account_response.data.deleted) {
+                                                if (check_account_response.data.appeal) {
                                                     window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + params.platform);
                                                 } else {
-                                                    window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + params.platform + '&token=' + encodeURIComponent(check_account_response.token));
+                                                    window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + params.platform + '&token=' + encodeURIComponent(check_account_response.data.token));
                                                 }
                                                 return false;
                                             }
