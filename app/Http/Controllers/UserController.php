@@ -124,7 +124,7 @@ class UserController extends Controller {
             } else {
                 if (array_key_exists('deleted', $api_response) && $api_response['deleted']) {
                     if (array_key_exists('appeal', $api_response) && $api_response['appeal']) {
-                        $redirect_to = 'blocked-account-thank-you?platform=' . $data['platform'];
+                        $redirect_to = 'https://account.dentacoin.com/blocked-account?platform=' . $data['platform'];
                     } else {
                         $redirect_to = 'https://account.dentacoin.com/blocked-account?platform=' . $data['platform'] . '&key=' . urlencode($this->encrypt($api_response['data']['id'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')));
                     }

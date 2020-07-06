@@ -1110,7 +1110,8 @@ if (typeof jQuery == 'undefined') {
                                             var check_account_response = await dcnGateway.dcnGatewayRequests.checkDentistAccount($('.dentacoin-login-gateway-container form#dentist-login input[name="email"]').val().trim(), $('.dentacoin-login-gateway-container form#dentist-login input[name="password"]').val().trim(), params.platform);
 
                                             if (check_account_response.success && check_account_response.redirect_to != undefined) {
-                                                window.location.replace(check_account_response.redirect_to);
+                                                console.log(check_account_response.redirect_to);
+                                                // window.location.replace(check_account_response.redirect_to);
                                                 return false;
                                             }
                                         }
