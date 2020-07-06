@@ -122,6 +122,8 @@ class UserController extends Controller {
             if (!in_array($api_response['data']['status'], $approved_statuses)) {
                 return response()->json(['error' => true, 'message' => 'This account is not approved by Dentacoin team yet, please try again later.']);
             } else {
+                var_dump($api_response);
+                die();
                 if ($api_response['deleted']) {
                     if ($api_response['appeal']) {
                         $redirect_to = 'blocked-account-thank-you?platform=' . $data['platform'];
