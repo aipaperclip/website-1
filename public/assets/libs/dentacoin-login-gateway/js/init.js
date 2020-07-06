@@ -1111,7 +1111,7 @@ if (typeof jQuery == 'undefined') {
 
                                             if (check_account_response.success && check_account_response.deleted) {
                                                 if (check_account_response.appeal) {
-                                                    window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + params.platform;
+                                                    window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + params.platform);
                                                 } else {
                                                     window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + params.platform + '&token=' + encodeURIComponent(check_account_response.token));
                                                 }
