@@ -122,7 +122,16 @@ class UserController extends Controller {
             if (!in_array($api_response['data']['status'], $approved_statuses)) {
                 return response()->json(['error' => true, 'message' => 'This account is not approved by Dentacoin team yet, please try again later.']);
             } else {
-                return response()->json(['success' => true, 'data' => $api_response]);
+                if ($api_response['deleted']) {
+                    if ($api_response['appeal']) {
+                        $redirect_to = 'blocked-account-thank-you?platform=' . $data['platform'];
+                    } else {
+                        $redirect_to = 'https://account.dentacoin.com/blocked-account?platform=' . $data['platform'] . '&token=' . urlencode($api_response['token']);
+                    }
+                    return response()->json(['success' => true, 'redirect_to' => $redirect_to]);
+                } else {
+                    return response()->json(['success' => true]);
+                }
             }
         } else {
             return response()->json(['error' => true, 'message' => 'Wrong email or password.']);
