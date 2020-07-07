@@ -68,13 +68,17 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                         data: register_data,
                         success: function(data) {
                             if (data.success) {
+                                console.log(data.data, 'data.data');
                                 if (data.deleted) {
-                                    if (data.appeal) {
-                                        window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform'));
-                                    } else {
-                                        window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
-                                    }
-                                    return false;
+                                    console.log(data.data, 'data.data');
+                                    setTimeout(function() {
+                                        if (data.appeal) {
+                                            window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform'));
+                                        } else {
+                                            window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
+                                        }
+                                        return false;
+                                    }, 10000);
                                 } else if (data.bad_ip) {
                                     if (data.appeal) {
                                         window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + this_btn.attr('data-platform'));
