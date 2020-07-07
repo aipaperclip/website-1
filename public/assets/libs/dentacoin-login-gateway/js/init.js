@@ -359,6 +359,8 @@ if (typeof jQuery == 'undefined') {
                 $('.dentacoin-login-gateway-response-layer').hide();
             },
             showPopup: function(message, type, callback, data) {
+                console.log(data, 'data');
+                console.log(typeof(data), 'data');
                 if (type == 'alert') {
                     var buttonHtml = '<button class="platform-button gateway-platform-background-color cancel-custom-popup">OK</button>';
                     if (data != undefined && hasOwnProperty.call(data, 'log_button')) {
