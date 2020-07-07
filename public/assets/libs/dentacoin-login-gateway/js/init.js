@@ -361,7 +361,7 @@ if (typeof jQuery == 'undefined') {
             showPopup: function(message, type, callback, data) {
                 if (type == 'alert') {
                     var buttonHtml = '<button class="platform-button gateway-platform-background-color cancel-custom-popup">OK</button>';
-                    if (hasOwnProperty.call(data, 'log_button')) {
+                    if (data != undefined && hasOwnProperty.call(data, 'log_button')) {
                         buttonHtml = '<button class="platform-button gateway-platform-background-color cancel-custom-popup open-dentacoin-gateway patient-login">LOG IN</button>';
                     }
 
