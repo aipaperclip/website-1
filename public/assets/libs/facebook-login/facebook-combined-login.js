@@ -68,35 +68,31 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                         data: register_data,
                         success: function(data) {
                             if (data.success) {
-                                console.log(data, 'data');
-
-                                setTimeout(function() {
-                                    if (data.deleted) {
-                                        if (data.appeal) {
-                                            window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform'));
-                                        } else {
-                                            window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
-                                        }
-                                        return false;
-                                    } else if (data.bad_ip) {
-                                        if (data.appeal) {
-                                            window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + this_btn.attr('data-platform'));
-                                        } else {
-                                            window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
-                                        }
-                                    } else if (data.new_account) {
-                                        customFacebookEvent('successfulFacebookPatientRegistration', '');
+                                if (data.deleted) {
+                                    if (data.appeal) {
+                                        window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform'));
                                     } else {
-                                        customFacebookEvent('successfulFacebookPatientLogin', '');
+                                        window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
                                     }
-
-                                    if (data.data.email == '' || data.data.email == null) {
-                                        customFacebookEvent('registeredAccountMissingEmail', '', data);
+                                    return false;
+                                } else if (data.bad_ip) {
+                                    if (data.appeal) {
+                                        window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + this_btn.attr('data-platform'));
                                     } else {
-                                        customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                                        window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
                                     }
-                                }, 10000);
+                                    return false;
+                                } else if (data.new_account) {
+                                    customFacebookEvent('successfulFacebookPatientRegistration', '');
+                                } else {
+                                    customFacebookEvent('successfulFacebookPatientLogin', '');
+                                }
 
+                                if (data.data.email == '' || data.data.email == null) {
+                                    customFacebookEvent('registeredAccountMissingEmail', '', data);
+                                } else {
+                                    customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                                }
                             } else if (!data.success) {
                                 customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data);
                             } else {
