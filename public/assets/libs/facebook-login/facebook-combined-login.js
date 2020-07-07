@@ -68,9 +68,8 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                         data: register_data,
                         success: function(data) {
                             if (data.success) {
-                                if (data.deleted) {
+                                /*if (data.deleted) {
                                     console.log(data.data, 'data.data');
-                                    console.log(data.data.encrypted_id, 'data.data.encrypted_id');
                                     setTimeout(function() {
                                         if (data.appeal) {
                                             window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform'));
@@ -85,7 +84,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                                     } else {
                                         window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
                                     }
-                                } else if (data.new_account) {
+                                } else*/ if (data.new_account) {
                                     customFacebookEvent('successfulFacebookPatientRegistration', '');
                                 } else {
                                     customFacebookEvent('successfulFacebookPatientLogin', '');
