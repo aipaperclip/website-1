@@ -87,7 +87,21 @@
                             data: register_data,
                             success: function(data) {
                                 if (data.success) {
-                                    if (data.new_account) {
+                                    if (data.deleted) {
+                                        if (data.appeal) {
+                                            window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform'));
+                                        } else {
+                                            window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
+                                        }
+                                        return false;
+                                    } else if (data.bad_ip) {
+                                        if (data.appeal) {
+                                            window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + this_btn.attr('data-platform'));
+                                        } else {
+                                            window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
+                                        }
+                                        return false;
+                                    } else if (data.new_account) {
                                         customFacebookEvent('successfulCivicPatientRegistration', '');
                                     } else {
                                         customFacebookEvent('successfulCivicPatientLogin', '');
