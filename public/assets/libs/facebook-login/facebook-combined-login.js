@@ -68,7 +68,9 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                         data: register_data,
                         success: function(data) {
                             if (data.success) {
-                                /*if (data.deleted) {
+                                console.log(data.data, 'data.data');
+                                console.log(data.data.encrypted_id, 'data.data');
+                                if (data.deleted) {
                                     console.log(data.data, 'data.data');
                                     setTimeout(function() {
                                         if (data.appeal) {
@@ -84,7 +86,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                                     } else {
                                         window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
                                     }
-                                } else*/ if (data.new_account) {
+                                } else if (data.new_account) {
                                     customFacebookEvent('successfulFacebookPatientRegistration', '');
                                 } else {
                                     customFacebookEvent('successfulFacebookPatientLogin', '');
