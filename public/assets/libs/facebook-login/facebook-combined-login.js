@@ -68,7 +68,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                         data: register_data,
                         success: function(data) {
                             if (data.success) {
-                                console.log(data.data, 'data.data');
+                                console.log(data, 'data');
 
                                 setTimeout(function() {
                                     if (data.deleted) {
