@@ -94,7 +94,7 @@
                                             window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
                                         }
                                         return false;
-                                    } else if (data.bad_ip) {
+                                    } else if (data.bad_ip || data.suspicious_admin) {
                                         if (data.appeal) {
                                             window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + this_btn.attr('data-platform'));
                                         } else {
