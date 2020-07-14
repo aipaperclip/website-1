@@ -216,7 +216,7 @@ var basic = {
     },
     getGETParameters: function() {
         var prmstr = window.location.search.substr(1);
-        return prmstr != null && prmstr != "" ? projectData.utils.transformToAssocArray(prmstr) : {};
+        return prmstr != null && prmstr != "" ? basic.transformToAssocArray(prmstr) : {};
     },
     transformToAssocArray: function(prmstr) {
         var params = {};
