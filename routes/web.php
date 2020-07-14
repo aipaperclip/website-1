@@ -61,7 +61,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/testimonials/page/{page}', 'UserExpressionsController@getView')->name('testimonials');
 
-    Route::get('/info/{slug}', 'Controller@handleApiEndpoints')->name('api-endpoints');
+    Route::any('/info/{slug}', 'Controller@handleApiEndpoints')->name('api-endpoints');
 
     Route::get('/partner-network', 'PartnerNetworkController@getView')->name('partner-network');
 

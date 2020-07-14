@@ -282,6 +282,23 @@ class Controller extends BaseController
     protected function handleApiEndpoints($slug)
     {
         switch ($slug) {
+            case 'get-clinics-for-wallet':
+                var_dump(request()->headers->get('referer'));
+                die();
+                /*$clinics = (new \App\Http\Controllers\APIRequestsController())->getAllClinicsByName(array(
+                    'status' => 'approved',
+                    'is_partner' => true,
+                    'type' => 'all-dentists',
+                    'items_per_page' => 10000
+                ));
+
+                if (!empty($clinics) && is_object($clinics) && property_exists($clinics, 'success') && $clinics->success) {
+                    return json_encode(array('success' => $clinics));
+                } else {
+                    return json_encode(array('error' => true));
+                }*/
+
+                break;
             case 'socials-data':
                 $socials = DB::connection('mysql')->table('socials')->leftJoin('media', 'socials.media_id', '=', 'media.id')->select('socials.*', 'media.name as media_name', 'media.alt as media_alt')->orderByRaw('socials.order_id ASC')->get()->toArray();
                 foreach ($socials as $social) {
