@@ -294,7 +294,7 @@ class Controller extends BaseController
                     ));
 
                     if (!empty($clinics) && is_object($clinics) && property_exists($clinics, 'success') && $clinics->success) {
-                        return $clinics;
+                        return json_encode($clinics);
                     } else {
                         return json_encode(array('error' => true));
                     }
