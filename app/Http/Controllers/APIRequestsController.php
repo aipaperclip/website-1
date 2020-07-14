@@ -471,17 +471,13 @@ class APIRequestsController extends Controller {
         }
     }
 
-    public function getAllClinicsByName($post_fields_arr) {
-
+    public function getAllPartners() {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/users/',
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_POSTFIELDS => array(
-                'users_details' => (new \App\Http\Controllers\Controller())->encrypt(json_encode($post_fields_arr) , getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
-            )
+            CURLOPT_URL => 'https://api.dentacoin.com/api/get-partners',
+            CURLOPT_SSL_VERIFYPEER => 0
         ));
 
         $resp = json_decode(curl_exec($curl));
