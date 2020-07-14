@@ -279,11 +279,15 @@ class Controller extends BaseController
         return response()->json(['captcha' => captcha_img()]);
     }
 
-    protected function handleApiEndpoints($slug)
+    protected function handleApiEndpoints($slug, Request $request)
     {
         switch ($slug) {
             case 'get-clinics-for-wallet':
                 $referer = request()->headers->get('referer');
+
+                var_dump($referer);
+                var_dump($this->getClientIp());
+                var_dump($this->getClientIp());
                 if (!empty($referer)) {
                     if (strpos($referer, 'wallet.dentacoin.com') !== false) {
                         $clinics = (new \App\Http\Controllers\APIRequestsController())->getAllClinicsByName(array(
