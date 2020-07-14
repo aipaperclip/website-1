@@ -76,10 +76,17 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
                                     }
                                     return false;
                                 } else if (data.bad_ip || data.suspicious_admin) {
+                                    var on_hold_type = '';
+                                    if (data.bad_ip) {
+                                        on_hold_type = '&on-hold-type=bad_ip';
+                                    } else if (data.suspicious_admin) {
+                                        on_hold_type = '&on-hold-type=suspicious_admin';
+                                    }
+
                                     if (data.appeal) {
                                         window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + this_btn.attr('data-platform'));
                                     } else {
-                                        window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
+                                        window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type);
                                     }
                                     return false;
                                 } else if (data.new_account) {
