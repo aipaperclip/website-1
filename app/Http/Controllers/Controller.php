@@ -299,6 +299,8 @@ class Controller extends BaseController
                         } else {
                             return json_encode(array('error' => true));
                         }
+                    } else {
+                        return abort(404);
                     }
                 // }
 
