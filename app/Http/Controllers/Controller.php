@@ -279,24 +279,26 @@ class Controller extends BaseController
         return response()->json(['captcha' => captcha_img()]);
     }
 
-    protected function handleApiEndpoints($slug, Request $request)
+    protected function handleApiEndpoints($slug)
     {
         switch ($slug) {
             case 'get-clinics-for-wallet':
                 // $referer = request()->headers->get('referer');
 
                 // if (strpos($referer, 'wallet.dentacoin.com') !== false) {
-                    $clinics = (new \App\Http\Controllers\APIRequestsController())->getAllClinicsByName(array(
-                        'status' => 'approved',
-                        'is_partner' => true,
-                        'type' => 'all-dentists',
-                        'items_per_page' => 10000
-                    ));
+                    if (Request::isMethod('post')) {
+                        $clinics = (new \App\Http\Controllers\APIRequestsController())->getAllClinicsByName(array(
+                            'status' => 'approved',
+                            'is_partner' => true,
+                            'type' => 'all-dentists',
+                            'items_per_page' => 10000
+                        ));
 
-                    if (!empty($clinics) && is_object($clinics) && property_exists($clinics, 'success') && $clinics->success) {
-                        return json_encode($clinics);
-                    } else {
-                        return json_encode(array('error' => true));
+                        if (!empty($clinics) && is_object($clinics) && property_exists($clinics, 'success') && $clinics->success) {
+                            return json_encode($clinics);
+                        } else {
+                            return json_encode(array('error' => true));
+                        }
                     }
                 // }
 
