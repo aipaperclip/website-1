@@ -287,7 +287,7 @@ class Controller extends BaseController
 
                 var_dump($referer);
                 var_dump($this->getClientIp());
-                var_dump($request->ip());
+                var_dump(Request::ip());
                 die();
                 if (!empty($referer)) {
                     if (strpos($referer, 'wallet.dentacoin.com') !== false) {
