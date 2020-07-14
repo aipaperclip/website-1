@@ -285,7 +285,7 @@ class Controller extends BaseController
             case 'get-clinics-for-wallet':
                 // $referer = request()->headers->get('referer');
 
-                if (strpos($referer, 'wallet.dentacoin.com') !== false) {
+                // if (strpos($referer, 'wallet.dentacoin.com') !== false) {
                     $clinics = (new \App\Http\Controllers\APIRequestsController())->getAllClinicsByName(array(
                         'status' => 'approved',
                         'is_partner' => true,
@@ -294,11 +294,11 @@ class Controller extends BaseController
                     ));
 
                     if (!empty($clinics) && is_object($clinics) && property_exists($clinics, 'success') && $clinics->success) {
-                        return json_encode($clinics);
+                        return $clinics;
                     } else {
                         return json_encode(array('error' => true));
                     }
-                }
+                // }
 
                 break;
             case 'socials-data':
