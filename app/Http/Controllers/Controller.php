@@ -287,7 +287,8 @@ class Controller extends BaseController
 
                 var_dump($referer);
                 var_dump($this->getClientIp());
-                var_dump($this->getClientIp());
+                var_dump($request->ip());
+                die();
                 if (!empty($referer)) {
                     if (strpos($referer, 'wallet.dentacoin.com') !== false) {
                         $clinics = (new \App\Http\Controllers\APIRequestsController())->getAllClinicsByName(array(
