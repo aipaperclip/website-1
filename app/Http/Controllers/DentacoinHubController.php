@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class DentacoinHubController extends Controller
 {
-    protected function getBigHubHtml($hubType) {
+    protected function getBigHubHtml($hubType, Request $request) {
         $hubElements = DB::table('dcn_hubs')
             ->leftJoin('dcn_hub_dcn_hub_element', 'dcn_hubs.id', '=', 'dcn_hub_dcn_hub_element.dcn_hub_id')
             ->leftJoin('dentacoin_hub_elements', 'dcn_hub_dcn_hub_element.dcn_hub_element_id', '=', 'dentacoin_hub_elements.id')
@@ -30,6 +30,13 @@ class DentacoinHubController extends Controller
         }
 
         $params = ['hubElements' => $hubElements, 'hubType' => $hubType];
+
+        $hubTitleParam = $request->input('hubTitleParam');
+        if (empty($hubTitleParam)) {
+            $hubTitleParam = 'DENTACOIN ECOSYSTEM';
+        }
+
+        $params['hubTitleParam'] = $hubTitleParam;
 
         $curl = curl_init();
         curl_setopt_array($curl, array(

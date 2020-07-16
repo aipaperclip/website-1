@@ -51,15 +51,21 @@ if (typeof $ == 'undefined') {
                     return ajaxCall;
                 }
             },
-            getBigHubHtml: async function(hubType) {
+            getBigHubHtml: async function(hubType, ajaxData) {
                 if (fireBigHubAjax) {
                     fireBigHubAjax = false;
 
-                    var ajaxCall = await $.ajax({
+                    var ajaxParams = {
                         type: 'POST',
                         url: 'https://dentacoin.com/combined-hub/get-big-hub-html/'+hubType,
                         dataType: 'json'
-                    });
+                    };
+
+                    if (ajaxData != undefined || Object.keys(ajaxData).length > 0) {
+                        ajaxParams.data = ajaxData;
+                    }
+
+                    var ajaxCall = await $.ajax(ajaxParams);
 
                     fireBigHubAjax = true;
                     return ajaxCall;
@@ -73,7 +79,12 @@ if (typeof $ == 'undefined') {
             } else {
                 var elementToAppend = $('#' + params.element_id_to_append);
                 if (elementToAppend.length) {
-                    var getBigHubHtml = await dcnHub.dcnHubRequests.getBigHubHtml(params.type_hub);
+                    var bigHubParams = {};
+                    if (hasOwnProperty.call(params, 'hub_title')) {
+                        bigHubParams.hubTitleParam = params.hub_title;
+                    }
+
+                    var getBigHubHtml = await dcnHub.dcnHubRequests.getBigHubHtml(params.type_hub, bigHubParams);
 
                     if (getBigHubHtml.success) {
                         elementToAppend.html(getBigHubHtml.data);

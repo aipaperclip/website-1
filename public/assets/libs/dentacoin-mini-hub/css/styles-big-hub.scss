@@ -170,6 +170,7 @@
             width: 100%;
             max-width: 130px;
             margin: 0 auto;
+            display: none;
         }
         .title {
             font-size: 28px;
@@ -177,6 +178,7 @@
             padding-top: 15px;
             padding-bottom: 15px;
             text-align: center;
+            display: none;
         }
         .video-content {
             text-align: center;
@@ -351,6 +353,12 @@
             width: 100%;
             position: relative;
             .close-application {
+                display: block;
+            }
+            .logo {
+                display: block;
+            }
+            .title {
                 display: block;
             }
         }

@@ -1,7 +1,7 @@
 <div class="dcn-big-hub">
     <div class="app-list @if (!empty($hubType)) @if ($hubType == 'dentists') dark-blue-background @else light-blue-background @endif @endif">
         <div>
-            <h3 class="rotated-text">DENTACOIN ECOSYSTEM</h3>
+            <h3 class="rotated-text">{{$hubTitleParam}}</h3>
         </div>
         <div class="list-wrapper">
             @foreach ($hubElements as $hubElement)

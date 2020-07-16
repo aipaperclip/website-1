@@ -1675,27 +1675,6 @@ if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body
             });
         }
     }
-} else if ($('body').hasClass('test-big-hub')) {
-    var bigHubParams = {
-        'element_id_to_append' : 'append-big-hub',
-        'type_hub' : 'dentacoin'
-    };
-
-    dcnHub.initBigHub(bigHubParams);
-} else if ($('body').hasClass('test-big-hub-dentists')) {
-    var bigHubParams = {
-        'element_id_to_append' : 'append-big-hub',
-        'type_hub' : 'dentists'
-    };
-
-    dcnHub.initBigHub(bigHubParams);
-} else if ($('body').hasClass('test-big-hub-ids')) {
-    var bigHubParams = {
-        'element_id_to_append' : 'append-big-hub',
-        'type_hub' : 'ids'
-    };
-
-    dcnHub.initBigHub(bigHubParams);
 }
 
 function drawHeaderToFirstSectionLine() {

@@ -136,13 +136,15 @@
     .dcn-big-hub .info-section .logo {
       width: 100%;
       max-width: 130px;
-      margin: 0 auto; }
+      margin: 0 auto;
+      display: none; }
     .dcn-big-hub .info-section .title {
       font-size: 28px;
       font-weight: bold;
       padding-top: 15px;
       padding-bottom: 15px;
-      text-align: center; }
+      text-align: center;
+      display: none; }
     .dcn-big-hub .info-section .video-content {
       text-align: center; }
       .dcn-big-hub .info-section .video-content iframe {
@@ -271,6 +273,10 @@
       width: 100%;
       position: relative; }
       .dcn-big-hub .info-section .close-application {
+        display: block; }
+      .dcn-big-hub .info-section .logo {
+        display: block; }
+      .dcn-big-hub .info-section .title {
         display: block; } }
 
 /*# sourceMappingURL=styles-big-hub.css.map */

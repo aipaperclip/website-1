@@ -17,42 +17,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/test-big-hub', function() {
-        return view('test-big-hub');
-    })->name('test-big-hub');
-
-    Route::get('/test-big-hub-dentists', function() {
-        return view('test-big-hub-dentists');
-    })->name('test-big-hub-dentists');
-
-    Route::get('/test-big-hub-ids', function() {
-        return view('test-big-hub-ids');
-    })->name('test-big-hub-ids');
-
-    /*Route::get('/test', function() {
-        $curl = curl_init();
-
-        $json = json_encode(array('parameters' => array(array('order_id' => 69, 'sender' => '0x00e550573f4c2b75577f777cdc1e8fca6f379aad', 'dcn' => '3186977')), 'receiver' => '0xa47943e1c8f05e4b12c8a78702743ffd49d070fc'));
-
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://methods.dentacoin.com/check-for-dcn-transfer',
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_POSTFIELDS => $json
-        ));
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array(    //<--- Added this code block
-                'Content-Type: application/json',
-                'Content-Length: ' . mb_strlen($json))
-        );
-
-        $resp = json_decode(curl_exec($curl));
-        curl_close($curl);
-
-        var_dump($resp);
-        die('asd');
-    })->name('test');*/
-
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
