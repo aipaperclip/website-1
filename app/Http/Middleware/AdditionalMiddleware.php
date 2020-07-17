@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
 
 class AdditionalMiddleware
 {
@@ -24,7 +25,11 @@ class AdditionalMiddleware
         $response = $next($request);
         $response->headers->set('Referrer-Policy', 'no-referrer');
         $response->headers->set('X-XSS-Protection', '1; mode=block');
-        //$response->headers->set('X-Frame-Options', 'DENY');
+
+        $route = Route::getRoutes()->match($request);
+        if ($route->getName() != 'google-map-iframe') {
+            $response->headers->set('X-Frame-Options', 'DENY');
+        }
 
         return (new App\Http\Controllers\Controller())->minifyHtml($response);
     }

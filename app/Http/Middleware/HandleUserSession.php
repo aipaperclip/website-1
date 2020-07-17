@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Controllers\APIRequestsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Redirect;
 use Closure;
 
 class HandleUserSession
@@ -22,6 +24,16 @@ class HandleUserSession
             //NOT LOGGED AND NOT TRYING TO LOG IN
             return (new HomeController())->redirectToHome();
         }
+
+        if($user_controller->checkSession()) {
+            $validateAccessTokenResponse = (new APIRequestsController())->validateAccessToken();
+            if (!empty($validateAccessTokenResponse) && is_object($validateAccessTokenResponse) && property_exists($validateAccessTokenResponse, 'success') && !$validateAccessTokenResponse->success) {
+                $request->session()->forget('logged_user');
+
+                return Redirect::to(BASE_URL . '?show-login=true');
+            }
+        }
+
         return $next($request);
     }
 }
