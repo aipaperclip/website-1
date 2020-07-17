@@ -25,15 +25,6 @@ class HandleUserSession
             return (new HomeController())->redirectToHome();
         }
 
-        if($user_controller->checkSession()) {
-            $validateAccessTokenResponse = (new APIRequestsController())->validateAccessToken();
-            if (!empty($validateAccessTokenResponse) && is_object($validateAccessTokenResponse) && property_exists($validateAccessTokenResponse, 'success') && !$validateAccessTokenResponse->success) {
-                $request->session()->forget('logged_user');
-
-                return Redirect::to(BASE_URL . '?show-login=true');
-            }
-        }
-
         return $next($request);
     }
 }
