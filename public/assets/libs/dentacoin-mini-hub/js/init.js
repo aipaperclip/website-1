@@ -257,12 +257,16 @@ if (typeof $ == 'undefined') {
                             var platformMenu = '';
                             var platform_home_link = '';
                             if (params.platform == 'dentists') {
-                                platform_home_link = '//dentists.dentacoin.com/home';
-                                var dentistsMenu = await dcnHub.dcnHubRequests.getPlatformMenu('dentists');
-                                if (dentistsMenu.success) {
-                                    platformMenu = dentistsMenu.data;
+                                if (hasOwnProperty.call(params, 'type_logged_in') && params.type_logged_in == 'patient') {
+                                    platform_home_link = '//dentacoin.com/foundation';
+                                } else {
+                                    platform_home_link = '//dentists.dentacoin.com/home';
+                                    var dentistsMenu = await dcnHub.dcnHubRequests.getPlatformMenu('dentists');
+                                    if (dentistsMenu.success) {
+                                        platformMenu = dentistsMenu.data;
+                                    }
                                 }
-                            } else if (params.platform == 'dentacoin'){
+                            } else if (params.platform == 'dentacoin') {
                                 platform_home_link = '//dentacoin.com/foundation';
                             }
                             
