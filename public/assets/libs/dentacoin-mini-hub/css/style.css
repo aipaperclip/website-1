@@ -81,7 +81,8 @@
             padding-bottom: 15px;
             padding-top: 5px; }
           .dcn-hub-mini .hidden-box .hidden-box-hub .list-with-apps .dcn-min-hub-application.folder .hub-folder {
-            max-width: 100%;
+            max-width: 75%;
+            margin: 0 auto;
             background-color: rgba(0, 0, 0, 0.5);
             position: relative;
             -webkit-border-radius: 10px;
