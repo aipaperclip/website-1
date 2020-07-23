@@ -89,9 +89,9 @@
                                 if (data.success) {
                                     if (data.deleted) {
                                         if (data.appeal) {
-                                            window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform'));
+                                            window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + civic_custom_btn.attr('data-platform'));
                                         } else {
-                                            window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
+                                            window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + civic_custom_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
                                         }
                                         return false;
                                     } else if (data.bad_ip || data.suspicious_admin) {
@@ -103,9 +103,9 @@
                                         }
 
                                         if (data.appeal) {
-                                            window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + this_btn.attr('data-platform'));
+                                            window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + civic_custom_btn.attr('data-platform'));
                                         } else {
-                                            window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type);
+                                            window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + civic_custom_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type);
                                         }
                                         return false;
                                     } else if (data.new_account) {
