@@ -106,7 +106,7 @@ class DentacoinHubController extends Controller
                 $menu = DB::connection('mysql4')->table('menus')
                     ->leftJoin('menu_elements', 'menus.id', '=', 'menu_elements.menu_id')
                     ->select('menu_elements.*')
-                    ->where(array('menus.slug' => 'header'))->get()->toArray();
+                    ->where(array('menus.slug' => 'header'))->get()->sortBy('order_id')->toArray();
 
                 if (!empty($menu)) {
                     $html = '<div class="hub-page-menu"><ul itemscope="" itemtype="http://schema.org/SiteNavigationElement">';
