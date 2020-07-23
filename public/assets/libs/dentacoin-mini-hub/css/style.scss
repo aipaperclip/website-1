@@ -7,7 +7,7 @@
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -o-transition: .3s;
-    -ms-transition: .3s; 
+    -ms-transition: .3s;
     transition: .3s;
     &.custom-show {
         display: block;
@@ -26,7 +26,7 @@
     .hidden-box {
         position: absolute;
         min-width: 270px;
-        width: 490px;
+        width: 520px;
         top: 100%;
         right: 0;
         background-color: white;
@@ -46,7 +46,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
-            padding: 30px 50px 15px;
+            padding: 30px 20px 15px;
             text-align: left;
             .dcn-hub-mini-close-btn {
                 display: none;
@@ -76,18 +76,19 @@
                     display: inline-block;
                     vertical-align: top;
                     width: 25%;
-                    padding-left: 10px;
-                    padding-right: 10px;
+                    padding-left: 5px;
+                    padding-right: 5px;  
                     text-align: center;
                     opacity: 0;
                     figure {
                         img {
-                            max-width: 100%;
+                            max-width: 75%;
                         }
                         figcaption {
                             color: white;
                             font-size: 14px;
                             padding-bottom: 15px;
+                            padding-top: 5px;
                         }
                     }
                     &.folder {
