@@ -316,7 +316,7 @@
             padding-bottom: 200px;
             background-color: transparent;
             .hidden-box-hub {
-                padding: 10px 15px 15px;
+                padding: 10px 0 15px;
                 .dcn-hub-mini-close-btn {
                     display: block;
                 }
@@ -326,11 +326,11 @@
                     .dcn-min-hub-application {
                         width: 33.33333333%;
                         figcaption {
-                            font-size: 20px;
-                        }
+                            font-size: 18px;
+                        }  
                         &.folder {
                             .folder-title {
-                                font-size: 20px;
+                                font-size: 18px;
                             }
                         }
                         &.go-back {
