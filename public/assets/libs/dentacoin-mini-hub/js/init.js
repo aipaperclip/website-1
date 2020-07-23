@@ -411,6 +411,10 @@ if (typeof $ == 'undefined') {
                             selector.addClass('dcn-min-hub-fade-in-animation');
                         }, animationSeconds);
                     }
+
+                    $(document).on('setHubPosition', async function (event) {
+                        setHubPosition();
+                    });
                 } else {
                     console.error('False element to bind passed to Dentacoin hub.');
                     return false;

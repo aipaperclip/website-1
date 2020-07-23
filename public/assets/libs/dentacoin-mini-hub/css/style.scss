@@ -4,6 +4,11 @@
 
 .dcn-hub-mini {
     display: none;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    -ms-transition: .3s; 
+    transition: .3s;
     &.custom-show {
         display: block;
     }

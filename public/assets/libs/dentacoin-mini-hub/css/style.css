@@ -2,7 +2,12 @@
   overflow: hidden !important; }
 
 .dcn-hub-mini {
-  display: none; }
+  display: none;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+  -ms-transition: .3s;
+  transition: .3s; }
   .dcn-hub-mini.custom-show {
     display: block; }
   .dcn-hub-mini .up-arrow {
