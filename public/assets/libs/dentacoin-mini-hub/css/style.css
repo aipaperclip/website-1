@@ -241,7 +241,8 @@
       .dcn-hub-mini.with-apps .hidden-box .hidden-box-hub {
         padding: 10px 0 15px; }
         .dcn-hub-mini.with-apps .hidden-box .hidden-box-hub .dcn-hub-mini-close-btn {
-          display: block; }
+          display: block;
+          padding-right: 20px; }
         .dcn-hub-mini.with-apps .hidden-box .hidden-box-hub .list-with-apps {
           max-width: 500px;
           margin: 0 auto; }

@@ -319,6 +319,7 @@
                 padding: 10px 0 15px;
                 .dcn-hub-mini-close-btn {
                     display: block;
+                    padding-right: 20px;  
                 }
                 .list-with-apps {
                     max-width: 500px;
@@ -327,7 +328,7 @@
                         width: 33.33333333%;
                         figcaption {
                             font-size: 18px;
-                        }  
+                        }
                         &.folder {
                             .folder-title {
                                 font-size: 18px;
