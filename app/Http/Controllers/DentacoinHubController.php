@@ -120,7 +120,11 @@ class DentacoinHubController extends Controller
                         if (strpos($menu_element->class_attribute, 'scrolling-to-section') !== false) {
                             $directTo = ' href="//dentists.dentacoin.com/home#'.$menu_element->id_attribute.'" ';
                         } else {
-                            $directTo = ' href="//dentists.dentacoin.com'.$menu_element->url.'" ';
+                            if (!empty($menu_element->id_attribute) && $menu_element->id_attribute == 'homepage') {
+                                $directTo = ' href="//dentists.dentacoin.com/home" ';
+                            } else {
+                                $directTo = ' href="//dentists.dentacoin.com'.$menu_element->url.'" ';
+                            }
                         }
 
                         if ($menu_element->new_window) {
