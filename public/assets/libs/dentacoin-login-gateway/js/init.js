@@ -933,7 +933,12 @@ if (typeof jQuery == 'undefined') {
                                 });
 
                                 $(document).on('patientProceedWithCreatingSession', async function (event) {
-                                    var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(currentPlatformDomain + 'authenticate-user', {
+                                    var ajaxLink = currentPlatformDomain + 'authenticate-user';
+                                    if (hasOwnProperty.call(params, 'subplatform')) {
+                                        ajaxLink = params.subplatform + 'authenticate-user';
+                                    }
+
+                                    var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
                                         token: event.response_data.token,
                                         id: event.response_data.data.id,
                                         type: 'patient'
@@ -975,7 +980,12 @@ if (typeof jQuery == 'undefined') {
                                 });
 
                                 $(document).on('dentistProceedWithCreatingSession', async function (event) {
-                                    var createDentistSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(currentPlatformDomain + 'authenticate-user', {
+                                    var ajaxLink = currentPlatformDomain + 'authenticate-user';
+                                    if (hasOwnProperty.call(params, 'subplatform')) {
+                                        ajaxLink = params.subplatform + 'authenticate-user';
+                                    }
+
+                                    var createDentistSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
                                         token: event.response_data.token,
                                         id: event.response_data.data.id,
                                         type: 'dentist'
