@@ -321,20 +321,24 @@ if (typeof jQuery == 'undefined') {
                 el.append('<div class="alert alert-success">'+string+'</div>');
             },
             fireGoogleAnalyticsEvent: function(category, action, label, value) {
-                var event_obj = {
-                    'event_category': category,
-                    'event_action' : action,
-                    'event_label': label
-                };
+                if (typeof(gtag) != 'undefined') {
+                    var event_obj = {
+                        'event_category': category,
+                        'event_action' : action,
+                        'event_label': label
+                    };
 
-                if (value != undefined) {
-                    event_obj.value = value;
+                    if (value != undefined) {
+                        event_obj.value = value;
+                    }
+
+                    gtag('event', label, event_obj);
                 }
-
-                gtag('event', label, event_obj);
             },
             fireFacebookPixelEvent: function(label) {
-                fbq('track', label);
+                if (typeof(fbq) != 'undefined') {
+                    fbq('track', label);
+                }
             },
             validateUrl: function(url)   {
                 var pattern = new RegExp(/*'^(https?:\\/\\/)?' +*/ // protocol
