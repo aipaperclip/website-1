@@ -434,7 +434,6 @@ class UserController extends Controller {
         $logData = $request->input();
         // removing token from logs
         unset($logData['token']);
-        Log::info('authenticateUser request.', ['data' => json_encode($logData)]);
 
         $this->validate($request, [
             'token' => 'required',
@@ -447,7 +446,6 @@ class UserController extends Controller {
         ]);
 
         $checkToken = (new APIRequestsController())->checkUserIdAndToken($request->input('id'), $request->input('token'));
-        Log::info('checkUserIdAndToken response.', ['data' => json_encode($checkToken)]);
         if(is_object($checkToken) && property_exists($checkToken, 'success') && $checkToken->success) {
             $session_arr = [
                 'token' => $request->input('token'),
