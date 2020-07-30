@@ -439,13 +439,10 @@ if (typeof $ == 'undefined') {
 
                     function hideHubIfClickedOutside(event) {
                         console.log('hideHubIfClickedOutside');
-                        if (!add_overflow_hidden_on_hidden_box_show) {
-                            console.log(add_overflow_hidden_on_hidden_box_show, 'add_overflow_hidden_on_hidden_box_show');
                             console.log(!$(event.target).closest('#dcn-hub-mini').length, '!$(event.target).closest(\'#dcn-hub-mini\').length');
                             if (!$(event.target).closest('#dcn-hub-mini').length && !$(event.target).hasClass('dcn-hub-mini-go-back-image')) {
                                 $('.dcn-hub-mini').removeClass('custom-show');
                             }
-                        }
                     }
                     
                     $(document).on('click', '.dcn-hub-mini-close-btn', function() {
