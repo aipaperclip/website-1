@@ -186,6 +186,17 @@
             -webkit-transform: translateY(-50%);
             -ms-transform: translateY(-50%);
             transform: translateY(-50%); }
+          @media screen and (max-width: 768px) {
+            .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hidden-box-wrapper .home-btn {
+              margin: 0 auto;
+              display: block; }
+              .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hidden-box-wrapper .home-btn img {
+                position: static;
+                -webkit-transform: none;
+                -moz-transform: none;
+                -ms-transform: none;
+                -o-transform: none;
+                transform: none; } }
         .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hidden-box-wrapper .logout-btn-parent {
           width: 110px; }
         .dcn-hub-mini.without-apps .hidden-box .hidden-box-footer .hidden-box-wrapper .my-account-btn-parent {

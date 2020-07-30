@@ -230,6 +230,18 @@
                             -ms-transform: translateY(-50%);
                             transform: translateY(-50%);
                         }
+                        @media screen and (max-width: 768px) {
+                            margin: 0 auto;
+                            display: block;
+                            img {
+                                position: static;
+                                -webkit-transform: none;
+                                -moz-transform: none;
+                                -ms-transform: none;
+                                -o-transform: none;   
+                                transform: none;
+                            }
+                        }
                     }
                     .logout-btn-parent {
                         width: 110px;
