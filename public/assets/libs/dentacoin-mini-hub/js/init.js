@@ -438,7 +438,7 @@ if (typeof $ == 'undefined') {
                     }
 
                     function hideHubIfClickedOutside(event) {
-                        console.log('hideHubIfClickedOutside');
+                        console.log(event.target, 'hideHubIfClickedOutside');
                             console.log(!$(event.target).closest('#dcn-hub-mini').length, '!$(event.target).closest(\'#dcn-hub-mini\').length');
                             if (!$(event.target).closest('#dcn-hub-mini').length && !$(event.target).hasClass('dcn-hub-mini-go-back-image')) {
                                 $('.dcn-hub-mini').removeClass('custom-show');
