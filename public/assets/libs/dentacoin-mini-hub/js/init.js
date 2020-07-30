@@ -337,6 +337,10 @@ if (typeof $ == 'undefined') {
                                         var hrefHtml = '';
                                         if (hubData.data[i].link && hubData.data[i].link != '' && hubData.data[i].link != undefined && hubData.data[i].link != null) {
                                             hrefHtml = hubData.data[i].link;
+
+                                            if (hrefHtml.includes('hub.dentacoin.com')) {
+                                                hrefHtml += '?platform=dentists';
+                                            }
                                         } else {
                                             hrefHtml = "javascript:alert('Coming soon!');";
                                         }
