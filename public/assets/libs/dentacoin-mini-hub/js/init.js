@@ -414,11 +414,11 @@ if (typeof $ == 'undefined') {
 
                                 playApplicationsAnimation();
 
-                                $(document).unbind('click', checkIfClickedOutsideSearchResult);
-                                $(document).bind('click', checkIfClickedOutsideSearchResult);
+                                $(document).unbind('click', hideHubIfClickedOutside);
+                                $(document).bind('click', hideHubIfClickedOutside);
                             });
                         }
-                        $(document).bind('click', checkIfClickedOutsideSearchResult);
+                        $(document).bind('click', hideHubIfClickedOutside);
 
                         $(window).on('resize', function() {
                             setHubPosition();
@@ -437,8 +437,11 @@ if (typeof $ == 'undefined') {
                         $('.dcn-hub-mini').offset({top: topToAppear + $('.dcn-hub-mini .up-arrow').outerHeight(), left: leftToAppear - $('.dcn-hub-mini').outerWidth() + ($('.dcn-hub-mini .up-arrow').outerWidth() / 2)});
                     }
 
-                    function checkIfClickedOutsideSearchResult(event) {
-                        if (!add_overflow_hidden_on_hidden_box_show || $('.dcn-hub-mini').hasClass('without-apps')) {
+                    function hideHubIfClickedOutside(event) {
+                        console.log('hideHubIfClickedOutside');
+                        if (!add_overflow_hidden_on_hidden_box_show) {
+                            console.log(add_overflow_hidden_on_hidden_box_show, 'add_overflow_hidden_on_hidden_box_show');
+                            console.log(!$(event.target).closest('#dcn-hub-mini').length, '!$(event.target).closest(\'#dcn-hub-mini\').length');
                             if (!$(event.target).closest('#dcn-hub-mini').length && !$(event.target).hasClass('dcn-hub-mini-go-back-image')) {
                                 $('.dcn-hub-mini').removeClass('custom-show');
                             }
