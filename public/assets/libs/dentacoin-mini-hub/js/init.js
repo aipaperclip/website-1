@@ -72,6 +72,23 @@ if (typeof $ == 'undefined') {
                 }
             },
         },
+        utils: {
+            fireGoogleAnalyticsEvent: function (category, action, label, value) {
+                if (typeof(gtag) != 'undefined') {
+                    var event_obj = {
+                        'event_action' : action,
+                        'event_category': category,
+                        'event_label': label
+                    };
+
+                    if (value != undefined) {
+                        event_obj.value = value;
+                    }
+
+                    gtag('event', label, event_obj);
+                }
+            }
+        },
         initBigHub: async function(params) {
             if ((typeof params !== 'object' && params === undefined) || (!hasOwnProperty.call(params, 'element_id_to_append') || !hasOwnProperty.call(params, 'type_hub'))) {
                 // false params
@@ -162,6 +179,42 @@ if (typeof $ == 'undefined') {
                         $('body').removeClass('overflow-hidden');
                     }
                 }
+
+                $(document).on('click', '.on-jaws-button-click-event-tracker', function() {
+                    dcnHub.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Jaws Google');
+                });
+
+                $(document).on('click', '.on-assurance-button-click-event-tracker', function() {
+                    dcnHub.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Assurance');
+                });
+
+                $(document).on('click', '.on-vox-button-click-event-tracker', function() {
+                    dcnHub.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Vox');
+                });
+
+                $(document).on('click', '.on-trp-button-click-event-tracker', function() {
+                    dcnHub.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'TRP');
+                });
+
+                $(document).on('click', '.on-dentacare-ios-button-click-event-tracker', function() {
+                    dcnHub.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Dentacare IOS');
+                });
+
+                $(document).on('click', '.on-dentacare-google-button-click-event-tracker', function() {
+                    dcnHub.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Dentacare Google');
+                });
+
+                $(document).on('click', '.on-wallet-ios-button-click-event-tracker', function() {
+                    dcnHub.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Wallet IOS');
+                });
+
+                $(document).on('click', '.on-wallet-google-button-click-event-tracker', function() {
+                    dcnHub.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Wallet Google');
+                });
+
+                $(document).on('click', '.on-wallet-website-button-click-event-tracker', function() {
+                    dcnHub.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Wallet Btn');
+                });
 
                 // check if element is visible in the screen viewport
                 function isInViewport(el) {
