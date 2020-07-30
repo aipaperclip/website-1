@@ -438,11 +438,9 @@ if (typeof $ == 'undefined') {
                     }
 
                     function hideHubIfClickedOutside(event) {
-                        console.log(event.target, 'hideHubIfClickedOutside');
-                            console.log(!$(event.target).closest('#dcn-hub-mini').length, '!$(event.target).closest(\'#dcn-hub-mini\').length');
-                            if (!$(event.target).closest('#dcn-hub-mini').length && !$(event.target).hasClass('dcn-hub-mini-go-back-image')) {
-                                $('.dcn-hub-mini').removeClass('custom-show');
-                            }
+                        if (!$(event.target).closest('#dcn-hub-mini').length && !$(event.target).closest('#'+params.element_id_to_bind).length && !$(event.target).hasClass('dcn-hub-mini-go-back-image')) {
+                            $('.dcn-hub-mini').removeClass('custom-show');
+                        }
                     }
                     
                     $(document).on('click', '.dcn-hub-mini-close-btn', function() {
