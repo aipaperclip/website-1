@@ -5,10 +5,15 @@
   padding-right: 20px;
   background-color: black;
   color: white;
+  position: fixed;
   width: 100%;
-  max-width: 1400px;
-  font-size: 0;
-  position: relative; }
+  bottom: 0;
+  left: 0;
+  z-index: 2000000005 !important; }
+  .dcn-privacy-policy-cookie .dcn-cookie-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    font-size: 0; }
   .dcn-privacy-policy-cookie .white-colorful-cookie-btn {
     background-color: red;
     color: white;
@@ -54,14 +59,15 @@
       display: inline-block;
       vertical-align: top;
       background-color: white;
-      color: white;
+      color: red;
       font-size: 14px;
       text-align: center;
       line-height: 20px;
       -webkit-border-radius: 20%;
       -moz-border-radius: 20%;
       -ms-border-radius: 20%;
-      border-radius: 20%; }
+      border-radius: 20%;
+      font-weight: bold; }
     .dcn-privacy-policy-cookie .custom-checkbox-style label {
       cursor: pointer; }
     .dcn-privacy-policy-cookie .custom-checkbox-style .custom-checkbox-label {
@@ -71,7 +77,8 @@
       vertical-align: top;
       cursor: pointer;
       font-weight: normal;
-      margin: 0; }
+      margin: 0;
+      font-size: 15px; }
       .dcn-privacy-policy-cookie .custom-checkbox-style .custom-checkbox-label a {
         text-decoration: underline; }
   .dcn-privacy-policy-cookie .customize-cookies {
@@ -136,11 +143,11 @@
     .dcn-privacy-policy-cookie .text .link {
       color: red;
       font-weight: bold;
-      text-decoration: underline;
-      display: inline-block;
-      vertical-align: middle; }
+      text-decoration: underline; }
   .dcn-privacy-policy-cookie .button {
-    width: 150px; }
+    width: 150px;
+    display: inline-block;
+    vertical-align: middle; }
     .dcn-privacy-policy-cookie .button a {
       display: block;
       text-align: center;

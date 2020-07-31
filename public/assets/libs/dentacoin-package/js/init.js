@@ -562,7 +562,7 @@ if (typeof $ == 'undefined') {
                     // take platform color
                     // !hasOwnProperty.call(params, 'platform')
 
-                    $('body').append('<div class="dcn-privacy-policy-cookie"><div class="text">This site uses cookies. Find out more on how we use cookies in our <a href="https://dentacoin.com/privacy-policy" class="link" target="_blank">Privacy Policy</a>. | <a href="javascript:void(0);" class="link adjust-cookies">Adjust cookies</a></div><div class="button"><a href="javascript:void(0);" class="white-colorful-cookie-btn accept-all">Accept all cookies</a></div></div>');
+                    $('body').append('<div class="dcn-privacy-policy-cookie"><div class="dcn-cookie-wrapper"><div class="text">This site uses cookies. Find out more on how we use cookies in our <a href="https://dentacoin.com/privacy-policy" class="link" target="_blank">Privacy Policy</a>. | <a href="javascript:void(0);" class="link adjust-cookies">Adjust cookies</a></div><div class="button"><a href="javascript:void(0);" class="white-colorful-cookie-btn accept-all">Accept all cookies</a></div></div></div>');
 
                     $('.dcn-privacy-policy-cookie .accept-all').click(function()    {
                         dcnAdditionals.utils.cookies.set('performance_cookies', 1);
