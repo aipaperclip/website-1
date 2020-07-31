@@ -7043,7 +7043,8 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         width: 50%;
         padding: 0 5px; }
         .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms .title, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets .title {
-          cursor: pointer; }
+          cursor: pointer;
+          padding-top: 10px; }
           .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms .title .icon, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets .title .icon {
             width: 15px;
             height: 15px;
