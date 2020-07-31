@@ -10,48 +10,46 @@
   bottom: 0;
   left: 0;
   z-index: 2000000005 !important; }
-  .dcn-privacy-policy-cookie .tooltip-init {
-    position: relative; }
-    .dcn-privacy-policy-cookie .tooltip-init .tooltip-label {
-      display: none;
-      bottom: calc(100% + 15px);
-      padding: 10px 15px;
-      border-width: 1.5px;
+  .dcn-privacy-policy-cookie .tooltip-init .tooltip-label {
+    display: none;
+    bottom: calc(100% + 15px);
+    padding: 10px 15px;
+    border-width: 1.5px;
+    border-style: solid;
+    border-color: black;
+    color: black;
+    font-size: 16px;
+    background-color: white;
+    width: 100%;
+    max-width: 250px;
+    z-index: 3000;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%); }
+    .dcn-privacy-policy-cookie .tooltip-init .tooltip-label:after {
+      content: '';
+      top: 100%;
+      border-color: transparent;
       border-style: solid;
-      border-color: black;
-      color: black;
-      font-size: 16px;
-      background-color: white;
-      width: 100%;
-      max-width: 250px;
-      z-index: 3000;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      -ms-border-radius: 5px;
-      border-radius: 5px;
-      -webkit-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.2);
-      -moz-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.2);
-      -ms-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.2);
-      box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.2);
+      border-width: 8px 8px 0;
       position: absolute;
       left: 50%;
+      border-top-color: white;
       -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
       transform: translateX(-50%); }
-      .dcn-privacy-policy-cookie .tooltip-init .tooltip-label:after {
-        content: '';
-        top: 100%;
-        border-color: transparent;
-        border-style: solid;
-        border-width: 8px 8px 0;
-        position: absolute;
-        left: 50%;
-        border-top-color: white;
-        -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        transform: translateX(-50%); }
-    .dcn-privacy-policy-cookie .tooltip-init:hover .tooltip-label {
-      display: block; }
+  .dcn-privacy-policy-cookie .tooltip-init:hover .tooltip-label {
+    display: block; }
   .dcn-privacy-policy-cookie .dcn-cookie-wrapper {
     max-width: 1400px;
     margin: 0 auto;
@@ -91,7 +89,8 @@
     padding-bottom: 20px;
     font-size: 20px; }
   .dcn-privacy-policy-cookie .custom-checkbox-style {
-    font-size: 0; }
+    font-size: 0;
+    position: relative; }
     .dcn-privacy-policy-cookie .custom-checkbox-style input[type="checkbox"] {
       display: none !important; }
     .dcn-privacy-policy-cookie .custom-checkbox-style .custom-checkbox {
@@ -99,7 +98,7 @@
       height: 20px;
       border: 1px solid #bdc3c7;
       display: inline-block;
-      vertical-align: top;
+      vertical-align: middle;
       background-color: white;
       color: #679dca;
       font-size: 16px;
@@ -116,7 +115,7 @@
       font-size: 18px;
       padding-left: 10px;
       display: inline-block;
-      vertical-align: top;
+      vertical-align: middle;
       cursor: pointer;
       font-weight: normal;
       margin: 0; }
@@ -125,9 +124,12 @@
     .dcn-privacy-policy-cookie .custom-checkbox-style .info-button {
       background: transparent;
       border: 0;
-      margin-left: 5px; }
+      margin-left: 10px;
+      display: inline-block;
+      vertical-align: middle; }
       .dcn-privacy-policy-cookie .custom-checkbox-style .info-button img {
-        max-width: 15px; }
+        max-width: 20px;
+        width: 100%; }
   .dcn-privacy-policy-cookie .customize-cookies {
     background-color: black;
     padding: 20px;

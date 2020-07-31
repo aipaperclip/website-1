@@ -11,7 +11,6 @@
     left: 0;
     z-index: 2000000005 !important;
     .tooltip-init {
-        position: relative;
         .tooltip-label {
             display: none;
             bottom: calc(100% + 15px);
@@ -104,6 +103,7 @@
     }
     .custom-checkbox-style {
         font-size: 0;
+        position: relative;
         input[type="checkbox"] {
             display: none !important;
         }
@@ -112,7 +112,7 @@
             height: 20px;
             border: 1px solid #bdc3c7;
             display: inline-block;
-            vertical-align: top;
+            vertical-align: middle;
             background-color: white;
             color: #679dca;
             font-size: 16px;
@@ -131,7 +131,7 @@
             font-size: 18px;
             padding-left: 10px;
             display: inline-block;
-            vertical-align: top;
+            vertical-align: middle;
             cursor: pointer;
             font-weight: normal;
             margin: 0;
@@ -142,9 +142,12 @@
         .info-button {
             background: transparent;
             border: 0;
-            margin-left: 5px;
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: middle;
             img {
-                max-width: 15px;   
+                max-width: 20px;
+                width: 100%;
             }
         }
     }
