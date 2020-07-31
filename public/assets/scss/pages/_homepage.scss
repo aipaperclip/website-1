@@ -907,7 +907,7 @@
                         padding: 0 5px;
                         .title {
                             cursor: pointer;
-                            padding-top: 10px;
+                            padding-bottom: 10px;
                             .icon {
                                 width: 15px;
                                 height: 15px;
@@ -947,7 +947,7 @@
                                 list-style: disc inside none;
                                 @include simple_transition(.3s);
                                 &:hover {
-                                    text-decoration: underline;   
+                                    text-decoration: underline;
                                 }
                             }
                             @include breakpoint($max-lgl)    {
