@@ -556,7 +556,7 @@ if (typeof $ == 'undefined') {
                 console.error('False params passed to Dentacoin cookie.');
             } else {
 
-                if (basic.cookies.get('performance_cookies') != '' && basic.cookies.get('functionality_cookies') != '' && basic.cookies.get('marketing_cookies') != '' && basic.cookies.get('strictly_necessary_policy') != '')  {
+                if (basic.cookies.get('performance_cookies') == '' && basic.cookies.get('functionality_cookies') == '' && basic.cookies.get('marketing_cookies') == '' && basic.cookies.get('strictly_necessary_policy') == '')  {
                     console.log('init cookie');
 
                     // take platform color
