@@ -5,11 +5,58 @@
     padding-right: 20px;
     background-color: black;
     color: white;
-    position: fixed;  
+    position: fixed;
     width: 100%;
     bottom: 0;
     left: 0;
     z-index: 2000000005 !important;
+    .tooltip-init {
+        position: relative;
+        .tooltip-label {
+            display: none;
+            bottom: calc(100% + 15px);
+            padding: 10px 15px;
+            border-width: 1.5px;
+            border-style: solid;
+            border-color: black;
+            color: black;
+            font-size: 16px;
+            background-color: white;
+            width: 100%;
+            max-width: 250px;
+            z-index: 3000;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 2px 5px 2px rgba(0,0,0,.2);
+            -moz-box-shadow: 0 2px 5px 2px rgba(0,0,0,.2);
+            -ms-box-shadow: 0 2px 5px 2px rgba(0,0,0,.2);
+            box-shadow: 0 2px 5px 2px rgba(0,0,0,.2);
+            position: absolute;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+            &:after {
+                content: '';
+                top: 100%;
+                border-color: transparent;
+                border-style: solid;
+                border-width: 8px 8px 0;
+                position: absolute;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                transform: translateX(-50%);
+            }
+        }
+        &:hover {
+            .tooltip-label {
+                display: block;
+            }
+        }
+    }
     .dcn-cookie-wrapper {
         max-width: 1400px;
         margin: 0 auto;
