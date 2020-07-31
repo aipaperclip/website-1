@@ -58,6 +58,38 @@ if (typeof $ == 'undefined') {
                 erase: function(name) {
                     document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
                 }
+            },
+            initCustomCheckboxes: function(parent) {
+                console.log(parent, 'initCustomCheckboxes');
+                if (typeof(parent) == undefined) {
+                    parent = '';
+                } else {
+                    parent = parent + ' ';
+                }
+                
+                for (var i = 0, len = $(parent + '.custom-checkbox-style').length; i < len; i+=1) {
+                    if (!$(parent + '.custom-checkbox-style').eq(i).hasClass('already-custom-style')) {
+                        $(parent + '.custom-checkbox-style').eq(i).prepend('<label for="'+$(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').attr('id')+'" class="custom-checkbox"></label>');
+                        $(parent + '.custom-checkbox-style').eq(i).addClass('already-custom-style');
+                    }
+                }
+
+                $(parent + '.custom-checkbox-style .custom-checkbox-input').unbind('change').on('change', function() {
+                    if ($(this).is(':checked')) {
+                        $(this).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').addClass('gateway-platform-background-color-important').html('✓');
+                    } else {
+                        $(this).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').removeClass('gateway-platform-background-color-important').html('');
+                    }
+
+                    if ($(this).attr('data-radio-group') != undefined) {
+                        for (var i = 0, len = $('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').length; i < len; i+=1) {
+                            if (!$(this).is($('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').eq(i))) {
+                                $('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').eq(i).prop('checked', false);
+                                $('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').eq(i).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').removeClass('gateway-platform-background-color-important').html('');
+                            }
+                        }
+                    }
+                });
             }
         }
     };
@@ -517,13 +549,17 @@ if (typeof $ == 'undefined') {
     };
 
     var dcnCookie = {
-        initCookie: async function(params) {
-            if ((typeof params !== 'object' && params === undefined) || (!hasOwnProperty.call(params, 'fb_app_id') || !hasOwnProperty.call(params, 'google_app_id') || !hasOwnProperty.call(params, 'platform'))) {
+        init: async function(params) {
+            if ((typeof params !== 'object' && params === undefined)) {
                 // false params
                 console.error('False params passed to Dentacoin cookie.');
             } else {
 
                 if (basic.cookies.get('performance_cookies') != '' && basic.cookies.get('functionality_cookies') != '' && basic.cookies.get('marketing_cookies') != '' && basic.cookies.get('strictly_necessary_policy') != '')  {
+
+                    // take platform color
+                    // !hasOwnProperty.call(params, 'platform')
+
                     $('body').append('<div class="dcn-privacy-policy-cookie"><div class="text">This site uses cookies. Find out more on how we use cookies in our <a href="https://dentacoin.com/privacy-policy" class="link" target="_blank">Privacy Policy</a>. | <a href="javascript:void(0);" class="link adjust-cookies">Adjust cookies</a></div><div class="button"><a href="javascript:void(0);" class="white-colorful-cookie-btn accept-all">Accept all cookies</a></div></div>');
 
                     $('.dcn-privacy-policy-cookie .accept-all').click(function()    {
@@ -532,9 +568,13 @@ if (typeof $ == 'undefined') {
                         dcnAdditionals.utils.cookies.set('marketing_cookies', 1);
                         dcnAdditionals.utils.cookies.set('strictly_necessary_policy', 1);
 
-                        window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', params.google_app_id);
+                        if (!hasOwnProperty.call(params, 'google_app_id')) {
+                            window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', params.google_app_id);
+                        }
 
-                        !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window,document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('consent', 'grant'); fbq('init', params.fb_app_id); fbq('track', 'PageView');
+                        if (!hasOwnProperty.call(params, 'fb_app_id')) {
+                            !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window,document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('consent', 'grant'); fbq('init', params.fb_app_id); fbq('track', 'PageView');
+                        }
 
                         $('.dcn-privacy-policy-cookie').remove();
                     });
@@ -542,11 +582,11 @@ if (typeof $ == 'undefined') {
                     $('.dcn-privacy-policy-cookie .adjust-cookies').click(function() {
                         $('.dcn-privacy-policy-cookie .customize-cookies').remove();
 
-                        var dcnCookieBalloonHtml = '<div class="customize-cookies"><button class="close-customize-cookies close-customize-cookies-popup">×</button><div class="text-center"><img src="https://dentacoin.com/assets/images/cookie-icon.svg" alt="Cookie icon" class="cookie-icon"/></div><div class="text-center subtitle">Select cookies to accept:</div><div class="cookies-options-list"><ul><li><div class="pretty p-svg p-curve"><input checked disabled type="checkbox" id="strictly-necessary-cookies"/><div class="state p-success"><svg class="svg svg-icon" viewBox="0 0 20 20"><path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path></svg><label for="strictly-necessary-cookies"><span>Strictly necessary</span> <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="Cookies essential to navigate around the website and use its features. Without them, you wouldn’t be able to use basic services like signup or login."></i></label></div></div></li><li><div class="pretty p-svg p-curve"><input checked type="checkbox" id="functionality-cookies"/><div class="state p-success"><svg class="svg svg-icon" viewBox="0 0 20 20"><path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path></svg><label for="functionality-cookies">Functionality cookies <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="These cookies allow users to customise how a website looks for them; they can remember usernames, preferences, etc."></i></label></div></div></li></ul><ul><li><div class="pretty p-svg p-curve"><input checked type="checkbox" id="performance-cookies"/><div class="state p-success"><svg class="svg svg-icon" viewBox="0 0 20 20"><path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path></svg><label for="performance-cookies">Performance cookies <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="These cookies collect data for statistical purposes on how visitors use a website, they don’t contain personal data and are used to improve user experience."></i></label></div></div></li><li><div class="pretty p-svg p-curve"><input checked type="checkbox" id="marketing-cookies"/><div class="state p-success"><svg class="svg svg-icon" viewBox="0 0 20 20"><path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path></svg><label for="marketing-cookies">Marketing cookies <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="Marketing cookies are used e.g. to deliver advertisements more relevant to you or limit the number of times you see an advertisement."></i></label></div></div></li></ul></div><div class="text-center actions"><a href="javascript:void(0);" class="colorful-white-cookie-btn close-customize-cookies-popup">CANCEL</a><a href="javascript:void(0);" class="white-colorful-cookie-btn custom-cookie-save">SAVE</a></div><div class="custom-triangle"></div></div>'
+                        var dcnCookieBalloonHtml = '<div class="customize-cookies"> <button class="close-customize-cookies close-customize-cookies-popup">×</button> <div class="text-center"><img src="https://dentacoin.com/assets/images/cookie-icon.svg" alt="Cookie icon" class="cookie-icon"/></div><div class="text-center subtitle">Select cookies to accept:</div><div class="cookies-options-list"> <ul> <li> <div class="custom-checkbox-style"> <input type="checkbox" class="custom-checkbox-input" id="strictly-necessary-cookies"/> <label class="custom-checkbox-label" for="strictly-necessary-cookies">Strictly necessary</label> </div></li><li> <div class="custom-checkbox-style"> <input type="checkbox" class="custom-checkbox-input" id="functionality-cookies"/> <label class="custom-checkbox-label" for="functionality-cookies">Functionality cookies</label> </div></li></ul> <ul> <li> <div class="custom-checkbox-style"> <input type="checkbox" class="custom-checkbox-input" id="performance-cookies"/> <label class="custom-checkbox-label" for="performance-cookies">Performance cookies</label> </div></li><li> <div class="custom-checkbox-style"> <input type="checkbox" class="custom-checkbox-input" id="marketing-cookies"/> <label class="custom-checkbox-label" for="marketing-cookies">Marketing cookies</label> </div></li></ul> </div><div class="text-center actions"><a href="javascript:void(0);" class="colorful-white-cookie-btn close-customize-cookies-popup">CANCEL</a><a href="javascript:void(0);" class="white-colorful-cookie-btn custom-cookie-save">SAVE</a></div><div class="custom-triangle"></div></div>';
 
                         $('.dcn-privacy-policy-cookie').append(dcnCookieBalloonHtml);
 
-                        initTooltips();
+                        dcnAdditionals.utils.initCustomCheckboxes('.dcn-privacy-policy-cookie');
 
                         $('.dcn-privacy-policy-cookie .close-customize-cookies-popup').click(function() {
                             $('.customize-cookies').remove();
@@ -562,13 +602,42 @@ if (typeof $ == 'undefined') {
                             if($('.dcn-privacy-policy-cookie #marketing-cookies').is(':checked')) {
                                 dcnAdditionals.utils.cookies.set('marketing_cookies', 1);
 
-                                !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window,document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('consent', 'grant'); fbq('init', params.fb_app_id); fbq('track', 'PageView');
+                                if (!hasOwnProperty.call(params, 'fb_app_id')) {
+                                    !function (f, b, e, v, n, t, s) {
+                                        if (f.fbq) return;
+                                        n = f.fbq = function () {
+                                            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                                        };
+                                        if (!f._fbq) f._fbq = n;
+                                        n.push = n;
+                                        n.loaded = !0;
+                                        n.version = '2.0';
+                                        n.queue = [];
+                                        t = b.createElement(e);
+                                        t.async = !0;
+                                        t.src = v;
+                                        s = b.getElementsByTagName(e)[0];
+                                        s.parentNode.insertBefore(t, s)
+                                    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+                                    fbq('consent', 'grant');
+                                    fbq('init', params.fb_app_id);
+                                    fbq('track', 'PageView');
+                                }
                             }
 
                             if($('.dcn-privacy-policy-cookie #performance-cookies').is(':checked')) {
                                 dcnAdditionals.utils.cookies.set('performance_cookies', 1);
 
-                                window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', params.google_app_id);
+                                if (!hasOwnProperty.call(params, 'google_app_id')) {
+                                    window.dataLayer = window.dataLayer || [];
+
+                                    function gtag() {
+                                        dataLayer.push(arguments);
+                                    }
+
+                                    gtag('js', new Date());
+                                    gtag('config', params.google_app_id);
+                                }
                             }
 
                             $('.dcn-privacy-policy-cookie').remove();

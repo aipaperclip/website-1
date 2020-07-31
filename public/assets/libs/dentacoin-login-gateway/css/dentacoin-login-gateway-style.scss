@@ -226,7 +226,7 @@
     }
 }
 
-.platform-button, input[type='submit'].platform-button {
+.dentacoin-login-gateway-container .platform-button, .dentacoin-login-gateway-container input[type='submit'].platform-button {
     color: white;
     font-size: 16px;
     padding: 10px 20px;
@@ -245,7 +245,7 @@
     }
 }
 
-.custom-checkbox-style {
+.dentacoin-login-gateway-container .custom-checkbox-style {
     font-size: 0;
     input[type="checkbox"] {
         display: none !important;

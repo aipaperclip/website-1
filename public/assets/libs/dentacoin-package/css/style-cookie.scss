@@ -48,6 +48,43 @@
         padding-bottom: 20px;
         font-size: 20px;
     }
+    .custom-checkbox-style {
+        font-size: 0;
+        input[type="checkbox"] {
+            display: none !important;
+        }
+        .custom-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #bdc3c7;
+            display: inline-block;
+            vertical-align: top;
+            background-color: white;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            line-height: 20px;
+            -webkit-border-radius: 20%;
+            -moz-border-radius: 20%;
+            -ms-border-radius: 20%;
+            border-radius: 20%;
+        }
+        label {
+            cursor: pointer;
+        }
+        .custom-checkbox-label {
+            width: calc(100% - 20px);
+            padding-left: 10px;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+            font-weight: normal;
+            margin: 0;
+            a {
+                text-decoration: underline;
+            }
+        }
+    }
     .customize-cookies {
         background-color: black;
         padding: 20px;
@@ -84,43 +121,6 @@
                 vertical-align: text-bottom;
                 li {
                     padding-bottom: 20px;
-                    .pretty input[disabled]~* {
-                        opacity: 1;
-                    }
-                    .pretty input[disabled]~.state label span {
-                        opacity: 0.5;
-                    }
-                    .pretty {
-                        input {
-                            width: 18px;
-                            height: 18px;
-                        }
-                        .svg-icon {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 18px;
-                            height: 18px;
-                        }
-                        label {
-                            font-size: 18px;
-                            padding-left: 25px;
-                            text-indent: 0;
-                            cursor: pointer;
-                            i {
-                                color: #969696;
-                            }
-                            &:before, &:after {
-                                top: 0;
-                                width: 18px;
-                                height: 18px;
-                                border: 1px solid white;
-                            }
-                        }
-                    }
-                    .pretty input:checked~.state.p-success label:after, .pretty.p-toggle .state.p-success label:after {
-                        background-color: black !important;
-                    }
                 }
             }
         }

@@ -43,6 +43,37 @@
     padding-top: 10px;
     padding-bottom: 20px;
     font-size: 20px; }
+  .dcn-privacy-policy-cookie .custom-checkbox-style {
+    font-size: 0; }
+    .dcn-privacy-policy-cookie .custom-checkbox-style input[type="checkbox"] {
+      display: none !important; }
+    .dcn-privacy-policy-cookie .custom-checkbox-style .custom-checkbox {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #bdc3c7;
+      display: inline-block;
+      vertical-align: top;
+      background-color: white;
+      color: white;
+      font-size: 14px;
+      text-align: center;
+      line-height: 20px;
+      -webkit-border-radius: 20%;
+      -moz-border-radius: 20%;
+      -ms-border-radius: 20%;
+      border-radius: 20%; }
+    .dcn-privacy-policy-cookie .custom-checkbox-style label {
+      cursor: pointer; }
+    .dcn-privacy-policy-cookie .custom-checkbox-style .custom-checkbox-label {
+      width: calc(100% - 20px);
+      padding-left: 10px;
+      display: inline-block;
+      vertical-align: top;
+      cursor: pointer;
+      font-weight: normal;
+      margin: 0; }
+      .dcn-privacy-policy-cookie .custom-checkbox-style .custom-checkbox-label a {
+        text-decoration: underline; }
   .dcn-privacy-policy-cookie .customize-cookies {
     background-color: black;
     padding: 20px;
@@ -77,33 +108,6 @@
         vertical-align: text-bottom; }
         .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li {
           padding-bottom: 20px; }
-          .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty input[disabled] ~ * {
-            opacity: 1; }
-          .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty input[disabled] ~ .state label span {
-            opacity: 0.5; }
-          .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty input {
-            width: 18px;
-            height: 18px; }
-          .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty .svg-icon {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 18px;
-            height: 18px; }
-          .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty label {
-            font-size: 18px;
-            padding-left: 25px;
-            text-indent: 0;
-            cursor: pointer; }
-            .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty label i {
-              color: #969696; }
-            .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty label:before, .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty label:after {
-              top: 0;
-              width: 18px;
-              height: 18px;
-              border: 1px solid white; }
-          .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty input:checked ~ .state.p-success label:after, .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty.p-toggle .state.p-success label:after {
-            background-color: black !important; }
     .dcn-privacy-policy-cookie .customize-cookies .actions a {
       margin-top: 20px;
       display: inline-block;

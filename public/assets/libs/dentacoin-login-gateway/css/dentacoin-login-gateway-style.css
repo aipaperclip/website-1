@@ -324,7 +324,7 @@
     -ms-border-radius: 4px;
     border-radius: 4px; }
 
-.platform-button, input[type='submit'].platform-button {
+.dentacoin-login-gateway-container .platform-button, .dentacoin-login-gateway-container input[type='submit'].platform-button {
   color: white;
   font-size: 16px;
   padding: 10px 20px;
@@ -335,18 +335,18 @@
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px; }
-  .platform-button.red-button, input[type='submit'].platform-button.red-button {
+  .dentacoin-login-gateway-container .platform-button.red-button, .dentacoin-login-gateway-container input[type='submit'].platform-button.red-button {
     background-color: #d43f3a !important; }
-  .platform-button.green-button, input[type='submit'].platform-button.green-button {
+  .dentacoin-login-gateway-container .platform-button.green-button, .dentacoin-login-gateway-container input[type='submit'].platform-button.green-button {
     background-color: #4cae4c !important; }
-  .platform-button.opposite, input[type='submit'].platform-button.opposite {
+  .dentacoin-login-gateway-container .platform-button.opposite, .dentacoin-login-gateway-container input[type='submit'].platform-button.opposite {
     background-color: white; }
 
-.custom-checkbox-style {
+.dentacoin-login-gateway-container .custom-checkbox-style {
   font-size: 0; }
-  .custom-checkbox-style input[type="checkbox"] {
+  .dentacoin-login-gateway-container .custom-checkbox-style input[type="checkbox"] {
     display: none !important; }
-  .custom-checkbox-style .custom-checkbox {
+  .dentacoin-login-gateway-container .custom-checkbox-style .custom-checkbox {
     width: 20px;
     height: 20px;
     border: 1px solid #bdc3c7;
@@ -361,9 +361,9 @@
     -moz-border-radius: 20%;
     -ms-border-radius: 20%;
     border-radius: 20%; }
-  .custom-checkbox-style label {
+  .dentacoin-login-gateway-container .custom-checkbox-style label {
     cursor: pointer; }
-  .custom-checkbox-style .custom-checkbox-label {
+  .dentacoin-login-gateway-container .custom-checkbox-style .custom-checkbox-label {
     width: calc(100% - 20px);
     padding-left: 10px;
     display: inline-block;
@@ -371,7 +371,7 @@
     cursor: pointer;
     font-weight: normal;
     margin: 0; }
-    .custom-checkbox-style .custom-checkbox-label a {
+    .dentacoin-login-gateway-container .custom-checkbox-style .custom-checkbox-label a {
       text-decoration: underline; }
 
 .dentacoin-login-gateway-container .text-center {
