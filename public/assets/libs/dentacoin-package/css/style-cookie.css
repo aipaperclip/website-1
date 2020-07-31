@@ -46,6 +46,7 @@
         border-width: 8px 8px 0;
         position: absolute;
         left: 50%;
+        border-top-color: white;
         -webkit-transform: translateX(-50%);
         -ms-transform: translateX(-50%);
         transform: translateX(-50%); }
