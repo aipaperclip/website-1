@@ -1,0 +1,160 @@
+.dcn-privacy-policy-cookie {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: black;
+  color: white;
+  width: 100%;
+  max-width: 1400px;
+  font-size: 0;
+  position: relative; }
+  .dcn-privacy-policy-cookie .white-colorful-cookie-btn {
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    display: inline-block;
+    padding: 12px 24px;
+    font-weight: bold;
+    border: 1.5px solid white;
+    cursor: pointer;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    border-radius: 12px; }
+  .dcn-privacy-policy-cookie .colorful-white-cookie-btn {
+    color: red;
+    background-color: white;
+    font-size: 18px;
+    display: inline-block;
+    padding: 12px 24px;
+    font-weight: bold;
+    border: 1.5px solid red;
+    cursor: pointer;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    border-radius: 12px; }
+  .dcn-privacy-policy-cookie .close-customize-cookies-popup {
+    margin-right: 10px; }
+  .dcn-privacy-policy-cookie .text-center {
+    text-align: center; }
+  .dcn-privacy-policy-cookie .subtitle {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-size: 20px; }
+  .dcn-privacy-policy-cookie .customize-cookies {
+    background-color: black;
+    padding: 20px;
+    color: white;
+    width: 95%;
+    max-width: 550px;
+    bottom: calc(100% + 15px);
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    border-radius: 15px; }
+    .dcn-privacy-policy-cookie .customize-cookies .close-customize-cookies {
+      font-size: 30px;
+      color: white;
+      position: absolute;
+      right: 10px;
+      top: 0; }
+    .dcn-privacy-policy-cookie .customize-cookies .cookie-icon {
+      width: 40px; }
+    .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list {
+      padding-left: 20px;
+      padding-right: 20px;
+      font-size: 0; }
+      .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul {
+        width: 50%;
+        display: inline-block;
+        vertical-align: text-bottom; }
+        .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li {
+          padding-bottom: 20px; }
+          .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty input[disabled] ~ * {
+            opacity: 1; }
+          .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty input[disabled] ~ .state label span {
+            opacity: 0.5; }
+          .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty input {
+            width: 18px;
+            height: 18px; }
+          .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty .svg-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 18px;
+            height: 18px; }
+          .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty label {
+            font-size: 18px;
+            padding-left: 25px;
+            text-indent: 0;
+            cursor: pointer; }
+            .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty label i {
+              color: #969696; }
+            .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty label:before, .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty label:after {
+              top: 0;
+              width: 18px;
+              height: 18px;
+              border: 1px solid white; }
+          .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty input:checked ~ .state.p-success label:after, .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li .pretty.p-toggle .state.p-success label:after {
+            background-color: black !important; }
+    .dcn-privacy-policy-cookie .customize-cookies .actions a {
+      margin-top: 20px;
+      display: inline-block;
+      max-width: 150px;
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+      text-align: center; }
+    .dcn-privacy-policy-cookie .customize-cookies .custom-triangle {
+      top: calc(100% - 20px);
+      background-color: black;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      left: 50%;
+      -webkit-transform: rotate(45deg) translateX(-50%);
+      -ms-transform: rotate(45deg) translateX(-50%);
+      transform: rotate(45deg) translateX(-50%);
+      transform-origin: 0; }
+  .dcn-privacy-policy-cookie .text {
+    font-size: 18px;
+    width: calc(100% - 150px);
+    padding-right: 15px;
+    display: inline-block;
+    vertical-align: middle; }
+    .dcn-privacy-policy-cookie .text .link {
+      color: red;
+      font-weight: bold;
+      text-decoration: underline;
+      display: inline-block;
+      vertical-align: middle; }
+  .dcn-privacy-policy-cookie .button {
+    width: 150px; }
+    .dcn-privacy-policy-cookie .button a {
+      display: block;
+      text-align: center;
+      font-size: 16px;
+      padding: 10px 0; }
+
+@media screen and (max-width: 768px) {
+  .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul {
+    width: 100%; }
+    .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li {
+      padding-bottom: 12px; }
+  .dcn-privacy-policy-cookie .customize-cookies .actions a {
+    max-width: 115px;
+    margin-top: 10px; }
+  .dcn-privacy-policy-cookie .text {
+    width: 100%;
+    padding-bottom: 15px; }
+  .dcn-privacy-policy-cookie .button {
+    width: 100%; } }
+
+/*# sourceMappingURL=style-cookie.css.map */
