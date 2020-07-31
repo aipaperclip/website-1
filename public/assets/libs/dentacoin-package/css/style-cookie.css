@@ -204,10 +204,13 @@
       padding: 10px 0; }
 
 @media screen and (max-width: 768px) {
-  .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul {
-    width: 100%; }
-    .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li {
-      padding-bottom: 12px; }
+  .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list {
+    max-width: 300px;
+    margin: 0 auto; }
+    .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul {
+      width: 100%; }
+      .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li {
+        padding-bottom: 12px; }
   .dcn-privacy-policy-cookie .customize-cookies .actions a {
     max-width: 115px;
     margin-top: 10px; }
