@@ -57,7 +57,7 @@
     margin: 0 auto;
     font-size: 0; }
   .dcn-privacy-policy-cookie .white-colorful-cookie-btn {
-    background-color: red;
+    background-color: #679dca;
     color: white;
     font-size: 18px;
     display: inline-block;
@@ -70,13 +70,13 @@
     -ms-border-radius: 12px;
     border-radius: 12px; }
   .dcn-privacy-policy-cookie .colorful-white-cookie-btn {
-    color: red;
+    color: #679dca;
     background-color: white;
     font-size: 18px;
     display: inline-block;
     padding: 12px 24px;
     font-weight: bold;
-    border: 1.5px solid red;
+    border: 1.5px solid #679dca;
     cursor: pointer;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
@@ -101,8 +101,8 @@
       display: inline-block;
       vertical-align: top;
       background-color: white;
-      color: red;
-      font-size: 14px;
+      color: #679dca;
+      font-size: 16px;
       text-align: center;
       line-height: 20px;
       -webkit-border-radius: 20%;
@@ -113,16 +113,21 @@
     .dcn-privacy-policy-cookie .custom-checkbox-style label {
       cursor: pointer; }
     .dcn-privacy-policy-cookie .custom-checkbox-style .custom-checkbox-label {
-      width: calc(100% - 20px);
+      font-size: 18px;
       padding-left: 10px;
       display: inline-block;
       vertical-align: top;
       cursor: pointer;
       font-weight: normal;
-      margin: 0;
-      font-size: 15px; }
+      margin: 0; }
       .dcn-privacy-policy-cookie .custom-checkbox-style .custom-checkbox-label a {
         text-decoration: underline; }
+    .dcn-privacy-policy-cookie .custom-checkbox-style .info-button {
+      background: transparent;
+      border: 0;
+      margin-left: 5px; }
+      .dcn-privacy-policy-cookie .custom-checkbox-style .info-button img {
+        max-width: 15px; }
   .dcn-privacy-policy-cookie .customize-cookies {
     background-color: black;
     padding: 20px;
@@ -183,7 +188,7 @@
     display: inline-block;
     vertical-align: middle; }
     .dcn-privacy-policy-cookie .text .link {
-      color: red;
+      color: #679dca;
       font-weight: bold;
       text-decoration: underline; }
   .dcn-privacy-policy-cookie .button {

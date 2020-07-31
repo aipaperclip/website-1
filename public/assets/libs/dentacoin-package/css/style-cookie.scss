@@ -64,7 +64,7 @@
         font-size: 0;
     }
     .white-colorful-cookie-btn {
-        background-color: red;
+        background-color: #679dca;
         color: white;
         font-size: 18px;
         display: inline-block;
@@ -78,13 +78,13 @@
         border-radius: 12px;
     }
     .colorful-white-cookie-btn {
-        color: red;
+        color: #679dca;
         background-color: white;
         font-size: 18px;
         display: inline-block;
         padding: 12px 24px;
         font-weight: bold;
-        border: 1.5px solid red;
+        border: 1.5px solid #679dca;
         cursor: pointer;
         -webkit-border-radius: 12px;
         -moz-border-radius: 12px;
@@ -114,8 +114,8 @@
             display: inline-block;
             vertical-align: top;
             background-color: white;
-            color: red;
-            font-size: 14px;
+            color: #679dca;
+            font-size: 16px;
             text-align: center;
             line-height: 20px;
             -webkit-border-radius: 20%;
@@ -128,16 +128,23 @@
             cursor: pointer;
         }
         .custom-checkbox-label {
-            width: calc(100% - 20px);
+            font-size: 18px;
             padding-left: 10px;
             display: inline-block;
             vertical-align: top;
             cursor: pointer;
             font-weight: normal;
             margin: 0;
-            font-size: 15px;
             a {
                 text-decoration: underline;
+            }
+        }
+        .info-button {
+            background: transparent;
+            border: 0;
+            margin-left: 5px;
+            img {
+                max-width: 15px;   
             }
         }
     }
@@ -211,7 +218,7 @@
         display: inline-block;
         vertical-align: middle;
         .link {
-            color: red;
+            color: #679dca;
             font-weight: bold;
             text-decoration: underline;
         }
