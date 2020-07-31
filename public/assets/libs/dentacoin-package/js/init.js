@@ -78,7 +78,7 @@ if (typeof $ == 'undefined') {
                 }
 
                 $(parent + '.custom-checkbox-style .custom-checkbox-input').unbind('change').on('change', function() {
-                    if (!$(parent + '.custom-checkbox-style').eq(i).hasClass('predefined')) {
+                    if (!$(this).closest('.custom-checkbox-style').hasClass('predefined')) {
                         if ($(this).is(':checked')) {
                             $(this).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').html('✓');
                         } else {
