@@ -130,6 +130,8 @@
       .dcn-privacy-policy-cookie .custom-checkbox-style .info-button img {
         max-width: 20px;
         width: 100%; }
+    .dcn-privacy-policy-cookie .custom-checkbox-style.predefined .custom-checkbox, .dcn-privacy-policy-cookie .custom-checkbox-style.predefined .custom-checkbox-label {
+      opacity: .5; }
   .dcn-privacy-policy-cookie .customize-cookies {
     background-color: black;
     padding: 20px;

@@ -150,6 +150,11 @@
                 width: 100%;
             }
         }
+        &.predefined { 
+            .custom-checkbox, .custom-checkbox-label {
+                opacity: .5;
+            }
+        }
     }
     .customize-cookies {
         background-color: black;
