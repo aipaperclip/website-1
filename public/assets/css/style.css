@@ -7083,7 +7083,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
             -ms-transition: 0.3s;
             transition: 0.3s; }
             .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list li:hover, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list li:hover {
-              font-family: 'Calibri-Bold'; }
+              text-decoration: underline; }
           @media screen and (max-width: 1450px) {
             .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .exchange-platforms ul.list, .homepage-container .buy-dentacoin .wallet-app-and-gif .wallet-app .exchange-platforms-and-wallets .wallets ul.list {
               height: 140px; } }
