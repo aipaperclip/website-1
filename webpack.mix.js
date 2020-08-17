@@ -21,7 +21,6 @@ mix.styles([
     'public/assets/libs/font-awesome/css/font-awesome.min.css',
     'node_modules/slick-carousel/slick/slick.css',
     'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
-    'node_modules/pretty-checkbox/dist/pretty-checkbox.min.css',
     'public/assets/libs/combobox/combobox.css',
     'public/assets/libs/croppie/croppie.css',
 ], 'public/dist/css/front-libs-style.css');

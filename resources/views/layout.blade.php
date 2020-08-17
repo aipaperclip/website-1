@@ -46,21 +46,17 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.7">
 
     @if((!(new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'home')) || ((new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'foundation')))
-        <link rel="stylesheet" type="text/css" href="//dentacoin.com/assets/libs/dentacoin-package/css/styles-big-hub.css?v={{time()}}">
+        <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v={{time()}}">
     @endif
 
     @if(empty($_COOKIE['performance_cookies']) && empty($_COOKIE['functionality_cookies']) && empty($_COOKIE['marketing_cookies']) && empty($_COOKIE['strictly_necessary_policy']))
-        <link rel="stylesheet" type="text/css" href="//dentacoin.com/assets/libs/dentacoin-package/css/style-cookie.css?v={{time()}}">
+        <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style-cookie.css?v={{time()}}">
     @endif
 
     @if((new \App\Http\Controllers\UserController())->checkSession())
-        <link rel="stylesheet" type="text/css" href="//dentacoin.com/assets/libs/dentacoin-package/css/style.css?v={{time()}}">
+        <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style.css?v={{time()}}">
     @elseif (!(new \App\Http\Controllers\UserController())->checkSession())
-        <link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v={{time()}}"/>
-    @endif
-
-    @if(empty($_COOKIE['performance_cookies']) && empty($_COOKIE['functionality_cookies']) && empty($_COOKIE['marketing_cookies']) && empty($_COOKIE['strictly_necessary_policy']))
-        <link rel="stylesheet" type="text/css" href="//dentacoin.com/assets/libs/dentacoin-package/css/style-cookie.css?v={{time()}}">
+        <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v={{time()}}"/>
     @endif
     <script>
         var HOME_URL = '{{ route("home") }}';
@@ -281,9 +277,9 @@
     {{----}}
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
     --}}<script src="/dist/js/front-libs-script.js?v=1.1.7"></script>
-    <script src="//dentacoin.com/assets/libs/dentacoin-package/js/init.js?v={{time()}}"></script>
+    <script src="/assets/libs/dentacoin-package/js/init.js?v={{time()}}"></script>
     @if (!(new \App\Http\Controllers\UserController())->checkSession())
-        <script src="https://dentacoin.com/assets/libs/dentacoin-login-gateway/js/init.js?v={{time()}}"></script>
+        <script src="/assets/libs/dentacoin-login-gateway/js/init.js?v={{time()}}"></script>
     @endif
     @yield("script_block")
     <script src="/dist/js/front-script.js?v=1.1.7"></script>
