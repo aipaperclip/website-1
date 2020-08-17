@@ -1,6 +1,6 @@
-if (typeof $ == 'undefined') {
-    // no $ installed
-    console.error('Dentacoin hub requires the usage of $.');
+if (typeof jQuery == 'undefined') {
+    // no jQuery installed
+    console.error('Dentacoin hub requires the usage of jQuery.');
 } else if (!navigator.onLine) {
     // check internet connection
     console.error('Dentacoin hub requires internet connection.');
@@ -52,7 +52,7 @@ if (typeof $ == 'undefined') {
                     var expires = "expires="+d.toUTCString();
                     document.cookie = name + "=" + value + "; " + expires + ";domain=.dentacoin.com;path=/;secure";
                     if(name == "cookieLaw"){
-                        $(".cookies_popup").slideUp();
+                        jQuery(".cookies_popup").slideUp();
                     }
                 },
                 erase: function(name) {
@@ -66,30 +66,30 @@ if (typeof $ == 'undefined') {
                     parent = parent + ' ';
                 }
                 
-                for (var i = 0, len = $(parent + '.custom-checkbox-style').length; i < len; i+=1) {
-                    if (!$(parent + '.custom-checkbox-style').eq(i).hasClass('already-custom-style')) {
-                        if ($(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').is(':checked')) {
-                            $(parent + '.custom-checkbox-style').eq(i).prepend('<label for="'+$(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').attr('id')+'" class="custom-checkbox">✓</label>');
+                for (var i = 0, len = jQuery(parent + '.custom-checkbox-style').length; i < len; i+=1) {
+                    if (!jQuery(parent + '.custom-checkbox-style').eq(i).hasClass('already-custom-style')) {
+                        if (jQuery(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').is(':checked')) {
+                            jQuery(parent + '.custom-checkbox-style').eq(i).prepend('<label for="'+jQuery(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').attr('id')+'" class="custom-checkbox">✓</label>');
                         } else {
-                            $(parent + '.custom-checkbox-style').eq(i).prepend('<label for="'+$(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').attr('id')+'" class="custom-checkbox"></label>');
+                            jQuery(parent + '.custom-checkbox-style').eq(i).prepend('<label for="'+jQuery(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').attr('id')+'" class="custom-checkbox"></label>');
                         }
-                        $(parent + '.custom-checkbox-style').eq(i).addClass('already-custom-style');
+                        jQuery(parent + '.custom-checkbox-style').eq(i).addClass('already-custom-style');
                     }
                 }
 
-                $(parent + '.custom-checkbox-style .custom-checkbox-input').unbind('change').on('change', function() {
-                    if (!$(this).closest('.custom-checkbox-style').hasClass('predefined')) {
-                        if ($(this).is(':checked')) {
-                            $(this).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').html('✓');
+                jQuery(parent + '.custom-checkbox-style .custom-checkbox-input').unbind('change').on('change', function() {
+                    if (!jQuery(this).closest('.custom-checkbox-style').hasClass('predefined')) {
+                        if (jQuery(this).is(':checked')) {
+                            jQuery(this).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').html('✓');
                         } else {
-                            $(this).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').html('');
+                            jQuery(this).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').html('');
                         }
 
-                        if ($(this).attr('data-radio-group') != undefined) {
-                            for (var i = 0, len = $('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').length; i < len; i+=1) {
-                                if (!$(this).is($('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').eq(i))) {
-                                    $('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').eq(i).prop('checked', false);
-                                    $('[data-radio-group="'+$(this).attr('data-radio-group')+'"]').eq(i).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').html('');
+                        if (jQuery(this).attr('data-radio-group') != undefined) {
+                            for (var i = 0, len = jQuery('[data-radio-group="'+jQuery(this).attr('data-radio-group')+'"]').length; i < len; i+=1) {
+                                if (!jQuery(this).is(jQuery('[data-radio-group="'+jQuery(this).attr('data-radio-group')+'"]').eq(i))) {
+                                    jQuery('[data-radio-group="'+jQuery(this).attr('data-radio-group')+'"]').eq(i).prop('checked', false);
+                                    jQuery('[data-radio-group="'+jQuery(this).attr('data-radio-group')+'"]').eq(i).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').html('');
                                 }
                             }
                         }
@@ -105,7 +105,7 @@ if (typeof $ == 'undefined') {
                 if (fireHubAjax) {
                     fireHubAjax = false;
 
-                    var ajaxCall = await $.ajax({
+                    var ajaxCall = await jQuery.ajax({
                         type: 'POST',
                         url: 'https://dentacoin.com/combined-hub/get-hub-data/'+hubType,
                         dataType: 'json'
@@ -119,7 +119,7 @@ if (typeof $ == 'undefined') {
                 if (fireHubAjax) {
                     fireHubAjax = false;
 
-                    var ajaxCall = await $.ajax({
+                    var ajaxCall = await jQuery.ajax({
                         type: 'POST',
                         url: 'https://dentacoin.com/combined-hub/get-hub-children/'+folderSlug,
                         dataType: 'json'
@@ -133,7 +133,7 @@ if (typeof $ == 'undefined') {
                 if (fireBigHubAjax) {
                     fireBigHubAjax = false;
 
-                    var ajaxCall = await $.ajax({
+                    var ajaxCall = await jQuery.ajax({
                         type: 'POST',
                         url: 'https://dentacoin.com/combined-hub/get-platform-menu/'+menu,
                         dataType: 'json'
@@ -157,7 +157,7 @@ if (typeof $ == 'undefined') {
                         ajaxParams.data = ajaxData;
                     }
 
-                    var ajaxCall = await $.ajax(ajaxParams);
+                    var ajaxCall = await jQuery.ajax(ajaxParams);
 
                     fireBigHubAjax = true;
                     return ajaxCall;
@@ -169,7 +169,7 @@ if (typeof $ == 'undefined') {
                 // false params
                 console.error('False params passed to Dentacoin hub.');
             } else {
-                var elementToAppend = $('#' + params.element_id_to_append);
+                var elementToAppend = jQuery('#' + params.element_id_to_append);
                 if (elementToAppend.length) {
                     var bigHubParams = {};
                     if (hasOwnProperty.call(params, 'hub_title')) {
@@ -188,14 +188,14 @@ if (typeof $ == 'undefined') {
                         elementToAppend.find('.single-application.link').click(function() {
                             var extra_html = '';
                             elementToAppend.find('.single-application.link').removeClass('active');
-                            $(this).addClass('active');
+                            jQuery(this).addClass('active');
 
-                            elementToAppend.find('.info-section .logo img').attr('alt', $(this).attr('data-image-alt')).attr('src', $(this).attr('data-image'));
-                            elementToAppend.find('.info-section .title').html($(this).attr('data-title'));
+                            elementToAppend.find('.info-section .logo img').attr('alt', jQuery(this).attr('data-image-alt')).attr('src', jQuery(this).attr('data-image'));
+                            elementToAppend.find('.info-section .title').html(jQuery(this).attr('data-title'));
 
-                            if ($(this).attr('data-articles') != undefined) {
+                            if (jQuery(this).attr('data-articles') != undefined) {
                                 extra_html+='<div class="extra-html"><div class="extra-title">Latest Blog articles:</div><div class="slider-with-tool-data">';
-                                var articles_arr = $.parseJSON($(this).attr('data-articles'));
+                                var articles_arr = jQuery.parseJSON(jQuery(this).attr('data-articles'));
                                 for(var i = 0, len = articles_arr.length; i < len; i+=1)    {
                                     var post_title = articles_arr[i]['post_title'];
                                     if (post_title.length > 35) {
@@ -209,13 +209,13 @@ if (typeof $ == 'undefined') {
 
                                 initToolsPostsSlider();
                             } else {
-                                $('.extra-html-content').html('');
+                                jQuery('.extra-html-content').html('');
                             }
 
-                            elementToAppend.find('.info-section .html-content').html($.parseJSON($(this).attr('data-html')));
+                            elementToAppend.find('.info-section .html-content').html(jQuery.parseJSON(jQuery(this).attr('data-html')));
 
-                            if ($(this).attr('data-video') != '') {
-                                var youtubeVideoId = getYoutubeVideoId($(this).attr('data-video'));
+                            if (jQuery(this).attr('data-video') != '') {
+                                var youtubeVideoId = getYoutubeVideoId(jQuery(this).attr('data-video'));
                                 if (youtubeVideoId) {
                                     elementToAppend.find('.video-content').html('<iframe src="https://www.youtube.com/embed/'+youtubeVideoId+'"></iframe>');
                                 }
@@ -223,27 +223,27 @@ if (typeof $ == 'undefined') {
                                 elementToAppend.find('.video-content').html('');
                             }
 
-                            $('body').addClass('overflow-hidden');
-                            if ($(window).width() < 992) {
+                            jQuery('body').addClass('overflow-hidden');
+                            if (jQuery(window).width() < 992) {
                                 elementToAppend.find('.app-list').hide();
                                 elementToAppend.find('.info-section').fadeIn(500);
 
-                                var scrollTop = $('.info-section').offset().top;
-                                if ($('header.sticky-header').length) {
-                                    scrollTop = scrollTop - $('header.sticky-header').outerHeight();
+                                var scrollTop = jQuery('.info-section').offset().top;
+                                if (jQuery('header.sticky-header').length) {
+                                    scrollTop = scrollTop - jQuery('header.sticky-header').outerHeight();
                                 }
 
-                                $('html').animate({
+                                jQuery('html').animate({
                                     scrollTop: scrollTop
                                 }, {
                                     duration: 500
                                 });
                             }
-                            $('body').removeClass('overflow-hidden');
+                            jQuery('body').removeClass('overflow-hidden');
                         });
 
-                        $('body').addClass('overflow-hidden');
-                        if ($(window).width() > 992) {
+                        jQuery('body').addClass('overflow-hidden');
+                        if (jQuery(window).width() > 992) {
                             elementToAppend.find('.single-application.link').eq(0).click();
                         } else {
                             elementToAppend.find('.info-section .close-application').click(function() {
@@ -251,52 +251,52 @@ if (typeof $ == 'undefined') {
                                 elementToAppend.find('.info-section').hide();
                             });
                         }
-                        $('body').removeClass('overflow-hidden');
+                        jQuery('body').removeClass('overflow-hidden');
                     }
                 }
 
-                $(document).on('click', '.on-jaws-button-click-event-tracker', function() {
+                jQuery(document).on('click', '.on-jaws-button-click-event-tracker', function() {
                     dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Jaws Google');
                 });
 
-                $(document).on('click', '.on-assurance-button-click-event-tracker', function() {
+                jQuery(document).on('click', '.on-assurance-button-click-event-tracker', function() {
                     dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Assurance');
                 });
 
-                $(document).on('click', '.on-vox-button-click-event-tracker', function() {
+                jQuery(document).on('click', '.on-vox-button-click-event-tracker', function() {
                     dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Vox');
                 });
 
-                $(document).on('click', '.on-trp-button-click-event-tracker', function() {
+                jQuery(document).on('click', '.on-trp-button-click-event-tracker', function() {
                     dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'TRP');
                 });
 
-                $(document).on('click', '.on-dentacare-ios-button-click-event-tracker', function() {
+                jQuery(document).on('click', '.on-dentacare-ios-button-click-event-tracker', function() {
                     dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Dentacare IOS');
                 });
 
-                $(document).on('click', '.on-dentacare-google-button-click-event-tracker', function() {
+                jQuery(document).on('click', '.on-dentacare-google-button-click-event-tracker', function() {
                     dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Dentacare Google');
                 });
 
-                $(document).on('click', '.on-wallet-ios-button-click-event-tracker', function() {
+                jQuery(document).on('click', '.on-wallet-ios-button-click-event-tracker', function() {
                     dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Wallet IOS');
                 });
 
-                $(document).on('click', '.on-wallet-google-button-click-event-tracker', function() {
+                jQuery(document).on('click', '.on-wallet-google-button-click-event-tracker', function() {
                     dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Wallet Google');
                 });
 
-                $(document).on('click', '.on-wallet-website-button-click-event-tracker', function() {
+                jQuery(document).on('click', '.on-wallet-website-button-click-event-tracker', function() {
                     dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Wallet Btn');
                 });
 
                 // check if element is visible in the screen viewport
                 function isInViewport(el) {
-                    var elementTop = $(el).offset().top;
-                    var elementBottom = elementTop + $(el).outerHeight();
-                    var viewportTop = $(window).scrollTop();
-                    var viewportBottom = viewportTop + $(window).height();
+                    var elementTop = jQuery(el).offset().top;
+                    var elementBottom = elementTop + jQuery(el).outerHeight();
+                    var viewportTop = jQuery(window).scrollTop();
+                    var viewportBottom = viewportTop + jQuery(window).height();
                     return elementBottom > viewportTop && elementTop < viewportBottom;
                 }
 
@@ -314,7 +314,7 @@ if (typeof $ == 'undefined') {
 
                 //load images which are visible in the viewport on scroll
                 if(elementToAppend.find('img[data-defer-src]').length) {
-                    $(window).on('scroll', function(){
+                    jQuery(window).on('scroll', function(){
                         loadDeferImages();
                     });
                 }
@@ -332,7 +332,7 @@ if (typeof $ == 'undefined') {
 
                 function initToolsPostsSlider()   {
                     //init slider for most popular posts
-                    $('.slider-with-tool-data').slick({
+                    jQuery('.slider-with-tool-data').slick({
                         slidesToShow: 2,
                         infinite: false,
                         responsive: [
@@ -353,29 +353,29 @@ if (typeof $ == 'undefined') {
                 console.error('False params passed to Dentacoin hub.');
             } else {
                 var historyChildren = [];
-                var elementToBind = $('#'+params.element_id_to_bind);
+                var elementToBind = jQuery('#'+params.element_id_to_bind);
                 if (elementToBind.length) {
                     var add_overflow_hidden_on_hidden_box_show = false;
-                    $('body').addClass('overflow-hidden');
-                    if ($(window).width() < 992) {
+                    jQuery('body').addClass('overflow-hidden');
+                    if (jQuery(window).width() < 992) {
                         add_overflow_hidden_on_hidden_box_show = true;
                     }
-                    $('body').removeClass('overflow-hidden');
+                    jQuery('body').removeClass('overflow-hidden');
 
                     if (add_overflow_hidden_on_hidden_box_show) {
                         elementToBind.click(function() {
-                            $('.dcn-hub-mini').addClass('custom-show');
+                            jQuery('.dcn-hub-mini').addClass('custom-show');
                             setHubPosition();
 
                             if (!hasOwnProperty.call(params, 'without_apps')) {
-                                $('body').addClass('overflow-hidden');
+                                jQuery('body').addClass('overflow-hidden');
 
                                 window.scrollTo(0, 0);
                             }
                         });
                     } else {
                         elementToBind.hover(function () {
-                            $('.dcn-hub-mini').addClass('custom-show');
+                            jQuery('.dcn-hub-mini').addClass('custom-show');
                             setHubPosition();
                         });
                     }
@@ -400,7 +400,7 @@ if (typeof $ == 'undefined') {
                             
                             var miniHubHtml = '<div class="dcn-hub-mini without-apps" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"><div class="hidden-box-footer">'+platformMenu+'<div class="hidden-box-wrapper"><div class="home-btn"><a href="'+platform_home_link+'"><img src="//dentacoin.com/assets/images/home-btn-dentacoin-hub.svg" alt="Home button"/></a></div><div class="logout-btn-parent"> <a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a> </div> <div class="my-account-btn-parent"><a href="//account.dentacoin.com?platform='+params.platform+'">My Account</a></div></div></div></div></div>';
 
-                            $('body').append(miniHubHtml);
+                            jQuery('body').append(miniHubHtml);
                         } else if (hasOwnProperty.call(params, 'type_hub')) {
                             var miniHubHtml = '<div class="dcn-hub-mini with-apps" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"> <div class="hidden-box-hub"><div class="dcn-hub-mini-close-btn"><a href="javascript:void(0)">Close <span>X</span></a></div><div class="list-with-apps"><div class="apps-wrapper">';
 
@@ -441,16 +441,16 @@ if (typeof $ == 'undefined') {
 
                             miniHubHtml += '</div></div></div><div class="hidden-box-footer"><div class="logout-btn-parent"> <a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a> </div> <div class="my-account-btn-parent"><a href="//account.dentacoin.com?platform='+params.platform+'">My Account</a></div></div></div></div>';
 
-                            $('body').append(miniHubHtml);
+                            jQuery('body').append(miniHubHtml);
                             playApplicationsAnimation();
 
-                            $(document).on('click', '.go-back', function() {
-                                $('.dcn-hub-mini .list-with-apps .apps-wrapper:last-child').remove();
-                                $('.dcn-hub-mini .list-with-apps .apps-wrapper:last-child').show();
+                            jQuery(document).on('click', '.go-back', function() {
+                                jQuery('.dcn-hub-mini .list-with-apps .apps-wrapper:last-child').remove();
+                                jQuery('.dcn-hub-mini .list-with-apps .apps-wrapper:last-child').show();
                             });
 
-                            $(document).on('click', '.dcn-hub-mini .dcn-min-hub-application.folder', async function() {
-                                var thisBtn = $(this);
+                            jQuery(document).on('click', '.dcn-hub-mini .dcn-min-hub-application.folder', async function() {
+                                var thisBtn = jQuery(this);
                                 var children = JSON.parse(thisBtn.attr('data-children'));
                                 historyChildren.push(thisBtn.attr('data-children'));
 
@@ -487,23 +487,23 @@ if (typeof $ == 'undefined') {
                                 }
 
                                 refreshedMiniHubHtml += "</div>";
-                                $('.dcn-hub-mini .list-with-apps .apps-wrapper').hide();
-                                $('.dcn-hub-mini .list-with-apps').append(refreshedMiniHubHtml);
-                                $('.dcn-hub-mini .list-with-apps .apps-wrapper:last-child').show();
+                                jQuery('.dcn-hub-mini .list-with-apps .apps-wrapper').hide();
+                                jQuery('.dcn-hub-mini .list-with-apps').append(refreshedMiniHubHtml);
+                                jQuery('.dcn-hub-mini .list-with-apps .apps-wrapper:last-child').show();
 
                                 playApplicationsAnimation();
 
-                                $(document).unbind('click', hideHubIfClickedOutside);
-                                $(document).bind('click', hideHubIfClickedOutside);
+                                jQuery(document).unbind('click', hideHubIfClickedOutside);
+                                jQuery(document).bind('click', hideHubIfClickedOutside);
                             });
                         }
-                        $(document).bind('click', hideHubIfClickedOutside);
+                        jQuery(document).bind('click', hideHubIfClickedOutside);
 
-                        $(window).on('resize', function() {
+                        jQuery(window).on('resize', function() {
                             setHubPosition();
                         });
 
-                        $(window).on('scroll', function() {
+                        jQuery(window).on('scroll', function() {
                             setHubPosition();
                         });
                     }
@@ -513,22 +513,22 @@ if (typeof $ == 'undefined') {
                         var topToAppear = elementToBind.offset().top + elementToBind.outerHeight();
                         var leftToAppear = elementToBind.offset().left + elementToBind.outerWidth();
 
-                        $('.dcn-hub-mini').offset({top: topToAppear + $('.dcn-hub-mini .up-arrow').outerHeight(), left: leftToAppear - $('.dcn-hub-mini').outerWidth() + ($('.dcn-hub-mini .up-arrow').outerWidth() / 2)});
+                        jQuery('.dcn-hub-mini').offset({top: topToAppear + jQuery('.dcn-hub-mini .up-arrow').outerHeight(), left: leftToAppear - jQuery('.dcn-hub-mini').outerWidth() + (jQuery('.dcn-hub-mini .up-arrow').outerWidth() / 2)});
                     }
 
                     function hideHubIfClickedOutside(event) {
-                        if (!$(event.target).closest('#dcn-hub-mini').length && !$(event.target).closest('#'+params.element_id_to_bind).length && !$(event.target).hasClass('dcn-hub-mini-go-back-image')) {
-                            $('.dcn-hub-mini').removeClass('custom-show');
+                        if (!jQuery(event.target).closest('#dcn-hub-mini').length && !jQuery(event.target).closest('#'+params.element_id_to_bind).length && !jQuery(event.target).hasClass('dcn-hub-mini-go-back-image')) {
+                            jQuery('.dcn-hub-mini').removeClass('custom-show');
                         }
                     }
                     
-                    $(document).on('click', '.dcn-hub-mini-close-btn', function() {
-                        $('.dcn-hub-mini').removeClass('custom-show');
-                        $('body').removeClass('overflow-hidden');
+                    jQuery(document).on('click', '.dcn-hub-mini-close-btn', function() {
+                        jQuery('.dcn-hub-mini').removeClass('custom-show');
+                        jQuery('body').removeClass('overflow-hidden');
                     });
 
                     function playApplicationsAnimation() {
-                        var elementsToAddAnimation = $('.dcn-hub-mini .list-with-apps .apps-wrapper:last-child .dcn-min-hub-application');
+                        var elementsToAddAnimation = jQuery('.dcn-hub-mini .list-with-apps .apps-wrapper:last-child .dcn-min-hub-application');
                         var animationSeconds = 150;
                         for (var i = 0, lenz = elementsToAddAnimation.length; i < lenz; i+=1) {
                             fadeInAnimation(elementsToAddAnimation.eq(i), animationSeconds);
@@ -542,7 +542,7 @@ if (typeof $ == 'undefined') {
                         }, animationSeconds);
                     }
 
-                    $(document).on('setHubPosition', async function (event) {
+                    jQuery(document).on('setHubPosition', async function (event) {
                         setHubPosition();
                     });
                 } else {
@@ -561,9 +561,9 @@ if (typeof $ == 'undefined') {
             } else {
                 if (basic.cookies.get('performance_cookies') == '' && basic.cookies.get('functionality_cookies') == '' && basic.cookies.get('marketing_cookies') == '' && basic.cookies.get('strictly_necessary_policy') == '')  {
 
-                    $('body').append('<div class="dcn-privacy-policy-cookie"><div class="dcn-cookie-wrapper"><div class="text">This site uses cookies. Find out more on how we use cookies in our <a href="https://dentacoin.com/privacy-policy" class="link" target="_blank">Privacy Policy</a>. | <a href="javascript:void(0);" class="link adjust-cookies">Adjust cookies</a></div><div class="button"><a href="javascript:void(0);" class="white-colorful-cookie-btn accept-all">Accept all cookies</a></div></div></div>');
+                    jQuery('body').append('<div class="dcn-privacy-policy-cookie"><div class="dcn-cookie-wrapper"><div class="text">This site uses cookies. Find out more on how we use cookies in our <a href="https://dentacoin.com/privacy-policy" class="link" target="_blank">Privacy Policy</a>. | <a href="javascript:void(0);" class="link adjust-cookies">Adjust cookies</a></div><div class="button"><a href="javascript:void(0);" class="white-colorful-cookie-btn accept-all">Accept all cookies</a></div></div></div>');
 
-                    $('.dcn-privacy-policy-cookie .accept-all').click(function()    {
+                    jQuery('.dcn-privacy-policy-cookie .accept-all').click(function()    {
                         dcnAdditionals.utils.cookies.set('performance_cookies', 1);
                         dcnAdditionals.utils.cookies.set('functionality_cookies', 1);
                         dcnAdditionals.utils.cookies.set('marketing_cookies', 1);
@@ -577,30 +577,30 @@ if (typeof $ == 'undefined') {
                             !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window,document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('consent', 'grant'); fbq('init', params.fb_app_id); fbq('track', 'PageView');
                         }
 
-                        $('.dcn-privacy-policy-cookie').remove();
+                        jQuery('.dcn-privacy-policy-cookie').remove();
                     });
 
-                    $('.dcn-privacy-policy-cookie .adjust-cookies').click(function() {
-                        $('.dcn-privacy-policy-cookie .customize-cookies').remove();
+                    jQuery('.dcn-privacy-policy-cookie .adjust-cookies').click(function() {
+                        jQuery('.dcn-privacy-policy-cookie .customize-cookies').remove();
 
                         var dcnCookieBalloonHtml = '<div class="customize-cookies"><button class="close-customize-cookies close-customize-cookies-popup">×</button> <div class="text-center"><img src="https://dentacoin.com/assets/images/cookie-icon.svg" alt="Cookie icon" class="cookie-icon"/></div><div class="text-center subtitle">Select cookies to accept:</div><div class="cookies-options-list"> <ul> <li> <div class="custom-checkbox-style predefined"><input type="checkbox" class="custom-checkbox-input" checked id="strictly-necessary-cookies"/> <label class="custom-checkbox-label" for="strictly-necessary-cookies">Strictly necessary</label><button class="tooltip-init info-button" type="button"><img src="https://dentacoin.com/assets/images/info.svg" alt="Info icon"/><div class="tooltip-label">Cookies essential to navigate around the website and use its features. Without them, you wouldn’t be able to use basic services like signup or login.</div></button></div></li><li> <div class="custom-checkbox-style"> <input type="checkbox" class="custom-checkbox-input" checked id="functionality-cookies"/> <label class="custom-checkbox-label" for="functionality-cookies">Functionality cookies</label><button class="tooltip-init info-button" type="button"><img src="https://dentacoin.com/assets/images/info.svg" alt="Info icon"/><div class="tooltip-label">These cookies allow users to customise how a website looks for them; they can remember usernames, preferences, etc.</div></button> </div></li></ul> <ul> <li> <div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" checked id="performance-cookies"/> <label class="custom-checkbox-label" for="performance-cookies">Performance cookies</label><button class="tooltip-init info-button" type="button"><img src="https://dentacoin.com/assets/images/info.svg" alt="Info icon"/><div class="tooltip-label">These cookies collect data for statistical purposes on how visitors use a website, they don’t contain personal data and are used to improve user experience.</div></button> </div></li><li> <div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" checked id="marketing-cookies"/> <label class="custom-checkbox-label" for="marketing-cookies">Marketing cookies</label><button class="tooltip-init info-button" type="button"><img src="https://dentacoin.com/assets/images/info.svg" alt="Info icon"/><div class="tooltip-label">Marketing cookies are used e.g. to deliver advertisements more relevant to you or limit the number of times you see an advertisement.</div></button> </div></li></ul> </div><div class="text-center actions"><a href="javascript:void(0);" class="colorful-white-cookie-btn close-customize-cookies-popup">CANCEL</a><a href="javascript:void(0);" class="white-colorful-cookie-btn custom-cookie-save">SAVE</a></div><div class="custom-triangle"></div></div>';
 
-                        $('.dcn-privacy-policy-cookie').append(dcnCookieBalloonHtml);
+                        jQuery('.dcn-privacy-policy-cookie').append(dcnCookieBalloonHtml);
 
                         dcnAdditionals.utils.initCustomCheckboxes('.dcn-privacy-policy-cookie');
 
-                        $('.dcn-privacy-policy-cookie .close-customize-cookies-popup').click(function() {
-                            $('.customize-cookies').remove();
+                        jQuery('.dcn-privacy-policy-cookie .close-customize-cookies-popup').click(function() {
+                            jQuery('.customize-cookies').remove();
                         });
 
-                        $('.dcn-privacy-policy-cookie .custom-cookie-save').click(function() {
+                        jQuery('.dcn-privacy-policy-cookie .custom-cookie-save').click(function()   {
                             dcnAdditionals.utils.cookies.set('strictly_necessary_policy', 1);
 
-                            if($('.dcn-privacy-policy-cookie #functionality-cookies').is(':checked')) {
+                            if(jQuery('.dcn-privacy-policy-cookie #functionality-cookies').is(':checked')) {
                                 dcnAdditionals.utils.cookies.set('functionality_cookies', 1);
                             }
 
-                            if($('.dcn-privacy-policy-cookie #marketing-cookies').is(':checked')) {
+                            if(jQuery('.dcn-privacy-policy-cookie #marketing-cookies').is(':checked')) {
                                 dcnAdditionals.utils.cookies.set('marketing_cookies', 1);
 
                                 if (!hasOwnProperty.call(params, 'fb_app_id')) {
@@ -626,7 +626,7 @@ if (typeof $ == 'undefined') {
                                 }
                             }
 
-                            if($('.dcn-privacy-policy-cookie #performance-cookies').is(':checked')) {
+                            if(jQuery('.dcn-privacy-policy-cookie #performance-cookies').is(':checked')) {
                                 dcnAdditionals.utils.cookies.set('performance_cookies', 1);
 
                                 if (!hasOwnProperty.call(params, 'google_app_id')) {
@@ -641,7 +641,7 @@ if (typeof $ == 'undefined') {
                                 }
                             }
 
-                            $('.dcn-privacy-policy-cookie').remove();
+                            jQuery('.dcn-privacy-policy-cookie').remove();
                         });
                     });
                 }
