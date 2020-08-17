@@ -559,7 +559,6 @@ if (typeof $ == 'undefined') {
                 // false params
                 console.error('False params passed to Dentacoin cookie.');
             } else {
-
                 if (basic.cookies.get('performance_cookies') == '' && basic.cookies.get('functionality_cookies') == '' && basic.cookies.get('marketing_cookies') == '' && basic.cookies.get('strictly_necessary_policy') == '')  {
 
                     $('body').append('<div class="dcn-privacy-policy-cookie"><div class="dcn-cookie-wrapper"><div class="text">This site uses cookies. Find out more on how we use cookies in our <a href="https://dentacoin.com/privacy-policy" class="link" target="_blank">Privacy Policy</a>. | <a href="javascript:void(0);" class="link adjust-cookies">Adjust cookies</a></div><div class="button"><a href="javascript:void(0);" class="white-colorful-cookie-btn accept-all">Accept all cookies</a></div></div></div>');
