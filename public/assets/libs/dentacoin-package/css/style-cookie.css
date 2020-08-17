@@ -126,7 +126,11 @@
       border: 0;
       margin-left: 10px;
       display: inline-block;
-      vertical-align: middle; }
+      vertical-align: middle;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      -ms-box-shadow: none;
+      box-shadow: none; }
       .dcn-privacy-policy-cookie .custom-checkbox-style .info-button img {
         max-width: 20px;
         width: 100%; }
@@ -153,7 +157,13 @@
       color: white;
       position: absolute;
       right: 10px;
-      top: 0; }
+      top: 0;
+      background: transparent;
+      border: 0;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      -ms-box-shadow: none;
+      box-shadow: none; }
     .dcn-privacy-policy-cookie .customize-cookies .cookie-icon {
       width: 40px; }
     .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list {
@@ -163,7 +173,9 @@
       .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul {
         width: 50%;
         display: inline-block;
-        vertical-align: text-bottom; }
+        vertical-align: text-bottom;
+        margin: 0;
+        padding: 0; }
         .dcn-privacy-policy-cookie .customize-cookies .cookies-options-list ul li {
           padding-bottom: 20px; }
     .dcn-privacy-policy-cookie .customize-cookies .actions a {

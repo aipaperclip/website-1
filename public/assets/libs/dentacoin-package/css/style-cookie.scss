@@ -141,10 +141,14 @@
         }
         .info-button {
             background: transparent;
-            border: 0;
+            border: 0; 
             margin-left: 10px;
             display: inline-block;
             vertical-align: middle;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            -ms-box-shadow: none;
+            box-shadow: none;
             img {
                 max-width: 20px;
                 width: 100%;
@@ -178,6 +182,12 @@
             position: absolute;
             right: 10px;
             top: 0;
+            background: transparent;
+            border: 0;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            -ms-box-shadow: none;
+            box-shadow: none;
         }
         .cookie-icon {
             width: 40px;
@@ -190,6 +200,8 @@
                 width: 50%;
                 display: inline-block;
                 vertical-align: text-bottom;
+                margin: 0;
+                padding: 0;
                 li {
                     padding-bottom: 20px;
                 }
