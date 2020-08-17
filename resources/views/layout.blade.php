@@ -247,28 +247,6 @@
             <img src="//hub.dentacoin.com/custom-cookie?logout-token={{ urlencode(session('logout_token')) }}" class="hide"/>
         @endif
     @endif
-    <div class="bottom-fixed-container">
-        {{--@if(!empty(Route::current()) && Route::current()->getName() != 'christmas-calendar')
-            <a href="https://dentacoin.com/holiday-calendar-2019" target="_blank" class="display-block banner">
-                <picture itemscope="" itemtype="http://schema.org/ImageObject">
-                    <source media="(max-width: 992px)" srcset="/assets/uploads/mobile-christmas-banner-small.gif"/>
-                    <img src="/assets/uploads/christmas-banner.gif" alt="Holiday calendar banner" class="width-100" itemprop="contentUrl"/>
-                </picture>
-            </a>
-        @endif--}}
-        @if(empty($_COOKIE['performance_cookies']) && empty($_COOKIE['functionality_cookies']) && empty($_COOKIE['marketing_cookies']) && empty($_COOKIE['strictly_necessary_policy']))
-            <div class="privacy-policy-cookie">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="text inline-block">This site uses cookies. Find out more on how we use cookies in our <a href="https://dentacoin.com/privacy-policy" class="link" target="_blank">Privacy Policy</a>. | <a href="javascript:void(0);" class="link adjust-cookies">Adjust cookies</a></div>
-                            <div class="button inline-block"><a href="javascript:void(0);" class="white-blue-rounded-btn accept-all">Accept all cookies</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
-    </div>
     <div class="response-layer">
         <div class="wrapper">
             <figure itemscope="" itemtype="http://schema.org/ImageObject">
