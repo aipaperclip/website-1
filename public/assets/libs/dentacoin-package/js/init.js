@@ -555,7 +555,7 @@ if (typeof jQuery == 'undefined') {
 
     var dcnCookie = {
         init: async function(params) {
-            if ((typeof params !== 'object' && params === undefined)) {
+            if (typeof params !== 'object' && params === undefined) {
                 // false params
                 console.error('False params passed to Dentacoin cookie.');
             } else {
