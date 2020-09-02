@@ -27,10 +27,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 exchanges-container @if($mobile) mobile-exchanges @endif padding-left-50 padding-right-50">
+                <div class="col-xs-12 exchanges-container @if($mobile_device) mobile-exchanges @endif padding-left-50 padding-right-50">
                     <div class="row fs-0">
                         @php($bulletsArray = array())
-                        @if($mobile)
+                        @if($mobile_device)
                             @php($exchangeCounter = 0)
                             @php($showOnce = true)
                             @foreach ($exchange_platforms as $exchange_platform)
@@ -90,7 +90,7 @@
                                 @endforeach
                         @endif
                     </div>
-                    @if($mobile && sizeof($bulletsArray) > 0)
+                    @if($mobile_device && sizeof($bulletsArray) > 0)
                         <div class="exchanges-bullets padding-top-10 padding-bottom-15">
                             @php($addClassActive = true)
                             @foreach ($bulletsArray as $bullet)

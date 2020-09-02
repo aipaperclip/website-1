@@ -40,15 +40,15 @@ class HomeController extends Controller
     }
 
     protected function getUsersPageView() {
-        return view('pages/users', array('video_expressions' => (new VideoExpressionsController())->getUserVideoExpression(), 'user_expressions' => (new \App\Http\Controllers\Admin\UserExpressionsController())->getUserTestimonial()));
+        return view('pages/users', array('video_expressions' => (new VideoExpressionsController())->getUserVideoExpression(), 'user_expressions' => (new \App\Http\Controllers\Admin\UserExpressionsController())->getUserTestimonial(), 'mobile_device' => $this->isMobile()));
     }
 
     protected function getDentistsPageView() {
-        return view('pages/dentists', array('video_expressions' => (new VideoExpressionsController())->getDentistVideoExpression(), 'user_expressions' => (new \App\Http\Controllers\Admin\UserExpressionsController())->getDentistTestimonial()));
+        return view('pages/dentists', array('video_expressions' => (new VideoExpressionsController())->getDentistVideoExpression(), 'user_expressions' => (new \App\Http\Controllers\Admin\UserExpressionsController())->getDentistTestimonial(), 'mobile_device' => $this->isMobile()));
     }
 
     protected function getTradersPageView() {
-        return view('pages/traders', array('exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'roadmap_years' => (new RoadmapController())->getRoadmapYears()));
+        return view('pages/traders', array('exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'roadmap_years' => (new RoadmapController())->getRoadmapYears(), 'mobile_device' => $this->isMobile()));
     }
 
     protected function getPublications()  {
@@ -72,11 +72,9 @@ class HomeController extends Controller
     }
 
     protected function takeHomepageData()  {
-        var_dump($this->isMobile());
-        die();
-        $usersPageContent = view('partials/users-page-content', array('video_expressions' => (new VideoExpressionsController())->getUserVideoExpression(), 'user_expressions' => (new \App\Http\Controllers\Admin\UserExpressionsController())->getUserTestimonial()));
-        $dentistsPageContent = view('partials/dentists-page-content', array('video_expressions' => (new VideoExpressionsController())->getDentistVideoExpression(), 'user_expressions' => (new \App\Http\Controllers\Admin\UserExpressionsController())->getDentistTestimonial()));
-        $tradersPageContent = view('partials/traders-page-content', array('exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'roadmap_years' => (new RoadmapController())->getRoadmapYears()));
+        $usersPageContent = view('partials/users-page-content', array('video_expressions' => (new VideoExpressionsController())->getUserVideoExpression(), 'user_expressions' => (new \App\Http\Controllers\Admin\UserExpressionsController())->getUserTestimonial(), 'mobile_device' => $this->isMobile()));
+        $dentistsPageContent = view('partials/dentists-page-content', array('video_expressions' => (new VideoExpressionsController())->getDentistVideoExpression(), 'user_expressions' => (new \App\Http\Controllers\Admin\UserExpressionsController())->getDentistTestimonial(), 'mobile_device' => $this->isMobile()));
+        $tradersPageContent = view('partials/traders-page-content', array('exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'roadmap_years' => (new RoadmapController())->getRoadmapYears(), 'mobile_device' => $this->isMobile()));
 
         return response()->json(['success' => true, 'data' => array('usersPageData' => $usersPageContent->render(), 'dentistsPageData' => $dentistsPageContent->render(), 'tradersPageData' => $tradersPageContent->render())]);
     }
