@@ -208,6 +208,7 @@ if (typeof jQuery == 'undefined') {
                             return date + '/' + month + '/' + object.getFullYear();
                         }
 
+                        var allowScrolling = false;
                         elementToAppend.find('.single-application.link').click(function() {
                             var extra_html = '';
                             elementToAppend.find('.single-application.link').removeClass('active');
@@ -252,24 +253,33 @@ if (typeof jQuery == 'undefined') {
                             if (jQuery(window).width() < 992) {
                                 elementToAppend.find('.app-list').hide();
                                 elementToAppend.find('.info-section').fadeIn(500);
+                                
+                                scrollToHubElementContent();
+                            } else {
+                                if (allowScrolling) {
+                                    scrollToHubElementContent();
+                                }
                             }
                             jQuery('body').removeClass('overflow-hidden');
 
-                            var scrollTop = jQuery('.info-section').offset().top;
-                            if (jQuery('header.sticky-header').length) {
-                                scrollTop = scrollTop - jQuery('header.sticky-header').outerHeight();
-                            }
+                            function scrollToHubElementContent() {
+                                var scrollTop = jQuery('.info-section').offset().top;
+                                if (jQuery('header.sticky-header').length) {
+                                    scrollTop = scrollTop - jQuery('header.sticky-header').outerHeight();
+                                }
 
-                            jQuery('html').animate({
-                                scrollTop: scrollTop
-                            }, {
-                                duration: 500
-                            });
+                                jQuery('html').animate({
+                                    scrollTop: scrollTop
+                                }, {
+                                    duration: 500
+                                });
+                            }
                         });
 
                         jQuery('body').addClass('overflow-hidden');
                         if (jQuery(window).width() > 992) {
                             elementToAppend.find('.single-application.link').eq(0).click();
+                            allowScrolling = true;
                         } else {
                             elementToAppend.find('.info-section .close-application').click(function() {
                                 elementToAppend.find('.app-list').fadeIn(500);
