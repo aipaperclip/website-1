@@ -17,6 +17,10 @@ body {
     }
 }
 
+.main-container {
+    padding-top: 80px;  
+}
+
 @for $i from 0 through 20 * 2 {
     .padding-bottom-#{$i * 5} {
         padding-bottom: 0px + $i * 5!important;

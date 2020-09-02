@@ -253,7 +253,7 @@ if (typeof jQuery == 'undefined') {
                             if (jQuery(window).width() < 992) {
                                 elementToAppend.find('.app-list').hide();
                                 elementToAppend.find('.info-section').fadeIn(500);
-                                
+
                                 scrollToHubElementContent();
                             } else {
                                 if (allowScrolling) {
