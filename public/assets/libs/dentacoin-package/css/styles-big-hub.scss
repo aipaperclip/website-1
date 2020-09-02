@@ -28,20 +28,30 @@
 }
 
 .dcn-big-hub {
-    -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-    -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-    display: flex;
     .app-list {
         position: relative;
         padding-top: 50px;
         padding-bottom: 50px;
         min-height: 650px;
-        width: 50%;
+        width: 100%;
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-top: 40px solid white;
+            z-index: 105;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
         &.light-blue-background {
             background-image: url('//dentacoin.com/assets/images/dentacoin-ecosystem-background.jpg');
         }
@@ -57,10 +67,10 @@
         }
         .list-wrapper {
             font-size: 0;
-            max-width: 450px;
+            max-width: 700px;
             margin: 0 auto;
             .single-application {
-                width: 33.33333333%;
+                width: 25%;
                 vertical-align: top;
                 display: inline-block;
                 margin-bottom: 15px;
@@ -149,13 +159,14 @@
         }
     }
     .info-section {
-        width: 50%;
+        width: 100%;
+        max-width: 1500px;
+        margin: 0 auto;
         background-color: white;
         padding-top: 30px;
         padding-bottom: 50px;
-        padding-left: 15px;
-        padding-right: 15px;
-        display: inline-block;
+        padding-left: 30px;
+        padding-right: 30px;
         position: relative;
         .close-application {
             display: none;
@@ -180,126 +191,152 @@
             text-align: center;
             display: none;
         }
-        .video-content {
+        .video-and-html-holder {
+            font-size: 0;
             text-align: center;
-            iframe {
-                width: 100%;
-                max-width: 500px;
-                margin: 15px auto;
-                border: 0;
-                height: 300px;
-            }
-        }
-        .html-content {
-            line-height: 20px;
-            font-size: 16px;
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-            a:focus {
-                outline: 0;
-                outline-offset: 0;
-                &.dcn-big-hub-btn {
-                    color: white;
+            .video-content {
+                text-align: center;
+                width: 380px;
+                display: inline-block;
+                vertical-align: middle;
+                iframe {
+                    width: 100%;
+                    height: 220px;
+                    border: 0;
                 }
             }
-        }
-        .extra-html {
-            max-width: 650px;
-            margin: 0 auto;
-            .go-to-all {
+            .html-content {
+                width: calc(80% - 380px);
+                display: inline-block;
+                vertical-align: middle;
+                padding-left: 15px;
+                line-height: 20px;
+                font-size: 16px;
                 text-align: center;
-                padding-top: 20px;
-            }
-            .extra-title {
-                font-family: 'Calibri-Bold';
-                font-size: 20px;
-                padding-bottom: 10px;
-                padding-top: 15px;
-                text-align: center;
-            }
-            .slider-with-tool-data {
-                .slick-prev {
-                    width: 30px;
-                    height: 30px;
-                    left: 0px;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    background: url('//dentacoin.com/assets/images/left-arrow.svg');
-                    background-size: auto 100%;
-                    z-index: 3;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    display: block;
-                    font-size: 0;
-                    border: 0;
-                    cursor: pointer;
-                    -webkit-box-shadow: none;
-                    -moz-box-shadow: none;
-                    -ms-box-shadow: none;
-                    box-shadow: none;
-                    &.slick-disabled {
-                        display: none !important;
+                a:focus {
+                    outline: 0;
+                    outline-offset: 0;
+                    &.dcn-big-hub-btn {
+                        color: white;
                     }
                 }
-                .slick-next {
-                    width: 30px;
-                    height: 30px;
-                    right: 0px;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    background: url('//dentacoin.com/assets/images/right-arrow.svg');
-                    background-size: auto 100%;
-                    z-index: 3;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    display: block;
-                    font-size: 0;
-                    border: 0;
-                    cursor: pointer;
-                    -webkit-box-shadow: none;
-                    -moz-box-shadow: none;
-                    -ms-box-shadow: none;
-                    box-shadow: none;
-                    &.slick-disabled {
-                        display: none !important;
-                    }
+            }
+            .extra-html {
+                max-width: 650px;
+                margin: 0 auto;
+                .go-to-all {
+                    text-align: center;
+                    padding-top: 20px;
                 }
-                .slick-track {
-                    display: flex;
-                    a {
+                .extra-title {
+                    font-family: 'Calibri-Bold';
+                    font-size: 20px;
+                    padding-bottom: 10px;
+                    padding-top: 15px;
+                    text-align: center;
+                }
+                .slider-with-tool-data {
+                    .slick-prev {
+                        width: 30px;
+                        height: 30px;
+                        left: 0px;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background: url('//dentacoin.com/assets/images/left-arrow.svg');
+                        background-size: auto 100%;
+                        z-index: 3;
+                        background-position: center;
+                        background-repeat: no-repeat;
                         display: block;
-                        color: black;
-                        .single-slide {
-                            font-size: 0;
-                            text-align: left;
-                            padding-left: 35px;
-                            padding-right: 35px;
-                            height: auto;
-                            align-items: center;
-                            figure {
-                                width: 100px;
-                                display: inline-block;
-                                vertical-align: top;
-                            }
-                            .content {
-                                padding-left: 10px;
-                                width: calc(100% - 100px);
-                                display: inline-block;
-                                vertical-align: top;
-                                .slide-title {
-                                    font-size: 16px;
+                        font-size: 0;
+                        border: 0;
+                        cursor: pointer;
+                        -webkit-box-shadow: none;
+                        -moz-box-shadow: none;
+                        -ms-box-shadow: none;
+                        box-shadow: none;
+                        &.slick-disabled {
+                            display: none !important;
+                        }
+                    }
+                    .slick-next {
+                        width: 30px;
+                        height: 30px;
+                        right: 0px;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background: url('//dentacoin.com/assets/images/right-arrow.svg');
+                        background-size: auto 100%;
+                        z-index: 3;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        display: block;
+                        font-size: 0;
+                        border: 0;
+                        cursor: pointer;
+                        -webkit-box-shadow: none;
+                        -moz-box-shadow: none;
+                        -ms-box-shadow: none;
+                        box-shadow: none;
+                        &.slick-disabled {
+                            display: none !important;
+                        }
+                    }
+                    .slick-track {
+                        display: flex;
+                        a {
+                            display: block;
+                            color: black;
+                            .single-slide {
+                                font-size: 0;
+                                text-align: left;
+                                padding-left: 35px;
+                                padding-right: 35px;
+                                height: auto;
+                                align-items: center;
+                                figure {
+                                    width: 100px;
+                                    display: inline-block;
+                                    vertical-align: top;
                                 }
-                                time {
-                                    font-size: 13px;
-                                    color: #999999;
+                                .content {
+                                    padding-left: 10px;
+                                    width: calc(100% - 100px);
+                                    display: inline-block;
+                                    vertical-align: top;
+                                    .slide-title {
+                                        font-size: 16px;
+                                    }
+                                    time {
+                                        font-size: 13px;
+                                        color: #999999;
+                                    }
                                 }
                             }
                         }
                     }
-                } 
+                }
+            }
+            &.no-video {
+                .video-content {
+                    display: none;
+                }
+                .html-content {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    .dcn-big-hub {
+        .app-list {
+            padding-top: 70px;
+            .list-wrapper {
+                max-width: 900px;
             }
         }
     }
@@ -322,10 +359,12 @@
         -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
         -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-        display: flex;
         .app-list {
             width: 100%;
             min-height: 0;
+            &:before {
+                display: none;
+            }
             .rotated-text {
                 font-size: 26px;
             }
@@ -352,6 +391,18 @@
             display: none;
             width: 100%;
             position: relative;
+            padding-left: 15px;
+            padding-right: 15px;
+            .video-and-html-holder {
+                .video-content {
+                    width: 100%;
+                    margin-top: 15px;
+                    margin-bottom: 20px;
+                }
+                .html-content {
+                    width: 100%;
+                }
+            }
             .close-application {
                 display: block;
             }

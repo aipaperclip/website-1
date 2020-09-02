@@ -543,4 +543,9 @@ padding: 8px;
     public function getClientIpAsResponse()     {
         return response()->json(['success' => true, 'data' => $this->getClientIp()]);
     }
+
+    public function getYoutubeVideoId($url) {
+        parse_str(parse_url($url, PHP_URL_QUERY), $my_array_of_vars);
+        return $my_array_of_vars['v'];
+    }
 }

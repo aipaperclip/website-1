@@ -153,8 +153,13 @@ var basic = {
     validatePassword: function(password) {
         return password.trim().length >= 8 && password.trim().length <= 30 && basic.hasLowerCase(password) && basic.hasUpperCase(password) && basic.hasNumber(password);
     },
-    isInViewport: function(el) {
-        var elementTop = $(el).offset().top;
+    isInViewport: function(el, elementExtraTopOffset) {
+        if (elementExtraTopOffset != undefined) {
+            var elementTop = $(el).offset().top + elementExtraTopOffset;
+        } else {
+            var elementTop = $(el).offset().top;
+        }
+
         var elementBottom = elementTop + $(el).outerHeight();
         var viewportTop = $(window).scrollTop();
         var viewportBottom = viewportTop + $(window).height();
@@ -223,4 +228,67 @@ var basic = {
         }
         return params;
     },
+    stopMaliciousInspect: function () {
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.onkeydown = function(e) {
+            if (event.keyCode == 123) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        }
+    },
+    customValidateWalletAddress: function() {
+        return (/^(0x){1}[0-9a-fA-F]{40}$/i.test(address));
+    },
+    initCustomCheckboxes: function(parent) {
+        if (typeof(parent) == undefined) {
+            parent = '';
+        } else {
+            parent = parent + ' ';
+        }
+
+        for (var i = 0, len = jQuery(parent + '.custom-checkbox-style').length; i < len; i+=1) {
+            if (!jQuery(parent + '.custom-checkbox-style').eq(i).hasClass('already-custom-style')) {
+                if (jQuery(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').is(':checked')) {
+                    jQuery(parent + '.custom-checkbox-style').eq(i).prepend('<label for="'+jQuery(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').attr('id')+'" class="custom-checkbox">✓</label>');
+                } else {
+                    jQuery(parent + '.custom-checkbox-style').eq(i).prepend('<label for="'+jQuery(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').attr('id')+'" class="custom-checkbox"></label>');
+                }
+                jQuery(parent + '.custom-checkbox-style').eq(i).addClass('already-custom-style');
+            }
+        }
+
+        jQuery(parent + '.custom-checkbox-style .custom-checkbox-input').unbind('change').on('change', function() {
+            if (!jQuery(this).closest('.custom-checkbox-style').hasClass('predefined')) {
+                if (jQuery(this).is(':checked')) {
+                    jQuery(this).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').html('✓');
+                } else {
+                    jQuery(this).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').html('');
+                }
+
+                if (jQuery(this).attr('data-radio-group') != undefined) {
+                    for (var i = 0, len = jQuery('[data-radio-group="'+jQuery(this).attr('data-radio-group')+'"]').length; i < len; i+=1) {
+                        if (!jQuery(this).is(jQuery('[data-radio-group="'+jQuery(this).attr('data-radio-group')+'"]').eq(i))) {
+                            jQuery('[data-radio-group="'+jQuery(this).attr('data-radio-group')+'"]').eq(i).prop('checked', false);
+                            jQuery('[data-radio-group="'+jQuery(this).attr('data-radio-group')+'"]').eq(i).closest(parent + '.custom-checkbox-style').find('.custom-checkbox').html('');
+                        }
+                    }
+                }
+            }
+        });
+    }
 };

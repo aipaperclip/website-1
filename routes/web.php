@@ -17,6 +17,12 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
+    Route::get('/users', 'HomeController@getUsersPageView')->name('users');
+
+    Route::get('/dentists', 'HomeController@getDentistsPageView')->name('dentists');
+
+    Route::get('/traders', 'HomeController@getTradersPageView')->name('traders');
+
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
@@ -27,7 +33,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::any('/info/{slug}', 'Controller@handleApiEndpoints')->name('api-endpoints');
 
-    Route::get('/partner-network', 'PartnerNetworkController@getView')->name('partner-network');
+    // Route::get('/partner-network', 'PartnerNetworkController@getView')->name('partner-network');
 
     Route::get('/team', 'TeamMembersController@getView')->name('team');
 
@@ -40,6 +46,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::get('/berlin-roundtable', /*'BerlinRoundtableController@getView'*/ function() {
         return abort(410);
     })->name('berlin-roundtable');
+
+    Route::post('/take-homepage-data', 'HomeController@takeHomepageData')->name('take-homepage-data');
 
     Route::get('/holiday-calendar-terms', 'ChristmasCalendarController@getChristmasCalendarTermsView')->name('holiday-calendar-terms');
 
@@ -96,7 +104,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     });
 
     Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');
-
 
     //======================================= AJAX ========================================
 

@@ -1,8 +1,18 @@
 <div class="dcn-big-hub">
-    <div class="app-list @if (!empty($hubType)) @if ($hubType == 'dentists') dark-blue-background @else light-blue-background @endif @endif">
+    <div class="info-section">
+        <a href="javascript:void(0)" class="close-application">×</a>
+        <figure class="logo"><img></figure>
+        <h3 class="title"></h3>
+        <div class="video-and-html-holder">
+            <div class="video-content"></div>
+            <div class="html-content"></div>
+            <div class="extra-html-content"></div>
+        </div>
+    </div>
+    <div class="app-list @if (!empty($hubType)) @if ($hubType == 'dentists') dark-blue-background @else light-blue-background @endif @endif">{{--
         <div>
             <h3 class="rotated-text">{{$hubTitleParam}}</h3>
-        </div>
+        </div>--}}
         <div class="list-wrapper">
             @foreach ($hubElements as $hubElement)
                 @if ($hubElement->type == 'folder' && empty($hubElement->children))
@@ -41,13 +51,5 @@
                 @endif
             @endforeach
         </div>
-    </div>
-    <div class="info-section">
-        <a href="javascript:void(0)" class="close-application">×</a>
-        <figure class="logo"><img></figure>
-        <h3 class="title"></h3>
-        <div class="video-content"></div>
-        <div class="html-content"></div>
-        <div class="extra-html-content"></div>
     </div>
 </div>

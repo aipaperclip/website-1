@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h2 class="col-xs-12 section-title">{{$titles[2]->html}}</h2>
+                    <h2 class="col-xs-12 section-title">THE IDEAL CANDIDATE</h2>
                 </div>
                 <div class="row list">
                     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 col-xs-12">
@@ -109,50 +109,63 @@
                 </div>
             </div>
             <div class="row title">
-                <h2 class="col-xs-12 section-title">{{$titles[3]->html}}</h2>
+                <h2 class="col-xs-12 section-title">APPLY NOW</h2>
             </div>
             <div class="row form">
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
                     <form method="POST" enctype="multipart/form-data" action="{{ route('submit-apply-position') }}">
                         <div class="form-row errors"></div>
-                        <div class="form-row">
-                            <input type="text" name="user-name" placeholder="Name *" maxlength="100" class="required"/>
+                        <div class="padding-bottom-15 field-parent">
+                            <div class="custom-google-label-style module" data-input-colorful-border="true">
+                                <label for="user-name">Name:</label>
+                                <input type="text" id="user-name" name="user-name" maxlength="100" class="full-rounded required form-field"/>
+                            </div>
                         </div>
-                        <div class="form-row">
-                            <input type="text" name="email" placeholder="Email *" maxlength="100" class="required"/>
+                        <div class="padding-bottom-15 field-parent">
+                            <div class="custom-google-label-style module" data-input-colorful-border="true">
+                                <label for="email">Email:</label>
+                                <input type="text" id="email" name="email" maxlength="100" class="full-rounded required form-field"/>
+                            </div>
                         </div>
-                        <div class="form-row">
-                            <input type="text" name="phone" placeholder="Phone *" maxlength="50" class="required"/>
+                        <div class="padding-bottom-15 field-parent">
+                            <div class="custom-google-label-style module" data-input-colorful-border="true">
+                                <label for="phone">Phone:</label>
+                                <input type="text" id="phone" name="phone" maxlength="20" class="full-rounded required form-field"/>
+                            </div>
                         </div>
                         <div class="form-row">
                             <textarea rows="3" name="message" maxlength="3000" placeholder="Your Message"></textarea>
                         </div>
-                        <div class="form-row button-row fs-0">
-                            <div class="upload-file inline-block" id="upload-cv" data-label="Upload CV">
-                                <input type="file" name="upload-cv" class="inputfile inputfile-1 hide-input" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf"/>
-                                <button type="button"></button>
+                        <div class="form-row button-row upload-btn-parent fs-0">
+                            <div class="upload-file module inline-block" data-label="Upload CV">
+                                <input type="file" name="upload-cv" id="upload-cv" class="upload-input" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf"/>
                             </div>
                             <div class="file-text inline-block">
                                 <div class="types">File types allowed: .pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf up to 2MB</div>
-                                <div class="file-name"></div>
+                                <div class="file-name lato-bold"></div>
                             </div>
                         </div>
-                        <div class="form-row button-row fs-0">
-                            <div class="upload-file inline-block" id="upload-portfolio" data-label="Upload Portfolio">
-                                <input type="file" name="upload-portfolio" class="inputfile inputfile-1 hide-input" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf"/>
-                                <button type="button"></button>
+                        <div class="form-row button-row upload-btn-parent fs-0">
+                            <div class="upload-file module inline-block" data-label="Upload Portfolio">
+                                <input type="file" name="upload-portfolio" id="upload-portfolio" class="upload-input" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf"/>
                             </div>
                             <div class="file-text inline-block">
                                 <div class="types">File types allowed: .pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf up to 2MB</div>
-                                <div class="file-name"></div>
+                                <div class="file-name lato-bold"></div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <input type="text" name="portfolio" placeholder="Portfolio link" maxlength="500"/>
+                        <div class="padding-bottom-15">
+                            <div class="custom-google-label-style module" data-input-colorful-border="true">
+                                <label for="portfolio">Portfolio link:</label>
+                                <input type="text" id="portfolio" name="portfolio" maxlength="500" class="full-rounded form-field"/>
+                            </div>
                         </div>
-                        <div class="form-row fs-0 captcha-parent">
+                        <div class="form-row fs-0 captcha-parent field-parent">
                             <div class="inline-block fs-14 width-50">
-                                <input type="text" name="captcha" id="captcha" placeholder="Enter captcha" maxlength="5" class="required"/>
+                                <div class="custom-google-label-style module" data-input-colorful-border="true">
+                                    <label for="captcha">Enter captcha:</label>
+                                    <input type="text" id="captcha" name="captcha" maxlength="5" class="full-rounded required form-field"/>
+                                </div>
                             </div>
                             <div class="inline-block width-50">
                                 <div class="captcha-container flex">
@@ -163,14 +176,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row privacy-policy" data-valid-message="Please agree with our Privacy Policy.">
-                            <input type="checkbox" id="privacy-policy"/><label for="privacy-policy">{!! $sections[3]->html !!}</label>
+                        <div class="form-row padding-top-10" data-valid-message="Please agree with our Privacy Policy.">
+                            <div class="custom-checkbox-style module">
+                                <input type="checkbox" class="custom-checkbox-input" id="privacy-policy"/>
+                                <label class="custom-checkbox-label" for="privacy-policy">I have read and agree with <a href="/privacy-policy" target="_blank">Privacy Policy</a></label>
+                            </div>
                         </div>
-                        <div class="form-row text-center submit">
+                        <div class="form-row text-center padding-top-20">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <input type="hidden" name="post-slug" value="{{$job_offer->slug}}">
                             <input type="hidden" name="post-title" value="{{$job_offer->title}}">
-                            <input type="submit" value="SEND" class="white-blue-rounded-btn"/>
+                            <input type="submit" value="SEND" class="white-bright-blue-btn padding-top-10 padding-bottom-10 padding-left-50 padding-right-50 lato-black fs-20"/>
                         </div>
                     </form>
                 </div>

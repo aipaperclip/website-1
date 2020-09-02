@@ -45,7 +45,7 @@
     <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.8">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.8">
 
-    @if((!(new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'home')) || ((new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'foundation')))
+    @if((!(new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'home')) || ((new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'foundation')) || (!empty(Route::current()) && (Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists' || Route::current()->getName() == 'traders')))
         <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v={{time()}}">
     @endif
 
@@ -85,22 +85,22 @@
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window,document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
+
         @if(empty($_COOKIE['marketing_cookies']))
             fbq('consent', 'revoke');
         @else
             fbq('consent', 'grant');
         @endif
+
         fbq('init', '2366034370318681');
         fbq('track', 'PageView');
     </script>
     <noscript>
-        <img height="1" width="1"
-             src="https://www.facebook.com/tr?id=2366034370318681&ev=PageView
-&noscript=1"/>
+        <img height="1" width="1" src="https://www.facebook.com/tr?id=2366034370318681&ev=PageView&noscript=1"/>
     </noscript>
     <!-- End Facebook Pixel Code -->
 </head>
-<body data-current="one" class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @if((new \App\Http\Controllers\UserController())->checkPatientSession()) logged-patient @elseif((new \App\Http\Controllers\UserController())->checkDentistSession()) logged-dentist @endif @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif @if(!empty(Route::current()) && ((Route::current()->getName() == 'careers' && empty(request()->route()->parameters) || Route::current()->getName() == 'corporate-design'))) allow-draw-lines @endif">
+<body data-current="one" class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @if((new \App\Http\Controllers\UserController())->checkPatientSession()) logged-patient @elseif((new \App\Http\Controllers\UserController())->checkDentistSession()) logged-dentist @endif @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif">
     <svg class="svg-with-lines">
         <line class="first" x1="0" y1="0" x2="0" y2="0"/>
         <line class="second" x1="0" y1="0" x2="0" y2="0"/>
@@ -123,47 +123,41 @@
         <line class="nineteenth" x1="0" y1="0" x2="0" y2="0"/>
         <line class="twentieth" x1="0" y1="0" x2="0" y2="0"/>
     </svg>
-    <header class="container">
-        <div class="row fs-0">
-            <figure itemscope="" itemtype="http://schema.org/Organization" class="col-xs-3 logo-container inline-block">
-                <a itemprop="url" @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('foundation') }}" @else  href="{{ route('home') }}" @endif @if(!empty(Route::current())) @if(Route::current()->getName() == "home") tabindex="=-1" @endif @endif>
-                    <img src="@if((new \App\Http\Controllers\UserController())->checkSession() && Route::current()->getName() == 'home') {{URL::asset('assets/images/round-logo-white.svg') }} @else {{URL::asset('assets/images/logo.svg') }} @endif" itemprop="logo" alt="Dentacoin logo"/>
-                    @if(!empty(Route::current()))
-                        @if(Route::current()->getName() == 'careers' || Route::current()->getName() == 'corporate-design')
-                            <div class="first-dot logo-dot fs-16 inline-block">&nbsp;</div>
+    <header>
+        <div class="container">
+            <div class="row fs-0">
+                <figure itemscope="" itemtype="http://schema.org/Organization" class="col-xs-3 logo-container inline-block">
+                    <a itemprop="url" @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('foundation') }}" @else  href="{{ route('home') }}" @endif @if(!empty(Route::current())) @if(Route::current()->getName() == "home") tabindex="=-1" @endif @endif>
+                        <img src="@if((new \App\Http\Controllers\UserController())->checkSession() && Route::current()->getName() == 'home') {{URL::asset('assets/images/round-logo-white.svg') }} @else {{URL::asset('assets/images/logo.svg') }} @endif" itemprop="logo" alt="Dentacoin logo"/>
+                        @if(!empty(Route::current()))
+                            @if(Route::current()->getName() == 'careers' || Route::current()->getName() == 'corporate-design')
+                                <div class="first-dot logo-dot fs-16 inline-block">&nbsp;</div>
+                            @endif
                         @endif
-                    @endif
-                </a>
-            </figure>
-            @if(!(new \App\Http\Controllers\UserController())->checkSession())
-                <div class="col-xs-9 btn-container inline-block">
-                    <a href="//dentists.dentacoin.com" class="inline-block fs-20 margin-right-20 main-color init-dentists-click-event" target="_blank">For dentists</a>
-                    <div class="inline-block btn-and-line">
-                        <a href="javascript:void(0)" class="white-black-btn open-dentacoin-gateway patient-login" tabindex="-1">SIGN IN</a>
-                        <span class="first-dot custom-dot">&nbsp;</span>
-                        @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
-                            <figure itemscope="" itemtype="http://schema.org/ImageObject" class="christmas-ball">
-                                <img src="/assets/images/christmas-calendar-campaign/christmas-ball.svg" class="width-100 max-width-40" alt="Christmas ball" itemprop="contentUrl"/>
-                            </figure>
-                        @endif
+                    </a>
+                </figure>
+                @if(!(new \App\Http\Controllers\UserController())->checkSession())
+                    <div class="col-xs-9 btn-container inline-block">
+                        <a href="//dentists.dentacoin.com" class="inline-block fs-20 margin-right-20 main-color init-dentists-click-event" target="_blank">For dentists</a>
+                        <div class="inline-block btn-and-line">
+                            <a href="javascript:void(0)" class="white-black-btn open-dentacoin-gateway patient-login" tabindex="-1">JOIN US</a>
+                            <span class="first-dot custom-dot">&nbsp;</span>
+                            @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
+                                <figure itemscope="" itemtype="http://schema.org/ImageObject" class="christmas-ball">
+                                    <img src="/assets/images/christmas-calendar-campaign/christmas-ball.svg" class="width-100 max-width-40" alt="Christmas ball" itemprop="contentUrl"/>
+                                </figure>
+                            @endif
+                        </div>
                     </div>
-                </div>
-            @else
-                @include('partials.logged-user-desktop-header-menu')
-            @endif
+                @else
+                    @include('partials.logged-user-desktop-header-menu')
+                @endif
+            </div>
         </div>
     </header>
     <main>@yield("content")</main>
-    <footer class="padding-bottom-50 padding-bottom-xs-100 padding-bottom-sm-100">
+    <footer class="padding-bottom-80 @if(!empty(Route::current()) && Route::current()->getName() == 'traders') black-style @endif">
         <div class="container">
-            @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() != 'careers' && Route::current()->getName() != 'corporate-identity' && Route::current()->getName() != 'corporate-design' && Route::current()->getName() != 'christmas-calendar')
-                @if(isset($footer_data))
-                    <div class="row">
-                        <h2 class="col-xs-12 section-title">{!! $footer_data[0]['html'] !!}</h2>
-                    </div>
-                    @include('partials.newsletter-registration')
-                @endif
-            @endif
             @if(!empty($socials))
                 <div class="row socials">
                     <div class="col-xs-12" itemscope="" itemtype="http://schema.org/Organization">
@@ -173,7 +167,14 @@
                                 <li class="inline-block">
                                     <a itemprop="sameAs" target="_blank" href="{{$social->link}}">
                                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                            <img src="{{URL::asset('assets/uploads/'.$social->media->name) }}"  @if(!empty($social->media->alt)) alt="{{$social->media->alt}}" @endif  itemprop="contentUrl"/>
+                                            @if(!empty(Route::current()) && Route::current()->getName() == 'traders')
+                                                @php($currentMedia = URL::asset('assets/uploads/'.$social->reversed_media->name))
+                                                @php($currentAlt = $social->reversed_media->alt)
+                                            @else
+                                                @php($currentMedia = URL::asset('assets/uploads/'.$social->media->name))
+                                                @php($currentAlt = $social->media->alt)
+                                            @endif
+                                            <img src="{{$currentMedia}}" data-default-src="{{URL::asset('assets/uploads/'.$social->media->name) }}" alt="{{$currentMedia}}" data-default-alt="{{$social->media->alt}}" data-black-style-src="{{URL::asset('assets/uploads/'.$social->reversed_media->name) }}" data-black-style-alt="{{$social->reversed_media->alt}}" itemprop="contentUrl"/>
                                         </figure>
                                     </a>
                                 </li>
@@ -182,6 +183,7 @@
                     </div>
                 </div>
             @endif
+            @include('partials.newsletter-registration')
             @if(!empty($footer_menu))
             <div class="row menu">
                 <nav class="col-xs-12">
@@ -209,18 +211,14 @@
                 </nav>
             </div>
             @endif
-            @if(isset($footer_data))
-                <div class="row media-inquiries">
-                    <div class="col-xs-12">
-                        {!! $footer_data[4]['html'] !!}
-                    </div>
+            <div class="row all-rights">
+                <div class="col-xs-12">
+                    <div>© {{date('Y')}} Dentacoin Foundation. All rights reserved.</div>
+                    <div><a href="\assets\uploads\dentacoin-foundation.pdf" target="_blank">Verify Dentacoin Foundation</a> | <a href="https://dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></div>
+                    <div>Contract Address:</div>
+                    <div><a href="https://etherscan.io/address/0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6#code" target="_blank">0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6</a></div>
                 </div>
-                <div class="row all-rights">
-                    <div class="col-xs-12">
-                        {!! $footer_data[5]['html'] !!}
-                    </div>
-                </div>
-            @endif
+            </div>
         </div>
     </footer>
     @php($crossLogin = \Illuminate\Support\Facades\Input::get('cross-login'))

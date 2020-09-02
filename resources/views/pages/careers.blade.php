@@ -4,22 +4,21 @@
     <section class="careers-container">
         <div class="container">
             <div class="row">
-                <h1 class="col-xs-12 page-h1-title">{{ $meta_data->page_title }}</h1>
+                <h1 class="col-xs-12 page-h1-title">DENTACOIN CAREERS</h1>
             </div>
             <div class="row join-our-team fs-0">
-                <div class="col-xs-12 col-sm-6 inline-block image">
+                <div class="col-xs-12 col-sm-5 col-sm-offset-1 inline-block image">
                     <div class="second-dot fs-16 inline-block">&nbsp;</div>
                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                        <img src="{{URL::asset('assets/images/person-in-magnifier.svg') }}" alt="Person in magnifier"
+                        <img src="{{URL::asset('assets/uploads/person-in-magnifier.svg') }}" alt="Person in magnifier"
                              itemprop="contentUrl"/>
                         <div class="third-dot fs-16 inline-block">&nbsp;</div>
                     </figure>
                 </div>
-                <div class="col-xs-12 col-sm-6 inline-block text">
-                    <div class="section-subtitle">{{$titles[0]->html}}</div>
-                    <div class="section-description">{!! $sections[0]->html !!}</div>
-                    <div class="btn-container"><a href="javascript:void(0)"
-                                                  class="white-blue-rounded-btn">{{$sections[1]->html}}</a></div>
+                <div class="col-xs-12 col-sm-5 inline-block text">
+                    <div class="section-subtitle">Join Our Team</div>
+                    <div class="fs-18 line-height-26 padding-top-15 padding-bottom-10">Eager to join Dentacoin Foundation in its quest to reshape the global dental industry? In line with the fast global expansion of our project, we are looking for bright individuals who are fascinated by new technologies, able to work in a demanding work environment and passionate to deliver solutions with a global impact!</div>
+                    <div class="padding-top-15"><a href="javascript:void(0)" class="white-bright-blue-btn lato-black fs-20 scroll-to-job-offers">SEE JOB OPENINGS</a></div>
                 </div>
             </div>
             @include('partials.benefits', ['borders' => true])
@@ -32,7 +31,7 @@
                         </figure>
                         <div class="border-behind-logo"></div>
                     </div>
-                    <h2 class="col-xs-12 section-title">{{$titles[1]->html}}</h2>
+                    <h2 class="col-xs-12 section-title">OPEN JOB OPENINGS</h2>
                 </div>
             </div>
             <div class="row open-job-positions">
@@ -66,14 +65,14 @@
                                         <div class="border"></div>
                                         <div class="btn-container">
                                             <a href="{{route('careers', ['slug' => $job_offer->slug])}}"
-                                               class="white-blue-rounded-btn">APPLY</a>
+                                               class="white-bright-blue-btn">APPLY</a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                     @else
-                        <div class="col-xs-12 no-results">{!! $sections[2]->html !!}</div>
+                        <div class="col-xs-12 no-results">No open positions at this moment.</div>
                     @endif
                 </div>
             </div>

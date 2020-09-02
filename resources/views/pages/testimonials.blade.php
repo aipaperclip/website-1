@@ -4,7 +4,7 @@
     <section class="testimonials-container">
         <div class="container">
             <div class="row">
-                <h1 class="col-xs-12 page-h1-title">{{ $meta_data->page_title }}</h1>
+                <h1 class="col-xs-12 page-h1-title">DENTACOIN NETWORK SPEAKING</h1>
             </div>
             <div class="row list">
                 @php($first = false)

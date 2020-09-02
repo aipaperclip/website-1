@@ -143,13 +143,17 @@ if (typeof jQuery == 'undefined') {
                     return ajaxCall;
                 }
             },
-            getBigHubHtml: async function(hubType, ajaxData) {
+            getBigHubHtml: async function(hubType, ajaxData, url) {
+                if (url == undefined) {
+                    url = 'https://dentacoin.com';
+                }
+
                 if (fireBigHubAjax) {
                     fireBigHubAjax = false;
 
                     var ajaxParams = {
                         type: 'POST',
-                        url: 'https://dentacoin.com/combined-hub/get-big-hub-html/'+hubType,
+                        url: url + '/combined-hub/get-big-hub-html/'+hubType,
                         dataType: 'json'
                     };
 
@@ -176,13 +180,32 @@ if (typeof jQuery == 'undefined') {
                         bigHubParams.hubTitleParam = params.hub_title;
                     }
 
-                    var getBigHubHtml = await dcnHub.dcnHubRequests.getBigHubHtml(params.type_hub, bigHubParams);
+                    if (hasOwnProperty.call(params, 'local_environment')) {
+                        var getBigHubHtml = await dcnHub.dcnHubRequests.getBigHubHtml(params.type_hub, bigHubParams, params.local_environment);
+                    } else {
+                        var getBigHubHtml = await dcnHub.dcnHubRequests.getBigHubHtml(params.type_hub, bigHubParams);
+                    }
 
                     if (getBigHubHtml.success) {
                         elementToAppend.html(getBigHubHtml.data);
 
                         if (params.type_hub == 'dentists') {
                             elementToAppend.find('.app-list').addClass('dark-blue-background');
+                        }
+
+                        function dateObjToFormattedDate(object) {
+                            if (object.getDate() < 10) {
+                                var date = '0' + object.getDate();
+                            } else {
+                                var date = object.getDate();
+                            }
+
+                            if (object.getMonth() + 1 < 10) {
+                                var month = '0' + (object.getMonth() + 1);
+                            } else {
+                                var month = object.getMonth() + 1;
+                            }
+                            return date + '/' + month + '/' + object.getFullYear();
                         }
 
                         elementToAppend.find('.single-application.link').click(function() {
@@ -217,9 +240,11 @@ if (typeof jQuery == 'undefined') {
                             if (jQuery(this).attr('data-video') != '') {
                                 var youtubeVideoId = getYoutubeVideoId(jQuery(this).attr('data-video'));
                                 if (youtubeVideoId) {
+                                    $('.video-and-html-holder').removeClass('no-video');
                                     elementToAppend.find('.video-content').html('<iframe src="https://www.youtube.com/embed/'+youtubeVideoId+'"></iframe>');
                                 }
                             } else {
+                                $('.video-and-html-holder').addClass('no-video');
                                 elementToAppend.find('.video-content').html('');
                             }
 
