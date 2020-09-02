@@ -160,8 +160,9 @@ var projectData = {
                     }
                 }
 
-                // add intro section animation
-                $('.section-wait-until-user-page .hidden-picture img').addClass('animated');
+                // adjust header to black style
+                $('header .main-color').removeClass('main-color').addClass('color-white');
+                $('header .white-black-btn').removeClass('white-black-btn').addClass('black-white-btn');
 
                 // remove footer black style
                 if ($('footer').hasClass('black-style')) {
@@ -172,15 +173,16 @@ var projectData = {
                     }
                 }
 
-                projectData.general_logic.data.showStickyHomepageNav();
+                // add intro section animation
+                $('.section-wait-until-user-page .hidden-picture img').addClass('animated');
 
-                $('header .main-color').removeClass('main-color').addClass('color-white');
+                projectData.general_logic.data.showStickyHomepageNav();
 
                 if ($('#append-big-hub-dentacoin').length) {
                     var bigHubParams = {
                         'element_id_to_append' : 'append-big-hub-dentacoin',
                         'type_hub' : 'dentacoin',
-                        'local_environment' : 'http://dentacoin.test'
+                        'local_environment' : 'https://dev.dentacoin.com'
                     };
 
                     dcnHub.initBigHub(bigHubParams);
@@ -214,7 +216,11 @@ var projectData = {
                 // add intro section animation
                 $('.section-the-era-dentist-page .hidden-picture img').addClass('animated');
 
-                // remove footer black style
+                // adjust header to white style
+                $('header .main-color').removeClass('color-white').addClass('main-color');
+                $('header .black-white-btn').removeClass('black-white-btn').addClass('white-black-btn');
+
+                // adjust footer to white style
                 if ($('footer').hasClass('black-style')) {
                     $('footer').removeClass('black-style');
                     for (var i = 0, len = $('.socials ul li a img').length; i < len; i+=1) {
@@ -234,8 +240,6 @@ var projectData = {
                             for (var i = 0, len = $('.benefits-row video').length; i < len; i+=1) {
                                 $('.benefits-row video').get(i).play()
                             }
-
-                            /*$('.benefits-row').html('<div class="col-xs-12 text-center fs-0"><div class="single-benefit inline-block-top"><div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto"><video muted="muted" autoplay><source src="/assets/uploads/dentists-circle-icon1.mp4" type="video/mp4"> Your browser does not support HTML5 video.</video><meta itemprop="name" content="Dentacoin Benefit Video"><meta itemprop="description" content="Happier and healthier patients"><meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00"><meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png"><link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon1.mp4"></div><div class="fs-20 lato-bold padding-top-10 color-black">Happier and healthier patients</div></div><div class="single-benefit inline-block-top"><div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto"><video muted="muted" autoplay><source src="/assets/uploads/dentists-circle-icon2.mp4" type="video/mp4"> Your browser does not support HTML5 video.</video><meta itemprop="name" content="Dentacoin Benefit Video"><meta itemprop="description" content="Improved online presence and search rank"><meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00"><meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png"><link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon2.mp4"></div><div class="fs-20 lato-bold padding-top-10 color-black">Improved online presence and search rank</div></div><div class="single-benefit inline-block-top"><div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto"><video muted="muted" autoplay><source src="/assets/uploads/dentists-circle-icon3.mp4" type="video/mp4"> Your browser does not support HTML5 video.</video><meta itemprop="name" content="Dentacoin Benefit Video"><meta itemprop="description" content="Additional income and innovative payments"><meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00"><meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png"><link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon3.mp4"></div><div class="fs-20 lato-bold padding-top-10 color-black">Additional income and innovative payments</div></div><div class="single-benefit inline-block-top"><div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto"><video muted="muted" autoplay><source src="/assets/uploads/dentists-circle-icon4.mp4" type="video/mp4"> Your browser does not support HTML5 video.</video><meta itemprop="name" content="Dentacoin Benefit Video"><meta itemprop="description" content="Market overview via free DentaVox stats"><meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00"><meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png"><link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon4.mp4"></div><div class="fs-20 lato-bold padding-top-10 color-black">Market overview via free DentaVox stats</div></div><div class="single-benefit inline-block-top"><div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto"><video muted="muted" autoplay><source src="/assets/uploads/dentists-circle-icon5.mp4" type="video/mp4"> Your browser does not support HTML5 video.</video><meta itemprop="name" content="Dentacoin Benefit Video"><meta itemprop="description" content="Valuable feedback via Trusted Reviews"><meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00"><meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png"><link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon5.mp4"></div><div class="fs-20 lato-bold padding-top-10 color-black">Valuable feedback via Trusted Reviews</div></div></div>');*/
                         }
                     });
                 }
@@ -251,6 +255,7 @@ var projectData = {
                     }
                 }
 
+                // if exchange bullets exist bind them logic to show/ hide exchanges
                 if ($('.exchanges-bullets').length) {
                     $('.exchanges-bullets a').click(function() {
                         $('.exchanges-bullets a').removeClass('active');
@@ -807,7 +812,7 @@ var projectData = {
                     }
                     $('body').removeClass('overflow-hidden');
 
-                    if (xsScreen) {
+                    if (!xsScreen) {
                         $('.module.video-expressions-slider[data-type="'+type+'"] .slick-current').next().next().addClass('after-middle');
                         $('.module.video-expressions-slider[data-type="'+type+'"] .slick-current').next().addClass('middle-slide');
                         $('.module.video-expressions-slider[data-type="'+type+'"] .slick-current').addClass('before-middle');
@@ -815,7 +820,7 @@ var projectData = {
 
                     var clearIframesOnSlickChange = true;
                     $('.module.video-expressions-slider[data-type="'+type+'"]').on('afterChange', function(event, slick, currentSlide, nextSlide) {
-                        if (xsScreen) {
+                        if (!xsScreen) {
                             $('.module.video-expressions-slider[data-type="'+type+'"] .slick-slide').removeClass('middle-slide after-middle before-middle');
                             $('.module.video-expressions-slider[data-type="'+type+'"] .slick-current').next().next().addClass('after-middle');
                             $('.module.video-expressions-slider[data-type="'+type+'"] .slick-current').next().addClass('middle-slide');
