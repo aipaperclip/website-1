@@ -155,7 +155,7 @@
             </div>
         </div>
     </header>
-    <main class="main-container">@yield("content")</main>
+    <main @if(!empty(Route::current()) && (Route::current()->getName() != 'home' && Route::current()->getName() != 'users' && Route::current()->getName() != 'dentists' && Route::current()->getName() != 'traders')) class="main-container" @endif>@yield("content")</main>
     <footer class="padding-bottom-80 @if(!empty(Route::current()) && Route::current()->getName() == 'traders') black-style @endif">
         <div class="container">
             @if(!empty($socials))
