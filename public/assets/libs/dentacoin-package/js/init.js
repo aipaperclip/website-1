@@ -252,19 +252,19 @@ if (typeof jQuery == 'undefined') {
                             if (jQuery(window).width() < 992) {
                                 elementToAppend.find('.app-list').hide();
                                 elementToAppend.find('.info-section').fadeIn(500);
-
-                                var scrollTop = jQuery('.info-section').offset().top;
-                                if (jQuery('header.sticky-header').length) {
-                                    scrollTop = scrollTop - jQuery('header.sticky-header').outerHeight();
-                                }
-
-                                jQuery('html').animate({
-                                    scrollTop: scrollTop
-                                }, {
-                                    duration: 500
-                                });
                             }
                             jQuery('body').removeClass('overflow-hidden');
+
+                            var scrollTop = jQuery('.info-section').offset().top;
+                            if (jQuery('header.sticky-header').length) {
+                                scrollTop = scrollTop - jQuery('header.sticky-header').outerHeight();
+                            }
+
+                            jQuery('html').animate({
+                                scrollTop: scrollTop
+                            }, {
+                                duration: 500
+                            });
                         });
 
                         jQuery('body').addClass('overflow-hidden');
