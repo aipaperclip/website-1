@@ -8510,7 +8510,7 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
     position: absolute;
     bottom: 0;
     width: 100%;
-    left: 0; }
+    left: 15px; }
   .section-homepage-nav .single-element {
     position: relative; }
     .section-homepage-nav .single-element:before {
@@ -8525,6 +8525,9 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       -moz-border-radius: 20px;
       -ms-border-radius: 20px;
       border-radius: 20px; }
+      @media screen and (max-width: 767px) {
+        .section-homepage-nav .single-element:before {
+          bottom: 50px; } }
     .section-homepage-nav .single-element:after {
       content: '';
       position: absolute;
@@ -8536,6 +8539,10 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center center; }
+      @media screen and (max-width: 767px) {
+        .section-homepage-nav .single-element:after {
+          height: 60px;
+          background-size: contain; } }
     .section-homepage-nav .single-element:last-child:after, .section-homepage-nav .single-element:last-child:before {
       display: none; }
     .section-homepage-nav .single-element a .icon-wrapper {
@@ -8565,36 +8572,40 @@ body.class-404 footer .section-title, body.class-404 footer .newsletter-register
         margin: 0 auto; }
         .section-homepage-nav .single-element a .hidden-nav-box ul li {
           list-style: disc inside none; }
-    .section-homepage-nav .single-element a:hover {
-      padding-bottom: 0 !important; }
-      .section-homepage-nav .single-element a:hover .icon-wrapper {
-        height: 110px;
-        padding-top: 10px;
-        overflow: hidden; }
-        .section-homepage-nav .single-element a:hover .icon-wrapper figure {
-          margin: 0 auto;
-          width: 200px;
-          height: 200px;
-          -webkit-box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.2);
-          -moz-box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.2);
-          -ms-box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.2);
-          -webkit-border-radius: 50%;
-          -moz-border-radius: 50%;
-          -ms-border-radius: 50%;
-          border-radius: 50%; }
-          .section-homepage-nav .single-element a:hover .icon-wrapper figure img {
-            margin-top: 15px; }
-          .section-homepage-nav .single-element a:hover .icon-wrapper figure figcaption {
-            display: none; }
-      .section-homepage-nav .single-element a:hover .hidden-nav-box {
-        display: block; }
-      .section-homepage-nav .single-element a:hover.users .icon-wrapper figure img {
-        max-width: 60px !important; }
-      .section-homepage-nav .single-element a:hover.dentists .icon-wrapper figure img {
-        max-width: 90px !important; }
-      .section-homepage-nav .single-element a:hover.traders .icon-wrapper figure img {
-        max-width: 95px !important; }
+    @media screen and (min-width: 992px) {
+      .section-homepage-nav .single-element a:hover {
+        padding-bottom: 0 !important; }
+        .section-homepage-nav .single-element a:hover .icon-wrapper {
+          height: 110px;
+          padding-top: 10px;
+          overflow: hidden; }
+          .section-homepage-nav .single-element a:hover .icon-wrapper figure {
+            margin: 0 auto;
+            width: 200px;
+            height: 200px;
+            -webkit-box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.2);
+            -ms-box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.2);
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            border-radius: 50%; }
+            .section-homepage-nav .single-element a:hover .icon-wrapper figure img {
+              margin-top: 15px; }
+            .section-homepage-nav .single-element a:hover .icon-wrapper figure figcaption {
+              display: none; }
+        .section-homepage-nav .single-element a:hover .hidden-nav-box {
+          display: block; }
+        .section-homepage-nav .single-element a:hover.users .icon-wrapper figure img {
+          max-width: 60px !important; }
+        .section-homepage-nav .single-element a:hover.dentists .icon-wrapper figure img {
+          max-width: 90px !important; }
+        .section-homepage-nav .single-element a:hover.traders .icon-wrapper figure img {
+          max-width: 95px !important; } }
+  @media screen and (max-width: 767px) {
+    .section-homepage-nav {
+      min-height: 150px; } }
 
 .section-wait-until-user-page {
   background-color: #00b0e9;

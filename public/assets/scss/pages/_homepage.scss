@@ -47,7 +47,7 @@
         position: absolute;
         bottom: 0;
         width: 100%;
-        left: 0;
+        left: 15px;   
     }
     .single-element {
         position: relative;
@@ -60,6 +60,9 @@
             height: 20px;
             background-color: black;
             @include rounded(20px);
+            @include breakpoint($xs) {
+                bottom: 50px;
+            }
         }
         &:after {
             content: '';
@@ -72,6 +75,10 @@
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center center;
+            @include breakpoint($xs) {
+                height: 60px;
+                background-size: contain;
+            }
         }
         &:last-child {
             &:after, &:before  {
@@ -102,57 +109,62 @@
                     }
                 }
             }
-            &:hover {
-                padding-bottom: 0 !important;
-                .icon-wrapper {
-                    height: 110px;
-                    padding-top: 10px;
-                    overflow: hidden;
-                    figure {
-                        margin: 0 auto;
-                        width: 200px;
-                        height: 200px;
-                        @include box-shadow(0 2px 15px 1px rgba(0,0,0,.2));
-                        @include rounded(50%);
-                        img {
-                            margin-top: 15px;
-                        }
-                        figcaption {
-                            display: none;
-                        }
-                    }
-                }
-                .hidden-nav-box {
-                    display: block;
-                }
-                &.users {
+            @include breakpoint($md) {
+                &:hover {
+                    padding-bottom: 0 !important;
                     .icon-wrapper {
+                        height: 110px;
+                        padding-top: 10px;
+                        overflow: hidden;
                         figure {
+                            margin: 0 auto;
+                            width: 200px;
+                            height: 200px;
+                            @include box-shadow(0 2px 15px 1px rgba(0,0,0,.2));
+                            @include rounded(50%);
                             img {
-                                max-width: 60px !important;
+                                margin-top: 15px;
+                            }
+                            figcaption {
+                                display: none;
                             }
                         }
                     }
-                }
-                &.dentists {
-                    .icon-wrapper {
-                        figure {
-                            img {
-                                max-width: 90px !important;
+                    .hidden-nav-box {
+                        display: block;
+                    }
+                    &.users {
+                        .icon-wrapper {
+                            figure {
+                                img {
+                                    max-width: 60px !important;
+                                }
                             }
                         }
                     }
-                }
-                &.traders {
-                    .icon-wrapper {
-                        figure {
-                            img {
-                                max-width: 95px !important;
+                    &.dentists {
+                        .icon-wrapper {
+                            figure {
+                                img {
+                                    max-width: 90px !important;
+                                }
+                            }
+                        }
+                    }
+                    &.traders {
+                        .icon-wrapper {
+                            figure {
+                                img {
+                                    max-width: 95px !important;
+                                }
                             }
                         }
                     }
                 }
             }
         }
+    }
+    @include breakpoint($xs) {
+        min-height: 150px;
     }
 }

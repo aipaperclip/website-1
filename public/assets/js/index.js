@@ -217,7 +217,7 @@ var projectData = {
                 $('.section-the-era-dentist-page .hidden-picture img').addClass('animated');
 
                 // adjust header to white style
-                $('header .main-color').removeClass('color-white').addClass('main-color');
+                $('header .color-white').removeClass('color-white').addClass('main-color');
                 $('header .black-white-btn').removeClass('black-white-btn').addClass('white-black-btn');
 
                 // adjust footer to white style
