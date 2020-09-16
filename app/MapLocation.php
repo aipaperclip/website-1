@@ -10,6 +10,10 @@ class MapLocation extends Model
         return $this->belongsTo('App\Clinic');
     }
 
+    protected function country() {
+        return $this->belongsTo('App\MapCountry');
+    }
+
     protected function type() {
         return $this->belongsTo('App\LocationType');
     }

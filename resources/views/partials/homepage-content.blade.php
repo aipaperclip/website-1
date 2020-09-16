@@ -1,4 +1,4 @@
-<section class="section-homepage-intro container padding-top-130 padding-top-xs-90 padding-top-lgll-200 padding-bottom-60 padding-bottom-xs-10 padding-bottom-lgll-120 hide-on-users-category-selected @if (!empty($class)) {{$class}} @endif">
+<section class="section-homepage-intro container padding-top-130 padding-top-xs-90 padding-top-lgll-230 padding-bottom-60 padding-bottom-xs-10 padding-bottom-lgll-120 hide-on-users-category-selected @if (!empty($class)) {{$class}} @endif">
     <div class="row">
         <div class="col-xs-12 col-lg-8 col-lg-offset-2 text-center">
             <figure itemscope="" itemtype="http://schema.org/ImageObject">
@@ -28,7 +28,7 @@
                         <li class="fs-16 lato-bold">Global adoption</li>
                     </ul>
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
-                        <img src="/assets/images/white-back-left-arrow-rounded.png" alt="White left arrow rounded" class="margin-0-auto max-width-20 width-100" itemprop="contentUrl"/>
+                        <img src="/assets/images/black-circle-arrow.svg" alt="White left arrow rounded" class="margin-0-auto max-width-20 width-100" itemprop="contentUrl"/>
                     </figure>
                 </div>
             </a>
@@ -49,7 +49,7 @@
                         <li class="fs-16 lato-bold">Partner dentists</li>
                     </ul>
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
-                        <img src="/assets/images/white-back-left-arrow-rounded.png" alt="White left arrow rounded" class="margin-0-auto max-width-20 width-100" itemprop="contentUrl"/>
+                        <img src="/assets/images/black-circle-arrow.svg" alt="White left arrow rounded" class="margin-0-auto max-width-20 width-100" itemprop="contentUrl"/>
                     </figure>
                 </div>
             </a>
@@ -70,7 +70,7 @@
                         <li class="fs-16 lato-bold">Exchange platforms</li>
                     </ul>
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
-                        <img src="/assets/images/white-back-left-arrow-rounded.png" alt="White left arrow rounded" class="margin-0-auto max-width-20 width-100" itemprop="contentUrl"/>
+                        <img src="/assets/images/black-circle-arrow.svg" alt="White left arrow rounded" class="margin-0-auto max-width-20 width-100" itemprop="contentUrl"/>
                     </figure>
                 </div>
             </a>

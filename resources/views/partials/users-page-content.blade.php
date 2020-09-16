@@ -43,6 +43,7 @@
 <section class="section-users-text-expressions">
     @include('partials.user-expressions', array('user_expressions' => $user_expressions, 'type' => 'users'))
 </section>
-<section class="module section-dentacoin-stats padding-top-70 padding-bottom-50">
+@include('partials.dentacoin-map')
+<section class="module section-dentacoin-stats padding-top-70 padding-bottom-80">
     @include('partials.dentacoin-stats')
 </section>

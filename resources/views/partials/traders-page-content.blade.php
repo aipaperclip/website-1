@@ -195,7 +195,8 @@
         <div class="col-xs-12 col-sm-4 padding-top-15 padding-bottom-15 single-link">
             <a href="/assets/uploads/dentacoin-company-introduction.pdf" target="_blank" class="display-block color-black">
                 <figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
-                    <img alt="Dentacoin intro" itemprop="contentUrl" class="width-100 max-width-100" src="/assets/uploads/dcn-info-icon-animation.gif" />
+                    <img alt="Dentacoin gif intro" itemprop="contentUrl" class="width-100 max-width-100 gif-version" src="/assets/uploads/dcn-info-icon-animation.gif" />
+                    <img alt="Dentacoin image icon" itemprop="contentUrl" class="width-100 max-width-100 image-version" src="/assets/uploads/dcn-info-icon-animation.png" />
                     <figcaption class="lato-bold fs-20 padding-top-10">Dentacoin Intro</figcaption>
                 </figure>
             </a>
@@ -203,7 +204,8 @@
         <div class="col-xs-12 col-sm-4 padding-top-15 padding-bottom-15 single-link">
             <a href="https://dentacoin.com/assets/uploads/whitepaper.pdf" target="_blank" class="display-block color-black">
                 <figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
-                    <img alt="Whitepaper icon" itemprop="contentUrl" class="width-100 max-width-100" src="/assets/uploads/dcn-whitepaper-icon-animation.gif" />
+                    <img alt="Whitepaper gif icon" itemprop="contentUrl" class="width-100 max-width-100 gif-version" src="/assets/uploads/dcn-whitepaper-icon-animation.gif" />
+                    <img alt="Whitepaper image icon" itemprop="contentUrl" class="width-100 max-width-100 image-version" src="/assets/uploads/dcn-whitepaper-icon-animation.png" />
                     <figcaption class="lato-bold fs-20 padding-top-10">Whitepaper</figcaption>
                 </figure>
             </a>
@@ -211,7 +213,8 @@
         <div class="col-xs-12 col-sm-4 padding-top-15 padding-bottom-15 single-link">
             <a href="https://coinmarketcap.com/currencies/dentacoin/" target="_blank" class="display-block color-black">
                 <figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
-                    <img alt="CoinMarketCap icon" itemprop="contentUrl" class="width-100 max-width-100" src="/assets/uploads/cmc-icon-animation.gif" />
+                    <img alt="CoinMarketCap gif icon" itemprop="contentUrl" class="width-100 max-width-100 gif-version" src="/assets/uploads/cmc-icon-animation.gif" />
+                    <img alt="CoinMarketCap image icon" itemprop="contentUrl" class="width-100 max-width-100 image-version" src="/assets/uploads/cmc-icon-animation.png" />
                     <figcaption class="lato-bold fs-20 padding-top-10">CoinMarketCap</figcaption>
                 </figure>
             </a>

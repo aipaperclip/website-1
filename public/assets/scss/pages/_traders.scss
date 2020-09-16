@@ -8,11 +8,12 @@
         width: 65%;
         position: relative;
         z-index: 110;
+        text-align: center;
         .trader {
-            width: 100%;
+            width: 90%;
             position: relative;
             z-index: 40;
-            margin-left: -100%;
+            margin-left: -150%;
             @include simple_transition(.5s);
             &.animated {
                 margin-left: 0;
@@ -163,6 +164,16 @@
 
             }
         }
+        @include breakpoint($lgll) {
+            .text-content {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                > div {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
     }
 }
 
@@ -307,6 +318,20 @@
         .single-link {
             border-right: 1px solid black;
             position: relative;
+            .gif-version {
+                display: none;
+            }
+            .gif-version, .image-version {
+                margin: 0 auto;
+            }
+            &:hover {
+                .image-version {
+                    display: none;
+                }
+                .gif-version {
+                    display: block;
+                }
+            }
             &:last-child {
                 border-right: 0;
             }
@@ -383,9 +408,10 @@
         display: none;
         ul {
             li {
-                padding-top: 8px;
-                padding-bottom: 8px;
+                padding-top: 14px;
+                padding-bottom: 14px;
                 &.border-bottom-bright-blue {
+                    padding-bottom: 25px;
                     border-bottom: 1.5px solid $bright_blue;
                 }
                 .label-tag {

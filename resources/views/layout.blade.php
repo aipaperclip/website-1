@@ -244,7 +244,7 @@
     <div class="response-layer">
         <div class="wrapper">
             <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                <img src="/assets/images/loader.gif" class="max-width-160" alt="Loader">
+                <img src="/assets/images/dcn-flipping-coin-logo-loader-V3.gif" class="max-width-250 max-width-xs-200" alt="Loader">
             </figure>
         </div>
     </div>
@@ -269,7 +269,7 @@
     <!--End of Schema Markup-->
 
     {{--<script src="/assets/js/basic.js"></script>--}}
-    @if(!empty(Route::current()) && Route::current()->getName() == 'partner-network')
+    @if(!empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists'  || Route::current()->getName() == 'traders' || Route::current()->getName() == 'partner-network'))
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
     @endif
     {{----}}

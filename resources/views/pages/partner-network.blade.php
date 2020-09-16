@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="map-canvas"></div>
+        <div class="google-map-box"></div>
         @if(!empty($clinics))
             <div class="featured-clinics-slider">
                 @foreach($clinics as $clinic)

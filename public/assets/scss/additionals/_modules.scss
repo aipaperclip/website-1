@@ -21,7 +21,7 @@
     }
 }
 
-.white-purple-btn-with-arrow {
+.white-purple-btn {
     font-size: 20px;
     color: white;
     background-color: #ff0046;
@@ -32,16 +32,44 @@
     &:hover {
         color: white;
     }
-    &:after {
-        content: '';
-        width: 80px;
-        height: 90px;
-        background-image: url('/assets/images/right-btn-arrow.png');
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        right: -20px;
-        @include vertical-align(absolute);
+    &.with-white-arrow {
+        &:after {
+            content: '';
+            width: 80px;
+            height: 90px;
+            background-image: url('/assets/images/right-btn-arrow.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            right: -20px;
+            @include vertical-align(absolute);
+        }
+    }
+    &.with-list-icon {
+        &:after {
+            content: '';
+            width: 80px;
+            height: 90px;
+            background-image: url('/assets/images/mobile-map-list-icon.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            left: -20px;
+            @include vertical-align(absolute);
+        }
+    }
+    &.with-map-pin {
+        &:after {
+            content: '';
+            width: 80px;
+            height: 90px;
+            background-image: url('/assets/images/mobile-map-icon.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            left: -20px;
+            @include vertical-align(absolute);
+        }
     }
 }
 
@@ -87,6 +115,9 @@
             color: white !important;
             background-color: $bright_blue;
             text-decoration: none !important;
+            &.with-border {
+                border: 1.5px solid white;
+            }
         }
     }
 }
@@ -681,6 +712,7 @@
                             z-index: 100;
                             opacity: 1;
                             border: 0;
+                            @include simple_transition(.5s);
                             @include box-shadow(0 5px 20px 2px rgba(0,0,0,.5));
                             @include vertical-horizontal-align(absolute);
                             @include breakpoint($xs) {
@@ -793,6 +825,7 @@
                                     opacity: 1;
                                     @include box-shadow(0 5px 20px 2px rgba(0,0,0,.5));
                                     @include vertical-horizontal-align(absolute);
+                                    @include simple_transition(.5s);
                                     @include breakpoint($xs) {
                                         max-width: none;
                                         width: 100%;
@@ -933,6 +966,467 @@
             @include breakpoint($sm-down) {
                 width: 100%;
                 padding-bottom: 50px;
+            }
+        }
+    }
+    &.section-google-map {
+        .header-filter-line {
+            background-color: $bright_blue;
+            .dropdown.bootstrap-select {
+                max-width: 450px;
+                .dropdown-header {
+                    font-size: 20px !important;
+                    font-family: "Lato-Bold";
+                }
+                .dropdown-menu .divider {
+                    display: none;
+                }
+                .dropdown-menu li {
+                    font-size: 16px;
+                }
+                .disabled {
+                    .check-mark {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .picker-and-map {
+            .left-picker {
+                width: 500px;
+                @include breakpoint($lgll) {
+                    width: 700px;
+                }
+                @include breakpoint($md-only) {
+                    width: 400px;
+                }
+                @include breakpoint($sm-down) {
+                    width: 100%;
+                    display: none;
+                }
+                .inner-gray-line {
+                    background-color: #e8e8e8;
+                    height: 40px;
+                    line-height: 40px;
+                    .picker-value {
+                        span {
+                            color: #ec1e4c;
+                        }
+                    }
+                }
+                .results-list {
+                    padding: 15px 10px 50px;
+                    max-height: 460px;
+                    overflow-y: auto;
+                    position: relative;
+                    @include breakpoint($xs) {
+                        max-height: 400px;
+                    }
+                    .locations-count {
+                        color: #bbbbbb;
+                    }
+                    .results-nav {
+                        padding: 10px;
+                        .nav-item {
+                            color: #bbbbbb;
+                        }
+                        .continents-nav, .countries-nav, .locations-nav {
+                            display: none;
+                            &.shown {
+                                display: block;
+                            }
+                        }
+                    }
+                    .continents-list {
+                        .countries-list {
+                            display: none;
+                        }
+                        ul {
+                            li {
+                                .continent-and-country-style-type {
+                                    font-size: 28px;
+                                    font-family: 'Lato-Black';
+                                    display: block;
+                                    padding: 5px 10px;
+                                    margin: 15px 10px;
+                                    border: 3px solid transparent;
+                                    @include rounded(4px);
+                                    @include box-shadow(0px 0px 7px 1px rgba(0, 0, 0, 0.15));
+                                    @include simple_transition(.5s);
+                                    .element-name {
+                                        width: calc(100% - 150px);
+                                        font-size: 28px;
+                                    }
+                                    .locations-count {
+                                        text-align: right;
+                                        width: 150px;
+                                    }
+                                    &:hover {
+                                        border: 3px solid #ff0046;
+                                    }
+                                    @include breakpoint($xs) {
+                                        font-size: 22px;
+                                        margin: 10px 0;
+                                        .element-name {
+                                            width: calc(100% - 150px);
+                                            font-size: 22px;
+                                        }
+                                    }
+                                }
+                                .locations-category-list {
+                                    display: none;
+                                    li {
+                                        &.closed {
+                                            .category-toggle-button {
+                                                &.partners {
+                                                    span {
+                                                        i {
+                                                            color: #ff0046;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: #ff0046;
+                                                    }
+                                                }
+                                                &.labs {
+                                                    span {
+                                                        i {
+                                                            color: $bright_blue;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: $bright_blue;
+                                                    }
+                                                }
+                                                &.suppliers {
+                                                    span {
+                                                        i {
+                                                            color: #14cab8;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: #14cab8;
+                                                    }
+                                                }
+                                                &.industryPartners {
+                                                    span {
+                                                        i {
+                                                            color: #000000;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: #000000;
+                                                    }
+                                                }
+                                                &.non-partners {
+                                                    span {
+                                                        i {
+                                                            color: #126585;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: #126585;
+                                                    }
+                                                }
+                                            }
+                                            .locations-list {
+                                                display: none;
+                                            }
+                                        }
+                                        .category-toggle-button {
+                                            color: black;
+                                            display: block;
+                                            position: relative;
+                                            margin: 5px 10px;
+                                            @include breakpoint($xs) {
+                                                margin: 5px 0;
+                                            }
+                                            span {
+                                                padding-right: 5px;
+                                                background-color: white;
+                                                position: relative;
+                                                z-index: 10;
+                                                i {
+                                                    margin-right: 10px;
+                                                    color: #bbbbbb;
+                                                    @include breakpoint($xs) {
+                                                        margin-right: 5px;
+                                                    }
+                                                }
+                                            }
+                                            &:after {
+                                                content: '';
+                                                z-index: 5;
+                                                background-color: #bbbbbb;
+                                                width: 100%;
+                                                height: 2px;
+                                                left: 0;
+                                                @include vertical-align(absolute);
+                                            }
+                                        }
+                                        .locations-list {
+                                            padding: 5px 10px;
+                                            .single-location {
+                                                padding: 10px;
+                                                margin-bottom: 10px;
+                                                border: 3px solid transparent;
+                                                @include rounded(4px);
+                                                @include box-shadow(0px 0px 7px 1px rgba(0, 0, 0, 0.15));
+                                                figure {
+                                                    width: 120px;
+                                                    img {
+                                                        width: 100%;
+                                                    }
+                                                }
+                                                .right-location-content {
+                                                    width: calc(100% - 120px);
+                                                    .is-partner {
+                                                        span {
+                                                            padding: 5px;
+                                                            background-color: #bbbbbb;
+                                                            color: white;
+                                                            @include rounded(6px);
+                                                        }
+                                                    }
+                                                    .trp-stats {
+                                                        .stars {
+                                                            width: 132px;
+                                                            height: 25px;
+                                                            background-position: center;
+                                                            background-repeat: no-repeat;
+                                                            background-image: url('/assets/images/stars-gray-average.png');
+                                                            background-size: contain;
+                                                            .active-stars {
+                                                                height: 25px;
+                                                                background-image: url('/assets/images/stars-blue-average.png');
+                                                                background-size: auto 100%;
+                                                                background-position: top 0 left 0;
+                                                                background-repeat: no-repeat;
+                                                            }
+                                                        }
+                                                        .base-on-x-reviews {
+                                                            color: #888888;
+                                                        }
+                                                        a {
+                                                            color: $bright_blue;
+                                                        }
+                                                    }
+                                                    .hidden-content {
+                                                        display: none;
+                                                        line-height: 28px;
+                                                        a {
+                                                            font-family: 'Lato-Bold';
+                                                            color: $bright_blue;
+                                                        }
+                                                    }
+                                                    .toggle-location-tile {
+                                                        display: inline-block;
+                                                        width: 25px;
+                                                        @include simple_transition(.3s);
+                                                        img {
+                                                            width: 100%;
+                                                        }
+                                                    }
+                                                }
+                                                &.toggled {
+                                                    border: 3px solid #ff0046;
+                                                    position: relative;
+                                                    .right-location-content {
+                                                        .is-partner {
+                                                            font-size: 0 !important;
+                                                            padding: 0 !important;
+                                                            span {
+                                                                display: none;
+                                                            }
+                                                            &:after {
+                                                                content: 'Partner';
+                                                                font-size: 14px;
+                                                                color: white;
+                                                                background-color: #ff0046;
+                                                                font-family: 'Lato-Bold';
+                                                                padding: 5px 10px;
+                                                                position: absolute;
+                                                                top: -8px;
+                                                                left: -8px;
+                                                                @include rounded(4px);
+                                                            }
+                                                        }
+                                                        .hidden-content {
+                                                            display: block;
+                                                        }
+                                                        .toggle-location-tile {
+                                                            @include rotate(180deg);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            @include breakpoint($xs) {
+                                                padding: 5px 0;
+                                                .single-location {
+                                                    padding: 5px;
+                                                    figure {
+                                                        width: 100px;
+                                                    }
+                                                    .right-location-content {
+                                                        width: calc(100% - 100px);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                &.open-item {
+                                    display: block !important;
+                                    > a {
+                                        display: none;
+                                    }
+                                    &.single-continent {
+                                        .countries-list {
+                                            display: block;
+                                        }
+                                    }
+                                    &.country-list-parent {
+                                        .locations-category-list {
+                                            display: block;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .google-map-box {
+                width: calc(100% - 500px);
+                height: 500px;
+                position: relative;
+                overflow: hidden;
+                @include breakpoint($lgll) {
+                    width: calc(100% - 700px);
+                }
+                @include breakpoint($md-only) {
+                    width: calc(100% - 400px);
+                }
+                @include breakpoint($sm-down) {
+                    width: 100%;
+                    height: 400px;
+                }
+            }
+        }
+        .invite-and-bottom-filter {
+            .only-mobile-visible-map-button {
+                display: none;
+                text-align: center;
+                padding-bottom: 20px;
+                margin-top: -20px;
+                &.list-shown {
+                    margin-top: 30px;
+                }
+                @include breakpoint($sm-down) {
+                    display: block;
+                }
+            }
+            .invite-text {
+                width: 500px;
+                background-color: $bright_blue;
+                @include breakpoint($lgll) {
+                    width: 700px;
+                }
+                @include breakpoint($md-only) {
+                    width: 400px;
+                }
+            }
+            .bottom-filter {
+                width: calc(100% - 500px);
+                background-color: white;
+                padding: 15px 25px;
+                display: flex;
+                .right-side-filters {
+                    order: 1;
+                }
+                .left-side-stats {
+                    order: 0;
+                }
+                .left-side-stats, .right-side-filters {
+                    width: 50%;
+                }
+                .changeable-stats {
+                    ul {
+                        li {
+                            span {
+                                color: #ec1e4c;
+                                font-family: 'Lato-Black';
+                            }
+                            @include breakpoint($xs) {
+                                padding-bottom: 10px;
+                            }
+                        }
+                    }
+                }
+                .right-side-filters {
+                    .custom-checkbox-label {
+                        .color-box {
+                            width: 17.5px;
+                            height: 17.5px;
+                            margin: 0 10px 0 5px;
+                        }
+                    }
+                    .custom-checkbox {
+                        margin: 0;
+                        border-radius: 0;
+                        border-color: black;
+                        color: black;
+                        border-width: 2px;
+                        line-height: 17.5px;
+                    }
+                }
+                @include breakpoint($lgll) {
+                    width: calc(100% - 700px);
+                }
+                @include breakpoint($md-only) {
+                    padding: 15px 10px;
+                    width: calc(100% - 400px);
+                    .custom-checkbox-label {
+                        font-size: 15px;
+                    }
+                }
+                @include breakpoint($sm-down) {
+                    display: block;
+                    padding: 15px;
+                    .left-side-stats, .right-side-filters {
+                        width: 100%;
+                    }
+                }
+            }
+            @include breakpoint($sm-down) {
+                display: block !important;
+                .invite-text {
+                    display: none;
+                    width: 100%;
+                }
+                .bottom-filter {
+                    width: 100%;
+                    .custom-checkbox-style {
+                        display: flex;
+                        align-items: center;
+                        padding-bottom: 5px;
+                        .custom-checkbox-label {
+                            order: 1;
+                            display: flex;
+                            align-items: center;
+                            span {
+                                order: 1;
+                            }
+                            .color-box {
+                                margin: 0 5px 0 0;
+                                order: 0;
+                            }
+                        }
+                        .custom-checkbox {
+                            order: 0;
+                        }
+                    }
+                }
             }
         }
     }

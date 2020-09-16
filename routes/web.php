@@ -15,6 +15,12 @@ Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captc
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
     //======================================= PAGES ========================================
 
+    Route::get('/test', function() {
+        echo "<br><br>SINGLE:<br>";
+        var_dump((new \App\Http\Controllers\APIRequestsController())->getMapData(array('action' => 'combined-count-data')));
+        die();
+    })->name('test');
+
     Route::get('/', 'HomeController@getView')->name('home');
 
     Route::get('/users', 'HomeController@getUsersPageView')->name('users');
@@ -33,7 +39,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::any('/info/{slug}', 'Controller@handleApiEndpoints')->name('api-endpoints');
 
-    // Route::get('/partner-network', 'PartnerNetworkController@getView')->name('partner-network');
+    Route::get('/partner-network', 'PartnerNetworkController@getView')->name('partner-network');
 
     Route::get('/team', 'TeamMembersController@getView')->name('team');
 
@@ -48,6 +54,10 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     })->name('berlin-roundtable');
 
     Route::post('/take-homepage-data', 'HomeController@takeHomepageData')->name('take-homepage-data');
+
+    Route::post('/get-map-data', 'DentacoinMapController@getMapData')->name('get-map-data');
+
+    Route::post('/get-labs-suppliers-and-industry-partners', 'DentacoinMapController@getLabsSuppliersAndIndustryPartners')->name('get-labs-suppliers-and-industry-partners');
 
     Route::get('/holiday-calendar-terms', 'ChristmasCalendarController@getChristmasCalendarTermsView')->name('holiday-calendar-terms');
 

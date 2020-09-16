@@ -254,17 +254,25 @@ var basic = {
     customValidateWalletAddress: function() {
         return (/^(0x){1}[0-9a-fA-F]{40}$/i.test(address));
     },
-    initCustomCheckboxes: function(parent) {
+    initCustomCheckboxes: function(parent, type) {
         if (typeof(parent) == undefined) {
             parent = '';
         } else {
             parent = parent + ' ';
         }
 
+        if (type == undefined) {
+            type = 'prepend';
+        }
+
         for (var i = 0, len = jQuery(parent + '.custom-checkbox-style').length; i < len; i+=1) {
             if (!jQuery(parent + '.custom-checkbox-style').eq(i).hasClass('already-custom-style')) {
                 if (jQuery(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').is(':checked')) {
-                    jQuery(parent + '.custom-checkbox-style').eq(i).prepend('<label for="'+jQuery(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').attr('id')+'" class="custom-checkbox">✓</label>');
+                    if (type == 'prepend') {
+                        jQuery(parent + '.custom-checkbox-style').eq(i).prepend('<label for="'+jQuery(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').attr('id')+'" class="custom-checkbox">✓</label>');
+                    } else if (type == 'append') {
+                        jQuery(parent + '.custom-checkbox-style').eq(i).append('<label for="'+jQuery(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').attr('id')+'" class="custom-checkbox">✓</label>');
+                    }
                 } else {
                     jQuery(parent + '.custom-checkbox-style').eq(i).prepend('<label for="'+jQuery(parent + '.custom-checkbox-style').eq(i).find('input[type="checkbox"]').attr('id')+'" class="custom-checkbox"></label>');
                 }
