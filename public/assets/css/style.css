@@ -7918,11 +7918,6 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
         z-index: 100;
         opacity: 1;
         border: 0;
-        -webkit-transition: 0.5s;
-        -moz-transition: 0.5s;
-        -o-transition: 0.5s;
-        -ms-transition: 0.5s;
-        transition: 0.5s;
         -webkit-box-shadow: 0 5px 20px 2px rgba(0, 0, 0, 0.5);
         -moz-box-shadow: 0 5px 20px 2px rgba(0, 0, 0, 0.5);
         -ms-box-shadow: 0 5px 20px 2px rgba(0, 0, 0, 0.5);
@@ -8043,12 +8038,7 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
         left: 50%;
         -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        -webkit-transition: 0.5s;
-        -moz-transition: 0.5s;
-        -o-transition: 0.5s;
-        -ms-transition: 0.5s;
-        transition: 0.5s; }
+        transform: translate(-50%, -50%); }
         @media screen and (max-width: 767px) {
           .module.video-expressions-slider .slick-list .slick-track .single-slide.middle-slide .video-thumb figure img {
             max-width: none;
@@ -8415,15 +8405,28 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
               -ms-transform: rotate(180deg);
               -o-transform: rotate(180deg);
               transform: rotate(180deg); }
+            @media screen and (max-width: 767px) {
+              .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled .right-location-content {
+                width: 100%;
+                padding-top: 10px; } }
         @media screen and (max-width: 767px) {
           .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list {
             padding: 5px 0; }
             .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location {
               padding: 5px; }
               .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location figure {
-                width: 100px; }
+                width: 100%;
+                text-align: center;
+                padding-top: 15px; }
+                .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location figure img {
+                  max-width: 150px; }
               .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location .right-location-content {
-                width: calc(100% - 100px); } }
+                width: calc(100% - 100px);
+                text-align: center; }
+                .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location .right-location-content .hidden-content {
+                  text-align: left;
+                  max-width: 450px;
+                  margin: 0 auto; } }
     .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li.open-item {
       display: block !important; }
       .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li.open-item > a {
