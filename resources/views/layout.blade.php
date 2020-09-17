@@ -42,8 +42,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.9">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.9">
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.10">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.10">
 
     @if((!(new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'home')) || ((new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'foundation')) || (!empty(Route::current()) && (Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists' || Route::current()->getName() == 'traders')))
         <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v={{time()}}">
@@ -274,13 +274,13 @@
     @endif
     {{----}}
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.1.9"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.1.10"></script>
     <script src="/assets/libs/dentacoin-package/js/init.js?v={{time()}}"></script>
     @if (!(new \App\Http\Controllers\UserController())->checkSession())
         <script src="/assets/libs/dentacoin-login-gateway/js/init.js?v={{time()}}"></script>
     @endif
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.1.9"></script>
+    <script src="/dist/js/front-script.js?v=1.1.10"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/address.js"></script>

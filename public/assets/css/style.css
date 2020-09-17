@@ -8331,8 +8331,6 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
           box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.15); }
           .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location figure {
             width: 120px; }
-            .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location figure img {
-              width: 100%; }
           .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location .right-location-content {
             width: calc(100% - 120px); }
             .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location .right-location-content .is-partner span {
@@ -8410,27 +8408,30 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
               -o-transform: rotate(180deg);
               transform: rotate(180deg); }
             @media screen and (max-width: 767px) {
+              .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled figure img {
+                width: 100%; }
               .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled .right-location-content {
                 width: 100%;
                 padding-top: 10px; } }
+            @media screen and (max-width: 767px) {
+              .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled figure {
+                width: 100%;
+                text-align: center;
+                padding-top: 15px; }
+                .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled figure img {
+                  max-width: 150px; }
+              .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled .right-location-content {
+                width: calc(100% - 100px);
+                text-align: center; }
+                .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled .right-location-content .hidden-content {
+                  text-align: left;
+                  max-width: 450px;
+                  margin: 0 auto; } }
         @media screen and (max-width: 767px) {
           .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list {
             padding: 5px 0; }
             .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location {
-              padding: 5px; }
-              .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location figure {
-                width: 100%;
-                text-align: center;
-                padding-top: 15px; }
-                .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location figure img {
-                  max-width: 150px; }
-              .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location .right-location-content {
-                width: calc(100% - 100px);
-                text-align: center; }
-                .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location .right-location-content .hidden-content {
-                  text-align: left;
-                  max-width: 450px;
-                  margin: 0 auto; } }
+              padding: 5px; } }
     .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li.open-item {
       display: block !important; }
       .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li.open-item > a {

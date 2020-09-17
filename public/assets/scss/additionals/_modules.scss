@@ -1172,9 +1172,6 @@
                                                 @include box-shadow(0px 0px 7px 1px rgba(0, 0, 0, 0.15));
                                                 figure {
                                                     width: 120px;
-                                                    img {
-                                                        width: 100%;
-                                                    }
                                                 }
                                                 .right-location-content {
                                                     width: calc(100% - 120px);
@@ -1261,9 +1258,33 @@
                                                         }
                                                     }
                                                     @include breakpoint($xs) {
+                                                        figure {
+                                                            img {
+                                                                width: 100%;
+                                                            }
+                                                        }
                                                         .right-location-content {
                                                             width: 100%;
                                                             padding-top: 10px;
+                                                        }
+                                                    }
+                                                    @include breakpoint($xs) {
+                                                        figure {
+                                                            width: 100%;
+                                                            text-align: center;
+                                                            padding-top: 15px;
+                                                            img {
+                                                                max-width: 150px;
+                                                            }
+                                                        }
+                                                        .right-location-content {
+                                                            width: calc(100% - 100px);
+                                                            text-align: center;
+                                                            .hidden-content {
+                                                                text-align: left;
+                                                                max-width: 450px;
+                                                                margin: 0 auto;
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -1272,23 +1293,6 @@
                                                 padding: 5px 0;
                                                 .single-location {
                                                     padding: 5px;
-                                                    figure {
-                                                        width: 100%;
-                                                        text-align: center;
-                                                        padding-top: 15px;
-                                                        img {
-                                                            max-width: 150px;
-                                                        }
-                                                    }
-                                                    .right-location-content {
-                                                        width: calc(100% - 100px);
-                                                        text-align: center;
-                                                        .hidden-content {
-                                                            text-align: left;
-                                                            max-width: 450px;
-                                                            margin: 0 auto;
-                                                        }
-                                                    }
                                                 }
                                             }
                                         }
