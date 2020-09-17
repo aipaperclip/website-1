@@ -1204,6 +1204,10 @@
                                                         }
                                                         .base-on-x-reviews {
                                                             color: #888888;
+                                                            @include breakpoint($xs) {
+                                                                display: block;
+                                                                padding: 5px 0;
+                                                            }
                                                         }
                                                         a {
                                                             color: $bright_blue;

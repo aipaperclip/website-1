@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-xs-12 col-lg-8 col-lg-offset-2 text-center">
             <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                <img src="/assets/uploads/text-logo.svg" alt="Dentacoin" class="margin-0-auto max-width-600 width-100" itemprop="contentUrl"/>
+                <img src="/assets/uploads/text-logo.svg" alt="Dentacoin" class="margin-0-auto max-width-600 max-width-xs-250 width-100" itemprop="contentUrl"/>
             </figure>
-            <h1 class="fs-28 lato-bold padding-top-10 padding-top-lgll-20 padding-bottom-25">The Blockchain Solution for the Global Dental Industry</h1>
-            <h2 class="fs-20 line-height-26 lato-italic color-dark-gray padding-bottom-25">“Sick Care is the crisis of the 21st century. <br> We are shifting the paradigm towards a Health system that Cares.”</h2>
-            <h3 class="fs-20 fs-xs-18 line-height-28 lato-bold color-dark-gray">Secure Blockchain infrastructure, patient-centered care and intelligent prevention used jointly to improve long-term health, reduce costs and pain, and ensure benefits for all market participants.</h3>
+            <h1 class="fs-28 fs-xs-22 lato-bold padding-top-10 padding-top-lgll-20 padding-bottom-25 padding-bottom-xs-15">The Blockchain Solution for the Global Dental Industry</h1>
+            <h2 class="fs-20 fs-xs-18 line-height-26 lato-italic color-dark-gray padding-bottom-25 padding-bottom-xs-15">“Sick Care is the crisis of the 21st century. <br class="hide-xs"> We are shifting the paradigm towards a Health system that Cares.”</h2>
+            <h3 class="fs-20 fs-xs-18 line-height-26 lato-bold color-dark-gray">Secure Blockchain infrastructure, patient-centered care and intelligent prevention used jointly to improve long-term health, reduce costs and pain, and ensure benefits for all market participants.</h3>
         </div>
     </div>
 </section>

@@ -1369,6 +1369,10 @@
                 background-repeat: no-repeat; }
             .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location .right-location-content .trp-stats .base-on-x-reviews {
               color: #888888; }
+              @media screen and (max-width: 767px) {
+                .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location .right-location-content .trp-stats .base-on-x-reviews {
+                  display: block;
+                  padding: 5px 0; } }
             .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location .right-location-content .trp-stats a {
               color: #00aeef; }
             .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location .right-location-content .hidden-content {
