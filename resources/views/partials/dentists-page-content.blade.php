@@ -34,7 +34,7 @@
     <div class="row benefits-row">
         <div class="col-xs-12 text-center fs-0">
             <div class="single-benefit inline-block-top">
-                @if (isset($mobile) && $mobile)
+                @if (isset($mobile_device) && $mobile_device)
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
                         <img src="/assets/uploads/dentists-circle-1.png" alt="Dentists circle 1" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="single-benefit inline-block-top">
-                @if (isset($mobile) && $mobile)
+                @if (isset($mobile_device) && $mobile_device)
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
                         <img src="/assets/uploads/dentists-circle-2.png" alt="Dentists circle 2" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="single-benefit inline-block-top">
-                @if (isset($mobile) && $mobile)
+                @if (isset($mobile_device) && $mobile_device)
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
                         <img src="/assets/uploads/dentists-circle-3.png" alt="Dentists circle 3" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="single-benefit inline-block-top">
-                @if (isset($mobile) && $mobile)
+                @if (isset($mobile_device) && $mobile_device)
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
                         <img src="/assets/uploads/dentists-circle-4.png" alt="Dentists circle 4" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
@@ -129,7 +129,7 @@
                 </div>
             </div>
             <div class="single-benefit inline-block-top">
-                @if (isset($mobile) && $mobile)
+                @if (isset($mobile_device) && $mobile_device)
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
                         <img src="/assets/uploads/dentists-circle-5.png" alt="Dentists circle 5" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
