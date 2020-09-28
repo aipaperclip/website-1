@@ -6461,13 +6461,13 @@ img {
 svg.svg-with-lines {
   display: none; }
 
-body.home svg.svg-with-lines, body.foundation svg.svg-with-lines, body.testimonials svg.svg-with-lines, body.press-center svg.svg-with-lines, body.careers.allow-draw-lines svg.svg-with-lines, body.corporate-design.allow-draw-lines svg.svg-with-lines {
+body.testimonials svg.svg-with-lines, body.press-center svg.svg-with-lines, body.careers.allow-draw-lines svg.svg-with-lines, body.corporate-design.allow-draw-lines svg.svg-with-lines {
   display: block;
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0; }
-  body.home svg.svg-with-lines line, body.foundation svg.svg-with-lines line, body.testimonials svg.svg-with-lines line, body.press-center svg.svg-with-lines line, body.careers.allow-draw-lines svg.svg-with-lines line, body.corporate-design.allow-draw-lines svg.svg-with-lines line {
+  body.testimonials svg.svg-with-lines line, body.press-center svg.svg-with-lines line, body.careers.allow-draw-lines svg.svg-with-lines line, body.corporate-design.allow-draw-lines svg.svg-with-lines line {
     stroke-width: 2px;
     stroke: black; }
 

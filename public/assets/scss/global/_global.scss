@@ -542,14 +542,14 @@ svg.svg-with-lines {
     display: none;
 }
 
-body.home, body.foundation, body.testimonials, body.press-center, body.careers.allow-draw-lines, body.corporate-design.allow-draw-lines {
+body.testimonials, body.press-center, body.careers.allow-draw-lines, body.corporate-design.allow-draw-lines {
     svg.svg-with-lines {
         display: block;
         position: absolute;
         width: 100%;
         height: 100%;
         top: 0;
-        line {
+        line { 
             stroke-width: 2px;
             stroke: black;
         }
