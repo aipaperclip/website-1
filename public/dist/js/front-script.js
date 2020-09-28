@@ -2390,7 +2390,7 @@ var projectData = {
                     var bigHubParams = {
                         'element_id_to_append' : 'append-big-hub-dentacoin',
                         'type_hub' : 'dentacoin',
-                        'local_environment' : 'http://dentacoin.test'
+                        'local_environment' : 'https://dev.dentacoin.com'
                     };
 
                     dcnHub.initBigHub(bigHubParams);
