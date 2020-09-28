@@ -1115,7 +1115,11 @@ var projectData = {
 
                         $('.selectpicker.location-types').on('change', function() {
                             var thisValue = $(this).val();
-                            console.log(thisValue, 'thisValue');
+
+                            // dont allow users to filter only category-5
+                            if (thisValue.includes('category-5') && !thisValue.includes('category-1')) {
+                                thisValue.push('category-1');
+                            }
 
                             $('.right-side-filters input[type="checkbox"]').prop('checked', true);
                             updateTopLocationsSelectOnBottomFilterChange(thisValue);
