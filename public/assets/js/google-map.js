@@ -2,6 +2,11 @@ var markerCluster;
 function initMap(map_locations, initialLat, initialLng, initialZoom, filter_country, location_id, location_source, categories, campForZoomChange, filter_city, location_content) {
 
     console.log(categories, 'categories');
+    if (categories.includes('category-5') && !categories.includes('category-1')) {
+        categories.push('category-1');
+    }
+
+    console.log(categories, 'categories');
 
     if (initialLat === undefined) {
         initialLat = 28.508742;

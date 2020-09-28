@@ -1406,7 +1406,7 @@ var projectData = {
                                 // checking if visibility allowed by bottom category filter
                                 var iconClass = 'fa-minus-circle';
                                 var parentElementClass = '';
-                                if (!$('.right-side-filters #category-1').is(':checked')) {
+                                if (!$('.right-side-filters #category-1').is(':checked') && !$('.right-side-filters #category-5').is(':checked')) {
                                     iconClass = 'fa-plus-circle';
                                     parentElementClass = 'closed';
                                 }
@@ -1690,8 +1690,6 @@ var projectData = {
                                 $('select.selectpicker.locations').html('<option value="">Show All Locations</option>' + newLocationsSelectHtml);
                             }
 
-                            console.log(valuesArray, 'valuesArray');
-                            console.log($('select.selectpicker.locations optgroup.optgroup-for-types').length, '$(\'select.selectpicker.locations optgroup.optgroup-for-types\') LENGTH');
                             if (valuesArray.length > 0) {
                                 $('select.selectpicker.locations optgroup.optgroup-for-types').addClass('to-remove');
 
