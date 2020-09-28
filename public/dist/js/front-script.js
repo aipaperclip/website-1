@@ -1840,6 +1840,8 @@ MarkerClusterer.IMAGE_SIZES = [53, 56, 66, 78, 90];
 var markerCluster;
 function initMap(map_locations, initialLat, initialLng, initialZoom, filter_country, location_id, location_source, categories, campForZoomChange, filter_city, location_content) {
 
+    console.log(categories, 'categories');
+
     if (initialLat === undefined) {
         initialLat = 28.508742;
     }
@@ -1855,8 +1857,6 @@ function initMap(map_locations, initialLat, initialLng, initialZoom, filter_coun
     if (campForZoomChange === undefined) {
         campForZoomChange = false;
     }
-
-    console.log(filter_city, 'filter_city');
 
     Gmap = jQuery('.google-map-box');
     Gmap.each(function () {
