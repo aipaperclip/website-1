@@ -2321,41 +2321,43 @@ var projectData = {
                 if ($('body').hasClass('home')) {
                     projectData.general_logic.data.showLoader();
 
-                    var usersPageData = '';
-                    var dentistsPageData = '';
-                    var tradersPageData = '';
+                    setInterval(function() {
+                        var usersPageData = '';
+                        var dentistsPageData = '';
+                        var tradersPageData = '';
 
-                    var takeHomepageDataResponse = await projectData.requests.takeHomepageData();
-                    console.log(takeHomepageDataResponse, 'takeHomepageDataResponse');
+                        var takeHomepageDataResponse = await projectData.requests.takeHomepageData();
+                        console.log(takeHomepageDataResponse, 'takeHomepageDataResponse');
 
-                    if (takeHomepageDataResponse.success) {
-                        projectData.general_logic.data.hideLoader();
-                        projectData.general_logic.data.showStickyHomepageNav();
+                        if (takeHomepageDataResponse.success) {
+                            projectData.general_logic.data.hideLoader();
+                            projectData.general_logic.data.showStickyHomepageNav();
 
-                        usersPageData = takeHomepageDataResponse.data.usersPageData;
-                        dentistsPageData = takeHomepageDataResponse.data.dentistsPageData;
-                        tradersPageData = takeHomepageDataResponse.data.tradersPageData;
+                            usersPageData = takeHomepageDataResponse.data.usersPageData;
+                            dentistsPageData = takeHomepageDataResponse.data.dentistsPageData;
+                            tradersPageData = takeHomepageDataResponse.data.tradersPageData;
 
-                        $('.call-users-page').click(function() {
-                            console.log('click');
-                            projectData.general_logic.data.slideInUsersContent(usersPageData);
-                        });
+                            $('.call-users-page').click(function() {
+                                console.log('click');
+                                projectData.general_logic.data.slideInUsersContent(usersPageData);
+                            });
 
-                        $('.call-dentists-page').click(function() {
-                            console.log('click');
-                            projectData.general_logic.data.slideInDentistsContent(dentistsPageData);
-                        });
+                            $('.call-dentists-page').click(function() {
+                                console.log('click');
+                                projectData.general_logic.data.slideInDentistsContent(dentistsPageData);
+                            });
 
-                        $('.call-traders-page').click(function() {
-                            console.log('click');
-                            projectData.general_logic.data.slideInTradersContent(tradersPageData);
-                        });
-                    } else {
-                        $('.section-homepage-nav .single-element a').click(function() {
-                            basic.closeDialog();
-                            basic.showAlert('Something went wrong. Please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a> with description of the problem.', '', true);
-                        });
-                    }
+                            $('.call-traders-page').click(function() {
+                                console.log('click');
+                                projectData.general_logic.data.slideInTradersContent(tradersPageData);
+                            });
+                        } else {
+                            $('.section-homepage-nav .single-element a').click(function() {
+                                basic.closeDialog();
+                                basic.showAlert('Something went wrong. Please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a> with description of the problem.', '', true);
+                            });
+                        }
+                    }, 2000);
                 }
             },
             users: function(bodyClassCheck) {
