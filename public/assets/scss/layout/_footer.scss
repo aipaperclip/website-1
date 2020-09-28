@@ -32,11 +32,11 @@ footer {
                     input[type='submit'] {
                         height: 40px;
                         font-size: 18px;
-                        background-color: #aaaaaa;
+                        background-color: black;
+                        color: white;
                         display: block;
                         width: 100%;
                         border: 0;
-                        color: black;
                         @include rounded(0 4px 4px 0);
                     }
                 }
@@ -79,7 +79,7 @@ footer {
         }
         @include breakpoint($xs)   {
             padding-bottom: 20px;
-            padding-top: 20px;
+            padding-top: 40px;
             ul {
                 font-size: 0;
                 li {
@@ -93,7 +93,7 @@ footer {
         padding-bottom: 30px;
         ul {
             li {
-                padding: 0 20px;
+                padding: 0 5px;
                 position: relative;
                 &.separator {
                     padding: 0 5px;
@@ -101,16 +101,19 @@ footer {
                 a {
                     color: $light_gray;
                     font-size: 18px;
-                    font-weight: bold;
+                    font-family: 'Lato-Bold';
                     &:hover {
                         text-decoration: underline;
+                    }
+                    @include breakpoint($xs) {
+                        font-family: 'Lato-Black';
                     }
                 }
                 .submenu {
                     padding: 10px;
                     position: absolute;
                     background-color: white;
-                    width: 150px;
+                    width: 120px;
                     z-index: 50;
                     left: 0;
                     top: 100%;
@@ -125,25 +128,33 @@ footer {
                     background-image: url(/assets/images/angle-down-solid.svg);
                     background-repeat: no-repeat;
                     background-size: 10px auto;
-                    background-position: center right 5px;
+                    background-position: center right 0;
                 }
                 &:hover {
                     .submenu {
                         display: block;
                     }
                 }
+                @include breakpoint($lgll) {
+                    padding: 0 20px;
+                }
             }
         }
         @include breakpoint($xs)    {
+            padding-top: 20px;
             padding-bottom: 20px;
             ul {
                 li {
                     padding: 3px 10px;
+                    display: block !important;
                     a {
-                        font-size: 14px;
+                        font-size: 18px;
                     }
                     &.separator {
-                        padding: 3px 0;
+                        display: none !important;
+                    }
+                    &.has-submenu {
+                        display: inline-block !important;
                     }
                 }
             }
@@ -159,6 +170,16 @@ footer {
         }
         @include breakpoint($xs)    {
             padding-bottom: 50px;
+            .separator {
+                display: none;
+            }
+            .footer-bottom-link {
+                font-size: 16px;
+                display: block;
+                text-decoration: underline;
+                font-family: 'Lato-Black';
+                margin-top: 5px;
+            }
         }
     }
     &.black-style {
@@ -184,6 +205,16 @@ footer {
         .newsletter-register {
             a {
                 color: white;
+            }
+            .email-field {
+                #mc_embed_signup_scroll {
+                    .btn-container {
+                        input[type='submit'] {
+                            background-color: white;
+                            color: black;
+                        }
+                    }
+                }
             }
         }
         .all-rights {

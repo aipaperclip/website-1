@@ -18,6 +18,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::get('/test', function() {
         echo "<br><br>SINGLE:<br>";
         var_dump((new \App\Http\Controllers\APIRequestsController())->getMapData(array('action' => 'combined-count-data')));
+        var_dump((new \App\Http\Controllers\APIRequestsController())->getMapData(array('action' => 'combined-count-by-country', 'country' => 'bg')));
+        //var_dump((new \App\Http\Controllers\APIRequestsController())->getMapData(array('action' => 'all-partners-and-non-partners-data-by-countries', 'country' => array('bg'))));
         die();
     })->name('test');
 
@@ -54,6 +56,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     })->name('berlin-roundtable');
 
     Route::post('/take-homepage-data', 'HomeController@takeHomepageData')->name('take-homepage-data');
+
+    Route::post('/get-map-html', 'DentacoinMapController@getMapHtml')->name('get-map-html');
 
     Route::post('/get-map-data', 'DentacoinMapController@getMapData')->name('get-map-data');
 

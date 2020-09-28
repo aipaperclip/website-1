@@ -848,52 +848,6 @@
     border: 1px solid #00aeef;
     color: white;
     background-color: #00aeef; }
-.module.video-expressions-slider .slick-prev {
-  position: absolute;
-  left: -15px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  background: url(/assets/images/left-arrow.svg);
-  background-size: auto 100%;
-  z-index: 3;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 30px;
-  height: 30px;
-  display: block;
-  font-size: 0;
-  border: 0;
-  cursor: pointer; }
-  .module.video-expressions-slider .slick-prev:focus {
-    outline: none; }
-  @media screen and (max-width: 767px) {
-    .module.video-expressions-slider .slick-prev {
-      left: 0; } }
-.module.video-expressions-slider .slick-next {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  background: url(/assets/images/right-arrow.svg);
-  right: -15px;
-  background-size: auto 100%;
-  z-index: 3;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 30px;
-  height: 30px;
-  display: block;
-  font-size: 0;
-  border: 0;
-  cursor: pointer; }
-  .module.video-expressions-slider .slick-next:focus {
-    outline: none; }
-  @media screen and (max-width: 767px) {
-    .module.video-expressions-slider .slick-next {
-      right: 0; } }
 .module.video-expressions-slider .slick-list {
   overflow-x: hidden;
   overflow-y: visible;
@@ -1128,36 +1082,6 @@
               -webkit-transform: translate(-50%, -50%);
               -ms-transform: translate(-50%, -50%);
               transform: translate(-50%, -50%); }
-    .module.user-expressions-slider-parent .user-expressions-slider .slick-dots {
-      text-align: center;
-      padding-top: 20px;
-      padding-bottom: 50px;
-      width: 80%; }
-      .module.user-expressions-slider-parent .user-expressions-slider .slick-dots > li {
-        display: inline-block;
-        padding-left: 5px;
-        padding-right: 5px; }
-        .module.user-expressions-slider-parent .user-expressions-slider .slick-dots > li button {
-          font-size: 0;
-          width: 20px;
-          height: 20px;
-          background-color: #dedede;
-          -webkit-border-radius: 50%;
-          -moz-border-radius: 50%;
-          -ms-border-radius: 50%;
-          border-radius: 50%;
-          -webkit-transition: 0.3s;
-          -moz-transition: 0.3s;
-          -o-transition: 0.3s;
-          -ms-transition: 0.3s;
-          transition: 0.3s; }
-          .module.user-expressions-slider-parent .user-expressions-slider .slick-dots > li button:focus {
-            outline: none; }
-        .module.user-expressions-slider-parent .user-expressions-slider .slick-dots > li.slick-active button {
-          background-color: #00aeef; }
-      @media screen and (max-width: 767px) {
-        .module.user-expressions-slider-parent .user-expressions-slider .slick-dots {
-          width: 100%; } }
   @media screen and (max-width: 767px) {
     .module.user-expressions-slider-parent {
       background-position: top 10px right 50px;
@@ -1195,9 +1119,41 @@
     .module.section-google-map .header-filter-line .dropdown.bootstrap-select .dropdown-menu .divider {
       display: none; }
     .module.section-google-map .header-filter-line .dropdown.bootstrap-select .dropdown-menu li {
-      font-size: 16px; }
-    .module.section-google-map .header-filter-line .dropdown.bootstrap-select .disabled .check-mark {
+      font-size: 14px;
+      margin: 0 15px; }
+      .module.section-google-map .header-filter-line .dropdown.bootstrap-select .dropdown-menu li:hover {
+        background-color: #d8eaf5; }
+        .module.section-google-map .header-filter-line .dropdown.bootstrap-select .dropdown-menu li:hover a {
+          background: transparent; }
+    .module.section-google-map .header-filter-line .dropdown.bootstrap-select .disabled {
       display: none; }
+  .module.section-google-map .header-filter-line .locations-splitted-by-category .dropdown-menu {
+    min-height: auto !important; }
+    .module.section-google-map .header-filter-line .locations-splitted-by-category .dropdown-menu .inner {
+      display: none; }
+  .module.section-google-map .header-filter-line .locations-splitted-by-category .filter-option-inner-inner {
+    font-size: 0; }
+    .module.section-google-map .header-filter-line .locations-splitted-by-category .filter-option-inner-inner:after {
+      content: 'Search by name or location';
+      font-size: 16px;
+      color: black; }
+  .module.section-google-map .header-filter-line .location-types .filter-option-inner-inner {
+    font-size: 0; }
+    .module.section-google-map .header-filter-line .location-types .filter-option-inner-inner:after {
+      content: 'Search by type';
+      font-size: 16px;
+      color: black; }
+  .module.section-google-map .header-filter-line .dropdown-header span {
+    border-bottom: 1px solid #9dcbe5;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    font-size: 16px !important; }
+  .module.section-google-map .header-filter-line .bootstrap-select .dropdown-menu li {
+    border: 0; }
+@media screen and (max-width: 991px) {
+  .module.section-google-map .picker-and-map {
+    display: block; } }
 .module.section-google-map .picker-and-map .left-picker {
   width: 500px; }
   @media screen and (min-width: 1800px) {
@@ -1212,18 +1168,18 @@
       display: none; } }
   .module.section-google-map .picker-and-map .left-picker .inner-gray-line {
     background-color: #e8e8e8;
-    height: 40px;
-    line-height: 40px; }
-    .module.section-google-map .picker-and-map .left-picker .inner-gray-line .picker-value span {
-      color: #ec1e4c; }
+    min-height: 40px; }
+    .module.section-google-map .picker-and-map .left-picker .inner-gray-line .picker-label .go-back-to-continents img, .module.section-google-map .picker-and-map .left-picker .inner-gray-line .picker-label .go-back-to-countries img {
+      max-width: 13px; }
+    .module.section-google-map .picker-and-map .left-picker .inner-gray-line .picker-value {
+      line-height: 40px; }
+      .module.section-google-map .picker-and-map .left-picker .inner-gray-line .picker-value span {
+        color: #ec1e4c; }
   .module.section-google-map .picker-and-map .left-picker .results-list {
-    padding: 15px 10px 50px;
-    max-height: 460px;
+    padding: 15px 10px 0;
     overflow-y: auto;
-    position: relative; }
-    @media screen and (max-width: 767px) {
-      .module.section-google-map .picker-and-map .left-picker .results-list {
-        max-height: 400px; } }
+    position: relative;
+    max-height: 400px; }
     .module.section-google-map .picker-and-map .left-picker .results-list .locations-count {
       color: #bbbbbb; }
     .module.section-google-map .picker-and-map .left-picker .results-list .results-nav {
@@ -1273,6 +1229,19 @@
             font-size: 22px; } }
     .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list {
       display: none; }
+      .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list .invite-text {
+        width: calc(100% + 20px);
+        margin-left: -10px;
+        background-color: #00aeef; }
+        @media screen and (min-width: 1800px) {
+          .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list .invite-text {
+            width: 700px; } }
+        @media screen and (min-width: 992px) and (max-width: 1199px) {
+          .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list .invite-text {
+            width: 400px; } }
+        @media screen and (max-width: 991px) {
+          .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list .invite-text {
+            display: none; } }
       .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li.closed .category-toggle-button.partners span i {
         color: #ff0046; }
       .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li.closed .category-toggle-button.partners:after {
@@ -1332,6 +1301,7 @@
           padding: 10px;
           margin-bottom: 10px;
           border: 3px solid transparent;
+          cursor: pointer;
           -webkit-border-radius: 4px;
           -moz-border-radius: 4px;
           -ms-border-radius: 4px;
@@ -1419,20 +1389,17 @@
               -o-transform: rotate(180deg);
               transform: rotate(180deg); }
             @media screen and (max-width: 767px) {
-              .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled figure img {
-                width: 100%; }
-              .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled .right-location-content {
-                width: 100%;
-                padding-top: 10px; } }
-            @media screen and (max-width: 767px) {
               .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled figure {
                 width: 100%;
                 text-align: center;
                 padding-top: 15px; }
                 .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled figure img {
-                  max-width: 150px; }
+                  max-width: 150px;
+                  width: 100%; }
               .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled .right-location-content {
-                width: calc(100% - 100px);
+                width: 100%;
+                padding-top: 10px;
+                padding-left: 0 !important;
                 text-align: center; }
                 .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li .locations-category-list li .locations-list .single-location.toggled .right-location-content .hidden-content {
                   text-align: left;
@@ -1451,105 +1418,90 @@
         display: block; }
       .module.section-google-map .picker-and-map .left-picker .results-list .continents-list ul li.open-item.country-list-parent .locations-category-list {
         display: block; }
-.module.section-google-map .picker-and-map .google-map-box {
-  width: calc(100% - 500px);
-  height: 500px;
-  position: relative;
-  overflow: hidden; }
+.module.section-google-map .picker-and-map .google-map-and-bottom-filters {
+  width: calc(100% - 500px); }
   @media screen and (min-width: 1800px) {
-    .module.section-google-map .picker-and-map .google-map-box {
+    .module.section-google-map .picker-and-map .google-map-and-bottom-filters {
       width: calc(100% - 700px); } }
   @media screen and (min-width: 992px) and (max-width: 1199px) {
-    .module.section-google-map .picker-and-map .google-map-box {
+    .module.section-google-map .picker-and-map .google-map-and-bottom-filters {
       width: calc(100% - 400px); } }
   @media screen and (max-width: 991px) {
-    .module.section-google-map .picker-and-map .google-map-box {
-      width: 100%;
-      height: 400px; } }
-.module.section-google-map .invite-and-bottom-filter .only-mobile-visible-map-button {
-  display: none;
-  text-align: center;
-  padding-bottom: 20px;
-  margin-top: -20px; }
-  .module.section-google-map .invite-and-bottom-filter .only-mobile-visible-map-button.list-shown {
-    margin-top: 30px; }
+    .module.section-google-map .picker-and-map .google-map-and-bottom-filters {
+      width: 100%; } }
+  .module.section-google-map .picker-and-map .google-map-and-bottom-filters .google-map-box {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden; }
+    @media screen and (max-width: 991px) {
+      .module.section-google-map .picker-and-map .google-map-and-bottom-filters .google-map-box {
+        height: 400px; } }
+  .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .only-mobile-visible-map-button {
+    display: none;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-top: -20px; }
+    .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .only-mobile-visible-map-button.list-shown {
+      margin-top: 30px; }
+    @media screen and (max-width: 991px) {
+      .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .only-mobile-visible-map-button {
+        display: block; } }
+  .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter {
+    background-color: white;
+    padding: 15px 25px;
+    display: flex; }
+    .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .right-side-filters {
+      order: 1; }
+    .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .left-side-stats {
+      order: 0; }
+    .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .left-side-stats, .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .right-side-filters {
+      width: 50%; }
+    .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .changeable-stats ul li span {
+      color: #ec1e4c;
+      font-family: 'Lato-Black'; }
+    @media screen and (max-width: 767px) {
+      .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .changeable-stats ul li {
+        padding-bottom: 10px; } }
+    .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .right-side-filters .custom-checkbox-label .color-box {
+      width: 17.5px;
+      height: 17.5px;
+      margin: 0 10px 0 5px; }
+    .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .right-side-filters .custom-checkbox {
+      margin: 0;
+      border-radius: 0;
+      border-color: black;
+      color: black;
+      border-width: 2px;
+      line-height: 17.5px; }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter {
+        padding: 15px 10px; }
+        .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .custom-checkbox-label {
+          font-size: 15px; } }
+    @media screen and (max-width: 991px) {
+      .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter {
+        display: block;
+        padding: 15px; }
+        .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .left-side-stats, .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .right-side-filters {
+          width: 100%; } }
   @media screen and (max-width: 991px) {
-    .module.section-google-map .invite-and-bottom-filter .only-mobile-visible-map-button {
-      display: block; } }
-.module.section-google-map .invite-and-bottom-filter .invite-text {
-  width: 500px;
-  background-color: #00aeef; }
-  @media screen and (min-width: 1800px) {
-    .module.section-google-map .invite-and-bottom-filter .invite-text {
-      width: 700px; } }
-  @media screen and (min-width: 992px) and (max-width: 1199px) {
-    .module.section-google-map .invite-and-bottom-filter .invite-text {
-      width: 400px; } }
-.module.section-google-map .invite-and-bottom-filter .bottom-filter {
-  width: calc(100% - 500px);
-  background-color: white;
-  padding: 15px 25px;
-  display: flex; }
-  .module.section-google-map .invite-and-bottom-filter .bottom-filter .right-side-filters {
-    order: 1; }
-  .module.section-google-map .invite-and-bottom-filter .bottom-filter .left-side-stats {
-    order: 0; }
-  .module.section-google-map .invite-and-bottom-filter .bottom-filter .left-side-stats, .module.section-google-map .invite-and-bottom-filter .bottom-filter .right-side-filters {
-    width: 50%; }
-  .module.section-google-map .invite-and-bottom-filter .bottom-filter .changeable-stats ul li span {
-    color: #ec1e4c;
-    font-family: 'Lato-Black'; }
-  @media screen and (max-width: 767px) {
-    .module.section-google-map .invite-and-bottom-filter .bottom-filter .changeable-stats ul li {
-      padding-bottom: 10px; } }
-  .module.section-google-map .invite-and-bottom-filter .bottom-filter .right-side-filters .custom-checkbox-label .color-box {
-    width: 17.5px;
-    height: 17.5px;
-    margin: 0 10px 0 5px; }
-  .module.section-google-map .invite-and-bottom-filter .bottom-filter .right-side-filters .custom-checkbox {
-    margin: 0;
-    border-radius: 0;
-    border-color: black;
-    color: black;
-    border-width: 2px;
-    line-height: 17.5px; }
-  @media screen and (min-width: 1800px) {
-    .module.section-google-map .invite-and-bottom-filter .bottom-filter {
-      width: calc(100% - 700px); } }
-  @media screen and (min-width: 992px) and (max-width: 1199px) {
-    .module.section-google-map .invite-and-bottom-filter .bottom-filter {
-      padding: 15px 10px;
-      width: calc(100% - 400px); }
-      .module.section-google-map .invite-and-bottom-filter .bottom-filter .custom-checkbox-label {
-        font-size: 15px; } }
-  @media screen and (max-width: 991px) {
-    .module.section-google-map .invite-and-bottom-filter .bottom-filter {
-      display: block;
-      padding: 15px; }
-      .module.section-google-map .invite-and-bottom-filter .bottom-filter .left-side-stats, .module.section-google-map .invite-and-bottom-filter .bottom-filter .right-side-filters {
-        width: 100%; } }
-@media screen and (max-width: 991px) {
-  .module.section-google-map .invite-and-bottom-filter {
-    display: block !important; }
-    .module.section-google-map .invite-and-bottom-filter .invite-text {
-      display: none;
-      width: 100%; }
-    .module.section-google-map .invite-and-bottom-filter .bottom-filter {
-      width: 100%; }
-      .module.section-google-map .invite-and-bottom-filter .bottom-filter .custom-checkbox-style {
+    .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map {
+      display: block !important; }
+      .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .custom-checkbox-style {
         display: flex;
         align-items: center;
         padding-bottom: 5px; }
-        .module.section-google-map .invite-and-bottom-filter .bottom-filter .custom-checkbox-style .custom-checkbox-label {
+        .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .custom-checkbox-style .custom-checkbox-label {
           order: 1;
           display: flex;
           align-items: center; }
-          .module.section-google-map .invite-and-bottom-filter .bottom-filter .custom-checkbox-style .custom-checkbox-label span {
+          .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .custom-checkbox-style .custom-checkbox-label span {
             order: 1; }
-          .module.section-google-map .invite-and-bottom-filter .bottom-filter .custom-checkbox-style .custom-checkbox-label .color-box {
+          .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .custom-checkbox-style .custom-checkbox-label .color-box {
             margin: 0 5px 0 0;
             order: 0; }
-        .module.section-google-map .invite-and-bottom-filter .bottom-filter .custom-checkbox-style .custom-checkbox {
+        .module.section-google-map .picker-and-map .google-map-and-bottom-filters .below-map .bottom-filter .custom-checkbox-style .custom-checkbox {
           order: 0; } }
 
 body {

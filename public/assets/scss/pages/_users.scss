@@ -4,7 +4,7 @@
     padding-top: 80px;
     .hidden-picture {
         display: block;
-        width: 65%;
+        width: 60%;
         position: relative;
         z-index: 110;
         img {
@@ -41,6 +41,16 @@
         background-color: white;
         z-index: 100;
     }
+    @include breakpoint($lgll) {
+        .hidden-picture {
+            width: 65%;
+        }
+    }
+    @include breakpoint($lgll) {
+        .hidden-picture {
+            width: 65%;
+        }
+    }
     @include breakpoint($xs) {
         .hidden-picture {
             display: block;
@@ -56,6 +66,9 @@
             padding-left: 15px;
             position: static;
             @include clear_transform();
+        }
+        &:after {
+            height: 25px;
         }
     }
 }

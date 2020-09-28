@@ -1,9 +1,9 @@
-<section class="section-the-era-dentist-page">
+<section class="section-the-era-dentist-page hide-on-map-open">
     <div class="absolute-content padding-bottom-50 padding-bottom-xs-25 text-center-xs">
-        <h2 class="fs-50 fs-md-40 fs-sm-30 color-black lato-black users-title padding-bottom-lgll-20 hide-xs">
+        <h2 class="fs-46 fs-md-40 fs-sm-30 color-black lato-black users-title padding-bottom-lgll-20 hide-xs">
             DENTISTS</h2>
-        <h3 class="fs-50 fs-md-40 fs-sm-30 fs-xs-22 lato-black color-black padding-top-10 padding-bottom-25">The era of
-            “drill-and-fill” dentistry is over.</h3>
+        <h3 class="fs-46 fs-md-40 fs-sm-30 fs-xs-22 lato-black color-black padding-top-10 padding-bottom-25">The era of<br>
+            “drill-and-fill”<br> dentistry is over.</h3>
         <div class="fs-24 fs-md-22 fs-sm-18 fs-xs-18 color-black lato-bold">Join 1,826 dentists who boost patient
             loyalty and get paid for prevention!
         </div>
@@ -23,8 +23,7 @@
         </picture>
     @endif
 </section>
-<section
-        class="section-list-with-benefits-dentists-page container-fluid padding-top-30 padding-top-xs-50 padding-top-lgll-50 padding-bottom-20 text-center">
+<section class="section-list-with-benefits-dentists-page container-fluid padding-top-30 padding-top-xs-50 padding-top-lgll-50 padding-bottom-20 text-center hide-on-map-open">
     <div class="row">
         <div class="col-xs-12 padding-bottom-50 padding-bottom-xs-20 color-black">
             <h3 class="fs-30 fs-sm-24 fs-xs-20 padding-bottom-lgll-10 lato-bold">SET UP A FREE ACCOUNT:</h3>
@@ -160,13 +159,27 @@
         </div>
     </div>
 </section>
-<section class="section-users-expressions padding-left-40 padding-right-40 padding-left-xs-0 padding-right-xs-0">
+<section class="section-users-expressions padding-left-40 padding-right-40 padding-left-xs-0 padding-right-xs-0 hide-on-map-open">
     @include('partials.video-expressions', array('video_expressions' => $video_expressions, 'type' => 'dentists', 'title' => 'SUCCESS STORIES:'))
 </section>
-<section class="section-users-text-expressions">
+<section class="section-users-text-expressions hide-on-map-open">
     @include('partials.user-expressions', array('user_expressions' => $user_expressions, 'type' => 'dentists'))
 </section>
-@include('partials.dentacoin-map')
-<section class="module section-dentacoin-stats padding-top-70 padding-bottom-80">
+<section class="section-google-map module">
+    <div class="container-fluid">
+        <div class="row padding-top-20 padding-bottom-30">
+            <div class="col-xs-12 text-center color-black">
+                <h3 class="fs-30 fs-sm-24 fs-xs-20 padding-bottom-lgll-10 lato-bold">ALL AROUND THE WORLD:</h3>
+                <h2 class="fs-50 fs-sm-40 fs-xs-26 fs-lgll-65 lato-black">USERS & PARTNERS</h2>
+            </div>
+        </div>
+    </div>
+    <div class="map-container">
+        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-100 padding-bottom-100 padding-left-15 padding-right-15 text-center">
+            <img src="/assets/images/dcn-flipping-coin-logo-loader-V3.gif" class="max-width-200" alt="Loader">
+        </figure>
+    </div>
+</section>
+<section class="module section-dentacoin-stats padding-top-90 padding-bottom-80 hide-on-map-open">
     @include('partials.dentacoin-stats')
 </section>

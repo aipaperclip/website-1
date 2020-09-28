@@ -42,8 +42,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.10">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.10">
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.11">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.11">
 
     @if((!(new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'home')) || ((new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'foundation')) || (!empty(Route::current()) && (Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists' || Route::current()->getName() == 'traders')))
         <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v={{time()}}">
@@ -123,12 +123,12 @@
         <line class="nineteenth" x1="0" y1="0" x2="0" y2="0"/>
         <line class="twentieth" x1="0" y1="0" x2="0" y2="0"/>
     </svg>
-    <header>
+    <header class="hide-on-map-open hide-on-hub-open">
         <div class="container">
             <div class="row fs-0">
                 <figure itemscope="" itemtype="http://schema.org/Organization" class="col-xs-3 logo-container inline-block">
                     <a itemprop="url" @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('foundation') }}" @else  href="{{ route('home') }}" @endif @if(!empty(Route::current())) @if(Route::current()->getName() == "home") tabindex="=-1" @endif @endif>
-                        <img src="@if((new \App\Http\Controllers\UserController())->checkSession() && Route::current()->getName() == 'home') {{URL::asset('assets/images/round-logo-white.svg') }} @else {{URL::asset('assets/images/logo.svg') }} @endif" itemprop="logo" alt="Dentacoin logo"/>
+                        <img src="@if((new \App\Http\Controllers\UserController())->checkSession() && Route::current()->getName() == 'traders') {{URL::asset('assets/images/round-logo-white.svg') }} @else {{URL::asset('assets/images/logo.svg') }} @endif" itemprop="logo" alt="Dentacoin logo"/>
                         @if(!empty(Route::current()))
                             @if(Route::current()->getName() == 'careers' || Route::current()->getName() == 'corporate-design')
                                 <div class="first-dot logo-dot fs-16 inline-block">&nbsp;</div>
@@ -138,9 +138,8 @@
                 </figure>
                 @if(!(new \App\Http\Controllers\UserController())->checkSession())
                     <div class="col-xs-9 btn-container inline-block">
-                        <a href="//dentists.dentacoin.com" class="inline-block fs-20 margin-right-20 main-color init-dentists-click-event" target="_blank">For dentists</a>
                         <div class="inline-block btn-and-line">
-                            <a href="javascript:void(0)" class="white-black-btn open-dentacoin-gateway patient-login" tabindex="-1">JOIN US</a>
+                            <a href="javascript:void(0)" class="white-black-btn open-dentacoin-gateway patient-login" tabindex="-1">SIGN IN</a>
                             <span class="first-dot custom-dot">&nbsp;</span>
                             @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
                                 <figure itemscope="" itemtype="http://schema.org/ImageObject" class="christmas-ball">
@@ -156,7 +155,7 @@
         </div>
     </header>
     <main @if(!empty(Route::current()) && (Route::current()->getName() != 'home' && Route::current()->getName() != 'users' && Route::current()->getName() != 'dentists' && Route::current()->getName() != 'traders')) class="main-container" @endif>@yield("content")</main>
-    <footer class="padding-bottom-80 @if(!empty(Route::current()) && Route::current()->getName() == 'traders') black-style @endif">
+    <footer class="padding-bottom-80 hide-on-map-open hide-on-hub-open @if(!empty(Route::current()) && Route::current()->getName() == 'traders') black-style @endif">
         <div class="container">
             @if(!empty($socials))
                 <div class="row socials">
@@ -193,14 +192,19 @@
                             @if($first_el)
                                 <li class="inline-block separator">|</li>
                             @endif
-                            <li class="inline-block @if($el->url == '/assets/uploads/dentacoin-fact-sheet.pdf') has-submenu padding-right-xs-20 @endif">
-                                <a @if($el->new_window) target="_blank" @endif itemprop="url" href="{{$el->url}}"><span itemprop="name">{{$el->name}}</span></a>
+                            <li class="inline-block @if($el->url == '/assets/uploads/dentacoin-fact-sheet.pdf') has-submenu padding-right-15 padding-right-xs-20 @endif">
                                 @if($el->url == '/assets/uploads/dentacoin-fact-sheet.pdf')
+                                    <a href="javascript:void(0);"><span itemprop="name">{{$el->name}}</span></a>
                                     <ul itemscope="" itemtype="http://schema.org/SiteNavigationElement" class="submenu">
                                         <li>
-                                            <a href="/assets/uploads/was-ist-dentacoin.pdf" itemprop="url" target="_blank"><span itemprop="name">Fact Sheet DE</span></a>
+                                            <a @if($el->new_window) target="_blank" @endif href="/assets/uploads/dentacoin-fact-sheet.pdf" itemprop="url"><span itemprop="name">English</span></a>
+                                        </li>
+                                        <li>
+                                            <a @if($el->new_window) target="_blank" @endif href="/assets/uploads/was-ist-dentacoin.pdf" itemprop="url"><span itemprop="name">Deutsch</span></a>
                                         </li>
                                     </ul>
+                                @else
+                                    <a @if($el->new_window) target="_blank" @endif itemprop="url" href="{{$el->url}}"><span itemprop="name">{{$el->name}}</span></a>
                                 @endif
                             </li>
                             @if(!$first_el)
@@ -214,9 +218,9 @@
             <div class="row all-rights">
                 <div class="col-xs-12">
                     <div>© {{date('Y')}} Dentacoin Foundation. All rights reserved.</div>
-                    <div><a href="\assets\uploads\dentacoin-foundation.pdf" target="_blank">Verify Dentacoin Foundation</a> | <a href="https://dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a></div>
-                    <div>Contract Address:</div>
-                    <div><a href="https://etherscan.io/address/0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6#code" target="_blank">0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6</a></div>
+                    <div><a href="\assets\uploads\dentacoin-foundation.pdf" target="_blank" class="footer-bottom-link">Verify Dentacoin Foundation</a> <span class="separator">|</span> <a href="https://dentacoin.com/privacy-policy" target="_blank" class="footer-bottom-link">Privacy Policy</a></div>
+                    <div class="padding-top-xs-25">Contract Address:</div>
+                    <div><a href="https://etherscan.io/address/0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6#code" target="_blank" class="footer-bottom-link fs-xs-13">0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6</a></div>
                 </div>
             </div>
         </div>
@@ -250,7 +254,7 @@
     </div>
     @if(!empty($_COOKIE['marketing_cookies']))
         <!--Start of Tawk.to Script-->
-        <script type="text/javascript">
+        {{--<script type="text/javascript">
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
             (function(){
                 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -260,7 +264,7 @@
                 s1.setAttribute('crossorigin','*');
                 s0.parentNode.insertBefore(s1,s0);
             })();
-        </script>
+        </script>--}}
     @endif
     <!--End of Tawk.to Script-->
 
@@ -274,13 +278,13 @@
     @endif
     {{----}}
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.1.10"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.1.11"></script>
     <script src="/assets/libs/dentacoin-package/js/init.js?v={{time()}}"></script>
     @if (!(new \App\Http\Controllers\UserController())->checkSession())
         <script src="/assets/libs/dentacoin-login-gateway/js/init.js?v={{time()}}"></script>
     @endif
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.1.10"></script>
+    <script src="/dist/js/front-script.js?v=1.1.11"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/address.js"></script>

@@ -7,7 +7,7 @@
                         <div class="single-slide">
                             <div class="slide-wrapper">
                                 <article>
-                                    <div class="fs-20 fs-sm-18 fs-xs-16 padding-bottom-15 user-expression-text">{!! $user_expression->text !!}</div>
+                                    <div class="fs-20 fs-sm-18 fs-xs-16 line-height-24 line-height-xs-20 padding-bottom-15 user-expression-text">{!! $user_expression->text !!}</div>
                                     @if(!empty($user_expression->name_job))
                                         <div class="lato-black fs-20 fs-xs-16 color-black text-right">{!! $user_expression->name_job !!}</div>
                                     @endif

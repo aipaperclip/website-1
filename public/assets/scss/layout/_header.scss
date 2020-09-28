@@ -6,8 +6,10 @@ header {
     width: 100%;
     z-index: 200;
     >.container {
-        width: 100%;
         @include vertical-horizontal-align(absolute);
+        @include breakpoint($xs) {
+            width: 100%;
+        }
     }
     .logo-container {
         a {

@@ -2,11 +2,29 @@
     <div class="info-section">
         <a href="javascript:void(0)" class="close-application">×</a>
         <figure class="logo"><img></figure>
-        <h3 class="title"></h3>
         <div class="video-and-html-holder">
-            <div class="video-content"></div>
-            <div class="html-content"></div>
-            <div class="extra-html-content"></div>
+            <div class="left-arrow text-left inline-block">
+                <a href="javascript:void(0);" class="inline-block">
+                    <figure class="wrapper" itemscope="" itemtype="http://schema.org/ImageObject">
+                        <img src="{{URL::asset('assets/images/red-left-arrow.svg') }}" itemprop="contentUrl" alt="Red left arrow"/>
+                    </figure>
+                </a>
+            </div>
+            <div class="content inline-block">
+                <div class="video-content"></div>
+                <div class="title-and-html">
+                    <h3 class="title lato-bold"></h3>
+                    <div class="html-content"></div>
+                </div>
+                <div class="extra-html-content"></div>
+            </div>
+            <div class="right-arrow text-right inline-block">
+                <a href="javascript:void(0);" class="inline-block">
+                    <figure class="wrapper" itemscope="" itemtype="http://schema.org/ImageObject">
+                        <img src="{{URL::asset('assets/images/red-right-arrow.svg') }}" itemprop="contentUrl" alt="Red right arrow"/>
+                    </figure>
+                </a>
+            </div>
         </div>
     </div>
     <div class="app-list @if (!empty($hubType)) @if ($hubType == 'dentists') dark-blue-background @else light-blue-background @endif @endif">{{--

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\LocationType;
+use App\MapContinent;
+use App\MapCountry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -191,5 +194,217 @@ class DentacoinMapController extends Controller
                 }
                 break;
         }
+    }
+
+    protected function getMapDataForTheView() {
+        $arrOnlyWithCodes = array();
+        $innerParams = array();
+        $arrWithCountriesAndCities = array();
+        $arrWithCountryCodesAndCentroids = array();
+        $codes = DB::table('map_countries')->select('map_countries.code', 'map_countries.lat', 'map_countries.lng')->get();
+        if (!empty($codes)) {
+            foreach ($codes as $code) {
+                array_push($arrOnlyWithCodes, mb_strtolower($code->code));
+                $arrWithCountryCodesAndCentroids[mb_strtolower($code->code)] = array('lat' => $code->lat, 'lng' => $code->lng);
+            }
+        }
+
+        $continentCountByCountries = (new APIRequestsController())->getMapData(array('action' => 'all-partners-and-non-partners-count-splited-by-countries', 'country' => $arrOnlyWithCodes));
+        if (!empty($continentCountByCountries) && is_object($continentCountByCountries) && property_exists($continentCountByCountries, 'success') && $continentCountByCountries->success) {
+            $continentCountByCountries = $continentCountByCountries->data;
+
+            // adding to core db locations the count of dentacoin db location splitted by countries
+            $dentacoinDbLocations = DB::select("SELECT `map_countries`.`code`, COUNT(*) as `locations_count` FROM `map_locations` LEFT JOIN `map_countries` ON `map_locations`.`country_id` = `map_countries`.`id` WHERE `map_locations`.`type_id` = 2 OR `map_locations`.`type_id` = 3 OR `map_locations`.`type_id` = 4 GROUP BY `map_locations`.`country_id`");
+            foreach ($continentCountByCountries as $code => $count) {
+                foreach ($dentacoinDbLocations as $dentacoinDbLocation) {
+                    if (mb_strtolower($dentacoinDbLocation->code) == $code) {
+                        $continentCountByCountries->$code += $dentacoinDbLocation->locations_count;
+                    }
+                }
+            }
+
+            array_push($innerParams, $continentCountByCountries);
+        }
+
+        $arrayWithAllLocations = array();
+        $arrayWithAllLocationsSplittedByCategory = array();
+        /*$partnerLocationType = LocationType::where(array('id' => 1))->get()->first();
+        $labsLocationType = LocationType::where(array('id' => 2))->get()->first();
+        $suppliersLocationType = LocationType::where(array('id' => 3))->get()->first();
+        $industryPartnersLocationType = LocationType::where(array('id' => 4))->get()->first();
+        $nonPartnerLocationType = LocationType::where(array('id' => 5))->get()->first();*/
+
+        $locationTypes = LocationType::all();
+
+        // insert partners and non partners
+        $partnersAndNonPartners = (new APIRequestsController())->getMapData(array('action' => 'all-partners-and-non-partners-data-by-countries', 'country' => $arrOnlyWithCodes));
+        if (!empty($partnersAndNonPartners) && is_object($partnersAndNonPartners) && property_exists($partnersAndNonPartners, 'success') && $partnersAndNonPartners->success) {
+            $partnersData = array();
+            $nonPartnersData = array();
+            foreach ($partnersAndNonPartners->data as $singleDataRecord) {
+                $singleDataRecordArr = array(
+                    'id' => $singleDataRecord->id,
+                    'name' => $singleDataRecord->name,
+                    'lat' => $singleDataRecord->lat,
+                    'lng' => $singleDataRecord->lon,
+                    'city' => $singleDataRecord->city_name,
+                    'source' => 'core-db',
+                    'country_code' => $singleDataRecord->country_code
+                );
+
+                if ($singleDataRecord->is_partner) {
+                    $singleDataRecordArr['marker'] = $locationTypes[0]->media->name;
+                    $singleDataRecordArr['category'] = 'category-'.$locationTypes[0]->id;
+                    array_push($partnersData, $singleDataRecordArr);
+                } else {
+                    $singleDataRecordArr['marker'] = $locationTypes[4]->media->name;
+                    $singleDataRecordArr['category'] = 'category-'.$locationTypes[4]->id;
+                    array_push($nonPartnersData, $singleDataRecordArr);
+                }
+
+                array_push($arrayWithAllLocations, $singleDataRecordArr);
+
+
+                if (!empty($singleDataRecord->country_name) && !empty($singleDataRecord->city_name)) {
+                    if (!array_key_exists($singleDataRecord->country_name, $arrWithCountriesAndCities)) {
+                        $thisCountryData = array(
+                            'code' => $singleDataRecord->country_code,
+                            'data' => array($singleDataRecord->city_name)
+                        );
+
+                        if (array_key_exists($singleDataRecord->country_code, $arrWithCountryCodesAndCentroids)) {
+                            $thisCountryData['centroid_lat'] = $arrWithCountryCodesAndCentroids[$singleDataRecord->country_code]['lat'];
+                        }
+
+                        if (array_key_exists($singleDataRecord->country_code, $arrWithCountryCodesAndCentroids)) {
+                            $thisCountryData['centroid_lng'] = $arrWithCountryCodesAndCentroids[$singleDataRecord->country_code]['lng'];
+                        }
+
+                        $arrWithCountriesAndCities[$singleDataRecord->country_name] = $thisCountryData;
+                    } else {
+                        if (!in_array($singleDataRecord->city_name, $arrWithCountriesAndCities[$singleDataRecord->country_name]['data'])) {
+                            array_push($arrWithCountriesAndCities[$singleDataRecord->country_name]['data'], $singleDataRecord->city_name);
+                        }
+                    }
+                }
+            }
+            array_push($arrayWithAllLocationsSplittedByCategory, array(
+                'id' => 1,
+                'name' => $locationTypes[0]->name,
+                'color' => $locationTypes[0]->color,
+                'data' => $partnersData
+            ));
+            array_push($arrayWithAllLocationsSplittedByCategory, array(
+                'id' => 5,
+                'name' => $locationTypes[4]->name,
+                'color' => $locationTypes[4]->color,
+                'data' => $nonPartnersData
+            ));
+        }
+
+        ksort($arrWithCountriesAndCities);
+
+        $labs = $this->getDentacoinLocations(2);
+        $labsData = array();
+        foreach ($labs as $lab) {
+            $singleDataRecordArr = array(
+                'id' => $lab->id,
+                'name' => $lab->clinic_name,
+                'lat' => $lab->lat,
+                'lng' => $lab->lng,
+                'city' => NULL,
+                'marker' => $locationTypes[1]->media->name,
+                'source' => 'dentacoin-db',
+                'country_code' => mb_strtolower($lab->country_code),
+                'category' => 'category-'.$locationTypes[1]->id
+            );
+
+            array_push($arrayWithAllLocations, $singleDataRecordArr);
+            array_push($labsData, $singleDataRecordArr);
+        }
+        array_push($arrayWithAllLocationsSplittedByCategory, array(
+            'id' => 2,
+            'name' => $locationTypes[1]->name,
+            'color' => $locationTypes[1]->color,
+            'data' => $labsData
+        ));
+
+        $suppliers = $this->getDentacoinLocations(3);
+        $suppliersData = array();
+        foreach ($suppliers as $supplier) {
+            $singleDataRecordArr = array(
+                'id' => $supplier->id,
+                'name' => $supplier->clinic_name,
+                'lat' => $supplier->lat,
+                'lng' => $supplier->lng,
+                'city' => NULL,
+                'marker' => $locationTypes[2]->media->name,
+                'source' => 'dentacoin-db',
+                'country_code' => mb_strtolower($supplier->country_code),
+                'category' => 'category-'.$locationTypes[2]->id
+            );
+
+            array_push($arrayWithAllLocations, $singleDataRecordArr);
+            array_push($suppliersData, $singleDataRecordArr);
+        }
+        array_push($arrayWithAllLocationsSplittedByCategory, array(
+            'id' => 3,
+            'name' => $locationTypes[2]->name,
+            'color' => $locationTypes[2]->color,
+            'data' => $suppliersData
+        ));
+
+        $industryPartners = $this->getDentacoinLocations(4);
+        $industryPartnersData = array();
+        foreach ($industryPartners as $industryPartner) {
+            $singleDataRecordArr = array(
+                'id' => $industryPartner->id,
+                'name' => $industryPartner->clinic_name,
+                'lat' => $industryPartner->lat,
+                'lng' => $industryPartner->lng,
+                'city' => NULL,
+                'marker' => $locationTypes[3]->media->name,
+                'source' => 'dentacoin-db',
+                'country_code' => mb_strtolower($industryPartner->country_code),
+                'category' => 'category-'.$locationTypes[3]->id
+            );
+
+            array_push($arrayWithAllLocations, $singleDataRecordArr);
+            array_push($industryPartnersData, $singleDataRecordArr);
+        }
+        array_push($arrayWithAllLocationsSplittedByCategory, array(
+            'id' => 4,
+            'name' => $locationTypes[3]->name,
+            'color' => $locationTypes[3]->color,
+            'data' => $industryPartnersData
+        ));
+
+        usort($arrayWithAllLocationsSplittedByCategory, function ($item1, $item2) {
+            return $item1['id'] <=> $item2['id'];
+        });
+
+        array_push($innerParams, $arrayWithAllLocationsSplittedByCategory);
+        array_push($innerParams, $arrayWithAllLocations);
+        array_push($innerParams, $arrWithCountriesAndCities);
+
+        return $innerParams;
+    }
+
+    protected function getContinents() {
+        $continents = MapContinent::all()->sortBy('order_id');
+        foreach ($continents as $continent) {
+            $countries = MapCountry::where(array('continent_id' => $continent->id))->get()->sortBy('name');
+            $continent['countries'] = $countries;
+        }
+
+        return $continents;
+    }
+
+    protected function getMapHtml()  {
+        list($continentCountByCountries, $arrayWithAllLocationsSplittedByCategory, $arrayWithAllLocations, $arrWithCountriesAndCities) = $this->getMapDataForTheView();
+
+        $dentacoinMapHtml = view('partials/dentacoin-map', array('continentCountByCountries' => $continentCountByCountries, 'continents' => $this->getContinents(), 'arrayWithAllLocations' => json_encode($arrayWithAllLocations), 'location_types' => LocationType::all()->sortBy('order_id'), 'arrayWithAllLocationsSplittedByCategory' => $arrayWithAllLocationsSplittedByCategory, 'arrWithCountriesAndCities' => $arrWithCountriesAndCities));
+
+        return response()->json(['success' => true, 'data' => $dentacoinMapHtml->render()]);
     }
 }
