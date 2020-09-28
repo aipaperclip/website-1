@@ -171,7 +171,7 @@ var projectData = {
 
                 // adjust header to black style
                 $('header .white-black-btn').removeClass('white-black-btn').addClass('black-white-btn');
-                $('header .logo-container img').attr('src', ' //dentacoin.test/assets/images/logo.svg ');
+                $('header .logo-container img').attr('src', ' /assets/images/logo.svg ');
 
                 // remove footer black style
                 if ($('footer').hasClass('black-style')) {
@@ -231,7 +231,7 @@ var projectData = {
 
                 // adjust header to white style
                 $('header .black-white-btn').removeClass('black-white-btn').addClass('white-black-btn');
-                $('header .logo-container img').attr('src', ' //dentacoin.test/assets/images/logo.svg ');
+                $('header .logo-container img').attr('src', ' /assets/images/logo.svg ');
 
                 // adjust footer to white style
                 if ($('footer').hasClass('black-style')) {
