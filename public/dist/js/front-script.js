@@ -2321,7 +2321,7 @@ var projectData = {
                 if ($('body').hasClass('home')) {
                     projectData.general_logic.data.showLoader();
 
-                    setInterval(function() {
+                    setTimeout(async function() {
                         var usersPageData = '';
                         var dentistsPageData = '';
                         var tradersPageData = '';
