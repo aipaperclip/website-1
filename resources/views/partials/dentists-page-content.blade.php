@@ -2,8 +2,7 @@
     <div class="absolute-content padding-bottom-50 padding-bottom-xs-25 text-center-xs">
         <h2 class="fs-46 fs-md-40 fs-sm-30 color-black lato-black users-title padding-bottom-lgll-20 hide-xs">DENTISTS</h2>
         <h3 class="fs-46 fs-md-40 fs-sm-30 fs-xs-22 lato-black color-black padding-top-10 padding-bottom-25">The era of<br class="hide-xs"> “drill-and-fill”<br> dentistry is over.</h3>
-        <div class="fs-24 fs-md-22 fs-sm-18 fs-xs-18 color-black lato-bold">Join 1,826 dentists who boost patient loyalty and get paid for prevention!
-        </div>
+        <div class="fs-24 fs-md-22 fs-sm-18 fs-xs-18 color-black lato-bold">Join 1,826 dentists who boost patient loyalty and get paid for prevention!</div>
     </div>
     @php($arrWithPossibilities = array ('male', 'female'))
     @if ($arrWithPossibilities[rand(0, count($arrWithPossibilities) - 1)] == 'male')
