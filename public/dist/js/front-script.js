@@ -4085,9 +4085,10 @@ var projectData = {
                     $(document).on('click', '.go-back-to-countries', function() {
                         if ($('.picker-and-map .picker-label').attr('data-last-continent') == undefined || $('.single-continent.open-item > a .element-name').html() != $('.picker-and-map .picker-label').attr('data-last-continent')) {
                             var continentName = $('.single-continent.open-item > a .element-name').html();
-                            console.log(continentName, 'set continent name');
+                            console.log(continentName, 'set continent name 123');
                             $('.dentacoin-stats-category-label span').html('in ' + continentName);
-                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+continentName+'</a>');
+                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/></a>');
+                            $('.picker-and-map .picker-label .go-back-to-continents').append(continentName);
 
                             $('.single-continent.open-item > a .element-name').attr('data-last-continent', continentName);
 
