@@ -623,6 +623,27 @@
             font-size: 20px;
             padding: 10px 5px;
         }
+        .header-custom-radio-btn {
+            width: 35px;
+            height: 35px;  
+            border: 1px solid black;
+            margin-right: 5px;
+            background-color: white;
+            @include rounded(50%);
+        }
+        &.active {
+            .header-custom-radio-btn {
+                position: relative;
+                &:after {
+                    content: '';
+                    width: 17px;
+                    height: 17px;
+                    background-color: #ff0045;
+                    @include rounded(50%);
+                    @include vertical-horizontal-align(absolute);
+                }
+            }
+        }
     }
     button {
         width: 80px;

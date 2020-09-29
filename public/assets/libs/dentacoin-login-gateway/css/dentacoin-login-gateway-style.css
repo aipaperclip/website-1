@@ -1109,6 +1109,33 @@
     .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a {
       font-size: 20px;
       padding: 10px 5px; } }
+  .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a .header-custom-radio-btn {
+    width: 35px;
+    height: 35px;
+    border: 1px solid black;
+    margin-right: 5px;
+    background-color: white;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%; }
+  .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a.active .header-custom-radio-btn {
+    position: relative; }
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a.active .header-custom-radio-btn:after {
+      content: '';
+      width: 17px;
+      height: 17px;
+      background-color: #ff0045;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action button {
   width: 80px;
   border: 0;
