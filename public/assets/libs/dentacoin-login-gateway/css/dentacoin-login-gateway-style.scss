@@ -609,18 +609,28 @@
     }
 }
 
-.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a {
-    width: 50%;
-    font-size: 35px;
-    padding: 10px;
-    text-align: center;
-    border-top: 3px solid white;
-    border-left: 3px solid white;
-    border-right: 3px solid white;
-    @include rounded(4px 4px 0 0);
-    @include breakpoint($xs) {
-        font-size: 20px;
-        padding: 10px 5px;
+.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action {
+    a {
+        width: calc(50% - 40px);
+        font-size: 35px;
+        padding: 10px;
+        text-align: center;
+        border-top: 3px solid white;
+        border-left: 3px solid white;
+        border-right: 3px solid white;
+        @include rounded(4px 4px 0 0);
+        @include breakpoint($xs) {
+            font-size: 20px;
+            padding: 10px 5px;
+        }
+    }
+    button {
+        width: 80px;
+        border: 0;
+        background: transparent;
+        img {
+            width: 100%;
+        }
     }
 }
 
@@ -648,7 +658,6 @@
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body {
-    display: flex;
     position: relative;
 }
 
@@ -885,7 +894,7 @@
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist {
-    width: 50%;
+    width: 100%;
     padding-top: 20px;
     border-bottom: 3px solid white;
     border-left: 3px solid white;
@@ -942,12 +951,11 @@
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-login, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-login {
     width: 90%;
+    max-width: 400px;
     margin: 0 auto;
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient.custom-hide, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist.custom-hide {
     visibility: hidden;
-    @include breakpoint($xs) {
-        display: none;
-    }
+    display: none;
 }

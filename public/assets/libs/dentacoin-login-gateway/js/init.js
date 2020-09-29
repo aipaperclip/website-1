@@ -10,13 +10,14 @@ if (typeof jQuery == 'undefined') {
     var gateway_croppie_instance;
     var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
     var apiDomain = 'https://api.dentacoin.com';
+    var combinedLoginRequestsDomain = 'https://dentacoin.com';
     var environment = 'live';
     var dcnGateway = {
         dcnGatewayRequests: {
             getPlatformsData: async function(callback) {
                 $.ajax({
                     type: 'GET',
-                    url: 'https://dentacoin.com/info/platforms',
+                    url: combinedLoginRequestsDomain + '/info/platforms',
                     dataType: 'json',
                     success: function(response) {
                         callback(response);
@@ -25,24 +26,11 @@ if (typeof jQuery == 'undefined') {
                         console.error('Request to dentacoin.com currently not working.');
                     }
                 });
-
-                /*if (fireAjax) {
-                    fireAjax = false;
-
-                    var ajaxCall = await $.ajax({
-                        type: 'GET',
-                        url: 'https://dentacoin.com/info/platforms',
-                        dataType: 'json'
-                    });
-
-                    fireAjax = true;
-                    return ajaxCall;
-                }*/
             },
             getGatewayHtml: async function(data, callback) {
                 await $.ajax({
                     type: 'POST',
-                    url: 'https://dentacoin.com/dentacoin-login-gateway',
+                    url: combinedLoginRequestsDomain + '/dentacoin-login-gateway',
                     dataType: 'json',
                     data: data,
                     success: function(response) {
@@ -52,20 +40,6 @@ if (typeof jQuery == 'undefined') {
                         dcnGateway.utils.showPopup('Something went wrong with logging in, please try again a bit later. If the problem still appears please contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                     }
                 });
-
-                /*if (fireAjax) {
-                    fireAjax = false;
-
-                    var ajaxCall = await $.ajax({
-                        type: 'POST',
-                        url: 'https://dentacoin.com/dentacoin-login-gateway',
-                        dataType: 'json',
-                        data: data
-                    });
-
-                    fireAjax = true;
-                    return ajaxCall;
-                }*/
             },
             getUserCountry: async function() {
                 if (fireAjax) {
@@ -73,7 +47,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'https://dentacoin.com/get-country-code',
+                        url: combinedLoginRequestsDomain + '/get-country-code',
                         dataType: 'json'
                     });
 
@@ -159,7 +133,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'https://dentacoin.com/check-dentist-account',
+                        url: combinedLoginRequestsDomain + '/check-dentist-account',
                         dataType: 'json',
                         data: data
                     });
@@ -215,7 +189,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'https://dentacoin.com/dentacoin-login-gateway/handle-dentist-register',
+                        url: combinedLoginRequestsDomain + '/dentacoin-login-gateway/handle-dentist-register',
                         dataType: 'json',
                         data: data
                     });
@@ -230,7 +204,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'https://dentacoin.com/dentacoin-login-gateway/handle-dentist-login',
+                        url: combinedLoginRequestsDomain + '/dentacoin-login-gateway/handle-dentist-login',
                         dataType: 'json',
                         data: data
                     });
@@ -245,7 +219,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'https://dentacoin.com/dentacoin-login-gateway/get-after-dentist-registration-popup',
+                        url: combinedLoginRequestsDomain + '/dentacoin-login-gateway/get-after-dentist-registration-popup',
                         dataType: 'json',
                         data: data
                     });
@@ -260,7 +234,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: 'https://dentacoin.com/dentacoin-login-gateway/handle-enrich-profile',
+                        url: combinedLoginRequestsDomain + '/dentacoin-login-gateway/handle-enrich-profile',
                         dataType: 'json',
                         data: data
                     });
@@ -675,6 +649,10 @@ if (typeof jQuery == 'undefined') {
                     environment = 'staging';
                 }
 
+                if (hasOwnProperty.call(params, 'combined_login_environment') && params.combined_login_environment == 'dev') {
+                    combinedLoginRequestsDomain = 'http://dev.dentacoin.com';
+                }
+
                 await dcnGateway.dcnGatewayRequests.getPlatformsData(async function(platformsData) {
                     var validPlatform = false;
                     var currentPlatformColor;
@@ -713,7 +691,7 @@ if (typeof jQuery == 'undefined') {
 
                     // load avatar cropper
                     $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');
-                    await $.getScript('https://dentacoin.com/assets/libs/croppie/croppie.min.js', function() {});
+                    await $.getScript(combinedLoginRequestsDomain + '/assets/libs/croppie/croppie.min.js', function() {});
 
                     // platform parameter
                     if (!validPlatform) {
@@ -752,10 +730,10 @@ if (typeof jQuery == 'undefined') {
                                 if (!loadedSocialLibs) {
                                     console.log('Load external libraries.');
                                     // =============================================== CIVIC =======================================================
-                                    await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+                                    await $.getScript(combinedLoginRequestsDomain + '/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
 
                                     // =============================================== FACEBOOK ====================================================
-                                    await $.getScript('https://dentacoin.com/assets/libs/facebook-login/facebook-combined-login.js?v='+new Date().getTime(), function() {});
+                                    await $.getScript(combinedLoginRequestsDomain + '/assets/libs/facebook-login/facebook-combined-login.js?v='+new Date().getTime(), function() {});
                                     loadedSocialLibs = true;
                                 }
 
@@ -806,6 +784,10 @@ if (typeof jQuery == 'undefined') {
                                             $(this).removeClass('gateway-platform-border-color-important');
                                         }
                                     }
+                                });
+
+                                $('.dentacoin-login-gateway-container .popup-header-action button').click(function() {
+                                    dcnGateway.utils.hideGateway();
                                 });
 
                                 $('.dentacoin-login-gateway-container .popup-header-action a').click(function() {
@@ -1405,7 +1387,7 @@ if (typeof jQuery == 'undefined') {
 
                                     // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
                                     if (!loadedAddressSuggesterLib) {
-                                        await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
+                                        await $.getScript(combinedLoginRequestsDomain + '/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
                                         // init Google address suggester
                                         if (typeof initAddressSuggesters === 'function') {
                                             initAddressSuggesters();
@@ -1424,7 +1406,7 @@ if (typeof jQuery == 'undefined') {
 
                                     // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
                                     if (!loadedAddressSuggesterLib) {
-                                        await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
+                                        await $.getScript(combinedLoginRequestsDomain + '/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
 // init Google address suggester
                                         if (typeof initAddressSuggesters === 'function') {
                                             initAddressSuggesters();
