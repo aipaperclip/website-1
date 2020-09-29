@@ -3138,7 +3138,7 @@ var projectData = {
 
                         console.log(xsScreen, 'xsScreen');
                         if (xsScreen) {
-                            playYTVideo($('.middle-slide .youtube-play-button'), videoId);
+                            playYTVideo($(this), videoId);
                         } else {
                             if ($(this).closest('.slick-slide').hasClass('middle-slide')) {
                                 // play video
