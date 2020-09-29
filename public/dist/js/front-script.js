@@ -2418,9 +2418,17 @@ var projectData = {
                 projectData.general_logic.data.videoExpressionsSlider('users');
                 projectData.general_logic.data.userExpressionsSlider('users');
 
-                setTimeout(function() {
-                    projectData.general_logic.data.dentacoinGoogleMap();
-                }, 1000);
+                if ($('.section-google-map.module').length) {
+                    var mapVisible = false;
+                    $(window).on('scroll', function () {
+                        if (basic.isInViewport($('.section-google-map.module'), 200) && !mapVisible) {
+                            console.log('LOAD MAP');
+                            mapVisible = true;
+
+                            projectData.general_logic.data.dentacoinGoogleMap();
+                        }
+                    });
+                }
             },
             dentists: function(bodyClassCheck) {
                 if (bodyClassCheck != undefined) {
@@ -2468,9 +2476,18 @@ var projectData = {
 
                 projectData.general_logic.data.videoExpressionsSlider('dentists');
                 projectData.general_logic.data.userExpressionsSlider('dentists');
-                setTimeout(function() {
-                    projectData.general_logic.data.dentacoinGoogleMap();
-                }, 1000);
+
+                if ($('.section-google-map.module').length) {
+                    var mapVisible = false;
+                    $(window).on('scroll', function () {
+                        if (basic.isInViewport($('.section-google-map.module'), 200) && !mapVisible) {
+                            console.log('LOAD MAP');
+                            mapVisible = true;
+
+                            projectData.general_logic.data.dentacoinGoogleMap();
+                        }
+                    });
+                }
             },
             traders: function(bodyClassCheck) {
                 if (bodyClassCheck != undefined) {
@@ -2521,6 +2538,9 @@ var projectData = {
                     } else  if (basic.getMobileOperatingSystem() == 'Android') {
                         $('.google-play-btn').fadeIn(500);
                     }
+                } else {
+                    $('.app-store-btn').fadeIn(500);
+                    $('.google-play-btn').fadeIn(500);
                 }
 
                 // add styles for latest twitter tweets iframe
@@ -3212,15 +3232,364 @@ var projectData = {
                 }
             },
             async dentacoinGoogleMap() {
-                if ($('.section-google-map.module').length) {
-                    var mapHtml = await projectData.requests.getMapHtml();
-                    if (mapHtml.success) {
-                        $('.section-google-map.module .map-container').html(mapHtml.data);
+                var mapHtml = await projectData.requests.getMapHtml();
+                if (mapHtml.success) {
+                    $('.section-google-map.module .map-container').html(mapHtml.data);
 
-                        $('.selectpicker').selectpicker();
+                    $('.selectpicker').selectpicker();
 
-                        var locationsOnInit = JSON.parse($('.google-map-box').attr('data-locations'));
-                        var lastMapData = {
+                    var locationsOnInit = JSON.parse($('.google-map-box').attr('data-locations'));
+                    var lastMapData = {
+                        map_locations: locationsOnInit,
+                        initialLat: undefined,
+                        initialLng: undefined,
+                        initialZoom: undefined,
+                        filter_country: undefined,
+                        location_id: undefined,
+                        location_source: undefined,
+                        categories: $('.selectpicker.location-types').val()
+                    };
+                    initMap(locationsOnInit, undefined, undefined, undefined, undefined, undefined, undefined, $('.selectpicker.location-types').val());
+
+                    basic.initCustomCheckboxes('.google-map-and-bottom-filters', 'append');
+
+                    $('.show-locations-list').click(function() {
+                        if (!$(this).parent().hasClass('list-shown')) {
+                            $('.hide-on-map-open').addClass('hide');
+                            $(this).parent().addClass('list-shown');
+                            $(this).addClass('with-map-pin').removeClass('with-list-icon').html(' GO BACK TO MAP');
+
+                            $('.subpages-sticky-nav').addClass('hide');
+                            $('.picker-and-map .google-map-box').hide();
+                            $('.picker-and-map .left-picker').fadeIn(500);
+                            $('.locations-list .invite-text').fadeIn();
+
+                            $('body').addClass('overflow-hidden');
+                            if ($(window).width() < 992) {
+                                // scroll to open location everytime on list showing, because the scrolling doesn't work when element is with display none
+                                if ($('.single-location.toggled').length) {
+                                    $('.results-list').scrollTop(0);
+                                    $('.results-list').scrollTop($('.single-location.toggled').position().top - 15);
+                                }
+                            }
+                            $('body').removeClass('overflow-hidden');
+                        } else {
+                            $('.hide-on-map-open').removeClass('hide');
+                            $(this).removeClass('with-map-pin').addClass('with-list-icon').html(' SEE RESULTS IN LIST');
+                            $(this).parent().removeClass('list-shown');
+
+                            $('.subpages-sticky-nav').removeClass('hide');
+                            $('.picker-and-map .google-map-box').fadeIn(500);
+                            $('.picker-and-map .left-picker').hide();
+                            $('.locations-list .invite-text').hide();
+
+                            $('html, body').animate({'scrollTop': $('.section-google-map.module').offset().top }, 300);
+                        }
+
+                        $('html, body').animate({'scrollTop': $('.map-container').offset().top }, 300);
+                    });
+
+                    function dynamicSort(property) {
+                        var sortOrder = 1;
+                        if(property[0] === "-") {
+                            sortOrder = -1;
+                            property = property.substr(1);
+                        }
+                        return function (a,b) {
+                            /* next line works with strings and numbers,
+                             * and you may want to customize it to your needs
+                             */
+                            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+                            return result * sortOrder;
+                        }
+                    }
+
+                    var locationsCountsArr = [];
+
+                    // set continent count BY adding the countries locations for THIS continent
+                    for (var i = 0, len = $('.single-continent').length; i < len; i+=1) {
+                        var currentContinentLocationsCount = 0;
+                        for (var y = 0, leny = $('.single-continent').eq(i).find('.country-list-parent').length; y < leny; y+=1) {
+                            if ($('.single-continent').eq(i).find('.country-list-parent').eq(y).find('[data-locations-count]').length) {
+                                currentContinentLocationsCount += parseInt($('.single-continent').eq(i).find('.country-list-parent').eq(y).find('[data-locations-count]').attr('data-locations-count'));
+                            }
+                        }
+                        $('.single-continent').eq(i).find('> a').append('<span class="lato-bold inline-block locations-count fs-18 fs-xs-14">('+currentContinentLocationsCount+' locations)</span>');
+
+                        locationsCountsArr.push({'count' : currentContinentLocationsCount, 'location_id' : $('.single-continent').eq(i).find('> a').attr('data-continent-id')});
+                    }
+
+                    // reorder the continents list by count from bigger to smallest count
+                    var orderedLocationsCountsArr = locationsCountsArr.sort(dynamicSort('count'));
+                    var reorderedCountriesListHtml = '';
+                    for (var i = 0, len = orderedLocationsCountsArr.length; i < len; i+=1) {
+                        reorderedCountriesListHtml += $('.continent-name[data-continent-id='+orderedLocationsCountsArr[i].location_id+']').parent().get(0).outerHTML;
+                    }
+                    $('.continents-list ul').html(reorderedCountriesListHtml);
+
+                    $('body').addClass('overflow-hidden');
+                    if ($(window).width() > 992) {
+                        $('.results-list').css({'max-height' : ($('.google-map-and-bottom-filters').height() - $('.left-picker .inner-gray-line').height()) + 'px'});
+                    }
+                    $('body').removeClass('overflow-hidden');
+
+                    $('.selectpicker.location-types').on('change', function() {
+                        var thisValue = $(this).val();
+
+                        // dont allow users to filter only category-5
+                        if (thisValue.includes('category-5') && !thisValue.includes('category-1')) {
+                            thisValue.push('category-1');
+                        }
+
+                        $('.right-side-filters input[type="checkbox"]').prop('checked', true);
+                        updateTopLocationsSelectOnBottomFilterChange(thisValue);
+
+                        // update bottom filter checkboxes
+                        $('.right-side-filters input[type="checkbox"]').prop('checked', false);
+                        $('.right-side-filters .custom-checkbox').html('');
+                        if (thisValue.length > 0) {
+                            for (var i = 0; i < thisValue.length; i += 1) {
+                                if ($('.right-side-filters input[type="checkbox"]#' + thisValue[i]).length) {
+                                    $('.right-side-filters input[type="checkbox"]#' + thisValue[i]).prop('checked', true);
+                                    $('.right-side-filters input[type="checkbox"]#' + thisValue[i]).parent().find('.custom-checkbox').html('✓');
+                                }
+                            }
+                        }
+                    });
+
+                    // this event is fired in 2 cases:
+                    // - when someone click a marker pin right on the map
+                    // - when someone select location right from the select dropdown with locations
+                    $(document).on('showLocationInList', async function (event) {
+                        if (event.response_data) {
+                            console.log(event.response_data, 'event.response_data');
+
+                            var listAlreadyLoaded = false;
+                            var disallowAlreadyLoaded = false;
+                            for (var i = 0, len = $('.locations-category-list').length; i < len; i+=1) {
+                                if ($('.locations-category-list').eq(i).find('li').length > 0) {
+                                    listAlreadyLoaded = true;
+                                    break;
+                                }
+                            }
+
+                            if (event.response_data.disallowAlreadyLoaded) {
+                                disallowAlreadyLoaded = true;
+                            }
+
+                            // if trying to request location which is visible on the map, but from different country and not visible in the results list
+                            if ($('.country-list-parent.open-item > a').length && event.response_data.country_code != $('.country-list-parent.open-item > a').attr('data-country-code')) {
+                                disallowAlreadyLoaded = true;
+                            }
+
+                            if (listAlreadyLoaded && !disallowAlreadyLoaded) {
+                                $('.locations-list .single-location').removeClass('toggled');
+                                $('.results-list').scrollTop(0);
+
+                                if (event.response_data.id && event.response_data.source) {
+                                    $('.locations-list .single-location a[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]').closest('.single-location').addClass('toggled');
+                                    $('.results-list').scrollTop($('.locations-list .single-location a[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]').closest('.single-location').position().top - 15);
+                                }
+                            } else {
+                                // close countries
+                                $('.results-list .shown').removeClass('shown');
+                                $('.results-list .countries-nav').addClass('shown');
+                                $('.countries-list .country-list-parent').removeClass('hide open-item');
+
+                                // close continents
+                                $('.continents-list > ul > li').removeClass('hide open-item');
+                                $('.results-list .shown').removeClass('shown');
+                                $('.results-list .continents-nav').addClass('shown');
+
+                                for (var i = 0, len = $('.continents-list .single-continent').length; i < len; i+=1) {
+                                    if (JSON.parse($('.continents-list .single-continent').eq(i).find('> a').attr('data-country-codes')).includes(event.response_data.country_code)) {
+                                        $('.continents-list .single-continent').addClass('hide');
+                                        $('.continents-list .single-continent').eq(i).addClass('open-item');
+
+                                        for (var y = 0, leny = $('.single-continent.open-item .countries-list li').length; y < leny; y+=1) {
+                                            if ($('.single-continent.open-item .countries-list li').eq(y).find('> a').attr('data-country-code') == event.response_data.country_code) {
+                                                $('.continents-list .single-continent').eq(i).find('.country-list-parent').addClass('hide');
+                                                $('.countries-list a[data-country-code="'+event.response_data.country_code+'"]').closest('.country-list-parent').addClass('open-time');
+
+                                                var city = undefined;
+                                                if (event.response_data.city) {
+                                                    city = event.response_data.city;
+                                                }
+
+                                                lastMapData = {
+                                                    map_locations: locationsOnInit,
+                                                    initialLat: event.response_data.lat,
+                                                    initialLng: event.response_data.lng,
+                                                    initialZoom: 15,
+                                                    filter_country: event.response_data.country_code,
+                                                    location_id: undefined,
+                                                    location_source: undefined,
+                                                    categories: $('.selectpicker.location-types').val()
+                                                };
+
+                                                if (event.response_data.id && event.response_data.source && event.response_data.content) {
+                                                    initMap(locationsOnInit, event.response_data.lat, event.response_data.lng, 15, event.response_data.country_code, event.response_data.id, event.response_data.source, $('.selectpicker.location-types').val(), true, city, event.response_data.content);
+                                                } else {
+                                                    initMap(locationsOnInit, event.response_data.lat, event.response_data.lng, 15, event.response_data.country_code, undefined, undefined, $('.selectpicker.location-types').val(), true, city);
+                                                }
+
+                                                await buildCountryLocationsList($('.countries-list a[data-country-code="'+event.response_data.country_code+'"]').parent().find('.locations-category-list'), event.response_data.country_code, $('.countries-list a[data-country-code="'+event.response_data.country_code+'"]'));
+
+                                                $('.locations-list .single-location').removeClass('toggled');
+
+                                                $('.results-list').scrollTop(0);
+
+                                                if (event.response_data.id && event.response_data.source) {
+                                                    $('.locations-list .single-location a[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]').closest('.single-location').addClass('toggled');
+                                                    $('.results-list').scrollTop($('.locations-list .single-location a[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]').closest('.single-location').position().top - 15);
+                                                }
+                                                break;
+                                            }
+                                        }
+
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    $('.selectpicker.locations').on('change', function() {
+                        var thisValue = $(this).val().trim();
+
+                        if ($(this).find('option:selected').hasClass('option-type')) {
+                            $.event.trigger({
+                                type: 'showLocationInList',
+                                time: new Date(),
+                                response_data: {
+                                    'country_code' : $(this).find('option:selected').attr('data-country-code'),
+                                    'id' : $(this).find('option:selected').attr('data-id'),
+                                    'source' : thisValue,
+                                    'zoom' : 15,
+                                    'lat' : $(this).find('option:selected').attr('data-lat'),
+                                    'lng' : $(this).find('option:selected').attr('data-lng'),
+                                    'disallowAlreadyLoaded' : true,
+                                    'content' : '<div style="font-size: 20px;">'+$(this).find('option:selected').html().trim()+'</div>'
+                                }
+                            });
+                        } else {
+                            var eventData = {
+                                'country_code' : $(this).find('option:selected').attr('data-country-code'),
+                                'city' : $(this).find('option:selected').attr('data-city'),
+                                'zoom' : 5,
+                                'disallowAlreadyLoaded' : true
+                            };
+
+                            if ($(this).find('option:selected').attr('data-centroid-lat') != undefined) {
+                                eventData.lat = $(this).find('option:selected').attr('data-centroid-lat');
+                            }
+                            if ($(this).find('option:selected').attr('data-centroid-lng') != undefined) {
+                                eventData.lng = $(this).find('option:selected').attr('data-centroid-lng');
+                            }
+
+                            $.event.trigger({
+                                type: 'showLocationInList',
+                                time: new Date(),
+                                response_data: eventData
+                            });
+                        }
+                    });
+
+                    $('.locations-splitted-by-category .bs-searchbox input').on('change keyup focusout paste', function() {
+                        if ($(this).val().trim() != '') {
+                            $(this).closest('.dropdown-menu').find('.inner').show();
+                        } else {
+                            $(this).closest('.dropdown-menu').find('.inner').hide();
+                        }
+                    });
+
+                    // set continents locations
+                    var continentCodes = {};
+                    for (var i = 0, len = $('.continents-list > ul > li > a').length; i < len; i+=1) {
+                        continentCodes[$('.continents-list > ul > li > a').eq(i).attr('data-continent-id')] = $('.continents-list > ul > li > a').eq(i).attr('data-country-codes');
+                    }
+
+                    if (Object.keys(continentCodes).length > 0) {
+                        var continentLocationsCount = await projectData.requests.getMapData({action: 'get-continent-locations-count', data: continentCodes});
+                        if (continentLocationsCount.success) {
+                            Object.keys(continentLocationsCount.data).forEach(key => {
+                                $('.continent-name[data-country-codes="'+key+'"]').append('<span class="locations-count lato-bold fs-20">('+continentLocationsCount.data[key]+' locations)</span>');
+                            });
+                        }
+                    }
+
+                    // =================== CONTINENTS LOGIC ====================
+                    $('.continents-list > ul > li > a').click(async function() {
+                        // MAKE REQUEST TO QUERY ALL LOCATIONS ONLY FOR THIS CONTINENT
+
+                        $('.continents-list > ul > li').addClass('hide');
+
+                        $(this).closest('li').addClass('open-item');
+                        $('.results-list .shown').removeClass('shown');
+                        $('.results-list .countries-nav').addClass('shown');
+
+                        $('.dentacoin-stats-category-label span').html('in ' + $(this).find('.element-name').html());
+
+                        $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+$(this).find('.element-name').html().trim()).attr('data-last-continent', $(this).find('.element-name').html().trim()+'</a>');
+
+                        $('.results-list').scrollTop(0);
+
+                        lastMapData = {
+                            map_locations: locationsOnInit,
+                            initialLat: undefined,
+                            initialLng: undefined,
+                            initialZoom: undefined,
+                            filter_country: JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')),
+                            location_id: undefined,
+                            location_source: undefined,
+                            categories: $('.selectpicker.location-types').val()
+                        };
+                        initMap(locationsOnInit, undefined, undefined, undefined, JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')), undefined, undefined, $('.selectpicker.location-types').val(), true);
+
+                        updateContinentData($(this).attr('data-country-codes'));
+                    });
+
+                    async function updateContinentData(codes) {
+                        if (codes != undefined && basic.isJsonString(codes)) {
+                            var continentCountriesCodes = codes;
+
+                            // request to update the locations count in the gray header line
+                            var currentContinentLocationsCount = await projectData.requests.getMapData({action: 'get-continent-stats', data: continentCountriesCodes});
+                            if (currentContinentLocationsCount.success) {
+                                $('.picker-and-map .picker-value').html('<span class="lato-black">'+currentContinentLocationsCount.data+'</span> Results').attr('data-last-continent', currentContinentLocationsCount.data);
+                            }
+
+                            // make request to update partners, non partners and users stats at the bottom
+                            var combinedCountByMultipleCountry = await projectData.requests.getMapData({action: 'combined-count-by-multiple-country', data: continentCountriesCodes});
+                            if (combinedCountByMultipleCountry.success) {
+                                if ($('.changeable-stats .partners').length) {
+                                    $('.changeable-stats .partners span').html(combinedCountByMultipleCountry.data['partners']);
+                                    $('.changeable-stats .partners').attr('data-last-continent', combinedCountByMultipleCountry.data['partners']);
+                                }
+                                if ($('.changeable-stats .non-partners').length) {
+                                    $('.changeable-stats .non-partners span').html(combinedCountByMultipleCountry.data['non_partners']);
+                                    $('.changeable-stats .non-partners').attr('data-last-continent', combinedCountByMultipleCountry.data['non_partners'])
+                                }
+                                if ($('.changeable-stats .users').length) {
+                                    $('.changeable-stats .users span').html(combinedCountByMultipleCountry.data['patients']);
+                                    $('.changeable-stats .users').attr('data-last-continent', combinedCountByMultipleCountry.data['patients']);
+                                }
+                            }
+                        }
+                    }
+
+                    $(document).on('click', '.go-back-to-continents', function() {
+                        $('.continents-list > ul > li').removeClass('hide open-item');
+
+                        $('.results-list .shown').removeClass('shown');
+                        $('.results-list .continents-nav').addClass('shown');
+
+                        $('.dentacoin-stats-category-label span').html('Worldwide');
+                        $('.picker-and-map .picker-label').html('Worldwide');
+
+                        $('.results-list').scrollTop(0);
+
+                        lastMapData = {
                             map_locations: locationsOnInit,
                             initialLat: undefined,
                             initialLng: undefined,
@@ -3232,892 +3601,539 @@ var projectData = {
                         };
                         initMap(locationsOnInit, undefined, undefined, undefined, undefined, undefined, undefined, $('.selectpicker.location-types').val());
 
-
-                        $('body').addClass('overflow-hidden');
-                        if ($(window).width() > 992) {
-                            $('.results-list').css({'max-height' : ($('.google-map-and-bottom-filters').height() - $('.left-picker .inner-gray-line').height()) + 'px'});
+                        if ($('.picker-and-map .picker-value').attr('data-worldwide') != '') {
+                            $('.picker-and-map .picker-value').html('<span class="lato-black">'+$('.picker-and-map .picker-value').attr('data-worldwide')+'</span> Results');
                         }
-                        $('body').removeClass('overflow-hidden');
 
-                        basic.initCustomCheckboxes('.google-map-and-bottom-filters', 'append');
+                        if ($('.changeable-stats .partners').length) {
+                            $('.changeable-stats .partners span').html($('.changeable-stats .partners').attr('data-worldwide'));
+                        }
 
-                        $('.show-locations-list').click(function() {
-                            if (!$(this).parent().hasClass('list-shown')) {
-                                $('.hide-on-map-open').addClass('hide');
-                                $(this).parent().addClass('list-shown');
-                                $(this).addClass('with-map-pin').removeClass('with-list-icon').html(' GO BACK TO MAP');
+                        if ($('.changeable-stats .non-partners').length) {
+                            $('.changeable-stats .non-partners span').html($('.changeable-stats .non-partners').attr('data-worldwide'));
+                        }
 
-                                $('.subpages-sticky-nav').addClass('hide');
-                                $('.picker-and-map .google-map-box').hide();
-                                $('.picker-and-map .left-picker').fadeIn(500);
-                                $('.locations-list .invite-text').fadeIn();
+                        if ($('.changeable-stats .users').length) {
+                            $('.changeable-stats .users span').html($('.changeable-stats .users').attr('data-worldwide'));
+                        }
+                    });
+                    // =================== /CONTINENTS LOGIC ===================
 
-                                $('body').addClass('overflow-hidden');
-                                if ($(window).width() < 992) {
-                                    // scroll to open location everytime on list showing, because the scrolling doesn't work when element is with display none
-                                    if ($('.single-location.toggled').length) {
-                                        $('.results-list').scrollTop(0);
-                                        $('.results-list').scrollTop($('.single-location.toggled').position().top - 15);
+                    // =================== COUNTRIES LOGIC ====================
+                    async function buildCountryLocationsList(list, code, thisBtn) {
+                        projectData.general_logic.data.showLoader();
+                        var totalLocationsCountByCountry = 0;
+
+                        // Partner Dental Practices
+                        var currentCountryPartnersData = await projectData.requests.getMapData({action: 'all-partners-data-by-country', data: code});
+                        if (currentCountryPartnersData.success && currentCountryPartnersData.data.length > 0) {
+                            // checking if visibility allowed by bottom category filter
+                            var iconClass = 'fa-minus-circle';
+                            var parentElementClass = '';
+                            if (!$('.right-side-filters #category-1').is(':checked') && !$('.right-side-filters #category-5').is(':checked')) {
+                                iconClass = 'fa-plus-circle';
+                                parentElementClass = 'closed';
+                            }
+
+                            var bindPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button partners fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Partner Dental Practices</span></a><ul class="locations-list">';
+                            for (var i = 0, len = currentCountryPartnersData.data.length; i < len; i+=1) {
+                                bindPartnersCategoryHtml += buildSingleLocationTile(currentCountryPartnersData.data[i].avatar_url, currentCountryPartnersData.data[i].name, currentCountryPartnersData.data[i].address, currentCountryPartnersData.data[i].is_partner, currentCountryPartnersData.data[i].city_name, currentCountryPartnersData.data[i].phone, currentCountryPartnersData.data[i].website, currentCountryPartnersData.data[i].top_dentist_month, currentCountryPartnersData.data[i].avg_rating, currentCountryPartnersData.data[i].ratings, currentCountryPartnersData.data[i].trp_public_profile_link, thisBtn.find('.element-name').html(), currentCountryPartnersData.data[i].id, 'core-db', currentCountryPartnersData.data[i].lat, currentCountryPartnersData.data[i].lon);
+                            }
+
+                            bindPartnersCategoryHtml+='</ul></li>';
+                            list.append(bindPartnersCategoryHtml);
+                        }
+
+                        // Partner Dental Labs, Partner Dental Suppliers, Other Industry Partners
+                        var getLabsSuppliersAndIndustryPartnersData = await projectData.requests.getLabsSuppliersAndIndustryPartners({'country-code' : code});
+                        if (getLabsSuppliersAndIndustryPartnersData.success) {
+                            // Partner Dental Labs
+                            if (getLabsSuppliersAndIndustryPartnersData.data.labs.length > 0) {
+                                // checking if visibility allowed by bottom category filter
+                                var iconClass = 'fa-minus-circle';
+                                var parentElementClass = '';
+                                if (!$('.right-side-filters #category-2').is(':checked')) {
+                                    iconClass = 'fa-plus-circle';
+                                    parentElementClass = 'closed';
+                                }
+
+                                totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.labs.length;
+                                var bindLabsCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button labs fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Partner Dental Labs</span></a><ul class="locations-list">';
+                                for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.labs.length; i < len; i+=1) {
+                                    bindLabsCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.labs[i].address, null, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_link, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.labs[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.labs[i].lat, getLabsSuppliersAndIndustryPartnersData.data.labs[i].lng);
+                                }
+
+                                bindLabsCategoryHtml+='</ul></li>';
+                                list.append(bindLabsCategoryHtml);
+                            }
+
+                            // Partner Dental Suppliers
+                            if (getLabsSuppliersAndIndustryPartnersData.data.suppliers.length > 0) {
+                                // checking if visibility allowed by bottom category filter
+                                var iconClass = 'fa-minus-circle';
+                                var parentElementClass = '';
+                                if (!$('.right-side-filters #category-3').is(':checked')) {
+                                    iconClass = 'fa-plus-circle';
+                                    parentElementClass = 'closed';
+                                }
+
+                                totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.suppliers.length;
+                                var bindSuppliersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button suppliers fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Partner Dental Suppliers</span></a><ul class="locations-list">';
+                                for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.suppliers.length; i < len; i+=1) {
+                                    bindSuppliersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].address, null, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_link, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].lat, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].lng);
+                                }
+
+                                bindSuppliersCategoryHtml+='</ul></li>';
+                                list.append(bindSuppliersCategoryHtml);
+                            }
+
+                            // Other Industry Partners
+                            if (getLabsSuppliersAndIndustryPartnersData.data.industryPartners.length > 0) {
+                                // checking if visibility allowed by bottom category filter
+                                var iconClass = 'fa-minus-circle';
+                                var parentElementClass = '';
+                                if (!$('.right-side-filters #category-4').is(':checked')) {
+                                    iconClass = 'fa-plus-circle';
+                                    parentElementClass = 'closed';
+                                }
+
+                                totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.industryPartners.length;
+                                var bindIndustryPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button industryPartners fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Other Industry Partners</span></a><ul class="locations-list">';
+                                for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.industryPartners.length; i < len; i+=1) {
+                                    bindIndustryPartnersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].lat, getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].lng);
+                                }
+
+                                bindIndustryPartnersCategoryHtml+='</ul></li>';
+                                list.append(bindIndustryPartnersCategoryHtml);
+                            }
+                        }
+
+                        // All Registered Dental Practices
+                        var currentCountryNonPartnersData = await projectData.requests.getMapData({action: 'all-non-partners-data-by-country', data: code});
+                        if (currentCountryNonPartnersData.success && currentCountryNonPartnersData.data.length > 0) {
+                            // checking if visibility allowed by bottom category filter
+                            var iconClass = 'fa-minus-circle';
+                            var parentElementClass = '';
+                            if (!$('.right-side-filters #category-5').is(':checked')) {
+                                iconClass = 'fa-plus-circle';
+                                parentElementClass = 'closed';
+                            }
+
+                            var bindNonPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button non-partners fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> All Registered Dental Practices</span></a><ul class="locations-list">';
+                            for (var i = 0, len = currentCountryNonPartnersData.data.length; i < len; i+=1) {
+                                bindNonPartnersCategoryHtml += buildSingleLocationTile(currentCountryNonPartnersData.data[i].avatar_url, currentCountryNonPartnersData.data[i].name, currentCountryNonPartnersData.data[i].address, currentCountryNonPartnersData.data[i].is_partner, currentCountryNonPartnersData.data[i].city_name, currentCountryNonPartnersData.data[i].phone, currentCountryNonPartnersData.data[i].website, currentCountryNonPartnersData.data[i].top_dentist_month, currentCountryNonPartnersData.data[i].avg_rating, currentCountryNonPartnersData.data[i].ratings, currentCountryNonPartnersData.data[i].trp_public_profile_link, thisBtn.find('.element-name').html(), currentCountryNonPartnersData.data[i].id, 'core-db', currentCountryNonPartnersData.data[i].lat, currentCountryNonPartnersData.data[i].lon);
+                            }
+
+                            bindNonPartnersCategoryHtml+='</ul></li>';
+                            list.append(bindNonPartnersCategoryHtml);
+                        }
+
+                        list.append('<li><div class="invite-text padding-left-15 padding-right-15 padding-top-15 padding-bottom-25"><div class="color-white lato-black fs-28 fs-sm-22 fs-xs-20 padding-bottom-15">KNOW A GREAT DENTIST, BUT IT’S NOT ON OUR MAP?</div><div><a href="https://reviews.dentacoin.com/?popup=invite-new-dentist-popup" target="_blank" class="bright-blue-white-btn with-border fs-xs-16">INVITE DENTIST</a></div></div></li>');
+
+                        // make request to select all locations DATA for this country FOR THE MAP
+                        var currentCountryLocationsData = await projectData.requests.getMapData({action: 'all-partners-and-non-partners-data-by-country', data: code});
+                        if (currentCountryLocationsData.success) {
+                            totalLocationsCountByCountry += currentCountryLocationsData.data.length;
+
+                            $('.dentacoin-stats-category-label span').html('in ' + thisBtn.find('.element-name').html());
+                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-countries"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+thisBtn.find('.element-name').html().trim()+'</a>');
+                            $('.picker-and-map .picker-value').html('<span class="lato-black">'+totalLocationsCountByCountry+'</span> Results');
+
+                            for (var i = 0, len = currentCountryLocationsData.data.length; i < len; i+=1) {
+                                // console.log(currentCountryLocationsData.data[i], 'THIS WILL BE USED TO BE SHOWN ON THE MAP');
+                            }
+                        }
+
+                        $('.results-list').scrollTop(0);
+
+                        if (thisBtn.parent().find('.locations-category-list li').length == 0) {
+                            thisBtn.parent().find('.locations-category-list').html('<div class="fs-18 padding-top-20 padding-bottom-20 text-center">No locations found.</div>');
+                        } else {
+                            // toggle category button hide/ show logic
+                            $('.locations-category-list .category-toggle-button').click(function() {
+                                $(this).closest('li').toggleClass('closed');
+
+                                if ($(this).find('i').hasClass('fa-minus-circle')) {
+                                    $(this).find('i').removeClass('fa-minus-circle').addClass('fa-plus-circle');
+
+                                    if ($(this).hasClass('partners')) {
+                                        // uncheck category-1
+                                        updateTopAndBottomLocationTypesFilters('category-1', false);
+                                    } else if ($(this).hasClass('labs')) {
+                                        // check category-2
+                                        updateTopAndBottomLocationTypesFilters('category-2', false);
+                                    } else if ($(this).hasClass('suppliers')) {
+                                        // check category-3
+                                        updateTopAndBottomLocationTypesFilters('category-3', false);
+                                    } else if ($(this).hasClass('industryPartners')) {
+                                        // check category-4
+                                        updateTopAndBottomLocationTypesFilters('category-4', false);
+                                    } else if ($(this).hasClass('non_partners')) {
+                                        // check category-5
+                                        updateTopAndBottomLocationTypesFilters('category-5', false);
                                     }
-                                }
-                                $('body').removeClass('overflow-hidden');
-                            } else {
-                                $('.hide-on-map-open').removeClass('hide');
-                                $(this).removeClass('with-map-pin').addClass('with-list-icon').html(' SEE RESULTS IN LIST');
-                                $(this).parent().removeClass('list-shown');
 
-                                $('.subpages-sticky-nav').removeClass('hide');
-                                $('.picker-and-map .google-map-box').fadeIn(500);
-                                $('.picker-and-map .left-picker').hide();
-                                $('.locations-list .invite-text').hide();
+                                    $('.selectpicker.location-types').selectpicker('refresh');
+                                } else {
+                                    $(this).find('i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
 
-                                $('html, body').animate({'scrollTop': $('.section-google-map.module').offset().top }, 300);
-                            }
-
-                            $('html, body').animate({'scrollTop': $('.map-container').offset().top }, 300);
-                        });
-
-                        function dynamicSort(property) {
-                            var sortOrder = 1;
-                            if(property[0] === "-") {
-                                sortOrder = -1;
-                                property = property.substr(1);
-                            }
-                            return function (a,b) {
-                                /* next line works with strings and numbers,
-                                 * and you may want to customize it to your needs
-                                 */
-                                var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-                                return result * sortOrder;
-                            }
-                        }
-
-                        var locationsCountsArr = [];
-
-                        // set continent count BY adding the countries locations for THIS continent
-                        for (var i = 0, len = $('.single-continent').length; i < len; i+=1) {
-                            var currentContinentLocationsCount = 0;
-                            for (var y = 0, leny = $('.single-continent').eq(i).find('.country-list-parent').length; y < leny; y+=1) {
-                                if ($('.single-continent').eq(i).find('.country-list-parent').eq(y).find('[data-locations-count]').length) {
-                                    currentContinentLocationsCount += parseInt($('.single-continent').eq(i).find('.country-list-parent').eq(y).find('[data-locations-count]').attr('data-locations-count'));
-                                }
-                            }
-                            $('.single-continent').eq(i).find('> a').append('<span class="lato-bold inline-block locations-count fs-18 fs-xs-14">('+currentContinentLocationsCount+' locations)</span>');
-
-                            locationsCountsArr.push({'count' : currentContinentLocationsCount, 'location_id' : $('.single-continent').eq(i).find('> a').attr('data-continent-id')});
-                        }
-
-                        var orderedLocationsCountsArr = locationsCountsArr.sort(dynamicSort('count'));
-                        var revesedLocationsCountsArr = orderedLocationsCountsArr.reverse();
-                        var reorderedCountriesListHtml = '';
-                        for (var i = 0, len = orderedLocationsCountsArr.length; i < len; i+=1) {
-                            reorderedCountriesListHtml += $('.continent-name[data-continent-id='+orderedLocationsCountsArr[i].location_id+']').parent().get(0).outerHTML;
-                        }
-
-                        $('.continents-list ul').html(reorderedCountriesListHtml);
-
-                        $('.selectpicker.location-types').on('change', function() {
-                            var thisValue = $(this).val();
-
-                            // dont allow users to filter only category-5
-                            if (thisValue.includes('category-5') && !thisValue.includes('category-1')) {
-                                thisValue.push('category-1');
-                            }
-
-                            $('.right-side-filters input[type="checkbox"]').prop('checked', true);
-                            updateTopLocationsSelectOnBottomFilterChange(thisValue);
-
-                            // update bottom filter checkboxes
-                            $('.right-side-filters input[type="checkbox"]').prop('checked', false);
-                            $('.right-side-filters .custom-checkbox').html('');
-                            if (thisValue.length > 0) {
-                                for (var i = 0; i < thisValue.length; i += 1) {
-                                    if ($('.right-side-filters input[type="checkbox"]#' + thisValue[i]).length) {
-                                        $('.right-side-filters input[type="checkbox"]#' + thisValue[i]).prop('checked', true);
-                                        $('.right-side-filters input[type="checkbox"]#' + thisValue[i]).parent().find('.custom-checkbox').html('✓');
+                                    if ($(this).hasClass('partners')) {
+                                        // check category-1
+                                        updateTopAndBottomLocationTypesFilters('category-1', true);
+                                    } else if ($(this).hasClass('labs')) {
+                                        // check category-2
+                                        updateTopAndBottomLocationTypesFilters('category-2', true);
+                                    } else if ($(this).hasClass('suppliers')) {
+                                        // check category-3
+                                        updateTopAndBottomLocationTypesFilters('category-3', true);
+                                    } else if ($(this).hasClass('industryPartners')) {
+                                        // check category-4
+                                        updateTopAndBottomLocationTypesFilters('category-4', true);
+                                    } else if ($(this).hasClass('non-partners')) {
+                                        // check category-5
+                                        updateTopAndBottomLocationTypesFilters('category-5', true);
                                     }
+
+                                    $('.selectpicker.location-types').selectpicker('refresh');
+                                }
+
+                                // updating lastMapData categories
+                                lastMapData.categories = $('.selectpicker.location-types').val();
+                                initMap(lastMapData.map_locations, lastMapData.initialLat, lastMapData.initialLng, lastMapData.initialZoom, lastMapData.filter_country, lastMapData.location_id, lastMapData.location_source, lastMapData.categories, true);
+                            });
+
+                            function updateTopAndBottomLocationTypesFilters(category_id, bool) {
+                                $('select.location-types option[value="'+category_id+'"]').prop('selected', bool);
+
+                                $('.right-side-filters input[type="checkbox"]#'+category_id).prop('checked', bool);
+                                if (bool) {
+                                    $('.right-side-filters input[type="checkbox"]#'+category_id).parent().find('.custom-checkbox').html('✓');
+                                } else {
+                                    $('.right-side-filters input[type="checkbox"]#'+category_id).parent().find('.custom-checkbox').html('');
                                 }
                             }
-                        });
+                        }
 
-                        // this event is fired in 2 cases:
-                        // - when someone click a marker pin right on the map
-                        // - when someone select location right from the select dropdown with locations
-                        $(document).on('showLocationInList', async function (event) {
-                            if (event.response_data) {
-                                console.log(event.response_data, 'event.response_data');
+                        $('.results-list .shown').removeClass('shown');
+                        $('.results-list .locations-nav').addClass('shown');
 
-                                var listAlreadyLoaded = false;
-                                var disallowAlreadyLoaded = false;
-                                for (var i = 0, len = $('.locations-category-list').length; i < len; i+=1) {
-                                    if ($('.locations-category-list').eq(i).find('li').length > 0) {
-                                        listAlreadyLoaded = true;
+                        $('.continents-list .single-continent .country-list-parent').addClass('hide');
+                        thisBtn.parent().removeClass('hide').addClass('open-item');
+
+                        // make request to select all partners COUNT for this country
+                        var combinedCountByCountry = await projectData.requests.getMapData({action: 'combined-count-by-country', data: code});
+                        if (combinedCountByCountry.success) {
+                            if ($('.changeable-stats .partners').length) {
+                                $('.changeable-stats .partners span').html(combinedCountByCountry.data['partners']);
+                            }
+                            if ($('.changeable-stats .non-partners').length) {
+                                $('.changeable-stats .non-partners span').html(combinedCountByCountry.data['non_partners']);
+                            }
+                            if ($('.changeable-stats .users').length) {
+                                $('.changeable-stats .users span').html(combinedCountByCountry.data['patients']);
+                            }
+                        }
+
+                        projectData.general_logic.data.hideLoader();
+                    }
+
+                    // toggle bottom filter hide/ show logic
+                    $('.right-side-filters input[type="checkbox"]').on('change', function() {
+                        var thisCheckbox = $(this);
+                        switch(thisCheckbox.attr('id')) {
+                            case 'category-1':
+                                if (thisCheckbox.is(':checked')) {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
+                                } else {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
+                                }
+
+                                updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
+
+                                $('.selectpicker.location-types').selectpicker('refresh');
+
+                                break;
+                            case 'category-2':
+                                if (thisCheckbox.is(':checked')) {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
+                                } else {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
+                                }
+
+                                updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
+
+                                $('.selectpicker.location-types').selectpicker('refresh');
+
+                                break;
+                            case 'category-3':
+                                if (thisCheckbox.is(':checked')) {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
+                                } else {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
+                                }
+
+                                updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
+
+                                $('.selectpicker.location-types').selectpicker('refresh');
+
+                                break;
+                            case 'category-4':
+                                if (thisCheckbox.is(':checked')) {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
+                                } else {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
+                                }
+
+                                updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
+
+                                $('.selectpicker.location-types').selectpicker('refresh');
+
+                                break;
+                            case 'category-5':
+                                if (thisCheckbox.is(':checked')) {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
+                                } else {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
+                                }
+
+                                updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
+                                $('.selectpicker.location-types').selectpicker('refresh');
+
+                                break;
+                        }
+                    });
+
+                    function updateTopLocationsSelectOnBottomFilterChange(valuesArray) {
+                        // refresh locations selectpicker
+                        if (Object.keys(JSON.parse($('.locations-style').attr('data-groups-html'))).length > 0) {
+                            $('select.selectpicker.locations').html('');
+                            var newLocationsSelectHtml = '';
+                            Object.keys(JSON.parse($('.locations-style').attr('data-groups-html'))).forEach(function(key,index) {
+                                newLocationsSelectHtml += JSON.parse($('.locations-style').attr('data-groups-html'))[key];
+                            });
+                            $('select.selectpicker.locations').html('<option value="">Show All Locations</option>' + newLocationsSelectHtml);
+                        }
+
+                        if (valuesArray.length > 0) {
+                            $('select.selectpicker.locations optgroup.optgroup-for-types').addClass('to-remove');
+
+                            $('.category-toggle-button').parent().addClass('closed');
+                            $('.category-toggle-button i').removeClass('fa-minus-circle').addClass('fa-plus-circle');
+
+                            // filter
+                            for (var i = 0, len = $('select.selectpicker.locations optgroup.optgroup-for-types').length; i < len; i+=1) {
+                                for (var y = 0; y < valuesArray.length; y+=1) {
+                                    if ($('select.selectpicker.locations optgroup.optgroup-for-types').eq(i).hasClass(valuesArray[y])) {
+                                        $('select.selectpicker.locations optgroup.optgroup-for-types').eq(i).removeClass('to-remove');
+
+                                        switch(valuesArray[y]) {
+                                            case 'category-1':
+                                                $('.category-toggle-button.partners').parent().removeClass('closed');
+                                                $('.category-toggle-button.partners i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+
+                                                break;
+                                            case 'category-2':
+                                                $('.category-toggle-button.labs').parent().removeClass('closed');
+                                                $('.category-toggle-button.labs i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+
+                                                break;
+                                            case 'category-3':
+                                                $('.category-toggle-button.suppliers').parent().removeClass('closed');
+                                                $('.category-toggle-button.suppliers i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+
+                                                break;
+                                            case 'category-4':
+                                                $('.category-toggle-button.industryPartners').parent().removeClass('closed');
+                                                $('.category-toggle-button.industryPartners i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+
+                                                break;
+                                            case 'category-5':
+                                                $('.category-toggle-button.non-partners').parent().removeClass('closed');
+                                                $('.category-toggle-button.non-partners i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+
+                                                break;
+                                        }
                                         break;
                                     }
                                 }
-
-                                if (event.response_data.disallowAlreadyLoaded) {
-                                    disallowAlreadyLoaded = true;
-                                }
-
-                                // if trying to request location which is visible on the map, but from different country and not visible in the results list
-                                if ($('.country-list-parent.open-item > a').length && event.response_data.country_code != $('.country-list-parent.open-item > a').attr('data-country-code')) {
-                                    disallowAlreadyLoaded = true;
-                                }
-
-                                if (listAlreadyLoaded && !disallowAlreadyLoaded) {
-                                    $('.locations-list .single-location').removeClass('toggled');
-                                    $('.results-list').scrollTop(0);
-
-                                    if (event.response_data.id && event.response_data.source) {
-                                        $('.locations-list .single-location a[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]').closest('.single-location').addClass('toggled');
-                                        $('.results-list').scrollTop($('.locations-list .single-location a[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]').closest('.single-location').position().top - 15);
-                                    }
-                                } else {
-                                    // close countries
-                                    $('.results-list .shown').removeClass('shown');
-                                    $('.results-list .countries-nav').addClass('shown');
-                                    $('.countries-list .country-list-parent').removeClass('hide open-item');
-
-                                    // close continents
-                                    $('.continents-list > ul > li').removeClass('hide open-item');
-                                    $('.results-list .shown').removeClass('shown');
-                                    $('.results-list .continents-nav').addClass('shown');
-
-                                    for (var i = 0, len = $('.continents-list .single-continent').length; i < len; i+=1) {
-                                        if (JSON.parse($('.continents-list .single-continent').eq(i).find('> a').attr('data-country-codes')).includes(event.response_data.country_code)) {
-                                            $('.continents-list .single-continent').addClass('hide');
-                                            $('.continents-list .single-continent').eq(i).addClass('open-item');
-
-                                            for (var y = 0, leny = $('.single-continent.open-item .countries-list li').length; y < leny; y+=1) {
-                                                if ($('.single-continent.open-item .countries-list li').eq(y).find('> a').attr('data-country-code') == event.response_data.country_code) {
-                                                    $('.continents-list .single-continent').eq(i).find('.country-list-parent').addClass('hide');
-                                                    $('.countries-list a[data-country-code="'+event.response_data.country_code+'"]').closest('.country-list-parent').addClass('open-time');
-
-                                                    var city = undefined;
-                                                    if (event.response_data.city) {
-                                                        city = event.response_data.city;
-                                                    }
-
-                                                    lastMapData = {
-                                                        map_locations: locationsOnInit,
-                                                        initialLat: event.response_data.lat,
-                                                        initialLng: event.response_data.lng,
-                                                        initialZoom: 15,
-                                                        filter_country: event.response_data.country_code,
-                                                        location_id: undefined,
-                                                        location_source: undefined,
-                                                        categories: $('.selectpicker.location-types').val()
-                                                    };
-
-                                                    if (event.response_data.id && event.response_data.source && event.response_data.content) {
-                                                        initMap(locationsOnInit, event.response_data.lat, event.response_data.lng, 15, event.response_data.country_code, event.response_data.id, event.response_data.source, $('.selectpicker.location-types').val(), true, city, event.response_data.content);
-                                                    } else {
-                                                        initMap(locationsOnInit, event.response_data.lat, event.response_data.lng, 15, event.response_data.country_code, undefined, undefined, $('.selectpicker.location-types').val(), true, city);
-                                                    }
-
-                                                    await buildCountryLocationsList($('.countries-list a[data-country-code="'+event.response_data.country_code+'"]').parent().find('.locations-category-list'), event.response_data.country_code, $('.countries-list a[data-country-code="'+event.response_data.country_code+'"]'));
-
-                                                    $('.locations-list .single-location').removeClass('toggled');
-
-                                                    $('.results-list').scrollTop(0);
-
-                                                    if (event.response_data.id && event.response_data.source) {
-                                                        $('.locations-list .single-location a[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]').closest('.single-location').addClass('toggled');
-                                                        $('.results-list').scrollTop($('.locations-list .single-location a[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]').closest('.single-location').position().top - 15);
-                                                    }
-                                                    break;
-                                                }
-                                            }
-
-                                            break;
-                                        }
-                                    }
-                                }
                             }
-                        });
 
-                        $('.selectpicker.locations').on('change', function() {
-                            var thisValue = $(this).val().trim();
-
-                            if ($(this).find('option:selected').hasClass('option-type')) {
-                                $.event.trigger({
-                                    type: 'showLocationInList',
-                                    time: new Date(),
-                                    response_data: {
-                                        'country_code' : $(this).find('option:selected').attr('data-country-code'),
-                                        'id' : $(this).find('option:selected').attr('data-id'),
-                                        'source' : thisValue,
-                                        'zoom' : 15,
-                                        'lat' : $(this).find('option:selected').attr('data-lat'),
-                                        'lng' : $(this).find('option:selected').attr('data-lng'),
-                                        'disallowAlreadyLoaded' : true,
-                                        'content' : '<div style="font-size: 20px;">'+$(this).find('option:selected').html().trim()+'</div>'
-                                    }
-                                });
-                            } else {
-                                var eventData = {
-                                    'country_code' : $(this).find('option:selected').attr('data-country-code'),
-                                    'city' : $(this).find('option:selected').attr('data-city'),
-                                    'zoom' : 5,
-                                    'disallowAlreadyLoaded' : true
-                                };
-
-                                if ($(this).find('option:selected').attr('data-centroid-lat') != undefined) {
-                                    eventData.lat = $(this).find('option:selected').attr('data-centroid-lat');
-                                }
-                                if ($(this).find('option:selected').attr('data-centroid-lng') != undefined) {
-                                    eventData.lng = $(this).find('option:selected').attr('data-centroid-lng');
-                                }
-
-                                $.event.trigger({
-                                    type: 'showLocationInList',
-                                    time: new Date(),
-                                    response_data: eventData
-                                });
-                            }
-                        });
-
-                        $('.locations-splitted-by-category .bs-searchbox input').on('change keyup focusout paste', function() {
-                            if ($(this).val().trim() != '') {
-                                $(this).closest('.dropdown-menu').find('.inner').show();
-                            } else {
-                                $(this).closest('.dropdown-menu').find('.inner').hide();
-                            }
-                        });
-
-                        // set continents locations
-                        var continentCodes = {};
-                        for (var i = 0, len = $('.continents-list > ul > li > a').length; i < len; i+=1) {
-                            continentCodes[$('.continents-list > ul > li > a').eq(i).attr('data-continent-id')] = $('.continents-list > ul > li > a').eq(i).attr('data-country-codes');
+                            $('select.selectpicker.locations optgroup.optgroup-for-types.to-remove').remove();
+                        } else {
+                            $('select.selectpicker.locations optgroup.optgroup-for-types').addClass('to-remove');
                         }
 
-                        if (Object.keys(continentCodes).length > 0) {
-                            var continentLocationsCount = await projectData.requests.getMapData({action: 'get-continent-locations-count', data: continentCodes});
-                            if (continentLocationsCount.success) {
-                                Object.keys(continentLocationsCount.data).forEach(key => {
-                                    $('.continent-name[data-country-codes="'+key+'"]').append('<span class="locations-count lato-bold fs-20">('+continentLocationsCount.data[key]+' locations)</span>');
-                                });
-                            }
-                        }
-
-                        // =================== CONTINENTS LOGIC ====================
-                        $('.continents-list > ul > li > a').click(async function() {
-                            // MAKE REQUEST TO QUERY ALL LOCATIONS ONLY FOR THIS CONTINENT
-
-                            $('.continents-list > ul > li').addClass('hide');
-
-                            $(this).closest('li').addClass('open-item');
-                            $('.results-list .shown').removeClass('shown');
-                            $('.results-list .countries-nav').addClass('shown');
-
-                            $('.dentacoin-stats-category-label span').html('in ' + $(this).find('.element-name').html());
-
-                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+$(this).find('.element-name').html().trim()).attr('data-last-continent', $(this).find('.element-name').html().trim()+'</a>');
-
-                            $('.results-list').scrollTop(0);
-
-                            lastMapData = {
-                                map_locations: locationsOnInit,
-                                initialLat: undefined,
-                                initialLng: undefined,
-                                initialZoom: undefined,
-                                filter_country: JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')),
-                                location_id: undefined,
-                                location_source: undefined,
-                                categories: $('.selectpicker.location-types').val()
-                            };
-                            initMap(locationsOnInit, undefined, undefined, undefined, JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')), undefined, undefined, $('.selectpicker.location-types').val(), true);
-
-                            updateContinentData($(this).attr('data-country-codes'));
-                        });
-
-                        async function updateContinentData(codes) {
-                            if (codes != undefined && basic.isJsonString(codes)) {
-                                var continentCountriesCodes = codes;
-
-                                // request to update the locations count in the gray header line
-                                var currentContinentLocationsCount = await projectData.requests.getMapData({action: 'get-continent-stats', data: continentCountriesCodes});
-                                if (currentContinentLocationsCount.success) {
-                                    $('.picker-and-map .picker-value').html('<span class="lato-black">'+currentContinentLocationsCount.data+'</span> Results').attr('data-last-continent', currentContinentLocationsCount.data);
-                                }
-
-                                // make request to update partners, non partners and users stats at the bottom
-                                var combinedCountByMultipleCountry = await projectData.requests.getMapData({action: 'combined-count-by-multiple-country', data: continentCountriesCodes});
-                                if (combinedCountByMultipleCountry.success) {
-                                    if ($('.changeable-stats .partners').length) {
-                                        $('.changeable-stats .partners span').html(combinedCountByMultipleCountry.data['partners']);
-                                        $('.changeable-stats .partners').attr('data-last-continent', combinedCountByMultipleCountry.data['partners']);
-                                    }
-                                    if ($('.changeable-stats .non-partners').length) {
-                                        $('.changeable-stats .non-partners span').html(combinedCountByMultipleCountry.data['non_partners']);
-                                        $('.changeable-stats .non-partners').attr('data-last-continent', combinedCountByMultipleCountry.data['non_partners'])
-                                    }
-                                    if ($('.changeable-stats .users').length) {
-                                        $('.changeable-stats .users span').html(combinedCountByMultipleCountry.data['patients']);
-                                        $('.changeable-stats .users').attr('data-last-continent', combinedCountByMultipleCountry.data['patients']);
-                                    }
-                                }
-                            }
-                        }
-
-                        $(document).on('click', '.go-back-to-continents', function() {
-                            $('.continents-list > ul > li').removeClass('hide open-item');
-
-                            $('.results-list .shown').removeClass('shown');
-                            $('.results-list .continents-nav').addClass('shown');
-
-                            $('.dentacoin-stats-category-label span').html('Worldwide');
-                            $('.picker-and-map .picker-label').html('Worldwide');
-
-                            $('.results-list').scrollTop(0);
-
-                            lastMapData = {
-                                map_locations: locationsOnInit,
-                                initialLat: undefined,
-                                initialLng: undefined,
-                                initialZoom: undefined,
-                                filter_country: undefined,
-                                location_id: undefined,
-                                location_source: undefined,
-                                categories: $('.selectpicker.location-types').val()
-                            };
-                            initMap(locationsOnInit, undefined, undefined, undefined, undefined, undefined, undefined, $('.selectpicker.location-types').val());
-
-                            if ($('.picker-and-map .picker-value').attr('data-worldwide') != '') {
-                                $('.picker-and-map .picker-value').html('<span class="lato-black">'+$('.picker-and-map .picker-value').attr('data-worldwide')+'</span> Results');
-                            }
-
-                            if ($('.changeable-stats .partners').length) {
-                                $('.changeable-stats .partners span').html($('.changeable-stats .partners').attr('data-worldwide'));
-                            }
-
-                            if ($('.changeable-stats .non-partners').length) {
-                                $('.changeable-stats .non-partners span').html($('.changeable-stats .non-partners').attr('data-worldwide'));
-                            }
-
-                            if ($('.changeable-stats .users').length) {
-                                $('.changeable-stats .users span').html($('.changeable-stats .users').attr('data-worldwide'));
-                            }
-                        });
-                        // =================== /CONTINENTS LOGIC ===================
-
-                        // =================== COUNTRIES LOGIC ====================
-                        async function buildCountryLocationsList(list, code, thisBtn) {
-                            projectData.general_logic.data.showLoader();
-                            var totalLocationsCountByCountry = 0;
-
-                            // Partner Dental Practices
-                            var currentCountryPartnersData = await projectData.requests.getMapData({action: 'all-partners-data-by-country', data: code});
-                            if (currentCountryPartnersData.success && currentCountryPartnersData.data.length > 0) {
-                                // checking if visibility allowed by bottom category filter
-                                var iconClass = 'fa-minus-circle';
-                                var parentElementClass = '';
-                                if (!$('.right-side-filters #category-1').is(':checked') && !$('.right-side-filters #category-5').is(':checked')) {
-                                    iconClass = 'fa-plus-circle';
-                                    parentElementClass = 'closed';
-                                }
-
-                                var bindPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button partners fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Partner Dental Practices</span></a><ul class="locations-list">';
-                                for (var i = 0, len = currentCountryPartnersData.data.length; i < len; i+=1) {
-                                    bindPartnersCategoryHtml += buildSingleLocationTile(currentCountryPartnersData.data[i].avatar_url, currentCountryPartnersData.data[i].name, currentCountryPartnersData.data[i].address, currentCountryPartnersData.data[i].is_partner, currentCountryPartnersData.data[i].city_name, currentCountryPartnersData.data[i].phone, currentCountryPartnersData.data[i].website, currentCountryPartnersData.data[i].top_dentist_month, currentCountryPartnersData.data[i].avg_rating, currentCountryPartnersData.data[i].ratings, currentCountryPartnersData.data[i].trp_public_profile_link, thisBtn.find('.element-name').html(), currentCountryPartnersData.data[i].id, 'core-db', currentCountryPartnersData.data[i].lat, currentCountryPartnersData.data[i].lon);
-                                }
-
-                                bindPartnersCategoryHtml+='</ul></li>';
-                                list.append(bindPartnersCategoryHtml);
-                            }
-
-                            // Partner Dental Labs, Partner Dental Suppliers, Other Industry Partners
-                            var getLabsSuppliersAndIndustryPartnersData = await projectData.requests.getLabsSuppliersAndIndustryPartners({'country-code' : code});
-                            if (getLabsSuppliersAndIndustryPartnersData.success) {
-                                // Partner Dental Labs
-                                if (getLabsSuppliersAndIndustryPartnersData.data.labs.length > 0) {
-                                    // checking if visibility allowed by bottom category filter
-                                    var iconClass = 'fa-minus-circle';
-                                    var parentElementClass = '';
-                                    if (!$('.right-side-filters #category-2').is(':checked')) {
-                                        iconClass = 'fa-plus-circle';
-                                        parentElementClass = 'closed';
-                                    }
-
-                                    totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.labs.length;
-                                    var bindLabsCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button labs fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Partner Dental Labs</span></a><ul class="locations-list">';
-                                    for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.labs.length; i < len; i+=1) {
-                                        bindLabsCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.labs[i].address, null, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_link, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.labs[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.labs[i].lat, getLabsSuppliersAndIndustryPartnersData.data.labs[i].lng);
-                                    }
-
-                                    bindLabsCategoryHtml+='</ul></li>';
-                                    list.append(bindLabsCategoryHtml);
-                                }
-
-                                // Partner Dental Suppliers
-                                if (getLabsSuppliersAndIndustryPartnersData.data.suppliers.length > 0) {
-                                    // checking if visibility allowed by bottom category filter
-                                    var iconClass = 'fa-minus-circle';
-                                    var parentElementClass = '';
-                                    if (!$('.right-side-filters #category-3').is(':checked')) {
-                                        iconClass = 'fa-plus-circle';
-                                        parentElementClass = 'closed';
-                                    }
-
-                                    totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.suppliers.length;
-                                    var bindSuppliersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button suppliers fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Partner Dental Suppliers</span></a><ul class="locations-list">';
-                                    for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.suppliers.length; i < len; i+=1) {
-                                        bindSuppliersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].address, null, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_link, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].lat, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].lng);
-                                    }
-
-                                    bindSuppliersCategoryHtml+='</ul></li>';
-                                    list.append(bindSuppliersCategoryHtml);
-                                }
-
-                                // Other Industry Partners
-                                if (getLabsSuppliersAndIndustryPartnersData.data.industryPartners.length > 0) {
-                                    // checking if visibility allowed by bottom category filter
-                                    var iconClass = 'fa-minus-circle';
-                                    var parentElementClass = '';
-                                    if (!$('.right-side-filters #category-4').is(':checked')) {
-                                        iconClass = 'fa-plus-circle';
-                                        parentElementClass = 'closed';
-                                    }
-
-                                    totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.industryPartners.length;
-                                    var bindIndustryPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button industryPartners fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Other Industry Partners</span></a><ul class="locations-list">';
-                                    for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.industryPartners.length; i < len; i+=1) {
-                                        bindIndustryPartnersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].lat, getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].lng);
-                                    }
-
-                                    bindIndustryPartnersCategoryHtml+='</ul></li>';
-                                    list.append(bindIndustryPartnersCategoryHtml);
-                                }
-                            }
-
-                            // All Registered Dental Practices
-                            var currentCountryNonPartnersData = await projectData.requests.getMapData({action: 'all-non-partners-data-by-country', data: code});
-                            if (currentCountryNonPartnersData.success && currentCountryNonPartnersData.data.length > 0) {
-                                // checking if visibility allowed by bottom category filter
-                                var iconClass = 'fa-minus-circle';
-                                var parentElementClass = '';
-                                if (!$('.right-side-filters #category-5').is(':checked')) {
-                                    iconClass = 'fa-plus-circle';
-                                    parentElementClass = 'closed';
-                                }
-
-                                var bindNonPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button non-partners fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> All Registered Dental Practices</span></a><ul class="locations-list">';
-                                for (var i = 0, len = currentCountryNonPartnersData.data.length; i < len; i+=1) {
-                                    bindNonPartnersCategoryHtml += buildSingleLocationTile(currentCountryNonPartnersData.data[i].avatar_url, currentCountryNonPartnersData.data[i].name, currentCountryNonPartnersData.data[i].address, currentCountryNonPartnersData.data[i].is_partner, currentCountryNonPartnersData.data[i].city_name, currentCountryNonPartnersData.data[i].phone, currentCountryNonPartnersData.data[i].website, currentCountryNonPartnersData.data[i].top_dentist_month, currentCountryNonPartnersData.data[i].avg_rating, currentCountryNonPartnersData.data[i].ratings, currentCountryNonPartnersData.data[i].trp_public_profile_link, thisBtn.find('.element-name').html(), currentCountryNonPartnersData.data[i].id, 'core-db', currentCountryNonPartnersData.data[i].lat, currentCountryNonPartnersData.data[i].lon);
-                                }
-
-                                bindNonPartnersCategoryHtml+='</ul></li>';
-                                list.append(bindNonPartnersCategoryHtml);
-                            }
-
-                            list.append('<li><div class="invite-text padding-left-15 padding-right-15 padding-top-15 padding-bottom-25"><div class="color-white lato-black fs-28 fs-sm-22 fs-xs-20 padding-bottom-15">KNOW A GREAT DENTIST, BUT IT’S NOT ON OUR MAP?</div><div><a href="https://reviews.dentacoin.com/?popup=invite-new-dentist-popup" target="_blank" class="bright-blue-white-btn with-border fs-xs-16">INVITE DENTIST</a></div></div></li>');
-
-                            // make request to select all locations DATA for this country FOR THE MAP
-                            var currentCountryLocationsData = await projectData.requests.getMapData({action: 'all-partners-and-non-partners-data-by-country', data: code});
-                            if (currentCountryLocationsData.success) {
-                                totalLocationsCountByCountry += currentCountryLocationsData.data.length;
-
-                                $('.dentacoin-stats-category-label span').html('in ' + thisBtn.find('.element-name').html());
-                                $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-countries"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+thisBtn.find('.element-name').html().trim()+'</a>');
-                                $('.picker-and-map .picker-value').html('<span class="lato-black">'+totalLocationsCountByCountry+'</span> Results');
-
-                                for (var i = 0, len = currentCountryLocationsData.data.length; i < len; i+=1) {
-                                    // console.log(currentCountryLocationsData.data[i], 'THIS WILL BE USED TO BE SHOWN ON THE MAP');
-                                }
-                            }
-
-                            $('.results-list').scrollTop(0);
-
-                            if (thisBtn.parent().find('.locations-category-list li').length == 0) {
-                                thisBtn.parent().find('.locations-category-list').html('<div class="fs-18 padding-top-20 padding-bottom-20 text-center">No locations found.</div>');
-                            } else {
-                                // toggle category button hide/ show logic
-                                $('.locations-category-list .category-toggle-button').click(function() {
-                                    $(this).closest('li').toggleClass('closed');
-
-                                    if ($(this).find('i').hasClass('fa-minus-circle')) {
-                                        $(this).find('i').removeClass('fa-minus-circle').addClass('fa-plus-circle');
-
-                                        if ($(this).hasClass('partners')) {
-                                            // uncheck category-1
-                                            updateTopAndBottomLocationTypesFilters('category-1', false);
-                                        } else if ($(this).hasClass('labs')) {
-                                            // check category-2
-                                            updateTopAndBottomLocationTypesFilters('category-2', false);
-                                        } else if ($(this).hasClass('suppliers')) {
-                                            // check category-3
-                                            updateTopAndBottomLocationTypesFilters('category-3', false);
-                                        } else if ($(this).hasClass('industryPartners')) {
-                                            // check category-4
-                                            updateTopAndBottomLocationTypesFilters('category-4', false);
-                                        } else if ($(this).hasClass('non_partners')) {
-                                            // check category-5
-                                            updateTopAndBottomLocationTypesFilters('category-5', false);
-                                        }
-
-                                        $('.selectpicker.location-types').selectpicker('refresh');
-                                    } else {
-                                        $(this).find('i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
-
-                                        if ($(this).hasClass('partners')) {
-                                            // check category-1
-                                            updateTopAndBottomLocationTypesFilters('category-1', true);
-                                        } else if ($(this).hasClass('labs')) {
-                                            // check category-2
-                                            updateTopAndBottomLocationTypesFilters('category-2', true);
-                                        } else if ($(this).hasClass('suppliers')) {
-                                            // check category-3
-                                            updateTopAndBottomLocationTypesFilters('category-3', true);
-                                        } else if ($(this).hasClass('industryPartners')) {
-                                            // check category-4
-                                            updateTopAndBottomLocationTypesFilters('category-4', true);
-                                        } else if ($(this).hasClass('non-partners')) {
-                                            // check category-5
-                                            updateTopAndBottomLocationTypesFilters('category-5', true);
-                                        }
-
-                                        $('.selectpicker.location-types').selectpicker('refresh');
-                                    }
-
-                                    // updating lastMapData categories
-                                    lastMapData.categories = $('.selectpicker.location-types').val();
-                                    initMap(lastMapData.map_locations, lastMapData.initialLat, lastMapData.initialLng, lastMapData.initialZoom, lastMapData.filter_country, lastMapData.location_id, lastMapData.location_source, lastMapData.categories, true);
-                                });
-
-                                function updateTopAndBottomLocationTypesFilters(category_id, bool) {
-                                    $('select.location-types option[value="'+category_id+'"]').prop('selected', bool);
-
-                                    $('.right-side-filters input[type="checkbox"]#'+category_id).prop('checked', bool);
-                                    if (bool) {
-                                        $('.right-side-filters input[type="checkbox"]#'+category_id).parent().find('.custom-checkbox').html('✓');
-                                    } else {
-                                        $('.right-side-filters input[type="checkbox"]#'+category_id).parent().find('.custom-checkbox').html('');
-                                    }
-                                }
-                            }
-
-                            $('.results-list .shown').removeClass('shown');
-                            $('.results-list .locations-nav').addClass('shown');
-
-                            $('.continents-list .single-continent .country-list-parent').addClass('hide');
-                            thisBtn.parent().removeClass('hide').addClass('open-item');
-
-                            // make request to select all partners COUNT for this country
-                            var combinedCountByCountry = await projectData.requests.getMapData({action: 'combined-count-by-country', data: code});
-                            if (combinedCountByCountry.success) {
-                                if ($('.changeable-stats .partners').length) {
-                                    $('.changeable-stats .partners span').html(combinedCountByCountry.data['partners']);
-                                }
-                                if ($('.changeable-stats .non-partners').length) {
-                                    $('.changeable-stats .non-partners span').html(combinedCountByCountry.data['non_partners']);
-                                }
-                                if ($('.changeable-stats .users').length) {
-                                    $('.changeable-stats .users span').html(combinedCountByCountry.data['patients']);
-                                }
-                            }
-
-                            projectData.general_logic.data.hideLoader();
-                        }
-
-                        // toggle bottom filter hide/ show logic
-                        $('.right-side-filters input[type="checkbox"]').on('change', function() {
-                            var thisCheckbox = $(this);
-                            switch(thisCheckbox.attr('id')) {
-                                case 'category-1':
-                                    if (thisCheckbox.is(':checked')) {
-                                        $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
-                                    } else {
-                                        $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
-                                    }
-
-                                    updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
-
-                                    $('.selectpicker.location-types').selectpicker('refresh');
-
-                                    break;
-                                case 'category-2':
-                                    if (thisCheckbox.is(':checked')) {
-                                        $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
-                                    } else {
-                                        $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
-                                    }
-
-                                    updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
-
-                                    $('.selectpicker.location-types').selectpicker('refresh');
-
-                                    break;
-                                case 'category-3':
-                                    if (thisCheckbox.is(':checked')) {
-                                        $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
-                                    } else {
-                                        $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
-                                    }
-
-                                    updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
-
-                                    $('.selectpicker.location-types').selectpicker('refresh');
-
-                                    break;
-                                case 'category-4':
-                                    if (thisCheckbox.is(':checked')) {
-                                        $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
-                                    } else {
-                                        $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
-                                    }
-
-                                    updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
-
-                                    $('.selectpicker.location-types').selectpicker('refresh');
-
-                                    break;
-                                case 'category-5':
-                                    if (thisCheckbox.is(':checked')) {
-                                        $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
-                                    } else {
-                                        $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
-                                    }
-
-                                    updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
-                                    $('.selectpicker.location-types').selectpicker('refresh');
-
-                                    break;
-                            }
-                        });
-
-                        function updateTopLocationsSelectOnBottomFilterChange(valuesArray) {
-                            // refresh locations selectpicker
-                            if (Object.keys(JSON.parse($('.locations-style').attr('data-groups-html'))).length > 0) {
-                                $('select.selectpicker.locations').html('');
-                                var newLocationsSelectHtml = '';
-                                Object.keys(JSON.parse($('.locations-style').attr('data-groups-html'))).forEach(function(key,index) {
-                                    newLocationsSelectHtml += JSON.parse($('.locations-style').attr('data-groups-html'))[key];
-                                });
-                                $('select.selectpicker.locations').html('<option value="">Show All Locations</option>' + newLocationsSelectHtml);
-                            }
-
-                            if (valuesArray.length > 0) {
-                                $('select.selectpicker.locations optgroup.optgroup-for-types').addClass('to-remove');
-
-                                $('.category-toggle-button').parent().addClass('closed');
-                                $('.category-toggle-button i').removeClass('fa-minus-circle').addClass('fa-plus-circle');
-
-                                // filter
-                                for (var i = 0, len = $('select.selectpicker.locations optgroup.optgroup-for-types').length; i < len; i+=1) {
-                                    for (var y = 0; y < valuesArray.length; y+=1) {
-                                        if ($('select.selectpicker.locations optgroup.optgroup-for-types').eq(i).hasClass(valuesArray[y])) {
-                                            $('select.selectpicker.locations optgroup.optgroup-for-types').eq(i).removeClass('to-remove');
-
-                                            switch(valuesArray[y]) {
-                                                case 'category-1':
-                                                    $('.category-toggle-button.partners').parent().removeClass('closed');
-                                                    $('.category-toggle-button.partners i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
-
-                                                    break;
-                                                case 'category-2':
-                                                    $('.category-toggle-button.labs').parent().removeClass('closed');
-                                                    $('.category-toggle-button.labs i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
-
-                                                    break;
-                                                case 'category-3':
-                                                    $('.category-toggle-button.suppliers').parent().removeClass('closed');
-                                                    $('.category-toggle-button.suppliers i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
-
-                                                    break;
-                                                case 'category-4':
-                                                    $('.category-toggle-button.industryPartners').parent().removeClass('closed');
-                                                    $('.category-toggle-button.industryPartners i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
-
-                                                    break;
-                                                case 'category-5':
-                                                    $('.category-toggle-button.non-partners').parent().removeClass('closed');
-                                                    $('.category-toggle-button.non-partners i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
-
-                                                    break;
-                                            }
-                                            break;
-                                        }
-                                    }
-                                }
-
-                                $('select.selectpicker.locations optgroup.optgroup-for-types.to-remove').remove();
-                            } else {
-                                $('select.selectpicker.locations optgroup.optgroup-for-types').addClass('to-remove');
-                            }
-
-                            $('.selectpicker.locations').selectpicker('refresh');
-
-                            // updating lastMapData categories
-                            lastMapData.categories = $('.selectpicker.location-types').val();
-                            initMap(lastMapData.map_locations, lastMapData.initialLat, lastMapData.initialLng, lastMapData.initialZoom, lastMapData.filter_country, lastMapData.location_id, lastMapData.location_source, lastMapData.categories, true);
-                        }
-
-                        $('.countries-list > li > a').click(async function() {
-                            var thisBtn = $(this);
-                            thisBtn.parent().find('.locations-category-list').html('');
-
-                            lastMapData = {
-                                map_locations: locationsOnInit,
-                                initialLat: thisBtn.attr('data-country-centroid-lat'),
-                                initialLng: thisBtn.attr('data-country-centroid-lng'),
-                                initialZoom: 6,
-                                filter_country: $(this).attr('data-country-code'),
-                                location_id: undefined,
-                                location_source: undefined,
-                                categories: $('.selectpicker.location-types').val()
-                            };
-                            initMap(locationsOnInit, thisBtn.attr('data-country-centroid-lat'), thisBtn.attr('data-country-centroid-lng'), 5, $(this).attr('data-country-code'), undefined, undefined, $('.selectpicker.location-types').val(), true);
-
-                            buildCountryLocationsList(thisBtn.parent().find('.locations-category-list'), $(this).attr('data-country-code'), thisBtn);
-                        });
-
-                        function buildSingleLocationTile(avatar_url, name, address, is_partner, city_name, phone, website, top_dentist_month, avg_rating, ratings, trp_public_profile_link, country, location_id, location_source, lat, lng) {
-                            var partnerHtml = '';
-                            if (is_partner) {
-                                partnerHtml = '<div class="is-partner fs-14 lato-bold padding-top-5"><span>Partner</span></div>';
-                            }
-
-                            var trpStatsHtml = '<div class="trp-stats padding-top-5">';
-                            if (avg_rating != undefined) {
-                                trpStatsHtml += '<div class="stars inline-block margin-right-5"><div class="active-stars" style="width: '+avg_rating / 5 * 100+'%"></div></div>'
-                            }
-
-                            if (ratings != undefined && ratings != null) {
-                                trpStatsHtml += ' <span class="inline-block fs-14 base-on-x-reviews">(based on '+ratings+' reviews)</span> ';
-                            }
-
-                            if (trp_public_profile_link != null && trp_public_profile_link != undefined) {
-                                trpStatsHtml += ' <a href="'+trp_public_profile_link+'" target="_blank" class="fs-26 inline-block margin-left-5"><i class="fa fa-external-link" aria-hidden="true"></i></a>';
-                            }
-
-                            trpStatsHtml += '</div>';
-
-                            var visibleAddress = '';
-                            if (city_name != null && city_name != undefined) {
-                                visibleAddress = city_name + ', ' + country;
-                            } else {
-                                visibleAddress = country;
-                            }
-
-                            var hiddenContent = '<div class="fs-16 hidden-content padding-top-5">';
-
-                            // remove urls from the address, because some address are saved with urls in the DB
-                            if (address != null && address != undefined) {
-                                address = address.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
-                                hiddenContent += '<div><img src="/assets/images/map-results-location-pin.svg" alt="Location icon" class="width-100 max-width-20 inline-block"/> '+address+'</div>';
-                            }
-
-                            if (phone != null && phone != undefined) {
-                                hiddenContent += '<div><img src="/assets/images/map-results-phone.svg" alt="Phone icon" class="width-100 max-width-20 inline-block"/> <a href="tel:'+phone+'">'+phone+'</a></div>';
-                            }
-
-                            if (website != null && website != undefined) {
-                                hiddenContent += '<div><img src="/assets/images/map-results-website-icon.svg" alt="Website icon" class="width-100 max-width-20 inline-block"/> <a href="'+website+'" target="_blank">Visit website</a></div>';
-                            }
-
-                            if (top_dentist_month) {
-                                hiddenContent += '<div><img src="/assets/images/top-dentists-badge.png" alt="Top dentist badge icon" class="width-100 max-width-20 inline-block"/> Top Dentist</div>';
-                            }
-
-                            hiddenContent += '</div>';
-
-                            return '<li class="fs-0 single-location"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block"><img src="'+avatar_url+'" alt="Location logo" itemprop="contentUrl"/></figure><div class="right-location-content inline-block padding-left-10"><h3 class="fs-26 fs-xs-20 fs-sm-22 lato-black color-black">'+name+'</h3>'+trpStatsHtml+'<div class="fs-16 color-black padding-top-5 padding-bottom-5">'+visibleAddress+'</div>'+partnerHtml+hiddenContent+'<div class="text-right padding-top-10"><a href="javascript:void(0);" class="toggle-location-tile" data-location-id="'+location_id+'" data-location-source="'+location_source+'" data-lat="'+lat+'" data-lng="'+lng+'" data-name="'+name.replace(/"/g, "&quot;")+'"><img src="/assets/images/down-arrow.svg"/></a></div></div></li>';
-                        }
-
-                        // on location tile open and close
-                        $(document).on('click', '.single-location', function() {
-                            var arrowBtn = $(this).find('.toggle-location-tile');
-
-                            for (var i = 0, len = $('.toggle-location-tile').length; i < len; i+=1) {
-                                if (!$('.toggle-location-tile').eq(i).is(arrowBtn)) {
-                                    $('.toggle-location-tile').eq(i).closest('.single-location').removeClass('toggled');
-                                }
-                            }
-
-                            $(this).toggleClass('toggled');
-
-                            if ($(this).hasClass('toggled')) {
-                                lastMapData = {
-                                    map_locations: locationsOnInit,
-                                    initialLat: arrowBtn.attr('data-lat'),
-                                    initialLng: arrowBtn.attr('data-lng'),
-                                    initialZoom: 15,
-                                    filter_country: undefined,
-                                    location_id: arrowBtn.attr('data-location-id'),
-                                    location_source: arrowBtn.attr('data-location-source'),
-                                    categories: $('.selectpicker.location-types').val()
-                                };
-                                initMap(locationsOnInit, arrowBtn.attr('data-lat'), arrowBtn.attr('data-lng'), 15, undefined, arrowBtn.attr('data-location-id'), arrowBtn.attr('data-location-source'), $('.selectpicker.location-types').val(), true, undefined, '<div style="font-size: 20px;">'+arrowBtn.attr('data-name')+'</div>');
-                            } else {
-                                lastMapData = {
-                                    map_locations: locationsOnInit,
-                                    initialLat: $('.country-list-parent.open-item > a').attr('data-country-centroid-lat'),
-                                    initialLng: $('.country-list-parent.open-item > a').attr('data-country-centroid-lng'),
-                                    initialZoom: 5,
-                                    filter_country: $('.country-list-parent.open-item > a').attr('data-country-code'),
-                                    location_id: undefined,
-                                    location_source: undefined,
-                                    categories: $('.selectpicker.location-types').val()
-                                };
-                                initMap(locationsOnInit, $('.country-list-parent.open-item > a').attr('data-country-centroid-lat'), $('.country-list-parent.open-item > a').attr('data-country-centroid-lng'), 5, $('.country-list-parent.open-item > a').attr('data-country-code'), undefined, undefined, $('.selectpicker.location-types').val(), true, undefined, '<div style="font-size: 20px;">'+arrowBtn.attr('data-name')+'</div>');
-                            }
-                        });
-
-                        $(document).on('click', '.go-back-to-countries', function() {
-                            if ($('.picker-and-map .picker-label').attr('data-last-continent') == undefined || $('.single-continent.open-item > a .element-name').html() != $('.picker-and-map .picker-label').attr('data-last-continent')) {
-                                $('.dentacoin-stats-category-label span').html('in ' + $('.single-continent.open-item > a .element-name').html());
-
-                                $('.single-continent.open-item > a .element-name').attr('data-last-continent', $('.single-continent.open-item > a .element-name').html().trim());
-                                $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+$('.single-continent.open-item > a .element-name').html().trim()+'</a>');
-
-                                updateContinentData($('.single-continent.open-item > a').attr('data-country-codes'));
-                            } else {
-                                $('.dentacoin-stats-category-label span').html($('.picker-and-map .picker-label').attr('data-last-continent'));
-                            }
-
-                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+$('.picker-and-map .picker-label').attr('data-last-continent')+'</a>');
-
-
-                            if ($('.picker-and-map .picker-value').attr('data-last-continent') != '') {
-                                $('.picker-and-map .picker-value').html('<span class="lato-black">'+$('.picker-and-map .picker-value').attr('data-last-continent')+'</span> Results');
-                            }
-
-                            lastMapData = {
-                                map_locations: locationsOnInit,
-                                initialLat: undefined,
-                                initialLng: undefined,
-                                initialZoom: undefined,
-                                filter_country: JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')),
-                                location_id: undefined,
-                                location_source: undefined,
-                                categories: $('.selectpicker.location-types').val()
-                            };
-                            initMap(locationsOnInit, undefined, undefined, undefined, JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')), undefined, undefined, $('.selectpicker.location-types').val(), true);
-
-                            $('.results-list .shown').removeClass('shown');
-                            $('.results-list .countries-nav').addClass('shown');
-
-                            $('.locations-category-list').html('');
-                            $('.results-list').scrollTop(0);
-
-                            $('.countries-list .country-list-parent').removeClass('hide open-item');
-
-
-                            if ($('.changeable-stats .partners').length) {
-                                $('.changeable-stats .partners span').html($('.changeable-stats .partners').attr('data-last-continent'));
-                            }
-
-                            if ($('.changeable-stats .non-partners').length) {
-                                $('.changeable-stats .non-partners span').html($('.changeable-stats .non-partners').attr('data-last-continent'));
-                            }
-
-                            if ($('.changeable-stats .users').length) {
-                                $('.changeable-stats .users span').html($('.changeable-stats .users').attr('data-last-continent'));
-                            }
-                        });
-                        // =================== /COUNTRIES LOGIC ===================
+                        $('.selectpicker.locations').selectpicker('refresh');
+
+                        // updating lastMapData categories
+                        lastMapData.categories = $('.selectpicker.location-types').val();
+                        initMap(lastMapData.map_locations, lastMapData.initialLat, lastMapData.initialLng, lastMapData.initialZoom, lastMapData.filter_country, lastMapData.location_id, lastMapData.location_source, lastMapData.categories, true);
                     }
+
+                    $('.countries-list > li > a').click(async function() {
+                        var thisBtn = $(this);
+                        thisBtn.parent().find('.locations-category-list').html('');
+
+                        lastMapData = {
+                            map_locations: locationsOnInit,
+                            initialLat: thisBtn.attr('data-country-centroid-lat'),
+                            initialLng: thisBtn.attr('data-country-centroid-lng'),
+                            initialZoom: 6,
+                            filter_country: $(this).attr('data-country-code'),
+                            location_id: undefined,
+                            location_source: undefined,
+                            categories: $('.selectpicker.location-types').val()
+                        };
+                        initMap(locationsOnInit, thisBtn.attr('data-country-centroid-lat'), thisBtn.attr('data-country-centroid-lng'), 5, $(this).attr('data-country-code'), undefined, undefined, $('.selectpicker.location-types').val(), true);
+
+                        buildCountryLocationsList(thisBtn.parent().find('.locations-category-list'), $(this).attr('data-country-code'), thisBtn);
+                    });
+
+                    function buildSingleLocationTile(avatar_url, name, address, is_partner, city_name, phone, website, top_dentist_month, avg_rating, ratings, trp_public_profile_link, country, location_id, location_source, lat, lng) {
+                        var partnerHtml = '';
+                        if (is_partner) {
+                            partnerHtml = '<div class="is-partner fs-14 lato-bold padding-top-5"><span>Partner</span></div>';
+                        }
+
+                        var trpStatsHtml = '<div class="trp-stats padding-top-5">';
+                        if (avg_rating != undefined) {
+                            trpStatsHtml += '<div class="stars inline-block margin-right-5"><div class="active-stars" style="width: '+avg_rating / 5 * 100+'%"></div></div>'
+                        }
+
+                        if (ratings != undefined && ratings != null) {
+                            trpStatsHtml += ' <span class="inline-block fs-14 base-on-x-reviews">(based on '+ratings+' reviews)</span> ';
+                        }
+
+                        if (trp_public_profile_link != null && trp_public_profile_link != undefined) {
+                            trpStatsHtml += ' <a href="'+trp_public_profile_link+'" target="_blank" class="fs-26 inline-block margin-left-5"><i class="fa fa-external-link" aria-hidden="true"></i></a>';
+                        }
+
+                        trpStatsHtml += '</div>';
+
+                        var visibleAddress = '';
+                        if (city_name != null && city_name != undefined) {
+                            visibleAddress = city_name + ', ' + country;
+                        } else {
+                            visibleAddress = country;
+                        }
+
+                        var hiddenContent = '<div class="fs-16 hidden-content padding-top-5">';
+
+                        // remove urls from the address, because some address are saved with urls in the DB
+                        if (address != null && address != undefined) {
+                            address = address.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
+                            hiddenContent += '<div><img src="/assets/images/map-results-location-pin.svg" alt="Location icon" class="width-100 max-width-20 inline-block"/> '+address+'</div>';
+                        }
+
+                        if (phone != null && phone != undefined) {
+                            hiddenContent += '<div><img src="/assets/images/map-results-phone.svg" alt="Phone icon" class="width-100 max-width-20 inline-block"/> <a href="tel:'+phone+'">'+phone+'</a></div>';
+                        }
+
+                        if (website != null && website != undefined) {
+                            hiddenContent += '<div><img src="/assets/images/map-results-website-icon.svg" alt="Website icon" class="width-100 max-width-20 inline-block"/> <a href="'+website+'" target="_blank">Visit website</a></div>';
+                        }
+
+                        if (top_dentist_month) {
+                            hiddenContent += '<div><img src="/assets/images/top-dentists-badge.png" alt="Top dentist badge icon" class="width-100 max-width-20 inline-block"/> Top Dentist</div>';
+                        }
+
+                        hiddenContent += '</div>';
+
+                        return '<li class="fs-0 single-location"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block"><img src="'+avatar_url+'" alt="Location logo" itemprop="contentUrl"/></figure><div class="right-location-content inline-block padding-left-10"><h3 class="fs-26 fs-xs-20 fs-sm-22 lato-black color-black">'+name+'</h3>'+trpStatsHtml+'<div class="fs-16 color-black padding-top-5 padding-bottom-5">'+visibleAddress+'</div>'+partnerHtml+hiddenContent+'<div class="text-right padding-top-10"><a href="javascript:void(0);" class="toggle-location-tile" data-location-id="'+location_id+'" data-location-source="'+location_source+'" data-lat="'+lat+'" data-lng="'+lng+'" data-name="'+name.replace(/"/g, "&quot;")+'"><img src="/assets/images/down-arrow.svg"/></a></div></div></li>';
+                    }
+
+                    // on location tile open and close
+                    $(document).on('click', '.single-location', function() {
+                        var arrowBtn = $(this).find('.toggle-location-tile');
+
+                        for (var i = 0, len = $('.toggle-location-tile').length; i < len; i+=1) {
+                            if (!$('.toggle-location-tile').eq(i).is(arrowBtn)) {
+                                $('.toggle-location-tile').eq(i).closest('.single-location').removeClass('toggled');
+                            }
+                        }
+
+                        $(this).toggleClass('toggled');
+
+                        if ($(this).hasClass('toggled')) {
+                            lastMapData = {
+                                map_locations: locationsOnInit,
+                                initialLat: arrowBtn.attr('data-lat'),
+                                initialLng: arrowBtn.attr('data-lng'),
+                                initialZoom: 15,
+                                filter_country: undefined,
+                                location_id: arrowBtn.attr('data-location-id'),
+                                location_source: arrowBtn.attr('data-location-source'),
+                                categories: $('.selectpicker.location-types').val()
+                            };
+                            initMap(locationsOnInit, arrowBtn.attr('data-lat'), arrowBtn.attr('data-lng'), 15, undefined, arrowBtn.attr('data-location-id'), arrowBtn.attr('data-location-source'), $('.selectpicker.location-types').val(), true, undefined, '<div style="font-size: 20px;">'+arrowBtn.attr('data-name')+'</div>');
+                        } else {
+                            lastMapData = {
+                                map_locations: locationsOnInit,
+                                initialLat: $('.country-list-parent.open-item > a').attr('data-country-centroid-lat'),
+                                initialLng: $('.country-list-parent.open-item > a').attr('data-country-centroid-lng'),
+                                initialZoom: 5,
+                                filter_country: $('.country-list-parent.open-item > a').attr('data-country-code'),
+                                location_id: undefined,
+                                location_source: undefined,
+                                categories: $('.selectpicker.location-types').val()
+                            };
+                            initMap(locationsOnInit, $('.country-list-parent.open-item > a').attr('data-country-centroid-lat'), $('.country-list-parent.open-item > a').attr('data-country-centroid-lng'), 5, $('.country-list-parent.open-item > a').attr('data-country-code'), undefined, undefined, $('.selectpicker.location-types').val(), true, undefined, '<div style="font-size: 20px;">'+arrowBtn.attr('data-name')+'</div>');
+                        }
+                    });
+
+                    $(document).on('click', '.go-back-to-countries', function() {
+                        if ($('.picker-and-map .picker-label').attr('data-last-continent') == undefined || $('.single-continent.open-item > a .element-name').html() != $('.picker-and-map .picker-label').attr('data-last-continent')) {
+                            $('.dentacoin-stats-category-label span').html('in ' + $('.single-continent.open-item > a .element-name').html());
+
+                            $('.single-continent.open-item > a .element-name').attr('data-last-continent', $('.single-continent.open-item > a .element-name').html().trim());
+                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+$('.single-continent.open-item > a .element-name').html().trim()+'</a>');
+
+                            updateContinentData($('.single-continent.open-item > a').attr('data-country-codes'));
+                        } else {
+                            $('.dentacoin-stats-category-label span').html($('.picker-and-map .picker-label').attr('data-last-continent'));
+                        }
+
+                        $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+$('.picker-and-map .picker-label').attr('data-last-continent')+'</a>');
+
+
+                        if ($('.picker-and-map .picker-value').attr('data-last-continent') != '') {
+                            $('.picker-and-map .picker-value').html('<span class="lato-black">'+$('.picker-and-map .picker-value').attr('data-last-continent')+'</span> Results');
+                        }
+
+                        lastMapData = {
+                            map_locations: locationsOnInit,
+                            initialLat: undefined,
+                            initialLng: undefined,
+                            initialZoom: undefined,
+                            filter_country: JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')),
+                            location_id: undefined,
+                            location_source: undefined,
+                            categories: $('.selectpicker.location-types').val()
+                        };
+                        initMap(locationsOnInit, undefined, undefined, undefined, JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')), undefined, undefined, $('.selectpicker.location-types').val(), true);
+
+                        $('.results-list .shown').removeClass('shown');
+                        $('.results-list .countries-nav').addClass('shown');
+
+                        $('.locations-category-list').html('');
+                        $('.results-list').scrollTop(0);
+
+                        $('.countries-list .country-list-parent').removeClass('hide open-item');
+
+
+                        if ($('.changeable-stats .partners').length) {
+                            $('.changeable-stats .partners span').html($('.changeable-stats .partners').attr('data-last-continent'));
+                        }
+
+                        if ($('.changeable-stats .non-partners').length) {
+                            $('.changeable-stats .non-partners span').html($('.changeable-stats .non-partners').attr('data-last-continent'));
+                        }
+
+                        if ($('.changeable-stats .users').length) {
+                            $('.changeable-stats .users span').html($('.changeable-stats .users').attr('data-last-continent'));
+                        }
+                    });
+                    // =================== /COUNTRIES LOGIC ===================
                 }
             },
             showStickyHomepageNav() {
