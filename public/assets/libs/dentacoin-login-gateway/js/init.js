@@ -650,7 +650,7 @@ if (typeof jQuery == 'undefined') {
                 }
 
                 if (hasOwnProperty.call(params, 'combined_login_environment') && params.combined_login_environment == 'staging') {
-                    combinedLoginRequestsDomain = 'http://dev.dentacoin.com';
+                    combinedLoginRequestsDomain = 'https://dev.dentacoin.com';
                 }
 
                 await dcnGateway.dcnGatewayRequests.getPlatformsData(async function(platformsData) {
