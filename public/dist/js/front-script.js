@@ -3321,6 +3321,7 @@ var projectData = {
 
                     // reorder the continents list by count from bigger to smallest count
                     var orderedLocationsCountsArr = locationsCountsArr.sort(dynamicSort('count'));
+                    orderedLocationsCountsArr.reverse();
                     var reorderedCountriesListHtml = '';
                     for (var i = 0, len = orderedLocationsCountsArr.length; i < len; i+=1) {
                         reorderedCountriesListHtml += $('.continent-name[data-continent-id='+orderedLocationsCountsArr[i].location_id+']').parent().get(0).outerHTML;
@@ -4083,10 +4084,11 @@ var projectData = {
 
                     $(document).on('click', '.go-back-to-countries', function() {
                         if ($('.picker-and-map .picker-label').attr('data-last-continent') == undefined || $('.single-continent.open-item > a .element-name').html() != $('.picker-and-map .picker-label').attr('data-last-continent')) {
+                            console.log('set continent name');
                             $('.dentacoin-stats-category-label span').html('in ' + $('.single-continent.open-item > a .element-name').html());
+                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+$('.single-continent.open-item > a .element-name').html().trim()+'</a>');
 
                             $('.single-continent.open-item > a .element-name').attr('data-last-continent', $('.single-continent.open-item > a .element-name').html().trim());
-                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+$('.single-continent.open-item > a .element-name').html().trim()+'</a>');
 
                             updateContinentData($('.single-continent.open-item > a').attr('data-country-codes'));
                         } else {
