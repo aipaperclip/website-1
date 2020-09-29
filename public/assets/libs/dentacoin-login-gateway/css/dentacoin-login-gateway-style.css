@@ -1105,10 +1105,6 @@
   -moz-border-radius: 4px 4px 0 0;
   -ms-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0; }
-  @media screen and (max-width: 767px) {
-    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a {
-      font-size: 20px;
-      padding: 10px 5px; } }
   .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a .header-custom-radio-btn {
     width: 35px;
     height: 35px;
@@ -1141,7 +1137,20 @@
   border: 0;
   background: transparent; }
   .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action button img {
-    width: 100%; }
+    width: 90%; }
+@media screen and (max-width: 767px) {
+  .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a {
+    font-size: 20px;
+    padding: 10px 5px;
+    width: calc(50% - 30px); }
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a .header-custom-radio-btn {
+      width: 25px;
+      height: 25px; }
+    .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a.active .header-custom-radio-btn:after {
+      width: 12px;
+      height: 12px; }
+  .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action button {
+    width: 60px; } }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a[data-type="patient"] {
   color: black;
