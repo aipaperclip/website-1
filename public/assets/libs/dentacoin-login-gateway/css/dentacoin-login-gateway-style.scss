@@ -644,19 +644,21 @@
     button {
         width: 80px;
         border: 0;
-        background: transparent;
+        background: transparent; 
         img {
-            width: 90%;
+            width: 85%;
+            @include rounded(50%);
+            @include box-shadow(0 15px 17px 4px rgba(0, 0, 0, 0.3));
         }
     }
     @include breakpoint($xs) {
         a {
-            font-size: 20px;
+            font-size: 18px;
             padding: 10px 5px;
-            width: calc(50% - 30px);
+            width: calc(50% - 25px);
             .header-custom-radio-btn {
                 width: 25px;
-                height: 25px; 
+                height: 25px;
             }
             &.active {
                 .header-custom-radio-btn {
@@ -668,7 +670,7 @@
             }
         }
         button {
-            width: 60px;
+            width: 50px;
         }
     }
 }
