@@ -18,10 +18,10 @@
             <h2 class="login-section-title">{{ __('login-register.log-in-uppercase') }}</h2>
             <div class="form-login-fields">
                 <div class="padding-bottom-10">
-                    <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">{{ __('login-register.continue-with-fb') }}</span></a>
+                    <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">{{ __('login-register.continue-with-fb') }}</span></a>
                 </div>
                 <div>
-                    <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
+                    <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
                 </div>
                 <div class="have-old-account text-center">{{ __('login-register.have-old-profile') }} <a href="mailto:admin@dentacoin.com">{{ __('login-register.contact-us') }}</a>
                 </div>
@@ -90,7 +90,7 @@
                 <div class="btn-container text-center">
                     <input type="submit" value="{{ __('login-register.log-in') }}" class="platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20"/>
                 </div>
-                <div class="text-center padding-top-40 dentacoin-login-gateway-fs-16">{{ __('login-register.dont-have-account') }} <a href="javascript:void(0)" class="call-sign-up dentacoin-login-gateway-fs-20">{{ __('login-register.sign-up') }}</a></div>
+                <div class="text-center padding-top-40 padding-bottom-xs-30 dentacoin-login-gateway-fs-16">{{ __('login-register.dont-have-account') }} <a href="javascript:void(0)" class="call-sign-up dentacoin-login-gateway-fs-20">{{ __('login-register.sign-up') }}</a></div>
             </form>
             <div class="popup-half-footer">
                 <a href="#" target="_blank" class="forgotten-password-link">{{ __('login-register.forgotten-password') }}</a>
@@ -120,19 +120,19 @@
                     </div>
                 </div>
                 <div class="step second" data-step="second">
-                    <div class="padding-bottom-20 user-type-container dentacoin-login-gateway-fs-0">
+                    <div class="padding-bottom-20 padding-bottom-xs-10 user-type-container dentacoin-login-gateway-fs-0">
                         <input type="hidden" name="user-type" @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode)) value="{{$incompletedRegistrationData->mode}}" @endif/>
                         <div class="inline-block-top user-type padding-right-15 @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'dentist') active @endif" data-type="dentist">
                             <a href="javascript:void(0)" class="custom-button @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'dentist') gateway-platform-border-color-important @endif">
                                 <span class="custom-radio inline-block"><span class="circle @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'dentist') gateway-platform-background-color-important @endif"></span></span> <span class="inline-block user-type-label">{{ __('login-register.dentist') }}</span>
                             </a>
-                            <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">{{ __('login-register.associate-dentists') }}</div>
+                            <div class="dentacoin-login-gateway-fs-14 dentacoin-login-gateway-fs-xs-13 light-gray-color padding-top-5">{{ __('login-register.associate-dentists') }}</div>
                         </div>
                         <div class="inline-block-top user-type padding-left-15 @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'clinic') active @endif" data-type="clinic">
                             <a href="javascript:void(0)" class="custom-button @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'clinic') gateway-platform-border-color-important @endif">
                                 <span class="custom-radio inline-block"><span class="circle @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode) && $incompletedRegistrationData->mode == 'clinic') gateway-platform-background-color-important @endif"></span></span> <span class="inline-block user-type-label">{{ __('login-register.clinic') }}</span>
                             </a>
-                            <div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">{{ __('login-register.clinics-practitioners') }}</div>
+                            <div class="dentacoin-login-gateway-fs-14 dentacoin-login-gateway-fs-xs-13 light-gray-color padding-top-5">{{ __('login-register.clinics-practitioners') }}</div>
                         </div>
                     </div>
                     <div class="show-on-user-type-first-change @if(!empty($incompletedRegistrationData) && property_exists($incompletedRegistrationData, 'mode') && !empty($incompletedRegistrationData->mode)) show @endif">
