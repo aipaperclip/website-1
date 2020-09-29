@@ -649,7 +649,7 @@ if (typeof jQuery == 'undefined') {
                     environment = 'staging';
                 }
 
-                if (hasOwnProperty.call(params, 'combined_login_environment') && params.combined_login_environment == 'dev') {
+                if (hasOwnProperty.call(params, 'combined_login_environment') && params.combined_login_environment == 'staging') {
                     combinedLoginRequestsDomain = 'http://dev.dentacoin.com';
                 }
 

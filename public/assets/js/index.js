@@ -799,7 +799,8 @@ var projectData = {
             gateway: function() {
                 dcnGateway.init({
                     'platform': 'dentacoin',
-                    'environment' : 'staging',
+                    /*'environment' : 'staging',*/
+                    'combined_login_environment' : 'staging',
                     'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password'
                 });
 
