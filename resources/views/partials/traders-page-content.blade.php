@@ -1,9 +1,7 @@
 <section class="section-bringing-blockchain-solutions-trader-page">
     <div class="absolute-content padding-bottom-50 padding-bottom-xs-5 text-center-xs">
-        <h2 class="fs-46 fs-md-40 fs-sm-30 color-white lato-black users-title padding-bottom-lgll-20 hide-xs">
-            TRADERS</h2>
-        <h3 class="fs-46 fs-md-40 fs-sm-30 fs-xs-22 lato-black color-white padding-top-10 padding-bottom-25">
-            Bringing<br> Blockchain solutions<br> to the masses.</h3>
+        <h2 class="fs-46 fs-md-40 fs-sm-30 color-white lato-black users-title padding-bottom-lgll-20 hide-xs">TRADERS</h2>
+        <h3 class="fs-46 fs-md-40 fs-sm-30 fs-xs-22 lato-black color-white padding-top-10 padding-bottom-25">Bringing<br class="hide-xs"> Blockchain solutions<br class="hide-xs"> to the masses.</h3>
         <div class="fs-24 fs-md-22 fs-sm-18 fs-xs-18 color-white lato-bold">Join 190,326 people who care about
             sustainable oral health and capitalize on prevention!
         </div>
