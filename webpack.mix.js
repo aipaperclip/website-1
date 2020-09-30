@@ -52,6 +52,16 @@ mix.scripts([
     'public/assets/js/index.js',
 ], 'public/dist/js/front-script.js');
 
+// compress dentacoin-package js
+mix.scripts([
+    'public/assets/libs/dentacoin-package/js/init.raw.js',
+], 'public/assets/libs/dentacoin-package/js/init.js');
+
+// compress dentacoin-login-gateway js
+mix.scripts([
+    'public/assets/libs/dentacoin-login-gateway/js/init.raw.js',
+], 'public/assets/libs/dentacoin-login-gateway/js/init.js');
+
 /* ===== /PUBLIC =====*/
 
 /* ===== ADMIN =====*/
