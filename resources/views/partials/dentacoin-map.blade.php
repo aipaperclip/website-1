@@ -91,19 +91,20 @@
                                 @if (!empty($continent->countries))
                                     <ul class="countries-list">
                                         @foreach ($continent->countries as $country)
-                                            <li class="country-list-parent">
-                                                <a href="javascript:void(0);" class="continent-and-country-style-type fs-0" data-country-code="{{mb_strtolower($country->code)}}" data-country-id="{{$country->id}}" data-country-centroid-lat="{{$country->lat}}" data-country-centroid-lng="{{$country->lng}}">
-                                                    <span class="element-name inline-block">{{$country->name}}</span>
-                                                    @if(property_exists($continentCountByCountries, mb_strtolower($country->code)))
-                                                        <span data-locations-count="{{get_object_vars($continentCountByCountries)[mb_strtolower($country->code)]}}" class="lato-bold inline-block locations-count fs-18 fs-xs-14">({{get_object_vars($continentCountByCountries)[mb_strtolower($country->code)]}} locations)</span>
-                                                    @else
-                                                        <span class="lato-bold inline-block locations-count fs-18 fs-xs-14">(0 locations)</span>
-                                                    @endif
-                                                </a>
-                                                <ul class="locations-category-list">
+                                            @if (property_exists($continentCountByCountries, mb_strtolower($country->code)))
+                                                @php($countryLocationsCount = get_object_vars($continentCountByCountries)[mb_strtolower($country->code)])
+                                                @if ($countryLocationsCount > 0)
+                                                    <li class="country-list-parent">
+                                                        <a href="javascript:void(0);" class="continent-and-country-style-type fs-0" data-country-code="{{mb_strtolower($country->code)}}" data-country-id="{{$country->id}}" data-country-centroid-lat="{{$country->lat}}" data-country-centroid-lng="{{$country->lng}}">
+                                                            <span class="element-name inline-block">{{$country->name}}</span>
+                                                            <span data-locations-count="{{$countryLocationsCount}}" class="lato-bold inline-block locations-count fs-18 fs-xs-14">({{$countryLocationsCount}} locations)</span>
+                                                        </a>
+                                                        <ul class="locations-category-list">
 
-                                                </ul>
-                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                @endif
+                                            @endif
                                         @endforeach
                                     </ul>
                                 @endif

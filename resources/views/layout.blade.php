@@ -221,7 +221,7 @@
                     <div>© {{date('Y')}} Dentacoin Foundation. All rights reserved.</div>
                     <div><a href="\assets\uploads\dentacoin-foundation.pdf" target="_blank" class="footer-bottom-link">Verify Dentacoin Foundation</a> <span class="separator">|</span> <a href="https://dentacoin.com/privacy-policy" target="_blank" class="footer-bottom-link">Privacy Policy</a></div>
                     <div class="padding-top-xs-25">Contract Address:</div>
-                    <div><a href="https://etherscan.io/address/0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6#code" target="_blank" class="footer-bottom-link fs-xs-13">0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6</a></div>
+                    <div><a href="https://etherscan.io/address/0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6#code" target="_blank" class="footer-bottom-link fs-xs-11">0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6</a></div>
                 </div>
             </div>
         </div>

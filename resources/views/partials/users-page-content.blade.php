@@ -53,19 +53,20 @@
         </div>
     </div>
     <div class="map-container">
-        {{--<figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-100 padding-bottom-100 padding-left-15 padding-right-15 text-center">
-            <img src="/assets/images/dcn-flipping-coin-logo-loader-V3.gif" class="max-width-200" alt="Loader">
-        </figure>--}}
         <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject">
-            <video autoplay class="width-100">
-                <source src="{{URL::asset('assets/uploads/map-loading-1920px.webm') }}" type="video/mp4">
+            @php ($videoUrl = 'desktop-map-loader.webm')
+            @if (isset($mobile_device) && $mobile_device)
+                @php ($videoUrl = 'desktop-map-loader.webm')
+            @endif
+            <video autoplay muted loop class="width-100">
+                <source src="{{URL::asset('assets/uploads/') }}" type="video/mp4">
                 Your browser does not support HTML5 video.
             </video>
             <meta itemprop="name" content="Dentacoin Loading Video">
             <meta itemprop="description" content="Dentacoin Loading Video which is shown whenever website content is still loading">
             <meta itemprop="uploadDate" content="2020-09-19T08:00:00+08:00">
             <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
-            <link itemprop="contentURL" href="{{URL::asset('assets/uploads/map-loading-1920px.webm') }}">
+            <link itemprop="contentURL" href="{{URL::asset('assets/uploads/desktop-map-loader.webm') }}">
         </div>
     </div>
 </section>

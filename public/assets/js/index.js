@@ -2293,12 +2293,12 @@ if ($('.newsletter-register').length) {
         if (!error) {
             projectData.events.fireGoogleAnalyticsEvent('Subscription', 'Sign-up', 'Newsletter');
 
+            this_form_native.submit();
+
             $('.newsletter-register form .custom-checkbox').html('');
             $('.newsletter-register form #newsletter-privacy-policy').prop('checked', false);
             this_form.find('input[type="email"]').val('');
             $('.newsletter-register .form-container').append('<div class="alert alert-success fs-16 margin-top-10">Thank you for signing up.</div>');
-
-            this_form_native.submit();
         }
     });
 }

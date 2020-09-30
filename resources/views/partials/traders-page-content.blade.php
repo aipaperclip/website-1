@@ -6,19 +6,27 @@
     </div>
     @php($arrWithPossibilities = array ('male', 'female'))
     @if ($arrWithPossibilities[rand(0, count($arrWithPossibilities) - 1)] == 'male')
-        <figure class="hidden-picture padding-top-xs-40" itemscope="" itemtype="http://schema.org/ImageObject">
-            <img alt="Trader animated background" class="trader-animated-background" itemprop="contentUrl"
-                 src="/assets/uploads/trader-monitors-animation.gif"/>
-            <img alt="Male dentacoin trader" class="trader" itemprop="contentUrl"
-                 src="/assets/uploads/man-trader-mobile-img.png"/>
-        </figure>
+        <div class="hidden-picture padding-top-xs-40" itemscope="" itemtype="http://schema.org/ImageObject">
+            <picture itemscope="" itemtype="http://schema.org/ImageObject" class="trader-animated-background">
+                <source media="(max-width: 992px)" srcset="/assets/uploads/trader-monitors-animation-mob.gif">
+                <img alt="Trader animated background" class="width-100" itemprop="contentUrl" src="/assets/uploads/trader-monitors-animation.gif"/>
+            </picture>
+            <picture itemscope="" itemtype="http://schema.org/ImageObject" class="trader">
+                <source media="(max-width: 992px)" srcset="/assets/uploads/man-trader-mobile-img.png">
+                <img alt="Male dentacoin trader" class="width-100" itemprop="contentUrl" src="/assets/uploads/man-trader-img.png"/>
+            </picture>
+        </div>
     @else
-        <figure class="hidden-picture padding-top-xs-40" itemscope="" itemtype="http://schema.org/ImageObject">
-            <img alt="Trader animated background" class="trader-animated-background" itemprop="contentUrl"
-                 src="/assets/uploads/trader-monitors-animation.gif"/>
-            <img alt="Female dentacoin trader" class="trader" itemprop="contentUrl"
-                 src="/assets/uploads/woman-trader-mobile-img.png"/>
-        </figure>
+        <div class="hidden-picture padding-top-xs-40" itemscope="" itemtype="http://schema.org/ImageObject">
+            <picture itemscope="" itemtype="http://schema.org/ImageObject" class="trader-animated-background">
+                <source media="(max-width: 992px)" srcset="/assets/uploads/trader-monitors-animation-mob.gif">
+                <img alt="Trader animated background" class="width-100" itemprop="contentUrl" src="/assets/uploads/trader-monitors-animation.gif"/>
+            </picture>
+            <picture itemscope="" itemtype="http://schema.org/ImageObject" class="trader">
+                <source media="(max-width: 992px)" srcset="/assets/uploads/woman-trader-mobile-img.png">
+                <img alt="Female dentacoin trader" class="width-100" itemprop="contentUrl" src="/assets/uploads/woman-trader-img.png"/>
+            </picture>
+        </div>
     @endif
 </section>
 @if (!empty($exchange_platforms))

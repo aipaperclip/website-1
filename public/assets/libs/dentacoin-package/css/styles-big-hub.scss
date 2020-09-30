@@ -234,7 +234,7 @@
                     width: 50%;
                     display: inline-block;
                     vertical-align: middle;
-                    padding-left: 15px;
+                    padding-left: 30px;
                     text-align: left;
                     .title {
                         font-size: 28px;
@@ -364,6 +364,7 @@
                     }
                     .title-and-html {
                         width: 100%;
+                        padding-left: 0;
                     }
                 }
             }
