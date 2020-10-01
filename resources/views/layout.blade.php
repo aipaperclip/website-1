@@ -250,7 +250,7 @@
         <div class="wrapper">
             <picture itemscope="" itemtype="http://schema.org/ImageObject">
                 <source media="(max-width: 768px)" srcset="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif">
-                <img itemprop="contentUrl" src="/assets/uploads/dcn-flipping-coin-logo-loader-V3-desktop.gif" class="max-width-250 max-width-xs-200" alt="Loader">
+                <img itemprop="contentUrl" src="/assets/uploads/dcn-flipping-coin-logo-loader-V3_desktop.gif" class="max-width-250 max-width-xs-200" alt="Loader">
             </picture>
         </div>
     </div>
