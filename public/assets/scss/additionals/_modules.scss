@@ -888,6 +888,17 @@
         }
     }
     &.section-google-map {
+        .map-infowindow {
+            button {
+                border: 0;
+                background: transparent;
+                font-size: 20px;
+                padding: 10px;
+                text-decoration: underline;
+                color: #00aeef;
+                font-family: 'Lato-Bold';
+            }
+        }
         .header-filter-line {
             background-color: $bright_blue;
             .dropdown.bootstrap-select {
@@ -920,14 +931,14 @@
                         display: none;
                     }
                 }
-                .filter-option-inner-inner {
+                /*.filter-option-inner-inner {
                     font-size: 0;
                     &:after {
                         content: 'Search by name or location';
                         font-size: 16px;
                         color: black;
                     }
-                }
+                }*/
             }
             .location-types {
                 .filter-option-inner-inner {
@@ -990,6 +1001,129 @@
                     overflow-y: auto;
                     position: relative;
                     max-height: 400px;
+                    .invite-text {
+                        background-color: $bright_blue;
+                        width: calc(100% + 30px);
+                        margin-left: -15px;
+                    }
+                    .single-location {
+                        padding: 10px;
+                        margin-bottom: 10px;
+                        border: 3px solid transparent;
+                        cursor: pointer;
+                        @include rounded(4px);
+                        @include box-shadow(0px 0px 7px 1px rgba(0, 0, 0, 0.15));
+                        figure {
+                            width: 120px;
+                        }
+                        .right-location-content {
+                            width: calc(100% - 120px);
+                            .is-partner {
+                                span {
+                                    padding: 5px;
+                                    background-color: #bbbbbb;
+                                    color: white;
+                                    @include rounded(6px);
+                                }
+                            }
+                            .trp-stats {
+                                .stars {
+                                    width: 132px;
+                                    height: 25px;
+                                    background-position: center;
+                                    background-repeat: no-repeat;
+                                    background-image: url('/assets/images/stars-gray-average.png');
+                                    background-size: contain;
+                                    .active-stars {
+                                        height: 25px;
+                                        background-image: url('/assets/images/stars-blue-average.png');
+                                        background-size: auto 100%;
+                                        background-position: top 0 left 0;
+                                        background-repeat: no-repeat;
+                                    }
+                                }
+                                .base-on-x-reviews {
+                                    color: #888888;
+                                    @include breakpoint($xs) {
+                                        display: block;
+                                        padding: 5px 0;
+                                    }
+                                }
+                                a {
+                                    color: $bright_blue;
+                                }
+                            }
+                            .hidden-content {
+                                display: none;
+                                line-height: 28px;
+                                a {
+                                    font-family: 'Lato-Bold';
+                                    color: $bright_blue;
+                                }
+                            }
+                            .toggle-location-tile {
+                                display: inline-block;
+                                width: 25px;
+                                @include simple_transition(.3s);
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                        &.toggled {
+                            border: 3px solid #ff0046;
+                            position: relative;
+                            .right-location-content {
+                                .is-partner {
+                                    font-size: 0 !important;
+                                    padding: 0 !important;
+                                    span {
+                                        display: none;
+                                    }
+                                    &:after {
+                                        content: 'Partner';
+                                        font-size: 14px;
+                                        color: white;
+                                        background-color: #ff0046;
+                                        font-family: 'Lato-Bold';
+                                        padding: 5px 10px;
+                                        position: absolute;
+                                        top: -8px;
+                                        left: -8px;
+                                        @include rounded(4px);
+                                    }
+                                }
+                                .hidden-content {
+                                    display: block;
+                                }
+                                .toggle-location-tile {
+                                    @include rotate(180deg);
+                                }
+                            }
+                            @include breakpoint($xs) {
+                                figure {
+                                    width: 100%;
+                                    text-align: center;
+                                    padding-top: 15px;
+                                    img {
+                                        max-width: 150px;
+                                        width: 100%;
+                                    }
+                                }
+                                .right-location-content {
+                                    width: 100%;
+                                    padding-top: 10px;
+                                    padding-left: 0 !important;
+                                    text-align: center;
+                                    .hidden-content {
+                                        text-align: left;
+                                        max-width: 450px;
+                                        margin: 0 auto;
+                                    }
+                                }
+                            }
+                        }
+                    }
                     .locations-count {
                         color: #bbbbbb;
                     }
@@ -1046,13 +1180,6 @@
                                     .invite-text {
                                         width: calc(100% + 20px);
                                         margin-left: -10px;
-                                        background-color: $bright_blue;
-                                        @include breakpoint($lgll) {
-                                            width: 700px;
-                                        }
-                                        @include breakpoint($md-only) {
-                                            width: 400px;
-                                        }
                                         @include breakpoint($sm-down) {
                                             display: none;
                                         }
@@ -1148,124 +1275,6 @@
                                         }
                                         .locations-list {
                                             padding: 5px 10px;
-                                            .single-location {
-                                                padding: 10px;
-                                                margin-bottom: 10px;
-                                                border: 3px solid transparent;
-                                                cursor: pointer;
-                                                @include rounded(4px);
-                                                @include box-shadow(0px 0px 7px 1px rgba(0, 0, 0, 0.15));
-                                                figure {
-                                                    width: 120px;
-                                                }
-                                                .right-location-content {
-                                                    width: calc(100% - 120px);
-                                                    .is-partner {
-                                                        span {
-                                                            padding: 5px;
-                                                            background-color: #bbbbbb;
-                                                            color: white;
-                                                            @include rounded(6px);
-                                                        }
-                                                    }
-                                                    .trp-stats {
-                                                        .stars {
-                                                            width: 132px;
-                                                            height: 25px;
-                                                            background-position: center;
-                                                            background-repeat: no-repeat;
-                                                            background-image: url('/assets/images/stars-gray-average.png');
-                                                            background-size: contain;
-                                                            .active-stars {
-                                                                height: 25px;
-                                                                background-image: url('/assets/images/stars-blue-average.png');
-                                                                background-size: auto 100%;
-                                                                background-position: top 0 left 0;
-                                                                background-repeat: no-repeat;
-                                                            }
-                                                        }
-                                                        .base-on-x-reviews {
-                                                            color: #888888;
-                                                            @include breakpoint($xs) {
-                                                                display: block;
-                                                                padding: 5px 0;
-                                                            }
-                                                        }
-                                                        a {
-                                                            color: $bright_blue;
-                                                        }
-                                                    }
-                                                    .hidden-content {
-                                                        display: none;
-                                                        line-height: 28px;
-                                                        a {
-                                                            font-family: 'Lato-Bold';
-                                                            color: $bright_blue;
-                                                        }
-                                                    }
-                                                    .toggle-location-tile {
-                                                        display: inline-block;
-                                                        width: 25px;
-                                                        @include simple_transition(.3s);
-                                                        img {
-                                                            width: 100%;
-                                                        }
-                                                    }
-                                                }
-                                                &.toggled {
-                                                    border: 3px solid #ff0046;
-                                                    position: relative;
-                                                    .right-location-content {
-                                                        .is-partner {
-                                                            font-size: 0 !important;
-                                                            padding: 0 !important;
-                                                            span {
-                                                                display: none;
-                                                            }
-                                                            &:after {
-                                                                content: 'Partner';
-                                                                font-size: 14px;
-                                                                color: white;
-                                                                background-color: #ff0046;
-                                                                font-family: 'Lato-Bold';
-                                                                padding: 5px 10px;
-                                                                position: absolute;
-                                                                top: -8px;
-                                                                left: -8px;
-                                                                @include rounded(4px);
-                                                            }
-                                                        }
-                                                        .hidden-content {
-                                                            display: block;
-                                                        }
-                                                        .toggle-location-tile {
-                                                            @include rotate(180deg);
-                                                        }
-                                                    }
-                                                    @include breakpoint($xs) {
-                                                        figure {
-                                                            width: 100%;
-                                                            text-align: center;
-                                                            padding-top: 15px;
-                                                            img {
-                                                                max-width: 150px;
-                                                                width: 100%;
-                                                            }
-                                                        }
-                                                        .right-location-content {
-                                                            width: 100%;
-                                                            padding-top: 10px;
-                                                            padding-left: 0 !important;
-                                                            text-align: center;
-                                                            .hidden-content {
-                                                                text-align: left;
-                                                                max-width: 450px;
-                                                                margin: 0 auto;
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
                                             @include breakpoint($xs) {
                                                 padding: 5px 0;
                                                 .single-location {
@@ -1323,7 +1332,14 @@
                         padding-bottom: 20px;
                         margin-top: -20px;
                         &.list-shown {
-                            margin-top: 30px;
+                            z-index: 100;
+                            position: fixed;
+                            bottom: 0;
+                            width: 100%;
+                            background: white;
+                            padding-bottom: 15px;
+                            padding-top: 15px;
+                            @include box-shadow(0px 0px 7px 1px rgba(0, 0, 0, 0.25));
                         }
                         @include breakpoint($sm-down) {
                             display: block;

@@ -145,6 +145,14 @@
             }
         }
         &.mobile-exchanges {
+            .single-exchange {
+                .exchange-link {
+                    img {
+                        display: block !important;
+                        margin: 0 auto 5px;
+                    }
+                }
+            }
             .mobile-extra-row {
                 margin: 0;
                 &.active {

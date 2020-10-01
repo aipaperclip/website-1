@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\LocationType;
 use App\MapContinent;
 use App\MapCountry;
+use App\MapLocation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -44,8 +45,7 @@ class DentacoinMapController extends Controller
             ->leftJoin('clinics', 'map_locations.clinic_id', '=', 'clinics.id')
             ->leftJoin('location_types', 'map_locations.type_id', '=', 'location_types.id')
             ->leftJoin('media as clinic_media', 'clinics.media_id', '=', 'clinic_media.id')
-            ->select('map_locations.*', 'clinics.name as clinic_name', 'clinics.link as clinic_link', 'location_types.id as location_type_id', 'clinic_media.name as clinic_media', 'clinic_media.alt as clinic_media_alt', 'map_countries.code as country_code')
-            ->select('map_locations.*', 'clinics.name as clinic_name', 'clinics.link as clinic_link', 'location_types.id as location_type_id', 'clinic_media.name as clinic_media', 'clinic_media.alt as clinic_media_alt', 'map_countries.code as country_code')
+            ->select('map_locations.*', 'clinics.name as clinic_name', 'clinics.link as website', 'clinics.link as clinic_link', 'location_types.id as location_type_id', 'clinic_media.name as clinic_media', 'clinic_media.alt as clinic_media_alt', 'map_countries.code as country_code', 'map_countries.name as country_name')
             ->where($whereArr)
             ->get()->toArray();
     }
@@ -76,9 +76,23 @@ class DentacoinMapController extends Controller
             case 'get-continent-stats':
                 $codes = $request->input('data');
                 $continentCountByCountries = (new APIRequestsController())->getMapData(array('action' => 'all-partners-and-non-partners-count-by-countries', 'country' => json_decode($codes)));
-
                 if (!empty($continentCountByCountries) && is_object($continentCountByCountries) && property_exists($continentCountByCountries, 'success') && $continentCountByCountries->success) {
-                    return response()->json(['success' => true, 'data' => $continentCountByCountries->data]);
+
+                    // adding to the count the locations which are in the dentacoin DB
+                    $codes = array_map('strtoupper', json_decode($codes));
+                    $dcnDbLocationsCount = DB::table('map_locations')
+                        ->leftJoin('map_countries', 'map_locations.country_id', '=', 'map_countries.id')
+                        ->whereIn('type_id', array(2, 3, 4))
+                        ->whereIn('map_countries.code', $codes)
+                        ->selectRaw('COUNT(*) as count')
+                        ->get()->first();
+
+                    $locationsCountInsideCountry = $continentCountByCountries->data;
+                    if (!empty($dcnDbLocationsCount) && property_exists($dcnDbLocationsCount, 'count') && $dcnDbLocationsCount->count > 0) {
+                        $locationsCountInsideCountry += $dcnDbLocationsCount->count;
+                    }
+
+                    return response()->json(['success' => true, 'data' => $locationsCountInsideCountry]);
                 } else {
                     return response()->json(['error' => true]);
                 }
@@ -228,11 +242,6 @@ class DentacoinMapController extends Controller
 
         $arrayWithAllLocations = array();
         $arrayWithAllLocationsSplittedByCategory = array();
-        /*$partnerLocationType = LocationType::where(array('id' => 1))->get()->first();
-        $labsLocationType = LocationType::where(array('id' => 2))->get()->first();
-        $suppliersLocationType = LocationType::where(array('id' => 3))->get()->first();
-        $industryPartnersLocationType = LocationType::where(array('id' => 4))->get()->first();
-        $nonPartnerLocationType = LocationType::where(array('id' => 5))->get()->first();*/
 
         $locationTypes = LocationType::all();
 
@@ -245,6 +254,16 @@ class DentacoinMapController extends Controller
                 $singleDataRecordArr = array(
                     'id' => $singleDataRecord->id,
                     'name' => $singleDataRecord->name,
+                    'avatar_url' => $singleDataRecord->avatar_url,
+                    'address' => $singleDataRecord->address,
+                    'is_partner' => $singleDataRecord->is_partner,
+                    'phone' => $singleDataRecord->phone,
+                    'website' => $singleDataRecord->website,
+                    'top_dentist_month' => $singleDataRecord->top_dentist_month,
+                    'avg_rating' => $singleDataRecord->avg_rating,
+                    'ratings' => $singleDataRecord->ratings,
+                    'trp_public_profile_link' => $singleDataRecord->trp_public_profile_link,
+                    'country_name' => $singleDataRecord->country_name,
                     'lat' => $singleDataRecord->lat,
                     'lng' => $singleDataRecord->lon,
                     'city' => $singleDataRecord->city_name,
@@ -310,6 +329,16 @@ class DentacoinMapController extends Controller
             $singleDataRecordArr = array(
                 'id' => $lab->id,
                 'name' => $lab->clinic_name,
+                'avatar_url' => UPLOADS_FRONT_END . $lab->clinic_media,
+                'address' => $lab->address,
+                'is_partner' => NULL,
+                'phone' => NULL,
+                'website' => $lab->website,
+                'top_dentist_month' => NULL,
+                'avg_rating' => NULL,
+                'ratings' => NULL,
+                'trp_public_profile_link' => NULL,
+                'country_name' => $lab->country_name,
                 'lat' => $lab->lat,
                 'lng' => $lab->lng,
                 'city' => NULL,
@@ -335,6 +364,16 @@ class DentacoinMapController extends Controller
             $singleDataRecordArr = array(
                 'id' => $supplier->id,
                 'name' => $supplier->clinic_name,
+                'avatar_url' => UPLOADS_FRONT_END . $supplier->clinic_media,
+                'address' => $supplier->address,
+                'is_partner' => NULL,
+                'phone' => NULL,
+                'website' => $supplier->website,
+                'top_dentist_month' => NULL,
+                'avg_rating' => NULL,
+                'ratings' => NULL,
+                'trp_public_profile_link' => NULL,
+                'country_name' => $supplier->country_name,
                 'lat' => $supplier->lat,
                 'lng' => $supplier->lng,
                 'city' => NULL,
@@ -360,6 +399,16 @@ class DentacoinMapController extends Controller
             $singleDataRecordArr = array(
                 'id' => $industryPartner->id,
                 'name' => $industryPartner->clinic_name,
+                'avatar_url' => UPLOADS_FRONT_END . $industryPartner->clinic_media,
+                'address' => $industryPartner->address,
+                'is_partner' => NULL,
+                'phone' => NULL,
+                'website' => $industryPartner->website,
+                'top_dentist_month' => NULL,
+                'avg_rating' => NULL,
+                'ratings' => NULL,
+                'trp_public_profile_link' => NULL,
+                'country_name' => $industryPartner->country_name,
                 'lat' => $industryPartner->lat,
                 'lng' => $industryPartner->lng,
                 'city' => NULL,
@@ -403,7 +452,7 @@ class DentacoinMapController extends Controller
     protected function getMapHtml()  {
         list($continentCountByCountries, $arrayWithAllLocationsSplittedByCategory, $arrayWithAllLocations, $arrWithCountriesAndCities) = $this->getMapDataForTheView();
 
-        $dentacoinMapHtml = view('partials/dentacoin-map', array('continentCountByCountries' => $continentCountByCountries, 'continents' => $this->getContinents(), 'arrayWithAllLocations' => json_encode($arrayWithAllLocations), 'location_types' => LocationType::all()->sortBy('order_id'), 'arrayWithAllLocationsSplittedByCategory' => $arrayWithAllLocationsSplittedByCategory, 'arrWithCountriesAndCities' => $arrWithCountriesAndCities));
+        $dentacoinMapHtml = view('partials/dentacoin-map', array('continentCountByCountries' => $continentCountByCountries, 'continents' => $this->getContinents(), 'arrayWithAllLocations' => json_encode($arrayWithAllLocations), 'location_types' => LocationType::all()->sortBy('order_id'), 'arrayWithAllLocationsSplittedByCategory' => $arrayWithAllLocationsSplittedByCategory, 'arrWithCountriesAndCities' => $arrWithCountriesAndCities, 'locationsCountInDcnDB' => MapLocation::all()->count()));
 
         return response()->json(['success' => true, 'data' => $dentacoinMapHtml->render()]);
     }

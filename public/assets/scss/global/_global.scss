@@ -1488,3 +1488,11 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
         }
     }
 }
+
+.map-container {
+    position: relative;
+    .loader-over-map {
+        z-index: 100;
+        @include vertical-horizontal-align(absolute);
+    }
+}

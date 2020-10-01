@@ -56,18 +56,21 @@
         <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject">
             @php ($videoUrl = 'desktop-map-loader.webm')
             @if (isset($mobile_device) && $mobile_device)
-                @php ($videoUrl = 'desktop-map-loader.webm')
+                @php ($videoUrl = 'mobile-map-loader.webm')
             @endif
             <video autoplay muted loop class="width-100">
-                <source src="{{URL::asset('assets/uploads/') }}" type="video/mp4">
+                <source src="{{URL::asset('assets/uploads/'.$videoUrl) }}" type="video/mp4">
                 Your browser does not support HTML5 video.
             </video>
             <meta itemprop="name" content="Dentacoin Loading Video">
             <meta itemprop="description" content="Dentacoin Loading Video which is shown whenever website content is still loading">
             <meta itemprop="uploadDate" content="2020-09-19T08:00:00+08:00">
             <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
-            <link itemprop="contentURL" href="{{URL::asset('assets/uploads/desktop-map-loader.webm') }}">
+            <link itemprop="contentURL" href="{{URL::asset('assets/uploads/'.$videoUrl) }}">
         </div>
+        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="loader-over-map">
+            <img src="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif" alt="Loader">
+        </figure>
     </div>
 </section>
 <section class="module section-dentacoin-stats padding-top-90 padding-bottom-80 hide-on-map-open hide-on-hub-open">

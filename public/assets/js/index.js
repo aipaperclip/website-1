@@ -1042,39 +1042,36 @@ var projectData = {
 
                     var locationsOnInit = JSON.parse($('.google-map-box').attr('data-locations'));
                     var lastMapData = {
-                        map_locations: locationsOnInit,
                         initialLat: undefined,
                         initialLng: undefined,
                         initialZoom: undefined,
                         filter_country: undefined,
-                        location_id: undefined,
-                        location_source: undefined,
+                        location_id_and_source_pairs: [],
                         categories: $('.selectpicker.location-types').val()
                     };
-                    initMap(locationsOnInit, undefined, undefined, undefined, undefined, undefined, undefined, $('.selectpicker.location-types').val());
+
+                    initMap(locationsOnInit, lastMapData);
 
                     basic.initCustomCheckboxes('.google-map-and-bottom-filters', 'append');
 
+                    var listBottomExtraHtml = '<li><div class="invite-text padding-left-15 padding-right-15 padding-top-15 padding-bottom-25"><div class="color-white lato-black fs-28 fs-sm-22 fs-xs-20 padding-bottom-15">KNOW A GREAT DENTIST, BUT IT’S NOT ON OUR MAP?</div><div><a href="https://reviews.dentacoin.com/?popup=invite-new-dentist-popup" target="_blank" class="bright-blue-white-btn with-border fs-xs-16">INVITE DENTIST</a></div></div></li>';
+
+                    // on map infowindow click
+                    $(document).on('click', '.map-infowindow button', function(event) {
+                        $('body').addClass('overflow-hidden');
+                        if ($(window).width() < 992) {
+                            showLocationsListOnMobile($('.show-locations-list'));
+
+                            $('html, body').animate({'scrollTop': $('.map-container').offset().top }, 300);
+                        } else {
+                            event.preventDefault();
+                        }
+                        $('body').removeClass('overflow-hidden');
+                    });
+
                     $('.show-locations-list').click(function() {
                         if (!$(this).parent().hasClass('list-shown')) {
-                            $('.hide-on-map-open').addClass('hide');
-                            $(this).parent().addClass('list-shown');
-                            $(this).addClass('with-map-pin').removeClass('with-list-icon').html(' GO BACK TO MAP');
-
-                            $('.subpages-sticky-nav').addClass('hide');
-                            $('.picker-and-map .google-map-box').hide();
-                            $('.picker-and-map .left-picker').fadeIn(500);
-                            $('.locations-list .invite-text').fadeIn();
-
-                            $('body').addClass('overflow-hidden');
-                            if ($(window).width() < 992) {
-                                // scroll to open location everytime on list showing, because the scrolling doesn't work when element is with display none
-                                if ($('.single-location.toggled').length) {
-                                    $('.results-list').scrollTop(0);
-                                    $('.results-list').scrollTop($('.single-location.toggled').position().top - 15);
-                                }
-                            }
-                            $('body').removeClass('overflow-hidden');
+                            showLocationsListOnMobile($(this));
                         } else {
                             $('.hide-on-map-open').removeClass('hide');
                             $(this).removeClass('with-map-pin').addClass('with-list-icon').html(' SEE RESULTS IN LIST');
@@ -1091,23 +1088,29 @@ var projectData = {
                         $('html, body').animate({'scrollTop': $('.map-container').offset().top }, 300);
                     });
 
-                    function dynamicSort(property) {
-                        var sortOrder = 1;
-                        if(property[0] === "-") {
-                            sortOrder = -1;
-                            property = property.substr(1);
+                    // used for mobile devices to switch from map to results list with continents, countries, locations, etc
+                    function showLocationsListOnMobile(el) {
+                        $('.hide-on-map-open').addClass('hide');
+                        el.parent().addClass('list-shown');
+                        el.addClass('with-map-pin').removeClass('with-list-icon').html(' GO BACK TO MAP');
+
+                        $('.subpages-sticky-nav').addClass('hide');
+                        $('.picker-and-map .google-map-box').hide();
+                        $('.picker-and-map .left-picker').fadeIn(500);
+                        $('.locations-list .invite-text').fadeIn();
+
+                        $('body').addClass('overflow-hidden');
+                        if ($(window).width() < 992) {
+                            // scroll to open location everytime on list showing, because the scrolling doesn't work when element is with display none
+                            if ($('.single-location.toggled').length) {
+                                $('.results-list').scrollTop(0);
+                                $('.results-list').scrollTop($('.single-location.toggled').position().top - 15);
+                            }
                         }
-                        return function (a,b) {
-                            /* next line works with strings and numbers,
-                             * and you may want to customize it to your needs
-                             */
-                            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-                            return result * sortOrder;
-                        }
+                        $('body').removeClass('overflow-hidden');
                     }
 
                     var locationsCountsArr = [];
-
                     // set continent count BY adding the countries locations for THIS continent
                     for (var i = 0, len = $('.single-continent').length; i < len; i+=1) {
                         var currentContinentLocationsCount = 0;
@@ -1116,13 +1119,18 @@ var projectData = {
                                 currentContinentLocationsCount += parseInt($('.single-continent').eq(i).find('.country-list-parent').eq(y).find('[data-locations-count]').attr('data-locations-count'));
                             }
                         }
-                        $('.single-continent').eq(i).find('> a').append('<span class="lato-bold inline-block locations-count fs-18 fs-xs-14">('+currentContinentLocationsCount+' locations)</span>');
+
+                        if (currentContinentLocationsCount == 0) {
+                            continue;
+                        } else {
+                            $('.single-continent').eq(i).find('> a').append('<span class="lato-bold inline-block locations-count fs-18 fs-xs-14">('+currentContinentLocationsCount+' locations)</span>');
+                        }
 
                         locationsCountsArr.push({'count' : currentContinentLocationsCount, 'location_id' : $('.single-continent').eq(i).find('> a').attr('data-continent-id')});
                     }
 
                     // reorder the continents list by count from bigger to smallest count
-                    var orderedLocationsCountsArr = locationsCountsArr.sort(dynamicSort('count'));
+                    var orderedLocationsCountsArr = locationsCountsArr.sort(basic.dynamicSortArrayByKey('count'));
                     orderedLocationsCountsArr.reverse();
                     var reorderedCountriesListHtml = '';
                     for (var i = 0, len = orderedLocationsCountsArr.length; i < len; i+=1) {
@@ -1130,6 +1138,7 @@ var projectData = {
                     }
                     $('.continents-list ul').html(reorderedCountriesListHtml);
 
+                    // set results list max-height
                     $('body').addClass('overflow-hidden');
                     if ($(window).width() > 992) {
                         $('.results-list').css({'max-height' : ($('.google-map-and-bottom-filters').height() - $('.left-picker .inner-gray-line').height()) + 'px'});
@@ -1138,14 +1147,6 @@ var projectData = {
 
                     $('.selectpicker.location-types').on('change', function() {
                         var thisValue = $(this).val();
-
-                        // dont allow users to filter only category-5
-                        if (thisValue.includes('category-5') && !thisValue.includes('category-1')) {
-                            thisValue.push('category-1');
-                        }
-
-                        $('.right-side-filters input[type="checkbox"]').prop('checked', true);
-                        updateTopLocationsSelectOnBottomFilterChange(thisValue);
 
                         // update bottom filter checkboxes
                         $('.right-side-filters input[type="checkbox"]').prop('checked', false);
@@ -1158,6 +1159,14 @@ var projectData = {
                                 }
                             }
                         }
+
+                        // dont allow users to filter only category-5
+                        if (thisValue.includes('category-5') && !thisValue.includes('category-1')) {
+                            thisValue.push('category-1');
+                        }
+
+                        $('.right-side-filters input[type="checkbox"]').prop('checked', true);
+                        updateTopLocationsSelectOnBottomFilterChange(thisValue);
                     });
 
                     // this event is fired in 2 cases:
@@ -1165,7 +1174,24 @@ var projectData = {
                     // - when someone select location right from the select dropdown with locations
                     $(document).on('showLocationInList', async function (event) {
                         if (event.response_data) {
+                            if ($('.results-list .continents-list').hasClass('hide')) {
+                                $('.custom-search-list').addClass('hide');
+                                $('.continents-list, .results-nav').removeClass('hide');
+
+                                $('.locations-splitted-by-category .filter-option-inner-inner').removeClass('fs-0').find('.custom-label').remove();
+                            }
+
                             console.log(event.response_data, 'event.response_data');
+
+                            var initialZoom = undefined;
+                            if (event.response_data.zoom) {
+                                initialZoom = event.response_data.zoom;
+                            }
+
+                            var centerCity = undefined;
+                            if (event.response_data.center_city) {
+                                centerCity = event.response_data.center_city;
+                            }
 
                             var listAlreadyLoaded = false;
                             var disallowAlreadyLoaded = false;
@@ -1219,24 +1245,66 @@ var projectData = {
                                                     city = event.response_data.city;
                                                 }
 
-                                                lastMapData = {
-                                                    map_locations: locationsOnInit,
-                                                    initialLat: event.response_data.lat,
-                                                    initialLng: event.response_data.lng,
-                                                    initialZoom: 15,
-                                                    filter_country: event.response_data.country_code,
-                                                    location_id: undefined,
-                                                    location_source: undefined,
-                                                    categories: $('.selectpicker.location-types').val()
-                                                };
-
                                                 if (event.response_data.id && event.response_data.source && event.response_data.content) {
-                                                    initMap(locationsOnInit, event.response_data.lat, event.response_data.lng, 15, event.response_data.country_code, event.response_data.id, event.response_data.source, $('.selectpicker.location-types').val(), true, city, event.response_data.content);
+                                                    lastMapData = {
+                                                        initialLat: event.response_data.lat,
+                                                        initialLng: event.response_data.lng,
+                                                        initialZoom: initialZoom,
+                                                        filter_country: event.response_data.country_code,
+                                                        location_id_and_source_pairs: [[parseInt(event.response_data.id), event.response_data.source]],
+                                                        categories: $('.selectpicker.location-types').val(),
+                                                        campForZoomChange: true,
+                                                        filter_city: city,
+                                                        location_content: event.response_data.content,
+                                                        center_city: centerCity
+                                                    };
+
+                                                    initMap(locationsOnInit, lastMapData);
                                                 } else {
-                                                    initMap(locationsOnInit, event.response_data.lat, event.response_data.lng, 15, event.response_data.country_code, undefined, undefined, $('.selectpicker.location-types').val(), true, city);
+                                                    lastMapData = {
+                                                        initialLat: event.response_data.lat,
+                                                        initialLng: event.response_data.lng,
+                                                        initialZoom: initialZoom,
+                                                        filter_country: event.response_data.country_code,
+                                                        location_id_and_source_pairs: [],
+                                                        categories: $('.selectpicker.location-types').val(),
+                                                        campForZoomChange: true,
+                                                        filter_city: city,
+                                                        center_city: centerCity,
+                                                    };
+
+                                                    initMap(locationsOnInit, lastMapData);
                                                 }
 
                                                 await buildCountryLocationsList($('.countries-list a[data-country-code="'+event.response_data.country_code+'"]').parent().find('.locations-category-list'), event.response_data.country_code, $('.countries-list a[data-country-code="'+event.response_data.country_code+'"]'));
+
+                                                if (event.response_data.response_type == 'single-location') {
+                                                    $('.locations-category-list .category-toggle-button').removeClass('hide');
+                                                    $('.locations-category-list .locations-list .single-location').removeClass('hide');
+
+                                                    $('.picker-and-map .picker-value span').html(1);
+                                                    var thisLocation = $('.locations-list .toggle-location-tile[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]');
+                                                    thisLocation.closest('.locations-category-list').find('.category-toggle-button').addClass('hide');
+                                                    thisLocation.closest('.locations-category-list').find('.locations-list .single-location').addClass('hide');
+
+                                                    thisLocation.closest('.single-location').removeClass('hide');
+                                                    thisLocation.closest('.locations-list').parent().find('.category-toggle-button').removeClass('hide');
+                                                } else if (event.response_data.response_type == 'city') {
+                                                    $('.locations-category-list .category-toggle-button').removeClass('hide');
+                                                    $('.locations-category-list .locations-list .single-location').removeClass('hide');
+
+                                                    var locationsInThisCity = $('.locations-list .toggle-location-tile[data-city="'+event.response_data.city+'"]');
+                                                    if (locationsInThisCity.length) {
+                                                        $('.picker-and-map .picker-value span').html(locationsInThisCity.length);
+                                                        $('.locations-category-list .category-toggle-button').addClass('hide');
+                                                        $('.locations-category-list .locations-list .single-location').addClass('hide');
+
+                                                        for (var i = 0, len = locationsInThisCity.length; i < len; i+=1) {
+                                                            locationsInThisCity.eq(i).closest('.single-location').removeClass('hide');
+                                                            locationsInThisCity.eq(i).closest('.locations-list').parent().find('.category-toggle-button').removeClass('hide');
+                                                        }
+                                                    }
+                                                }
 
                                                 $('.locations-list .single-location').removeClass('toggled');
 
@@ -1257,6 +1325,63 @@ var projectData = {
                         }
                     });
 
+                    $(document).on('keyup', function (event) {
+                        if ($(event.target).is('.locations-splitted-by-category .bs-searchbox .form-control')) {
+                            $('.locations-splitted-by-category .dropdown-menu .active').removeClass('selected active');
+                            if (event.which == 13) {
+                                event.preventDefault();
+
+                                var currentLocationsTypesFilter = $('select.location-types').val();
+                                if (currentLocationsTypesFilter.includes('category-5') && !currentLocationsTypesFilter.includes('category-1')) {
+                                    currentLocationsTypesFilter.push('category-1');
+                                }
+
+                                var searchKeyword = $('.locations-splitted-by-category .bs-searchbox .form-control').val().trim();
+                                if (searchKeyword != '') {
+                                    var searchHtml = '';
+                                    var location_id_and_source_pairs = [];
+                                    for (var i = 0, len = locationsOnInit.length; i < len; i+=1) {
+                                        if (locationsOnInit[i].name.toLowerCase().includes(searchKeyword.toLowerCase()) && currentLocationsTypesFilter.includes(locationsOnInit[i].category)) {
+                                            searchHtml += buildSingleLocationTile(locationsOnInit[i].avatar_url, locationsOnInit[i].name, locationsOnInit[i].address, locationsOnInit[i].is_partner, locationsOnInit[i].city, locationsOnInit[i].phone, locationsOnInit[i].website, locationsOnInit[i].top_dentist_month, locationsOnInit[i].avg_rating, locationsOnInit[i].ratings, locationsOnInit[i].trp_public_profile_link, locationsOnInit[i].country_name, locationsOnInit[i].id, locationsOnInit[i].source, locationsOnInit[i].lat, locationsOnInit[i].lng);
+
+                                            location_id_and_source_pairs.push([locationsOnInit[i].id, locationsOnInit[i].source]);
+                                        }
+                                    }
+
+                                    if (searchHtml != '') {
+                                        $('.continents-list, .results-nav').addClass('hide');
+                                        $('.custom-search-list').html('<ul>'+searchHtml+listBottomExtraHtml+'</ul>').removeClass('hide');
+                                        $('.picker-and-map .picker-value').html('<span class="lato-black">'+location_id_and_source_pairs.length+'</span> Results');
+
+                                        initMap(locationsOnInit, {
+                                            location_id_and_source_pairs: location_id_and_source_pairs,
+                                            center_city: true,
+                                            type: 'custom-search'
+                                        });
+                                    } else {
+                                        $('.continents-list, .results-nav').addClass('hide');
+                                        $('.picker-and-map .picker-value').html('<span class="lato-black">0</span> Results');
+                                        $('.custom-search-list').html('<div class="padding-top-30 padding-left-20 padding-right-20 text-center fs-20 lato-bold">No locations found for this search keyword.</div>').removeClass('hide');
+                                    }
+
+                                    $('.locations-splitted-by-category .filter-option-inner-inner .custom-label').remove();
+                                    $('.locations-splitted-by-category .filter-option-inner-inner').addClass('fs-0').append('<div class="custom-label color-black fs-16">'+searchKeyword+'</div>');
+
+                                    $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents remove-custom-search-list"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> Back to list</a>');
+
+                                    $('.go-back-to-continents.remove-custom-search-list').click(function() {
+                                        $('.custom-search-list').addClass('hide');
+                                        $('.continents-list, .results-nav').removeClass('hide');
+
+                                        $('.locations-splitted-by-category .filter-option-inner-inner').removeClass('fs-0').find('.custom-label').remove();
+                                    });
+
+                                    $('.locations-splitted-by-category .bootstrap-select').removeClass('open');
+                                }
+                            }
+                        }
+                    });
+
                     $('.selectpicker.locations').on('change', function() {
                         var thisValue = $(this).val().trim();
 
@@ -1272,13 +1397,28 @@ var projectData = {
                                     'lat' : $(this).find('option:selected').attr('data-lat'),
                                     'lng' : $(this).find('option:selected').attr('data-lng'),
                                     'disallowAlreadyLoaded' : true,
-                                    'content' : '<div style="font-size: 20px;">'+$(this).find('option:selected').html().trim()+'</div>'
+                                    'content' : '<div class="map-infowindow"><button>'+$(this).find('option:selected').html().trim()+'</button></div>',
+                                    'response_type' : 'single-location'
                                 }
                             });
-                        } else {
+                        } else if ($(this).find('option:selected').hasClass('city-type')) {
                             var eventData = {
                                 'country_code' : $(this).find('option:selected').attr('data-country-code'),
                                 'city' : $(this).find('option:selected').attr('data-city'),
+                                'zoom' : 7,
+                                'disallowAlreadyLoaded' : true,
+                                'center_city' : true,
+                                'response_type' : 'city'
+                            };
+
+                            $.event.trigger({
+                                type: 'showLocationInList',
+                                time: new Date(),
+                                response_data: eventData
+                            });
+                        } else if ($(this).find('option:selected').hasClass('country-type')) {
+                            var eventData = {
+                                'country_code' : $(this).find('option:selected').attr('data-country-code'),
                                 'zoom' : 5,
                                 'disallowAlreadyLoaded' : true
                             };
@@ -1306,21 +1446,6 @@ var projectData = {
                         }
                     });
 
-                    // set continents locations
-                    var continentCodes = {};
-                    for (var i = 0, len = $('.continents-list > ul > li > a').length; i < len; i+=1) {
-                        continentCodes[$('.continents-list > ul > li > a').eq(i).attr('data-continent-id')] = $('.continents-list > ul > li > a').eq(i).attr('data-country-codes');
-                    }
-
-                    if (Object.keys(continentCodes).length > 0) {
-                        var continentLocationsCount = await projectData.requests.getMapData({action: 'get-continent-locations-count', data: continentCodes});
-                        if (continentLocationsCount.success) {
-                            Object.keys(continentLocationsCount.data).forEach(key => {
-                                $('.continent-name[data-country-codes="'+key+'"]').append('<span class="locations-count lato-bold fs-20">('+continentLocationsCount.data[key]+' locations)</span>');
-                            });
-                        }
-                    }
-
                     // =================== CONTINENTS LOGIC ====================
                     $('.continents-list > ul > li > a').click(async function() {
                         // MAKE REQUEST TO QUERY ALL LOCATIONS ONLY FOR THIS CONTINENT
@@ -1338,16 +1463,16 @@ var projectData = {
                         $('.results-list').scrollTop(0);
 
                         lastMapData = {
-                            map_locations: locationsOnInit,
+                            filter_country: JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')),
+                            location_id_and_source_pairs: [],
+                            categories: $('.selectpicker.location-types').val(),
+                            campForZoomChange: true,
                             initialLat: undefined,
                             initialLng: undefined,
-                            initialZoom: undefined,
-                            filter_country: JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')),
-                            location_id: undefined,
-                            location_source: undefined,
-                            categories: $('.selectpicker.location-types').val()
+                            initialZoom: undefined
                         };
-                        initMap(locationsOnInit, undefined, undefined, undefined, JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')), undefined, undefined, $('.selectpicker.location-types').val(), true);
+
+                        initMap(locationsOnInit, lastMapData);
 
                         updateContinentData($(this).attr('data-country-codes'));
                     });
@@ -1393,16 +1518,16 @@ var projectData = {
                         $('.results-list').scrollTop(0);
 
                         lastMapData = {
-                            map_locations: locationsOnInit,
+                            categories: $('.selectpicker.location-types').val(),
+                            filter_country: undefined,
+                            location_id_and_source_pairs: [],
+                            campForZoomChange: undefined,
                             initialLat: undefined,
                             initialLng: undefined,
-                            initialZoom: undefined,
-                            filter_country: undefined,
-                            location_id: undefined,
-                            location_source: undefined,
-                            categories: $('.selectpicker.location-types').val()
+                            initialZoom: undefined
                         };
-                        initMap(locationsOnInit, undefined, undefined, undefined, undefined, undefined, undefined, $('.selectpicker.location-types').val());
+
+                        initMap(locationsOnInit, lastMapData);
 
                         if ($('.picker-and-map .picker-value').attr('data-worldwide') != '') {
                             $('.picker-and-map .picker-value').html('<span class="lato-black">'+$('.picker-and-map .picker-value').attr('data-worldwide')+'</span> Results');
@@ -1463,7 +1588,7 @@ var projectData = {
                                 totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.labs.length;
                                 var bindLabsCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button labs fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Partner Dental Labs</span></a><ul class="locations-list">';
                                 for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.labs.length; i < len; i+=1) {
-                                    bindLabsCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.labs[i].address, null, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_link, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.labs[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.labs[i].lat, getLabsSuppliersAndIndustryPartnersData.data.labs[i].lng);
+                                    bindLabsCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.labs[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.labs[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.labs[i].lat, getLabsSuppliersAndIndustryPartnersData.data.labs[i].lng);
                                 }
 
                                 bindLabsCategoryHtml+='</ul></li>';
@@ -1483,7 +1608,7 @@ var projectData = {
                                 totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.suppliers.length;
                                 var bindSuppliersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button suppliers fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Partner Dental Suppliers</span></a><ul class="locations-list">';
                                 for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.suppliers.length; i < len; i+=1) {
-                                    bindSuppliersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].address, null, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_link, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].lat, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].lng);
+                                    bindSuppliersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].lat, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].lng);
                                 }
 
                                 bindSuppliersCategoryHtml+='</ul></li>';
@@ -1531,7 +1656,7 @@ var projectData = {
                             list.append(bindNonPartnersCategoryHtml);
                         }
 
-                        list.append('<li><div class="invite-text padding-left-15 padding-right-15 padding-top-15 padding-bottom-25"><div class="color-white lato-black fs-28 fs-sm-22 fs-xs-20 padding-bottom-15">KNOW A GREAT DENTIST, BUT IT’S NOT ON OUR MAP?</div><div><a href="https://reviews.dentacoin.com/?popup=invite-new-dentist-popup" target="_blank" class="bright-blue-white-btn with-border fs-xs-16">INVITE DENTIST</a></div></div></li>');
+                        list.append(listBottomExtraHtml);
 
                         // make request to select all locations DATA for this country FOR THE MAP
                         var currentCountryLocationsData = await projectData.requests.getMapData({action: 'all-partners-and-non-partners-data-by-country', data: code});
@@ -1602,7 +1727,15 @@ var projectData = {
 
                                 // updating lastMapData categories
                                 lastMapData.categories = $('.selectpicker.location-types').val();
-                                initMap(lastMapData.map_locations, lastMapData.initialLat, lastMapData.initialLng, lastMapData.initialZoom, lastMapData.filter_country, lastMapData.location_id, lastMapData.location_source, lastMapData.categories, true);
+                                initMap(locationsOnInit, {
+                                    initialLat: lastMapData.initialLat,
+                                    initialLng: lastMapData.initialLng,
+                                    initialZoom: lastMapData.initialZoom,
+                                    filter_country: lastMapData.filter_country,
+                                    location_id_and_source_pairs: [[parseInt(lastMapData.location_id), lastMapData.location_source]],
+                                    categories: lastMapData.categories,
+                                    campForZoomChange: true
+                                });
                             });
 
                             function updateTopAndBottomLocationTypesFilters(category_id, bool) {
@@ -1770,7 +1903,20 @@ var projectData = {
 
                         // updating lastMapData categories
                         lastMapData.categories = $('.selectpicker.location-types').val();
-                        initMap(lastMapData.map_locations, lastMapData.initialLat, lastMapData.initialLng, lastMapData.initialZoom, lastMapData.filter_country, lastMapData.location_id, lastMapData.location_source, lastMapData.categories, true);
+
+                        var location_id_and_source_pairs = [];
+                        if (lastMapData.location_id != undefined && lastMapData.location_source != undefined) {
+                            location_id_and_source_pairs = [[parseInt(lastMapData.location_id), lastMapData.location_source]];
+                        }
+                        initMap(locationsOnInit, {
+                            initialLat: lastMapData.initialLat,
+                            initialLng: lastMapData.initialLng,
+                            initialZoom: lastMapData.initialZoom,
+                            filter_country: lastMapData.filter_country,
+                            location_id_and_source_pairs: location_id_and_source_pairs,
+                            categories: lastMapData.categories,
+                            campForZoomChange: true
+                        });
                     }
 
                     $('.countries-list > li > a').click(async function() {
@@ -1778,16 +1924,16 @@ var projectData = {
                         thisBtn.parent().find('.locations-category-list').html('');
 
                         lastMapData = {
-                            map_locations: locationsOnInit,
                             initialLat: thisBtn.attr('data-country-centroid-lat'),
                             initialLng: thisBtn.attr('data-country-centroid-lng'),
                             initialZoom: 6,
                             filter_country: $(this).attr('data-country-code'),
-                            location_id: undefined,
-                            location_source: undefined,
-                            categories: $('.selectpicker.location-types').val()
+                            categories: $('.selectpicker.location-types').val(),
+                            campForZoomChange: true,
+                            location_id_and_source_pairs: []
                         };
-                        initMap(locationsOnInit, thisBtn.attr('data-country-centroid-lat'), thisBtn.attr('data-country-centroid-lng'), 5, $(this).attr('data-country-code'), undefined, undefined, $('.selectpicker.location-types').val(), true);
+
+                        initMap(locationsOnInit, lastMapData);
 
                         buildCountryLocationsList(thisBtn.parent().find('.locations-category-list'), $(this).attr('data-country-code'), thisBtn);
                     });
@@ -1842,7 +1988,7 @@ var projectData = {
 
                         hiddenContent += '</div>';
 
-                        return '<li class="fs-0 single-location"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block"><img src="'+avatar_url+'" alt="Location logo" itemprop="contentUrl"/></figure><div class="right-location-content inline-block padding-left-10"><h3 class="fs-26 fs-xs-20 fs-sm-22 lato-black color-black">'+name+'</h3>'+trpStatsHtml+'<div class="fs-16 color-black padding-top-5 padding-bottom-5">'+visibleAddress+'</div>'+partnerHtml+hiddenContent+'<div class="text-right padding-top-10"><a href="javascript:void(0);" class="toggle-location-tile" data-location-id="'+location_id+'" data-location-source="'+location_source+'" data-lat="'+lat+'" data-lng="'+lng+'" data-name="'+name.replace(/"/g, "&quot;")+'"><img src="/assets/images/down-arrow.svg"/></a></div></div></li>';
+                        return '<li class="fs-0 single-location"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block"><img src="'+avatar_url+'" alt="Location logo" itemprop="contentUrl"/></figure><div class="right-location-content inline-block padding-left-10"><h3 class="fs-26 fs-xs-20 fs-sm-22 lato-black color-black">'+name+'</h3>'+trpStatsHtml+'<div class="fs-16 color-black padding-top-5 padding-bottom-5">'+visibleAddress+'</div>'+partnerHtml+hiddenContent+'<div class="text-right padding-top-10"><a href="javascript:void(0);" class="toggle-location-tile" data-city="'+city_name+'" data-location-id="'+location_id+'" data-location-source="'+location_source+'" data-lat="'+lat+'" data-lng="'+lng+'" data-name="'+name.replace(/"/g, "&quot;")+'"><img src="/assets/images/down-arrow.svg"/></a></div></div></li>';
                     }
 
                     // on location tile open and close
@@ -1859,32 +2005,44 @@ var projectData = {
 
                         if ($(this).hasClass('toggled')) {
                             lastMapData = {
-                                map_locations: locationsOnInit,
                                 initialLat: arrowBtn.attr('data-lat'),
                                 initialLng: arrowBtn.attr('data-lng'),
                                 initialZoom: 15,
                                 filter_country: undefined,
-                                location_id: arrowBtn.attr('data-location-id'),
-                                location_source: arrowBtn.attr('data-location-source'),
-                                categories: $('.selectpicker.location-types').val()
+                                location_id_and_source_pairs: [[parseInt(arrowBtn.attr('data-location-id')), arrowBtn.attr('data-location-source')]],
+                                categories: $('.selectpicker.location-types').val(),
+                                campForZoomChange: true,
+                                location_content: '<div class="map-infowindow"><button>'+arrowBtn.attr('data-name')+'</button></div>'
                             };
-                            initMap(locationsOnInit, arrowBtn.attr('data-lat'), arrowBtn.attr('data-lng'), 15, undefined, arrowBtn.attr('data-location-id'), arrowBtn.attr('data-location-source'), $('.selectpicker.location-types').val(), true, undefined, '<div style="font-size: 20px;">'+arrowBtn.attr('data-name')+'</div>');
+
+                            initMap(locationsOnInit, lastMapData);
                         } else {
                             lastMapData = {
-                                map_locations: locationsOnInit,
                                 initialLat: $('.country-list-parent.open-item > a').attr('data-country-centroid-lat'),
                                 initialLng: $('.country-list-parent.open-item > a').attr('data-country-centroid-lng'),
                                 initialZoom: 5,
                                 filter_country: $('.country-list-parent.open-item > a').attr('data-country-code'),
-                                location_id: undefined,
-                                location_source: undefined,
-                                categories: $('.selectpicker.location-types').val()
+                                location_id_and_source_pairs: [],
+                                categories: $('.selectpicker.location-types').val(),
+                                campForZoomChange: true,
+                                location_content: '<div class="map-infowindow"><button>'+arrowBtn.attr('data-name')+'</button></div>'
                             };
-                            initMap(locationsOnInit, $('.country-list-parent.open-item > a').attr('data-country-centroid-lat'), $('.country-list-parent.open-item > a').attr('data-country-centroid-lng'), 5, $('.country-list-parent.open-item > a').attr('data-country-code'), undefined, undefined, $('.selectpicker.location-types').val(), true, undefined, '<div style="font-size: 20px;">'+arrowBtn.attr('data-name')+'</div>');
+                            initMap(locationsOnInit, lastMapData);
                         }
                     });
 
                     $(document).on('click', '.go-back-to-countries', function() {
+                        if ($('.locations-category-list .category-toggle-button').length) {
+                            $('.locations-category-list .category-toggle-button.hide').removeClass('hide')
+                        }
+
+                        if ($('.locations-category-list .locations-list .single-location.hide').length) {
+                            $('.locations-category-list .locations-list .single-location').removeClass('hide');
+                        }
+
+                        $('.selectpicker.locations option').eq(0).prop('selected', true);
+                        $('.selectpicker.locations').selectpicker('refresh');
+
                         if ($('.picker-and-map .picker-label').attr('data-last-continent') == undefined || $('.single-continent.open-item > a .element-name').html() != $('.picker-and-map .picker-label').attr('data-last-continent')) {
                             var continentName = $('.single-continent.open-item > a .element-name').html();
                             console.log(continentName, 'set continent name');
@@ -1906,16 +2064,15 @@ var projectData = {
                         }
 
                         lastMapData = {
-                            map_locations: locationsOnInit,
                             initialLat: undefined,
                             initialLng: undefined,
                             initialZoom: undefined,
                             filter_country: JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')),
-                            location_id: undefined,
-                            location_source: undefined,
-                            categories: $('.selectpicker.location-types').val()
+                            location_id_and_source_pairs: [],
+                            categories: $('.selectpicker.location-types').val(),
+                            campForZoomChange: true
                         };
-                        initMap(locationsOnInit, undefined, undefined, undefined, JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')), undefined, undefined, $('.selectpicker.location-types').val(), true);
+                        initMap(locationsOnInit, lastMapData);
 
                         $('.results-list .shown').removeClass('shown');
                         $('.results-list .countries-nav').addClass('shown');

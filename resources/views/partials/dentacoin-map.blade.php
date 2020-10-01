@@ -25,7 +25,7 @@
                             @php($groupHtml = '<optgroup label="'.$value['name'].'" class="optgroup-for-types category-'.$value['id'].'">')
                             @if (!empty($value['data']))
                                 @foreach ($value['data'] as $location)
-                                    @php($groupHtml .= '<option class="option-type" data-id="'.$location['id'].'" data-lat="'.$location['lat'].'" data-lng="'.$location['lng'].'" data-country-code="'.$location['country_code'].'" value="'.$location['source'].'">'.$location['name'].'</option>')
+                                    @php($groupHtml .= '<option class="option-type" data-id="'.$location['id'].'" data-lat="'.$location['lat'].'" data-lng="'.$location['lng'].'" data-country-code="'.$location['country_code'].'" value="'.$location['source'].'">'.$location['name'].', '.$location['country_name'].'</option>')
                                 @endforeach
                             @endif
                             @php($groupHtml .= '</optgroup>')
@@ -34,15 +34,24 @@
                             @php($counter += 1)
                         @endforeach
                         @if (!empty($arrWithCountriesAndCities))
+                            @php($groupHtml = '<optgroup label="Countries">')
+                                @foreach ($arrWithCountriesAndCities as $country => $countryData)
+                                    @php($groupHtml .= '<option class="country-type" ' . ((array_key_exists('centroid_lat', $countryData)) ? 'data-centroid-lat="'.$countryData['centroid_lat'].'"' : '') . '  ' . ((array_key_exists('centroid_lng', $countryData)) ? 'data-centroid-lng="'.$countryData['centroid_lng'].'"' : '') . ' data-country-code="'.$countryData['code'].'">'.$country.'</option>')
+                                @endforeach
+                            @php($groupHtml .= '</optgroup>')
+                            @php($arrayWithGroupsHtml['optgroup-'.$counter] = $groupHtml)
+                            @php($allGroupsHtml .= $groupHtml)
+
                             @php($groupHtml = '<optgroup label="Locations">')
                                 @foreach ($arrWithCountriesAndCities as $country => $countryData)
                                     @foreach ($countryData['data'] as $city)
-                                        @php($groupHtml .= '<option ' . ((array_key_exists('centroid_lat', $countryData)) ? 'data-centroid-lat="'.$countryData['centroid_lat'].'"' : '') . '  ' . ((array_key_exists('centroid_lng', $countryData)) ? 'data-centroid-lng="'.$countryData['centroid_lng'].'"' : '') . ' data-country-code="'.$countryData['code'].'" data-city="'.$city.'">'.$city.', '.$country.'</option>')
+                                        @php($groupHtml .= '<option class="city-type" data-country-code="'.$countryData['code'].'" data-city="'.$city.'">'.$city.', '.$country.'</option>')
                                     @endforeach
                                 @endforeach
                             @php($groupHtml .= '</optgroup>')
                             @php($arrayWithGroupsHtml['optgroup-'.$counter] = $groupHtml)
                             @php($allGroupsHtml .= $groupHtml)
+
                             {!! $allGroupsHtml !!}
                         @else
                             {!! $allGroupsHtml !!}
@@ -64,7 +73,13 @@
     <div class="left-picker inline-block-top">
         <div class="inner-gray-line fs-0 padding-left-15 padding-right-15">
             <div class="width-50 inline-block picker-label fs-18 fs-xs-16 padding-top-5 padding-bottom-5">Worldwide</div>
-            <div class="width-50 inline-block picker-value fs-18 fs-xs-16 text-right" @if (!empty($combinedCountData) && is_object($combinedCountData) && property_exists($combinedCountData, 'success')) data-worldwide="{{$combinedCountData->data->partners + $combinedCountData->data->non_partners}}" @endif>@if (!empty($combinedCountData) && is_object($combinedCountData) && property_exists($combinedCountData, 'success') && $combinedCountData->success) <span class="lato-black">{{$combinedCountData->data->partners + $combinedCountData->data->non_partners}}</span> Results @endif</div>
+            @if (!empty($combinedCountData) && is_object($combinedCountData) && property_exists($combinedCountData, 'success') && $combinedCountData->success)
+                @php($partnersAndNonPartnersCount = $combinedCountData->data->partners + $combinedCountData->data->non_partners)
+                @if (isset($locationsCountInDcnDB) && !empty($locationsCountInDcnDB))
+                    @php($partnersAndNonPartnersCount += $locationsCountInDcnDB)
+                @endif
+                <div class="width-50 inline-block picker-value fs-18 fs-xs-16 text-right" data-worldwide="{{$partnersAndNonPartnersCount}}"><span class="lato-black">{{$partnersAndNonPartnersCount}}</span> Results</div>
+            @endif
         </div>
         <div class="results-list">
             <div class="results-nav fs-0">
@@ -76,6 +91,7 @@
                     <a href="javascript:void(0);" class="nav-item inline-block width-50 fs-18 fs-xs-16">Choose Location</a>
                 </div>
             </div>
+            <div class="custom-search-list hide padding-top-10 padding-bottom-10 padding-left-5 padding-right-5"></div>
             <div class="continents-list">
                 @if (!empty($continents))
                     <ul>

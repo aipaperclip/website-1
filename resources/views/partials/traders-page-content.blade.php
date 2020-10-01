@@ -67,7 +67,7 @@
                                                 @foreach($pairs as $pair)
                                                     <li class="padding-bottom-5"><a href="{{$pair->url}}"
                                                                                     target="_blank"
-                                                                                    class="display-block padding-left-15 padding-right-15">{{$pair->title}}</a>
+                                                                                    class="display-block padding-left-15 padding-right-15 padding-left-xs-10 padding-right-xs-10">{{$pair->title}}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
