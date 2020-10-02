@@ -385,7 +385,7 @@
                 max-width: 1600px;
                 .content {
                     width: 100%;
-                    max-width: 950px;
+                    max-width: 900px;
                     .video-content {
                         width: 350px;
                     }
@@ -394,7 +394,7 @@
                     }
                 }
                 .left-arrow, .right-arrow {
-                    width: calc(50% - (950px / 2));
+                    width: calc(50% - (900px / 2));
                 }
             }
         }

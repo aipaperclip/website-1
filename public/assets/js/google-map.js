@@ -82,7 +82,10 @@ function initMap(map_locations, options) {
         // doing this so when the map is not zoomed much to show all locations with map clusters, even the ones that are single in their area
         function wrapSingleLocationsIntoClusters() {
             var zoomLevel = map.getZoom();
-            if (zoomLevel > 10) {
+            console.log(zoomLevel, 'zoomLevel');
+            if (zoomLevel > 15) {
+                markerCluster.setMinimumClusterSize(10);
+            } else if (zoomLevel > 10) {
                 markerCluster.setMinimumClusterSize(2);
             } else {
                 markerCluster.setMinimumClusterSize(1);
