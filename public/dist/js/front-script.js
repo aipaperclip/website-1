@@ -191,6 +191,10 @@ var basic = {
             return "iOS";
         }
 
+        if (/(Mac|iPhone|iPod|iPad)/.test(userAgent) && !window.MSStream) {
+            return "Mac";
+        }
+
         return "unknown";
     },
     addCsrfTokenToAllAjax: function ()    {
@@ -2497,7 +2501,7 @@ var projectData = {
                                 videoPlayed = true;
 
                                 var videoFormat = 'webm';
-                                if (basic.getMobileOperatingSystem() == 'iOS') {
+                                if (basic.getMobileOperatingSystem() == 'iOS' || basic.getMobileOperatingSystem() == 'Mac') {
                                     videoFormat = 'mp4';
                                 }
 
@@ -3360,7 +3364,7 @@ var projectData = {
                             videoClass = '';
                         }
 
-                        if (basic.getMobileOperatingSystem() == 'iOS') {
+                        if (basic.getMobileOperatingSystem() == 'iOS' || basic.getMobileOperatingSystem() == 'Mac') {
                             $('.changeable-video').eq(i).prepend('<video '+videoAttr+' '+videoClass+'><source src="'+$('.changeable-video').eq(i).attr('data-mp4')+'" type="video/mp4">Your browser does not support HTML5 video.</video>');
                             $('.changeable-video').eq(i).find('link[itemprop="contentURL"]').attr('href', $('.changeable-video').eq(i).attr('data-mp4'));
                         } else {

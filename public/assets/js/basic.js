@@ -191,6 +191,10 @@ var basic = {
             return "iOS";
         }
 
+        if (/(Mac|iPhone|iPod|iPad)/.test(userAgent) && !window.MSStream) {
+            return "Mac";
+        }
+
         return "unknown";
     },
     addCsrfTokenToAllAjax: function ()    {
