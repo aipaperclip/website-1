@@ -51,12 +51,7 @@
                         <img src="/assets/uploads/dentists-circle-2.png" alt="Dentists circle 2" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
                 @else
-                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject"
-                         class="video max-width-220 margin-0-auto">
-                        <video muted="muted" {{--autoplay--}}>
-                            <source src="/assets/uploads/dentists-circle-icon2.webm" type="video/mp4">
-                            Your browser does not support HTML5 video.
-                        </video>
+                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto changeable-video" data-mp4="/assets/uploads/dentists-circle-icon2.mp4" data-webm="/assets/uploads/dentists-circle-icon2.webm" data-video-attributes="muted">
                         <meta itemprop="name" content="Dentacoin Benefit Video">
                         <meta itemprop="description" content="Improved online presence and search rank">
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
@@ -75,12 +70,7 @@
                         <img src="/assets/uploads/dentists-circle-3.png" alt="Dentists circle 3" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
                 @else
-                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject"
-                         class="video max-width-220 margin-0-auto">
-                        <video muted="muted" {{--autoplay--}}>
-                            <source src="/assets/uploads/dentists-circle-icon3.webm" type="video/mp4">
-                            Your browser does not support HTML5 video.
-                        </video>
+                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto changeable-video" data-mp4="/assets/uploads/dentists-circle-icon3.mp4" data-webm="/assets/uploads/dentists-circle-icon3.webm" data-video-attributes="muted">
                         <meta itemprop="name" content="Dentacoin Benefit Video">
                         <meta itemprop="description" content="Additional income and innovative payments">
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
@@ -97,12 +87,7 @@
                         <img src="/assets/uploads/dentists-circle-4.png" alt="Dentists circle 4" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
                 @else
-                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject"
-                         class="video max-width-220 margin-0-auto">
-                        <video muted="muted" {{--autoplay--}}>
-                            <source src="/assets/uploads/dentists-circle-icon4.webm" type="video/mp4">
-                            Your browser does not support HTML5 video.
-                        </video>
+                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto changeable-video" data-mp4="/assets/uploads/dentists-circle-icon4.mp4" data-webm="/assets/uploads/dentists-circle-icon4.webm" data-video-attributes="muted">
                         <meta itemprop="name" content="Dentacoin Benefit Video">
                         <meta itemprop="description" content="Market overview via free DentaVox stats">
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
@@ -119,12 +104,7 @@
                         <img src="/assets/uploads/dentists-circle-5.png" alt="Dentists circle 5" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
                 @else
-                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject"
-                         class="video max-width-220 margin-0-auto">
-                        <video muted="muted" {{--autoplay--}}>
-                            <source src="/assets/uploads/dentists-circle-icon5.webm" type="video/mp4">
-                            Your browser does not support HTML5 video.
-                        </video>
+                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto changeable-video" data-mp4="/assets/uploads/dentists-circle-icon5.mp4" data-webm="/assets/uploads/dentists-circle-icon5.webm" data-video-attributes="muted">
                         <meta itemprop="name" content="Dentacoin Benefit Video">
                         <meta itemprop="description" content="Valuable feedback via Trusted Reviews">
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
