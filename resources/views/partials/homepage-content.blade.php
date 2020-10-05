@@ -1,4 +1,4 @@
-<section class="section-homepage-intro container padding-top-130 padding-top-xs-90 padding-top-lgll-230 padding-bottom-60 padding-bottom-xs-40 padding-bottom-lgll-120 hide-on-users-category-selected @if (!empty($class)) {{$class}} @endif">
+<section class="section-homepage-intro container padding-top-130 padding-top-xs-90 padding-top-lgll-230 padding-bottom-60 padding-bottom-xs-40 padding-bottom-lgll-120 hide-homepage-data @if (!empty($class)) {{$class}} @endif">
     <div class="row">
         <div class="col-xs-12 col-lg-8 col-lg-offset-2 text-center">
             <figure itemscope="" itemtype="http://schema.org/ImageObject">
@@ -26,7 +26,7 @@
         </a>
     </section>
 @else
-    <section class="section-homepage-nav container-fluid hide-on-users-category-selected @if (!empty($class)) {{$class}} @endif">
+    <section class="section-homepage-nav container-fluid hide-homepage-data @if (!empty($class)) {{$class}} @endif">
         <div class="row text-center fs-0">
             <div class="col-xs-4 inline-block-bottom single-element no-gutter">
                 <a href="javascript:void(0);" class="display-block padding-bottom-25 padding-top-5 color-black call-users-page users">

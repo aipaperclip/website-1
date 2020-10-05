@@ -1496,3 +1496,7 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
         @include vertical-horizontal-align(absolute);
     }
 }
+
+.blank-container {
+    background-color: white;
+}

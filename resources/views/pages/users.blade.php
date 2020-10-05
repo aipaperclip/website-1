@@ -6,5 +6,6 @@
     </div>
     <div class="hidden-page-content hidden-dentists-page-content"></div>
     <div class="hidden-page-content hidden-traders-page-content"></div>
-    @include('partials.homepage-content', array('class' => 'hide'))
+    {{--@include('partials.homepage-content', array('class' => 'hide'))--}}
+    <div class="hide-on-users-category-selected blank-container hide"></div>
 @endsection

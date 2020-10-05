@@ -35,21 +35,19 @@
                     </figure>
                 @else
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto">
-                        <video muted="muted" {{--autoplay}--}}>
-                            <source src="/assets/uploads/dentists-circle-icon1.mp4" type="video/mp4">
+                        <video muted="muted" {{--autoplay--}}>
+                            <source src="/assets/uploads/dentists-circle-icon1.webm" type="video/mp4">
                             Your browser does not support HTML5 video.
                         </video>
                         <meta itemprop="name" content="Dentacoin Benefit Video">
                         <meta itemprop="description" content="Happier and healthier patients">
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
                         <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
-                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon1.mp4">
+                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon1.webm">
                         <img src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
                     </div>
                 @endif
-                <div class="fs-20 fs-sm-16 fs-xs-18 lato-bold padding-top-10 color-black">Happier and healthier
-                    patients
-                </div>
+                <div class="fs-20 fs-sm-16 fs-xs-18 lato-bold padding-top-10 color-black">Happier and healthier patients</div>
             </div>
             <div class="single-benefit inline-block-top">
                 @if (isset($mobile_device) && $mobile_device)
@@ -60,14 +58,14 @@
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject"
                          class="video max-width-220 margin-0-auto">
                         <video muted="muted" {{--autoplay--}}>
-                            <source src="/assets/uploads/dentists-circle-icon2.mp4" type="video/mp4">
+                            <source src="/assets/uploads/dentists-circle-icon2.webm" type="video/mp4">
                             Your browser does not support HTML5 video.
                         </video>
                         <meta itemprop="name" content="Dentacoin Benefit Video">
                         <meta itemprop="description" content="Improved online presence and search rank">
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
                         <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
-                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon2.mp4">
+                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon2.webm">
                         <img src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
                     </div>
                 @endif
@@ -84,20 +82,18 @@
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject"
                          class="video max-width-220 margin-0-auto">
                         <video muted="muted" {{--autoplay--}}>
-                            <source src="/assets/uploads/dentists-circle-icon3.mp4" type="video/mp4">
+                            <source src="/assets/uploads/dentists-circle-icon3.webm" type="video/mp4">
                             Your browser does not support HTML5 video.
                         </video>
                         <meta itemprop="name" content="Dentacoin Benefit Video">
                         <meta itemprop="description" content="Additional income and innovative payments">
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
                         <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
-                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon3.mp4">
+                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon3.webm">
                         <img src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
                     </div>
                 @endif
-                <div class="fs-20 fs-sm-16 fs-xs-18 lato-bold padding-top-10 color-black">Additional income and
-                    innovative payments
-                </div>
+                <div class="fs-20 fs-sm-16 fs-xs-18 lato-bold padding-top-10 color-black">Additional income and innovative payments</div>
             </div>
             <div class="single-benefit inline-block-top">
                 @if (isset($mobile_device) && $mobile_device)
@@ -108,20 +104,18 @@
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject"
                          class="video max-width-220 margin-0-auto">
                         <video muted="muted" {{--autoplay--}}>
-                            <source src="/assets/uploads/dentists-circle-icon4.mp4" type="video/mp4">
+                            <source src="/assets/uploads/dentists-circle-icon4.webm" type="video/mp4">
                             Your browser does not support HTML5 video.
                         </video>
                         <meta itemprop="name" content="Dentacoin Benefit Video">
                         <meta itemprop="description" content="Market overview via free DentaVox stats">
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
                         <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
-                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon4.mp4">
+                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon4.webm">
                         <img src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
                     </div>
                 @endif
-                <div class="fs-20 fs-sm-16 fs-xs-18 lato-bold padding-top-10 color-black">Market overview via free
-                    DentaVox stats
-                </div>
+                <div class="fs-20 fs-sm-16 fs-xs-18 lato-bold padding-top-10 color-black">Market overview via free DentaVox stats</div>
             </div>
             <div class="single-benefit inline-block-top">
                 @if (isset($mobile_device) && $mobile_device)
@@ -132,14 +126,14 @@
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject"
                          class="video max-width-220 margin-0-auto">
                         <video muted="muted" {{--autoplay--}}>
-                            <source src="/assets/uploads/dentists-circle-icon5.mp4" type="video/mp4">
+                            <source src="/assets/uploads/dentists-circle-icon5.webm" type="video/mp4">
                             Your browser does not support HTML5 video.
                         </video>
                         <meta itemprop="name" content="Dentacoin Benefit Video">
                         <meta itemprop="description" content="Valuable feedback via Trusted Reviews">
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
                         <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
-                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon5.mp4">
+                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon5.webm">
                         <img src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
                     </div>
                 @endif
@@ -171,20 +165,18 @@
         </div>
     </div>
     <div class="map-container">
-        <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject">
-            @php ($videoUrl = 'desktop-map-loader.webm')
-            @if (isset($mobile_device) && $mobile_device)
-                @php ($videoUrl = 'mobile-map-loader.webm')
-            @endif
-            <video autoplay muted loop class="width-100">
-                <source src="{{URL::asset('assets/uploads/'.$videoUrl) }}" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
+        @php ($webmVideoUrl = 'desktop-map-loader.webm')
+        @php ($mp4VideoUrl = 'desktop-map-loader.mp4')
+        @if (isset($mobile_device) && $mobile_device)
+            @php ($webmVideoUrl = 'mobile-map-loader.webm')
+            @php ($mp4VideoUrl = 'mobile-map-loader.mp4')
+        @endif
+        <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video" data-mp4="/assets/uploads/{{$mp4VideoUrl}}" data-webm="/assets/uploads/{{$webmVideoUrl}}" data-video-attributes="autoplay muted loop" data-video-class="width-100">
             <meta itemprop="name" content="Dentacoin Loading Video">
             <meta itemprop="description" content="Dentacoin Loading Video which is shown whenever website content is still loading">
             <meta itemprop="uploadDate" content="2020-09-19T08:00:00+08:00">
             <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
-            <link itemprop="contentURL" href="{{URL::asset('assets/uploads/'.$videoUrl) }}">
+            <link itemprop="contentURL" href="">
         </div>
         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="loader-over-map">
             <img src="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif" alt="Loader">

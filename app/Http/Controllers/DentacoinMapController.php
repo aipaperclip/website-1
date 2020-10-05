@@ -22,12 +22,34 @@ class DentacoinMapController extends Controller
         $suppliers = $this->getDentacoinLocations(3, $request->input('country-code'));
         $industryPartners = $this->getDentacoinLocations(4, $request->input('country-code'));
 
+        $locationTypes = LocationType::where(array('id' => 2))->orWhere(array('id' => 3))->orWhere(array('id' => 4))->get()->all();
         if (!empty($labs) || !empty($suppliers) || !empty($industryPartners)) {
-            return response()->json(['success' => true, 'data' => array(
-                'labs' => $labs,
-                'suppliers' => $suppliers,
-                'industryPartners' => $industryPartners
-            )]);
+            $responseData = array(
+                'labs' => array(
+                    'data' => $labs
+                ),
+                'suppliers' => array(
+                    'data' => $suppliers
+                ),
+                'industryPartners' => array(
+                    'data' => $industryPartners
+                )
+            );
+
+            foreach ($locationTypes as $locationType) {
+                if ($locationType->id == 2) {
+                    $responseData['labs']['name'] = $locationType->name;
+                    $responseData['labs']['description'] = $locationType->name;
+                } else if ($locationType->id == 3) {
+                    $responseData['suppliers']['name'] = $locationType->name;
+                    $responseData['suppliers']['description'] = $locationType->name;
+                } else if ($locationType->id == 4) {
+                    $responseData['industryPartners']['name'] = $locationType->name;
+                    $responseData['industryPartners']['description'] = $locationType->name;
+                }
+            }
+
+            return response()->json(['success' => true, 'data' => $responseData]);
         } else {
             return response()->json(['error' => true]);
         }
@@ -182,7 +204,8 @@ class DentacoinMapController extends Controller
                 $response = (new APIRequestsController())->getMapData(array('action' => 'all-partners-data-by-country', 'country' => $code));
 
                 if (!empty($response) && is_object($response) && property_exists($response, 'success') && $response->success) {
-                    return response()->json(['success' => true, 'data' => $response->data]);
+                    $locationType = LocationType::where(array('id' => 1))->get()->first();
+                    return response()->json(['success' => true, 'data' => $response->data, 'name' => $locationType->name, 'description' => $locationType->description]);
                 } else {
                     return response()->json(['error' => true]);
                 }
@@ -192,7 +215,8 @@ class DentacoinMapController extends Controller
                 $response = (new APIRequestsController())->getMapData(array('action' => 'all-non-partners-data-by-country', 'country' => $code));
 
                 if (!empty($response) && is_object($response) && property_exists($response, 'success') && $response->success) {
-                    return response()->json(['success' => true, 'data' => $response->data]);
+                    $locationType = LocationType::where(array('id' => 5))->get()->first();
+                    return response()->json(['success' => true, 'data' => $response->data, 'name' => $locationType->name, 'description' => $locationType->description]);
                 } else {
                     return response()->json(['error' => true]);
                 }

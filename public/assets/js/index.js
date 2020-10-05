@@ -123,6 +123,8 @@ var projectData = {
                 if ($('body').hasClass('home')) {
                     projectData.general_logic.data.showLoader();
 
+                    $('.blank-container').height($(window).height());
+
                     setTimeout(async function() {
                         var usersPageData = '';
                         var dentistsPageData = '';
@@ -140,17 +142,26 @@ var projectData = {
                             tradersPageData = takeHomepageDataResponse.data.tradersPageData;
 
                             $('.call-users-page').click(function() {
-                                console.log('click');
+                                if ($('.hide-homepage-data').length && !$('.hide-homepage-data').hasClass('hide')) {
+                                    $('.hide-homepage-data').addClass('hide');
+                                    $('.hide-on-users-category-selected').removeClass('hide');
+                                }
                                 projectData.general_logic.data.slideInUsersContent(usersPageData);
                             });
 
                             $('.call-dentists-page').click(function() {
-                                console.log('click');
+                                if ($('.hide-homepage-data').length && !$('.hide-homepage-data').hasClass('hide')) {
+                                    $('.hide-homepage-data').addClass('hide');
+                                    $('.hide-on-users-category-selected').removeClass('hide');
+                                }
                                 projectData.general_logic.data.slideInDentistsContent(dentistsPageData);
                             });
 
                             $('.call-traders-page').click(function() {
-                                console.log('click');
+                                if ($('.hide-homepage-data').length && !$('.hide-homepage-data').hasClass('hide')) {
+                                    $('.hide-homepage-data').addClass('hide');
+                                    $('.hide-on-users-category-selected').removeClass('hide');
+                                }
                                 projectData.general_logic.data.slideInTradersContent(tradersPageData);
                             });
                         } else {
@@ -168,6 +179,10 @@ var projectData = {
                         return false;
                     }
                 }
+
+                $('.blank-container').height($(window).height());
+
+                projectData.general_logic.data.setChangeableVideos();
 
                 // adjust header to black style
                 $('header .white-black-btn').removeClass('white-black-btn').addClass('black-white-btn');
@@ -204,9 +219,17 @@ var projectData = {
                 } else {
                     var videoPlayed = false;
                     $(window).on('scroll', function () {
-                        if (basic.isInViewport($('.patient-dentist-triangle-video'), 200) && !videoPlayed) {
-                            videoPlayed = true;
-                            $('.patient-dentist-triangle-video').html('<video muted="muted" autoplay><source src="/assets/uploads/patient-dentist-triangle-animation.mp4" type="video/mp4"> Your browser does not support HTML5 video.</video><meta itemprop="name" content="Dentacoin Currency Video"><meta itemprop="description" content="Relation between patients and dentists via Dentacoin Currency."><meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00"><meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png"><link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/patient-dentist-triangle-animation.mp4">');
+                        if ($('.patient-dentist-triangle-video').length) {
+                            if (basic.isInViewport($('.patient-dentist-triangle-video'), 200) && !videoPlayed) {
+                                videoPlayed = true;
+
+                                var videoFormat = 'webm';
+                                if (basic.isMobile() && basic.getMobileOperatingSystem() == 'iOS') {
+                                    videoFormat = 'mp4';
+                                }
+
+                                $('.patient-dentist-triangle-video').html('<video muted="muted" autoplay><source src="/assets/uploads/patient-dentist-triangle-animation.'+videoFormat+'" type="video/'+videoFormat+'"> Your browser does not support HTML5 video.</video><meta itemprop="name" content="Dentacoin Currency Video"><meta itemprop="description" content="Relation between patients and dentists via Dentacoin Currency."><meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00"><meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png"><link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/patient-dentist-triangle-animation.'+videoFormat+'">');
+                            }
                         }
                     });
                 }
@@ -215,17 +238,20 @@ var projectData = {
                 projectData.general_logic.data.videoExpressionsSlider('users');
                 projectData.general_logic.data.userExpressionsSlider('users');
 
-                if ($('.section-google-map.module').length) {
-                    var mapVisible = false;
-                    $(window).on('scroll', function () {
+                var mapVisible = false;
+                function loadMap() {
+                    if ($('.section-google-map.module').length) {
                         if (basic.isInViewport($('.section-google-map.module'), 200) && !mapVisible) {
                             console.log('LOAD MAP');
                             mapVisible = true;
 
                             projectData.general_logic.data.dentacoinGoogleMap();
                         }
-                    });
+                    }
                 }
+
+                $(window).unbind('scroll', loadMap);
+                $(window).bind('scroll', loadMap);
             },
             dentists: function(bodyClassCheck) {
                 if (bodyClassCheck != undefined) {
@@ -233,6 +259,10 @@ var projectData = {
                         return false;
                     }
                 }
+
+                $('.blank-container').height($(window).height());
+
+                projectData.general_logic.data.setChangeableVideos();
 
                 // add intro section animation
                 $('.section-the-era-dentist-page .hidden-picture img').addClass('animated');
@@ -256,17 +286,19 @@ var projectData = {
                 if ($('.benefits-row').length && $('.benefits-row video').length) {
                     var videosPlayed = false;
                     $(window).on('scroll', function () {
-                        if (basic.isInViewport($('.benefits-row'), 200) && !videosPlayed) {
-                            videosPlayed = true;
+                        if ($('.benefits-row').length) {
+                            if (basic.isInViewport($('.benefits-row'), 200) && !videosPlayed) {
+                                videosPlayed = true;
 
-                            for (var i = 0, len = $('.benefits-row video').length; i < len; i+=1) {
-                                $('.benefits-row video').get(i).play();
+                                for (var i = 0, len = $('.benefits-row video').length; i < len; i+=1) {
+                                    $('.benefits-row video').get(i).play();
+                                }
+
+                                $('.section-list-with-benefits-dentists-page .white-purple-btn.with-white-arrow').addClass('animated');
+                                setTimeout(function() {
+                                    $('.section-list-with-benefits-dentists-page .white-purple-btn.with-white-arrow').removeClass('animated').addClass('hover-effect');
+                                }, 2000);
                             }
-
-                            $('.section-list-with-benefits-dentists-page .white-purple-btn.with-white-arrow').addClass('animated');
-                            setTimeout(function() {
-                                $('.section-list-with-benefits-dentists-page .white-purple-btn.with-white-arrow').removeClass('animated').addClass('hover-effect');
-                            }, 2000);
                         }
                     });
                 }
@@ -274,17 +306,20 @@ var projectData = {
                 projectData.general_logic.data.videoExpressionsSlider('dentists');
                 projectData.general_logic.data.userExpressionsSlider('dentists');
 
-                if ($('.section-google-map.module').length) {
-                    var mapVisible = false;
-                    $(window).on('scroll', function () {
+                var mapVisible = false;
+                function loadMap() {
+                    if ($('.section-google-map.module').length) {
                         if (basic.isInViewport($('.section-google-map.module'), 200) && !mapVisible) {
                             console.log('LOAD MAP');
                             mapVisible = true;
 
                             projectData.general_logic.data.dentacoinGoogleMap();
                         }
-                    });
+                    }
                 }
+
+                $(window).unbind('scroll', loadMap);
+                $(window).bind('scroll', loadMap);
             },
             traders: function(bodyClassCheck) {
                 if (bodyClassCheck != undefined) {
@@ -292,6 +327,10 @@ var projectData = {
                         return false;
                     }
                 }
+
+                $('.blank-container').height($(window).height());
+
+                projectData.general_logic.data.setChangeableVideos();
 
                 // if exchange bullets exist bind them logic to show/ hide exchanges
                 /*if ($('.exchanges-bullets').length) {
@@ -389,16 +428,20 @@ var projectData = {
 
                 $(window).on('scroll', function() {
                     // animate everything you need to know section
-                    if (basic.isInViewport($('.section-everything-you-need-to-know .middle-animated-subsection'), $(window).height() / 2) && !$('.section-everything-you-need-to-know .middle-animated-subsection').hasClass('fade-in-animation')) {
-                        $('.section-everything-you-need-to-know .middle-animated-subsection').addClass('fade-in-animation');
-                        $('.section-everything-you-need-to-know .left-animated-border').addClass('add-animation');
-                        $('.section-everything-you-need-to-know .right-animated-border').addClass('add-animation');
+                    if ($('.section-everything-you-need-to-know .middle-animated-subsection').length) {
+                        if (basic.isInViewport($('.section-everything-you-need-to-know .middle-animated-subsection'), $(window).height() / 2) && !$('.section-everything-you-need-to-know .middle-animated-subsection').hasClass('fade-in-animation')) {
+                            $('.section-everything-you-need-to-know .middle-animated-subsection').addClass('fade-in-animation');
+                            $('.section-everything-you-need-to-know .left-animated-border').addClass('add-animation');
+                            $('.section-everything-you-need-to-know .right-animated-border').addClass('add-animation');
+                        }
                     }
 
                     // animate wallet section
-                    if (basic.isInViewport($('.section-wallet .laptop'), $(window).height() / 2) && !$('.section-wallet .laptop').hasClass('animated')) {
-                        $('.section-wallet .laptop').addClass('animated');
-                        $('.section-wallet .phone').addClass('animated');
+                    if ($('.section-wallet .laptop').length) {
+                        if (basic.isInViewport($('.section-wallet .laptop'), $(window).height() / 2) && !$('.section-wallet .laptop').hasClass('animated')) {
+                            $('.section-wallet .laptop').addClass('animated');
+                            $('.section-wallet .phone').addClass('animated');
+                        }
                     }
                 });
 
@@ -1033,12 +1076,34 @@ var projectData = {
                     }
                 }
             },
+            setChangeableVideos: function() {
+                for (var i = 0, len = $('.changeable-video').length; i < len; i+=1) {
+                    if (!$('.changeable-video').eq(i).find('video').length) {
+                        var videoAttr = $('.changeable-video').eq(i).attr('data-video-attributes');
+                        var videoClass = $('.changeable-video').eq(i).attr('data-video-class');
+                        if (videoClass != undefined) {
+                            videoClass = 'class="'+videoClass+'"';
+                        } else {
+                            videoClass = '';
+                        }
+
+                        if (basic.isMobile() && basic.getMobileOperatingSystem() == 'iOS') {
+                            $('.changeable-video').eq(i).prepend('<video '+videoAttr+' '+videoClass+'><source src="'+$('.changeable-video').eq(i).attr('data-mp4')+'" type="video/mp4">Your browser does not support HTML5 video.</video>');
+                            $('.changeable-video').eq(i).find('link[itemprop="contentURL"]').attr('href', $('.changeable-video').eq(i).attr('data-mp4'));
+                        } else {
+                            $('.changeable-video').eq(i).prepend('<video '+videoAttr+' '+videoClass+'><source src="'+$('.changeable-video').eq(i).attr('data-webm')+'" type="video/webm">Your browser does not support HTML5 video.</video>');
+                            $('.changeable-video').eq(i).find('link[itemprop="contentURL"]').attr('href', $('.changeable-video').eq(i).attr('data-webm'));
+                        }
+                    }
+                }
+            },
             async dentacoinGoogleMap() {
                 var mapHtml = await projectData.requests.getMapHtml();
                 if (mapHtml.success) {
                     $('.section-google-map.module .map-container').html(mapHtml.data);
 
                     $('.selectpicker').selectpicker();
+                    projectData.utils.initTooltips();
 
                     var locationsOnInit = JSON.parse($('.google-map-box').attr('data-locations'));
                     var lastMapData = {
@@ -1142,6 +1207,9 @@ var projectData = {
                     $('body').addClass('overflow-hidden');
                     if ($(window).width() > 992) {
                         $('.results-list').css({'max-height' : ($('.google-map-and-bottom-filters').height() - $('.left-picker .inner-gray-line').height()) + 'px'});
+
+                        console.log($('.google-map-and-bottom-filters').height(), '$(\'.google-map-and-bottom-filters\').height()');
+                        console.log($('.left-picker .inner-gray-line').height(), '$(\'.left-picker .inner-gray-line\').height()');
                     }
                     $('body').removeClass('overflow-hidden');
 
@@ -1367,7 +1435,7 @@ var projectData = {
                                     $('.locations-splitted-by-category .filter-option-inner-inner .custom-label').remove();
                                     $('.locations-splitted-by-category .filter-option-inner-inner').addClass('fs-0').append('<div class="custom-label color-black fs-16">'+searchKeyword+'</div>');
 
-                                    $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents remove-custom-search-list"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> Back to list</a>');
+                                    $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents remove-custom-search-list"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> <span class="inline-block">Back to list</span></a>');
 
                                     $('.go-back-to-continents.remove-custom-search-list').click(function() {
                                         $('.custom-search-list').addClass('hide');
@@ -1458,7 +1526,7 @@ var projectData = {
 
                         $('.dentacoin-stats-category-label span').html('in ' + $(this).find('.element-name').html());
 
-                        $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+$(this).find('.element-name').html().trim()).attr('data-last-continent', $(this).find('.element-name').html().trim()+'</a>');
+                        $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> <span class="inline-block">'+$(this).find('.element-name').html().trim()).attr('data-last-continent', $(this).find('.element-name').html().trim()+'</span></a>');
 
                         $('.results-list').scrollTop(0);
 
@@ -1563,7 +1631,12 @@ var projectData = {
                                 parentElementClass = 'closed';
                             }
 
-                            var bindPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button partners fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Partner Dental Practices</span></a><ul class="locations-list">';
+                            var tooltipHtml = '';
+                            if (currentCountryPartnersData.description != null && currentCountryPartnersData.description != undefined) {
+                                tooltipHtml = 'data-toggle="tooltip" title="'+currentCountryPartnersData.description+'"';
+                            }
+
+                            var bindPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button partners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+currentCountryPartnersData.name+'</span></a><ul class="locations-list">';
                             for (var i = 0, len = currentCountryPartnersData.data.length; i < len; i+=1) {
                                 bindPartnersCategoryHtml += buildSingleLocationTile(currentCountryPartnersData.data[i].avatar_url, currentCountryPartnersData.data[i].name, currentCountryPartnersData.data[i].address, currentCountryPartnersData.data[i].is_partner, currentCountryPartnersData.data[i].city_name, currentCountryPartnersData.data[i].phone, currentCountryPartnersData.data[i].website, currentCountryPartnersData.data[i].top_dentist_month, currentCountryPartnersData.data[i].avg_rating, currentCountryPartnersData.data[i].ratings, currentCountryPartnersData.data[i].trp_public_profile_link, thisBtn.find('.element-name').html(), currentCountryPartnersData.data[i].id, 'core-db', currentCountryPartnersData.data[i].lat, currentCountryPartnersData.data[i].lon);
                             }
@@ -1576,7 +1649,7 @@ var projectData = {
                         var getLabsSuppliersAndIndustryPartnersData = await projectData.requests.getLabsSuppliersAndIndustryPartners({'country-code' : code});
                         if (getLabsSuppliersAndIndustryPartnersData.success) {
                             // Partner Dental Labs
-                            if (getLabsSuppliersAndIndustryPartnersData.data.labs.length > 0) {
+                            if (getLabsSuppliersAndIndustryPartnersData.data.labs.data.length > 0) {
                                 // checking if visibility allowed by bottom category filter
                                 var iconClass = 'fa-minus-circle';
                                 var parentElementClass = '';
@@ -1585,10 +1658,15 @@ var projectData = {
                                     parentElementClass = 'closed';
                                 }
 
-                                totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.labs.length;
-                                var bindLabsCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button labs fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Partner Dental Labs</span></a><ul class="locations-list">';
-                                for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.labs.length; i < len; i+=1) {
-                                    bindLabsCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.labs[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.labs[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.labs[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.labs[i].lat, getLabsSuppliersAndIndustryPartnersData.data.labs[i].lng);
+                                var tooltipHtml = '';
+                                if (getLabsSuppliersAndIndustryPartnersData.data.labs.description != null && getLabsSuppliersAndIndustryPartnersData.data.labs.description != undefined) {
+                                    tooltipHtml = 'data-toggle="tooltip" title="'+getLabsSuppliersAndIndustryPartnersData.data.labs.description+'"';
+                                }
+
+                                totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.labs.data.length;
+                                var bindLabsCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button labs fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+getLabsSuppliersAndIndustryPartnersData.data.labs.name+'</span></a><ul class="locations-list">';
+                                for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.labs.data.length; i < len; i+=1) {
+                                    bindLabsCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].lat, getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].lng);
                                 }
 
                                 bindLabsCategoryHtml+='</ul></li>';
@@ -1596,7 +1674,7 @@ var projectData = {
                             }
 
                             // Partner Dental Suppliers
-                            if (getLabsSuppliersAndIndustryPartnersData.data.suppliers.length > 0) {
+                            if (getLabsSuppliersAndIndustryPartnersData.data.suppliers.data.length > 0) {
                                 // checking if visibility allowed by bottom category filter
                                 var iconClass = 'fa-minus-circle';
                                 var parentElementClass = '';
@@ -1605,10 +1683,15 @@ var projectData = {
                                     parentElementClass = 'closed';
                                 }
 
-                                totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.suppliers.length;
-                                var bindSuppliersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button suppliers fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Partner Dental Suppliers</span></a><ul class="locations-list">';
-                                for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.suppliers.length; i < len; i+=1) {
-                                    bindSuppliersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].lat, getLabsSuppliersAndIndustryPartnersData.data.suppliers[i].lng);
+                                var tooltipHtml = '';
+                                if (getLabsSuppliersAndIndustryPartnersData.data.suppliers.description != null && getLabsSuppliersAndIndustryPartnersData.data.suppliers.description != undefined) {
+                                    tooltipHtml = 'data-toggle="tooltip" title="'+getLabsSuppliersAndIndustryPartnersData.data.suppliers.description+'"';
+                                }
+
+                                totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.suppliers.data.length;
+                                var bindSuppliersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button suppliers fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+getLabsSuppliersAndIndustryPartnersData.data.suppliers.name+'</span></a><ul class="locations-list">';
+                                for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.suppliers.data.length; i < len; i+=1) {
+                                    bindSuppliersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].lat, getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].lng);
                                 }
 
                                 bindSuppliersCategoryHtml+='</ul></li>';
@@ -1616,7 +1699,7 @@ var projectData = {
                             }
 
                             // Other Industry Partners
-                            if (getLabsSuppliersAndIndustryPartnersData.data.industryPartners.length > 0) {
+                            if (getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data.length > 0) {
                                 // checking if visibility allowed by bottom category filter
                                 var iconClass = 'fa-minus-circle';
                                 var parentElementClass = '';
@@ -1625,10 +1708,15 @@ var projectData = {
                                     parentElementClass = 'closed';
                                 }
 
-                                totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.industryPartners.length;
-                                var bindIndustryPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button industryPartners fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Other Industry Partners</span></a><ul class="locations-list">';
-                                for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.industryPartners.length; i < len; i+=1) {
-                                    bindIndustryPartnersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].lat, getLabsSuppliersAndIndustryPartnersData.data.industryPartners[i].lng);
+                                var tooltipHtml = '';
+                                if (getLabsSuppliersAndIndustryPartnersData.data.industryPartners.description != null && getLabsSuppliersAndIndustryPartnersData.data.industryPartners.description != undefined) {
+                                    tooltipHtml = 'data-toggle="tooltip" title="'+getLabsSuppliersAndIndustryPartnersData.data.industryPartners.description+'"';
+                                }
+
+                                totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data.length;
+                                var bindIndustryPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button industryPartners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+getLabsSuppliersAndIndustryPartnersData.data.industryPartners.name+'</span></a><ul class="locations-list">';
+                                for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data.length; i < len; i+=1) {
+                                    bindIndustryPartnersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].lat, getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].lng);
                                 }
 
                                 bindIndustryPartnersCategoryHtml+='</ul></li>';
@@ -1647,7 +1735,12 @@ var projectData = {
                                 parentElementClass = 'closed';
                             }
 
-                            var bindNonPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button non-partners fs-20 fs-xs-18"><span><i class="fa '+iconClass+'" aria-hidden="true"></i> All Registered Dental Practices</span></a><ul class="locations-list">';
+                            var tooltipHtml = '';
+                            if (currentCountryNonPartnersData.description != null && currentCountryNonPartnersData.description != undefined) {
+                                tooltipHtml = 'data-toggle="tooltip" title="'+currentCountryNonPartnersData.description+'"';
+                            }
+
+                            var bindNonPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button non-partners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+currentCountryNonPartnersData.name+'</span></a><ul class="locations-list">';
                             for (var i = 0, len = currentCountryNonPartnersData.data.length; i < len; i+=1) {
                                 bindNonPartnersCategoryHtml += buildSingleLocationTile(currentCountryNonPartnersData.data[i].avatar_url, currentCountryNonPartnersData.data[i].name, currentCountryNonPartnersData.data[i].address, currentCountryNonPartnersData.data[i].is_partner, currentCountryNonPartnersData.data[i].city_name, currentCountryNonPartnersData.data[i].phone, currentCountryNonPartnersData.data[i].website, currentCountryNonPartnersData.data[i].top_dentist_month, currentCountryNonPartnersData.data[i].avg_rating, currentCountryNonPartnersData.data[i].ratings, currentCountryNonPartnersData.data[i].trp_public_profile_link, thisBtn.find('.element-name').html(), currentCountryNonPartnersData.data[i].id, 'core-db', currentCountryNonPartnersData.data[i].lat, currentCountryNonPartnersData.data[i].lon);
                             }
@@ -1657,6 +1750,7 @@ var projectData = {
                         }
 
                         list.append(listBottomExtraHtml);
+                        projectData.utils.initTooltips();
 
                         // make request to select all locations DATA for this country FOR THE MAP
                         var currentCountryLocationsData = await projectData.requests.getMapData({action: 'all-partners-and-non-partners-data-by-country', data: code});
@@ -1664,7 +1758,7 @@ var projectData = {
                             totalLocationsCountByCountry += currentCountryLocationsData.data.length;
 
                             $('.dentacoin-stats-category-label span').html('in ' + thisBtn.find('.element-name').html());
-                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-countries"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+thisBtn.find('.element-name').html().trim()+'</a>');
+                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-countries"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> <span class="inline-block">'+thisBtn.find('.element-name').html().trim()+'</span></a>');
                             $('.picker-and-map .picker-value').html('<span class="lato-black">'+totalLocationsCountByCountry+'</span> Results');
 
                             for (var i = 0, len = currentCountryLocationsData.data.length; i < len; i+=1) {
@@ -1941,7 +2035,7 @@ var projectData = {
                     function buildSingleLocationTile(avatar_url, name, address, is_partner, city_name, phone, website, top_dentist_month, avg_rating, ratings, trp_public_profile_link, country, location_id, location_source, lat, lng) {
                         var partnerHtml = '';
                         if (is_partner) {
-                            partnerHtml = '<div class="is-partner fs-14 lato-bold padding-top-5"><span>Partner</span></div>';
+                            partnerHtml = '<div class="is-partner fs-14 lato-bold padding-top-5"><span><figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block margin-right-5 max-width-20"><img src="/assets/images/logo.svg" class="width-100" alt="Dentacoin logo"></figure><span class="inline-block">Partner</span></span></div>';
                         }
 
                         var trpStatsHtml = '<div class="trp-stats padding-top-5">';
@@ -2047,7 +2141,7 @@ var projectData = {
                             var continentName = $('.single-continent.open-item > a .element-name').html();
                             console.log(continentName, 'set continent name');
                             $('.dentacoin-stats-category-label span').html('in ' + continentName);
-                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+continentName+'</a>');
+                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> <span class="inline-block">'+continentName+'</span></a>');
 
                             $('.single-continent.open-item > a .element-name').attr('data-last-continent', continentName);
 
@@ -2055,7 +2149,7 @@ var projectData = {
                         } else {
                             $('.dentacoin-stats-category-label span').html($('.picker-and-map .picker-label').attr('data-last-continent'));
 
-                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> '+$('.picker-and-map .picker-label').attr('data-last-continent')+'</a>');
+                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> <span class="inline-block">'+$('.picker-and-map .picker-label').attr('data-last-continent')+'</span></a>');
                         }
 
 
@@ -2238,7 +2332,7 @@ var projectData = {
 
                 $('.hide-on-users-category-selected').removeClass('hide');
                 $('.hidden-users-page-content').removeClass('position-static').animate({'left' : '-100%', 'opacity' : 0}, 1000, function() {
-                    $('.hidden-users-page-content').hide();
+                    $('.hidden-users-page-content').hide().html('');
                     callback();
                 });
             },
@@ -2262,7 +2356,7 @@ var projectData = {
 
                 $('.hide-on-users-category-selected').removeClass('hide');
                 $('.hidden-dentists-page-content').removeClass('position-static').animate({'top' : $('.hidden-dentists-page-content').height() + 'px', 'opacity' : 0}, 750, function() {
-                    $('.hidden-dentists-page-content').hide();
+                    $('.hidden-dentists-page-content').hide().html('');
                     callback();
                 });
             },
@@ -2286,7 +2380,7 @@ var projectData = {
 
                 $('.hide-on-users-category-selected').removeClass('hide');
                 $('.hidden-traders-page-content').removeClass('position-static').animate({'right' : '-100%', 'opacity' : 0}, 750, function() {
-                    $('.hidden-traders-page-content').hide();
+                    $('.hidden-traders-page-content').hide().html('');
                     callback();
                 });
             },
@@ -2359,6 +2453,13 @@ var projectData = {
 
             gtag('event', label, event_obj);
         }
+    },
+    utils: {
+        initTooltips: function() {
+            if ($('[data-toggle="tooltip"]').length) {
+                $('[data-toggle="tooltip"]').tooltip();
+            }
+        },
     }
 };
 

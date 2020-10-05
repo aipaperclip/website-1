@@ -53,20 +53,18 @@
         </div>
     </div>
     <div class="map-container">
-        <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject">
-            @php ($videoUrl = 'desktop-map-loader.webm')
-            @if (isset($mobile_device) && $mobile_device)
-                @php ($videoUrl = 'mobile-map-loader.webm')
-            @endif
-            <video autoplay muted loop class="width-100">
-                <source src="{{URL::asset('assets/uploads/'.$videoUrl) }}" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
+        @php ($webmVideoUrl = 'desktop-map-loader.webm')
+        @php ($mp4VideoUrl = 'desktop-map-loader.mp4')
+        @if (isset($mobile_device) && $mobile_device)
+            @php ($webmVideoUrl = 'mobile-map-loader.webm')
+            @php ($mp4VideoUrl = 'mobile-map-loader.mp4')
+        @endif
+        <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video" data-mp4="/assets/uploads/{{$mp4VideoUrl}}" data-webm="/assets/uploads/{{$webmVideoUrl}}" data-video-attributes="autoplay muted loop" data-video-class="width-100">
             <meta itemprop="name" content="Dentacoin Loading Video">
             <meta itemprop="description" content="Dentacoin Loading Video which is shown whenever website content is still loading">
             <meta itemprop="uploadDate" content="2020-09-19T08:00:00+08:00">
             <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
-            <link itemprop="contentURL" href="{{URL::asset('assets/uploads/'.$videoUrl) }}">
+            <link itemprop="contentURL" href="">
         </div>
         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="loader-over-map">
             <img src="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif" alt="Loader">
