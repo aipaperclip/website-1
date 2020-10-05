@@ -1140,6 +1140,7 @@ var projectData = {
                         } else {
                             $('.hide-on-map-open').removeClass('hide');
                             $(this).removeClass('with-map-pin').addClass('with-list-icon').html(' SEE RESULTS IN LIST');
+                            $('.google-map-and-bottom-filters').removeClass('padding-bottom-80');
                             $(this).parent().removeClass('list-shown');
 
                             $('.subpages-sticky-nav').removeClass('hide');
@@ -1158,6 +1159,8 @@ var projectData = {
                         $('.hide-on-map-open').addClass('hide');
                         el.parent().addClass('list-shown');
                         el.addClass('with-map-pin').removeClass('with-list-icon').html(' GO BACK TO MAP');
+
+                        $('.google-map-and-bottom-filters').addClass('padding-bottom-80');
 
                         $('.subpages-sticky-nav').addClass('hide');
                         $('.picker-and-map .google-map-box').hide();
