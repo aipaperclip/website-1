@@ -156,7 +156,7 @@
             </figure>
             <div class="right-to-image inline-block-top padding-left-15 padding-left-xs-0 padding-left-sm-0 lato-bold">
                 <h4 class="fs-28 fs-xs-22 color-black">Max supply:</h4>
-                <div class="fs-36 fs-xs-24">7,899,848,965,678 DCN</div>
+                <div class="fs-36 fs-xs-24">{{$max_supply->data}} DCN</div>
             </div>
         </div>
         <div class="col-xs-12 col-md-6 col-lg-5 padding-bottom-50">
@@ -166,7 +166,7 @@
             </figure>
             <div class="right-to-image inline-block-top padding-left-15 padding-left-xs-0 padding-left-sm-0 lato-bold">
                 <h4 class="fs-28 fs-xs-22 color-black">Total unlocked:</h4>
-                <div class="fs-36 fs-xs-24">1,892,038,291,102 DCN</div>
+                <div class="fs-36 fs-xs-24">{{$total_supply->data}} DCN</div>
             </div>
         </div>
         <div class="col-xs-12 col-md-6 col-lg-5 col-lg-offset-1 padding-bottom-50">

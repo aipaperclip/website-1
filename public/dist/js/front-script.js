@@ -3396,7 +3396,7 @@ var projectData = {
 
                     basic.initCustomCheckboxes('.google-map-and-bottom-filters', 'append');
 
-                    var listBottomExtraHtml = '<li><div class="invite-text padding-left-15 padding-right-15 padding-top-15 padding-bottom-25"><div class="color-white lato-black fs-28 fs-sm-22 fs-xs-20 padding-bottom-15">KNOW A GREAT DENTIST, BUT IT’S NOT ON OUR MAP?</div><div><a href="https://reviews.dentacoin.com/?popup=invite-new-dentist-popup" target="_blank" class="bright-blue-white-btn with-border fs-xs-16">INVITE DENTIST</a></div></div></li>';
+                    var listBottomExtraHtml = '<li><div class="invite-text padding-left-15 padding-right-15 padding-top-15 padding-bottom-25"><div class="color-white lato-black fs-28 fs-sm-22 fs-xs-20 padding-bottom-15">CAN\'T FIND YOUR DENTIST?<div class="fs-20 lato-regular">Add as many dentists as you like and get rewarded for every real entry!</div></div><div><a href="https://reviews.dentacoin.com/?popup=invite-new-dentist-popup" target="_blank" class="bright-blue-white-btn with-border fs-xs-16">INVITE DENTIST</a></div></div></li>';
 
                     // on map infowindow click
                     $(document).on('click', '.map-infowindow button', function(event) {

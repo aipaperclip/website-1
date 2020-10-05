@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ApiEndpoint;
 use App\Application;
 use App\Http\Controllers\Admin\AvailableBuyingOptionsController;
 use App\Http\Controllers\Admin\RoadmapController;
@@ -56,7 +57,7 @@ class HomeController extends Controller
     }
 
     protected function getTradersPageView() {
-        return view('pages/traders', array('exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'roadmap_years' => (new RoadmapController())->getRoadmapYears(), 'mobile_device' => $this->isMobile()));
+        return view('pages/traders', array('exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'roadmap_years' => (new RoadmapController())->getRoadmapYears(), 'mobile_device' => $this->isMobile(), 'max_supply' => $this->getDCNMaxSupply(), 'total_supply' => $this->getDCNTotalSupply()));
     }
 
     protected function getPublications()  {
@@ -79,6 +80,14 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
+    protected function getDCNMaxSupply() {
+        return ApiEndpoint::where(array('slug' => 'maxDCN'))->get()->first();
+    }
+
+    protected function getDCNTotalSupply() {
+        return ApiEndpoint::where(array('slug' => 'totalDCN'))->get()->first();
+    }
+
     protected function takeHomepageData(Request $request)  {
         $type = $request->input('type');
         if (!empty($type)) {
@@ -94,7 +103,7 @@ class HomeController extends Controller
                     return response()->json(['success' => true, 'data' => array('dentistsPageData' => $dentistsPageContent->render())]);
                     break;
                 case 'traders':
-                    $tradersPageContent = view('partials/traders-page-content', array('exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'roadmap_years' => (new RoadmapController())->getRoadmapYears(), 'mobile_device' => $this->isMobile()));
+                    $tradersPageContent = view('partials/traders-page-content', array('exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'roadmap_years' => (new RoadmapController())->getRoadmapYears(), 'mobile_device' => $this->isMobile(), 'max_supply' => $this->getDCNMaxSupply(), 'total_supply' => $this->getDCNTotalSupply()));
 
                     return response()->json(['success' => true, 'data' => array('tradersPageData' => $tradersPageContent->render())]);
                     break;
@@ -102,7 +111,7 @@ class HomeController extends Controller
         } else {
             $usersPageContent = view('partials/users-page-content', array('video_expressions' => (new VideoExpressionsController())->getUserVideoExpression(), 'user_expressions' => (new \App\Http\Controllers\Admin\UserExpressionsController())->getUserTestimonial(), 'mobile_device' => $this->isMobile()));
             $dentistsPageContent = view('partials/dentists-page-content', array('video_expressions' => (new VideoExpressionsController())->getDentistVideoExpression(), 'user_expressions' => (new \App\Http\Controllers\Admin\UserExpressionsController())->getDentistTestimonial(), 'mobile_device' => $this->isMobile()));
-            $tradersPageContent = view('partials/traders-page-content', array('exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'roadmap_years' => (new RoadmapController())->getRoadmapYears(), 'mobile_device' => $this->isMobile()));
+            $tradersPageContent = view('partials/traders-page-content', array('exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'roadmap_years' => (new RoadmapController())->getRoadmapYears(), 'mobile_device' => $this->isMobile(), 'max_supply' => $this->getDCNMaxSupply(), 'total_supply' => $this->getDCNTotalSupply()));
 
             return response()->json(['success' => true, 'data' => array('usersPageData' => $usersPageContent->render(), 'dentistsPageData' => $dentistsPageContent->render(), 'tradersPageData' => $tradersPageContent->render())]);
         }
