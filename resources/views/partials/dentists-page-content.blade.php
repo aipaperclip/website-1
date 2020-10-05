@@ -34,11 +34,7 @@
                         <img src="/assets/uploads/dentists-circle-1.png" alt="Dentists circle 1" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
                 @else
-                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto">
-                        <video muted="muted" {{--autoplay--}}>
-                            <source src="/assets/uploads/dentists-circle-icon1.webm" type="video/mp4">
-                            Your browser does not support HTML5 video.
-                        </video>
+                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto changeable-video" data-mp4="/assets/uploads/dentists-circle-icon1.webm" data-webm="/assets/uploads/dentists-circle-icon1.mp4" data-video-attributes="muted" data-video-class="width-100">
                         <meta itemprop="name" content="Dentacoin Benefit Video">
                         <meta itemprop="description" content="Happier and healthier patients">
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
