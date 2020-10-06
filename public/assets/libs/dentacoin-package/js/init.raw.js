@@ -185,6 +185,42 @@ if (typeof jQuery == 'undefined') {
                             elementToAppend.find('.app-list').addClass('dark-blue-background');
                         }
 
+                        function dateObjToFormattedDate(object) {
+                            if (object.getDate() < 10) {
+                                var date = '0' + object.getDate();
+                            } else {
+                                var date = object.getDate();
+                            }
+
+                            if (object.getMonth() + 1 < 10) {
+                                var month = '0' + (object.getMonth() + 1);
+                            } else {
+                                var month = object.getMonth() + 1;
+                            }
+                            return date + '/' + month + '/' + object.getFullYear();
+                        }
+
+                        // bind right arrow click event
+                        $('.dcn-big-hub .right-arrow').click(function() {
+                            if ($('.dcn-big-hub .single-application.active').next().length) {
+                                $('.dcn-big-hub .single-application.active').next().click();
+                            } else {
+                                // click first element
+                                $('.dcn-big-hub .single-application').eq(0).click();
+                            }
+                        });
+
+                        // bind left arrow click event
+                        $('.dcn-big-hub .left-arrow').click(function() {
+                            if ($('.dcn-big-hub .single-application.active').prev().length) {
+                                $('.dcn-big-hub .single-application.active').prev().click();
+                            } else {
+                                // click last element
+                                $('.dcn-big-hub .single-application').eq($('.dcn-big-hub .single-application').length - 1).click();
+                            }
+                        });
+
+                        var allowScrolling = false;
                         elementToAppend.find('.single-application.link').click(function() {
                             var extra_html = '';
                             elementToAppend.find('.single-application.link').removeClass('active');
@@ -214,6 +250,46 @@ if (typeof jQuery == 'undefined') {
 
                             elementToAppend.find('.info-section .html-content').html(jQuery.parseJSON(jQuery(this).attr('data-html')));
 
+                            $('.title-and-html .title').removeClass('text-center');
+
+                            switch(jQuery(this).attr('data-platform')) {
+                                case 'dentavox-1':
+                                    elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn on-vox-button-click-event-tracker" href="https://dentavox.dentacoin.com/" target="_blank">GO TO DENTAVOX</a></div>');
+                                    break;
+                                case 'dentacoin-trusted-reviews':
+                                    elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn on-trp-button-click-event-tracker" href="https://reviews.dentacoin.com/" target="_blank">SIGN UP NOW</a></div>');
+                                    break;
+                                case 'dentacare-oral-health-app':
+                                    elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn hide website-btn" href="https://dentacare.dentacoin.com/" target="_blank">GO TO DENTACARE</a><figure class="inline-block hide app-store-btn"><a href="https://itunes.apple.com/us/app/dentacare/id1274148338?mt=8" target="_blank" class="on-dentacare-ios-button-click-event-tracker"><img alt="Apple store button" src="//dentacoin.com/assets/images/apple-store-button.svg" width="180" /> </a></figure><figure class="inline-block hide google-play-btn"><a href="https://play.google.com/store/apps/details?id=com.dentacoin.dentacare&amp;hl=en" target="_blank" class="on-dentacare-google-button-click-event-tracker"><img alt="Google store button" src="//dentacoin.com/assets/images/google-store-button.svg" width="180" /> </a></figure></div>');
+                                    break;
+                                case 'jaws-of-battle':
+                                    elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn hide website-btn" href="https://jawsofbattle.dentacoin.com/" target="_blank">GO TO JAWS OF BATTLE</a><figure class="inline-block hide app-store-btn"><a href="https://testflight.apple.com/join/hOg8An1t" target="_blank"><img alt="Apple store button" src="//dentacoin.com/assets/images/apple-store-button.svg" width="180" /> </a></figure><figure class="inline-block hide google-play-btn"><a class="on-jaws-button-click-event-tracker" href="https://play.google.com/store/apps/details?id=com.DentaCare.JawsOfBattle&amp;hl=en" target="_blank"><img alt="Google store button" src="//dentacoin.com/assets/images/google-store-button.svg" width="180" /> </a></figure></div>');
+                                    break;
+                                case 'dentacoin-wallet':
+                                    elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn hide website-btn on-wallet-website-button-click-event-tracker" href="https://wallet.dentacoin.com/" target="_blank">GO TO WEB WALLET</a><figure class="inline-block hide app-store-btn"><a class="on-wallet-ios-button-click-event-tracker" href="https://apps.apple.com/us/app/dentacoin-wallet/id1478732657" target="_blank"><img alt="Apple store button" src="//dentacoin.com/assets/images/apple-store-button.svg" width="180" /> </a></figure><figure class="inline-block hide google-play-btn"><a class="on-wallet-google-button-click-event-tracker" href="https://play.google.com/store/apps/details?id=wallet.dentacoin.com" target="_blank"><img alt="Google store button" src="//dentacoin.com/assets/images/google-store-button.svg" width="180" /> </a></figure></div>');
+                                    break;
+                                case 'assurance':
+                                    elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn on-assurance-button-click-event-tracker" href="https://assurance.dentacoin.com/" target="_blank">GO TO ASSURANCE</a></div>');
+                                    break;
+                                case 'dentacoin-blog':
+                                    $('.title-and-html .title').addClass('text-center');
+                                    break;
+                                default:
+                                // code block
+                            }
+
+                            if (typeof(basic) != 'undefined') {
+                                if (basic.isMobile()) {
+                                    if (basic.getMobileOperatingSystem() == 'Android') {
+                                        $('.google-play-btn').removeClass('hide');
+                                    } else if (basic.getMobileOperatingSystem() == 'iOS') {
+                                        $('.app-store-btn').removeClass('hide');
+                                    }
+                                } else {
+                                    $('.website-btn').removeClass('hide');
+                                }
+                            }
+
                             if (jQuery(this).attr('data-video') != '') {
                                 var youtubeVideoId = getYoutubeVideoId(jQuery(this).attr('data-video'));
                                 if (youtubeVideoId) {
@@ -225,9 +301,29 @@ if (typeof jQuery == 'undefined') {
 
                             jQuery('body').addClass('overflow-hidden');
                             if (jQuery(window).width() < 992) {
+                                if ($('.hide-on-hub-open').length) {
+                                    $('.hide-on-hub-open').addClass('hide');
+                                }
+
+                                console.log(typeof(projectData.general_logic.data.hideStickySubpagesNav), 'typeof(projectData.general_logic.data.hideStickySubpagesNav)');
+
+                                if (typeof(projectData.general_logic.data.hideStickySubpagesNav) == 'function') {
+                                    console.log("EXECUTE');')");
+                                    projectData.general_logic.data.hideStickySubpagesNav();
+                                }
+
                                 elementToAppend.find('.app-list').hide();
                                 elementToAppend.find('.info-section').fadeIn(500);
 
+                                scrollToHubElementContent();
+                            } else {
+                                if (allowScrolling) {
+                                    scrollToHubElementContent();
+                                }
+                            }
+                            jQuery('body').removeClass('overflow-hidden');
+
+                            function scrollToHubElementContent() {
                                 var scrollTop = jQuery('.info-section').offset().top;
                                 if (jQuery('header.sticky-header').length) {
                                     scrollTop = scrollTop - jQuery('header.sticky-header').outerHeight();
@@ -239,16 +335,28 @@ if (typeof jQuery == 'undefined') {
                                     duration: 500
                                 });
                             }
-                            jQuery('body').removeClass('overflow-hidden');
                         });
 
                         jQuery('body').addClass('overflow-hidden');
                         if (jQuery(window).width() > 992) {
                             elementToAppend.find('.single-application.link').eq(0).click();
+                            allowScrolling = true;
                         } else {
                             elementToAppend.find('.info-section .close-application').click(function() {
+                                if ($('.hide-on-hub-open.hide').length) {
+                                    $('.hide-on-hub-open').removeClass('hide');
+                                }
+
                                 elementToAppend.find('.app-list').fadeIn(500);
                                 elementToAppend.find('.info-section').hide();
+
+                                if ($('#append-big-hub-dentacoin').length) {
+                                    $('html, body').animate({'scrollTop': $('#append-big-hub-dentacoin').offset().top}, 300);
+                                }
+
+                                if (typeof(projectData.general_logic.data.showStickySubpagesNav) == 'function') {
+                                    projectData.general_logic.data.showStickySubpagesNav();
+                                }
                             });
                         }
                         jQuery('body').removeClass('overflow-hidden');
