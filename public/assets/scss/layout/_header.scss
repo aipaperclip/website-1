@@ -192,22 +192,3 @@ header {
         }
     }
 }
-
-body.home {
-    &.logged-in {
-        header {
-            padding-top: 0;
-        }
-        .logged-user-right-nav {
-            > .hidden-box-parent {
-                font-size: 0;
-                color: black;
-                display: inline-block;
-                padding: 15px 0;
-                .color-white-on-hub {
-                    color: white;
-                }
-            }
-        }
-    }
-}
