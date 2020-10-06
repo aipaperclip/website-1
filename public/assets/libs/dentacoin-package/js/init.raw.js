@@ -261,10 +261,10 @@ if (typeof jQuery == 'undefined') {
                             $('.title-and-html .title').removeClass('text-center');
 
                             switch(jQuery(this).attr('data-platform')) {
-                                case 'dentavox-1':
+                                case 'dentavox':
                                     elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn on-vox-button-click-event-tracker" href="https://dentavox.dentacoin.com/" target="_blank">GO TO DENTAVOX</a></div>');
                                     break;
-                                case 'dentacoin-trusted-reviews':
+                                case 'trusted-reviews':
                                     elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn on-trp-button-click-event-tracker" href="https://reviews.dentacoin.com/" target="_blank">SIGN UP NOW</a></div>');
                                     break;
                                 case 'dentacare-oral-health-app':
@@ -273,7 +273,7 @@ if (typeof jQuery == 'undefined') {
                                 case 'jaws-of-battle':
                                     elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn hide website-btn" href="https://jawsofbattle.dentacoin.com/" target="_blank">GO TO JAWS OF BATTLE</a><figure class="inline-block hide app-store-btn"><a href="https://testflight.apple.com/join/hOg8An1t" target="_blank"><img alt="Apple store button" src="//dentacoin.com/assets/images/apple-store-button.svg" width="180" /> </a></figure><figure class="inline-block hide google-play-btn"><a class="on-jaws-button-click-event-tracker" href="https://play.google.com/store/apps/details?id=com.DentaCare.JawsOfBattle&amp;hl=en" target="_blank"><img alt="Google store button" src="//dentacoin.com/assets/images/google-store-button.svg" width="180" /> </a></figure></div>');
                                     break;
-                                case 'dentacoin-wallet':
+                                case 'wallet-dapp':
                                     elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn hide website-btn on-wallet-website-button-click-event-tracker" href="https://wallet.dentacoin.com/" target="_blank">GO TO WEB WALLET</a><figure class="inline-block hide app-store-btn"><a class="on-wallet-ios-button-click-event-tracker" href="https://apps.apple.com/us/app/dentacoin-wallet/id1478732657" target="_blank"><img alt="Apple store button" src="//dentacoin.com/assets/images/apple-store-button.svg" width="180" /> </a></figure><figure class="inline-block hide google-play-btn"><a class="on-wallet-google-button-click-event-tracker" href="https://play.google.com/store/apps/details?id=wallet.dentacoin.com" target="_blank"><img alt="Google store button" src="//dentacoin.com/assets/images/google-store-button.svg" width="180" /> </a></figure></div>');
                                     break;
                                 case 'assurance':
