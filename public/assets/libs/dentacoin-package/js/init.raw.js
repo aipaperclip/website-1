@@ -143,13 +143,17 @@ if (typeof jQuery == 'undefined') {
                     return ajaxCall;
                 }
             },
-            getBigHubHtml: async function(hubType, ajaxData) {
+            getBigHubHtml: async function(hubType, ajaxData, url) {
+                if (url == undefined) {
+                    url = 'https://dentacoin.com';
+                }
+
                 if (fireBigHubAjax) {
                     fireBigHubAjax = false;
 
                     var ajaxParams = {
                         type: 'POST',
-                        url: 'https://dentacoin.com/combined-hub/get-big-hub-html/'+hubType,
+                        url: url + '/combined-hub/get-big-hub-html/'+hubType,
                         dataType: 'json'
                     };
 
@@ -176,7 +180,11 @@ if (typeof jQuery == 'undefined') {
                         bigHubParams.hubTitleParam = params.hub_title;
                     }
 
-                    var getBigHubHtml = await dcnHub.dcnHubRequests.getBigHubHtml(params.type_hub, bigHubParams);
+                    if (hasOwnProperty.call(params, 'local_environment')) {
+                        var getBigHubHtml = await dcnHub.dcnHubRequests.getBigHubHtml(params.type_hub, bigHubParams, params.local_environment);
+                    } else {
+                        var getBigHubHtml = await dcnHub.dcnHubRequests.getBigHubHtml(params.type_hub, bigHubParams);
+                    }
 
                     if (getBigHubHtml.success) {
                         elementToAppend.html(getBigHubHtml.data);
@@ -239,7 +247,7 @@ if (typeof jQuery == 'undefined') {
                                     }
                                     extra_html+='<a target="_blank" href="'+articles_arr[i]['link']+'"><div class="single-slide"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="'+articles_arr[i]['thumb']+'" alt="" itemprop="contentUrl"/></figure><div class="content"><div class="slide-title">'+post_title+'</div><time>'+dateObjToFormattedDate(new Date(parseInt(articles_arr[i]['date']) * 1000))+'</time></div></div></a>';
                                 }
-                                extra_html+='</div><div class="go-to-all"><a href="//blog.dentacoin.com/" class="dcn-big-hub-btn" target="_blank">GO TO ALL</a></div></div>';
+                                extra_html+='</div><div class="go-to-all"><a href="//blog.dentacoin.com/" class="dcn-big-hub-white-light-blue-btn" target="_blank">GO TO ALL</a></div></div>';
 
                                 elementToAppend.find('.extra-html-content').html(extra_html);
 
@@ -447,7 +455,7 @@ if (typeof jQuery == 'undefined') {
                         infinite: false,
                         responsive: [
                             {
-                                breakpoint: 1200,
+                                breakpoint: 992,
                                 settings: {
                                     slidesToShow: 1
                                 }
