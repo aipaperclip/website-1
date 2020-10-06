@@ -1312,11 +1312,11 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
 }
 
 .subpages-sticky-nav {
-    position: fixed;
+    position: fixed; 
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 950; 
+    z-index: 950;
     display: none;
     @include box-shadow(0 2px 10px 0 rgba(0, 0, 0, 0.2));
     a {

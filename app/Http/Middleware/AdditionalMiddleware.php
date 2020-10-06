@@ -18,9 +18,9 @@ class AdditionalMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next) {
-        if(!isset($_COOKIE['testing-dev'])) {
+        /*if(!isset($_COOKIE['testing-dev'])) {
             return response(view('pages/maintenance'));
-        }
+        }*/
         //$params = $request->route()->parameters();
 
         $user_controller = new App\Http\Controllers\UserController();
