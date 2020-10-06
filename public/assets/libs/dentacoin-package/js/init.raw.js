@@ -315,10 +315,7 @@ if (typeof jQuery == 'undefined') {
                                     $('.hide-on-hub-open').addClass('hide');
                                 }
 
-                                console.log(typeof(projectData.general_logic.data.hideStickySubpagesNav), 'typeof(projectData.general_logic.data.hideStickySubpagesNav)');
-
-                                if (typeof(projectData.general_logic.data.hideStickySubpagesNav) == 'function') {
-                                    console.log("EXECUTE');')");
+                                if (params.type_hub == 'dentacoin' && typeof(projectData.general_logic.data.hideStickySubpagesNav) == 'function') {
                                     projectData.general_logic.data.hideStickySubpagesNav();
                                 }
 
@@ -364,7 +361,7 @@ if (typeof jQuery == 'undefined') {
                                     $('html, body').animate({'scrollTop': $('#append-big-hub-dentacoin').offset().top}, 300);
                                 }
 
-                                if (typeof(projectData.general_logic.data.showStickySubpagesNav) == 'function') {
+                                if (params.type_hub == 'dentacoin' && typeof(projectData.general_logic.data.showStickySubpagesNav) == 'function') {
                                     projectData.general_logic.data.showStickySubpagesNav();
                                 }
                             });
