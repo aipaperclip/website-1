@@ -83,7 +83,7 @@
                         <ul>
                             <li class="fs-16 lato-bold">Exchange platforms</li>
                             <li class="fs-16 lato-bold">Dentacoin Whitepaper</li>
-                            <li class="fs-16 lato-bold">Exchange platforms</li>
+                            <li class="fs-16 lato-bold">Dentacoin roadmap</li>
                         </ul>
                         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
                             <img src="/assets/images/black-circle-arrow.svg" alt="White left arrow rounded" class="margin-0-auto max-width-20 width-100" itemprop="contentUrl"/>

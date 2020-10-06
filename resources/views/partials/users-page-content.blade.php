@@ -2,7 +2,7 @@
     <div class="absolute-content padding-bottom-50 padding-bottom-xs-15 text-center-xs">
         <h2 class="fs-46 fs-md-40 fs-sm-30 lato-black color-white users-title padding-bottom-lgll-20 hide-xs">USERS</h2>
         <h3 class="fs-46 fs-md-40 fs-sm-30 fs-xs-22 color-white lato-black padding-top-10 padding-bottom-25">“Wait until it aches” is an expensive and painful approach.</h3>
-        <div class="fs-24 fs-md-22 fs-sm-18 fs-xs-18 color-white lato-bold">Join 190,326 people who care about sustainable oral health and equal access to dental care!</div>
+        <div class="fs-24 fs-md-22 fs-sm-18 fs-xs-18 color-white lato-bold">Join 201,326 people who care about sustainable oral health and equal access to dental care!</div>
     </div>
     @php($arrWithPossibilities = array ('male', 'female'))
     @if ($arrWithPossibilities[rand(0, count($arrWithPossibilities) - 1)] == 'male')

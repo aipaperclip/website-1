@@ -43,8 +43,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.13">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.13">
+    <link rel="preload" as="style" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.13">
+    <link rel="preload" as="style" type="text/css" href="/assets/css/style.css?v=1.1.13">
 
     @if((!(new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'home')) || ((new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'foundation')) || (!empty(Route::current()) && (Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists' || Route::current()->getName() == 'traders')))
         <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v={{time()}}">
