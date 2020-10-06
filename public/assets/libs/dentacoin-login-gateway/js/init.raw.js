@@ -1838,6 +1838,10 @@ if (typeof jQuery == 'undefined') {
                         }
                     });
 
+                    $(document).on('click', '.dentacoin-login-gateway-close', function(event) {
+                        dcnGateway.utils.hideGateway(true);
+                    });
+
                     // bind gateway showing event
                     $(document).on('click', '.open-dentacoin-gateway', function() {
                         if ($(this).hasClass('patient-login')) {
