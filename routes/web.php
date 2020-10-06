@@ -31,15 +31,11 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/testimonials/page/{page}', 'UserExpressionsController@getView')->name('testimonials');
 
-    Route::any('/info/{slug}', 'Controller@handleApiEndpoints')->name('api-endpoints');
-
     Route::get('/partner-network', 'PartnerNetworkController@getView')->name('partner-network');
 
     Route::get('/team', 'TeamMembersController@getView')->name('team');
 
     Route::get('/sitemap', 'Controller@getSitemap')->name('sitemap');
-
-    Route::get('/google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
 
     Route::get('/how-to-create-wallet', 'HowToCreateWalletController@getView')->name('how-to-create-wallet');
 
@@ -67,8 +63,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');
 
-    Route::post('/get-country-code', 'UserController@getCountryCode')->name('get-country-code');
-
     //Route::post('/submit-berlin-roundtable-form', 'BerlinRoundtableController@submitForm')->name('submit-berlin-roundtable-form');
 
     Route::get('careers/{slug?}', function($slug = null)    {
@@ -89,39 +83,9 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     //======================================= LOGGED IN LOGIC ========================================
 
-    Route::get('/user-logout', 'UserController@userLogout')->name('user-logout');
-
-    Route::get('/get-current-user-data', 'UserController@getCurrentUserData')->middleware('HandleUserSession')->name('get-current-user-data');
-
-    Route::post('/authenticate-user', 'UserController@authenticateUser')->name('authenticate-user');
-
-    Route::post('/check-dentist-account', 'UserController@checkDentistAccount')->name('check-dentist-account');
-
-    Route::group(['prefix' => 'dentacoin-login-gateway'], function () {
-        Route::post('/', 'DentacoinLoginGateway@getView')->name('dentacoin-login-gateway');
-
-        Route::post('/handle-dentist-register', 'UserController@handleDentistRegister')->name('handle-dentist-register');
-
-        Route::post('/handle-dentist-login', 'UserController@handleDentistLogin')->name('handle-dentist-login');
-
-        Route::post('/get-after-dentist-registration-popup', 'UserController@getAfterDentistRegistrationPopup')->name('get-after-dentist-registration-popup');
-
-        Route::post('/handle-enrich-profile', 'UserController@handleEnrichProfile')->name('handle-enrich-profile');
-    });
-
     Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');
 
     //======================================= AJAX ========================================
-
-    Route::group(['prefix' => 'combined-hub'], function () {
-        Route::post('/get-hub-data/{hubType}', 'DentacoinHubController@getHubData')->name('get-hub-data');
-
-        Route::post('/get-hub-children/{parentSlug}', 'DentacoinHubController@getHubChildren')->name('get-hub-children');
-
-        Route::post('/get-platform-menu/{menu}', 'DentacoinHubController@getPlatformMenu')->name('get-platform-menu');
-
-        Route::post('/get-big-hub-html/{hubType}', 'DentacoinHubController@getBigHubHtml')->name('get-big-hub-html');
-    });
 
     Route::post('/press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
 
@@ -134,8 +98,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::post('/check-captcha', 'UserController@checkCaptcha')->name('check-captcha');
 
     Route::post('/get-ip', 'Controller@getClientIpAsResponse')->name('get-ip');
-
-    Route::get('/custom-cookie', 'UserController@manageCustomCookie')->name('custom-cookie');
     //======================================= REDIRECTS ========================================
 
     Route::get('partners', function() {
@@ -207,3 +169,41 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return Redirect::to('/corporate-design/one-line-logo');
     });
 });
+
+Route::group(['prefix' => 'combined-hub'], function () {
+    Route::post('/get-hub-data/{hubType}', 'DentacoinHubController@getHubData')->name('get-hub-data');
+
+    Route::post('/get-hub-children/{parentSlug}', 'DentacoinHubController@getHubChildren')->name('get-hub-children');
+
+    Route::post('/get-platform-menu/{menu}', 'DentacoinHubController@getPlatformMenu')->name('get-platform-menu');
+
+    Route::post('/get-big-hub-html/{hubType}', 'DentacoinHubController@getBigHubHtml')->name('get-big-hub-html');
+});
+
+Route::group(['prefix' => 'dentacoin-login-gateway'], function () {
+    Route::post('/', 'DentacoinLoginGateway@getView')->name('dentacoin-login-gateway');
+
+    Route::post('/handle-dentist-register', 'UserController@handleDentistRegister')->name('handle-dentist-register');
+
+    Route::post('/handle-dentist-login', 'UserController@handleDentistLogin')->name('handle-dentist-login');
+
+    Route::post('/get-after-dentist-registration-popup', 'UserController@getAfterDentistRegistrationPopup')->name('get-after-dentist-registration-popup');
+
+    Route::post('/handle-enrich-profile', 'UserController@handleEnrichProfile')->name('handle-enrich-profile');
+});
+
+Route::get('/custom-cookie', 'UserController@manageCustomCookie')->name('custom-cookie');
+
+Route::get('/google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
+
+Route::any('/info/{slug}', 'Controller@handleApiEndpoints')->name('api-endpoints');
+
+Route::post('/get-country-code', 'UserController@getCountryCode')->name('get-country-code');
+
+Route::get('/user-logout', 'UserController@userLogout')->name('user-logout');
+
+Route::get('/get-current-user-data', 'UserController@getCurrentUserData')->middleware('HandleUserSession')->name('get-current-user-data');
+
+Route::post('/authenticate-user', 'UserController@authenticateUser')->name('authenticate-user');
+
+Route::post('/check-dentist-account', 'UserController@checkDentistAccount')->name('check-dentist-account');
