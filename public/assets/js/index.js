@@ -210,7 +210,7 @@ var projectData = {
                     var bigHubParams = {
                         'element_id_to_append' : 'append-big-hub-dentacoin',
                         'type_hub' : 'dentacoin',
-                        'local_environment' : 'https://dev.dentacoin.com'
+                        'local_environment' : 'https://dentacoin.com'
                     };
 
                     dcnHub.initBigHub(bigHubParams);
@@ -852,7 +852,6 @@ var projectData = {
                 dcnGateway.init({
                     'platform': 'dentacoin',
                     /*'environment' : 'staging',*/
-                    'combined_login_environment' : 'staging',
                     'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password'
                 });
 
