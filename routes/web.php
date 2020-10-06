@@ -15,14 +15,6 @@ Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captc
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
     //======================================= PAGES ========================================
 
-    Route::get('/test', function() {
-        echo "<br><br>SINGLE:<br>";
-        var_dump((new \App\Http\Controllers\APIRequestsController())->getMapData(array('action' => 'combined-count-data')));
-        var_dump((new \App\Http\Controllers\APIRequestsController())->getMapData(array('action' => 'combined-count-by-country', 'country' => 'bg')));
-        //var_dump((new \App\Http\Controllers\APIRequestsController())->getMapData(array('action' => 'all-partners-and-non-partners-data-by-countries', 'country' => array('bg'))));
-        die();
-    })->name('test');
-
     Route::get('/', 'HomeController@getView')->name('home');
 
     Route::get('/users', 'HomeController@getUsersPageView')->name('users');
