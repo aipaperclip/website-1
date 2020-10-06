@@ -361,6 +361,14 @@ if (typeof jQuery == 'undefined') {
                                     $('html, body').animate({'scrollTop': $('#append-big-hub-dentacoin').offset().top}, 300);
                                 }
 
+                                if ($('#append-big-hub-dentists').length) {
+                                    $('html, body').animate({'scrollTop': $('#append-big-hub-dentists').offset().top}, 300);
+                                }
+
+                                if ($('#append-big-hub-ids').length) {
+                                    $('html, body').animate({'scrollTop': $('#append-big-hub-ids').offset().top}, 300);
+                                }
+
                                 if (params.type_hub == 'dentacoin' && typeof(projectData.general_logic.data.showStickySubpagesNav) == 'function') {
                                     projectData.general_logic.data.showStickySubpagesNav();
                                 }
