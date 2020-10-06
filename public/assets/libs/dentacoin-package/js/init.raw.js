@@ -293,9 +293,11 @@ if (typeof jQuery == 'undefined') {
                             if (jQuery(this).attr('data-video') != '') {
                                 var youtubeVideoId = getYoutubeVideoId(jQuery(this).attr('data-video'));
                                 if (youtubeVideoId) {
+                                    $('.video-and-html-holder').removeClass('no-video');
                                     elementToAppend.find('.video-content').html('<iframe src="https://www.youtube.com/embed/'+youtubeVideoId+'"></iframe>');
                                 }
                             } else {
+                                $('.video-and-html-holder').addClass('no-video');
                                 elementToAppend.find('.video-content').html('');
                             }
 
