@@ -18,7 +18,7 @@
                             You don't have a wallet yet? <a href="https://wallet.dentacoin.com" target="_blank" class="light_blue">See how to create one.</a>
                         </div>
                         <div>
-                            <a href="javascript:void(0);" class="white-dark-blue-btn redeem-dcn">REDEEM</a>
+                            <a href="javascript:void(0);" class="white-bright-blue-btn redeem-dcn">REDEEM</a>
                         </div>
                     </div>
                 </div>

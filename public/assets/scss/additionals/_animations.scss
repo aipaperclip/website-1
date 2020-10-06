@@ -75,3 +75,24 @@
     50%  { opacity:0; }
     100% { opacity:1; }
 }
+
+@keyframes rightLeftAnimation {
+    0%   { right: -20px; }
+    50%  { right: -55px; }
+    100% { right: -20px; }
+}
+@-o-keyframes rightLeftAnimation{
+    0%   { right: -20px; }
+    50%  { right: -55px; }
+    100% { right: -20px; }
+}
+@-moz-keyframes rightLeftAnimation{
+    0%   { right: -20px; }
+    50%  { right: -55px; }
+    100% { right: -20px; }
+}
+@-webkit-keyframes rightLeftAnimation{
+    0%   { right: -20px; }
+    50%  { right: -55px; }
+    100% { right: -20px; }
+}

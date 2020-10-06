@@ -27,21 +27,59 @@
     }
 }
 
+.dcn-big-hub-white-light-blue-btn {
+    display: inline-block;
+    background-color: #00aeef;
+    color: white !important;
+    font-size: 20px;
+    padding: 10px 20px;
+    font-family: "Lato-Bold";
+    border: 1.5px solid #00aeef;
+    text-decoration: none !important;
+    cursor: pointer;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -ms-transition: 0.3s;
+    transition: 0.3s;
+    @media screen and (min-width: 992px) {
+        &:hover {
+            color: #00aeef !important;
+            background-color: white;
+            text-decoration: none !important;
+        }
+    }
+}
+
 .dcn-big-hub {
-    -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-    -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-    display: flex;
     .app-list {
         position: relative;
         padding-top: 50px;
         padding-bottom: 50px;
-        min-height: 650px;
-        width: 50%;
+        min-height: 580px;
+        width: 100%;
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-top: 40px solid white;
+            z-index: 105;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
         &.light-blue-background {
             background-image: url('//dentacoin.com/assets/images/dentacoin-ecosystem-background.jpg');
         }
@@ -57,13 +95,13 @@
         }
         .list-wrapper {
             font-size: 0;
-            max-width: 450px;
+            max-width: 750px;
             margin: 0 auto;
             .single-application {
-                width: 33.33333333%;
+                width: 25%;
                 vertical-align: top;
                 display: inline-block;
-                margin-bottom: 15px;
+                margin-bottom: 30px;
                 text-align: center;
                 cursor: pointer;
                 .hub-element-title {
@@ -85,10 +123,10 @@
                             -o-transition: 0.3s;
                             -ms-transition: 0.3s;
                             transition: 0.3s;
-                            -webkit-border-radius: 25px;
-                            -moz-border-radius: 25px;
-                            -ms-border-radius: 25px;
-                            border-radius: 25px;
+                            -webkit-border-radius: 20%;
+                            -moz-border-radius: 20%;
+                            -ms-border-radius: 20%;
+                            border-radius: 20%;
                         }
                     }
                 }
@@ -98,10 +136,10 @@
                         margin: 0 auto;
                         background-color: rgba(0, 0, 0, 0.5);
                         position: relative;
-                        -webkit-border-radius: 25px;
-                        -moz-border-radius: 25px;
-                        -ms-border-radius: 25px;
-                        border-radius: 25px;
+                        -webkit-border-radius: 20%;
+                        -moz-border-radius: 20%;
+                        -ms-border-radius: 20%;
+                        border-radius: 20%;
                         .apps-in-folder-list {
                             position: absolute;
                             width: 90%;
@@ -128,6 +166,7 @@
                             -moz-box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
                             -ms-box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
                             box-shadow: -6px 8px 8px 0px rgba(0, 0, 0, 0.5);
+                            border: 4px solid #00aeef;
                         }
                     }
                 }
@@ -149,13 +188,13 @@
         }
     }
     .info-section {
-        width: 50%;
+        width: 100%;
+        margin: 0 auto;
         background-color: white;
         padding-top: 30px;
         padding-bottom: 50px;
-        padding-left: 15px;
-        padding-right: 15px;
-        display: inline-block;
+        padding-left: 30px;
+        padding-right: 30px;
         position: relative;
         .close-application {
             display: none;
@@ -168,138 +207,195 @@
         }
         .logo {
             width: 100%;
-            max-width: 130px;
+            max-width: 80px;
             margin: 0 auto;
             display: none;
         }
-        .title {
-            font-size: 28px;
-            font-weight: bold;
-            padding-top: 15px;
-            padding-bottom: 15px;
+        .video-and-html-holder {
+            font-size: 0;
             text-align: center;
-            display: none;
-        }
-        .video-content {
-            text-align: center;
-            iframe {
+            max-width: 1200px;
+            margin: 0 auto;
+            .content {
                 width: 100%;
-                max-width: 500px;
-                margin: 15px auto;
-                border: 0;
-                height: 300px;
-            }
-        }
-        .html-content {
-            line-height: 20px;
-            font-size: 16px;
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-            a:focus {
-                outline: 0;
-                outline-offset: 0;
-                &.dcn-big-hub-btn {
-                    color: white;
-                }
-            }
-        }
-        .extra-html {
-            max-width: 650px;
-            margin: 0 auto;
-            .go-to-all {
-                text-align: center;
-                padding-top: 20px;
-            }
-            .extra-title {
-                font-family: 'Calibri-Bold';
-                font-size: 20px;
-                padding-bottom: 10px;
-                padding-top: 15px;
-                text-align: center;
-            }
-            .slider-with-tool-data {
-                .slick-prev {
-                    width: 30px;
-                    height: 30px;
-                    left: 0px;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    background: url('//dentacoin.com/assets/images/left-arrow.svg');
-                    background-size: auto 100%;
-                    z-index: 3;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    display: block;
-                    font-size: 0;
-                    border: 0;
-                    cursor: pointer;
-                    -webkit-box-shadow: none;
-                    -moz-box-shadow: none;
-                    -ms-box-shadow: none;
-                    box-shadow: none;
-                    &.slick-disabled {
-                        display: none !important;
+                max-width: 730px;
+                .video-content {
+                    text-align: center;
+                    width: 50%;
+                    display: inline-block;
+                    vertical-align: middle;
+                    iframe {
+                        width: 100%;
+                        height: 200px;
+                        border: 0;
                     }
                 }
-                .slick-next {
-                    width: 30px;
-                    height: 30px;
-                    right: 0px;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    background: url('//dentacoin.com/assets/images/right-arrow.svg');
-                    background-size: auto 100%;
-                    z-index: 3;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    display: block;
-                    font-size: 0;
-                    border: 0;
-                    cursor: pointer;
-                    -webkit-box-shadow: none;
-                    -moz-box-shadow: none;
-                    -ms-box-shadow: none;
-                    box-shadow: none;
-                    &.slick-disabled {
-                        display: none !important;
+                .title-and-html {
+                    width: 50%;
+                    display: inline-block;
+                    vertical-align: middle;
+                    padding-left: 30px;
+                    text-align: left;
+                    .title {
+                        font-size: 26px;
+                        color: #333333;
+                        padding-bottom: 10px;
                     }
-                }
-                .slick-track {
-                    display: flex;
-                    a {
-                        display: block;
-                        color: black;
-                        .single-slide {
-                            font-size: 0;
-                            text-align: left;
-                            padding-left: 35px;
-                            padding-right: 35px;
-                            height: auto;
-                            align-items: center;
-                            figure {
-                                width: 100px;
-                                display: inline-block;
-                                vertical-align: top;
+                    .html-content {
+                        line-height: 24px;
+                        font-size: 20px;
+                        a:focus {
+                            outline: 0;
+                            outline-offset: 0;
+                            &.dcn-big-hub-btn {
+                                color: white;
                             }
-                            .content {
-                                padding-left: 10px;
-                                width: calc(100% - 100px);
-                                display: inline-block;
-                                vertical-align: top;
-                                .slide-title {
-                                    font-size: 16px;
-                                }
-                                time {
-                                    font-size: 13px;
-                                    color: #999999;
+                        }
+                    }
+                }
+                .extra-html {
+                    max-width: 100%;
+                    .go-to-all {
+                        text-align: center;
+                        padding-top: 20px;
+                    }
+                    .extra-title {
+                        font-family: 'Calibri-Bold';
+                        font-size: 20px;
+                        padding-bottom: 10px;
+                        padding-top: 15px;
+                        text-align: center;
+                    }
+                    .slider-with-tool-data {
+                        .slick-prev {
+                            width: 30px;
+                            height: 30px;
+                            left: -15px;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            background: url('//dentacoin.com/assets/images/left-arrow.svg');
+                            background-size: auto 100%;
+                            z-index: 3;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            display: block;
+                            font-size: 0;
+                            border: 0;
+                            cursor: pointer;
+                            -webkit-box-shadow: none;
+                            -moz-box-shadow: none;
+                            -ms-box-shadow: none;
+                            box-shadow: none;
+                            &.slick-disabled {
+                                display: none !important;
+                            }
+                        }
+                        .slick-next {
+                            width: 30px;
+                            height: 30px;
+                            right: -15px;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            background: url('//dentacoin.com/assets/images/right-arrow.svg');
+                            background-size: auto 100%;
+                            z-index: 3;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            display: block;
+                            font-size: 0;
+                            border: 0;
+                            cursor: pointer;
+                            -webkit-box-shadow: none;
+                            -moz-box-shadow: none;
+                            -ms-box-shadow: none;
+                            box-shadow: none;
+                            &.slick-disabled {
+                                display: none !important;
+                            }
+                        }
+                        .slick-track {
+                            display: flex;
+                            a {
+                                display: block;
+                                color: black;
+                                .single-slide {
+                                    font-size: 0;
+                                    text-align: left;
+                                    padding-left: 15px;
+                                    padding-right: 15px;
+                                    height: auto;
+                                    align-items: center;
+                                    figure {
+                                        width: 100px;
+                                        display: inline-block;
+                                        vertical-align: top;
+                                    }
+                                    .content {
+                                        padding-left: 10px;
+                                        width: calc(100% - 100px);
+                                        display: inline-block;
+                                        vertical-align: top;
+                                        .slide-title {
+                                            font-size: 16px;
+                                        }
+                                        time {
+                                            font-size: 13px;
+                                            color: #999999;
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
-                } 
+                }
+            }
+            .left-arrow, .right-arrow {
+                width: calc(50% - (730px / 2));
+                img {
+                    width: 30px;
+                }
+            }
+            &.no-video {
+                .content {
+                    .video-content {
+                        display: none;
+                    }
+                    .title-and-html {
+                        width: 100%;
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    .dcn-big-hub {
+        .app-list {
+            padding-top: 70px;
+            .list-wrapper {
+                max-width: 950px;
+            }
+        }
+        .info-section {
+            .video-and-html-holder {
+                max-width: 1600px;
+                .content {
+                    width: 100%;
+                    max-width: 900px;
+                    .video-content {
+                        width: 350px;
+                    }
+                    .title-and-html {
+                        width: calc(100% - 350px);
+                    }
+                }
+                .left-arrow, .right-arrow {
+                    width: calc(50% - (900px / 2));
+                }
             }
         }
     }
@@ -318,30 +414,31 @@
 
 @media screen and (max-width: 992px) {
     .dcn-big-hub {
-        -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-        -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-        -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
-        display: flex;
         .app-list {
             width: 100%;
             min-height: 0;
+            &:before {
+                border-left: 35px solid transparent;
+                border-right: 35px solid transparent;
+                border-top: 30px solid white;
+            }
             .rotated-text {
                 font-size: 26px;
             }
             .list-wrapper {
                 .single-application {
                     padding: 0 5px;
+                    margin-bottom: 20px;
                     .hub-element-title {
                         font-size: 16px;
                     }
                     &.link {
                         .wrapper {
                             img {
-                                -webkit-border-radius: 15px;
-                                -moz-border-radius: 15px;
-                                -ms-border-radius: 15px;
-                                border-radius: 15px;
+                                -webkit-border-radius: 20%;
+                                -moz-border-radius: 20%;
+                                -ms-border-radius: 20%;
+                                border-radius: 20%;
                             }
                         }
                     }
@@ -352,13 +449,42 @@
             display: none;
             width: 100%;
             position: relative;
+            padding-top: 15px;
+            padding-left: 15px;
+            padding-right: 15px;
+            -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+            -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+            -ms-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+            .video-and-html-holder {
+                .content {
+                    .video-content {
+                        width: 100%;
+                        margin-top: 5px;
+                        margin-bottom: 20px;
+                    }
+                    .title-and-html {
+                        width: 100%;
+                        padding-left: 0;
+                        text-align: center;
+                        * {
+                            text-align: center !important;
+                        }
+                        .title {
+                            font-size: 26px;
+                            display: block;
+                        }
+                        .html-content {
+                            line-height: 20px;
+                            font-size: 16px; 
+                        }
+                    }
+                }
+            }
             .close-application {
                 display: block;
             }
             .logo {
-                display: block;
-            }
-            .title {
                 display: block;
             }
         }

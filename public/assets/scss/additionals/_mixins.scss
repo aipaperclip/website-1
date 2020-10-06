@@ -84,7 +84,7 @@
           transform: rotate($degrees);
 }
 
-@mixin animation($delay, $duration, $animation, $timing: ease) {
+@mixin animation($delay, $duration, $animation, $timing: ease, $iteration: 1) {
     -webkit-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;
@@ -105,6 +105,10 @@
     -webkit-animation-timing-function: $timing;
     -moz-animation-timing-function: $timing;
     animation-timing-function: $timing;
+    -o-animation-iteration-count: $iteration;
+    -webkit-animation-iteration-count: $iteration;
+    -moz-animation-iteration-count: $iteration;
+    animation-iteration-count: $iteration;
 }
 
 @mixin clear_transform()    {

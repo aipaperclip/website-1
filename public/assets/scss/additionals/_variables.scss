@@ -2,9 +2,10 @@ $screen-md: 1200px;
 $screen-sm: 992px;
 $screen-xs: 768px;
 
-$main_color: #1d1d1d;
-$dark_gray: #333333;
+$main_color: #333;
+$dark_gray: #555555;
 $light_blue: #679dca;
+$bright_blue: #00aeef;
 $dark_blue: #041e42;
 $light_gray: #3e3e3e;
 $solid_gray: #aaaaaa;
@@ -18,28 +19,12 @@ $christmas_calendar_red: #d70a10;
     background-color: $main_color;
 }
 
-.dark_gray {
-    color: $dark_gray;
-}
-
-.dark_gray-bg {
-    background-color: $dark_gray;
-}
-
 .light_blue {
     color: $light_blue;
 }
 
 .light_blue-bg {
     background-color: $light_blue;
-}
-
-.dark_blue {
-    color: $dark_blue;
-}
-
-.dark_blue-bg {
-    background-color: $dark_blue;
 }
 
 .light_gray {
@@ -62,6 +47,34 @@ $christmas_calendar_red: #d70a10;
     color: white;
 }
 
+.color-black {
+    color: black;
+}
+
+.color-dark-blue {
+    color: $dark_blue;
+}
+
 .color-christmas-calendar-red {
     color: $christmas_calendar_red;
+}
+
+.color-dark-gray {
+    color: $dark_gray;
+}
+
+.color-bright-blue {
+    color: $bright_blue;
+}
+
+.background-bight-blue {
+    background-color: $bright_blue;
+}
+
+.background-dark-gray {
+    background-color: $dark_gray;
+}
+
+.background-dark-blue {
+    background-color: $dark_blue;
 }

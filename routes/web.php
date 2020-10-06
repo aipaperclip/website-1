@@ -17,6 +17,12 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
+    Route::get('/users', 'HomeController@getUsersPageView')->name('users');
+
+    Route::get('/dentists', 'HomeController@getDentistsPageView')->name('dentists');
+
+    Route::get('/traders', 'HomeController@getTradersPageView')->name('traders');
+
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
@@ -40,6 +46,14 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::get('/berlin-roundtable', /*'BerlinRoundtableController@getView'*/ function() {
         return abort(410);
     })->name('berlin-roundtable');
+
+    Route::post('/take-homepage-data', 'HomeController@takeHomepageData')->name('take-homepage-data');
+
+    Route::post('/get-map-html', 'DentacoinMapController@getMapHtml')->name('get-map-html');
+
+    Route::post('/get-map-data', 'DentacoinMapController@getMapData')->name('get-map-data');
+
+    Route::post('/get-labs-suppliers-and-industry-partners', 'DentacoinMapController@getLabsSuppliersAndIndustryPartners')->name('get-labs-suppliers-and-industry-partners');
 
     Route::get('/holiday-calendar-terms', 'ChristmasCalendarController@getChristmasCalendarTermsView')->name('holiday-calendar-terms');
 
@@ -96,7 +110,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     });
 
     Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');
-
 
     //======================================= AJAX ========================================
 

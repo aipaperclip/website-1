@@ -317,7 +317,6 @@
 .social-login-btn.facebook-custom-btn {
     background-color: #4267B2;
     color: white;
-    background-image: url(/assets/images/facebook-icon.svg);
 }
 
 .dentacoin-login-gateway-container * {
@@ -336,6 +335,14 @@
 @for $i from 0 through 50 {
     .dentacoin-login-gateway-fs-#{$i} {
         font-size: 0px + $i!important;
+    }
+}
+
+@include breakpoint($xs) {
+    @for $i from 0 through 50 {
+        .dentacoin-login-gateway-fs-xs-#{$i} {
+            font-size: 0px + $i!important;
+        }
     }
 }
 
@@ -360,6 +367,32 @@
 @for $i from 0 through 10 * 2 {
     .dentacoin-login-gateway-container .padding-right-#{$i * 5} {
         padding-right: 0px + $i * 5!important;
+    }
+}
+
+@include breakpoint($xs) {
+    @for $i from 0 through 10 * 2 {
+        .dentacoin-login-gateway-container .padding-bottom-xs-#{$i * 5} {
+            padding-bottom: 0px + $i * 5!important;
+        }
+    }
+
+    @for $i from 0 through 10 * 2 {
+        .dentacoin-login-gateway-container .padding-top-xs-#{$i * 5} {
+            padding-top: 0px + $i * 5!important;
+        }
+    }
+
+    @for $i from 0 through 10 * 2 {
+        .dentacoin-login-gateway-container .padding-left-xs-#{$i * 5} {
+            padding-left: 0px + $i * 5!important;
+        }
+    }
+
+    @for $i from 0 through 10 * 2 {
+        .dentacoin-login-gateway-container .padding-right-xs-#{$i * 5} {
+            padding-right: 0px + $i * 5!important;
+        }
     }
 }
 
@@ -604,23 +637,73 @@
         }
     } 
     @include breakpoint($xs) {
-        margin-top: 50px;
         margin-bottom: 100px;
     }
 }
 
-.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action a {
-    width: 50%;
-    font-size: 35px;
-    padding: 10px;
-    text-align: center;
-    border-top: 3px solid white;
-    border-left: 3px solid white;
-    border-right: 3px solid white;
-    @include rounded(4px 4px 0 0);
+.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action {
+    a {
+        width: calc(50% - 40px);
+        font-size: 35px;
+        padding: 10px;
+        text-align: center;
+        border-top: 3px solid white;
+        border-left: 3px solid white;
+        border-right: 3px solid white;
+        @include rounded(4px 4px 0 0);
+        .header-custom-radio-btn {
+            width: 35px;
+            height: 35px;
+            border: 1px solid black;
+            margin-right: 5px;
+            background-color: white;
+            @include rounded(50%);
+        }
+        &.active {
+            .header-custom-radio-btn {
+                position: relative;
+                &:after {
+                    content: '';
+                    width: 17px;
+                    height: 17px;
+                    background-color: #ff0045;
+                    @include rounded(50%);
+                    @include vertical-horizontal-align(absolute);
+                }
+            }
+        }
+    }
+    button {
+        width: 80px;
+        border: 0;
+        background: transparent;
+        img {
+            width: 75%;
+            @include rounded(50%);
+            @include box-shadow(0 3px 3px 3px rgba(0, 0, 0, 0.5));
+        }
+    }
     @include breakpoint($xs) {
-        font-size: 20px;
-        padding: 10px 5px;
+        a {
+            font-size: 18px;
+            padding: 10px 5px;
+            width: calc(50% - 25px);
+            .header-custom-radio-btn {
+                width: 25px;
+                height: 25px;
+            }
+            &.active {
+                .header-custom-radio-btn {
+                    &:after {
+                        width: 12px;
+                        height: 12px;
+                    }
+                }
+            }
+        }
+        button {
+            width: 50px;
+        }
     }
 }
 
@@ -632,7 +715,7 @@
         &.active {
             color: white;
             position: relative;
-            @include box-shadow(0 2px 15px 4px rgba(0, 0, 0, 0.8));
+            @include box-shadow(0 2px 10px 3px rgba(0, 0, 0, 0.6));
         }
     }
     a[data-type="dentist"] {
@@ -642,13 +725,12 @@
         &.active {
             background-color: white;
             position: relative;
-            @include box-shadow(0 2px 15px 4px rgba(0, 0, 0, 0.8));
+            @include box-shadow(0 2px 10px 3px rgba(0, 0, 0, 0.6));
         }
     }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body {
-    display: flex;
     position: relative;
 }
 
@@ -672,6 +754,10 @@
     text-align: center;
     border-top: 1px solid black;
     font-size: 16px;
+    @include breakpoint($xs) {
+        padding: 20px 0;
+        margin-top: 25px;
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .popup-half-footer a {
@@ -875,6 +961,10 @@
     border-top: 1px solid white;
     color: white;
     font-size: 16px;
+    @include breakpoint($xs) {
+        padding: 20px 0;
+        margin-top: 25px;
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .popup-half-footer a {
@@ -885,7 +975,7 @@
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist {
-    width: 50%;
+    width: 100%;
     padding-top: 20px;
     border-bottom: 3px solid white;
     border-left: 3px solid white;
@@ -917,8 +1007,8 @@
     font-family: "Calibri Light";
     @include breakpoint($xs) {
         margin: 0;
-        padding-top: 10px;
-        padding-bottom: 20px;
+        padding-top: 0;
+        padding-bottom: 15px;
     }
 }
 
@@ -942,12 +1032,11 @@
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-register, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .form-login, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-login {
     width: 90%;
+    max-width: 400px;
     margin: 0 auto;
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient.custom-hide, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist.custom-hide {
     visibility: hidden;
-    @include breakpoint($xs) {
-        display: none;
-    }
+    display: none;
 }

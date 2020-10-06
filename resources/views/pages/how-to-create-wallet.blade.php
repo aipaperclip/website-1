@@ -29,7 +29,7 @@
                     <span class="container display-block">
                         <span class="row display-block">
                             <span class="col-xs-12 col-sm-10 col-sm-offset-1 display-block column padding-right-30">
-                                <span class="lato-black fs-20 padding-right-10 dark_blue">01</span>What is Dentacoin (DCN)?
+                                <span class="lato-black fs-20 padding-right-10 color-dark-blue">01</span>What is Dentacoin (DCN)?
                             </span>
                         </span>
                     </span>
@@ -49,7 +49,7 @@
                     <span class="container display-block">
                         <span class="row display-block">
                             <span class="col-xs-12 col-sm-10 col-sm-offset-1 display-block column padding-right-30">
-                                <span class="lato-black fs-20 padding-right-10 dark_blue">02</span>What is a wallet and why do I need it?
+                                <span class="lato-black fs-20 padding-right-10 color-dark-blue">02</span>What is a wallet and why do I need it?
                             </span>
                         </span>
                     </span>
@@ -69,7 +69,7 @@
                     <span class="container display-block">
                         <span class="row display-block">
                             <span class="col-xs-12 col-sm-10 col-sm-offset-1 display-block column padding-right-30">
-                                <span class="lato-black fs-20 padding-right-10 dark_blue">03</span>How can I create a Dentacoin wallet?
+                                <span class="lato-black fs-20 padding-right-10 color-dark-blue">03</span>How can I create a Dentacoin wallet?
                             </span>
                         </span>
                     </span>
@@ -91,7 +91,7 @@
                     <span class="container display-block">
                         <span class="row display-block">
                             <span class="col-xs-12 col-sm-10 col-sm-offset-1 display-block column padding-right-30">
-                                <span class="lato-black fs-20 padding-right-10 dark_blue">04</span>How do I create a wallet via Dentacoin Wallet dApp?
+                                <span class="lato-black fs-20 padding-right-10 color-dark-blue">04</span>How do I create a wallet via Dentacoin Wallet dApp?
                             </span>
                         </span>
                     </span>
@@ -113,7 +113,7 @@
                     <span class="container display-block">
                         <span class="row display-block">
                             <span class="col-xs-12 col-sm-10 col-sm-offset-1 display-block column padding-right-30">
-                                <span class="lato-black fs-20 padding-right-10 dark_blue">05</span>Which third-party wallets can I use for storing Dentacoin (DCN)?
+                                <span class="lato-black fs-20 padding-right-10 color-dark-blue">05</span>Which third-party wallets can I use for storing Dentacoin (DCN)?
                             </span>
                         </span>
                     </span>

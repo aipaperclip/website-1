@@ -1,37 +1,124 @@
-.white-dark-blue-btn, .platform-custom-button {
+.platform-custom-button {
     background-color: $dark_blue;
-    color: white !important;;
+    color: white !important;
     font-size: 16px;
     padding: 6px 15px;
-    font-weight: bold;
-    border: 2px solid $dark_blue;
+    font-family: "Lato-Bold";
+    border: 1.5px solid $dark_blue;
     text-decoration: none !important;
+    cursor: pointer;
     @include rounded(4px);
     @include simple_transition(.3s);
-    &:hover {
-        color: $dark_blue !important;
-        background-color: white;
-        text-decoration: none !important;
-    }
     &.platform-custom-button {
         display: inline-block;
     }
+    @include breakpoint($md) {
+        &:hover {
+            color: $dark_blue !important;
+            background-color: white;
+            text-decoration: none !important;
+        }
+    }
 }
 
-.dark-blue-white-btn {
-    background-color: white;
-    color: $dark_blue;
-    font-size: 16px;
-    padding: 6px 15px;
-    font-weight: bold;
-    border: 2px solid $dark_blue;
-    text-decoration: none;
+.white-purple-btn {
+    font-size: 20px;
+    color: white;
+    background-color: #ff0046;
+    padding: 15px 70px 15px 30px;
+    font-family: "Lato-Black";
+    position: relative;
     @include rounded(4px);
-    @include simple_transition(.3s);
     &:hover {
         color: white;
-        background-color: $dark_blue;
-        text-decoration: none;
+    }
+    &.with-white-arrow {
+        &:after {
+            content: '';
+            width: 80px;
+            height: 90px;
+            background-image: url('/assets/images/right-btn-arrow.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            right: -20px;
+            @include vertical-align(absolute);
+        }
+    }
+    &.with-list-icon {
+        &:after {
+            content: '';
+            width: 80px;
+            height: 90px;
+            background-image: url('/assets/images/mobile-map-list-icon.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            left: -20px;
+            @include vertical-align(absolute);
+        }
+    }
+    &.with-map-pin {
+        &:after {
+            content: '';
+            width: 80px;
+            height: 90px;
+            background-image: url('/assets/images/mobile-map-icon.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            left: -20px;
+            @include vertical-align(absolute);
+        }
+    }
+}
+
+.white-bright-blue-btn, input[type='submit'].white-bright-blue-btn {
+    background-color: $bright_blue;
+    color: white !important;
+    font-size: 20px;
+    padding: 10px 20px;
+    font-family: "Lato-Bold";
+    border: 1.5px solid $bright_blue;
+    text-decoration: none !important;
+    cursor: pointer;
+    @include rounded(4px);
+    @include simple_transition(.3s);
+    &.platform-custom-button {
+        display: inline-block;
+    }
+    @include breakpoint($md) {
+        &:hover {
+            color: $bright_blue !important;
+            background-color: white;
+            text-decoration: none !important;
+        }
+    }
+}
+
+.bright-blue-white-btn, input[type='submit'].bright-blue-white-btn {
+    background-color: white;
+    color: $bright_blue !important;
+    font-size: 20px;
+    padding: 10px 20px;
+    font-family: "Lato-Bold";
+    border: 1.5px solid $bright_blue;
+    text-decoration: none !important;
+    cursor: pointer;
+    @include rounded(4px);
+    @include simple_transition(.3s);
+    &.platform-custom-button {
+        display: inline-block;
+    }
+    @include breakpoint($md) {
+        &:hover {
+            color: white !important;
+            background-color: $bright_blue;
+            text-decoration: none !important;
+            &.with-border {
+                border: 1.5px solid white;
+            }
+        }
     }
 }
 
@@ -40,8 +127,9 @@
     color: white;
     font-size: 16px;
     padding: 6px 15px;
-    font-weight: bold;
-    border: 2px solid black;
+    font-family: "Lato-Bold";
+    border: 1.5px solid black;
+    cursor: pointer;
     @include rounded(4px);
     @include simple_transition(.3s);
     &:hover {
@@ -55,14 +143,14 @@
     color: black;
     font-size: 16px;
     padding: 6px 15px;
-    font-weight: bold;
-    border: 2px solid black;
+    font-family: "Lato-Bold";
+    border: 1.5px solid black;
+    cursor: pointer;
     @include rounded(4px);
     @include simple_transition(.3s);
     &:hover {
         color: white;
         background-color: black;
-        border: 2px solid white;
     }
 }
 
@@ -72,8 +160,9 @@
     font-size: 16px;
     padding: 6px 15px;
     display: inline-block;
-    font-weight: bold;
-    border: 2px solid white;
+    font-family: "Lato-Bold";
+    border: 1.5px solid white;
+    cursor: pointer;
     @include simple_transition(.3s);
     &:hover {
         color: $light_blue;
@@ -87,14 +176,14 @@
     font-size: 20px;
     display: inline-block;
     padding: 12px 24px;
-    font-weight: bold;
-    border: 2px solid white;
+    font-family: "Lato-Bold";
+    border: 1.5px solid white;
     cursor: pointer;
     @include rounded(12px);
     @include simple_transition(.3s);
     &:hover {
         background-color: $light_blue;
-        border: 2px solid $light_blue;
+        border: 1.5px solid $light_blue;
         color: white;
     }
     @include breakpoint($sm-down)   {
@@ -108,14 +197,14 @@
     font-size: 20px;
     display: inline-block;
     padding: 12px 24px;
-    font-weight: bold;
-    border: 2px solid white;
+    font-family: "Lato-Bold";
+    border: 1.5px solid white;
     cursor: pointer;
     @include rounded(12px);
     @include simple_transition(.3s);
     &:hover {
         background-color: $dark_blue;
-        border: 2px solid $dark_blue;
+        border: 1.5px solid $dark_blue;
         color: white;
     }
     @include breakpoint($sm-down)   {
@@ -126,11 +215,11 @@
 .blue-white-rounded-btn, input[type='submit'].blue-white-rounded-btn {
     background-color: white;
     color: $light_blue;
-    border: 2px solid $light_blue;
+    border: 1.5px solid $light_blue;
     font-size: 20px;
     display: inline-block;
     padding: 12px 24px; 
-    font-weight: bold;
+    font-family: "Lato-Bold";
     cursor: pointer;
     @include rounded(4px);
     @include simple_transition(.3s);
@@ -148,9 +237,10 @@
     color: white;
     background-color: $dark_blue;
     padding: 10px 20px;
-    font-family: 'Calibri-Bold';
-    border: 2px solid $dark_blue;
+    font-family: 'Lato-Bold';
+    border: 1.5px solid $dark_blue;
     display: inline-block;
+    cursor: pointer;
     @include rounded(4px);
     @include simple_transition(.3s);
     &:hover {
@@ -167,9 +257,10 @@
     color: $dark_blue;
     background-color: white;
     padding: 10px 20px;
-    font-family: 'Calibri-Bold';
-    border: 2px solid white;
+    font-family: 'Lato-Bold';
+    border: 1.5px solid white;
     display: inline-block;
+    cursor: pointer;
     @include rounded(4px);
     @include simple_transition(.3s);
     &:hover {
@@ -180,7 +271,7 @@
         color: $dark_blue;
     }
     &.blue-border {
-        border: 2px solid $dark_blue;
+        border: 1.5px solid $dark_blue;
     }
 }
 
@@ -191,6 +282,7 @@
     font-size: 16px;
     font-family: 'Calibri-Regular';
     border: 0;
+    cursor: pointer;
     @include rounded(4px);
     @include box-shadow(0px 2px 10px 0 rgba(0, 0, 0, 0.2));
     @include simple_transition(.3s);
@@ -269,7 +361,6 @@
     color: $dark_gray;
     font-size: 35px;
     font-family: "Lato-Bold";
-    font-weight: bold;
     text-align: center;
     text-transform: uppercase;
     @include breakpoint($xs)    {
@@ -477,6 +568,938 @@
             padding: 10px 30px 10px 15px;
             -webkit-appearance: initial;
             @include rounded(4px);
+        }
+    }
+    &.upload-file {
+        .upload-input {
+            display: none;
+        }
+    }
+    &.custom-checkbox-style {
+        font-size: 0;
+        position: relative;
+        input[type="checkbox"] {
+            display: none !important;
+        }
+        .custom-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #bdc3c7;
+            display: inline-block;
+            vertical-align: middle;
+            background-color: white;
+            color: $bright_blue;
+            font-size: 16px;
+            text-align: center;
+            line-height: 20px;
+            -webkit-border-radius: 20%;
+            -moz-border-radius: 20%;
+            -ms-border-radius: 20%;
+            border-radius: 20%;
+            font-weight: bold;
+        }
+        label {
+            cursor: pointer;
+        }
+        .custom-checkbox-label {
+            font-size: 16px;
+            padding-left: 10px;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+            font-weight: normal;
+            margin: 0;
+            a {
+                text-decoration: underline;
+            }
+        }
+        &.white-colorful-style {
+            .custom-checkbox {
+                border: 1px solid $bright_blue;
+                color: white;
+                background-color: $bright_blue;
+            }
+        }
+    }
+    &.video-expressions-slider {
+        .slick-list {
+            overflow-x: hidden;
+            overflow-y: visible;
+            padding: 7.5% 0;
+            .slick-track {
+                display: flex !important;
+                .single-slide {
+                    position: relative;
+                    padding: 15px;
+                    height: inherit !important;
+                    &:focus {
+                        outline: none;
+                    }
+                    .video-thumb {
+                        figure {
+                            img {
+                                width: 100%;
+                                opacity: 0.6;
+                                @include breakpoint($xs) {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                        .youtube-play-button {
+                            z-index: 150;
+                            @include vertical-horizontal-align(absolute);
+                        }
+                        @include breakpoint($xs) {
+                            &.visibility-hidden {
+                                display: none;
+                            }
+                        }
+                    }
+                    .slide-wrapper {
+                        iframe {
+                            max-width: 150%;
+                            height: 100%;
+                            z-index: 100;
+                            opacity: 1;
+                            border: 0;
+                            @include box-shadow(0 5px 20px 2px rgba(0,0,0,.5));
+                            @include vertical-horizontal-align(absolute);
+                            @include breakpoint($xs) {
+                                max-width: 100%;
+                                height: 220px !important;
+                                position: static;
+                                @include box-shadow(none);
+                                @include clear_transform();
+                            }
+                        }
+                    }
+                    &.slick-active {
+                        &.before-middle {
+                            .slide-wrapper {
+                                &:before {
+                                    content: '';
+                                    width: 12px;
+                                    height: 12px;
+                                    background-color: black;
+                                    position: absolute;
+                                    top: 2px;
+                                    left: 77px;
+                                    -webkit-transform: translateY(-50%);
+                                    -ms-transform: translateY(-50%);
+                                    transform: translateY(-50%);
+                                    @include rounded(50%);
+                                    @include breakpoint($xs) {
+                                        display: none;
+                                    }
+                                }
+                            }
+                            &:before {
+                                content: '';
+                                width: 2px;
+                                height: 70px;
+                                background-color: black;
+                                top: 2px;
+                                left: 2px;
+                                position: absolute;
+                                @include breakpoint($xs) {
+                                    display: none;
+                                }
+                            }
+                            &:after {
+                                content: '';
+                                height: 2px;
+                                width: 70px;
+                                background-color: black;
+                                top: 2px;
+                                left: 2px;
+                                position: absolute;
+                                @include breakpoint($xs) {
+                                    display: none;
+                                }
+                            }
+                        }
+                        &.after-middle {
+                            color: blue;
+                            .slide-wrapper {
+                                &:before {
+                                    content: '';
+                                    width: 12px;
+                                    height: 12px;
+                                    background-color: black;
+                                    position: absolute;
+                                    bottom: 2px;
+                                    right: 77px;
+                                    -webkit-transform: translateY(50%);
+                                    -ms-transform: translateY(50%);
+                                    transform: translateY(50%);
+                                    @include rounded(50%);
+                                    @include breakpoint($xs) {
+                                        display: none;
+                                    }
+                                }
+                            }
+                            &:before {
+                                content: '';
+                                width: 2px;
+                                height: 70px;
+                                background-color: black;
+                                bottom: 2px;
+                                right: 2px;
+                                position: absolute;
+                                @include breakpoint($xs) {
+                                    display: none;
+                                }
+                            }
+                            &:after {
+                                content: '';
+                                height: 2px;
+                                width: 70px;
+                                background-color: black;
+                                bottom: 2px;
+                                right: 2px;
+                                position: absolute;
+                                @include breakpoint($xs) {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                    &.middle-slide {
+                        .video-thumb {
+                            figure {
+                                img {
+                                    width: 150%;
+                                    max-width: 150%;
+                                    z-index: 100;
+                                    opacity: 1;
+                                    @include box-shadow(0 5px 20px 2px rgba(0,0,0,.5));
+                                    @include vertical-horizontal-align(absolute);
+                                    @include breakpoint($xs) {
+                                        max-width: none;
+                                        width: 100%;
+                                        @include box-shadow(none);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            @include breakpoint($xs) {
+                padding: 0;
+            }
+        }
+    }
+    &.user-expressions-slider-parent {
+        background-image: url('/assets/images/quotes.png');
+        background-position: top 30px center;
+        background-repeat: no-repeat;
+        .user-expressions-slider {
+            padding-left: 40px;
+            padding-right: 40px;
+            width: 125% !important;
+            .single-slide {
+                padding-left: 25px;
+                padding-right: 25px;
+                padding-bottom: 50px;
+                &:focus {
+                    outline: none;
+                }
+                .slide-wrapper {
+                    border: 2px solid black;
+                    padding: 45px 35px;
+                    position: relative;
+                    @include rounded(20px);
+                    .person-avatar {
+                        width: 180px;
+                        padding: 10px 15px;
+                        text-align: right;
+                        position: absolute;
+                        background: white;
+                        border-radius: 10px;
+                        left: -20px;
+                        bottom: 0;
+                        -webkit-transform: translateY(50%);
+                        -ms-transform: translateY(50%);
+                        transform: translateY(50%);
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            top: 10px;
+                            left: 20px;
+                            width: 12px;
+                            height: 12px;
+                            background-color: black;
+                            -webkit-transform: translateX(-50%);
+                            -ms-transform: translateX(-50%);
+                            transform: translateX(-50%);
+                            @include rounded(50%);
+                        }
+                        figure {
+                            float: right;
+                            border: 2px solid #000;
+                            width: 80px;
+                            height: 80px;
+                            overflow: hidden;
+                            position: relative;
+                            @include rounded(50%);
+                            img {
+                                @include vertical-horizontal-align(absolute);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include breakpoint($xs) {
+            background-position: top 10px right 50px;
+            background-repeat: no-repeat;
+            background-size: 40px;
+            .user-expressions-slider {
+                width: 100% !important;
+                padding-left: 0;
+                padding-right: 0;
+                .single-slide {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    .slide-wrapper {
+                        padding: 25px 25px 40px 25px;
+                        .person-avatar {
+                            width: 120px;
+                            figure {
+                                width: 50px;
+                                height: 50px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.section-dentacoin-stats {
+        .single {
+            width: 25%;
+            padding-left: 10px;
+            padding-right: 10px;
+            @include breakpoint($sm-down) {
+                width: 100%;
+                padding-bottom: 35px;
+            }
+        }
+    }
+    &.section-google-map {
+        .tooltip-inner {
+            background-color: #333;
+        }
+        .tooltip-arrow {
+            border-top-color: #333;
+        }
+        .map-infowindow {
+            button {
+                border: 0;
+                background: transparent;
+                font-size: 20px;
+                padding: 10px;
+                text-decoration: underline;
+                color: #00aeef;
+                font-family: 'Lato-Bold';
+            }
+        }
+        .header-filter-line {
+            background-color: $bright_blue;
+            .dropdown.bootstrap-select {
+                max-width: 450px;
+                .dropdown-header {
+                    font-size: 20px !important;
+                    font-family: "Lato-Bold";
+                }
+                .dropdown-menu .divider {
+                    display: none;
+                }
+                .dropdown-menu li {
+                    font-size: 14px;
+                    margin: 0 15px;
+                    &:hover {
+                        background-color: #d8eaf5;
+                        a {
+                            background: transparent;
+                        }
+                    }
+                }
+                .disabled {
+                    display: none;
+                }
+            }
+            .locations-splitted-by-category {
+                .dropdown-menu {
+                    min-height: auto !important;
+                    .inner {
+                        display: none;
+                    }
+                }
+                /*.filter-option-inner-inner {
+                    font-size: 0;
+                    &:after {
+                        content: 'Search by name or location';
+                        font-size: 16px;
+                        color: black;
+                    }
+                }*/
+            }
+            .location-types {
+                .filter-option-inner-inner {
+                    font-size: 0;
+                    &:after {
+                        content: 'Search by type';
+                        font-size: 16px;
+                        color: black;
+                    }
+                }
+            }
+            .dropdown-header {
+                span {
+                    border-bottom: 1px solid #9dcbe5;
+                    padding-bottom: 8px;
+                    margin-bottom: 8px;
+                    display: inline-block;
+                    font-size: 16px !important;
+                }
+            }
+            .bootstrap-select .dropdown-menu li {
+                border: 0;
+            }
+        }
+        .picker-and-map {
+            @include breakpoint($sm-down) {
+                display: block;
+            }
+            .left-picker {
+                width: 500px;
+                @include breakpoint($lgll) {
+                    width: 700px;
+                }
+                @include breakpoint($md-only) {
+                    width: 400px;
+                }
+                @include breakpoint($sm-down) {
+                    width: 100%;
+                    display: none;
+                }
+                .inner-gray-line {
+                    background-color: #e8e8e8;
+                    min-height: 40px;
+                    .picker-label {
+                        .go-back-to-continents, .go-back-to-countries {
+                            font-size: 0;
+                            img {
+                                max-width: 15px;
+                                display: inline-block;
+                                vertical-align: middle;
+                            }
+                            span {
+                                width: calc(100% - 20px);
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                    .picker-value {
+                        line-height: 40px;
+                        span {
+                            color: #ec1e4c;
+                        }
+                    }
+                }
+                .results-list {
+                    padding: 15px 10px 0;
+                    overflow-y: auto;
+                    position: relative;
+                    max-height: 400px;
+                    .invite-text {
+                        background-color: $bright_blue;
+                        width: calc(100% + 30px);
+                        margin-left: -15px;
+                    }
+                    .single-location {
+                        padding: 10px;
+                        margin-bottom: 10px;
+                        border: 3px solid transparent;
+                        cursor: pointer;
+                        @include rounded(4px);
+                        @include box-shadow(0px 0px 7px 1px rgba(0, 0, 0, 0.15));
+                        figure {
+                            width: 120px;
+                        }
+                        .right-location-content {
+                            width: calc(100% - 120px);
+                            .is-partner {
+                                > span {
+                                    padding: 5px 10px;
+                                    background-color: #bbbbbb;
+                                    color: white;
+                                    display: inline-block;
+                                    @include rounded(6px);
+                                }
+                            }
+                            .trp-stats {
+                                .stars {
+                                    width: 132px;
+                                    height: 25px;
+                                    background-position: center;
+                                    background-repeat: no-repeat;
+                                    background-image: url('/assets/images/stars-gray-average.png');
+                                    background-size: contain;
+                                    .active-stars {
+                                        height: 25px;
+                                        background-image: url('/assets/images/stars-blue-average.png');
+                                        background-size: auto 100%;
+                                        background-position: top 0 left 0;
+                                        background-repeat: no-repeat;
+                                    }
+                                }
+                                .base-on-x-reviews {
+                                    color: #888888;
+                                    @include breakpoint($xs) {
+                                        display: block;
+                                        padding: 5px 0;
+                                    }
+                                }
+                                a {
+                                    color: $bright_blue;
+                                }
+                            }
+                            .hidden-content {
+                                display: none;
+                                line-height: 28px;
+                                a {
+                                    font-family: 'Lato-Bold';
+                                    color: $bright_blue;
+                                }
+                            }
+                            .toggle-location-tile {
+                                display: inline-block;
+                                width: 25px;
+                                @include simple_transition(.3s);
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                        &.toggled {
+                            border: 3px solid #ff0046;
+                            position: relative;
+                            .right-location-content {
+                                .is-partner {
+                                    font-size: 0 !important;
+                                    padding: 0 !important;
+                                    span {
+                                        display: none;
+                                    }
+                                    &:after {
+                                        content: 'Partner';
+                                        font-size: 14px;
+                                        color: white;
+                                        background-color: #ff0046;
+                                        font-family: 'Lato-Bold';
+                                        padding: 5px 10px;
+                                        position: absolute;
+                                        top: -8px;
+                                        left: -8px;
+                                        @include rounded(4px);
+                                    }
+                                }
+                                .hidden-content {
+                                    display: block;
+                                }
+                                .toggle-location-tile {
+                                    @include rotate(180deg);
+                                }
+                            }
+                            @include breakpoint($xs) {
+                                figure {
+                                    width: 100%;
+                                    text-align: center;
+                                    padding-top: 15px;
+                                    img {
+                                        max-width: 150px;
+                                        width: 100%;
+                                    }
+                                }
+                                .right-location-content {
+                                    width: 100%;
+                                    padding-top: 10px;
+                                    padding-left: 0 !important;
+                                    text-align: center;
+                                    .hidden-content {
+                                        text-align: left;
+                                        max-width: 450px;
+                                        padding: 0 10px;
+                                        margin: 0 auto;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .locations-count {
+                        color: #bbbbbb;
+                    }
+                    .results-nav {
+                        padding: 10px;
+                        .nav-item {
+                            color: #bbbbbb;
+                        }
+                        .continents-nav, .countries-nav, .locations-nav {
+                            display: none;
+                            &.shown {
+                                display: block;
+                            }
+                        }
+                    }
+                    .continents-list {
+                        .countries-list {
+                            display: none;
+                        }
+                        ul {
+                            li {
+                                .continent-and-country-style-type {
+                                    font-size: 28px;
+                                    font-family: 'Lato-Black';
+                                    display: block;
+                                    padding: 5px 10px;
+                                    margin: 15px 10px;
+                                    border: 3px solid transparent;
+                                    @include rounded(4px);
+                                    @include box-shadow(0px 0px 7px 1px rgba(0, 0, 0, 0.15));
+                                    @include simple_transition(.5s);
+                                    .element-name {
+                                        width: calc(100% - 150px);
+                                        font-size: 28px;
+                                    }
+                                    .locations-count {
+                                        text-align: right;
+                                        width: 150px;
+                                    }
+                                    &:hover {
+                                        border: 3px solid #ff0046;
+                                    }
+                                    @include breakpoint($xs) {
+                                        font-size: 22px;
+                                        margin: 10px 0;
+                                        .element-name {
+                                            width: calc(100% - 150px);
+                                            font-size: 22px;
+                                        }
+                                    }
+                                }
+                                .locations-category-list {
+                                    display: none;
+                                    .invite-text {
+                                        width: calc(100% + 20px);
+                                        margin-left: -10px;
+                                        @include breakpoint($sm-down) {
+                                            display: none;
+                                        }
+                                    }
+                                    li {
+                                        &.closed {
+                                            .category-toggle-button {
+                                                &.partners {
+                                                    span {
+                                                        i {
+                                                            color: #ff0046;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: #ff0046;
+                                                    }
+                                                }
+                                                &.labs {
+                                                    span {
+                                                        i {
+                                                            color: $bright_blue;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: $bright_blue;
+                                                    }
+                                                }
+                                                &.suppliers {
+                                                    span {
+                                                        i {
+                                                            color: #14cab8;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: #14cab8;
+                                                    }
+                                                }
+                                                &.industryPartners {
+                                                    span {
+                                                        i {
+                                                            color: #000000;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: #000000;
+                                                    }
+                                                }
+                                                &.non-partners {
+                                                    span {
+                                                        i {
+                                                            color: #126585;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: #126585;
+                                                    }
+                                                }
+                                            }
+                                            .locations-list {
+                                                display: none;
+                                            }
+                                        }
+                                        .category-toggle-button {
+                                            color: black;
+                                            display: block;
+                                            position: relative;
+                                            margin: 15px 10px 5px;
+                                            @include breakpoint($xs) {
+                                                margin: 5px 0;
+                                            }
+                                            span {
+                                                padding-right: 5px;
+                                                background-color: white;
+                                                position: relative;
+                                                z-index: 10;
+                                                i {
+                                                    margin-right: 10px;
+                                                    color: #bbbbbb;
+                                                    @include breakpoint($xs) {
+                                                        margin-right: 5px;
+                                                    }
+                                                }
+                                            }
+                                            &:after {
+                                                content: '';
+                                                z-index: 5;
+                                                background-color: #bbbbbb;
+                                                width: 100%;
+                                                height: 2px;
+                                                left: 0;
+                                                @include vertical-align(absolute);
+                                            }
+                                        }
+                                        .locations-list {
+                                            padding: 5px 10px;
+                                            @include breakpoint($xs) {
+                                                padding: 5px 0;
+                                                .single-location {
+                                                    padding: 5px;
+                                                }
+                                            }
+                                        }
+                                        @include breakpoint($sm-down) {
+                                            .category-toggle-button {
+                                                &.partners {
+                                                    span {
+                                                        i {
+                                                            color: #ff0046;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: #ff0046;
+                                                    }
+                                                }
+                                                &.labs {
+                                                    span {
+                                                        i {
+                                                            color: $bright_blue;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: $bright_blue;
+                                                    }
+                                                }
+                                                &.suppliers {
+                                                    span {
+                                                        i {
+                                                            color: #14cab8;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: #14cab8;
+                                                    }
+                                                }
+                                                &.industryPartners {
+                                                    span {
+                                                        i {
+                                                            color: #000000;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: #000000;
+                                                    }
+                                                }
+                                                &.non-partners {
+                                                    span {
+                                                        i {
+                                                            color: #126585;
+                                                        }
+                                                    }
+                                                    &:after {
+                                                        background-color: #126585;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                &.open-item {
+                                    display: block !important;
+                                    > a {
+                                        display: none;
+                                    }
+                                    &.single-continent {
+                                        .countries-list {
+                                            display: block;
+                                        }
+                                    }
+                                    &.country-list-parent {
+                                        .locations-category-list {
+                                            display: block;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .google-map-and-bottom-filters {
+                width: calc(100% - 500px);
+                @include breakpoint($lgll) {
+                    width: calc(100% - 700px);
+                }
+                @include breakpoint($md-only) {
+                    width: calc(100% - 400px);
+                }
+                @include breakpoint($sm-down) {
+                    width: 100%;
+                }
+                .google-map-box {
+                    width: 100%;
+                    height: 500px;
+                    position: relative;
+                    overflow: hidden;
+                    @include breakpoint($sm-down) {
+                        height: 400px;
+                    }
+                }
+                .below-map {
+                    .only-mobile-visible-map-button {
+                        display: none;
+                        text-align: center;
+                        padding-bottom: 20px;
+                        margin-top: -20px;
+                        &.list-shown {
+                            z-index: 100;
+                            position: fixed;
+                            bottom: 0;
+                            width: 100%;
+                            background: white;
+                            padding-bottom: 15px;
+                            padding-top: 15px;
+                            @include box-shadow(0px 0px 7px 1px rgba(0, 0, 0, 0.25));
+                        }
+                        @include breakpoint($sm-down) {
+                            display: block;
+                        }
+                    }
+                    .bottom-filter {
+                        background-color: white;
+                        padding: 15px 25px;
+                        display: flex;
+                        .right-side-filters {
+                            order: 1;
+                        }
+                        .left-side-stats {
+                            order: 0;
+                        }
+                        .left-side-stats, .right-side-filters {
+                            width: 50%;
+                        }
+                        .changeable-stats {
+                            ul {
+                                li {
+                                    span {
+                                        color: #ec1e4c;
+                                        font-family: 'Lato-Black';
+                                    }
+                                    @include breakpoint($xs) {
+                                        padding-bottom: 10px;
+                                    }
+                                }
+                            }
+                        }
+                        .right-side-filters {
+                            .custom-checkbox-label {
+                                .color-box {
+                                    width: 17.5px;
+                                    height: 17.5px;
+                                    margin: 0 10px 0 5px;
+                                }
+                            }
+                            .custom-checkbox {
+                                margin: 0;
+                                border-radius: 0;
+                                border-color: black;
+                                color: black;
+                                border-width: 2px;
+                                line-height: 17.5px;
+                            }
+                        }
+                        @include breakpoint($lgll) {
+                        }
+                        @include breakpoint($md-only) {
+                            padding: 15px 10px;
+                            .custom-checkbox-label {
+                                font-size: 15px;
+                            }
+                        }
+                        @include breakpoint($sm-down) {
+                            display: block;
+                            padding: 15px;
+                            .left-side-stats, .right-side-filters {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    @include breakpoint($sm-down) {
+                        display: block !important;
+                        .bottom-filter {
+                            .custom-checkbox-style {
+                                display: flex;
+                                align-items: center;
+                                padding-bottom: 5px;
+                                .custom-checkbox-label {
+                                    order: 1;
+                                    display: flex;
+                                    align-items: center;
+                                    span {
+                                        order: 1;
+                                    }
+                                    .color-box {
+                                        margin: 0 5px 0 0;
+                                        order: 0;
+                                    }
+                                }
+                                .custom-checkbox {
+                                    order: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

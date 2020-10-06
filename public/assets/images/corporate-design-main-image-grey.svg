@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 102.5 76.2" style="enable-background:new 0 0 102.5 76.2;" xml:space="preserve">
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 102.5 76.2"
+	 style="enable-background:new 0 0 102.5 76.2;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#B4B4B4;stroke-miterlimit:10;}
-	.st1{fill:none;stroke:#B4B4B4;stroke-linecap:round;stroke-miterlimit:10;}
+	.st0{fill:none;stroke:#E5E5E5;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#E5E5E5;stroke-linecap:round;stroke-miterlimit:10;}
+	.st2{fill:none;stroke:#E5E5E5;stroke-width:1;stroke-miterlimit:9.9996;}
 </style>
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  bottomLeftOrigin="true" height="76.2" width="102.5" x="0" y="0"></sliceSourceBounds>
+	</sfw>
+</metadata>
 <g>
 	<g>
 		<path class="st0" d="M90.6,74.7V13.9c0-0.6,0.5-1,1-1h9.4c0.6,0,1,0.4,1,1v60.8c0,0.6-0.4,1-1,1h-9.4
@@ -27,9 +45,9 @@
 	</g>
 	<g>
 		
-			<rect x="62.5" y="26.9" transform="matrix(0.9998 -1.797925e-02 1.797925e-02 0.9998 -0.8735 1.1788)" class="st0" width="5.2" height="44.6"/>
+			<rect x="62.5" y="26.9" transform="matrix(0.9998 -1.797994e-02 1.797994e-02 0.9998 -0.8741 1.1784)" class="st2" width="5.2" height="44.6"/>
 		
-			<rect x="62.9" y="69" transform="matrix(0.9998 -1.797925e-02 1.797925e-02 0.9998 -1.2531 1.1884)" class="st0" width="5.2" height="2.6"/>
+			<rect x="62.9" y="69" transform="matrix(0.9998 -1.797994e-02 1.797994e-02 0.9998 -1.2533 1.189)" class="st2" width="5.2" height="2.6"/>
 		<path class="st0" d="M68.1,71.4v0.2v1.5c0,1.4-1.1,2.6-2.5,2.6l0,0c-1.4,0-2.6-1.1-2.6-2.5v-1.5v-0.2L68.1,71.4z"/>
 		<path class="st0" d="M64.4,19.7l2.9,6.8c0.1,0.2-0.1,0.4-0.5,0.3h-4.1c-0.3,0-0.7,0-0.6-0.3L64.4,19.7z"/>
 		<line class="st0" x1="63.4" y1="23.2" x2="65.6" y2="23.2"/>

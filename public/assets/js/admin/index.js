@@ -140,6 +140,162 @@ if($('body').hasClass('add-job-offer')) {
             basic.showAlert('This user has no tasks to approve.', '', true);
         }
     });
+} else if($('body').hasClass('add-available-buying-option') || $('body').hasClass('edit-available-buying-option')) {
+    $('select[name="type"]').on('change', function() {
+        if ($(this).val() == 'exchange-platforms') {
+            $('.camping-for-exchange-platform-type').show();
+            $('[name="clear-exchange-pairs"]').val(false);
+        } else {
+            $('.camping-for-exchange-platform-type').hide();
+            $('[name="clear-exchange-pairs"]').val(true);
+        }
+    });
+
+    $(document).on('click', '.remove-pair', function() {
+        $(this).closest('.single-child').remove();
+
+        if ($('.sortable-container .single-child').length == 0) {
+            $('.no-pairs').removeClass('hide');
+            $('.sortable-container').addClass('hide');
+        }
+    });
+
+    $('.sortable-container').sortable();
+    $('.add-new-exchange-pair').click(function() {
+        if ($('.pair-title').val().trim() == '') {
+            basic.showDialog('Please enter pair title.', '', true);
+        } else {
+            var url = '';
+            if ($('.sortable-container').hasClass('hide')) {
+                $('.sortable-container').removeClass('hide');
+                $('.no-pairs').addClass('hide');
+            }
+
+            if ($('.pair-url').val().trim() != '') {
+                url = '<div><label>URL:</label> <a href="'+$('.pair-url').val().trim()+'" target="_blank">'+$('.pair-url').val().trim()+'</a></div>';
+            }
+
+            var time = (new Date()).getTime();
+
+            $('.sortable-container').append('<div class="single-child clearfix"><div style="float: left;"><div><label>Title:</label> '+$('.pair-title').val().trim()+'</div>'+url+'</div><div style="float: right;"><a href="javascript:void(0);" class="btn remove-pair">Remove</a><input type="hidden" name="pairs['+time+'][title]" value="'+$('.pair-title').val().trim()+'"/><input type="hidden" name="pairs['+time+'][url]" value="'+$('.pair-url').val().trim()+'"/></div></div>');
+
+            $('.pair-title').val('');
+            $('.pair-url').val('');
+        }
+    });
+} else if($('body').hasClass('add-roadmap-year') || $('body').hasClass('edit-roadmap-year')) {
+    function initColorPicker() {
+        var color_picker_options = {
+            preferredFormat: "hex",
+            showInput: true,
+            clickoutFiresChange: true,
+            showButtons: false,
+            move: function(color) {
+                $('.event-color').val(color.toHexString());
+                if ($('[name="predefined-color"]').length) {
+                    $('[name="predefined-color"]').prop('checked', false);
+                }
+            },
+            change: function(color) {
+                $('.event-color').val(color.toHexString());
+                if ($('[name="predefined-color"]').length) {
+                    $('[name="predefined-color"]').prop('checked', false);
+                }
+            }
+        };
+
+        $('.event-color').spectrum(color_picker_options);
+    }
+
+    initColorPicker();
+
+    $(document).on('click', '.remove-event', function() {
+        $(this).closest('.single-child').remove();
+
+        if ($('.sortable-container .single-child').length == 0) {
+            $('.no-pairs').removeClass('hide');
+            $('.sortable-container').addClass('hide');
+        }
+    });
+
+    if ($('[name="predefined-color"]').length) {
+        $('[name="predefined-color"]').on('change', function() {
+            if ($(this).val() != '') {
+                $('.event-color').val($(this).val());
+
+                initColorPicker();
+            }
+        });
+    }
+
+    $('.clear-label-color').click(function() {
+        if ($('[name="predefined-color"]').length) {
+            $('[name="predefined-color"]').prop('checked', false);
+        }
+
+        $('.event-color').val('');
+        initColorPicker();
+    });
+
+    $('.sortable-container').sortable();
+    $('.add-new-roadmap-event').click(function() {
+        var roadmapEventTitle = CKEDITOR.instances['event-title'].getData().trim();
+
+        if (roadmapEventTitle == '') {
+            basic.showDialog('Please enter title.', '', true);
+        } else if (roadmapEventTitle.length > 1000) {
+            basic.showDialog('Please enter title within max length limit of 1000 symbols.', '', true);
+        } else if ($('.event-label').val().trim() != '' && $('.event-color').val().trim() == '') {
+            basic.showDialog('You have entered label value, but you did not select label color.', '', true);
+        } else if ($('.event-label').val().trim() == '' && $('.event-color').val().trim() != '') {
+            basic.showDialog('You have entered label color, but you did not select label value.', '', true);
+        } else {
+            if ($('.sortable-container').hasClass('hide')) {
+                $('.sortable-container').removeClass('hide');
+                $('.no-pairs').addClass('hide');
+            }
+
+            var time = (new Date()).getTime();
+            var eventLabel = '';
+            var eventLabelColor = '';
+            var eventChecked = '<div><label>Checked:</label> No</div>';
+            var eventBorder = '<div><label>Bottom border:</label> No</div>';
+            if ($('.event-label').val().trim() != '') {
+                eventLabel = '<div><label>Label:</label> '+$('.event-label').val().trim()+'</div><input type="hidden" name="events['+time+'][label]" value="'+$('.event-label').val().trim()+'"/>';
+            }
+
+            if ($('.event-color').val().trim() != '') {
+                eventLabelColor = '<div><label>Label color:</label> <span style="display: inline-block; width: 30px; height: 30px; background-color: '+$('.event-color').val().trim()+';"></span></div><input type="hidden" name="events['+time+'][color]" value="'+$('.event-color').val().trim()+'"/>';
+            }
+
+            if ($('.event-checked').is(':checked')) {
+                eventChecked = '<div><label>Checked:</label> Yes</div><input type="hidden" name="events['+time+'][checked]" value="true"/>';
+            }
+
+            if ($('.event-border').is(':checked')) {
+                eventBorder = '<div><label>Bottom border:</label> Yes</div><input type="hidden" name="events['+time+'][border]" value="true"/>';
+            }
+
+            if ($('.event-coin-burn').is(':checked')) {
+                eventBorder = '<div><label>Coin burn:</label> Yes</div><input type="hidden" name="events['+time+'][coin-burn]" value="true"/>';
+            }
+
+            $('.sortable-container').append('<div class="single-child clearfix"><div style="float: left;"><div><label>Title:</label> '+roadmapEventTitle+'</div>'+eventLabel+eventLabelColor+eventChecked+eventBorder+'</div><div style="float: right;"><a href="javascript:void(0);" class="btn remove-event">Remove</a><input type="hidden" name="events['+time+'][title]" class="event-'+time+'"/></div></div>');
+
+            $('.event-'+time).val(roadmapEventTitle);
+
+            CKEDITOR.instances['event-title'].setData('');
+            $('.event-label').val('');
+            $('.event-checked').prop('checked', false);
+            $('.event-border').prop('checked', false);
+            if ($('[name="predefined-color"]').length) {
+                $('[name="predefined-color"]').prop('checked', false);
+            }
+
+            $('.event-color').val('');
+            initColorPicker();
+        }
+    });
 }
 
 // =========================================== /PAGES ===========================================
@@ -212,7 +368,7 @@ function addHTMLEditor(){
                     height: 350,
                     allowedContent: true,
                     disallowedContent: 'script',
-                    contentsCss : ['/dist/css/front-libs-style.css', '/assets/css/style.css', '/assets/libs/dentacoin-mini-hub/css/styles-big-hub.css']
+                    contentsCss : ['/dist/css/front-libs-style.css', '/assets/css/style.css', '/assets/libs/dentacoin-package/css/styles-big-hub.css']
                 }, {on: {
                         pluginsLoaded: function() {
                             var editor = this,
@@ -245,7 +401,6 @@ function addHTMLEditor(){
                     }},
                 options);
             CKEDITOR.replace($(this).attr('id'), options);
-            //CKEDITOR.addCss('body{background:blue;}');
         });
     }
 }

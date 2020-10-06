@@ -1,5 +1,16 @@
 header {
-    padding-top: 30px;
+    height: 80px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 200;
+    >.container {
+        @include vertical-horizontal-align(absolute);
+        @include breakpoint($xs) {
+            width: 100%;
+        }
+    }
     .logo-container {
         a {
             position: relative;
@@ -17,6 +28,13 @@ header {
     }
     .btn-container {
         text-align: right;
+        a {
+            &.color-white {
+                &:hover {
+                    color: white;
+                }
+            }
+        }
         .btn-and-line {
             text-align: center;
             min-width: 90px;
@@ -176,15 +194,6 @@ header {
 }
 
 body.home {
-    overflow-x: hidden;
-    header {
-        top: 0;
-        z-index: 50;
-        @include horizontal-align(absolute);
-        @include breakpoint($xs)    {
-            width: 100%;
-        }
-    }
     &.logged-in {
         header {
             padding-top: 0;
@@ -200,23 +209,5 @@ body.home {
                 }
             }
         }
-    }
-}
-
-body.foundation {
-    overflow-x: hidden;
-    header {
-        top: 0;
-        z-index: 50;
-        @include horizontal-align(absolute);
-        @include breakpoint($xs)    {
-            width: 100%;
-        }
-    }
-}
-
-body.forgotten-password, body.password-recover {
-    header {
-        padding-bottom: 15px;
     }
 }

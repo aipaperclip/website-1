@@ -3,7 +3,7 @@
     <section class="partner-network-container">
         <div class="container">
             <div class="row">
-                <h1 class="col-xs-12 page-h1-title">{{ $meta_data->page_title }}</h1>
+                <h1 class="col-xs-12 page-h1-title">DENTACOIN PARTNER NETWORK</h1>
             </div>
             <div class="row filter">
                 <div class="col-xs-12 col-sm-6">
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="map-canvas"></div>
+        <div class="google-map-box"></div>
         @if(!empty($clinics))
             <div class="featured-clinics-slider">
                 @foreach($clinics as $clinic)

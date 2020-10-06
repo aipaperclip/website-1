@@ -1,86 +1,38 @@
 console.log('Don\'t touch the code. Or do ... ¯\\_(ツ)_/¯');
 
 //load images after website load
-if ($('img[data-defer-src]').length) {
-    for(var i = 0, len = $('img[data-defer-src]').length; i < len; i+=1) {
-        $('img[data-defer-src]').eq(i).attr('src', $('img[data-defer-src]').eq(i).attr('data-defer-src'));
+function loadDeferImages() {
+    for (var i = 0, len = jQuery('[data-defer-src]').length; i < len; i += 1) {
+        var elementInViewport = jQuery('[data-defer-src]').eq(i);
+
+        if (basic.isInViewport(elementInViewport) && jQuery('[data-defer-src]').eq(i).attr('src') == undefined) {
+            jQuery('[data-defer-src]').eq(i).attr('src', jQuery('[data-defer-src]').eq(i).attr('data-defer-src'));
+        }
     }
 }
 
-var is_mac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-var intervals_arr = [];
-var stoppers = [];
-const draw_line_interval = 10;
-const draw_line_increment = 10;
-const border_width = 2;
+loadDeferImages();
+
 var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
+var allowedDocumentExtensions = ['pdf', 'doc', 'docx', 'ppt', 'pptx', 'odt', 'rtf'];
+var get_params = basic.getGETParameters();
 
-var get_params = getGETParameters();
-
-$(document).ready(async function() {
-    if ($('body.corporate-design.allow-draw-lines').length > 0) {
-        drawNavToBottomSectionLine();
-    }
-
-    setTimeout(function() {
-        //fix chat bottom position
-        if ($('body > [style="display: block !important;"]').length) {
-            if ($('body > [style="display: block !important;"]').attr('id') != undefined) {
-                var parent_id = $('body > [style="display: block !important;"]').attr('id');
-
-                $('#' + parent_id).attr('style', $('#' + parent_id).attr('style') + 'left:20px !important;right:auto !important;');
-                $('#' + parent_id).children().eq(1).attr('style', $('#' + parent_id).children().eq(1).attr('style') + 'left:20px !important;right:auto !important;');
-            }
-        }
-
-        if ($('#tawkchat-container').length) {
-            $('#tawkchat-container').attr('style', $('#tawkchat-container').attr('style') + 'width: 100% !important;');
-            $('#tawkchat-container').children().eq(0).attr('style', $('#tawkchat-container').children().eq(0).attr('style') + 'left:10px !important;right:auto !important;');
-        }
-    }, 2000);
-
-    /*if (!$('body').hasClass('logged-in')) {
-        // =============================================== CIVIC =======================================================
-        await $.getScript('/assets/libs/civic-login/civic.js?v='+new Date().getTime(), function() {});
-
-        // =============================================== FACEBOOK ====================================================
-        await $.getScript('/assets/libs/facebook-login/facebook.js?v='+new Date().getTime(), function() {});
-    }*/
-});
-
-$(window).on('load', function() {
-    //HOMEPAGE
-    if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && !basic.isMobile()) {
-        setLinesDots();
-
-        if ($('body').hasClass('home')) {
-            drawLine('first', 'vertical');
-        }
-    }
-
-    if ($('body.careers.allow-draw-lines').length > 0) {
-        //init lines
-        drawHeaderToFirstSectionLine();
-    } else if ($('body.corporate-design.allow-draw-lines').length > 0) {
-        //init lines
-        drawHeaderToFirstSectionLine();
-    }
-
+$(window).on('load', function () {
     if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) {
         var current_url = new URL(window.location.href);
         if (current_url.searchParams.get('application') != null) {
             scrollToSectionAnimation('two', null, true);
 
-            setTimeout(function()   {
-                $('.dentacoin-ecosystem .single-application figure[data-slug="'+current_url.searchParams.get('application')+'"]').click();
+            setTimeout(function () {
+                $('.dentacoin-ecosystem .single-application figure[data-slug="' + current_url.searchParams.get('application') + '"]').click();
             }, 500)
         } else if (current_url.searchParams.get('payment') != null && current_url.searchParams.get('payment') == 'bidali-gift-cards') {
             $('html').animate({
                 scrollTop: $('.wallet-app-and-gif').offset().top
             }, {
                 duration: 500,
-                complete: function() {
-                    setTimeout(function() {
+                complete: function () {
+                    setTimeout(function () {
                         $('#bidali-init-btn').click();
                     }, 1000);
                 }
@@ -93,15 +45,27 @@ $(window).on('load', function() {
             });
         }
     }
+
+    if ($('body.corporate-design').length > 0) {
+        var drawCorporateDesignLine = false;
+        $('body').addClass('overflow-hidden');
+        if ($(window).width() > 768) {
+            drawCorporateDesignLine = true;
+        }
+        $('body').removeClass('overflow-hidden');
+
+        if (drawCorporateDesignLine) {
+            drawNavToBottomSectionLine();
+        }
+    }
 });
 
-/*$('body').bind('wheel', onMousewheel);*/
+$(window).on('scroll', function () {
+    loadDeferImages();
+});
 
-$(window).on('resize', function(){
-    if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && !basic.isMobile()) {
-        //HOMEPAGE
-        setLinesDots(true);
-    } else if ($('body').hasClass('testimonials')) {
+$(window).on('resize', function () {
+    if ($('body').hasClass('testimonials')) {
         //TESTIMONIALS
         initListingPageLine();
     } else if ($('body').hasClass('press-center')) {
@@ -110,1570 +74,2407 @@ $(window).on('resize', function(){
     } else if ($('body.careers.allow-draw-lines').length > 0) {
         //CAREERSdentacoin-ecosystem
         drawHeaderToFirstSectionLine();
-    } else if ($('body.corporate-design.allow-draw-lines').length > 0) {
+    } else if ($('body.corporate-design').length > 0) {
         //CORPORATE DESIGN
-        drawHeaderToFirstSectionLine();
-        drawNavToBottomSectionLine();
+        var drawCorporateDesignLine = false;
+        $('body').addClass('overflow-hidden');
+        if ($(window).width() > 768) {
+            drawCorporateDesignLine = true;
+        }
+        $('body').removeClass('overflow-hidden');
+
+        if (drawCorporateDesignLine) {
+            drawNavToBottomSectionLine();
+        }
     }
 });
-
-$(window).on('scroll', function()  {
-    checkIfLineIsReadyToBeCreated('second', 'vertical', ['third', 'fourth'], ['horizontal', 'vertical'], 'load-successful-practices-gif');
-    checkIfLineIsReadyToBeCreated('fifth', 'vertical', [], [], 'call-sixth-and-animation');
-    checkIfLineIsReadyToBeCreated('eighth', 'horizontal', ['ninth'], ['vertical']);
-    checkIfLineIsReadyToBeCreated('tenth', 'horizontal', ['eleventh'], ['vertical'], 'load-buy-dentacoin-gif');
-    checkIfLineIsReadyToBeCreated('twelfth', 'vertical');
-    checkIfLineIsReadyToBeCreated('thirteenth', 'horizontal', ['fourteenth'], ['vertical'], 'fade-in-transaction-with-dcn');
-    checkIfLineIsReadyToBeCreated('fifteenth', 'horizontal', ['sixteenth'], ['vertical']);
-    checkIfLineIsReadyToBeCreated('seventeenth', 'horizontal', ['eighteenth'], ['vertical'], 'load-roadmap-gif');
-    checkIfLineIsReadyToBeCreated('nineteenth', 'vertical', ['twentieth'], ['horizontal']);
-    //checkIfLineIsReadyToBeCreated('twentieth', 'horizontal');
-});
-
-function onMousewheel(event)    {
-    if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && !basic.isMobile() && !$('body').hasClass('modal-open') && !is_mac) {
-        if (event.originalEvent.deltaY < 0)  {
-            //scroll up
-            if ($('body').attr('data-current') == 'two') {
-                scrollToSectionAnimation('one', null, null, true);
-            } else if ($(window).scrollTop() < $('.fullpage-section.two').offset().top + $('.fullpage-section.two').outerHeight() && $('body').attr('data-current') == 'rest-data') {
-                scrollToSectionAnimation('two', null, true);
-            }
-        } else {
-            //scroll down
-            if ($('body').attr('data-current') == 'one') {
-                scrollToSectionAnimation('two', null, true);
-            } else if ($('body').attr('data-current') == 'two') {
-                scrollToSectionAnimation('rest-data', true);
-            }
-        }
-    }
-}
-
-function scrollToSectionAnimation(to_become_current, full_height, clear_dots, draw_first) {
-    //doing this check, because IE 11 not support ES6
-    /*if (full_height === undefined) {
-        full_height = null;
-    }
-    if (clear_dots === undefined) {
-        clear_dots = null;
-    }
-
-    var scroll_obj = {};
-    if (full_height != null) {
-        scroll_obj.scrollTop = $('.'+to_become_current).offset().top;
-    } else {
-        scroll_obj.scrollTop = $('.fullpage-section.'+to_become_current).offset().top;
-    }
-    $('body').unbind('wheel', onMousewheel);
-    $('html, body').stop().animate(scroll_obj, 500).promise().then(function() {
-        $('body').bind('wheel', onMousewheel);
-        if (clear_dots != null)  {
-            refreshingMainDots();
-        } else if (draw_first != null)  {
-            drawLine('first', 'vertical');
-        }
-    });
-    $('body').attr('data-current', to_become_current);*/
-}
-
-function setLinesDots(resize)    {
-    //doing this check, because IE 11 not support ES6
-    if (resize === undefined) {
-        resize = null;
-    }
-    //init starting dots for all lines
-
-    if ($('body').hasClass('home')) {
-        //FIRST LINE
-        $('line.first').attr('x1', $('header .first-dot').offset().left);
-        $('line.first').attr('y1', $('header .first-dot').offset().top);
-        $('line.first').attr('x2', $('.intro .second-dot').offset().left);
-        $('line.first').attr('max-y2', $('.intro .second-dot').offset().top + $('.intro .second-dot').height());
-    }
-
-    //SECOND LINE
-    $('line.second').attr('x1', $('.successful-practices .first-dot').offset().left);
-    $('line.second').attr('y1', $('.successful-practices .first-dot').offset().top);
-    $('line.second').attr('x2', $('.successful-practices .second-dot').offset().left);
-    $('line.second').attr('max-y2', $('.successful-practices .second-dot').offset().top);
-
-    //THIRD LINE
-    $('line.third').attr('x1', $('.successful-practices .second-dot').offset().left);
-    $('line.third').attr('y1', $('.successful-practices .second-dot').offset().top);
-    $('line.third').attr('y2', $('.successful-practices .third-dot').offset().top);
-    $('line.third').attr('max-x2', $('.successful-practices .third-dot').offset().left);
-
-    //FOURTH LINE
-    $('line.fourth').attr('x1', $('.successful-practices .third-dot').offset().left);
-    $('line.fourth').attr('y1', $('.successful-practices .third-dot').offset().top);
-    $('line.fourth').attr('x2', $('.successful-practices .fourth-dot').offset().left);
-    $('line.fourth').attr('max-y2', $('.successful-practices .fourth-dot').offset().top + $('.successful-practices .fourth-dot').height());
-
-    //FIFTH LINE
-    $('line.fifth').attr('x1', $('.successful-practices .fifth-dot').offset().left + border_width);
-    $('line.fifth').attr('y1', $('.successful-practices .fifth-dot').offset().top + $('.successful-practices .fifth-dot').height());
-    $('line.fifth').attr('x2', $('.below-successful-practices .first-dot').offset().left - $('.below-successful-practices .first-dot').width() + border_width);
-    $('line.fifth').attr('max-y2', $('.below-successful-practices .first-dot').offset().top + $('.below-successful-practices .first-dot').height() / 2);
-
-    //SIXTH LINE
-    $('line.sixth').attr('x1', $('.below-successful-practices .first-dot').offset().left - border_width);
-    $('line.sixth').attr('y1', $('.below-successful-practices .first-dot').offset().top + $('.below-successful-practices .first-dot').height() / 2);
-    $('line.sixth').attr('y2', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2);
-    $('line.sixth').attr('max-x2', $('.below-successful-practices .second-dot').offset().left + $('.below-successful-practices .second-dot').width());
-
-    //SEVENTH LINE
-    $('line.seventh').attr('x1', $('.below-successful-practices .second-dot').offset().left + $('.below-successful-practices .second-dot').width());
-    $('line.seventh').attr('y1', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2);
-    $('line.seventh').attr('x2', $('.testimonials .first-dot').offset().left + $('.below-successful-practices .second-dot').width());
-    $('line.seventh').attr('max-y2', $('.testimonials .first-dot').offset().top + $('.testimonials .first-dot').height() / 2);
-
-    //EIGHTH LINE
-    $('line.eighth').attr('x1', $('.testimonials .first-dot').offset().left + $('.testimonials .first-dot').width());
-    $('line.eighth').attr('y1', $('.testimonials .first-dot').offset().top + $('.testimonials .first-dot').height() / 2);
-    $('line.eighth').attr('y2', $('.testimonials .second-dot').offset().top + $('.testimonials .second-dot').height() / 2);
-    $('line.eighth').attr('max-x2', $('.testimonials .second-dot').offset().left);
-
-    //NINTH LINE
-    $('line.ninth').attr('x1', $('.testimonials .second-dot').offset().left);
-    $('line.ninth').attr('y1', $('.testimonials .second-dot').offset().top + $('.testimonials .second-dot').height() / 2);
-    $('line.ninth').attr('x2', $('.testimonials .third-dot').offset().left);
-    $('line.ninth').attr('max-y2', $('.testimonials .third-dot').offset().top + $('.testimonials .third-dot').height());
-
-    //TENTH LINE
-    $('line.tenth').attr('x1', $('.testimonials .third-dot').offset().left);
-    $('line.tenth').attr('y1', $('.testimonials .third-dot').offset().top + $('.testimonials .third-dot').height());
-    $('line.tenth').attr('y2', $('.buy-dentacoin .first-dot').offset().top);
-    $('line.tenth').attr('max-x2', $('.buy-dentacoin .first-dot').offset().left + $('.buy-dentacoin .first-dot').width());
-
-    //ELEVENTH LINE
-    $('line.eleventh').attr('x1', $('.buy-dentacoin .first-dot').offset().left + $('.buy-dentacoin .first-dot').width());
-    $('line.eleventh').attr('y1', $('.buy-dentacoin .first-dot').offset().top);
-    $('line.eleventh').attr('x2', $('.buy-dentacoin .second-dot').offset().left + $('.buy-dentacoin .second-dot').width());
-    $('line.eleventh').attr('max-y2', $('.buy-dentacoin .second-dot').offset().top + $('.buy-dentacoin .second-dot').height());
-
-    //TWELFTH LINE
-    $('line.twelfth').attr('x1', $('.buy-dentacoin .third-dot').offset().left + border_width / border_width);
-    $('line.twelfth').attr('y1', $('.buy-dentacoin .third-dot').offset().top + $('.buy-dentacoin .third-dot').height() - border_width / border_width);
-    $('line.twelfth').attr('x2', $('.buy-dentacoin .fourth-dot').offset().left + border_width / border_width);
-    $('line.twelfth').attr('max-y2', $('.buy-dentacoin .fourth-dot').offset().top + $('.buy-dentacoin .fourth-dot').height());
-
-    //THIRTEENTH LINE
-    $('line.thirteenth').attr('x1', $('.buy-dentacoin .fourth-dot').offset().left);
-    $('line.thirteenth').attr('y1', $('.buy-dentacoin .fourth-dot').offset().top + $('.buy-dentacoin .fourth-dot').height());
-    $('line.thirteenth').attr('y2', $('.buy-dentacoin .fifth-dot').offset().top + $('.buy-dentacoin .fifth-dot').height() / 2);
-    $('line.thirteenth').attr('max-x2', $('.buy-dentacoin .fifth-dot').offset().left);
-
-    //FOURTEENTH LINE
-    $('line.fourteenth').attr('x1', $('.buy-dentacoin .fifth-dot').offset().left);
-    $('line.fourteenth').attr('y1', $('.buy-dentacoin .fifth-dot').offset().top);
-    $('line.fourteenth').attr('x2', $('.below-buy-dentacoin .first-dot').offset().left);
-    $('line.fourteenth').attr('max-y2', $('.below-buy-dentacoin .first-dot').offset().top + $('.below-buy-dentacoin .first-dot').height());
-
-    //FIFTEENTH LINE
-    $('line.fifteenth').attr('x1', $('.below-buy-dentacoin .first-dot').offset().left);
-    $('line.fifteenth').attr('y1', $('.below-buy-dentacoin .first-dot').offset().top + $('.below-buy-dentacoin .first-dot').height());
-    $('line.fifteenth').attr('y2', $('.below-buy-dentacoin .second-dot').offset().top + $('.below-buy-dentacoin .second-dot').height());
-    $('line.fifteenth').attr('max-x2', $('.below-buy-dentacoin .second-dot').offset().left + $('.below-buy-dentacoin .second-dot').width());
-
-    //SIXTEENTH LINE
-    $('line.sixteenth').attr('x1', $('.below-buy-dentacoin .second-dot').offset().left + $('.below-buy-dentacoin .second-dot').width());
-    $('line.sixteenth').attr('y1', $('.below-buy-dentacoin .second-dot').offset().top + $('.below-buy-dentacoin .second-dot').height());
-    $('line.sixteenth').attr('x2', $('.awards-and-publications .first-dot').offset().left + $('.awards-and-publications .first-dot').width());
-    $('line.sixteenth').attr('max-y2', $('.awards-and-publications .first-dot').offset().top + $('.awards-and-publications .first-dot').height());
-
-    //SEVENTEENTH LINE
-    $('line.seventeenth').attr('x1', $('.awards-and-publications .first-dot').offset().left + $('.awards-and-publications .first-dot').width());
-    $('line.seventeenth').attr('y1', $('.awards-and-publications .first-dot').offset().top + $('.awards-and-publications .first-dot').height());
-    $('line.seventeenth').attr('y2', $('.roadmap .first-dot').offset().top);
-    $('line.seventeenth').attr('max-x2', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width());
-
-    //EIGHTEENTH LINE
-    $('line.eighteenth').attr('y1', $('.roadmap .first-dot').offset().top);
-    $('line.eighteenth').attr('max-y2', $('.roadmap .second-dot').offset().top + $('.roadmap .second-dot').height());
-    $('body').addClass('overflow-hidden');
-    if ($(window).width() < 1600)    {
-        $('body').removeClass('overflow-hidden');
-        $('line.eighteenth').attr('x1', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width());
-        $('line.eighteenth').attr('x2', $('.roadmap .second-dot').offset().left + $('.roadmap .second-dot').width());
-    } else {
-        $('body').removeClass('overflow-hidden');
-        $('line.eighteenth').attr('x1', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width() + 1);
-        $('line.eighteenth').attr('x2', $('.roadmap .second-dot').offset().left + $('.roadmap .second-dot').width() + 1);
-    }
-
-    //NINETEENTH LINE
-    $('line.nineteenth').attr('x1', $('.roadmap-timeline .first-dot').offset().left + $('.roadmap-timeline .first-dot').width());
-    $('line.nineteenth').attr('y1', $('.roadmap-timeline .first-dot').offset().top + $('.roadmap-timeline .first-dot').height());
-    $('line.nineteenth').attr('x2', $('.below-roadmap-timeline .first-dot').offset().left + $('.below-roadmap-timeline .first-dot').width());
-    $('line.nineteenth').attr('max-y2', $('.below-roadmap-timeline .first-dot').offset().top + $('.below-roadmap-timeline .first-dot').height() / 2);
-
-    //TWENTIETH LINE
-    $('line.twentieth').attr('x1', $('.below-roadmap-timeline .first-dot').offset().left + $('.below-roadmap-timeline .first-dot').width());
-    $('line.twentieth').attr('y1', $('.below-roadmap-timeline .first-dot').offset().top + $('.below-roadmap-timeline .first-dot').height() / 2);
-    $('line.twentieth').attr('y2', $('.below-roadmap-timeline .second-dot').offset().top + $('.below-roadmap-timeline .second-dot').height() / 2);
-    $('line.twentieth').attr('max-x2', $('.below-roadmap-timeline .second-dot').offset().left);
-
-    //MUST SET ATTR WHEN LINE IS EXECUTED AND CHECK FOR IT ALSO
-    if (resize)  {
-        if ($('body').hasClass('home')) {
-            $('line.first').attr('y2', $('.intro .second-dot').offset().top + $('.intro .second-dot').height());
-        }
-
-        $('line.second').attr('y2', $('.successful-practices .second-dot').offset().top);
-        $('line.third').attr('x2', $('.successful-practices .third-dot').offset().left);
-        $('line.fourth').attr('y2', $('.successful-practices .fourth-dot').offset().top + $('.successful-practices .fourth-dot').height());
-        $('line.fifth').attr('y2', $('.below-successful-practices .first-dot').offset().top + $('.below-successful-practices .first-dot').height() / 2);
-        $('line.sixth').attr('x2', $('.below-successful-practices .second-dot').offset().left + $('.below-successful-practices .second-dot').width());
-        $('line.seventh').attr('y2', $('.testimonials .first-dot').offset().top + $('.testimonials .first-dot').height() / 2);
-        $('line.eighth').attr('x2', $('.testimonials .second-dot').offset().left);
-        $('line.ninth').attr('y2', $('.testimonials .third-dot').offset().top + $('.testimonials .third-dot').height());
-        $('line.tenth').attr('x2', $('.buy-dentacoin .first-dot').offset().left + $('.buy-dentacoin .first-dot').width());
-        $('line.eleventh').attr('y2', $('.buy-dentacoin .second-dot').offset().top + $('.buy-dentacoin .second-dot').height());
-        $('line.twelfth').attr('y2', $('.buy-dentacoin .fourth-dot').offset().top + $('.buy-dentacoin .fourth-dot').height());
-        $('line.thirteenth').attr('x2', $('.buy-dentacoin .fifth-dot').offset().left);
-        $('line.fourteenth').attr('y2', $('.below-buy-dentacoin .first-dot').offset().top + $('.below-buy-dentacoin .first-dot').height());
-        $('line.fifteenth').attr('x2', $('.below-buy-dentacoin .second-dot').offset().left + $('.below-buy-dentacoin .second-dot').width());
-        $('line.sixteenth').attr('y2', $('.awards-and-publications .first-dot').offset().top + $('.awards-and-publications .first-dot').height());
-        $('line.seventeenth').attr('x2', $('.roadmap .first-dot').offset().left + $('.roadmap .first-dot').width());
-        $('line.eighteenth').attr('y2', $('.roadmap .second-dot').offset().top + $('.roadmap .second-dot').height());
-        $('line.nineteenth').attr('y2', $('.below-roadmap-timeline .first-dot').offset().top + $('.below-roadmap-timeline .first-dot').height() / 2);
-        $('line.twentieth').attr('x2', $('.below-roadmap-timeline .second-dot').offset().left);
-    } else {
-        //SETTING UP FRESH ATTRIBUTES ALSO FOR REFRESHING THE MAIN DOTS AT THEIR STARTING POSITION
-        if ($('body').hasClass('home')) {
-            $('line.first')/*.attr('y2', $('header .first-dot').offset().top)*/.attr('fresh-y2', 0);
-        }
-
-        $('line.second').attr('y2', $('.successful-practices .first-dot').offset().top).attr('fresh-y2', $('.successful-practices .first-dot').offset().top);
-        $('line.third').attr('x2', $('.successful-practices .second-dot').offset().left).attr('fresh-x2', $('.successful-practices .second-dot').offset().left);
-        $('line.fourth').attr('y2', $('.successful-practices .third-dot').offset().top).attr('fresh-y2', $('.successful-practices .third-dot').offset().top);
-        $('line.fifth').attr('y2', $('.successful-practices .fifth-dot').offset().top + $('.successful-practices .fifth-dot').height()).attr('fresh-y2', $('.successful-practices .fifth-dot').offset().top + $('.successful-practices .fifth-dot').height());
-        $('line.sixth').attr('x2', $('.below-successful-practices .first-dot').offset().left - border_width).attr('fresh-x2', $('.below-successful-practices .first-dot').offset().left - border_width);
-        $('line.seventh').attr('y2', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2).attr('fresh-y2', $('.below-successful-practices .second-dot').offset().top + $('.below-successful-practices .second-dot').height() / 2);
-        $('line.eighth').attr('x2', $('.testimonials .first-dot').offset().left + $('.testimonials .first-dot').width()).attr('fresh-x2', $('.testimonials .first-dot').offset().left + $('.testimonials .first-dot').width());
-        $('line.ninth').attr('y2', $('.testimonials .second-dot').offset().top + $('.testimonials .second-dot').height() / 2).attr('fresh-y2', $('.testimonials .second-dot').offset().top + $('.testimonials .second-dot').height() / 2);
-        $('line.tenth').attr('x2', $('.testimonials .third-dot').offset().left).attr('fresh-x2', $('.testimonials .third-dot').offset().left);
-        $('line.eleventh').attr('y2', $('.buy-dentacoin .first-dot').offset().top).attr('fresh-y2', $('.buy-dentacoin .first-dot').offset().top);
-        $('line.twelfth').attr('y2', $('.buy-dentacoin .third-dot').offset().top + $('.buy-dentacoin .third-dot').height() - 1).attr('fresh-y2', $('.buy-dentacoin .third-dot').offset().top + $('.buy-dentacoin .third-dot').height() - 1);
-        $('line.thirteenth').attr('x2', $('.buy-dentacoin .fourth-dot').offset().left).attr('fresh-x2', $('.buy-dentacoin .fourth-dot').offset().left);
-        $('line.fourteenth').attr('y2', $('.buy-dentacoin .fifth-dot').offset().top).attr('fresh-y2', $('.buy-dentacoin .fifth-dot').offset().top);
-        $('line.fifteenth').attr('x2', $('.below-buy-dentacoin .first-dot').offset().left).attr('fresh-x2', $('.below-buy-dentacoin .first-dot').offset().left);
-        $('line.sixteenth').attr('y2', $('.below-buy-dentacoin .second-dot').offset().top + $('.below-buy-dentacoin .second-dot').height()).attr('fresh-y2', $('.below-buy-dentacoin .second-dot').offset().top + $('.below-buy-dentacoin .second-dot').height());
-        $('line.seventeenth').attr('x2', $('.awards-and-publications .first-dot').offset().left + $('.awards-and-publications .first-dot').width()).attr('fresh-x2', $('.awards-and-publications .first-dot').offset().left + $('.awards-and-publications .first-dot').width());
-        $('line.eighteenth').attr('y2', $('.roadmap .first-dot').offset().top).attr('fresh-y2', $('.roadmap .first-dot').offset().top);
-        $('line.nineteenth').attr('y2', $('.roadmap-timeline .first-dot').offset().top + $('.roadmap-timeline .first-dot').height()).attr('fresh-y2', $('.roadmap-timeline .first-dot').offset().top + $('.roadmap-timeline .first-dot').height());
-        $('line.twentieth').attr('x2', $('.below-roadmap-timeline .first-dot').offset().left + $('.below-roadmap-timeline .first-dot').width()).attr('fresh-x2', $('.below-roadmap-timeline .first-dot').offset().left + $('.below-roadmap-timeline .first-dot').width());
-    }
-}
-
-function refreshingMainDots()   {
-    stoppers = [];
-    //refresh dots
-    for(var i = 0, len = $('svg.svg-with-lines line').length; i < len; i+=1)    {
-        if ($('svg.svg-with-lines line').eq(i).attr('fresh-x2') != undefined)   {
-            $('svg.svg-with-lines line').eq(i).attr('x2', $('svg.svg-with-lines line').eq(i).attr('fresh-x2'));
-        } else if ($('svg.svg-with-lines line').eq(i).attr('fresh-y2') != undefined)   {
-            $('svg.svg-with-lines line').eq(i).attr('y2', $('svg.svg-with-lines line').eq(i).attr('fresh-y2'));
-        }
-    }
-
-    //clear intervals
-    for(var item in intervals_arr) {
-        clearInterval(intervals_arr[item]);
-    }
-    intervals_arr = [];
-
-    //bring back gifs to their starting position
-    $('img.refresh-image').removeClass('active');
-
-    //bring back gifs texts to their starting position
-    $('.between-sections-description').addClass('visibility-hidden').removeClass('fade-in-animation');
-    $('.below-successful-practices .description-over-line .description .wrapper').addClass('visibility-hidden').removeClass('fade-in-animation');
-    for(var i = 0, len = $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').length; i < len; i+=1)   {
-        $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').eq(i).removeClass('fade-in-animation-'+(i+1));
-    }
-}
-
-function checkIfLineIsReadyToBeCreated(el, position, tail, tail_position, action) {
-    //HOMEPAGE
-    if ((($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) && !basic.isMobile()) {
-        //doing this check, because IE 11 not support ES6
-        if (action === undefined) {
-            action = null;
-        }
-        //checking if element offset top passed the viewport middle vertically and if it has been executed before
-        //if ($(window).height() / 2 + $(window).scrollTop() > $('line.' + el).offset().top) {
-        //CHANGED $('line.' + el).offset().top to $('line.' + el).attr('y1') because offset() not working in Safari
-        if ($(window).height() / 2 + $(window).scrollTop() > $('line.' + el).attr('y1')) {
-            //checking if it's not the first line and if the line before the current one is executed
-            if ($('line.' + el).index() - 1 > -1/* && $('line').eq($('line.' + el).index() - 1).attr('executed') == 'true'*/) {
-                drawLine(el, position, tail, tail_position, action);
-            }
-        }
-    }
-}
-
-//function for drawing single line, tail and tail_position are arrays with tail lines and are used to draw group of lines, action is an event executed when the line or the group of lines execution is done
-function drawLine(el, position, tail, tail_position, action) {
-    //doing this check, because IE 11 not support ES6
-    if (tail === undefined) {
-        tail = null;
-    }
-    if (tail_position === undefined) {
-        tail_position = null;
-    }
-    if (action === undefined) {
-        action = null;
-    }
-
-    if ($.inArray(el, stoppers) == -1)   {
-        stoppers.push(el);
-        if (position == 'vertical') {
-            intervals_arr[el] = setInterval(verticalTimer, draw_line_interval);
-        } else if (position == 'horizontal')    {
-            if (parseFloat($('line.'+el).attr('x2')) > parseFloat($('line.'+el).attr('max-x2'))) {
-                //if horizontal line drawing from right to left
-                intervals_arr[el] = setInterval(horizontalTimerBackwards, draw_line_interval);
-            } else {
-                //if horizontal line drawing from left to right
-                intervals_arr[el] = setInterval(horizontalTimerForward, draw_line_interval);
-            }
-        }
-
-        function verticalTimer()  {
-            if (parseFloat($('line.' + el).attr('y2')) + draw_line_increment < parseFloat($('line.' + el).attr('max-y2'))) {
-                $('line.' + el).attr('y2', parseFloat($('line.' + el).attr('y2')) + draw_line_increment);
-            } else {
-                $('line.' + el).attr('y2', $('line.' + el).attr('max-y2'))/*.attr('executed', 'true')*/;
-                clearInterval(intervals_arr[el]);
-                callTheTail(tail, tail_position, action);
-            }
-        }
-
-        function horizontalTimerBackwards()  {
-            if (parseFloat($('line.'+el).attr('x2')) + draw_line_increment > parseFloat($('line.'+el).attr('max-x2'))) {
-                $('line.'+el).attr('x2', parseFloat($('line.'+el).attr('x2')) - draw_line_increment);
-            } else {
-                $('line.'+el).attr('x2', $('line.'+el).attr('max-x2'))/*.attr('executed', 'true')*/;
-                clearInterval(intervals_arr[el]);
-                callTheTail(tail, tail_position, action);
-            }
-        }
-
-        function horizontalTimerForward()  {
-            if (parseFloat($('line.'+el).attr('x2')) + draw_line_increment < parseFloat($('line.'+el).attr('max-x2'))) {
-                $('line.'+el).attr('x2', parseFloat($('line.'+el).attr('x2')) + draw_line_increment);
-            } else {
-                $('line.'+el).attr('x2', $('line.'+el).attr('max-x2'))/*.attr('executed', 'true')*/;
-                clearInterval(intervals_arr[el]);
-                callTheTail(tail, tail_position, action);
-            }
-        }
-    }
-}
-
-//checking if there is tail and it position and call it on parent finish
-function callTheTail(tail, tail_position, action)  {
-    //doing this check, because IE 11 not support ES6
-    if (tail === undefined) {
-        tail = null;
-    }
-    if (tail_position === undefined) {
-        tail_position = null;
-    }
-    if (action === undefined) {
-        action = null;
-    }
-
-    if (tail != null && tail_position != null) {
-        if (tail.length > 0 && tail_position.length > 0) {
-            var next_tail = tail[0];
-            var next_tail_position = tail_position[0];
-            tail.shift();
-            tail_position.shift();
-            drawLine(next_tail, next_tail_position, tail, tail_position, action);
-        } else if (action != null)    {
-            callActionOnLastTailFinish(action);
-        }
-    }
-}
-
-//execute logic when group of lines is being executed
-function callActionOnLastTailFinish(action)    {
-    switch(action) {
-        case 'load-successful-practices-gif':
-            if (basic.isInViewport($('.homepage-container .successful-practices .content figure img')))    {
-                $('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-gif')+'?'+new Date().getTime()).on('load', function()    {
-                    $('.homepage-container .successful-practices .content figure img').addClass('active');
-                });
-
-            } else {
-                $('.homepage-container .successful-practices .content figure img').attr("src", $('.homepage-container .successful-practices .content figure img').attr('data-svg')+'?'+new Date().getTime()).on('load', function()    {
-                    $('.homepage-container .successful-practices .content figure img').addClass('active');
-                });
-            }
-            //description fade-in animation
-            $('.homepage-container .below-successful-practices .between-sections-description').removeClass('visibility-hidden').addClass('fade-in-animation');
-            break;
-        case 'load-buy-dentacoin-gif':
-            if (basic.isInViewport($('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img')))    {
-                $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr("src", $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr('data-gif')+'?'+new Date().getTime()).on('load', function()    {
-                    $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').addClass('active');
-                });
-            } else {
-                $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr("src", $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').attr('data-svg')+'?'+new Date().getTime()).on('load', function()    {
-                    $('.homepage-container .buy-dentacoin .wallet-app-and-gif .gif img').addClass('active');
-                });
-            }
-            //description fade-in animation
-            $('.homepage-container .buy-dentacoin .between-sections-description').removeClass('visibility-hidden').addClass('fade-in-animation');
-            break;
-        case 'load-roadmap-gif':
-            if (basic.isInViewport($('.homepage-container .roadmap-timeline img.desktop-image')))    {
-                $('.homepage-container .roadmap-timeline img.desktop-image').attr("src", $('.homepage-container .roadmap-timeline img.desktop-image').attr('data-gif')+'?'+new Date().getTime()).on('load', function()    {
-                    $('.homepage-container .roadmap-timeline img.desktop-image').addClass('active');
-                });
-            } else {
-                $('.homepage-container .roadmap-timeline img.desktop-image').attr("src", $('.homepage-container .roadmap-timeline img.desktop-image').attr('data-svg')+'?'+new Date().getTime()).on('load', function()    {
-                    $('.homepage-container .roadmap-timeline img.desktop-image').addClass('active');
-                });
-            }
-            for(var i = 0, len = $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').length; i < len; i+=1)   {
-                $('.homepage-container .roadmap-timeline .roadmap-content .roadmap-cell').eq(i).addClass('fade-in-animation-'+(i+1));
-            }
-            break;
-        case 'fade-in-transaction-with-dcn':
-            $('.homepage-container .below-buy-dentacoin .between-sections-description').removeClass('visibility-hidden').addClass('fade-in-animation');
-        case 'call-sixth-and-animation':
-            $('.homepage-container .below-successful-practices .description .wrapper').removeClass('visibility-hidden').addClass('fade-in-animation');
-            drawLine('sixth', 'horizontal', ['seventh'], ['vertical']);
-    }
-}
 
 // ==================== PAGES ====================
 
-//HOMEPAGE
-if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) {
-    if (basic.isMobile())    {
-        $('.homepage-container.mobile .successful-practices .content .content-container').removeClass('col-md-5 col-md-offset-2').addClass('col-md-12');
-        $('.homepage-container.mobile .successful-practices .content figure').removeClass('col-md-5').addClass('col-md-10 col-md-offset-1');
-        $('.homepage-container.mobile .below-successful-practices .flex .description-over-line').removeClass('col-md-7 col-md-offset-0').addClass('col-md-8 col-md-offset-2');
-        $('.homepage-container.mobile .below-successful-practices .flex .cells').removeClass('col-md-5');
-        $('.homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .wallet-app').removeClass('col-md-5 col-md-offset-1');
-        $('.homepage-container.mobile .buy-dentacoin .wallet-app-and-gif .gif').removeClass('col-md-5 col-md-offset-1').addClass('col-sm-10 col-sm-offset-1');
-    } else {
-        //set all fullpage sections with window height
-        for(var i = 0, len = $('.fullpage-section').length; i < len; i+=1)  {
-            if ($('.fullpage-section').eq(i).outerHeight() != $(window).height())    {
-                $('.fullpage-section').outerHeight($(window).height());
-            }
-        }
+var projectData = {
+    pages: {
+        not_logged_in: function () {
+            projectData.pages.data.homepage();
+            projectData.pages.data.users(true);
+            projectData.pages.data.dentists(true);
+            projectData.pages.data.traders(true);
+            projectData.pages.data.testimonials();
+            projectData.pages.data.corporateDesign();
+            projectData.pages.data.claimDentacoin();
+            projectData.pages.data.careers();
+            projectData.pages.data.team();
+            projectData.pages.data.pressCenter();
+            projectData.pages.data.howToCreateWallet();
+        },
+        logged_in: function() {
+            projectData.pages.data.homepage();
+            projectData.pages.data.users(true);
+            projectData.pages.data.dentists(true);
+            projectData.pages.data.traders(true);
+            projectData.pages.data.testimonials();
+            projectData.pages.data.corporateDesign();
+            projectData.pages.data.careers();
+            projectData.pages.data.team();
+            projectData.pages.data.pressCenter();
+            projectData.pages.data.howToCreateWallet();
+        },
+        data: {
+            homepage: async function() {
+                if ($('body').hasClass('home')) {
+                    projectData.general_logic.data.showLoader();
 
-        //center vertically the 'show more' button in testimonials section
-        $('.homepage-container .testimonials .below-expressions .show-more').css({'top' : 'calc(50% - '+$('.homepage-container .testimonials .expressions').height()/2+'px)'});
-    }
+                    $('.blank-container').height($(window).height());
 
-    if ($('#bidali-init-btn').length) {
-        $('#bidali-init-btn').click(function() {
-            fireGoogleAnalyticsEvent('Tools', 'Buy', 'Giftcard');
+                    setTimeout(async function() {
+                        var usersPageData = '';
+                        var dentistsPageData = '';
+                        var tradersPageData = '';
 
-            bidaliSdk.Commerce.render({
-                apiKey: 'pk_n6mvpompwzm83egzrz2vnh',
-                paymentCurrencies: ['DCN']
-            });
-        });
-    }
+                        var takeHomepageDataResponse = await projectData.requests.takeHomepageData();
+                        console.log(takeHomepageDataResponse, 'takeHomepageDataResponse');
 
-    // ===== first section video logic =====
-    var homepage_video_time_watched = 0;
-    var homepage_video_timer;
+                        if (takeHomepageDataResponse.success) {
+                            projectData.general_logic.data.hideLoader();
+                            projectData.general_logic.data.showStickyHomepageNav();
 
-    $('.homepage-container .intro .bg-wrapper .video .play-btn').bind("click", openVideo);
-    $('.homepage-container .intro .bg-wrapper .video .video-wrapper .close-video').click(function()   {
-        $(this).closest('.video-wrapper').find('video').get(0).pause();
-        $(this).closest('.video-wrapper').animate({
-            width: "60px"
-        }, {
-            duration: 500,
-            complete: function () {
-                $(this).closest('.video-wrapper').hide();
-                $(this).closest('.video').find('.play-btn').slideDown(500, function() {
-                    $(this).bind("click", openVideo).focus();
-                    $('.homepage-container .intro .bg-wrapper .section-description').show();
+                            usersPageData = takeHomepageDataResponse.data.usersPageData;
+                            dentistsPageData = takeHomepageDataResponse.data.dentistsPageData;
+                            tradersPageData = takeHomepageDataResponse.data.tradersPageData;
+
+                            $('.call-users-page').click(function() {
+                                if ($('.hide-homepage-data').length && !$('.hide-homepage-data').hasClass('hide')) {
+                                    $('.hide-homepage-data').addClass('hide');
+                                    $('.hide-on-users-category-selected').removeClass('hide');
+                                }
+                                projectData.general_logic.data.slideInUsersContent(usersPageData);
+                            });
+
+                            $('.call-dentists-page').click(function() {
+                                if ($('.hide-homepage-data').length && !$('.hide-homepage-data').hasClass('hide')) {
+                                    $('.hide-homepage-data').addClass('hide');
+                                    $('.hide-on-users-category-selected').removeClass('hide');
+                                }
+                                projectData.general_logic.data.slideInDentistsContent(dentistsPageData);
+                            });
+
+                            $('.call-traders-page').click(function() {
+                                if ($('.hide-homepage-data').length && !$('.hide-homepage-data').hasClass('hide')) {
+                                    $('.hide-homepage-data').addClass('hide');
+                                    $('.hide-on-users-category-selected').removeClass('hide');
+                                }
+                                projectData.general_logic.data.slideInTradersContent(tradersPageData);
+                            });
+                        } else {
+                            $('.section-homepage-nav .single-element a').click(function() {
+                                basic.closeDialog();
+                                basic.showAlert('Something went wrong. Please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a> with description of the problem.', '', true);
+                            });
+                        }
+                    }, 2000);
+                }
+            },
+            users: function(bodyClassCheck) {
+                if (bodyClassCheck != undefined) {
+                    if (!$('body').hasClass('users')) {
+                        return false;
+                    }
+                }
+
+                $('.blank-container').height($(window).height());
+
+                projectData.general_logic.data.setChangeableVideos();
+
+                // adjust header to black style
+                $('header .white-black-btn').removeClass('white-black-btn').addClass('black-white-btn');
+                $('header .logo-container img').attr('src', ' /assets/images/logo.svg ');
+
+                // remove footer black style
+                if ($('footer').hasClass('black-style')) {
+                    $('footer').removeClass('black-style');
+                    for (var i = 0, len = $('.socials ul li a img').length; i < len; i+=1) {
+                        var currentSocial = $('.socials ul li a img').eq(i);
+                        currentSocial.attr('src', currentSocial.attr('data-default-src')).attr('alt', currentSocial.attr('data-default-alt'));
+                    }
+                }
+
+                // add intro section animation
+                $('.section-wait-until-user-page .hidden-picture img').addClass('animated');
+
+                projectData.general_logic.data.hideStickyHomepageNav();
+                projectData.general_logic.data.showStickySubpagesNav();
+
+                if ($('#append-big-hub-dentacoin').length) {
+                    var bigHubParams = {
+                        'element_id_to_append' : 'append-big-hub-dentacoin',
+                        'type_hub' : 'dentacoin',
+                        'local_environment' : 'https://dev.dentacoin.com'
+                    };
+
+                    dcnHub.initBigHub(bigHubParams);
+                }
+
+                $('body').addClass('overflow-hidden');
+                if ($(window).width() < 767) {
+                    $('.class-video-container').html('<div class="black-border-left margin-top-20 padding-left-10"><h3 class="fs-22 lato-black">PATIENTS</h3><div class="fs-18">Earn rewards for reviews, surveys, better oral hygiene and reduce your dental costs!</div></div><figure class="padding-top-15 padding-bottom-15 text-center" itemscope="" itemtype="http://schema.org/ImageObject"><img alt="Patient dentist triangle" class="max-width-400 width-100 margin-0-auto" src="/assets/uploads/dentacoin-dentist-patient-ecosystem.png" itemprop="contentUrl"></figure><div class="black-border-right padding-right-10 text-right"><h3 class="fs-22 lato-black">DENTISTS</h3><div class="fs-18">Earn rewards for reviews, surveys, better oral hygiene and reduce your dental costs!</div></div><figure class="padding-top-25 padding-bottom-10 text-center" itemscope="" itemtype="http://schema.org/ImageObject"><img alt="Dentacoin currency" class="max-width-80 width-100 margin-0-auto" src="/assets/uploads/dcn-coin.svg" itemprop="contentUrl"><figcaption class="fs-18"><span class="display-block fs-22 lato-black padding-bottom-5">Dentacoin Currency</span>An Ethereum-based utility token, used for rewards, payments, and exchange within and beyond the  dental industry.</figcaption></figure><figure class="padding-top-25 padding-bottom-10 text-center" itemscope="" itemtype="http://schema.org/ImageObject"><img alt="Dentacoin Apps" class="max-width-80 width-100 margin-0-auto" src="/assets/uploads/dcn-phone-apps.svg" itemprop="contentUrl"><figcaption class="fs-18"><span class="display-block fs-22 lato-black padding-bottom-5">Dentacoin Apps</span>Promoting better oral health and rewarding users for submitting feedback, taking surveys, maintaining oral hygiene.</figcaption></figure><figure class="padding-top-25 padding-bottom-10 text-center" itemscope="" itemtype="http://schema.org/ImageObject"><img alt="Dentacoin Assurance" class="max-width-80 width-100 margin-0-auto" src="/assets/uploads/dcn-assurance.svg" itemprop="contentUrl"><figcaption class="fs-18"><span class="display-block fs-22 lato-black padding-bottom-5">Dentacoin Assurance</span>The first smart contract-based dental assurance plan, focused on prevention and paid exclusively in DCN currency.</figcaption></figure>');
+                } else {
+                    var videoPlayed = false;
+                    $(window).on('scroll', function () {
+                        if ($('.patient-dentist-triangle-video').length) {
+                            if (basic.isInViewport($('.patient-dentist-triangle-video'), 200) && !videoPlayed) {
+                                videoPlayed = true;
+
+                                var videoFormat = 'webm';
+                                if (basic.getMobileOperatingSystem() == 'iOS' || basic.getMobileOperatingSystem() == 'Mac') {
+                                    videoFormat = 'mp4';
+                                }
+
+                                $('.patient-dentist-triangle-video').html('<video muted="muted" autoplay><source src="/assets/uploads/patient-dentist-triangle-animation.'+videoFormat+'" type="video/'+videoFormat+'"> Your browser does not support HTML5 video.</video><meta itemprop="name" content="Dentacoin Currency Video"><meta itemprop="description" content="Relation between patients and dentists via Dentacoin Currency."><meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00"><meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png"><link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/patient-dentist-triangle-animation.'+videoFormat+'">');
+                            }
+                        }
+                    });
+                }
+                $('body').removeClass('overflow-hidden');
+
+                projectData.general_logic.data.videoExpressionsSlider('users');
+                projectData.general_logic.data.userExpressionsSlider('users');
+
+                var mapVisible = false;
+                function loadMap() {
+                    if ($('.section-google-map.module').length) {
+                        if (basic.isInViewport($('.section-google-map.module'), 200) && !mapVisible) {
+                            console.log('LOAD MAP');
+                            mapVisible = true;
+
+                            projectData.general_logic.data.dentacoinGoogleMap();
+                        }
+                    }
+                }
+
+                $(window).unbind('scroll', loadMap);
+                $(window).bind('scroll', loadMap);
+            },
+            dentists: function(bodyClassCheck) {
+                if (bodyClassCheck != undefined) {
+                    if (!$('body').hasClass('dentists')) {
+                        return false;
+                    }
+                }
+
+                $('.blank-container').height($(window).height());
+
+                projectData.general_logic.data.setChangeableVideos();
+
+                // add intro section animation
+                $('.section-the-era-dentist-page .hidden-picture img').addClass('animated');
+
+                // adjust header to white style
+                $('header .black-white-btn').removeClass('black-white-btn').addClass('white-black-btn');
+                $('header .logo-container img').attr('src', ' /assets/images/logo.svg ');
+
+                // adjust footer to white style
+                if ($('footer').hasClass('black-style')) {
+                    $('footer').removeClass('black-style');
+                    for (var i = 0, len = $('.socials ul li a img').length; i < len; i+=1) {
+                        var currentSocial = $('.socials ul li a img').eq(i);
+                        currentSocial.attr('src', currentSocial.attr('data-default-src')).attr('alt', currentSocial.attr('data-default-alt'));
+                    }
+                }
+
+                projectData.general_logic.data.hideStickyHomepageNav();
+                projectData.general_logic.data.showStickySubpagesNav();
+
+                if ($('.benefits-row').length && $('.benefits-row video').length) {
+                    var videosPlayed = false;
+                    $(window).on('scroll', function () {
+                        if ($('.benefits-row').length) {
+                            if (basic.isInViewport($('.benefits-row'), 200) && !videosPlayed) {
+                                videosPlayed = true;
+
+                                for (var i = 0, len = $('.benefits-row video').length; i < len; i+=1) {
+                                    $('.benefits-row video').get(i).play();
+                                }
+
+                                $('.section-list-with-benefits-dentists-page .white-purple-btn.with-white-arrow').addClass('animated');
+                                setTimeout(function() {
+                                    $('.section-list-with-benefits-dentists-page .white-purple-btn.with-white-arrow').removeClass('animated').addClass('hover-effect');
+                                }, 2000);
+                            }
+                        }
+                    });
+                }
+
+                projectData.general_logic.data.videoExpressionsSlider('dentists');
+                projectData.general_logic.data.userExpressionsSlider('dentists');
+
+                var mapVisible = false;
+                function loadMap() {
+                    if ($('.section-google-map.module').length) {
+                        if (basic.isInViewport($('.section-google-map.module'), 200) && !mapVisible) {
+                            console.log('LOAD MAP');
+                            mapVisible = true;
+
+                            projectData.general_logic.data.dentacoinGoogleMap();
+                        }
+                    }
+                }
+
+                $(window).unbind('scroll', loadMap);
+                $(window).bind('scroll', loadMap);
+            },
+            traders: function(bodyClassCheck) {
+                if (bodyClassCheck != undefined) {
+                    if (!$('body').hasClass('traders')) {
+                        return false;
+                    }
+                }
+
+                $('.blank-container').height($(window).height());
+
+                projectData.general_logic.data.setChangeableVideos();
+
+                // if exchange bullets exist bind them logic to show/ hide exchanges
+                /*if ($('.exchanges-bullets').length) {
+                    $('.exchanges-bullets a').click(function() {
+                        $('.exchanges-bullets a').removeClass('active');
+                        $(this).addClass('active');
+
+                        $('.mobile-exchanges .mobile-extra-row').removeClass('active');
+                        $('.mobile-exchanges .mobile-extra-row[data-bullet="'+$(this).attr('data-bullet')+'"]').addClass('active');
+                    });
+                }*/
+
+                if ($('.mobile-exchanges').length) {
+                    $('.mobile-exchanges .slider-row').slick({
+                        slidesToShow: 1,
+                        infinite: true,
+                        arrows: true,
+                        dots: true,
+                        adaptiveHeight: true
+                    });
+                }
+
+                // add intro section animation
+                $('.section-bringing-blockchain-solutions-trader-page .trader').addClass('animated');
+                $('.section-bringing-blockchain-solutions-trader-page .trader-animated-background').addClass('animated');
+
+                // adjust header to black style
+                $('header .white-black-btn').removeClass('white-black-btn').addClass('black-white-btn');
+                $('header .logo-container img').attr('src', '//dentacoin.com/assets/images/rounded-logo-white.svg');
+
+                // adjust footer to black style
+                $('footer').addClass('black-style');
+                for (var i = 0, len = $('.socials ul li a img').length; i < len; i+=1) {
+                    var currentSocial = $('.socials ul li a img').eq(i);
+                    currentSocial.attr('src', currentSocial.attr('data-black-style-src')).attr('alt', currentSocial.attr('data-black-style-alt'));
+                }
+
+                if (basic.isMobile()) {
+                    if (basic.getMobileOperatingSystem() == 'iOS') {
+                        $('.app-store-btn').fadeIn(500);
+                    } else  if (basic.getMobileOperatingSystem() == 'Android') {
+                        $('.google-play-btn').fadeIn(500);
+                    }
+                } else {
+                    $('.app-store-btn').fadeIn(500);
+                    $('.google-play-btn').fadeIn(500);
+                }
+
+                // add styles for latest twitter tweets iframe
+                var twitterStyleInterval = setInterval(function() {
+                    if ($('iframe.twitter-timeline').length) {
+                        $('body').addClass('overflow-hidden');
+                        if ($(window).width() < 767) {
+                            $('iframe.twitter-timeline').contents().find('head').append('<style>.timeline-Header, .timeline-Footer{display:none}.timeline-Widget{max-width: none !important;}.timeline-TweetList{font-size: 0;position:relative;}li.timeline-TweetList-tweet {display: inline-block;vertical-align: top;width:100%}.SandboxRoot.env-bp-970 .timeline-Tweet-text {font-size: 16px !important; line-height: 22px !important;font-weight: 300;}.timeline-TweetList-tweet:nth-of-type(2){top: 0;position: absolute;left: 100%;background: white;--moz-transition: 0.3s;-ms-transition: 0.3s;transition: 0.3s;z-index:50;}.timeline-TweetList-tweet:nth-of-type(3){top: 0;position: absolute;left: 100%;background: white;--moz-transition: 0.3s;-ms-transition: 0.3s;transition: 0.3s;z-index:100;}</style>');
+
+                            $('iframe.twitter-timeline').height('auto');
+
+                            $('.tweets-iframe-container').append('<div class="tweet-bullets padding-top-10 padding-bottom-15"><a href="javascript:void(0);" class="inline-block first active"></a><a href="javascript:void(0);" class="inline-block second"></a><a href="javascript:void(0);" class="inline-block third"></a></div>');
+
+                            $('.tweet-bullets a').click(function() {
+                                $('.tweet-bullets a').removeClass('active');
+                                $(this).addClass('active');
+
+                                if ($(this).hasClass('first')) {
+                                    $('iframe.twitter-timeline').contents().find('head').append('<style>.timeline-TweetList-tweet:nth-of-type(2){left: 100% !important}.timeline-TweetList-tweet:nth-of-type(3){left: 100% !important}</style>');
+                                } else if ($(this).hasClass('second')) {
+                                    $('iframe.twitter-timeline').contents().find('head').append('<style>.timeline-TweetList-tweet:nth-of-type(2){left: 0 !important}.timeline-TweetList-tweet:nth-of-type(3){left: 100% !important}</style>');
+                                } else if ($(this).hasClass('third')) {
+                                    $('iframe.twitter-timeline').contents().find('head').append('<style>.timeline-TweetList-tweet:nth-of-type(2){left: 100% !important}.timeline-TweetList-tweet:nth-of-type(3){left: 0 !important}</style>');
+                                }
+
+                                $('iframe.twitter-timeline').height('auto');
+                            });
+                        } else {
+                            $('iframe.twitter-timeline').height('auto').contents().find('head').append('<style>.timeline-Header, .timeline-Footer{display:none}.timeline-Widget{max-width: none !important;}.timeline-TweetList{font-size: 0;}li.timeline-TweetList-tweet {display: inline-block;vertical-align: top;width:33.33333%}.SandboxRoot.env-bp-970 .timeline-Tweet-text {font-size: 16px !important; line-height: 22px !important;font-weight: 300;}</style>');
+                        }
+                        $('body').removeClass('overflow-hidden');
+
+                        clearInterval(twitterStyleInterval);
+                    }
+                }, 500);
+
+                // add roadmap show logic
+                if ($('.section-dentacoin-roadmap').length) {
+                    $('.single-year-content.active').fadeIn(500);
+
+                    $('.section-dentacoin-roadmap .years-line a').click(function() {
+                        $('.section-dentacoin-roadmap .years-line a').removeClass('active');
+                        $(this).addClass('active');
+
+                        $('.single-year-content').hide();
+                        $('.single-year-content[data-year="'+$(this).attr('data-year')+'"]').fadeIn(500);
+                    });
+                }
+
+                $(window).on('scroll', function() {
+                    // animate everything you need to know section
+                    if ($('.section-everything-you-need-to-know .middle-animated-subsection').length) {
+                        if (basic.isInViewport($('.section-everything-you-need-to-know .middle-animated-subsection'), $(window).height() / 2) && !$('.section-everything-you-need-to-know .middle-animated-subsection').hasClass('fade-in-animation')) {
+                            $('.section-everything-you-need-to-know .middle-animated-subsection').addClass('fade-in-animation');
+                            $('.section-everything-you-need-to-know .left-animated-border').addClass('add-animation');
+                            $('.section-everything-you-need-to-know .right-animated-border').addClass('add-animation');
+                        }
+                    }
+
+                    // animate wallet section
+                    if ($('.section-wallet .laptop').length) {
+                        if (basic.isInViewport($('.section-wallet .laptop'), $(window).height() / 2) && !$('.section-wallet .laptop').hasClass('animated')) {
+                            $('.section-wallet .laptop').addClass('animated');
+                            $('.section-wallet .phone').addClass('animated');
+                        }
+                    }
                 });
-            }
-        });
-    });
 
-    $('.homepage-container .intro .video-wrapper').find('video').on('pause', function() {
-        clearInterval(homepage_video_timer);
-        fireGoogleAnalyticsEvent('Video', 'Play', 'Dentacoin Explainer', homepage_video_time_watched);
-    });
-
-    $('.homepage-container .intro .video-wrapper').find('video').on('play', function() {
-        homepage_video_timer = setInterval(function() {
-            homepage_video_time_watched+=1;
-        }, 1000);
-    });
-
-    function openVideo()    {
-        $(this).slideUp(500);
-        $(this).unbind("click", openVideo).closest('.video').find('.video-wrapper').show().animate({
-            width: "100%"
-        }, 500);
-        $('.homepage-container .intro .video-wrapper').find('video').get(0).play();
-        $('.homepage-container .intro .bg-wrapper .section-description').hide();
-    }
-    // ===== /first section video logic =====
-
-    if ($('#append-big-hub-dentacoin').length) {
-        var bigHubParams = {
-            'element_id_to_append' : 'append-big-hub-dentacoin',
-            'type_hub' : 'dentacoin'
-        };
-
-        dcnHub.initBigHub(bigHubParams);
-    }
-
-    /*var start_clicking_from_num = 1;
-    /!*var init_apps_interval_slide;*!/
-    //logic for open application popup
-    $('.single-application').click(function()   {
-        singleApplicationClick($(this), true);
-    });
-
-    function singleApplicationClick(element, stop_interval_sliding) {
-        $('.single-application').removeClass('show-shadow');
-        element.addClass('show-shadow');
-        var this_btn = element.find('.wrapper');
-        var extra_html = '';
-        var media_html = '';
-
-        if (this_btn.attr('data-articles') != undefined)    {
-            extra_html+='<div class="extra-html"><div class="extra-title">Latest Blog articles:</div><div class="slider-with-tool-data">';
-            var articles_arr = $.parseJSON(this_btn.attr('data-articles'));
-            for(var i = 0, len = articles_arr.length; i < len; i+=1)    {
-                extra_html+='<a target="_blank" href="'+articles_arr[i]['link']+'"><div class="single-slide text-left fs-0"><figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject"><img src="'+articles_arr[i]['thumb']+'" alt="" itemprop="contentUrl"/></figure><div class="content inline-block-top"><div class="slide-title">'+articles_arr[i]['post_title']+'</div><time>'+dateObjToFormattedDate(new Date(parseInt(articles_arr[i]['date']) * 1000))+'</time></div></div></a>';
-            }
-            extra_html+='</div><div class="text-center padding-top-15"><a href="//blog.dentacoin.com/" class="white-blue-rounded-btn" target="_blank">GO TO ALL</a></div></div>';
-        }
-
-        var html = '<div class="container-fluid"><div class="row">'+media_html+'<div class="col-sm-12 content"><figure class="logo"><img src="'+this_btn.attr('data-popup-logo')+'" alt="'+this_btn.attr('data-popup-logo-alt')+'"/></figure><div class="title">'+this_btn.find('figcaption').html()+'</div><div class="description">'+$.parseJSON(this_btn.attr('data-description'))+'</div>'+extra_html+'</div></div></div>';
-
-        $('.dentacoin-ecosystem .info-section .html-content').html(html);
-
-        if (extra_html != '') {
-            initToolsPostsSlider();
-        }
-
-        $('.dentacoin-ecosystem .info-section video').removeAttr('controls');
-
-        $('body').addClass('overflow-hidden');
-        if ($(window).width() > 992) {
-            /!*clearInterval(init_apps_interval_slide);
-
-            if (stop_interval_sliding == undefined) {
-                start_clicking_from_num = element.index() + 1;
-                if (start_clicking_from_num == 8) {
-                    start_clicking_from_num = 0;
-                }
-
-                init_apps_interval_slide = setTimeout(function() {
-                    singleApplicationClick($('.dentacoin-ecosystem .single-application').eq(start_clicking_from_num));
-                }, 10000);
-            }*!/
-        } else {
-            $('.dentacoin-ecosystem .apps-list').hide();
-            $('.dentacoin-ecosystem .info-section').fadeIn(500);
-        }
-
-        $('.dentacoin-ecosystem .info-section .close-application').click(function() {
-            $('.dentacoin-ecosystem .apps-list').fadeIn(500);
-            $('.dentacoin-ecosystem .info-section').hide();
-        });
-
-        $('body').removeClass('overflow-hidden');
-    }
-
-    $('body').addClass('overflow-hidden');
-    if ($(window).width() > 992) {
-        singleApplicationClick($('.dentacoin-ecosystem .single-application').eq(0));
-    }
-    $('body').removeClass('overflow-hidden');*/
-
-    // logic for open testimonials and close the ones that are too near to the current opening one (TESTIMONIALS)
-    $('.homepage-container .testimonials .circle-wrapper').click(function()   {
-        $(this).addClass('active').removeClass('not-active');
-        var this_text = $(this).find('.text');
-        var text_width = 250;
-        for(var i = 0; i < $('.homepage-container .testimonials .circle-wrapper.active').length; i+=1)  {
-            var current_active_testimonial = $('.homepage-container .testimonials .circle-wrapper.active').eq(i);
-            if (!current_active_testimonial.is($(this))) {
-                if (current_active_testimonial.find('.text').offset().left > this_text.offset().left)   {
-                    if (current_active_testimonial.find('.text').offset().left - this_text.offset().left < text_width) {
-                        current_active_testimonial.removeClass('active').addClass('not-active');
+                projectData.general_logic.data.hideStickyHomepageNav();
+                projectData.general_logic.data.showStickySubpagesNav();
+            },
+            testimonials: function() {
+                if ($('body').hasClass('testimonials')) {
+                    var testimonial_icons_listing_page = ['avatar-icon-1.svg', 'avatar-icon-2.svg'];
+                    for (var i = 0; i < $('.list .single .image.no-avatar').length; i += 1) {
+                        $('.list .single .image.no-avatar').eq(i).css({'background-image': 'url(/assets/images/' + testimonial_icons_listing_page[Math.floor(Math.random() * testimonial_icons_listing_page.length)] + ')'});
                     }
-                } else if (current_active_testimonial.find('.text').offset().left < this_text.offset().left)  {
-                    if (this_text.offset().left - current_active_testimonial.find('.text').offset().left < text_width) {
-                        current_active_testimonial.removeClass('active').addClass('not-active');
+
+                    $('svg.svg-with-lines').height($(document).height());
+
+                    // LINE GOING UNDER TESTIMONIAL AVATARS
+                    initListingPageLine();
+                }
+            },
+            corporateDesign: function() {
+                if ($('body').hasClass('corporate-design')) {
+                    $('.clickable-squares-row .square').click(function () {
+                        $(this).closest('.clickable-squares-row').find('.square').removeClass('active');
+                        $(this).addClass('active');
+                    });
+                }
+            },
+            claimDentacoin: function() {
+                if ($('body').hasClass('claim-dentacoin')) {
+                    var redeemExecute = true;
+                    $('.redeem-dcn').click(function () {
+                        if (redeemExecute) {
+                            redeemExecute = false;
+                            $('#wallet-address').closest('.field-parent').find('.error-handle').remove();
+
+                            var errors = false;
+                            if ($('#wallet-address').val().trim().length != 42 || !basic.customValidateWalletAddress($('#wallet-address').val().trim())) {
+                                customErrorHandle($('#wallet-address').closest('.field-parent'), 'Please enter valid Wallet Address.');
+                                errors = true;
+                                redeemExecute = true;
+                            }
+
+                            if (!errors) {
+                                projectData.general_logic.data.showLoader();
+                                setTimeout(function () {
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: 'https://external-payment-server.dentacoin.com/withdraw-by-key',
+                                        dataType: 'json',
+                                        data: {
+                                            key: get_params['withdraw-key'],
+                                            walletAddress: $('#wallet-address').val().trim()
+                                        },
+                                        success: function (response) {
+                                            projectData.general_logic.data.hideLoader();
+                                            redeemExecute = true;
+
+                                            if (response.success) {
+                                                $('.changeable-on-success').html('<div class="success-handle margin-bottom-50 margin-top-30 fs-18">Your transaction is being processed... <b><a href="https://etherscan.io/tx/' + response.transactionHash + '" target="_blank" style="color: #3c763d; text-decoration: underline;">CHECK STATUS</a></b></div>.');
+                                            } else {
+                                                basic.showAlert('Something went wrong. Please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a> with description of the problem.', '', true);
+                                            }
+                                        }
+                                    });
+                                }, 2000);
+                            }
+                        }
+                    });
+                }
+            },
+            careers: function() {
+                if ($('body').hasClass('careers')) {
+                    if ($('.scroll-to-job-offers').length) {
+                        $('.scroll-to-job-offers').click(function()  {
+                            $('html, body').animate({'scrollTop': $('.open-job-positions-title .logo-over-line').offset().top}, 300);
+                        });
+                    }
+
+                    if ($('.single-job-offer-container').length) {
+                        // init buttons style
+                        styleUploadButton(function(thisInput) {
+                            $(thisInput).closest('.upload-btn-parent').find('.error-handle').remove();
+
+                            readURL(thisInput, 2, allowedDocumentExtensions, function(e, filename) {
+                                $(thisInput).closest('.button-row').find('.file-name').html('<span class="text-decoration-underline padding-right-10 inline-block">'+filename+'</span><a href="javascript:void(0);" class="remove-file inline-block">×</a>');
+
+                                $('.remove-file').unbind().click(function() {
+                                    $(this).closest('.button-row').find('input[type="file"]').val('');
+                                    $(this).closest('.button-row').find('.file-name').html('');
+                                });
+                            });
+                        }, 'bright-blue-white-btn');
+
+                        basic.initCustomCheckboxes('.single-job-offer-container');
+
+                        //handle apply from submission
+                        $('.apply-for-position form').on('submit', async function (event) {
+                            event.preventDefault();
+                            var this_form_native = this;
+                            var this_form = $(this_form_native);
+                            var errors = false;
+                            this_form.find('.error-handle').remove();
+
+                            var check_captcha_response = await checkCaptcha(this_form.find('#captcha').val().trim());
+
+                            for (var i = 0, len = this_form.find('input[type="text"].required').length; i < len; i+=1) {
+                                if (this_form.find('input[type="text"].required').eq(i).val().trim() == '') {
+                                    customErrorHandle(this_form.find('input[type="text"].required').eq(i).closest('.field-parent'), 'This field is required.');
+                                    errors = true;
+                                } else if (this_form.find('input[type="text"].required').eq(i).attr('name') == 'email' && !basic.validateEmail(this_form.find('input[type="text"].required').eq(i).val().trim())) {
+                                    customErrorHandle(this_form.find('input[type="text"].required').eq(i).closest('.field-parent'), 'Please use valid email address.');
+                                    errors = true;
+                                } else if (this_form.find('input[type="text"].required').eq(i).attr('name') == 'captcha' && check_captcha_response.error) {
+                                    customErrorHandle(this_form.find('input[type="text"].required').eq(i).closest('.field-parent'), 'Please enter correct captcha.');
+                                    errors = true;
+                                }
+                            }
+
+                            if (!this_form.find('#privacy-policy').is(':checked')) {
+                                customErrorHandle(this_form.find('#privacy-policy').closest('.form-row'), this_form.find('#privacy-policy').closest('.form-row').attr('data-valid-message'));
+                                errors = true;
+                            }
+
+                            if (!errors) {
+                                this_form_native.submit();
+                            } else {
+                                $('html, body').animate({'scrollTop': $('.below-apply-for-position').offset().top}, 300);
+                            }
+                        });
+                    }
+                }
+            },
+            team: function() {
+                if ($('body').hasClass('team')) {
+                    $('.team-container .advisors .advisors-slider').slick({
+                        slidesToShow: 3,
+                        autoplay: true,
+                        autoplaySpeed: 8000,
+                        responsive: [
+                            {
+                                breakpoint: 992,
+                                settings: {
+                                    slidesToShow: 2
+                                }
+                            }, {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 1,
+                                    adaptiveHeight: true
+                                }
+                            }
+                        ]
+                    });
+
+                    //bind click event for show more advisors
+                    $('.team-container .more-advisors .read-more a').click(function () {
+                        $(this).closest('.more-advisors').find('.list').slideDown(300);
+                        $(this).closest('.read-more').slideUp(300);
+                    });
+                }
+            },
+            pressCenter: function() {
+                if ($('body').hasClass('press-center')) {
+                    // PRESS CENTER
+                    initListingPageLine();
+
+                    if ($('.open-form').length > 0) {
+                        $('.open-form').click(function () {
+                            $.ajax({
+                                type: 'POST',
+                                url: HOME_URL + '/press-center-popup',
+                                dataType: 'json',
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                success: function (response) {
+                                    if (response.success) {
+                                        basic.closeDialog();
+                                        basic.showDialog(response.success, 'media-inquries', 'media-inquries');
+
+                                        initCaptchaRefreshEvent();
+
+                                        basic.initCustomCheckboxes('.bootbox.media-inquries');
+
+                                        $('.selectpicker').selectpicker('refresh');
+
+                                        $('.bootbox.media-inquries select[name="reason"]').on('change', function () {
+                                            $('.bootbox.media-inquries .waiting-for-action').html('');
+                                            if ($(this).find('option:selected').attr('data-action') == 'newsletter-register') {
+                                                $('.bootbox.media-inquries .waiting-for-action').html('<input type="hidden" name="answer" value="Manual email register to newletter receivers list."/>');
+                                            } else if ($(this).find('option:selected').attr('data-action') == 'long-text') {
+                                                $('.bootbox.media-inquries .waiting-for-action').html('<div class="padding-bottom-15 field-parent"><textarea placeholder="' + $(this).find('option:selected').attr('data-title') + '" rows="3" name="answer" maxlength="3000" class="required"></textarea></div>');
+                                            } else if ($(this).find('option:selected').attr('data-action') == 'long-text-and-attachments') {
+                                                $('.bootbox.media-inquries .waiting-for-action').html('<div class="padding-bottom-15 field-parent"><textarea placeholder="' + $(this).find('option:selected').attr('data-title') + '" rows="3" name="answer" class="padding-bottom-10 required" maxlength="3000"></textarea></div><div class="padding-bottom-10 text-center-xs button-row fs-0 upload-btn-parent"><div class="upload-file module inline-block" data-label="Attach file (media package)"><input type="file" name="media-package" id="media-package" class="upload-input" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx"></div><div class="file-text inline-block"><div class="types">File types allowed: .pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx up to 5MB</div><div class="file-name lato-bold"></div></div></div><div class="padding-bottom-15 text-center-xs button-row fs-0 upload-btn-parent"><div class="upload-file module inline-block" data-label="Attach file (individual offer, if present)"><input type="file" name="individual-offer" id="individual-offer" class="upload-input" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx"></div><div class="file-text inline-block"><div class="types">File types allowed: .pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx up to 5MB</div><div class="file-name lato-bold"></div></div></div>');
+
+                                                styleUploadButton(function(thisInput) {
+                                                    $(thisInput).closest('.upload-btn-parent').find('.error-handle').remove();
+
+                                                    readURL(thisInput, 5, ['pdf', 'doc', 'docx', 'ppt', 'pptx', 'odt', 'rtf', 'xls', 'xlsx'], function(e, filename) {
+                                                        $(thisInput).closest('.button-row').find('.file-name').html('<span class="text-decoration-underline padding-right-10 inline-block">'+filename+'</span><a href="javascript:void(0);" class="remove-file inline-block">×</a>');
+
+                                                        $('.remove-file').unbind().click(function() {
+                                                            $(this).closest('.button-row').find('input[type="file"]').val('');
+                                                            $(this).closest('.button-row').find('.file-name').html('');
+                                                        });
+                                                    });
+                                                }, 'bright-blue-white-btn');
+
+                                                //ADD CUSTOM EVENTS ON ENTER OR SPACE CLICK FOR accessibility
+                                                $('.bootbox.media-inquries #media-package button').keypress(function (event) {
+                                                    if (event.keyCode == 13 || event.keyCode == 0 || event.keyCode == 32) {
+                                                        document.getElementById('file-media-package').click();
+                                                    }
+                                                });
+                                                $('.bootbox.media-inquries #individual-offer button').keypress(function (event) {
+                                                    if (event.keyCode == 13 || event.keyCode == 0 || event.keyCode == 32) {
+                                                        document.getElementById('file-individual-offer').click();
+                                                    }
+                                                });
+                                            }
+                                        });
+
+                                        $('.bootbox.media-inquries form').on('submit', async function (event) {
+                                            event.preventDefault();
+                                            var this_form_native = this;
+                                            var this_form = $(this_form_native);
+                                            var errors = false;
+                                            this_form.find('.error-handle').remove();
+
+                                            var check_captcha_response = await checkCaptcha(this_form.find('#captcha').val().trim());
+
+                                            for (var i = 0, len = this_form.find('.required').length; i < len; i+=1) {
+                                                if (this_form.find('.required').eq(i).val().trim() == '') {
+                                                    customErrorHandle(this_form.find('.required').eq(i).closest('.field-parent'), 'This field is required.');
+                                                    errors = true;
+                                                } else if (this_form.find('.required').eq(i).attr('name') == 'email' && !basic.validateEmail(this_form.find('.required').eq(i).val().trim())) {
+                                                    customErrorHandle(this_form.find('.required').eq(i).closest('.field-parent'), 'Please use valid email address.');
+                                                    errors = true;
+                                                } else if (this_form.find('.required').eq(i).attr('name') == 'captcha' && check_captcha_response.error) {
+                                                    customErrorHandle(this_form.find('.required').eq(i).closest('.field-parent'), 'Please enter correct captcha.');
+                                                    errors = true;
+                                                }
+                                            }
+
+                                            if (this_form.find('select.required-select').val().trim() == '') {
+                                                customErrorHandle(this_form.find('select.required-select').closest('.field-parent'), 'This field is required.');
+                                                errors = true;
+                                            }
+
+                                            if (!this_form.find('#privacy-policy').is(':checked')) {
+                                                customErrorHandle(this_form.find('#privacy-policy').closest('.field-parent'), this_form.find('#privacy-policy').closest('.field-parent').attr('data-valid-message'));
+                                                errors = true;
+                                            }
+
+                                            if (!errors) {
+                                                this_form_native.submit();
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        });
+                    }
+                }
+            },
+            howToCreateWallet: function() {
+                if ($('body').hasClass('how-to-create-wallet')) {
+                    var wallet_video_time_watched = 0;
+                    var wallet_video_timer;
+
+                    $('video.wallet-instructions-video').on('play', function () {
+                        wallet_video_timer = setInterval(function () {
+                            wallet_video_time_watched += 1;
+                        }, 1000);
+                    });
+
+                    $('video.wallet-instructions-video').on('pause', function () {
+                        clearInterval(wallet_video_timer);
+                        projectData.events.fireGoogleAnalyticsEvent('Video', 'Play', 'How to Create a Wallet Demo', wallet_video_time_watched);
+                    });
+
+                    if ($('.section-wallet-questions .question').length > 0) {
+                        $('.section-wallet-questions .question').click(function () {
+                            $(this).toggleClass('active');
+                            $(this).closest('li').find('.question-content').toggle(300);
+                        });
+                    }
+                }
+            },
+            partnerNetwork: function() {
+                if ($('body').hasClass('partner-network')) {
+                    // PARTNER NETWORK
+                    initMap();
+                }
+            },
+            berlinRoundtable: function() {
+                if ($('body').hasClass('berlin-roundtable')) {
+                    // BERLIN ROUNDTABLE
+
+                    $(document).on('click', '.reserve-your-spot', function() {
+                        $('html, body').animate({'scrollTop': $('.reserve-your-spot-form').offset().top }, 300);
+                    });
+
+                    $('select[name="company-profile"]').on('change', function() {
+                        if ($(this).find('option:selected').val() == 'Other:') {
+                            $('.camping-select-result').html('<div class="padding-bottom-20 field-parent"><textarea id="please-specify" name="please-specify" placeholder="Please specify" rows="3" maxlength="3000" class="required form-field"></textarea></div>');
+                        } else {
+                            $('.camping-select-result').html('');
+                        }
+                    });
+
+                    var init_form = true;
+                    $('form.reserve-your-spot-form').on('submit', async function(event) {
+                        var this_form = $(this);
+                        event.preventDefault();
+                        if (init_form) {
+                            //clear prev errors
+                            if (this_form.find('.error-handle').length) {
+                                this_form.find('.error-handle').remove();
+                            }
+
+                            var form_fields = this_form.find('.form-field.required');
+                            var submit_form = true;
+                            for (var i = 0, len = form_fields.length; i < len; i += 1) {
+                                if (form_fields.eq(i).is('select')) {
+                                    if (form_fields.eq(i).val() == 'disabled') {
+                                        customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please choose from list.');
+                                        submit_form = false;
+                                    }
+                                } else {
+                                    if (form_fields.eq(i).attr('type') == 'email' && !basic.validateEmail(form_fields.eq(i).val().trim())) {
+                                        customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please use valid email address.');
+                                        submit_form = false;
+                                    }
+
+                                    if (form_fields.eq(i).val().trim() == '') {
+                                        customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'This field is required.');
+                                        submit_form = false;
+                                    }
+                                }
+                            }
+
+                            var check_captcha_response = await checkCaptcha(this_form.find('#register-captcha').val().trim());
+                            if (check_captcha_response.error) {
+                                customErrorHandle(this_form.find('#register-captcha').closest('.field-parent'), 'Please enter correct captcha.');
+                                submit_form = false;
+                            }
+
+                            if (submit_form && init_form) {
+                                init_form = false;
+                                projectData.general_logic.data.showLoader();
+                                setTimeout(async function() {
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/submit-berlin-roundtable-form',
+                                        dataType: 'json',
+                                        data: this_form.serialize(),
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        success: function (response) {
+                                            if (response.success) {
+                                                init_form = true;
+                                                basic.showAlert(response.success);
+                                                $('form.reserve-your-spot-form input.required, form.reserve-your-spot-form textarea.required').val('');
+                                                $('.refresh-captcha').click();
+                                                projectData.general_logic.data.hideLoader();
+                                            }
+                                        }
+                                    });
+                                }, 1000);
+                            }
+                        }
+                    });
+
+                    if ($('.attendees-slider').length) {
+                        $('.attendees-slider').slick({
+                            slidesToShow: 1,
+                            infinite: true,
+                            arrows: true,
+                            dots: false
+                        });
                     }
                 }
             }
         }
-    });
+    },
+    general_logic: {
+        not_logged_in: function() {
+            projectData.general_logic.data.gateway();
+            projectData.general_logic.data.cookie();
+        },
+        logged_in: function() {
+            projectData.general_logic.data.miniHub();
+            projectData.general_logic.data.cookie();
+        },
+        data: {
+            gateway: function() {
+                dcnGateway.init({
+                    'platform': 'dentacoin',
+                    /*'environment' : 'staging',*/
+                    'combined_login_environment' : 'staging',
+                    'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password'
+                });
 
-    // load random default avatar for testimonial givers without avatar
-    var testimonial_icons = ['avatar-icon-1.svg', 'avatar-icon-2.svg'];
-    for(var i = 0; i < $('.homepage-container .testimonials .circle-wrapper.no-image').length; i+=1)  {
-        $('.homepage-container .testimonials .circle-wrapper.no-image').eq(i).find('.circle .background').css({'background-image' : 'url(/assets/images/'+testimonial_icons[Math.floor(Math.random()*testimonial_icons.length)]+')'});
-    }
+                $(document).on('dentistAuthSuccessResponse', async function (event) {
+                    console.log('dentistAuthSuccessResponse');
+                    window.location.href = window.location.href + '?cross-login=true';
+                });
 
-    // logic for show/hide different exchange methods on click in BUY DCN section
-    $('.homepage-container .exchange-platforms-and-wallets .exchange-method .title').click(function() {
-        if ($(this).closest('.exchange-method').hasClass('active'))  {
-            $(this).closest('.exchange-method').removeClass('active').find('.list').slideUp(300);
-        } else {
-            if (basic.isMobile())    {
-                $('.homepage-container .exchange-platforms-and-wallets .exchange-method').removeClass('active').find('.list').slideUp(300);
-            }
-            $(this).closest('.exchange-method').addClass('active').find('.list').slideDown(300);
-        }
-    });
-
-    // init slider for publications
-    $('.homepage-container .awards-and-publications .publications-slider').slick({
-        centerMode: true,
-        centerPadding: '140px',
-        slidesToShow: 3,
-        arrows: false,
-        autoplay: true,
-        autoplaySpeed: 8000,
-        accessibility: true,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 1,
-                    centerMode: true,
-                    centerPadding: '200px',
+                $(document).on('patientAuthSuccessResponse', async function (event) {
+                    console.log('patientAuthSuccessResponse');
+                    window.location.href = window.location.href + '?cross-login=true';
+                });
+            },
+            cookie: function() {
+                if (typeof(dcnCookie) != undefined) {
+                    dcnCookie.init({
+                        'google_app_id': 'UA-97167262-1',
+                        'fb_app_id': '2366034370318681'
+                    });
                 }
-            },{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    centerMode: true,
-                    centerPadding: '50px'
+            },
+            showLoader: function() {
+                $('.response-layer').show();
+            },
+            hideLoader: function() {
+                $('.response-layer').hide();
+            },
+            handlePushStateRedirects: function(event) {
+                if (window.location.href.includes('users')) {
+                    window.location.href = HOME_URL + '/users';
+                } else if (window.location.href.includes('dentists')) {
+                    window.location.href = HOME_URL + '/dentists';
+                } else if (window.location.href.includes('traders')) {
+                    window.location.href = HOME_URL + '/traders';
+                } else if (window.location.href.includes(HOME_URL)) {
+                    window.location.href = HOME_URL;
                 }
-            }
-        ]
-    });
+            },
+            miniHub: function() {
+                console.log('miniHub');
+                var miniHubParams = {
+                    'element_id_to_bind': 'header-avatar',
+                    'platform': 'dentacoin',
+                    'log_out_link': 'https://dentacoin.com/user-logout'
+                };
 
-    // on click make slide active
-    $('.homepage-container .awards-and-publications .publications-slider .single-slide').on("click", function (){
-        $('.homepage-container .awards-and-publications .publications-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
-    });
-
-    $('.homepage-container .awards-and-publications .publications-slider .single-slide').keypress(function (e) {
-        if (e.key === ' ' || e.key === 'Spacebar' || e.which === 13) {
-            // ' ' is standard, 'Spacebar' was used by IE9 and Firefox < 37
-            e.preventDefault();
-            $('.homepage-container .ainitListingPageLinewards-and-publications .publications-slider').slick('slickGoTo', $(this).attr('data-slick-index'));
-        }
-    });
-
-    function introDentistsNumberCounter()   {
-        if ($('.intro b.counter span').length > 0) {
-            $('.intro b.counter span').prop('Counter', 0).animate({
-                Counter: parseInt($('.intro b.counter').attr('data-number'))
-            }, {
-                duration: 5000,
-                easing: 'swing',
-                step: function(now) {
-                    $(this).text(Math.ceil(now));
+                if ($('body').hasClass('logged-patient')) {
+                    miniHubParams.type_hub = 'mini-hub-patients';
+                    if ($('body').hasClass('home')) {
+                        miniHubParams.without_apps = true;
+                    }
+                } else if ($('body').hasClass('logged-dentist')) {
+                    miniHubParams.type_hub = 'mini-hub-dentists';
+                    if ($('body').hasClass('home')) {
+                        miniHubParams.without_apps = true;
+                    }
                 }
-            });
+
+                dcnHub.initMiniHub(miniHubParams);
+            },
+            videoExpressionsSlider: function(type) {
+                if ($('.module.video-expressions-slider[data-type="'+type+'"]').length) {
+                    // add youtube API
+                    var tag = document.createElement('script');
+                    tag.src = "https://www.youtube.com/iframe_api";
+                    var firstScriptTag = document.getElementsByTagName('script')[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                    $('.module.video-expressions-slider[data-type="'+type+'"]').slick({
+                        slidesToShow: 3,
+                        responsive: [
+                            {
+                                breakpoint: 767,
+                                settings: {
+                                    slidesToShow: 1,
+                                }
+                            }
+                        ]
+                    });
+
+                    var xsScreen = false;
+                    $('body').addClass('overflow-hidden');
+                    if ($(window).width() < 767) {
+                        xsScreen = true;
+                    }
+                    $('body').removeClass('overflow-hidden');
+
+                    if (!xsScreen) {
+                        $('.module.video-expressions-slider[data-type="'+type+'"] .slick-current').next().next().addClass('after-middle');
+                        $('.module.video-expressions-slider[data-type="'+type+'"] .slick-current').next().addClass('middle-slide');
+                        $('.module.video-expressions-slider[data-type="'+type+'"] .slick-current').addClass('before-middle');
+                    }
+
+                    var clearIframesOnSlickChange = true;
+                    $('.module.video-expressions-slider[data-type="'+type+'"]').on('afterChange', function(event, slick, currentSlide, nextSlide) {
+
+                        if ($('.module.video-expressions-slider[data-type="'+type+'"] .slide-wrapper iframe').length) {
+                            $('.module.video-expressions-slider[data-type="'+type+'"] .slide-wrapper iframe').remove();
+                            $('.module.video-expressions-slider[data-type="'+type+'"] .single-slide .video-thumb').removeClass('visibility-hidden');
+                        }
+
+                        if (!xsScreen) {
+                            $('.module.video-expressions-slider[data-type="' + type + '"] .slick-slide').removeClass('middle-slide after-middle before-middle');
+                            $('.module.video-expressions-slider[data-type="' + type + '"] .slick-current').next().next().addClass('after-middle');
+                            $('.module.video-expressions-slider[data-type="' + type + '"] .slick-current').next().addClass('middle-slide');
+                            $('.module.video-expressions-slider[data-type="' + type + '"] .slick-current').addClass('before-middle');
+                        }
+
+                        if (clearIframesOnSlickChange) {
+                            $('.module.video-expressions-slider[data-type="'+type+'"] .slide-wrapper iframe').remove();
+                            $('.module.video-expressions-slider[data-type="'+type+'"] .single-slide .video-thumb').removeClass('visibility-hidden');
+                        } else {
+                            clearIframesOnSlickChange = true;
+                        }
+
+                        if ($('.module.video-expressions-slider[data-type="'+type+'"] .slick-active.middle-slide').find('.youtube-play-button').attr('data-play') == 'true') {
+                            playYTVideo($('.module.video-expressions-slider[data-type="'+type+'"] .slick-active.middle-slide').find('.youtube-play-button'), $('.module.video-expressions-slider[data-type="'+type+'"] .slick-active.middle-slide').attr('data-video-id'));
+                            $('.module.video-expressions-slider[data-type="'+type+'"] .youtube-play-button').removeAttr('data-play');
+                        }
+                    });
+
+                    $('.module.video-expressions-slider[data-type="'+type+'"] .youtube-play-button').click(function() {
+                        console.log('clicked');
+                        $('.module.video-expressions-slider[data-type="'+type+'"] .youtube-play-button').removeAttr('data-play');
+                        $('.module.video-expressions-slider[data-type="'+type+'"] .youtube-play-button[data-id="'+$(this).attr('data-id')+'"]').attr('data-play', 'true');
+                        var videoId = $(this).closest('.single-slide').attr('data-video-id');
+                        console.log(videoId, 'videoId');
+                        clearIframesOnSlickChange = false;
+
+                        $('.module.video-expressions-slider[data-type="'+type+'"] .slide-wrapper iframe').remove();
+                        $('.module.video-expressions-slider[data-type="'+type+'"] .single-slide .video-thumb').removeClass('visibility-hidden');
+
+                        console.log(xsScreen, 'xsScreen');
+                        if (xsScreen) {
+                            playYTVideo($(this), videoId);
+                        } else {
+                            if ($(this).closest('.slick-slide').hasClass('middle-slide')) {
+                                // play video
+                                playYTVideo($('.middle-slide .youtube-play-button'), videoId);
+                            } else {
+                                // make slide active and play video
+                                $('.module.video-expressions-slider[data-type="'+type+'"]').slick('slickGoTo', $(this).closest('.slick-slide').prev().attr('data-slick-index'));
+                                // playYTVideo($('.middle-slide .youtube-play-button'));
+                            }
+                        }
+                    });
+
+                    function playYTVideo(el, videoId) {
+                        console.log(el, 'playYTVideo');
+                        el.closest('.slide-wrapper').append('<div id="main-video-player"></div>');
+                        el.closest('.single-slide').find('.video-thumb').addClass('visibility-hidden');
+
+                        var playerEvents = {};
+
+                        playerEvents.onReady = onPlayerReady;
+
+                        new YT.Player('main-video-player', {
+                            videoId: videoId,
+                            events: playerEvents
+                        });
+
+                        function onPlayerReady(event) {
+                            if (!xsScreen) {
+                                $('iframe#main-video-player').height($('iframe#main-video-player').closest('.single-slide').find('.video-thumb figure img').height());
+                            }
+                            event.target.playVideo();
+                        }
+                    }
+                }
+            },
+            userExpressionsSlider(type) {
+                if ($('.user-expressions-slider[data-type="'+type+'"]').length) {
+                    $('.user-expressions-slider[data-type="'+type+'"]').slick({
+                        slidesToShow: 3,
+                        infinite: true,
+                        dots: true,
+                        arrows: false,
+                        adaptiveHeight: true,
+                        responsive: [
+                            {
+                                breakpoint: 1800,
+                                settings: {
+                                    slidesToShow: 2,
+                                }
+                            },
+                            {
+                                breakpoint: 767,
+                                settings: {
+                                    slidesToShow: 1,
+                                }
+                            }
+                        ]
+                    });
+
+                    var xsScreen = false;
+                    $('body').addClass('overflow-hidden');
+                    if ($(window).width() < 767) {
+                        xsScreen = true;
+                    }
+                    $('body').removeClass('overflow-hidden');
+
+                    if (!xsScreen) {
+                        setupUserExpressionsSlidesSameHeight();
+
+                        $('.user-expressions-slider[data-type="'+type+'"]').on('afterChange', function(event, slick, currentSlide, nextSlide) {
+                            $('.user-expressions-slider[data-type="'+type+'"] .slick-list .slick-active .user-expression-text').outerHeight('auto');
+
+                            setupUserExpressionsSlidesSameHeight();
+                        });
+
+                        function setupUserExpressionsSlidesSameHeight() {
+                            var height = 0;
+                            for (var i = 0, len = $('.user-expressions-slider[data-type="'+type+'"] .slick-list .slick-active').length; i < len; i+=1) {
+                                if ($('.user-expressions-slider[data-type="'+type+'"] .slick-list .slick-active').eq(i).find('.user-expression-text').outerHeight() > height) {
+                                    height = $('.user-expressions-slider[data-type="'+type+'"] .slick-list .slick-active').eq(i).find('.user-expression-text').outerHeight();
+                                }
+                            }
+
+                            $('.user-expressions-slider[data-type="'+type+'"] .slick-list .slick-active .user-expression-text').animate({height: height}, 300);
+
+                            // update slick list height
+                            var slickListHeight = 0;
+                            for (var i = 0, len = $('.user-expressions-slider[data-type="'+type+'"] .slick-list .slick-active').length; i < len; i+=1) {
+                                if ($('.user-expressions-slider[data-type="'+type+'"] .slick-list .slick-active').eq(i).outerHeight() > slickListHeight) {
+                                    slickListHeight = $('.user-expressions-slider[data-type="'+type+'"] .slick-list .slick-active').eq(i).outerHeight();
+                                }
+                            }
+                            $('.user-expressions-slider[data-type="'+type+'"] .slick-list').animate({height: slickListHeight}, 500);
+                        }
+                    }
+                }
+            },
+            setChangeableVideos: function() {
+                for (var i = 0, len = $('.changeable-video').length; i < len; i+=1) {
+                    if (!$('.changeable-video').eq(i).find('video').length) {
+                        var videoAttr = $('.changeable-video').eq(i).attr('data-video-attributes');
+                        var videoClass = $('.changeable-video').eq(i).attr('data-video-class');
+                        if (videoClass != undefined) {
+                            videoClass = 'class="'+videoClass+'"';
+                        } else {
+                            videoClass = '';
+                        }
+
+                        if (basic.getMobileOperatingSystem() == 'iOS' || basic.getMobileOperatingSystem() == 'Mac') {
+                            $('.changeable-video').eq(i).prepend('<video '+videoAttr+' '+videoClass+'><source src="'+$('.changeable-video').eq(i).attr('data-mp4')+'" type="video/mp4">Your browser does not support HTML5 video.</video>');
+                            $('.changeable-video').eq(i).find('link[itemprop="contentURL"]').attr('href', $('.changeable-video').eq(i).attr('data-mp4'));
+                        } else {
+                            $('.changeable-video').eq(i).prepend('<video '+videoAttr+' '+videoClass+'><source src="'+$('.changeable-video').eq(i).attr('data-webm')+'" type="video/webm">Your browser does not support HTML5 video.</video>');
+                            $('.changeable-video').eq(i).find('link[itemprop="contentURL"]').attr('href', $('.changeable-video').eq(i).attr('data-webm'));
+                        }
+                    }
+                }
+            },
+            async dentacoinGoogleMap() {
+                var mapHtml = await projectData.requests.getMapHtml();
+                if (mapHtml.success) {
+                    $('.section-google-map.module .map-container').html(mapHtml.data);
+
+                    $('.selectpicker').selectpicker();
+                    projectData.utils.initTooltips();
+
+                    var locationsOnInit = JSON.parse($('.google-map-box').attr('data-locations'));
+                    var lastMapData = {
+                        initialLat: undefined,
+                        initialLng: undefined,
+                        initialZoom: undefined,
+                        filter_country: undefined,
+                        location_id_and_source_pairs: [],
+                        categories: $('.selectpicker.location-types').val()
+                    };
+
+                    initMap(locationsOnInit, lastMapData);
+
+                    basic.initCustomCheckboxes('.google-map-and-bottom-filters', 'append');
+
+                    var listBottomExtraHtml = '<li><div class="invite-text padding-left-15 padding-right-15 padding-top-15 padding-bottom-25"><div class="color-white lato-black fs-28 fs-sm-22 fs-xs-20 padding-bottom-15">CAN\'T FIND YOUR DENTIST?<div class="fs-20 lato-regular">Add as many dentists as you like and get rewarded for every real entry!</div></div><div><a href="https://reviews.dentacoin.com/?popup=invite-new-dentist-popup" target="_blank" class="bright-blue-white-btn with-border fs-xs-16">INVITE DENTIST</a></div></div></li>';
+
+                    // on map infowindow click
+                    $(document).on('click', '.map-infowindow button', function(event) {
+                        $('body').addClass('overflow-hidden');
+                        if ($(window).width() < 992) {
+                            showLocationsListOnMobile($('.show-locations-list'));
+
+                            $('html, body').animate({'scrollTop': $('.map-container').offset().top }, 300);
+                        } else {
+                            event.preventDefault();
+                        }
+                        $('body').removeClass('overflow-hidden');
+                    });
+
+                    $('.show-locations-list').click(function() {
+                        if (!$(this).parent().hasClass('list-shown')) {
+                            showLocationsListOnMobile($(this));
+                        } else {
+                            $('.hide-on-map-open').removeClass('hide');
+                            $(this).removeClass('with-map-pin').addClass('with-list-icon').html(' SEE RESULTS IN LIST');
+                            $('.google-map-and-bottom-filters').removeClass('padding-bottom-80');
+                            $(this).parent().removeClass('list-shown');
+
+                            $('.subpages-sticky-nav').removeClass('hide');
+                            $('.picker-and-map .google-map-box').fadeIn(500);
+                            $('.picker-and-map .left-picker').hide();
+                            $('.locations-list .invite-text').hide();
+
+                            $('html, body').animate({'scrollTop': $('.section-google-map.module').offset().top }, 300);
+                        }
+
+                        $('html, body').animate({'scrollTop': $('.map-container').offset().top }, 300);
+                    });
+
+                    // used for mobile devices to switch from map to results list with continents, countries, locations, etc
+                    function showLocationsListOnMobile(el) {
+                        $('.hide-on-map-open').addClass('hide');
+                        el.parent().addClass('list-shown');
+                        el.addClass('with-map-pin').removeClass('with-list-icon').html(' GO BACK TO MAP');
+
+                        $('.google-map-and-bottom-filters').addClass('padding-bottom-80');
+
+                        $('.subpages-sticky-nav').addClass('hide');
+                        $('.picker-and-map .google-map-box').hide();
+                        $('.picker-and-map .left-picker').fadeIn(500);
+                        $('.locations-list .invite-text').fadeIn();
+
+                        $('body').addClass('overflow-hidden');
+                        if ($(window).width() < 992) {
+                            // scroll to open location everytime on list showing, because the scrolling doesn't work when element is with display none
+                            if ($('.single-location.toggled').length) {
+                                $('.results-list').scrollTop(0);
+                                $('.results-list').scrollTop($('.single-location.toggled').position().top - 15);
+                            }
+                        }
+                        $('body').removeClass('overflow-hidden');
+                    }
+
+                    var locationsCountsArr = [];
+                    // set continent count BY adding the countries locations for THIS continent
+                    for (var i = 0, len = $('.single-continent').length; i < len; i+=1) {
+                        var currentContinentLocationsCount = 0;
+                        for (var y = 0, leny = $('.single-continent').eq(i).find('.country-list-parent').length; y < leny; y+=1) {
+                            if ($('.single-continent').eq(i).find('.country-list-parent').eq(y).find('[data-locations-count]').length) {
+                                currentContinentLocationsCount += parseInt($('.single-continent').eq(i).find('.country-list-parent').eq(y).find('[data-locations-count]').attr('data-locations-count'));
+                            }
+                        }
+
+                        if (currentContinentLocationsCount == 0) {
+                            continue;
+                        } else {
+                            $('.single-continent').eq(i).find('> a').append('<span class="lato-bold inline-block locations-count fs-18 fs-xs-14">('+currentContinentLocationsCount+' locations)</span>');
+                        }
+
+                        locationsCountsArr.push({'count' : currentContinentLocationsCount, 'location_id' : $('.single-continent').eq(i).find('> a').attr('data-continent-id')});
+                    }
+
+                    // reorder the continents list by count from bigger to smallest count
+                    var orderedLocationsCountsArr = locationsCountsArr.sort(basic.dynamicSortArrayByKey('count'));
+                    orderedLocationsCountsArr.reverse();
+                    var reorderedCountriesListHtml = '';
+                    for (var i = 0, len = orderedLocationsCountsArr.length; i < len; i+=1) {
+                        reorderedCountriesListHtml += $('.continent-name[data-continent-id='+orderedLocationsCountsArr[i].location_id+']').parent().get(0).outerHTML;
+                    }
+                    $('.continents-list ul').html(reorderedCountriesListHtml);
+
+                    // set results list max-height
+                    $('body').addClass('overflow-hidden');
+                    if ($(window).width() > 992) {
+                        $('.results-list').css({'max-height' : ($('.google-map-and-bottom-filters').height() - $('.left-picker .inner-gray-line').height()) + 'px'});
+
+                        console.log($('.google-map-and-bottom-filters').height(), '$(\'.google-map-and-bottom-filters\').height()');
+                        console.log($('.left-picker .inner-gray-line').height(), '$(\'.left-picker .inner-gray-line\').height()');
+                    }
+                    $('body').removeClass('overflow-hidden');
+
+                    $('.selectpicker.location-types').on('change', function() {
+                        var thisValue = $(this).val();
+
+                        // update bottom filter checkboxes
+                        $('.right-side-filters input[type="checkbox"]').prop('checked', false);
+                        $('.right-side-filters .custom-checkbox').html('');
+                        if (thisValue.length > 0) {
+                            for (var i = 0; i < thisValue.length; i += 1) {
+                                if ($('.right-side-filters input[type="checkbox"]#' + thisValue[i]).length) {
+                                    $('.right-side-filters input[type="checkbox"]#' + thisValue[i]).prop('checked', true);
+                                    $('.right-side-filters input[type="checkbox"]#' + thisValue[i]).parent().find('.custom-checkbox').html('✓');
+                                }
+                            }
+                        }
+
+                        // dont allow users to filter only category-5
+                        if (thisValue.includes('category-5') && !thisValue.includes('category-1')) {
+                            thisValue.push('category-1');
+                        }
+
+                        $('.right-side-filters input[type="checkbox"]').prop('checked', true);
+                        updateTopLocationsSelectOnBottomFilterChange(thisValue);
+                    });
+
+                    // this event is fired in 2 cases:
+                    // - when someone click a marker pin right on the map
+                    // - when someone select location right from the select dropdown with locations
+                    $(document).on('showLocationInList', async function (event) {
+                        if (event.response_data) {
+                            if ($('.results-list .continents-list').hasClass('hide')) {
+                                $('.custom-search-list').addClass('hide');
+                                $('.continents-list, .results-nav').removeClass('hide');
+
+                                $('.locations-splitted-by-category .filter-option-inner-inner').removeClass('fs-0').find('.custom-label').remove();
+                            }
+
+                            console.log(event.response_data, 'event.response_data');
+
+                            var initialZoom = undefined;
+                            if (event.response_data.zoom) {
+                                initialZoom = event.response_data.zoom;
+                            }
+
+                            var centerCity = undefined;
+                            if (event.response_data.center_city) {
+                                centerCity = event.response_data.center_city;
+                            }
+
+                            var listAlreadyLoaded = false;
+                            var disallowAlreadyLoaded = false;
+                            for (var i = 0, len = $('.locations-category-list').length; i < len; i+=1) {
+                                if ($('.locations-category-list').eq(i).find('li').length > 0) {
+                                    listAlreadyLoaded = true;
+                                    break;
+                                }
+                            }
+
+                            if (event.response_data.disallowAlreadyLoaded) {
+                                disallowAlreadyLoaded = true;
+                            }
+
+                            // if trying to request location which is visible on the map, but from different country and not visible in the results list
+                            if ($('.country-list-parent.open-item > a').length && event.response_data.country_code != $('.country-list-parent.open-item > a').attr('data-country-code')) {
+                                disallowAlreadyLoaded = true;
+                            }
+
+                            if (listAlreadyLoaded && !disallowAlreadyLoaded) {
+                                $('.locations-list .single-location').removeClass('toggled');
+                                $('.results-list').scrollTop(0);
+
+                                if (event.response_data.id && event.response_data.source) {
+                                    $('.locations-list .single-location a[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]').closest('.single-location').addClass('toggled');
+                                    $('.results-list').scrollTop($('.locations-list .single-location a[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]').closest('.single-location').position().top - 15);
+                                }
+                            } else {
+                                // close countries
+                                $('.results-list .shown').removeClass('shown');
+                                $('.results-list .countries-nav').addClass('shown');
+                                $('.countries-list .country-list-parent').removeClass('hide open-item');
+
+                                // close continents
+                                $('.continents-list > ul > li').removeClass('hide open-item');
+                                $('.results-list .shown').removeClass('shown');
+                                $('.results-list .continents-nav').addClass('shown');
+
+                                for (var i = 0, len = $('.continents-list .single-continent').length; i < len; i+=1) {
+                                    if (JSON.parse($('.continents-list .single-continent').eq(i).find('> a').attr('data-country-codes')).includes(event.response_data.country_code)) {
+                                        $('.continents-list .single-continent').addClass('hide');
+                                        $('.continents-list .single-continent').eq(i).addClass('open-item');
+
+                                        for (var y = 0, leny = $('.single-continent.open-item .countries-list li').length; y < leny; y+=1) {
+                                            if ($('.single-continent.open-item .countries-list li').eq(y).find('> a').attr('data-country-code') == event.response_data.country_code) {
+                                                $('.continents-list .single-continent').eq(i).find('.country-list-parent').addClass('hide');
+                                                $('.countries-list a[data-country-code="'+event.response_data.country_code+'"]').closest('.country-list-parent').addClass('open-time');
+
+                                                var city = undefined;
+                                                if (event.response_data.city) {
+                                                    city = event.response_data.city;
+                                                }
+
+                                                if (event.response_data.id && event.response_data.source && event.response_data.content) {
+                                                    lastMapData = {
+                                                        initialLat: event.response_data.lat,
+                                                        initialLng: event.response_data.lng,
+                                                        initialZoom: initialZoom,
+                                                        filter_country: event.response_data.country_code,
+                                                        location_id_and_source_pairs: [[parseInt(event.response_data.id), event.response_data.source]],
+                                                        categories: $('.selectpicker.location-types').val(),
+                                                        campForZoomChange: true,
+                                                        filter_city: city,
+                                                        location_content: event.response_data.content,
+                                                        center_city: centerCity
+                                                    };
+
+                                                    initMap(locationsOnInit, lastMapData);
+                                                } else {
+                                                    lastMapData = {
+                                                        initialLat: event.response_data.lat,
+                                                        initialLng: event.response_data.lng,
+                                                        initialZoom: initialZoom,
+                                                        filter_country: event.response_data.country_code,
+                                                        location_id_and_source_pairs: [],
+                                                        categories: $('.selectpicker.location-types').val(),
+                                                        campForZoomChange: true,
+                                                        filter_city: city,
+                                                        center_city: centerCity,
+                                                    };
+
+                                                    initMap(locationsOnInit, lastMapData);
+                                                }
+
+                                                await buildCountryLocationsList($('.countries-list a[data-country-code="'+event.response_data.country_code+'"]').parent().find('.locations-category-list'), event.response_data.country_code, $('.countries-list a[data-country-code="'+event.response_data.country_code+'"]'));
+
+                                                if (event.response_data.response_type == 'single-location') {
+                                                    $('.locations-category-list .category-toggle-button').removeClass('hide');
+                                                    $('.locations-category-list .locations-list .single-location').removeClass('hide');
+
+                                                    $('.picker-and-map .picker-value span').html(1);
+                                                    var thisLocation = $('.locations-list .toggle-location-tile[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]');
+                                                    thisLocation.closest('.locations-category-list').find('.category-toggle-button').addClass('hide');
+                                                    thisLocation.closest('.locations-category-list').find('.locations-list .single-location').addClass('hide');
+
+                                                    thisLocation.closest('.single-location').removeClass('hide');
+                                                    thisLocation.closest('.locations-list').parent().find('.category-toggle-button').removeClass('hide');
+                                                } else if (event.response_data.response_type == 'city') {
+                                                    $('.locations-category-list .category-toggle-button').removeClass('hide');
+                                                    $('.locations-category-list .locations-list .single-location').removeClass('hide');
+
+                                                    var locationsInThisCity = $('.locations-list .toggle-location-tile[data-city="'+event.response_data.city+'"]');
+                                                    if (locationsInThisCity.length) {
+                                                        $('.picker-and-map .picker-value span').html(locationsInThisCity.length);
+                                                        $('.locations-category-list .category-toggle-button').addClass('hide');
+                                                        $('.locations-category-list .locations-list .single-location').addClass('hide');
+
+                                                        for (var i = 0, len = locationsInThisCity.length; i < len; i+=1) {
+                                                            locationsInThisCity.eq(i).closest('.single-location').removeClass('hide');
+                                                            locationsInThisCity.eq(i).closest('.locations-list').parent().find('.category-toggle-button').removeClass('hide');
+                                                        }
+                                                    }
+                                                }
+
+                                                $('.locations-list .single-location').removeClass('toggled');
+
+                                                $('.results-list').scrollTop(0);
+
+                                                if (event.response_data.id && event.response_data.source) {
+                                                    $('.locations-list .single-location a[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]').closest('.single-location').addClass('toggled');
+                                                    $('.results-list').scrollTop($('.locations-list .single-location a[data-location-id="'+event.response_data.id+'"][data-location-source="'+event.response_data.source+'"]').closest('.single-location').position().top - 15);
+                                                }
+                                                break;
+                                            }
+                                        }
+
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    $(document).on('keyup', function (event) {
+                        if ($(event.target).is('.locations-splitted-by-category .bs-searchbox .form-control')) {
+                            $('.locations-splitted-by-category .dropdown-menu .active').removeClass('selected active');
+                            if (event.which == 13) {
+                                event.preventDefault();
+
+                                var currentLocationsTypesFilter = $('select.location-types').val();
+                                if (currentLocationsTypesFilter.includes('category-5') && !currentLocationsTypesFilter.includes('category-1')) {
+                                    currentLocationsTypesFilter.push('category-1');
+                                }
+
+                                var searchKeyword = $('.locations-splitted-by-category .bs-searchbox .form-control').val().trim();
+                                if (searchKeyword != '') {
+                                    var searchHtml = '';
+                                    var location_id_and_source_pairs = [];
+                                    for (var i = 0, len = locationsOnInit.length; i < len; i+=1) {
+                                        if (locationsOnInit[i].name.toLowerCase().includes(searchKeyword.toLowerCase()) && currentLocationsTypesFilter.includes(locationsOnInit[i].category)) {
+                                            searchHtml += buildSingleLocationTile(locationsOnInit[i].avatar_url, locationsOnInit[i].name, locationsOnInit[i].address, locationsOnInit[i].is_partner, locationsOnInit[i].city, locationsOnInit[i].phone, locationsOnInit[i].website, locationsOnInit[i].top_dentist_month, locationsOnInit[i].avg_rating, locationsOnInit[i].ratings, locationsOnInit[i].trp_public_profile_link, locationsOnInit[i].country_name, locationsOnInit[i].id, locationsOnInit[i].source, locationsOnInit[i].lat, locationsOnInit[i].lng);
+
+                                            location_id_and_source_pairs.push([locationsOnInit[i].id, locationsOnInit[i].source]);
+                                        }
+                                    }
+
+                                    if (searchHtml != '') {
+                                        $('.continents-list, .results-nav').addClass('hide');
+                                        $('.custom-search-list').html('<ul>'+searchHtml+listBottomExtraHtml+'</ul>').removeClass('hide');
+                                        $('.picker-and-map .picker-value').html('<span class="lato-black">'+location_id_and_source_pairs.length+'</span> Results');
+
+                                        initMap(locationsOnInit, {
+                                            location_id_and_source_pairs: location_id_and_source_pairs,
+                                            center_city: true,
+                                            type: 'custom-search'
+                                        });
+                                    } else {
+                                        $('.continents-list, .results-nav').addClass('hide');
+                                        $('.picker-and-map .picker-value').html('<span class="lato-black">0</span> Results');
+                                        $('.custom-search-list').html('<div class="padding-top-30 padding-left-20 padding-right-20 text-center fs-20 lato-bold">No locations found for this search keyword.</div>').removeClass('hide');
+                                    }
+
+                                    $('.locations-splitted-by-category .filter-option-inner-inner .custom-label').remove();
+                                    $('.locations-splitted-by-category .filter-option-inner-inner').addClass('fs-0').append('<div class="custom-label color-black fs-16">'+searchKeyword+'</div>');
+
+                                    $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents remove-custom-search-list"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> <span class="inline-block">Back to list</span></a>');
+
+                                    $('.go-back-to-continents.remove-custom-search-list').click(function() {
+                                        $('.custom-search-list').addClass('hide');
+                                        $('.continents-list, .results-nav').removeClass('hide');
+
+                                        $('.locations-splitted-by-category .filter-option-inner-inner').removeClass('fs-0').find('.custom-label').remove();
+                                    });
+
+                                    $('.locations-splitted-by-category .bootstrap-select').removeClass('open');
+                                }
+                            }
+                        }
+                    });
+
+                    $('.selectpicker.locations').on('change', function() {
+                        var thisValue = $(this).val().trim();
+
+                        if ($(this).find('option:selected').hasClass('option-type')) {
+                            $.event.trigger({
+                                type: 'showLocationInList',
+                                time: new Date(),
+                                response_data: {
+                                    'country_code' : $(this).find('option:selected').attr('data-country-code'),
+                                    'id' : $(this).find('option:selected').attr('data-id'),
+                                    'source' : thisValue,
+                                    'zoom' : 15,
+                                    'lat' : $(this).find('option:selected').attr('data-lat'),
+                                    'lng' : $(this).find('option:selected').attr('data-lng'),
+                                    'disallowAlreadyLoaded' : true,
+                                    'content' : '<div class="map-infowindow"><button>'+$(this).find('option:selected').html().trim()+'</button></div>',
+                                    'response_type' : 'single-location'
+                                }
+                            });
+                        } else if ($(this).find('option:selected').hasClass('city-type')) {
+                            var eventData = {
+                                'country_code' : $(this).find('option:selected').attr('data-country-code'),
+                                'city' : $(this).find('option:selected').attr('data-city'),
+                                'zoom' : 7,
+                                'disallowAlreadyLoaded' : true,
+                                'center_city' : true,
+                                'response_type' : 'city'
+                            };
+
+                            $.event.trigger({
+                                type: 'showLocationInList',
+                                time: new Date(),
+                                response_data: eventData
+                            });
+                        } else if ($(this).find('option:selected').hasClass('country-type')) {
+                            var eventData = {
+                                'country_code' : $(this).find('option:selected').attr('data-country-code'),
+                                'zoom' : 5,
+                                'disallowAlreadyLoaded' : true
+                            };
+
+                            if ($(this).find('option:selected').attr('data-centroid-lat') != undefined) {
+                                eventData.lat = $(this).find('option:selected').attr('data-centroid-lat');
+                            }
+                            if ($(this).find('option:selected').attr('data-centroid-lng') != undefined) {
+                                eventData.lng = $(this).find('option:selected').attr('data-centroid-lng');
+                            }
+
+                            $.event.trigger({
+                                type: 'showLocationInList',
+                                time: new Date(),
+                                response_data: eventData
+                            });
+                        }
+                    });
+
+                    $('.locations-splitted-by-category .bs-searchbox input').on('change keyup focusout paste', function() {
+                        if ($(this).val().trim() != '') {
+                            $(this).closest('.dropdown-menu').find('.inner').show();
+                        } else {
+                            $(this).closest('.dropdown-menu').find('.inner').hide();
+                        }
+                    });
+
+                    // =================== CONTINENTS LOGIC ====================
+                    $('.continents-list > ul > li > a').click(async function() {
+                        // MAKE REQUEST TO QUERY ALL LOCATIONS ONLY FOR THIS CONTINENT
+
+                        $('.continents-list > ul > li').addClass('hide');
+
+                        $(this).closest('li').addClass('open-item');
+                        $('.results-list .shown').removeClass('shown');
+                        $('.results-list .countries-nav').addClass('shown');
+
+                        $('.dentacoin-stats-category-label span').html('in ' + $(this).find('.element-name').html());
+
+                        $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> <span class="inline-block">'+$(this).find('.element-name').html().trim()).attr('data-last-continent', $(this).find('.element-name').html().trim()+'</span></a>');
+
+                        $('.results-list').scrollTop(0);
+
+                        lastMapData = {
+                            filter_country: JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')),
+                            location_id_and_source_pairs: [],
+                            categories: $('.selectpicker.location-types').val(),
+                            campForZoomChange: true,
+                            initialLat: undefined,
+                            initialLng: undefined,
+                            initialZoom: undefined
+                        };
+
+                        initMap(locationsOnInit, lastMapData);
+
+                        updateContinentData($(this).attr('data-country-codes'));
+                    });
+
+                    async function updateContinentData(codes) {
+                        if (codes != undefined && basic.isJsonString(codes)) {
+                            var continentCountriesCodes = codes;
+
+                            // request to update the locations count in the gray header line
+                            var currentContinentLocationsCount = await projectData.requests.getMapData({action: 'get-continent-stats', data: continentCountriesCodes});
+                            if (currentContinentLocationsCount.success) {
+                                $('.picker-and-map .picker-value').html('<span class="lato-black">'+currentContinentLocationsCount.data+'</span> Results').attr('data-last-continent', currentContinentLocationsCount.data);
+                            }
+
+                            // make request to update partners, non partners and users stats at the bottom
+                            var combinedCountByMultipleCountry = await projectData.requests.getMapData({action: 'combined-count-by-multiple-country', data: continentCountriesCodes});
+                            if (combinedCountByMultipleCountry.success) {
+                                if ($('.changeable-stats .partners').length) {
+                                    $('.changeable-stats .partners span').html(combinedCountByMultipleCountry.data['partners']);
+                                    $('.changeable-stats .partners').attr('data-last-continent', combinedCountByMultipleCountry.data['partners']);
+                                }
+                                if ($('.changeable-stats .non-partners').length) {
+                                    $('.changeable-stats .non-partners span').html(combinedCountByMultipleCountry.data['non_partners']);
+                                    $('.changeable-stats .non-partners').attr('data-last-continent', combinedCountByMultipleCountry.data['non_partners'])
+                                }
+                                if ($('.changeable-stats .users').length) {
+                                    $('.changeable-stats .users span').html(combinedCountByMultipleCountry.data['patients']);
+                                    $('.changeable-stats .users').attr('data-last-continent', combinedCountByMultipleCountry.data['patients']);
+                                }
+                            }
+                        }
+                    }
+
+                    $(document).on('click', '.go-back-to-continents', function() {
+                        $('.continents-list > ul > li').removeClass('hide open-item');
+
+                        $('.results-list .shown').removeClass('shown');
+                        $('.results-list .continents-nav').addClass('shown');
+
+                        $('.dentacoin-stats-category-label span').html('Worldwide');
+                        $('.picker-and-map .picker-label').html('Worldwide');
+
+                        $('.results-list').scrollTop(0);
+
+                        lastMapData = {
+                            categories: $('.selectpicker.location-types').val(),
+                            filter_country: undefined,
+                            location_id_and_source_pairs: [],
+                            campForZoomChange: undefined,
+                            initialLat: undefined,
+                            initialLng: undefined,
+                            initialZoom: undefined
+                        };
+
+                        initMap(locationsOnInit, lastMapData);
+
+                        if ($('.picker-and-map .picker-value').attr('data-worldwide') != '') {
+                            $('.picker-and-map .picker-value').html('<span class="lato-black">'+$('.picker-and-map .picker-value').attr('data-worldwide')+'</span> Results');
+                        }
+
+                        if ($('.changeable-stats .partners').length) {
+                            $('.changeable-stats .partners span').html($('.changeable-stats .partners').attr('data-worldwide'));
+                        }
+
+                        if ($('.changeable-stats .non-partners').length) {
+                            $('.changeable-stats .non-partners span').html($('.changeable-stats .non-partners').attr('data-worldwide'));
+                        }
+
+                        if ($('.changeable-stats .users').length) {
+                            $('.changeable-stats .users span').html($('.changeable-stats .users').attr('data-worldwide'));
+                        }
+                    });
+                    // =================== /CONTINENTS LOGIC ===================
+
+                    // =================== COUNTRIES LOGIC ====================
+                    async function buildCountryLocationsList(list, code, thisBtn) {
+                        projectData.general_logic.data.showLoader();
+                        var totalLocationsCountByCountry = 0;
+
+                        // Partner Dental Practices
+                        var currentCountryPartnersData = await projectData.requests.getMapData({action: 'all-partners-data-by-country', data: code});
+                        if (currentCountryPartnersData.success && currentCountryPartnersData.data.length > 0) {
+                            // checking if visibility allowed by bottom category filter
+                            var iconClass = 'fa-minus-circle';
+                            var parentElementClass = '';
+                            if (!$('.right-side-filters #category-1').is(':checked') && !$('.right-side-filters #category-5').is(':checked')) {
+                                iconClass = 'fa-plus-circle';
+                                parentElementClass = 'closed';
+                            }
+
+                            var tooltipHtml = '';
+                            if (currentCountryPartnersData.description != null && currentCountryPartnersData.description != undefined) {
+                                tooltipHtml = 'data-toggle="tooltip" title="'+currentCountryPartnersData.description+'"';
+                            }
+
+                            var bindPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button partners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+currentCountryPartnersData.name+'</span></a><ul class="locations-list">';
+                            for (var i = 0, len = currentCountryPartnersData.data.length; i < len; i+=1) {
+                                bindPartnersCategoryHtml += buildSingleLocationTile(currentCountryPartnersData.data[i].avatar_url, currentCountryPartnersData.data[i].name, currentCountryPartnersData.data[i].address, currentCountryPartnersData.data[i].is_partner, currentCountryPartnersData.data[i].city_name, currentCountryPartnersData.data[i].phone, currentCountryPartnersData.data[i].website, currentCountryPartnersData.data[i].top_dentist_month, currentCountryPartnersData.data[i].avg_rating, currentCountryPartnersData.data[i].ratings, currentCountryPartnersData.data[i].trp_public_profile_link, thisBtn.find('.element-name').html(), currentCountryPartnersData.data[i].id, 'core-db', currentCountryPartnersData.data[i].lat, currentCountryPartnersData.data[i].lon);
+                            }
+
+                            bindPartnersCategoryHtml+='</ul></li>';
+                            list.append(bindPartnersCategoryHtml);
+                        }
+
+                        // Partner Dental Labs, Partner Dental Suppliers, Other Industry Partners
+                        var getLabsSuppliersAndIndustryPartnersData = await projectData.requests.getLabsSuppliersAndIndustryPartners({'country-code' : code});
+                        if (getLabsSuppliersAndIndustryPartnersData.success) {
+                            // Partner Dental Labs
+                            if (getLabsSuppliersAndIndustryPartnersData.data.labs.data.length > 0) {
+                                // checking if visibility allowed by bottom category filter
+                                var iconClass = 'fa-minus-circle';
+                                var parentElementClass = '';
+                                if (!$('.right-side-filters #category-2').is(':checked')) {
+                                    iconClass = 'fa-plus-circle';
+                                    parentElementClass = 'closed';
+                                }
+
+                                var tooltipHtml = '';
+                                if (getLabsSuppliersAndIndustryPartnersData.data.labs.description != null && getLabsSuppliersAndIndustryPartnersData.data.labs.description != undefined) {
+                                    tooltipHtml = 'data-toggle="tooltip" title="'+getLabsSuppliersAndIndustryPartnersData.data.labs.description+'"';
+                                }
+
+                                totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.labs.data.length;
+                                var bindLabsCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button labs fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+getLabsSuppliersAndIndustryPartnersData.data.labs.name+'</span></a><ul class="locations-list">';
+                                for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.labs.data.length; i < len; i+=1) {
+                                    bindLabsCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].lat, getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].lng);
+                                }
+
+                                bindLabsCategoryHtml+='</ul></li>';
+                                list.append(bindLabsCategoryHtml);
+                            }
+
+                            // Partner Dental Suppliers
+                            if (getLabsSuppliersAndIndustryPartnersData.data.suppliers.data.length > 0) {
+                                // checking if visibility allowed by bottom category filter
+                                var iconClass = 'fa-minus-circle';
+                                var parentElementClass = '';
+                                if (!$('.right-side-filters #category-3').is(':checked')) {
+                                    iconClass = 'fa-plus-circle';
+                                    parentElementClass = 'closed';
+                                }
+
+                                var tooltipHtml = '';
+                                if (getLabsSuppliersAndIndustryPartnersData.data.suppliers.description != null && getLabsSuppliersAndIndustryPartnersData.data.suppliers.description != undefined) {
+                                    tooltipHtml = 'data-toggle="tooltip" title="'+getLabsSuppliersAndIndustryPartnersData.data.suppliers.description+'"';
+                                }
+
+                                totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.suppliers.data.length;
+                                var bindSuppliersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button suppliers fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+getLabsSuppliersAndIndustryPartnersData.data.suppliers.name+'</span></a><ul class="locations-list">';
+                                for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.suppliers.data.length; i < len; i+=1) {
+                                    bindSuppliersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].lat, getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].lng);
+                                }
+
+                                bindSuppliersCategoryHtml+='</ul></li>';
+                                list.append(bindSuppliersCategoryHtml);
+                            }
+
+                            // Other Industry Partners
+                            if (getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data.length > 0) {
+                                // checking if visibility allowed by bottom category filter
+                                var iconClass = 'fa-minus-circle';
+                                var parentElementClass = '';
+                                if (!$('.right-side-filters #category-4').is(':checked')) {
+                                    iconClass = 'fa-plus-circle';
+                                    parentElementClass = 'closed';
+                                }
+
+                                var tooltipHtml = '';
+                                if (getLabsSuppliersAndIndustryPartnersData.data.industryPartners.description != null && getLabsSuppliersAndIndustryPartnersData.data.industryPartners.description != undefined) {
+                                    tooltipHtml = 'data-toggle="tooltip" title="'+getLabsSuppliersAndIndustryPartnersData.data.industryPartners.description+'"';
+                                }
+
+                                totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data.length;
+                                var bindIndustryPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button industryPartners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+getLabsSuppliersAndIndustryPartnersData.data.industryPartners.name+'</span></a><ul class="locations-list">';
+                                for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data.length; i < len; i+=1) {
+                                    bindIndustryPartnersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].lat, getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].lng);
+                                }
+
+                                bindIndustryPartnersCategoryHtml+='</ul></li>';
+                                list.append(bindIndustryPartnersCategoryHtml);
+                            }
+                        }
+
+                        // All Registered Dental Practices
+                        var currentCountryNonPartnersData = await projectData.requests.getMapData({action: 'all-non-partners-data-by-country', data: code});
+                        if (currentCountryNonPartnersData.success && currentCountryNonPartnersData.data.length > 0) {
+                            // checking if visibility allowed by bottom category filter
+                            var iconClass = 'fa-minus-circle';
+                            var parentElementClass = '';
+                            if (!$('.right-side-filters #category-5').is(':checked')) {
+                                iconClass = 'fa-plus-circle';
+                                parentElementClass = 'closed';
+                            }
+
+                            var tooltipHtml = '';
+                            if (currentCountryNonPartnersData.description != null && currentCountryNonPartnersData.description != undefined) {
+                                tooltipHtml = 'data-toggle="tooltip" title="'+currentCountryNonPartnersData.description+'"';
+                            }
+
+                            var bindNonPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button non-partners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+currentCountryNonPartnersData.name+'</span></a><ul class="locations-list">';
+                            for (var i = 0, len = currentCountryNonPartnersData.data.length; i < len; i+=1) {
+                                bindNonPartnersCategoryHtml += buildSingleLocationTile(currentCountryNonPartnersData.data[i].avatar_url, currentCountryNonPartnersData.data[i].name, currentCountryNonPartnersData.data[i].address, currentCountryNonPartnersData.data[i].is_partner, currentCountryNonPartnersData.data[i].city_name, currentCountryNonPartnersData.data[i].phone, currentCountryNonPartnersData.data[i].website, currentCountryNonPartnersData.data[i].top_dentist_month, currentCountryNonPartnersData.data[i].avg_rating, currentCountryNonPartnersData.data[i].ratings, currentCountryNonPartnersData.data[i].trp_public_profile_link, thisBtn.find('.element-name').html(), currentCountryNonPartnersData.data[i].id, 'core-db', currentCountryNonPartnersData.data[i].lat, currentCountryNonPartnersData.data[i].lon);
+                            }
+
+                            bindNonPartnersCategoryHtml+='</ul></li>';
+                            list.append(bindNonPartnersCategoryHtml);
+                        }
+
+                        list.append(listBottomExtraHtml);
+                        projectData.utils.initTooltips();
+
+                        // make request to select all locations DATA for this country FOR THE MAP
+                        var currentCountryLocationsData = await projectData.requests.getMapData({action: 'all-partners-and-non-partners-data-by-country', data: code});
+                        if (currentCountryLocationsData.success) {
+                            totalLocationsCountByCountry += currentCountryLocationsData.data.length;
+
+                            $('.dentacoin-stats-category-label span').html('in ' + thisBtn.find('.element-name').html());
+                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-countries"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> <span class="inline-block">'+thisBtn.find('.element-name').html().trim()+'</span></a>');
+                            $('.picker-and-map .picker-value').html('<span class="lato-black">'+totalLocationsCountByCountry+'</span> Results');
+
+                            for (var i = 0, len = currentCountryLocationsData.data.length; i < len; i+=1) {
+                                // console.log(currentCountryLocationsData.data[i], 'THIS WILL BE USED TO BE SHOWN ON THE MAP');
+                            }
+                        }
+
+                        $('.results-list').scrollTop(0);
+
+                        if (thisBtn.parent().find('.locations-category-list li').length == 0) {
+                            thisBtn.parent().find('.locations-category-list').html('<div class="fs-18 padding-top-20 padding-bottom-20 text-center">No locations found.</div>');
+                        } else {
+                            // toggle category button hide/ show logic
+                            $('.locations-category-list .category-toggle-button').click(function() {
+                                $(this).closest('li').toggleClass('closed');
+
+                                if ($(this).find('i').hasClass('fa-minus-circle')) {
+                                    $(this).find('i').removeClass('fa-minus-circle').addClass('fa-plus-circle');
+
+                                    if ($(this).hasClass('partners')) {
+                                        // uncheck category-1
+                                        updateTopAndBottomLocationTypesFilters('category-1', false);
+                                    } else if ($(this).hasClass('labs')) {
+                                        // check category-2
+                                        updateTopAndBottomLocationTypesFilters('category-2', false);
+                                    } else if ($(this).hasClass('suppliers')) {
+                                        // check category-3
+                                        updateTopAndBottomLocationTypesFilters('category-3', false);
+                                    } else if ($(this).hasClass('industryPartners')) {
+                                        // check category-4
+                                        updateTopAndBottomLocationTypesFilters('category-4', false);
+                                    } else if ($(this).hasClass('non_partners')) {
+                                        // check category-5
+                                        updateTopAndBottomLocationTypesFilters('category-5', false);
+                                    }
+
+                                    $('.selectpicker.location-types').selectpicker('refresh');
+                                } else {
+                                    $(this).find('i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+
+                                    if ($(this).hasClass('partners')) {
+                                        // check category-1
+                                        updateTopAndBottomLocationTypesFilters('category-1', true);
+                                    } else if ($(this).hasClass('labs')) {
+                                        // check category-2
+                                        updateTopAndBottomLocationTypesFilters('category-2', true);
+                                    } else if ($(this).hasClass('suppliers')) {
+                                        // check category-3
+                                        updateTopAndBottomLocationTypesFilters('category-3', true);
+                                    } else if ($(this).hasClass('industryPartners')) {
+                                        // check category-4
+                                        updateTopAndBottomLocationTypesFilters('category-4', true);
+                                    } else if ($(this).hasClass('non-partners')) {
+                                        // check category-5
+                                        updateTopAndBottomLocationTypesFilters('category-5', true);
+                                    }
+
+                                    $('.selectpicker.location-types').selectpicker('refresh');
+                                }
+
+                                // updating lastMapData categories
+                                lastMapData.categories = $('.selectpicker.location-types').val();
+                                initMap(locationsOnInit, {
+                                    initialLat: lastMapData.initialLat,
+                                    initialLng: lastMapData.initialLng,
+                                    initialZoom: lastMapData.initialZoom,
+                                    filter_country: lastMapData.filter_country,
+                                    location_id_and_source_pairs: [[parseInt(lastMapData.location_id), lastMapData.location_source]],
+                                    categories: lastMapData.categories,
+                                    campForZoomChange: true
+                                });
+                            });
+
+                            function updateTopAndBottomLocationTypesFilters(category_id, bool) {
+                                $('select.location-types option[value="'+category_id+'"]').prop('selected', bool);
+
+                                $('.right-side-filters input[type="checkbox"]#'+category_id).prop('checked', bool);
+                                if (bool) {
+                                    $('.right-side-filters input[type="checkbox"]#'+category_id).parent().find('.custom-checkbox').html('✓');
+                                } else {
+                                    $('.right-side-filters input[type="checkbox"]#'+category_id).parent().find('.custom-checkbox').html('');
+                                }
+                            }
+                        }
+
+                        $('.results-list .shown').removeClass('shown');
+                        $('.results-list .locations-nav').addClass('shown');
+
+                        $('.continents-list .single-continent .country-list-parent').addClass('hide');
+                        thisBtn.parent().removeClass('hide').addClass('open-item');
+
+                        // make request to select all partners COUNT for this country
+                        var combinedCountByCountry = await projectData.requests.getMapData({action: 'combined-count-by-country', data: code});
+                        if (combinedCountByCountry.success) {
+                            if ($('.changeable-stats .partners').length) {
+                                $('.changeable-stats .partners span').html(combinedCountByCountry.data['partners']);
+                            }
+                            if ($('.changeable-stats .non-partners').length) {
+                                $('.changeable-stats .non-partners span').html(combinedCountByCountry.data['non_partners']);
+                            }
+                            if ($('.changeable-stats .users').length) {
+                                $('.changeable-stats .users span').html(combinedCountByCountry.data['patients']);
+                            }
+                        }
+
+                        projectData.general_logic.data.hideLoader();
+                    }
+
+                    // toggle bottom filter hide/ show logic
+                    $('.right-side-filters input[type="checkbox"]').on('change', function() {
+                        var thisCheckbox = $(this);
+                        switch(thisCheckbox.attr('id')) {
+                            case 'category-1':
+                                if (thisCheckbox.is(':checked')) {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
+                                } else {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
+                                }
+
+                                updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
+
+                                $('.selectpicker.location-types').selectpicker('refresh');
+
+                                break;
+                            case 'category-2':
+                                if (thisCheckbox.is(':checked')) {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
+                                } else {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
+                                }
+
+                                updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
+
+                                $('.selectpicker.location-types').selectpicker('refresh');
+
+                                break;
+                            case 'category-3':
+                                if (thisCheckbox.is(':checked')) {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
+                                } else {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
+                                }
+
+                                updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
+
+                                $('.selectpicker.location-types').selectpicker('refresh');
+
+                                break;
+                            case 'category-4':
+                                if (thisCheckbox.is(':checked')) {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
+                                } else {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
+                                }
+
+                                updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
+
+                                $('.selectpicker.location-types').selectpicker('refresh');
+
+                                break;
+                            case 'category-5':
+                                if (thisCheckbox.is(':checked')) {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
+                                } else {
+                                    $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
+                                }
+
+                                updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
+                                $('.selectpicker.location-types').selectpicker('refresh');
+
+                                break;
+                        }
+                    });
+
+                    function updateTopLocationsSelectOnBottomFilterChange(valuesArray) {
+                        // refresh locations selectpicker
+                        if (Object.keys(JSON.parse($('.locations-style').attr('data-groups-html'))).length > 0) {
+                            $('select.selectpicker.locations').html('');
+                            var newLocationsSelectHtml = '';
+                            Object.keys(JSON.parse($('.locations-style').attr('data-groups-html'))).forEach(function(key,index) {
+                                newLocationsSelectHtml += JSON.parse($('.locations-style').attr('data-groups-html'))[key];
+                            });
+                            $('select.selectpicker.locations').html('<option value="">Show All Locations</option>' + newLocationsSelectHtml);
+                        }
+
+                        if (valuesArray.length > 0) {
+                            $('select.selectpicker.locations optgroup.optgroup-for-types').addClass('to-remove');
+
+                            $('.category-toggle-button').parent().addClass('closed');
+                            $('.category-toggle-button i').removeClass('fa-minus-circle').addClass('fa-plus-circle');
+
+                            // filter
+                            for (var i = 0, len = $('select.selectpicker.locations optgroup.optgroup-for-types').length; i < len; i+=1) {
+                                for (var y = 0; y < valuesArray.length; y+=1) {
+                                    if ($('select.selectpicker.locations optgroup.optgroup-for-types').eq(i).hasClass(valuesArray[y])) {
+                                        $('select.selectpicker.locations optgroup.optgroup-for-types').eq(i).removeClass('to-remove');
+
+                                        switch(valuesArray[y]) {
+                                            case 'category-1':
+                                                $('.category-toggle-button.partners').parent().removeClass('closed');
+                                                $('.category-toggle-button.partners i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+
+                                                break;
+                                            case 'category-2':
+                                                $('.category-toggle-button.labs').parent().removeClass('closed');
+                                                $('.category-toggle-button.labs i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+
+                                                break;
+                                            case 'category-3':
+                                                $('.category-toggle-button.suppliers').parent().removeClass('closed');
+                                                $('.category-toggle-button.suppliers i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+
+                                                break;
+                                            case 'category-4':
+                                                $('.category-toggle-button.industryPartners').parent().removeClass('closed');
+                                                $('.category-toggle-button.industryPartners i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+
+                                                break;
+                                            case 'category-5':
+                                                $('.category-toggle-button.non-partners').parent().removeClass('closed');
+                                                $('.category-toggle-button.non-partners i').removeClass('fa-plus-circle').addClass('fa-minus-circle');
+
+                                                break;
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
+
+                            $('select.selectpicker.locations optgroup.optgroup-for-types.to-remove').remove();
+                        } else {
+                            $('select.selectpicker.locations optgroup.optgroup-for-types').addClass('to-remove');
+                        }
+
+                        $('.selectpicker.locations').selectpicker('refresh');
+
+                        // updating lastMapData categories
+                        lastMapData.categories = $('.selectpicker.location-types').val();
+
+                        var location_id_and_source_pairs = [];
+                        if (lastMapData.location_id != undefined && lastMapData.location_source != undefined) {
+                            location_id_and_source_pairs = [[parseInt(lastMapData.location_id), lastMapData.location_source]];
+                        }
+                        initMap(locationsOnInit, {
+                            initialLat: lastMapData.initialLat,
+                            initialLng: lastMapData.initialLng,
+                            initialZoom: lastMapData.initialZoom,
+                            filter_country: lastMapData.filter_country,
+                            location_id_and_source_pairs: location_id_and_source_pairs,
+                            categories: lastMapData.categories,
+                            campForZoomChange: true
+                        });
+                    }
+
+                    $('.countries-list > li > a').click(async function() {
+                        var thisBtn = $(this);
+                        thisBtn.parent().find('.locations-category-list').html('');
+
+                        lastMapData = {
+                            initialLat: thisBtn.attr('data-country-centroid-lat'),
+                            initialLng: thisBtn.attr('data-country-centroid-lng'),
+                            initialZoom: 6,
+                            filter_country: $(this).attr('data-country-code'),
+                            categories: $('.selectpicker.location-types').val(),
+                            campForZoomChange: true,
+                            location_id_and_source_pairs: []
+                        };
+
+                        initMap(locationsOnInit, lastMapData);
+
+                        buildCountryLocationsList(thisBtn.parent().find('.locations-category-list'), $(this).attr('data-country-code'), thisBtn);
+                    });
+
+                    function buildSingleLocationTile(avatar_url, name, address, is_partner, city_name, phone, website, top_dentist_month, avg_rating, ratings, trp_public_profile_link, country, location_id, location_source, lat, lng) {
+                        var partnerHtml = '';
+                        if (is_partner) {
+                            partnerHtml = '<div class="is-partner fs-14 lato-bold padding-top-5"><span><figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block margin-right-5 max-width-20"><img src="/assets/images/logo.svg" class="width-100" alt="Dentacoin logo"></figure><span class="inline-block">Partner</span></span></div>';
+                        }
+
+                        var trpStatsHtml = '<div class="trp-stats padding-top-5">';
+                        if (avg_rating != undefined) {
+                            trpStatsHtml += '<div class="stars inline-block margin-right-5"><div class="active-stars" style="width: '+avg_rating / 5 * 100+'%"></div></div>'
+                        }
+
+                        if (ratings != undefined && ratings != null) {
+                            trpStatsHtml += ' <span class="inline-block fs-14 base-on-x-reviews">(based on '+ratings+' reviews)</span> ';
+                        }
+
+                        if (trp_public_profile_link != null && trp_public_profile_link != undefined) {
+                            trpStatsHtml += ' <a href="'+trp_public_profile_link+'" target="_blank" class="fs-26 inline-block margin-left-5"><i class="fa fa-external-link" aria-hidden="true"></i></a>';
+                        }
+
+                        trpStatsHtml += '</div>';
+
+                        var visibleAddress = '';
+                        if (city_name != null && city_name != undefined) {
+                            visibleAddress = city_name + ', ' + country;
+                        } else {
+                            visibleAddress = country;
+                        }
+
+                        var hiddenContent = '<div class="fs-16 hidden-content padding-top-5">';
+
+                        // remove urls from the address, because some address are saved with urls in the DB
+                        if (address != null && address != undefined) {
+                            address = address.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
+                            hiddenContent += '<div><img src="/assets/images/map-results-location-pin.svg" alt="Location icon" class="width-100 max-width-20 inline-block"/> '+address+'</div>';
+                        }
+
+                        if (phone != null && phone != undefined) {
+                            hiddenContent += '<div><img src="/assets/images/map-results-phone.svg" alt="Phone icon" class="width-100 max-width-20 inline-block"/> <a href="tel:'+phone+'">'+phone+'</a></div>';
+                        }
+
+                        if (website != null && website != undefined) {
+                            hiddenContent += '<div><img src="/assets/images/map-results-website-icon.svg" alt="Website icon" class="width-100 max-width-20 inline-block"/> <a href="'+website+'" target="_blank">Visit website</a></div>';
+                        }
+
+                        if (top_dentist_month) {
+                            hiddenContent += '<div><img src="/assets/images/top-dentists-badge.png" alt="Top dentist badge icon" class="width-100 max-width-20 inline-block"/> Top Dentist</div>';
+                        }
+
+                        hiddenContent += '</div>';
+
+                        return '<li class="fs-0 single-location"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="inline-block"><img src="'+avatar_url+'" alt="Location logo" itemprop="contentUrl"/></figure><div class="right-location-content inline-block padding-left-10"><h3 class="fs-26 fs-xs-20 fs-sm-22 lato-black color-black">'+name+'</h3>'+trpStatsHtml+'<div class="fs-16 color-black padding-top-5 padding-bottom-5">'+visibleAddress+'</div>'+partnerHtml+hiddenContent+'<div class="text-right padding-top-10"><a href="javascript:void(0);" class="toggle-location-tile" data-city="'+city_name+'" data-location-id="'+location_id+'" data-location-source="'+location_source+'" data-lat="'+lat+'" data-lng="'+lng+'" data-name="'+name.replace(/"/g, "&quot;")+'"><img src="/assets/images/down-arrow.svg"/></a></div></div></li>';
+                    }
+
+                    // on location tile open and close
+                    $(document).on('click', '.single-location', function() {
+                        var arrowBtn = $(this).find('.toggle-location-tile');
+
+                        for (var i = 0, len = $('.toggle-location-tile').length; i < len; i+=1) {
+                            if (!$('.toggle-location-tile').eq(i).is(arrowBtn)) {
+                                $('.toggle-location-tile').eq(i).closest('.single-location').removeClass('toggled');
+                            }
+                        }
+
+                        $(this).toggleClass('toggled');
+
+                        if ($(this).hasClass('toggled')) {
+                            lastMapData = {
+                                initialLat: arrowBtn.attr('data-lat'),
+                                initialLng: arrowBtn.attr('data-lng'),
+                                initialZoom: 15,
+                                filter_country: undefined,
+                                location_id_and_source_pairs: [[parseInt(arrowBtn.attr('data-location-id')), arrowBtn.attr('data-location-source')]],
+                                categories: $('.selectpicker.location-types').val(),
+                                campForZoomChange: true,
+                                location_content: '<div class="map-infowindow"><button>'+arrowBtn.attr('data-name')+'</button></div>'
+                            };
+
+                            initMap(locationsOnInit, lastMapData);
+                        } else {
+                            lastMapData = {
+                                initialLat: $('.country-list-parent.open-item > a').attr('data-country-centroid-lat'),
+                                initialLng: $('.country-list-parent.open-item > a').attr('data-country-centroid-lng'),
+                                initialZoom: 5,
+                                filter_country: $('.country-list-parent.open-item > a').attr('data-country-code'),
+                                location_id_and_source_pairs: [],
+                                categories: $('.selectpicker.location-types').val(),
+                                campForZoomChange: true,
+                                location_content: '<div class="map-infowindow"><button>'+arrowBtn.attr('data-name')+'</button></div>'
+                            };
+                            initMap(locationsOnInit, lastMapData);
+                        }
+                    });
+
+                    $(document).on('click', '.go-back-to-countries', function() {
+                        if ($('.locations-category-list .category-toggle-button').length) {
+                            $('.locations-category-list .category-toggle-button.hide').removeClass('hide')
+                        }
+
+                        if ($('.locations-category-list .locations-list .single-location.hide').length) {
+                            $('.locations-category-list .locations-list .single-location').removeClass('hide');
+                        }
+
+                        $('.selectpicker.locations option').eq(0).prop('selected', true);
+                        $('.selectpicker.locations').selectpicker('refresh');
+
+                        if ($('.picker-and-map .picker-label').attr('data-last-continent') == undefined || $('.single-continent.open-item > a .element-name').html() != $('.picker-and-map .picker-label').attr('data-last-continent')) {
+                            var continentName = $('.single-continent.open-item > a .element-name').html();
+                            console.log(continentName, 'set continent name');
+                            $('.dentacoin-stats-category-label span').html('in ' + continentName);
+                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> <span class="inline-block">'+continentName+'</span></a>');
+
+                            $('.single-continent.open-item > a .element-name').attr('data-last-continent', continentName);
+
+                            updateContinentData($('.single-continent.open-item > a').attr('data-country-codes'));
+                        } else {
+                            $('.dentacoin-stats-category-label span').html($('.picker-and-map .picker-label').attr('data-last-continent'));
+
+                            $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> <span class="inline-block">'+$('.picker-and-map .picker-label').attr('data-last-continent')+'</span></a>');
+                        }
+
+
+                        if ($('.picker-and-map .picker-value').attr('data-last-continent') != '') {
+                            $('.picker-and-map .picker-value').html('<span class="lato-black">'+$('.picker-and-map .picker-value').attr('data-last-continent')+'</span> Results');
+                        }
+
+                        lastMapData = {
+                            initialLat: undefined,
+                            initialLng: undefined,
+                            initialZoom: undefined,
+                            filter_country: JSON.parse($('.single-continent.open-item > a').attr('data-country-codes')),
+                            location_id_and_source_pairs: [],
+                            categories: $('.selectpicker.location-types').val(),
+                            campForZoomChange: true
+                        };
+                        initMap(locationsOnInit, lastMapData);
+
+                        $('.results-list .shown').removeClass('shown');
+                        $('.results-list .countries-nav').addClass('shown');
+
+                        $('.locations-category-list').html('');
+                        $('.results-list').scrollTop(0);
+
+                        $('.countries-list .country-list-parent').removeClass('hide open-item');
+
+
+                        if ($('.changeable-stats .partners').length) {
+                            $('.changeable-stats .partners span').html($('.changeable-stats .partners').attr('data-last-continent'));
+                        }
+
+                        if ($('.changeable-stats .non-partners').length) {
+                            $('.changeable-stats .non-partners span').html($('.changeable-stats .non-partners').attr('data-last-continent'));
+                        }
+
+                        if ($('.changeable-stats .users').length) {
+                            $('.changeable-stats .users span').html($('.changeable-stats .users').attr('data-last-continent'));
+                        }
+                    });
+                    // =================== /COUNTRIES LOGIC ===================
+                }
+            },
+            showStickyHomepageNav() {
+                if ($('.homepage-sticky-nav').length) {
+                    $('.homepage-sticky-nav').fadeIn(500);
+                }
+            },
+            hideStickyHomepageNav() {
+                if ($('.homepage-sticky-nav').length) {
+                    $('.homepage-sticky-nav').remove();
+                }
+            },
+            showStickySubpagesNav() {
+                if (!$('.subpages-sticky-nav').length) {
+                    $('body').append('<div class="subpages-sticky-nav text-center fs-0"><a href="javascript:void(0);" data-type="users" class="inline-block"><span class="element-icon inline-block"></span><span class="inline-block padding-left-10 fs-24 fs-xs-20 padding-left-xs-0 lato-bold label-content">USERS</span></a><a href="javascript:void(0);" data-type="dentists" class="inline-block"><span class="element-icon inline-block"></span><span class="inline-block padding-left-10 fs-24 fs-xs-20 padding-left-xs-0 lato-bold label-content">DENTISTS</span></a><a href="javascript:void(0);" data-type="traders" class="inline-block"><span class="element-icon inline-block"></span><span class="inline-block padding-left-10 fs-24 fs-xs-20 padding-left-xs-0 lato-bold label-content">TRADERS</span></a></div>');
+
+                    if (location.href.indexOf('users') >= 0) {
+                        $('.subpages-sticky-nav [data-type="users"]').addClass('active');
+                    } else if (location.href.indexOf('dentists') >= 0) {
+                        $('.subpages-sticky-nav [data-type="dentists"]').addClass('active');
+                    } else if (location.href.indexOf('traders') >= 0) {
+                        $('.subpages-sticky-nav [data-type="traders"]').addClass('active');
+                    }
+
+                    $('.subpages-sticky-nav [data-type="users"]').click(function() {
+                        var currentPage = $('.subpages-sticky-nav a.active').attr('data-type');
+                        $('.subpages-sticky-nav a').removeClass('active');
+                        $(this).addClass('active');
+
+                        switch(currentPage) {
+                            case 'dentists':
+                                projectData.general_logic.data.slideOutDentistsContent(async function() {
+                                    projectData.general_logic.data.showLoader();
+                                    var takeHomepageDataResponse = await projectData.requests.takeHomepageData({type: 'users'});
+
+                                    if (takeHomepageDataResponse.success) {
+                                        projectData.general_logic.data.hideLoader();
+                                        projectData.general_logic.data.slideInUsersContent(takeHomepageDataResponse.data.usersPageData);
+                                    }
+                                });
+                                break;
+                            case 'traders':
+                                projectData.general_logic.data.slideOutTradersContent(async function() {
+                                    projectData.general_logic.data.showLoader();
+                                    var takeHomepageDataResponse = await projectData.requests.takeHomepageData({type: 'users'});
+
+                                    if (takeHomepageDataResponse.success) {
+                                        projectData.general_logic.data.hideLoader();
+                                        projectData.general_logic.data.slideInUsersContent(takeHomepageDataResponse.data.usersPageData);
+                                    }
+                                });
+                                break;
+                        }
+                    });
+
+                    $('.subpages-sticky-nav [data-type="dentists"]').click(function() {
+                        var currentPage = $('.subpages-sticky-nav a.active').attr('data-type');
+                        $('.subpages-sticky-nav a').removeClass('active');
+                        $(this).addClass('active');
+
+                        switch(currentPage) {
+                            case 'users':
+                                projectData.general_logic.data.slideOutUsersContent(async function() {
+                                    projectData.general_logic.data.showLoader();
+                                    var takeHomepageDataResponse = await projectData.requests.takeHomepageData({type: 'dentists'});
+
+                                    if (takeHomepageDataResponse.success) {
+                                        projectData.general_logic.data.hideLoader();
+                                        projectData.general_logic.data.slideInDentistsContent(takeHomepageDataResponse.data.dentistsPageData);
+                                    }
+                                });
+                                break;
+                            case 'traders':
+                                projectData.general_logic.data.slideOutTradersContent(async function() {
+                                    projectData.general_logic.data.showLoader();
+                                    var takeHomepageDataResponse = await projectData.requests.takeHomepageData({type: 'dentists'});
+
+                                    if (takeHomepageDataResponse.success) {
+                                        projectData.general_logic.data.hideLoader();
+                                        projectData.general_logic.data.slideInDentistsContent(takeHomepageDataResponse.data.dentistsPageData);
+                                    }
+                                });
+                                break;
+                        }
+                    });
+
+                    $('.subpages-sticky-nav [data-type="traders"]').click(function() {
+                        var currentPage = $('.subpages-sticky-nav a.active').attr('data-type');
+                        $('.subpages-sticky-nav a').removeClass('active');
+                        $(this).addClass('active');
+
+                        switch(currentPage) {
+                            case 'users':
+                                projectData.general_logic.data.slideOutUsersContent(async function() {
+                                    var takeHomepageDataResponse = await projectData.requests.takeHomepageData({type: 'traders'});
+
+                                    if (takeHomepageDataResponse.success) {
+                                        projectData.general_logic.data.slideInTradersContent(takeHomepageDataResponse.data.tradersPageData);
+                                    }
+                                });
+                                break;
+                            case 'dentists':
+                                projectData.general_logic.data.slideOutDentistsContent(async function() {
+                                    var takeHomepageDataResponse = await projectData.requests.takeHomepageData({type: 'traders'});
+
+                                    if (takeHomepageDataResponse.success) {
+                                        projectData.general_logic.data.slideInTradersContent(takeHomepageDataResponse.data.tradersPageData);
+                                    }
+                                });
+                                break;
+                        }
+                    });
+
+                    $('.subpages-sticky-nav').fadeIn(500);
+                }
+            },
+            hideStickySubpagesNav: function() {
+                console.log($('.subpages-sticky-nav').length, 'hideStickySubpagesNav');
+                if ($('.subpages-sticky-nav').length) {
+                    $('.subpages-sticky-nav').remove();
+                }
+            },
+            slideInUsersContent: function(usersPageData) {
+                // doing this fix, because brower back arrow is not working via pushState
+                window.removeEventListener('popstate', projectData.general_logic.data.handlePushStateRedirects);
+                window.addEventListener('popstate', projectData.general_logic.data.handlePushStateRedirects);
+
+                window.scrollTo(0, 0);
+
+                history.pushState({data: 'users'},'', HOME_URL + '/users');
+                $('.hidden-users-page-content').css({'display' : 'block'}).html(usersPageData).animate({'left' : '0', 'opacity' : 1}, 750, function() {
+                    $('.hide-on-users-category-selected').addClass('hide');
+                    $('.hidden-users-page-content').addClass('position-static');
+
+                    projectData.pages.data.users();
+                });
+            },
+            slideOutUsersContent: function(callback) {
+                window.scrollTo(0, 0);
+
+                $('.hide-on-users-category-selected').removeClass('hide');
+                $('.hidden-users-page-content').removeClass('position-static').animate({'left' : '-100%', 'opacity' : 0}, 1000, function() {
+                    $('.hidden-users-page-content').hide().html('');
+                    callback();
+                });
+            },
+            slideInDentistsContent: function(dentistsPageData) {
+                // doing this fix, because brower back arrow is not working via pushState
+                window.removeEventListener('popstate', projectData.general_logic.data.handlePushStateRedirects);
+                window.addEventListener('popstate', projectData.general_logic.data.handlePushStateRedirects);
+
+                window.scrollTo(0, 0);
+
+                history.pushState({data: 'dentists'},'', HOME_URL + '/dentists');
+                $('.hidden-dentists-page-content').css({'display' : 'block'}).html(dentistsPageData).animate({'top' : $('header').outerHeight(), 'opacity' : 1}, 750, function() {
+                    $('.hide-on-users-category-selected').addClass('hide');
+                    $('.hidden-dentists-page-content').addClass('position-static');
+
+                    projectData.pages.data.dentists();
+                });
+            },
+            slideOutDentistsContent: function(callback) {
+                window.scrollTo(0, 0);
+
+                $('.hide-on-users-category-selected').removeClass('hide');
+                $('.hidden-dentists-page-content').removeClass('position-static').animate({'top' : $('.hidden-dentists-page-content').height() + 'px', 'opacity' : 0}, 750, function() {
+                    $('.hidden-dentists-page-content').hide().html('');
+                    callback();
+                });
+            },
+            slideInTradersContent: function(tradersPageData) {
+                // doing this fix, because brower back arrow is not working via pushState
+                window.removeEventListener('popstate', projectData.general_logic.data.handlePushStateRedirects);
+                window.addEventListener('popstate', projectData.general_logic.data.handlePushStateRedirects);
+
+                window.scrollTo(0, 0);
+
+                history.pushState({data: 'traders'},'', HOME_URL + '/traders');
+                $('.hidden-traders-page-content').css({'display' : 'block'}).html(tradersPageData).animate({'right' : '0', 'opacity' : 1}, 750, function() {
+                    $('.hide-on-users-category-selected').addClass('hide');
+                    $('.hidden-traders-page-content').addClass('position-static');
+
+                    projectData.pages.data.traders();
+                });
+            },
+            slideOutTradersContent: function(callback) {
+                window.scrollTo(0, 0);
+
+                $('.hide-on-users-category-selected').removeClass('hide');
+                $('.hidden-traders-page-content').removeClass('position-static').animate({'right' : '-100%', 'opacity' : 0}, 750, function() {
+                    $('.hidden-traders-page-content').hide().html('');
+                    callback();
+                });
+            },
         }
-    }
-    introDentistsNumberCounter();
-} else if ($('body').hasClass('testimonials')) {
-    // TESTIMONIALS
-    // load random default avatar for testimonial givers without avatar
-    var testimonial_icons_listing_page = ['avatar-icon-1.svg', 'avatar-icon-2.svg'];
-    for(var i = 0; i < $('.list .single .image.no-avatar').length; i+=1)  {
-        $('.list .single .image.no-avatar').eq(i).css({'background-image' : 'url(/assets/images/'+testimonial_icons_listing_page[Math.floor(Math.random()*testimonial_icons_listing_page.length)]+')'});
-    }
-
-    $('svg.svg-with-lines').height($(document).height());
-
-    // LINE GOING UNDER TESTIMONIAL AVATARS
-    initListingPageLine();
-} else if ($('body').hasClass('how-to-create-wallet')) {
-    var wallet_video_time_watched = 0;
-    var wallet_video_timer;
-
-    $('video.wallet-instructions-video').on('play', function() {
-        wallet_video_timer = setInterval(function() {
-            wallet_video_time_watched+=1;
-        }, 1000);
-    });
-
-    $('video.wallet-instructions-video').on('pause', function() {
-        clearInterval(wallet_video_timer);
-        fireGoogleAnalyticsEvent('Video', 'Play', 'How to Create a Wallet Demo', wallet_video_time_watched);
-    });
-
-    if ($('.section-wallet-questions .question').length > 0) {
-        $('.section-wallet-questions .question').click(function()   {
-            $(this).toggleClass('active');
-            $(this).closest('li').find('.question-content').toggle(300);
-        });
-    }
-} else if ($('body').hasClass('partner-network')) {
-    // PARTNER NETWORK
-    initMap();
-} else if ($('body').hasClass('press-center')) {
-    // PRESS CENTER
-    initListingPageLine();
-
-    if ($('.open-form').length > 0)  {
-        $('.open-form').click(function()    {
-            $.ajax({
+    },
+    requests: {
+        takeHomepageData: async function(data) {
+            var ajaxData = {
                 type: 'POST',
-                url: HOME_URL + '/press-center-popup',
+                url: HOME_URL + '/take-homepage-data',
                 dataType: 'json',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function (response) {
-                    if (response.success)    {
-                        basic.closeDialog();
-                        basic.showDialog(response.success, 'media-inquries', 'media-inquries');
-                        initCaptchaRefreshEvent();
+                }
+            };
 
+            if (data != undefined) {
+                ajaxData.data = data;
+            }
 
-                        var required_inputs = [];
-                        for(var i = 0, len = $('.bootbox.media-inquries .required').length; i < len; i+=1)  {
-                            required_inputs.push($('.bootbox.media-inquries .required').eq(i).attr('name'));
-                        }
-                        required_inputs.push('answer');
-
-                        $('.selectpicker').selectpicker('refresh');
-
-                        $('.bootbox.media-inquries select[name="reason"]').on('change', function()    {
-                            $('.bootbox.media-inquries .waiting-for-action').html('');
-                            if ($(this).find('option:selected').attr('data-action') == 'newsletter-register')  {
-                                $('.bootbox.media-inquries .waiting-for-action').html('<input type="hidden" name="answer" value="Manual email register to newletter receivers list."/>');
-                            } else if ($(this).find('option:selected').attr('data-action') == 'long-text')  {
-                                $('.bootbox.media-inquries .waiting-for-action').html('<div class="popup-row"><textarea placeholder="'+$(this).find('option:selected').attr('data-title')+'" rows="3" name="answer" maxlength="3000"></textarea></div>');
-                            } else if ($(this).find('option:selected').attr('data-action') == 'long-text-and-attachments')  {
-                                $('.bootbox.media-inquries .waiting-for-action').html('<textarea placeholder="'+$(this).find('option:selected').attr('data-title')+'" rows="3" name="answer" class="padding-bottom-10" maxlength="3000"></textarea></div><div class="popup-row text-center-xs"><div class="upload-file inline-block-top" id="media-package" data-label="Attach file (media package):"><input type="file" name="media-package" class="inputfile inputfile-1 hide-input" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx"><button type="button"></button></div><div class="upload-file inline-block-top" id="individual-offer" data-label="Attach file (individual offer, if present):"><input type="file" class="inputfile inputfile-1 hide-input" name="individual-offer" accept=".pdf,.doc,.docx,.ppt,.pptx,.odt,.rtf,.xls,.xlsx"><button type="button"></button></div>');
-                                styleContactFormUploadBtn();
-
-                                //ADD CUSTOM EVENTS ON ENTER OR SPACE CLICK FOR accessibility
-                                $('.bootbox.media-inquries #media-package button').keypress(function(event){
-                                    if (event.keyCode == 13 || event.keyCode == 0 || event.keyCode == 32){
-                                        document.getElementById('file-media-package').click();
-                                    }
-                                });
-                                $('.bootbox.media-inquries #individual-offer button').keypress(function(event){
-                                    if (event.keyCode == 13 || event.keyCode == 0 || event.keyCode == 32){
-                                        document.getElementById('file-individual-offer').click();
-                                    }
-                                });
-                            }
-                        });
-
-                        $('.bootbox.media-inquries form').on('submit', function(event)    {
-                            var errors = [];
-                            for(var i = 0, len = required_inputs.length; i < len; i+=1) {
-                                if (required_inputs[i] == 'answer')  {
-                                    if ($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').length > 0) {
-                                        if ($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').val().trim() == '') {
-                                            errors.push('<strong>Reason for contract extra field</strong> is required.');
-                                        }
-                                    } else {
-                                        errors.push('<strong>Reason for contract extra field</strong> is required.');
-                                    }
-                                } else {
-                                    if ($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').length > 0) {
-                                        if ($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').val().trim() == '')    {
-                                            if ($('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').is('input'))    {
-                                                errors.push('<strong>'+$('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').attr('placeholder')+'</strong> is required.');
-                                            } else if ($('[name="'+required_inputs[i]+'"]').is('select')) {
-                                                errors.push('<strong>'+$('.bootbox.media-inquries [name="'+required_inputs[i]+'"]').attr('title')+'</strong> is required.');
-                                            }
-                                        }
-                                    } else {
-                                        window.location.reload();
-                                    }
-                                }
-                            }
-
-                            if (!$('.bootbox.media-inquries #agree-with-privacy-policy-popup').is(':checked'))   {
-                                errors.push($('.bootbox.media-inquries #agree-with-privacy-policy-popup').closest('.checkbox-row').attr('data-valid-message'));
-                            }
-
-                            if (errors.length > 0) {
-                                event.preventDefault();
-                                var errors_html = '';
-                                for(var y = 0, len = errors.length; y < len; y+=1)  {
-                                    errors_html+='<div class="alert alert-danger">'+errors[y]+'</div>';
-                                }
-                                $('.bootbox.media-inquries .errors.popup-row').html(errors_html);
-                            }
-                        });
-                    }
+            return await $.ajax(ajaxData);
+        },
+        getMapHtml: async function() {
+            return await $.ajax({
+                type: 'POST',
+                url: HOME_URL + '/get-map-html',
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-        });
-    }
-} else if ($('body').hasClass('team')) {
-    // TEAM
-
-    // init slider for advisors
-    $('.team-container .advisors .advisors-slider').slick({
-        slidesToShow: 3,
-        autoplay: true,
-        autoplaySpeed: 8000,
-        responsive: [
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 2
+        },
+        getMapData: async function(data) {
+            return await $.ajax({
+                type: 'POST',
+                url: HOME_URL + '/get-map-data',
+                dataType: 'json',
+                data: data,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-            }, {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    adaptiveHeight: true
-                }
-            }
-        ]
-    });
-
-    //bind click event for show more advisors
-    $('.team-container .more-advisors .read-more a').click(function()   {
-        $(this).closest('.more-advisors').find('.list').slideDown(300);
-        $(this).closest('.read-more').slideUp(300);
-    });
-} else if ($('body.careers.allow-draw-lines').length > 0) {
-    $('.join-our-team .text .btn-container a').click(function()  {
-        $('html, body').animate({'scrollTop': $('.open-job-positions-title .logo-over-line').offset().top}, 300);
-    });
-} else if ($('body.careers').length > 0) {
-    // init buttons style
-    styleContactFormUploadBtn(true);
-
-    var required_inputs = [];
-    for(var i = 0, len = $('.apply-for-position form .required').length; i < len; i+=1)  {
-        required_inputs.push($('.apply-for-position form .required').eq(i).attr('name'));
-    }
-
-    //handle apply from submission
-    $('.apply-for-position form').on('submit', async function(event)   {
-        event.preventDefault();
-        var this_form_native = this;
-        var this_form = $(this_form_native);
-        var errors = [];
-        for(var i = 0, len = required_inputs.length; i < len; i+=1) {
-            if ($('.apply-for-position form [name="'+required_inputs[i]+'"]').length > 0) {
-                if ($('.apply-for-position form [name="'+required_inputs[i]+'"]').val().trim() == '') {
-                    errors.push('<strong>'+$('.apply-for-position form [name="'+required_inputs[i]+'"]').attr('placeholder')+'</strong> is required.');
-                }
-            } else {
-                window.location.reload();
-            }
-        }
-
-        var check_captcha_response = await checkCaptcha(this_form.find('#captcha').val().trim());
-        if (check_captcha_response.error) {
-            errors.push('<strong>Please enter correct captcha.</strong>');
-        }
-
-        if (!this_form.find('.privacy-policy #privacy-policy').is(':checked'))   {
-            errors.push(this_form.find('.privacy-policy').attr('data-valid-message'));
-        }
-
-        if (errors.length > 0) {
-            var errors_html = '';
-            for(var y = 0, len = errors.length; y < len; y+=1)  {
-                errors_html+='<div class="alert alert-danger">'+errors[y]+'</div>';
-            }
-            $('.errors.form-row').html(errors_html);
-            $('html, body').animate({'scrollTop': $('.below-apply-for-position').offset().top}, 300);
-        } else {
-            this_form_native.submit();
-        }
-    });
-} else if ($('body.corporate-design').length > 0) {
-    // CORPORATE DESIGN
-
-    $('.clickable-squares-row .square').click(function()    {
-        $(this).closest('.clickable-squares-row').find('.square').removeClass('active');
-        $(this).addClass('active');
-    });
-} else if ($('body.berlin-roundtable').length > 0) {
-    // BERLIN ROUNDTABLE
-
-    $(document).on('click', '.reserve-your-spot', function() {
-        $('html, body').animate({'scrollTop': $('.reserve-your-spot-form').offset().top }, 300);
-    });
-
-    $('select[name="company-profile"]').on('change', function() {
-        if ($(this).find('option:selected').val() == 'Other:') {
-            $('.camping-select-result').html('<div class="padding-bottom-20 field-parent"><textarea id="please-specify" name="please-specify" placeholder="Please specify" rows="3" maxlength="3000" class="required form-field"></textarea></div>');
-        } else {
-            $('.camping-select-result').html('');
-        }
-    });
-
-    var init_form = true;
-    $('form.reserve-your-spot-form').on('submit', async function(event) {
-        var this_form = $(this);
-        event.preventDefault();
-        if (init_form) {
-            //clear prev errors
-            if (this_form.find('.error-handle').length) {
-                this_form.find('.error-handle').remove();
-            }
-
-            var form_fields = this_form.find('.form-field.required');
-            var submit_form = true;
-            for (var i = 0, len = form_fields.length; i < len; i += 1) {
-                if (form_fields.eq(i).is('select')) {
-                    if (form_fields.eq(i).val() == 'disabled') {
-                        customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please choose from list.');
-                        submit_form = false;
-                    }
-                } else {
-                    if (form_fields.eq(i).attr('type') == 'email' && !basic.validateEmail(form_fields.eq(i).val().trim())) {
-                        customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please use valid email address.');
-                        submit_form = false;
-                    }
-
-                    if (form_fields.eq(i).val().trim() == '') {
-                        customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'This field is required.');
-                        submit_form = false;
-                    }
-                }
-            }
-
-            var check_captcha_response = await checkCaptcha(this_form.find('#register-captcha').val().trim());
-            if (check_captcha_response.error) {
-                customErrorHandle(this_form.find('#register-captcha').closest('.field-parent'), 'Please enter correct captcha.');
-                submit_form = false;
-            }
-
-            if (submit_form && init_form) {
-                init_form = false;
-                $('.response-layer').show();
-                setTimeout(async function() {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/submit-berlin-roundtable-form',
-                        dataType: 'json',
-                        data: this_form.serialize(),
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function (response) {
-                            if (response.success) {
-                                init_form = true;
-                                basic.showAlert(response.success);
-                                $('form.reserve-your-spot-form input.required, form.reserve-your-spot-form textarea.required').val('');
-                                $('.refresh-captcha').click();
-                                $('.response-layer').hide();
-                            }
-                        }
-                    });
-                }, 1000);
-            }
-        }
-    });
-
-    if ($('.attendees-slider').length) {
-        $('.attendees-slider').slick({
-            slidesToShow: 1,
-            infinite: true,
-            arrows: true,
-            dots: false
-        });
-    }
-} else if ($('body.christmas-calendar').length > 0) {
-    // CHRISTMAS CALENDAR
-    if ($('body').hasClass('logged-in')) {
-        $(document).on('click', '.custom-close-bootbox', function() {
-            basic.closeDialog();
-        });
-
-        if (Date.now() > Math.floor(new Date(2019, 12, 1, 23, 59, 59, 0).getTime())) {
-            initTasksEvent();
-        } else {
-            if (basic.cookies.get('agreed_with_christmas_calendar_rules') != '1') {
-                $('.tasks-section .camping-custom-popups.rules').html('<div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">SIMPLE RULES:</h2><ul class="lato-regular fs-18 line-height-30"><li><span class="lato-black">31 days = 31 gifts:</span> Unlock a new task every day, complete it and get various rewards!</li><li><span class="lato-black">Complete tasks every day and your DCN rewards will be doubled at the end of the challenge.</span></li><li><span class="lato-black">31 days = 31 tickets:</span> Don’t miss a day and increase your chances to win!</li><li><span class="lato-black">Missed a day?</span> You can catch up with the daily tasks and gifts, but you’ll have one ticket less and your DCN rewards will not be doubled at the end.</li><li>All DCN daily rewards will be gradually unlocked for withdrawal in the period <span class="lato-black">Jan 1-15, 2020.</span></li><li>Other gifts are sent via email <span class="lato-black">within 5 days after</span> the task is completed.</li><li>Only users who have <span class="lato-black">submitted proofs</span> for their tasks get rewards and participate in the raffle.</li><li>All posts, likes and follows <span class="lato-black">must remain</span> at least until the raffle is finished.</li><li><span class="lato-black">Check the raffle winners on January 10, 2020 - first in our Telegram group!</span></li></ul><div class="padding-top-20 padding-bottom-20 max-width-350 margin-0-auto checkboxes"><div class="padding-bottom-10 padding-top-15"><div class="checkbox-wrapper"><input id="christmas-calendar-terms" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-terms">I read and agree to the Terms & Conditions</label></div><div class="padding-bottom-10"><div class="checkbox-wrapper"><input id="christmas-calendar-privacy-policy" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-privacy-policy">I read and agree to the Privacy Policy</label></div><div><div class="checkbox-wrapper"><input id="christmas-calendar-years" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-years">I confirm that I am eighteen (18) years of age or older.</label></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="accept-christmas-calendar-rules"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="/assets/images/christmas-calendar-campaign/ready-btn-present.svg" class="width-100 max-width-220" alt="Popup button" itemprop="contentUrl"/></figure></a></div></div>');
-
-                $('.tasks-section .camping-custom-popups.rules .popup-wrapper .accept-christmas-calendar-rules').click(function() {
-                    if (!$('.camping-custom-popups.rules #christmas-calendar-terms').is(':checked')) {
-                        basic.showAlert('Please agree to the Terms & Conditions.', '', true);
-                    } else if (!$('.camping-custom-popups.rules #christmas-calendar-privacy-policy').is(':checked')) {
-                        basic.showAlert('Please agree to the Privacy Policy.', '', true);
-                    } else if (!$('.camping-custom-popups.rules #christmas-calendar-years').is(':checked')) {
-                        basic.showAlert('Please confirm that you are eighteen (18) years of age or older.', '', true);
-                    } else {
-                        basic.cookies.set('agreed_with_christmas_calendar_rules', '1');
-
-                        $('.tasks-section .camping-custom-popups.rules').html('');
-                        checkChristmasCalendarSocialEngagement();
-                    }
-                });
-            } else {
-                checkChristmasCalendarSocialEngagement();
-            }
-
-            function checkChristmasCalendarSocialEngagement() {
-                if (basic.cookies.get('christmas_calendar_social_engagement') != '1') {
-                    $('.tasks-section .camping-custom-popups.socials').show();
-                    window.scrollTo(0, 0);
-
-                    $('.christmas-calendar-get-started').click(function() {
-                        basic.cookies.set('christmas_calendar_social_engagement', '1');
-                        $('.blurred-section').removeClass('active');
-                        $('.tasks-section .camping-custom-popups.socials').hide();
-                        initTasksEvent();
-                    });
-                } else {
-                    $('.blurred-section').removeClass('active');
-                    initTasksEvent();
-                }
-            }
-        }
-
-        function initTasksEvent() {
-            $('.tasks-section .single-task').click(function() {
-                var this_btn = $(this);
-                if (this_btn.hasClass('double-reward') && !this_btn.find('wrapper').hasClass('opened')) {
-                    basic.closeDialog();
-                    basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/popup-gifts-header.png" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="small-red-line"></div><div class="small-yellow-line"></div><div class="big-red-line"></div><div class="small-yellow-line"></div><div class="small-red-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20"><h2 class="fs-50 fs-xs-32 lato-black">DOUBLE REWARDS</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">IF YOU COMPLETE ALL 31 TASKS ON THE EXACT DATE</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="/assets/images/christmas-calendar-campaign/double-reward.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
-                } else if (this_btn.hasClass('disqualified')) {
-                    var disqualifiedText = 'DISQUALIFIED';
-                    var disqualifiedImage = this_btn.find('img').attr('src');
-                    if (this_btn.attr('data-type') == 'dcn-reward' || this_btn.attr('data-type') == 'ticket-reward') {
-                        disqualifiedText = 'Your daily prize has been taken out of your balance.';
-                    }
-
-                    basic.closeDialog();
-                    basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/popup-gifts-header.png" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="small-red-line"></div><div class="small-yellow-line"></div><div class="big-red-line"></div><div class="small-yellow-line"></div><div class="small-red-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20"><h2 class="fs-50 fs-xs-32 lato-black">DISQUALIFIED</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You haven\'t completed the task as required.</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="'+disqualifiedImage+'" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="fs-18 lato-bold padding-top-10">'+disqualifiedText+'</div><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
-                } else {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/holiday-calendar-2019/get-task-popup/' + this_btn.attr('data-task'),
-                        dataType: 'json',
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function (response) {
-                            if (response.success) {
-                                basic.closeDialog();
-                                basic.showDialog(response.success, 'christmas-calendar-task', null);
-
-                                if (this_btn.attr('data-task') == '1') {
-                                    // face sticker generation task
-                                    var vertical_step = 0;
-                                    var horizontal_step = 0;
-                                    var interval_arrows;
-                                    var rotation = 0;
-                                    var avatar_border = 0;
-
-                                    $('.task-body [name="character-type"]').on('change', function() {
-                                        if ($(this).val() == 'male') {
-                                            avatar_border = 1;
-                                        } else if ($(this).val() == 'female') {
-                                            avatar_border = 2;
-                                        }
-
-                                        $('.task-body .upload-image .border').html('<img src="/assets/images/christmas-calendar-campaign/border-'+avatar_border+'.png"/>');
-                                    });
-
-                                    function readUserPhoto(input) {
-                                        if (input.files && input.files[0]) {
-                                            var reader = new FileReader();
-                                            reader.onload = function (e) {
-
-                                                var image = new Image();
-                                                image.src = e.target.result;
-                                                image.onload = function () {
-                                                    // access image size here
-                                                    var background_size = "";
-                                                    var image_ratio = this.width / this.height;
-                                                    if (image_ratio >= 1) {
-                                                        background_size = "100% " + (100 / image_ratio) + "%";
-                                                    } else {
-                                                        background_size = (100 * image_ratio) + "% 100%";
-                                                    }
-
-                                                    $(".avatar img").hide();
-                                                    $(".avatar").css("background-image", "url(" + e.target.result + ")");
-                                                    $(".avatar").css("background-size", background_size);
-                                                    $(".avatar").data("ratio", image_ratio).data("w", this.width).data("h", this.height);
-                                                    $(".avatar").addClass("avatar-selected");
-
-                                                    fixGameImageSquare();
-
-                                                    //set file input
-                                                    $("form input[name='avatar']").val(e.target.result);
-
-                                                    resetImageStuff();
-                                                }
-                                            }
-                                            reader.readAsDataURL(input.files[0]);
-                                        }
-                                    }
-
-                                    $("#upload-avatar").change(function () {
-                                        readUserPhoto(this);
-                                    });
-
-                                    function fixGameImageSquare() {
-                                        //setting width and height, because we are replacing the image with background
-                                        $(".upload-image .avatar").height($(".upload-image .avatar").width());
-                                    }
-
-                                    function resetImageStuff() {
-                                        $(".zoom-scroll-container .wrapper").slider("value", 1);
-                                        $(".popup-body form input[name='background_scale']").val(1);
-                                        vertical_step = horizontal_step = 0;
-                                        changeAvatarOffset();
-                                        resetRotation();
-                                    }
-
-                                    function resetRotation() {
-                                        rotation = 0;
-                                        $(".upload-image .rotation").css({
-                                            "transform": "rotate(" + rotation + "deg)",
-                                            "-webkit-transform": "rotate(" + rotation + "deg)",
-                                            "-moz-transform": "(" + rotation + "deg)",
-                                            "-ms-transform": "rotate(" + rotation + "deg)"
-                                        });
-                                        $(".upload-image .rotation .border").css({
-                                            "transform": "rotate(-" + rotation + "deg)",
-                                            "-webkit-transform": "rotate(-" + rotation + "deg)",
-                                            "-moz-transform": "(-" + rotation + "deg)",
-                                            "-ms-transform": "rotate(-" + rotation + "deg)"
-                                        });
-                                    }
-
-                                    function changeAvatarOffset() {
-                                        $(".popup-body .upload-image .photo .avatar.avatar-selected").css({"background-position": "calc(50% - " + horizontal_step + "px) calc(50% - " + vertical_step + "px)"});
-                                    }
-
-                                    function rotateImage() {
-                                        if ($(".avatar img").is(":hidden")) {
-                                            rotation += 90;
-                                            if (rotation == 360) {
-                                                rotation = 0;
-                                            }
-                                            $(".upload-image .rotation").css({
-                                                "transform": "rotate(" + rotation + "deg)",
-                                                "-webkit-transform": "rotate(" + rotation + "deg)",
-                                                "-moz-transform": "(" + rotation + "deg)",
-                                                "-ms-transform": "rotate(" + rotation + "deg)"
-                                            });
-                                            $(".upload-image .rotation .border").css({
-                                                "transform": "rotate(-" + rotation + "deg)",
-                                                "-webkit-transform": "rotate(-" + rotation + "deg)",
-                                                "-moz-transform": "(-" + rotation + "deg)",
-                                                "-ms-transform": "rotate(-" + rotation + "deg)"
-                                            });
-                                        }
-                                    }
-                                    function moveArrow(direction, step) {
-                                        var new_step;
-                                        var avatar_rad;
-                                        if (direction == "vertical") {
-                                            new_step = vertical_step + step;
-                                            avatar_rad = parseInt($(".popup-body .upload-image .photo .avatar").data("h")) / 2;
-                                        } else {
-                                            new_step = horizontal_step + step;
-                                            avatar_rad = parseInt($(".popup-body .upload-image .photo .avatar").data("w")) / 2;
-                                        }
-                                        if (new_step > -avatar_rad && new_step < avatar_rad) {
-                                            if (direction == "vertical") {
-                                                vertical_step += step;
-                                            } else {
-                                                horizontal_step += step;
-                                            }
-                                            changeAvatarOffset();
-                                        } else {
-                                            clearInterval(interval_arrows);
-                                        }
-                                    }
-
-                                    $(".popup-body .up-triangle img").mousedown(function () {
-                                        if ($(".avatar img").is(":hidden")) {
-                                            if (interval_arrows != undefined) {
-                                                clearInterval(interval_arrows);
-                                            }
-                                            moveArrow("vertical", 10);
-                                            interval_arrows = setInterval(function () {
-                                                moveArrow("vertical", 10);
-                                            }, 100);
-                                        }
-                                    });
-
-                                    $(document).mouseup(function () {
-                                        if (interval_arrows != undefined) {
-                                            clearInterval(interval_arrows);
-                                        }
-                                    });
-
-                                    $(".popup-body .down-triangle img").mousedown(function () {
-                                        if ($(".avatar img").is(":hidden")) {
-                                            if (interval_arrows != undefined) {
-                                                clearInterval(interval_arrows);
-                                            }
-                                            moveArrow("vertical", -10);
-                                            interval_arrows = setInterval(function () {
-                                                moveArrow("vertical", -10);
-                                            }, 100);
-                                        }
-                                    });
-
-                                    $(".popup-body .left-triangle img").mousedown(function () {
-                                        if ($(".avatar img").is(":hidden")) {
-                                            if (interval_arrows != undefined) {
-                                                clearInterval(interval_arrows);
-                                            }
-                                            moveArrow("horizontal", 10);
-                                            interval_arrows = setInterval(function () {
-                                                moveArrow("horizontal", 10);
-                                            }, 100);
-                                        }
-                                    });
-
-
-                                    $(".popup-body .right-triangle img").mousedown(function () {
-                                        if ($(".avatar img").is(":hidden")) {
-                                            if (interval_arrows != undefined) {
-                                                clearInterval(interval_arrows);
-                                            }
-                                            moveArrow("horizontal", -10);
-                                            interval_arrows = setInterval(function () {
-                                                moveArrow("horizontal", -10);
-                                            }, 100);
-                                        }
-                                    });
-
-                                    $(".popup-body .rotate").click(function () {
-                                        rotateImage();
-                                    });
-
-                                    $(".zoom-scroll-container .wrapper").slider({
-                                        value: 1,
-                                        min: 0.5,
-                                        max: 1.5,
-                                        step: 0.1,
-                                        slide: function (event, ui) {
-                                            $(".popup-body form input[name='background_scale']").val(ui.value);
-
-                                            var image_ratio = $(".avatar").data("ratio");
-                                            var background_size;
-                                            if (image_ratio >= 1) {
-                                                background_size = (ui.value * 100) + "% " + (ui.value * 100 / image_ratio) + "%";
-                                            } else {
-                                                background_size = (ui.value * 100 * image_ratio) + "% " + (ui.value * 100) + "%";
-                                            }
-
-                                            $(".avatar").css("background-size", background_size);
-                                        }
-                                    });
-
-
-                                    $('.popup-body form').on('submit', function(event) {
-                                        event.preventDefault();
-                                        var form = $(this);
-
-                                        if ($('#telegram-username').val().trim() == '') {
-                                            basic.showAlert('Please enter your Telegram username.', '', true);
-                                        } else if (avatar_border != 1 && avatar_border != 2) {
-                                            basic.showAlert('Please select character gender.', '', true);
-                                        } else if (form.find('[name="avatar"]').val() == '') {
-                                            basic.showAlert('Please upload your photo.', '', true);
-                                        } else {
-                                            $('.response-layer').show();
-
-                                            var post_data = {
-                                                'avatar' : form.find('[name="avatar"]').val(),
-                                                'background_scale' : form.find('[name="background_scale"]').val(),
-                                                'avatar-border' : avatar_border,
-                                                'horizontal_step' : horizontal_step,
-                                                'vertical_step' : vertical_step,
-                                                'size' : $('.upload-image .avatar').width(),
-                                                'rotation' : rotation
-                                            };
-
-                                            $.ajax({
-                                                type: 'POST',
-                                                url: '/holiday-calendar-2019/complete-task/' + this_btn.attr('data-task'),
-                                                dataType: 'json',
-                                                data: {
-                                                    'text_proof' : $('#telegram-username').val().trim()
-                                                },
-                                                headers: {
-                                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                },
-                                                success: function (response) {
-                                                    if (response.success) {
-                                                        post_data['user_slug'] = response.data;
-                                                        $.ajax({
-                                                            type: 'POST',
-                                                            url: 'https://christmas-calendar-api.dentacoin.com/generate-face-sticker',
-                                                            dataType: 'json',
-                                                            data: post_data,
-                                                            success: function (imageGenerationResponse) {
-                                                                $('.response-layer').hide();
-                                                                if (imageGenerationResponse.success) {
-                                                                    if (response.dcnAmount) {
-                                                                        $('.user-dcn-amount').html(response.dcnAmount);
-                                                                    }
-                                                                    if (response.ticketAmount) {
-                                                                        $('.user-ticket-amount').html(response.ticketAmount);
-                                                                    }
-                                                                    if (response.bonusTickets) {
-                                                                        $('.user-bonus-ticket-amount').html(response.bonusTickets);
-                                                                    }
-
-                                                                    this_btn.find('.wrapper').addClass('opened');
-                                                                    this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
-
-                                                                    basic.closeDialog();
-                                                                    basic.showDialog(response.success, 'response-popup', null);
-                                                                    //window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
-                                                                } else {
-                                                                    basic.showAlert('Something went wrong. Please try again later or write a message to admin@dentacoin.com with description of the problem.', '', true);
-                                                                }
-                                                            }
-                                                        });
-                                                    } else if (response.error) {
-                                                        $('.response-layer').hide();
-                                                        if (response.technicalError) {
-                                                            basic.showAlert(response.error, '', null);
-                                                        } else {
-                                                            basic.showDialog(response.error, 'response-popup', null);
-                                                        }
-                                                    }
-                                                }
-                                            });
-                                        }
-                                    });
-                                } else if (['3', '4', '5', '7', '8', '10', '13', '14', '15', '17', '18', '19', '2', '6', '11', '20', '12', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'].indexOf(this_btn.attr('data-task')) > -1) {
-                                    $('.popup-body form').on('submit', function(event) {
-                                        event.preventDefault();
-                                        var form = $(this);
-                                        var this_form = this;
-
-                                        if (['12', '21', '25', '30'].indexOf(this_btn.attr('data-task')) > -1) {
-                                            var warningReminderAboutTaskValidation = {};
-                                            warningReminderAboutTaskValidation.callback = function (result) {
-                                                if (result) {
-                                                    submitFormForMostTasks(form, this_form);
-                                                }
-                                            };
-                                            basic.showConfirm('<div class="fs-20 lato-bold text-center padding-bottom-20">WARNING</div><div class="fs-16 text-center padding-bottom-20">All entries are subject to manual approval. If your entry does not meet the requierements, you will be disqualified from today\'s task.</div><div class="fs-16 text-center padding-bottom-20">Are you sure you want to submit the task?</div>', '', warningReminderAboutTaskValidation, true);
-                                        } else {
-                                            submitFormForMostTasks(form, this_form);
-                                        }
-                                    });
-
-                                    function submitFormForMostTasks(form, this_form) {
-                                        completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
-                                            $('.response-layer').hide();
-                                            if (response.dcnAmount) {
-                                                $('.user-dcn-amount').html(response.dcnAmount);
-                                            }
-                                            if (response.ticketAmount) {
-                                                $('.user-ticket-amount').html(response.ticketAmount);
-                                            }
-                                            if (response.bonusTickets) {
-                                                $('.user-bonus-ticket-amount').html(response.bonusTickets);
-                                            }
-
-                                            this_btn.find('.wrapper').addClass('opened');
-                                            this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
-
-                                            if (response.doubleAmount) {
-                                                $('.single-task.double-reward .present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
-                                            }
-
-                                            basic.closeDialog();
-                                            basic.showDialog(response.success, 'response-popup', null);
-                                        });
-                                    }
-                                } else if (['9'].indexOf(this_btn.attr('data-task')) > -1) {
-                                    // newsletter registration task
-                                    $('.newsletter-register form').on('submit', function(event)  {
-                                        var this_form = this;
-                                        var form = $(this_form);
-                                        var error = false;
-                                        if (!basic.validateEmail(form.find('input[type="email"]').val().trim()))    {
-                                            error = true;
-                                        } else if (!form.find('#newsletter-privacy-policy').is(':checked'))  {
-                                            error = true;
-                                        }
-
-                                        if (!error) {
-                                            completeTask(form, this_form, this_btn, new FormData($(form)[0]), function(response) {
-                                                $('.response-layer').hide();
-                                                if (response.dcnAmount) {
-                                                    $('.user-dcn-amount').html(response.dcnAmount);
-                                                }
-                                                if (response.ticketAmount) {
-                                                    $('.user-ticket-amount').html(response.ticketAmount);
-                                                }
-                                                if (response.bonusTickets) {
-                                                    $('.user-bonus-ticket-amount').html(response.bonusTickets);
-                                                }
-
-                                                this_btn.find('.wrapper').addClass('opened');
-                                                this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
-
-                                                basic.closeDialog();
-                                                basic.showDialog(response.success, 'response-popup', null);
-                                            });
-
-                                            fireGoogleAnalyticsEvent('Subscription', 'Sign-up', 'Newsletter');
-                                        }
-                                    });
-                                } else if (['16'].indexOf(this_btn.attr('data-task')) > -1) {
-                                    // holiday card generation task
-                                    $('.popup-body form').on('submit', function(event) {
-                                        event.preventDefault();
-                                        var form = $(this);
-                                        var this_form = this;
-
-                                        completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
-                                            var post_data = {};
-                                            post_data['user_slug'] = response.data;
-                                            $.ajax({
-                                                type: 'POST',
-                                                url: 'https://christmas-calendar-api.dentacoin.com/generate-holiday-card',
-                                                dataType: 'json',
-                                                data: post_data,
-                                                success: function (imageGenerationResponse) {
-                                                    $('.response-layer').hide();
-                                                    if (imageGenerationResponse.success) {
-                                                        if (imageGenerationResponse.dcnAmount) {
-                                                            $('.user-dcn-amount').html(imageGenerationResponse.dcnAmount);
-                                                        }
-                                                        if (imageGenerationResponse.ticketAmount) {
-                                                            $('.user-ticket-amount').html(imageGenerationResponse.ticketAmount);
-                                                        }
-                                                        if (imageGenerationResponse.bonusTickets) {
-                                                            $('.user-bonus-ticket-amount').html(imageGenerationResponse.bonusTickets);
-                                                        }
-
-                                                        this_btn.find('.wrapper').addClass('opened');
-                                                        this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
-
-                                                        basic.closeDialog();
-                                                        basic.showDialog(response.success, 'response-popup', null);
-                                                        //window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
-                                                    } else {
-                                                        basic.showAlert('Something went wrong. Please try again later or write a message to admin@dentacoin.com with description of the problem.', '', true);
-                                                    }
-                                                }
-                                            });
-                                        });
-                                    });
-                                }
-
-                                var screenshotProofsLength = $('.screenshot_proof').length;
-                                //my_file_image.txt
-                                if (screenshotProofsLength > 0) {
-                                    for (var i = 0; i < screenshotProofsLength; i+= 1) {
-                                        $('.screenshot_proof').eq(i).on('change', function() {
-                                            $(this).parent().find('.filename').remove();
-                                            $(this).parent().append('<div class="fs-14 filename">'+$(this)[0].files[0].name+'</div>');
-                                        });
-                                    }
-                                }
-
-                                function completeTask(form, this_form, this_btn, data, callback) {
-                                    $('.task-error').remove();
-                                    var error = false;
-                                    if (form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
-                                        basic.showAlert('Please submit proof. Otherwise, you may be disqualified.', '', true);
-                                        return false;
-                                    } else if (screenshotProofsLength) {
-                                        if (screenshotProofsLength > 1) {
-                                            for (var i = 0; i < screenshotProofsLength; i+= 1) {
-                                                if (!error) {
-                                                    if (form.find('.screenshot_proof').eq(i).val().trim() == '') {
-                                                        basic.showAlert('Please attach all screenshots. Otherwise, you will not receive your reward.', '', true);
-                                                        error = true;
-                                                    } else {
-                                                        readURL(this_form.querySelectorAll('.screenshot_proof')[i], 2, allowedImagesExtensions, undefined, function () {
-                                                            error = true;
-                                                        });
-                                                    }
-                                                }
-                                            }
-                                        } else {
-                                            if (form.find('.screenshot_proof').val().trim() == '') {
-                                                basic.showAlert('Please attach a screenshot. Otherwise, you will not receive your reward.', '', true);
-                                                error = true;
-                                            } else {
-                                                readURL(this_form.querySelectorAll('.screenshot_proof')[0], 2, allowedImagesExtensions, undefined, function () {
-                                                    error = true;
-                                                });
-                                            }
-                                        }
-                                    }
-
-                                    function proceedWithTaskFinishing() {
-                                        $('.response-layer').show();
-                                        setTimeout(function() {
-                                            $.ajax({
-                                                type: 'POST',
-                                                url: '/holiday-calendar-2019/complete-task/' + this_btn.attr('data-task'),
-                                                data: data,
-                                                async: false,
-                                                processData: false,
-                                                contentType: false,
-                                                dataType: 'json',
-                                                headers: {
-                                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                },
-                                                success: function (response) {
-                                                    if (response.success) {
-                                                        callback(response);
-                                                    } else if (response.error) {
-                                                        $('.response-layer').hide();
-                                                        if (response.technicalError) {
-                                                            basic.showAlert(response.error, '', null);
-                                                        } else {
-                                                            basic.showDialog(response.error, 'response-popup', null);
-                                                        }
-                                                    }
-                                                }
-                                            });
-                                        });
-                                    }
-
-                                    if (!error) {
-                                        proceedWithTaskFinishing();
-                                    }
-                                }
-                            } else if (response.error) {
-                                basic.showDialog(response.error, 'response-popup', null);
-                            }
-                        }
-                    });
+            });
+        },
+        getLabsSuppliersAndIndustryPartners: async function(data) {
+            return await $.ajax({
+                type: 'POST',
+                url: HOME_URL + '/get-labs-suppliers-and-industry-partners',
+                dataType: 'json',
+                data: data,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
         }
+    },
+    events: {
+        eventTrackers: function() {
+
+        },
+        fireGoogleAnalyticsEvent: function (category, action, label, value) {
+            var event_obj = {
+                'event_action': action,
+                'event_category': category,
+                'event_label': label
+            };
+
+            if (value != undefined) {
+                event_obj.value = value;
+            }
+
+            gtag('event', label, event_obj);
+        }
+    },
+    utils: {
+        initTooltips: function() {
+            if ($('[data-toggle="tooltip"]').length) {
+                $('[data-toggle="tooltip"]').tooltip();
+            }
+        },
     }
+};
+
+if ($('body').hasClass('logged-in')) {
+    projectData.pages.logged_in();
+    projectData.general_logic.logged_in();
+} else {
+    projectData.pages.not_logged_in();
+    projectData.general_logic.not_logged_in();
 }
+
+projectData.events.eventTrackers();
 
 function drawHeaderToFirstSectionLine() {
     //FIRST LINE
@@ -1706,103 +2507,65 @@ function drawNavToBottomSectionLine() {
     $('line.fifth').attr('y2', $('.nav-to-bottom-fourth-dot').offset().top);
 }
 
-function styleContactFormUploadBtn(load_filename_to_other_el)    {
-    if (load_filename_to_other_el === undefined) {
-        load_filename_to_other_el = null;
-    }
-    jQuery(".upload-file").each(function(key, form){
-        var this_file_btn_parent = jQuery(this);
-        var current_form_id = this_file_btn_parent.prop("id");
-        jQuery(this).find("input").attr("id","file-"+current_form_id);
-        if (load_filename_to_other_el){
-            jQuery(this).find("button").append("<label for='file-"+current_form_id+"'><span class='blue-white-rounded-btn'>"+this_file_btn_parent.attr('data-label')+"</span></label>");
-        } else {
-            jQuery(this).find("button").append("<label for='file-"+current_form_id+"'><span class='white-blue-rounded-btn'>"+this_file_btn_parent.attr('data-label')+"</span></label>");
-        }
-
-        var inputs = document.querySelectorAll('.inputfile');
-        Array.prototype.forEach.call( inputs, function( input ) {
-            var label    = input.nextElementSibling,
-                labelVal = label.innerHTML;
-
-            input.addEventListener('change', function(e) {
-                var fileName = '';
-                if (this.files && this.files.length > 1)
-                    fileName = ( this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
-                else
-                    fileName = e.target.value.split('\\').pop();
-
-                if (fileName) {
-                    if (load_filename_to_other_el)    {
-                        $(this).closest('.form-row').find('.file-name').html('<i class="fa fa-file-text-o" aria-hidden="true"></i>' + fileName);
-                    } else {
-                        label.querySelector('span').innerHTML = fileName;
-                    }
-                } else{
-                    label.innerHTML = labelVal;
-                }
-            });
-            // Firefox bug fix
-            input.addEventListener('focus', function(){ input.classList.add('has-focus'); });
-            input.addEventListener('blur', function(){ input.classList.remove('has-focus'); });
-        });
-    });
-}
-
-function initListingPageLine()   {
+function initListingPageLine() {
     $('line.first').attr('x1', $('.list .single .first-dot').offset().left + $('.list .single .first-dot').width() / 2);
     $('line.first').attr('x2', $('.list .single .last-dot').offset().left + $('.list .single .last-dot').width() / 2);
     $('line.first').attr('y1', $('.list .single .first-dot').offset().top);
     $('line.first').attr('y2', $('.list .single .last-dot').offset().top);
 }
 
-// ==================== /PAGES ====================
-
-//checking if submitted email is valid
-function newsletterRegisterValidation() {
-    $('.newsletter-register form').on('submit', function(event)  {
-        var this_form = $(this);
-        var error = false;
-        if (!basic.validateEmail(this_form.find('input[type="email"]').val().trim()))    {
-            error = true;
-        } else if (!this_form.find('#newsletter-privacy-policy').is(':checked'))  {
-            error = true;
-        }
-
-        if (!error) {
-            fireGoogleAnalyticsEvent('Subscription', 'Sign-up', 'Newsletter');
-        }
-    });
-}
-newsletterRegisterValidation();
-
-function stopMaliciousInspect()  {
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    });
-
-    document.onkeydown = function(e) {
-        if (event.keyCode == 123) {
-            return false;
-        }
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-            return false;
-        }
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-            return false;
-        }
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-            return false;
-        }
-        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-            return false;
+// to be edited
+function styleUploadButton(callbackOnChange, buttonClass) {
+    if ($('.upload-file.module').length) {
+        for (var i = 0, len = $('.upload-file.module').length; i < len; i+=1) {
+            var thisFileUpload = $('.upload-file.module').eq(i);
+            var thisFileInput = thisFileUpload.find('.upload-input');
+            $('.upload-file.module').eq(i).append('<button type="button"><label for="'+thisFileInput.attr('name')+'" class="'+buttonClass+'">'+$('.upload-file.module').eq(i).attr('data-label')+'</label></button>');
+            thisFileInput.on('change', function() {
+                callbackOnChange(this);
+            });
         }
     }
 }
-//stopMaliciousInspect();
+
+// ==================== /PAGES ====================
+
+if ($('.newsletter-register').length) {
+    basic.initCustomCheckboxes('.newsletter-register');
+
+    $('.newsletter-register form').on('submit', function (event) {
+        event.preventDefault();
+        var this_form_native = this;
+        var this_form = $(this_form_native);
+
+        var error = false;
+        this_form.find('.error-handle').remove();
+
+        if (!basic.validateEmail(this_form.find('input[type="email"]').val().trim())) {
+            error = true;
+            customErrorHandle(this_form.find('input[type="email"]').closest('.newsletter-field'), this_form.find('input[type="email"]').closest('.newsletter-field').attr('data-valid-message'));
+        }
+
+        if (!this_form.find('#newsletter-privacy-policy').is(':checked')) {
+            error = true;
+            customErrorHandle(this_form.find('#newsletter-privacy-policy').closest('.newsletter-field'), this_form.find('#newsletter-privacy-policy').closest('.newsletter-field').attr('data-valid-message'));
+        }
+
+        if (!error) {
+            projectData.events.fireGoogleAnalyticsEvent('Subscription', 'Sign-up', 'Newsletter');
+
+            this_form_native.submit();
+
+            $('.newsletter-register form .custom-checkbox').html('');
+            $('.newsletter-register form #newsletter-privacy-policy').prop('checked', false);
+            this_form.find('input[type="email"]').val('');
+            $('.newsletter-register .form-container').append('<div class="alert alert-success fs-16 margin-top-10">Thank you for signing up.</div>');
+        }
+    });
+}
 
 function hidePopupOnBackdropClick() {
-    $(document).on('click', '.bootbox', function(){
+    $(document).on('click', '.bootbox', function () {
         var classname = event.target.className;
         classname = classname.replace(/ /g, '.');
 
@@ -1816,41 +2579,13 @@ function hidePopupOnBackdropClick() {
         }
     });
 }
+
 hidePopupOnBackdropClick();
 
-function generateUrl(str)  {
-    var str_arr = str.split("");
-    var cyr = [
-        'Ð°','Ð±','Ð²','Ð³','Ð´','Ðµ','Ñ‘','Ð¶','Ð·','Ð¸','Ð¹','Ðº','Ð»','Ð¼','Ð½','Ð¾','Ð¿',
-        'Ñ€','Ñ','Ñ‚','Ñƒ','Ñ„','Ñ…','Ñ†','Ñ‡','Ñˆ','Ñ‰','ÑŠ','Ñ‹','ÑŒ','Ñ','ÑŽ','Ñ',
-        'Ð','Ð‘','Ð’','Ð“','Ð”','Ð•','Ð','Ð–','Ð—','Ð˜','Ð™','Ðš','Ð›','Ðœ','Ð','Ðž','ÐŸ',
-        'Ð ','Ð¡','Ð¢','Ð£','Ð¤','Ð¥','Ð¦','Ð§','Ð¨','Ð©','Ðª','Ð«','Ð¬','Ð­','Ð®','Ð¯',' '
-    ];
-    var lat = [
-        'a','b','v','g','d','e','io','zh','z','i','y','k','l','m','n','o','p',
-        'r','s','t','u','f','h','ts','ch','sh','sht','a','i','y','e','yu','ya',
-        'A','B','V','G','D','E','Io','Zh','Z','I','Y','K','L','M','N','O','P',
-        'R','S','T','U','F','H','Ts','Ch','Sh','Sht','A','I','Y','e','Yu','Ya','-'
-    ];
-    for(var i = 0; i < str_arr.length; i+=1)  {
-        for(var y = 0; y < cyr.length; y+=1)    {
-            if (str_arr[i] == cyr[y])    {
-                str_arr[i] = lat[y];
-            }
-        }
-    }
-    return str_arr.join("").toLowerCase();
-}
-
-// camping for event when user didn't accept strictly necessary cookies
-$(document).on('cannotLoginBecauseOfMissingCookies', function (event) {
-    basic.showAlert('Please accept the strictly necessary cookies in order to continue with logging in.', '', true);
-});
-
-function initCaptchaRefreshEvent()  {
+function initCaptchaRefreshEvent() {
 //refreshing captcha on trying to log in admin
-    if ($('.refresh-captcha').length > 0)    {
-        $('.refresh-captcha').click(function()  {
+    if ($('.refresh-captcha').length > 0) {
+        $('.refresh-captcha').click(function () {
             $.ajax({
                 type: 'GET',
                 url: '/refresh-captcha',
@@ -1867,31 +2602,9 @@ function initCaptchaRefreshEvent()  {
 }
 initCaptchaRefreshEvent();
 
-if (!$('body').hasClass('logged-in')) {
-    dcnGateway.init({
-        'platform' : 'dentacoin',
-        /*'environment' : 'staging',*/
-        'forgotten_password_link' : 'https://account.dentacoin.com/forgotten-password'
-    });
-
-    $(document).on('dentistAuthSuccessResponse', async function (event) {
-        console.log('dentistAuthSuccessResponse');
-        window.location.href = window.location.href + '?cross-login=true';
-    });
-
-    $(document).on('patientAuthSuccessResponse', async function (event) {
-        console.log('patientAuthSuccessResponse');
-        window.location.href = window.location.href + '?cross-login=true';
-    });
-}
-
 //INIT LOGIC FOR ALL STEPS
 function customErrorHandle(el, string) {
-    el.append('<div class="error-handle">'+string+'</div>');
-}
-
-function bytesToMegabytes(bytes) {
-    return bytes / Math.pow(1024, 2);
+    el.append('<div class="error-handle">' + string + '</div>');
 }
 
 // reading file and check size and extension
@@ -1900,12 +2613,12 @@ function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, faile
         var filename = input.files[0].name;
 
         // check file size
-        if (megaBytesLimit < bytesToMegabytes(input.files[0].size)) {
+        if (megaBytesLimit < basic.bytesToMegabytes(input.files[0].size)) {
             if (failed_callback != undefined) {
                 failed_callback();
             }
 
-            $(input).closest('.upload-btn-parent').append('<div class="error-handle task-error">The file you selected is large. Max size: '+megaBytesLimit+'MB.</div>');
+            $(input).closest('.upload-btn-parent').append('<div class="error-handle">The file you selected is large. Max size: ' + megaBytesLimit + 'MB.</div>');
             return false;
         } else {
             //check file extension
@@ -1924,7 +2637,7 @@ function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, faile
 
                 var allowedExtensionsHtml = '';
                 var firstLoop = true;
-                for(var i = 0, len = allowedImagesExtensions.length; i < len; i+=1) {
+                for (var i = 0, len = allowedImagesExtensions.length; i < len; i += 1) {
                     if (firstLoop) {
                         firstLoop = false;
                         allowedExtensionsHtml += allowedImagesExtensions[i];
@@ -1933,7 +2646,7 @@ function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, faile
                     }
                 }
 
-                $(input).closest('.upload-btn-parent').append('<div class="error-handle task-error">Please select file in '+allowedExtensionsHtml+' format.</div>');
+                $(input).closest('.upload-btn-parent').append('<div class="error-handle">Please select file in ' + allowedExtensionsHtml + ' format.</div>');
                 return false;
             }
         }
@@ -1954,177 +2667,16 @@ async function checkCaptcha(captcha) {
     });
 }
 
-async function loggedOrNotLogic() {
-    if ($('body').hasClass('logged-in')) {
-        /*var add_overflow_hidden_on_hidden_box_show = false;
-        var sm_screen_width = false;
-        $('body').addClass('overflow-hidden');
-        if ($(window).width() < 992) {
-            add_overflow_hidden_on_hidden_box_show = true;
-            if ($(window).width() > 767) {
-                sm_screen_width = true;
-            }
-        }
-        $('body').removeClass('overflow-hidden');
-
-        if (sm_screen_width) {
-            $(document).on('click', 'body', function(){
-                if (!$('.hidden-box-parent').find(event.target).length) {
-                    $('.logged-user-right-nav .hidden-box').removeClass('show-this');
-                    $('.logged-user-right-nav .up-arrow').removeClass('show-this');
-                }
-            });
-        }
-
-        if (add_overflow_hidden_on_hidden_box_show) {
-            $('.logged-user-right-nav .user-name, .logged-user-right-nav .header-avatar').click(function() {
-                $('.logged-user-right-nav .hidden-box').toggleClass('show-this');
-                if (sm_screen_width) {
-                    $('.logged-user-right-nav .up-arrow').toggleClass('show-this');
-                } else {
-                    $('body').toggleClass('overflow-hidden');
-                }
-            });
-        } else {
-            $('.logged-user-right-nav > .hidden-box-parent').hover(function () {
-                $('.logged-user-right-nav .hidden-box').addClass('show-this');
-                $('.logged-user-right-nav .up-arrow').addClass('show-this');
-            }, function () {
-                $('.logged-user-right-nav .hidden-box').removeClass('show-this');
-                $('.logged-user-right-nav .up-arrow').removeClass('show-this');
-            });
-        }
-
-        $('.logged-user-right-nav .close-btn a').click(function() {
-            $('.logged-user-right-nav .hidden-box').removeClass('show-this');
-            if (add_overflow_hidden_on_hidden_box_show) {
-                $('body').removeClass('overflow-hidden');
-
-                if (sm_screen_width) {
-                    $('.logged-user-right-nav .up-arrow').removeClass('show-this');
-                }
-            }
-        });
-
-        //IF NOT LOGGED LOGIC
-        $('.logged-user-right-nav .hidden-box-hover').hover(function () {
-            $('.logged-user-right-nav .hidden-box').addClass('show-this');
-            if (add_overflow_hidden_on_hidden_box_show) {
-                $('body').addClass('overflow-hidden');
-                if (!$('.logged-user-right-nav').hasClass('with-hub')) {
-                    $('.logged-user-right-nav .up-arrow').addClass('show-this');
-                }
-            } else {
-                $('.logged-user-right-nav .up-arrow').addClass('show-this');
-            }
-        }, function () {
-            $('.logged-user-right-nav .hidden-box').removeClass('show-this');
-            if (add_overflow_hidden_on_hidden_box_show) {
-                $('body').removeClass('overflow-hidden');
-                if (!$('.logged-user-right-nav').hasClass('with-hub')) {
-                    $('.logged-user-right-nav .up-arrow').removeClass('show-this');
-                }
-            } else {
-                $('.logged-user-right-nav .up-arrow').removeClass('show-this');
-            }
-        });
-
-        $('.logged-user-right-nav .close-btn a').click(function() {
-            $('.logged-user-right-nav .hidden-box').removeClass('show-this');
-            if (add_overflow_hidden_on_hidden_box_show) {
-                $('body').removeClass('overflow-hidden');
-                if (!$('.logged-user-right-nav').hasClass('with-hub')) {
-                    $('.logged-user-right-nav .up-arrow').removeClass('show-this');
-                }
-            } else {
-                $('.logged-user-right-nav .up-arrow').removeClass('show-this');
-            }
-        });*/
-
-        var miniHubParams = {
-            'element_id_to_bind' : 'header-avatar',
-            'platform' : 'dentacoin',
-            'log_out_link' : 'https://dentacoin.com/user-logout'
-        };
-
-        if ($('body').hasClass('logged-patient')) {
-            miniHubParams.type_hub = 'mini-hub-patients';
-            if ($('body').hasClass('home')) {
-                miniHubParams.without_apps = true;
-            }
-        } else if ($('body').hasClass('logged-dentist')) {
-            miniHubParams.type_hub = 'mini-hub-dentists';
-            if ($('body').hasClass('home')) {
-                miniHubParams.without_apps = true;
-            }
-        }
-
-        dcnHub.initMiniHub(miniHubParams);
-    } else {
-        //IF NOT LOGGED LOGIC
-        if ($('body').hasClass('home') || $('body').hasClass('foundation')) {
-            $('.info-section .open-dentacoin-gateway').offset({left: $('header .open-dentacoin-gateway').offset().left});
-        } else if ($('body').hasClass('claim-dentacoin')) {
-            console.log('claim-dentacoin');
-
-            var redeemExecute = true;
-            $('.redeem-dcn').click(function() {
-                if (redeemExecute) {
-                    redeemExecute = false;
-                    $('#wallet-address').closest('.field-parent').find('.error-handle').remove();
-
-                    var errors = false;
-                    if ($('#wallet-address').val().trim().length != 42 || !validateInputAddresses($('#wallet-address').val().trim())) {
-                        customErrorHandle($('#wallet-address').closest('.field-parent'), 'Please enter valid Wallet Address.');
-                        errors = true;
-                        redeemExecute = true;
-                    }
-
-                    if (!errors) {
-                        $('.response-layer').show();
-                        setTimeout(function() {
-                            $.ajax({
-                                type: 'POST',
-                                url: 'https://external-payment-server.dentacoin.com/withdraw-by-key',
-                                dataType: 'json',
-                                data: {
-                                    key: get_params['withdraw-key'],
-                                    walletAddress: $('#wallet-address').val().trim()
-                                },
-                                success: function(response) {
-                                    $('.response-layer').hide();
-                                    redeemExecute = true;
-
-                                    if (response.success) {
-                                        $('.changeable-on-success').html('<div class="success-handle margin-bottom-50 margin-top-30 fs-18">Your transaction is being processed... <b><a href="https://etherscan.io/tx/'+response.transactionHash+'" target="_blank" style="color: #3c763d; text-decoration: underline;">CHECK STATUS</a></b></div>.');
-                                    } else {
-                                        basic.showAlert('Something went wrong. Please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a> with description of the problem.', '', true);
-                                    }
-                                }
-                            });
-                        }, 2000);
-                    }
-                }
-            });
-        }
-    }
-}
-loggedOrNotLogic();
-
-function validateInputAddresses(address) {
-    return (/^(0x){1}[0-9a-fA-F]{40}$/i.test(address));
-}
-
 function bindGoogleAlikeButtonsEvents() {
     //google alike style for label/placeholders
-    $('body').on('click', '.custom-google-label-style label', function() {
+    $('body').on('click', '.custom-google-label-style label', function () {
         $(this).addClass('active-label');
         if ($('.custom-google-label-style').attr('data-input-colorful-border') == 'true') {
             $(this).parent().find('input').addClass('blue-green-border');
         }
     });
 
-    $('body').on('keyup change focusout', '.custom-google-label-style input', function() {
+    $('body').on('keyup change focusout', '.custom-google-label-style input', function () {
         var value = $(this).val().trim();
         if (value.length) {
             $(this).closest('.custom-google-label-style').find('label').addClass('active-label');
@@ -2139,125 +2691,10 @@ function bindGoogleAlikeButtonsEvents() {
         }
     });
 }
+
 bindGoogleAlikeButtonsEvents();
-
-function initToolsPostsSlider()   {
-    //init slider for most popular posts
-    jQuery('.slider-with-tool-data').slick({
-        slidesToShow: 2,
-        infinite: false,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 1
-                }
-            }
-        ]
-    });
-}
-
-function getGETParameters() {
-    var prmstr = window.location.search.substr(1);
-    return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
-}
-
-function transformToAssocArray( prmstr ) {
-    var params = {};
-    var prmarr = prmstr.split("&");
-    for ( var i = 0; i < prmarr.length; i++) {
-        var tmparr = prmarr[i].split("=");
-        params[tmparr[0]] = tmparr[1];
-    }
-    return params;
-}
-
-function dateObjToFormattedDate(object) {
-    if (object.getDate() < 10) {
-        var date = '0' + object.getDate();
-    } else {
-        var date = object.getDate();
-    }
-
-    if (object.getMonth() + 1 < 10) {
-        var month = '0' + (object.getMonth() + 1);
-    } else {
-        var month = object.getMonth() + 1;
-    }
-    return date + '/' + month + '/' + object.getFullYear();
-}
-
-function onEnrichProfileFormSubmit() {
-    $(document).on('submit', '.enrich-profile-container #enrich-profile', function(event) {
-        var errors = false;
-        var this_form = $(this);
-        this_form.find('.error-handle').remove();
-        if (this_form.find('[name="description"]').val().trim() == '') {
-            errors = true;
-            customErrorHandle(this_form.find('[name="description"]').parent(), 'Please enter short description.');
-        }
-
-        if (!errors) {
-            if ($('.enrich-profile-container').attr('data-type') == 'dentist') {
-                fireGoogleAnalyticsEvent('DentistRegistration', 'ClickSave', 'DentistDescr');
-            } else if ($('.enrich-profile-container').attr('data-type') == 'clinic') {
-                fireGoogleAnalyticsEvent('DentistRegistration', 'ClickSave', 'ClinicDescr');
-            }
-        } else {
-            event.preventDefault();
-        }
-    });
-}
-onEnrichProfileFormSubmit();
 
 // =================================== GOOGLE ANALYTICS TRACKING LOGIC ======================================
 
-function bindTrackerClickDentistsBtnEvent() {
-    $(document).on('click', '.init-dentists-click-event', function() {
-        fireGoogleAnalyticsEvent('Tools', 'Click', 'Dentists');
-    });
-}
-bindTrackerClickDentistsBtnEvent();
-
-function bindTrackerClickRedirectToWalletBuyPage() {
-    $(document).on('click', '.redirect-to-wallet-buy-page', function() {
-        fireGoogleAnalyticsEvent('Tools', 'Buy', 'Wallet Buy');
-    });
-}
-bindTrackerClickRedirectToWalletBuyPage();
-
-$(document).on('click', '.logged-user-right-nav .application, .dentacoin-ecosystem-section .single-application, .dentacoin-ecosystem .single-application', function() {
-    var this_btn = $(this);
-
-    fireGoogleAnalyticsEvent('Tools', 'Click', this_btn.attr('data-platform'))
-});
-
-function fireGoogleAnalyticsEvent(category, action, label, value) {
-    var event_obj = {
-        'event_action' : action,
-        'event_category': category,
-        'event_label': label
-    };
-
-    if (value != undefined) {
-        event_obj.value = value;
-    }
-
-    gtag('event', label, event_obj);
-}
 
 // =================================== /GOOGLE ANALYTICS TRACKING LOGIC ======================================
-
-// init bootstrap tooltips
-function initTooltips() {
-    if($('[data-toggle="tooltip"]')) {
-        $('[data-toggle="tooltip"]').tooltip();
-    }
-}
-
-if (typeof(dcnCookie) != undefined) {
-    dcnCookie.init({
-        'google_app_id' : 'UA-97167262-1',
-        'fb_app_id' : '2366034370318681'
-    });
-}

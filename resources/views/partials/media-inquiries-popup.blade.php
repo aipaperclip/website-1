@@ -1,18 +1,26 @@
 <form method="POST" enctype="multipart/form-data" action="{{ route('submit-media-inquiries') }}">
     <div class="section-title">MEDIA INQUIRIES</div>
     <div class="popup-body">
-        <div class="popup-row errors"></div>
-        <div class="popup-row">
-            <input type="text" name="sender-name" placeholder="Name" class="required" maxlength="100"/>
+        <div class="padding-bottom-15 field-parent">
+            <div class="custom-google-label-style module" data-input-colorful-border="true">
+                <label for="sender-name">Name:</label>
+                <input type="text" id="sender-name" name="sender-name" maxlength="100" class="full-rounded required form-field"/>
+            </div>
         </div>
-        <div class="popup-row">
-            <input type="text" name="email" placeholder="Email" class="required" maxlength="100"/>
+        <div class="padding-bottom-15 field-parent">
+            <div class="custom-google-label-style module" data-input-colorful-border="true">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" maxlength="100" class="full-rounded required form-field"/>
+            </div>
         </div>
-        <div class="popup-row">
-            <input type="text" name="media" placeholder="Media" class="required" maxlength="200"/>
+        <div class="padding-bottom-15 field-parent">
+            <div class="custom-google-label-style module" data-input-colorful-border="true">
+                <label for="media">Media:</label>
+                <input type="text" id="media" name="media" maxlength="250" class="full-rounded required form-field"/>
+            </div>
         </div>
-        <div class="popup-row">
-            <select name="country" class="selectpicker required" data-live-search="true" title="Country">
+        <div class="padding-bottom-15 field-parent">
+            <select name="country" class="selectpicker required-select" data-live-search="true" title="Country">
                 <option>Afghanistan</option>
                 <option>Åland Islands</option>
                 <option>Albania</option>
@@ -264,8 +272,8 @@
                 <option>Zimbabwe</option>
             </select>
         </div>
-        <div class="popup-row">
-            <select name="reason" class="selectpicker required" data-live-search="true" title="Reason for contract">
+        <div class="padding-bottom-15 field-parent">
+            <select name="reason" class="selectpicker required-select" data-live-search="true" title="Reason for contract">
                 <option data-title="Please describe your idea in more details and let us know if you'd like to have an interview with a specific person from the team." data-action="long-text">I would like to have an interview with the Dentacoin team.</option>
                 <option data-title="Please let us know what is the topic of your article and describe in detail the information needed." data-action="long-text">I am writing an article about Dentacoin and I need more information.</option>
                 <option data-title="Please describe your offer and attach file/s if needed." data-action="long-text-and-attachments">I believe I have an interesting advertising opportunity for Dentacoin.</option>
@@ -276,9 +284,12 @@
         <div class="waiting-for-action">
 
         </div>
-        <div class="popup-row fs-0 captcha-parent">
+        <div class="padding-bottom-15 fs-0 captcha-parent field-parent">
             <div class="inline-block fs-14 width-50">
-                <input type="text" name="captcha" id="captcha" placeholder="Enter captcha" maxlength="5" class="required"/>
+                <div class="custom-google-label-style module" data-input-colorful-border="true">
+                    <label for="captcha">Enter captcha:</label>
+                    <input type="text" id="captcha" name="captcha" maxlength="5" class="full-rounded required form-field"/>
+                </div>
             </div>
             <div class="inline-block width-50">
                 <div class="captcha-container flex">
@@ -289,13 +300,15 @@
                 </div>
             </div>
         </div>
-        <div class="popup-row fs-0 checkbox-row" data-valid-message="Please agree with our Privacy Policy.">
-            <div class="inline-block-top checkbox-wrapper"><input type="checkbox" id="agree-with-privacy-policy-popup" aria-required="true"/></div>
-            <label for="agree-with-privacy-policy-popup" class="inline-block-top">{!! $footer_data[2]['html'] !!}</label>
+        <div class="padding-bottom-15 field-parent" data-valid-message="Please agree with our Privacy Policy.">
+            <div class="custom-checkbox-style module">
+                <input type="checkbox" class="custom-checkbox-input" id="privacy-policy"/>
+                <label class="custom-checkbox-label" for="privacy-policy">I have read and agree with <a href="/privacy-policy" target="_blank">Privacy Policy</a></label>
+            </div>
         </div>
-        <div class="popup-row submit text-center">
+        <div class="submit text-center">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
-            <input type="submit" value="SEND" class="white-blue-rounded-btn"/>
+            <input type="submit" value="SEND" class="white-bright-blue-btn"/>
         </div>
     </div>
 </form>

@@ -198,8 +198,10 @@ header.main-header {
 
 .small-image {
     max-width: 150px;
+    width: 100%;
     margin-bottom: 10px;
     display: inline-block;
+    background-color: #F5F5F5;
 }
 
 .no-results {
