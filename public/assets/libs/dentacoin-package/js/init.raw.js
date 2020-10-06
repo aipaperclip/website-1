@@ -362,11 +362,11 @@ if (typeof jQuery == 'undefined') {
                                 }
 
                                 if ($('#append-big-hub-dentists').length) {
-                                    $('html, body').animate({'scrollTop': $('#append-big-hub-dentists').offset().top}, 300);
+                                    $('html, body').animate({'scrollTop': $('#append-big-hub-dentists').offset().top - $('header.sticky-header').outerHeight()}, 300);
                                 }
 
                                 if ($('#append-big-hub-ids').length) {
-                                    $('html, body').animate({'scrollTop': $('#append-big-hub-ids').offset().top}, 300);
+                                    $('html, body').animate({'scrollTop': $('#append-big-hub-ids').offset().top - $('header.sticky-header').outerHeight()}, 300);
                                 }
 
                                 if (params.type_hub == 'dentacoin' && typeof(projectData.general_logic.data.showStickySubpagesNav) == 'function') {
