@@ -43,7 +43,7 @@
 <section class="section-users-text-expressions hide-on-map-open hide-on-hub-open">
     @include('partials.user-expressions', array('user_expressions' => $user_expressions, 'type' => 'users'))
 </section>
-{{--<section class="section-google-map module hide-on-hub-open">
+<section class="section-google-map module hide-on-hub-open">
     <div class="container-fluid">
         <div class="row padding-top-20 padding-bottom-30">
             <div class="col-xs-12 text-center color-black">
@@ -70,7 +70,7 @@
             <img src="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif" alt="Loader">
         </figure>
     </div>
-</section>--}}
+</section>
 <section class="module section-dentacoin-stats padding-top-90 padding-bottom-80 hide-on-map-open hide-on-hub-open">
     @include('partials.dentacoin-stats')
 </section>

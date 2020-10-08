@@ -241,7 +241,7 @@ var projectData = {
                 projectData.general_logic.data.videoExpressionsSlider('users');
                 projectData.general_logic.data.userExpressionsSlider('users');
 
-                /*var mapVisible = false;
+                var mapVisible = false;
                 function loadMap() {
                     if ($('.section-google-map.module').length) {
                         if (basic.isInViewport($('.section-google-map.module'), 200) && !mapVisible) {
@@ -255,7 +255,6 @@ var projectData = {
 
                 $(window).unbind('scroll', loadMap);
                 $(window).bind('scroll', loadMap);
-                */
             },
             dentists: function(bodyClassCheck) {
                 if (bodyClassCheck != undefined) {
@@ -313,7 +312,7 @@ var projectData = {
                 projectData.general_logic.data.videoExpressionsSlider('dentists');
                 projectData.general_logic.data.userExpressionsSlider('dentists');
 
-                /*var mapVisible = false;
+                var mapVisible = false;
                 function loadMap() {
                     if ($('.section-google-map.module').length) {
                         if (basic.isInViewport($('.section-google-map.module'), 200) && !mapVisible) {
@@ -326,7 +325,7 @@ var projectData = {
                 }
 
                 $(window).unbind('scroll', loadMap);
-                $(window).bind('scroll', loadMap);*/
+                $(window).bind('scroll', loadMap);
             },
             traders: function(bodyClassCheck) {
                 if (bodyClassCheck != undefined) {
@@ -1107,7 +1106,6 @@ var projectData = {
                 }
             },
             async dentacoinGoogleMap() {
-                return false;
                 var mapHtml = await projectData.requests.getMapHtml();
                 if (mapHtml.success) {
                     $('.section-google-map.module .map-container').html(mapHtml.data);
