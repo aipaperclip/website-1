@@ -251,10 +251,11 @@ var projectData = {
                             projectData.general_logic.data.dentacoinGoogleMap();
                         }
                     }
-                }*/
+                }
 
                 $(window).unbind('scroll', loadMap);
                 $(window).bind('scroll', loadMap);
+                */
             },
             dentists: function(bodyClassCheck) {
                 if (bodyClassCheck != undefined) {
@@ -322,10 +323,10 @@ var projectData = {
                             projectData.general_logic.data.dentacoinGoogleMap();
                         }
                     }
-                }*/
+                }
 
                 $(window).unbind('scroll', loadMap);
-                $(window).bind('scroll', loadMap);
+                $(window).bind('scroll', loadMap);*/
             },
             traders: function(bodyClassCheck) {
                 if (bodyClassCheck != undefined) {
