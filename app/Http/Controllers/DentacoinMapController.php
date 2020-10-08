@@ -476,9 +476,6 @@ class DentacoinMapController extends Controller
     protected function getMapHtml()  {
         list($continentCountByCountries, $arrayWithAllLocationsSplittedByCategory, $arrayWithAllLocations, $arrWithCountriesAndCities) = $this->getMapDataForTheView();
 
-        var_dump($arrayWithAllLocations);
-        die();
-
         $dentacoinMapHtml = view('partials/dentacoin-map', array('continentCountByCountries' => $continentCountByCountries, 'continents' => $this->getContinents(), 'arrayWithAllLocations' => json_encode($arrayWithAllLocations), 'location_types' => LocationType::all()->sortBy('order_id'), 'arrayWithAllLocationsSplittedByCategory' => $arrayWithAllLocationsSplittedByCategory, 'arrWithCountriesAndCities' => $arrWithCountriesAndCities, 'locationsCountInDcnDB' => MapLocation::all()->count()));
 
         return response()->json(['success' => true, 'data' => $dentacoinMapHtml->render()]);
