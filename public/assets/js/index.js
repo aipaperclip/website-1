@@ -2560,7 +2560,8 @@ if ($('.newsletter-register').length) {
         }
 
         if (!error) {
-            projectData.events.fireGoogleAnalyticsEvent('Subscription', 'Sign-up', 'Newsletter');
+            projectData.events.fireGoogleAnalyticsEvent('Subscribe', 'Subscribe', 'Newsletter');
+            fbq('track', 'Newsletter');
 
             this_form_native.submit();
 
