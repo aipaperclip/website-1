@@ -1,6 +1,7 @@
 var markerCluster;
 function initMap(map_locations, options) {
     //initialLat, initialLng, initialZoom, filter_country, location_id, location_source, categories, campForZoomChange, filter_city, location_content, center_city
+    console.log(map_locations, 'map_locations');
     console.log(options, 'options');
 
     if (options.categories != undefined && options.categories.includes('category-5') && !options.categories.includes('category-1')) {

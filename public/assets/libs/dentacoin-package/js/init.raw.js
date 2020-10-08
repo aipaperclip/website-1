@@ -247,7 +247,7 @@ if (typeof jQuery == 'undefined') {
                                     }
                                     extra_html+='<a target="_blank" href="'+articles_arr[i]['link']+'"><div class="single-slide"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="'+articles_arr[i]['thumb']+'" alt="" itemprop="contentUrl"/></figure><div class="content"><div class="slide-title">'+post_title+'</div><time>'+dateObjToFormattedDate(new Date(parseInt(articles_arr[i]['date']) * 1000))+'</time></div></div></a>';
                                 }
-                                extra_html+='</div><div class="go-to-all"><a href="//blog.dentacoin.com/" class="dcn-big-hub-white-light-blue-btn" target="_blank">GO TO ALL</a></div></div>';
+                                extra_html+='</div><div class="go-to-all"><a href="//blog.dentacoin.com/" class="dcn-big-hub-white-light-blue-btn on-blog-website-button-click-event-tracker" target="_blank">GO TO ALL</a></div></div>';
 
                                 elementToAppend.find('.extra-html-content').html(extra_html);
 
@@ -268,10 +268,10 @@ if (typeof jQuery == 'undefined') {
                                     elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn on-trp-button-click-event-tracker" href="https://reviews.dentacoin.com/" target="_blank">SIGN UP NOW</a></div>');
                                     break;
                                 case 'dentacare-oral-health-app':
-                                    elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn hide website-btn" href="https://dentacare.dentacoin.com/" target="_blank">GO TO DENTACARE</a><figure class="inline-block hide app-store-btn"><a href="https://itunes.apple.com/us/app/dentacare/id1274148338?mt=8" target="_blank" class="on-dentacare-ios-button-click-event-tracker"><img alt="Apple store button" src="//dentacoin.com/assets/images/apple-store-button.svg" width="180" /> </a></figure><figure class="inline-block hide google-play-btn"><a href="https://play.google.com/store/apps/details?id=com.dentacoin.dentacare&amp;hl=en" target="_blank" class="on-dentacare-google-button-click-event-tracker"><img alt="Google store button" src="//dentacoin.com/assets/images/google-store-button.svg" width="180" /> </a></figure></div>');
+                                    elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn hide website-btn on-dentacare-website-button-click-event-tracker" href="https://dentacare.dentacoin.com/" target="_blank">GO TO DENTACARE</a><figure class="inline-block hide app-store-btn"><a href="https://itunes.apple.com/us/app/dentacare/id1274148338?mt=8" target="_blank" class="on-dentacare-ios-button-click-event-tracker"><img alt="Apple store button" src="//dentacoin.com/assets/images/apple-store-button.svg" width="180" /> </a></figure><figure class="inline-block hide google-play-btn"><a href="https://play.google.com/store/apps/details?id=com.dentacoin.dentacare&amp;hl=en" target="_blank" class="on-dentacare-google-button-click-event-tracker"><img alt="Google store button" src="//dentacoin.com/assets/images/google-store-button.svg" width="180" /> </a></figure></div>');
                                     break;
                                 case 'jaws-of-battle':
-                                    elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn hide website-btn" href="https://jawsofbattle.dentacoin.com/" target="_blank">GO TO JAWS OF BATTLE</a><figure class="inline-block hide app-store-btn"><a href="https://testflight.apple.com/join/hOg8An1t" target="_blank"><img alt="Apple store button" src="//dentacoin.com/assets/images/apple-store-button.svg" width="180" /> </a></figure><figure class="inline-block hide google-play-btn"><a class="on-jaws-button-click-event-tracker" href="https://play.google.com/store/apps/details?id=com.DentaCare.JawsOfBattle&amp;hl=en" target="_blank"><img alt="Google store button" src="//dentacoin.com/assets/images/google-store-button.svg" width="180" /> </a></figure></div>');
+                                    elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn hide website-btn on-jaws-website-button-click-event-tracker" href="https://jawsofbattle.dentacoin.com/" target="_blank">GO TO JAWS OF BATTLE</a><figure class="inline-block hide app-store-btn on-jaws-ios-button-click-event-tracker"><a href="https://testflight.apple.com/join/hOg8An1t" target="_blank"><img alt="Apple store button" src="//dentacoin.com/assets/images/apple-store-button.svg" width="180" /> </a></figure><figure class="inline-block hide google-play-btn"><a class="on-jaws-google-button-click-event-tracker" href="https://play.google.com/store/apps/details?id=com.DentaCare.JawsOfBattle&amp;hl=en" target="_blank"><img alt="Google store button" src="//dentacoin.com/assets/images/google-store-button.svg" width="180" /> </a></figure></div>');
                                     break;
                                 case 'wallet-dapp':
                                     elementToAppend.find('.info-section .html-content').append('<div class="padding-top-15"><a class="dcn-big-hub-white-light-blue-btn hide website-btn on-wallet-website-button-click-event-tracker" href="https://wallet.dentacoin.com/" target="_blank">GO TO WEB WALLET</a><figure class="inline-block hide app-store-btn"><a class="on-wallet-ios-button-click-event-tracker" href="https://apps.apple.com/us/app/dentacoin-wallet/id1478732657" target="_blank"><img alt="Apple store button" src="//dentacoin.com/assets/images/apple-store-button.svg" width="180" /> </a></figure><figure class="inline-block hide google-play-btn"><a class="on-wallet-google-button-click-event-tracker" href="https://play.google.com/store/apps/details?id=wallet.dentacoin.com" target="_blank"><img alt="Google store button" src="//dentacoin.com/assets/images/google-store-button.svg" width="180" /> </a></figure></div>');
@@ -378,8 +378,16 @@ if (typeof jQuery == 'undefined') {
                     }
                 }
 
-                jQuery(document).on('click', '.on-jaws-button-click-event-tracker', function() {
+                jQuery(document).on('click', '.on-jaws-google-button-click-event-tracker', function() {
                     dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Jaws Google');
+                });
+
+                jQuery(document).on('click', '.on-jaws-ios-button-click-event-tracker', function() {
+                    dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Jaws iOS');
+                });
+
+                jQuery(document).on('click', '.on-jaws-website-button-click-event-tracker', function() {
+                    dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Jaws');
                 });
 
                 jQuery(document).on('click', '.on-assurance-button-click-event-tracker', function() {
@@ -392,6 +400,10 @@ if (typeof jQuery == 'undefined') {
 
                 jQuery(document).on('click', '.on-trp-button-click-event-tracker', function() {
                     dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'TRP');
+                });
+
+                jQuery(document).on('click', '.on-dentacare-website-button-click-event-tracker', function() {
+                    dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Dentacare');
                 });
 
                 jQuery(document).on('click', '.on-dentacare-ios-button-click-event-tracker', function() {
@@ -412,6 +424,10 @@ if (typeof jQuery == 'undefined') {
 
                 jQuery(document).on('click', '.on-wallet-website-button-click-event-tracker', function() {
                     dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Wallet Btn');
+                });
+
+                jQuery(document).on('click', '.on-blog-website-button-click-event-tracker', function() {
+                    dcnAdditionals.utils.fireGoogleAnalyticsEvent('Tools', 'Click', 'Blog');
                 });
 
                 // check if element is visible in the screen viewport
