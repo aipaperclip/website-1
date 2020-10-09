@@ -21,7 +21,7 @@
                     <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">{{ __('login-register.continue-with-fb') }}</span></a>
                 </div>
                 <div>
-                    <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
+                    <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18 padding-left-60" data-url="//api.dentacoin.com/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
                 </div>
                 <div class="have-old-account text-center">{{ __('login-register.have-old-profile') }} <a href="mailto:admin@dentacoin.com">{{ __('login-register.contact-us') }}</a>
                 </div>
@@ -37,7 +37,7 @@
                 <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true"><i class="fa fa-facebook-official inline-block dentacoin-login-gateway-fs-30 margin-right-20" aria-hidden="true"></i><span class="inline-block">{{ __('login-register.continue-with-fb') }}</span></a>
             </div>
             <div>
-                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="//api.dentacoin.com/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-civic') }}</a>
+                <a href="javascript:void(0)"  class="civic-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20 padding-left-60" data-url="//api.dentacoin.com/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-civic') }}</a>
             </div>
             <div class="padding-top-20">
                 <div class="custom-checkbox-style">
@@ -90,10 +90,12 @@
                 <div class="btn-container text-center">
                     <input type="submit" value="{{ __('login-register.log-in') }}" class="platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20"/>
                 </div>
-                <div class="text-center padding-top-40 padding-bottom-xs-30 dentacoin-login-gateway-fs-16">{{ __('login-register.dont-have-account') }} <a href="javascript:void(0)" class="call-sign-up dentacoin-login-gateway-fs-20">{{ __('login-register.sign-up') }}</a></div>
+                <div class="text-center padding-top-40 padding-bottom-xs-30 dentacoin-login-gateway-fs-16">
+                    <a href="javascript:void(0);" target="_blank" class="forgotten-password-link">{{ __('login-register.forgotten-password') }}</a>
+                </div>
             </form>
             <div class="popup-half-footer">
-                <a href="#" target="_blank" class="forgotten-password-link">{{ __('login-register.forgotten-password') }}</a>
+                {{ __('login-register.dont-have-account') }} <a href="javascript:void(0)" class="call-sign-up dentacoin-login-gateway-fs-20">{{ __('login-register.sign-up') }}</a>
             </div>
         </div>
         <div class="form-register @if($type == 'dentist-login' || $type == 'patient-login') display-none @endif">

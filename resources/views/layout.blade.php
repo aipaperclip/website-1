@@ -194,7 +194,8 @@
                                 <li class="inline-block separator">|</li>
                             @endif
                             <li class="inline-block @if($el->url == '/assets/uploads/dentacoin-fact-sheet.pdf') has-submenu padding-right-15 padding-right-xs-20 @endif">
-                                @if($el->url == '/assets/uploads/dentacoin-fact-sheet.pdf')
+                                {{--@if($el->url == '/assets/uploads/dentacoin-fact-sheet.pdf')--}}
+                                @if((strpos($el->url, 'dentacoin-fact-sheet.pdf') !== false))
                                     <a href="javascript:void(0);"><span itemprop="name">{{$el->name}}</span></a>
                                     <ul itemscope="" itemtype="http://schema.org/SiteNavigationElement" class="submenu">
                                         <li>

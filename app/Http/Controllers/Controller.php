@@ -195,6 +195,9 @@ class Controller extends BaseController
         // add item to the sitemap (url, date, priority, freq)
 
         $sitemap->add(URL::to('/'), '2018-08-25T20:10:00+02:00', '1.0', 'daily');
+        $sitemap->add(URL::to('/users'), '2020-09-25T20:10:00+02:00', '1.0', 'daily');
+        $sitemap->add(URL::to('/dentists'), '2020-09-25T20:10:00+02:00', '1.0', 'daily');
+        $sitemap->add(URL::to('/traders'), '2020-09-25T20:10:00+02:00', '1.0', 'daily');
         //$sitemap->add(URL::to('publications'), '2012-08-25T20:10:00+02:00', '0.6', 'weekly');
         $sitemap->add(URL::to('privacy-policy'), '2018-02-25T20:10:00+02:00', '0.4', 'monthly');
         //$sitemap->add(URL::to('changelly'), '2018-08-25T20:10:00+02:00', '1.0', 'monthly');

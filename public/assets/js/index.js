@@ -2449,7 +2449,7 @@ var projectData = {
     },
     events: {
         eventTrackers: function() {
-
+            projectData.events.fireGoogleAnalyticsEvent('Video', 'Play', 'How to Create a Wallet Demo', wallet_video_time_watched);
         },
         fireGoogleAnalyticsEvent: function (category, action, label, value) {
             var event_obj = {

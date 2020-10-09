@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\DB;
 class PartnerNetworkController extends Controller
 {
     protected function getView()   {
+        return abort(404);
+
         //array with types which contains subtypes which contains locations for listing below the google map
         $list_locations_with_subtypes_types = array();
         foreach($this->getLocationTypes() as $type) {
