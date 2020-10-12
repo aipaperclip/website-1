@@ -121,7 +121,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12 text-center padding-top-70 padding-top-lgll-100 padding-top-xs-10 padding-bottom-50 padding-bottom-xs-10">
-            <a href="//dentists.dentacoin.com" class="white-purple-btn with-white-arrow fs-xs-16 padding-left-20 padding-right-60" target="_blank">SEE HOW IT WORKS</a>
+            <a href="//dentists.dentacoin.com" class="white-purple-btn with-white-arrow fs-xs-16 padding-left-20 padding-right-60 dentist-page-see-how-it-works-gtag-event" target="_blank">SEE HOW IT WORKS</a>
         </div>
     </div>
 </section>
