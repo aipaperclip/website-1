@@ -1452,6 +1452,7 @@ var projectData = {
                     });
 
                     $(document).on('keyup', function (event) {
+                        console.log('SEARCH');
                         if ($(event.target).is('.locations-splitted-by-category .bs-searchbox .form-control')) {
                             $('.locations-splitted-by-category .dropdown-menu .active').removeClass('selected active');
                             if (event.which == 13) {
@@ -1464,6 +1465,7 @@ var projectData = {
 
                                 var searchKeyword = $('.locations-splitted-by-category .bs-searchbox .form-control').val().trim();
                                 if (searchKeyword != '') {
+                                    console.log(searchKeyword, 'searchKeyword');
                                     projectData.events.fireGoogleAnalyticsEvent('Map', 'Search', searchKeyword);
 
                                     var searchHtml = '';
