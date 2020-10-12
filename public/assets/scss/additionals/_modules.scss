@@ -862,6 +862,11 @@
         }
     }
     &.section-google-map {
+        &.safari-browser {
+            .lato-black {
+                font-family: "Lato-Bold";
+            }
+        }
         .tooltip-inner {
             background-color: #333;
         }
@@ -874,9 +879,13 @@
                 background: transparent;
                 font-size: 20px;
                 padding: 10px;
-                text-decoration: underline;
-                color: #00aeef;
                 font-family: 'Lato-Bold';
+                cursor: auto;
+                @include breakpoint($sm-down) {
+                    text-decoration: underline;
+                    color: #00aeef;
+                    cursor: pointer;
+                }
             }
         }
         .header-filter-line {
@@ -963,7 +972,7 @@
                     background-color: #e8e8e8;
                     min-height: 40px;
                     .picker-label {
-                        .go-back-to-continents, .go-back-to-countries {
+                        .go-back-to-continents, .go-back-to-countries, .go-back-to-country {
                             font-size: 0;
                             img {
                                 max-width: 15px;

@@ -1,6 +1,6 @@
 var markerCluster;
 function initMap(map_locations, options) {
-    //initialLat, initialLng, initialZoom, filter_country, location_id, location_source, categories, campForZoomChange, filter_city, location_content, center_city
+    //initialLat, initialLng, initialZoom, filter_country, location_id, location_source, categories, campForZoomChange, filter_city, location_content, center_by_average_coordinates
 
     if (options.categories != undefined && options.categories.includes('category-5') && !options.categories.includes('category-1')) {
         options.categories.push('category-1');
@@ -220,7 +220,7 @@ function initMap(map_locations, options) {
             }
 
             // calculate city center
-            if (options.center_city != undefined && currentLocationsOnMapLats.length && currentLocationsOnMapLngs.length) {
+            if (options.center_by_average_coordinates != undefined && currentLocationsOnMapLats.length && currentLocationsOnMapLngs.length) {
                 if (currentLocationsOnMapLats.length > 1 && currentLocationsOnMapLngs.length > 1) {
                     var cityLat = (Math.min.apply(Math, currentLocationsOnMapLats) + Math.max.apply(Math, currentLocationsOnMapLats)) / 2;
                     var cityLng = (Math.min.apply(Math, currentLocationsOnMapLngs) + Math.max.apply(Math, currentLocationsOnMapLngs)) / 2;

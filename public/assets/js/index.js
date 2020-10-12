@@ -1106,6 +1106,10 @@ var projectData = {
                 }
             },
             async dentacoinGoogleMap() {
+                if (basic.getMobileOperatingSystem() == 'Mac') {
+                    $('.section-google-map').addClass('safari-browser');
+                }
+
                 var mapHtml = await projectData.requests.getMapHtml();
                 if (mapHtml.success) {
                     $('.section-google-map.module .map-container').html(mapHtml.data);
@@ -1301,8 +1305,8 @@ var projectData = {
                             }
 
                             var centerCity = undefined;
-                            if (event.response_data.center_city) {
-                                centerCity = event.response_data.center_city;
+                            if (event.response_data.center_by_average_coordinates) {
+                                centerCity = event.response_data.center_by_average_coordinates;
                             }
 
                             var listAlreadyLoaded = false;
@@ -1350,7 +1354,7 @@ var projectData = {
                                         for (var y = 0, leny = $('.single-continent.open-item .countries-list li').length; y < leny; y+=1) {
                                             if ($('.single-continent.open-item .countries-list li').eq(y).find('> a').attr('data-country-code') == event.response_data.country_code) {
                                                 $('.continents-list .single-continent').eq(i).find('.country-list-parent').addClass('hide');
-                                                $('.countries-list a[data-country-code="'+event.response_data.country_code+'"]').closest('.country-list-parent').addClass('open-time');
+                                                $('.countries-list a[data-country-code="'+event.response_data.country_code+'"]').closest('.country-list-parent').addClass('open-item');
 
                                                 var city = undefined;
                                                 if (event.response_data.city) {
@@ -1368,7 +1372,7 @@ var projectData = {
                                                         campForZoomChange: true,
                                                         filter_city: city,
                                                         location_content: event.response_data.content,
-                                                        center_city: centerCity
+                                                        center_by_average_coordinates: centerCity
                                                     };
 
                                                     initMap(locationsOnInit, lastMapData);
@@ -1382,7 +1386,7 @@ var projectData = {
                                                         categories: $('.selectpicker.location-types').val(),
                                                         campForZoomChange: true,
                                                         filter_city: city,
-                                                        center_city: centerCity,
+                                                        center_by_average_coordinates: centerCity,
                                                     };
 
                                                     initMap(locationsOnInit, lastMapData);
@@ -1416,6 +1420,16 @@ var projectData = {
                                                             locationsInThisCity.eq(i).closest('.locations-list').parent().find('.category-toggle-button').removeClass('hide');
                                                         }
                                                     }
+
+                                                    // creating one more step in the "GO BACK" order. With this step when you have selected city from the dropdown and when you click the back arrow you are going to the same country, but with all locations unfiltered by city and then you can proceed to go back to the continent.
+                                                    $('.picker-label .go-back-to-countries').addClass('hide');
+                                                    $('.picker-label').append('<a href="javascript:void(0);" class="go-back-to-country"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"> <span class="inline-block">'+event.response_data.city+'</span></a>');
+                                                    $('.picker-label .go-back-to-country').click(function() {
+                                                        $(this).remove();
+                                                        $('.picker-label .go-back-to-countries').removeClass('hide');
+                                                        $('.picker-value span').html($('.countries-list a[data-country-code="'+event.response_data.country_code+'"]').parent().find('.locations-list .single-location').length);
+                                                        $('.countries-list a[data-country-code="'+event.response_data.country_code+'"]').parent().find('.locations-list .single-location').removeClass('hide');
+                                                    });
                                                 }
 
                                                 $('.locations-list .single-location').removeClass('toggled');
@@ -1455,7 +1469,8 @@ var projectData = {
                                     var searchHtml = '';
                                     var location_id_and_source_pairs = [];
                                     for (var i = 0, len = locationsOnInit.length; i < len; i+=1) {
-                                        if (locationsOnInit[i].name.toLowerCase().includes(searchKeyword.toLowerCase()) && currentLocationsTypesFilter.includes(locationsOnInit[i].category)) {
+                                        // search by name, city and country_name
+                                        if (((locationsOnInit[i].name != null && locationsOnInit[i].name != undefined && locationsOnInit[i].name.toLowerCase().includes(searchKeyword.toLowerCase())) || (locationsOnInit[i].city != null && locationsOnInit[i].city != undefined && locationsOnInit[i].city.toLowerCase().includes(searchKeyword.toLowerCase())) || (locationsOnInit[i].country_name != null && locationsOnInit[i].country_name != undefined && locationsOnInit[i].country_name.toLowerCase().includes(searchKeyword.toLowerCase()))) && currentLocationsTypesFilter.includes(locationsOnInit[i].category)) {
                                             searchHtml += buildSingleLocationTile(locationsOnInit[i].avatar_url, locationsOnInit[i].name, locationsOnInit[i].address, locationsOnInit[i].is_partner, locationsOnInit[i].city, locationsOnInit[i].phone, locationsOnInit[i].website, locationsOnInit[i].top_dentist_month, locationsOnInit[i].avg_rating, locationsOnInit[i].ratings, locationsOnInit[i].trp_public_profile_link, locationsOnInit[i].country_name, locationsOnInit[i].id, locationsOnInit[i].source, locationsOnInit[i].lat, locationsOnInit[i].lng);
 
                                             location_id_and_source_pairs.push([locationsOnInit[i].id, locationsOnInit[i].source]);
@@ -1469,7 +1484,7 @@ var projectData = {
 
                                         initMap(locationsOnInit, {
                                             location_id_and_source_pairs: location_id_and_source_pairs,
-                                            center_city: true,
+                                            center_by_average_coordinates: true,
                                             type: 'custom-search'
                                         });
                                     } else {
@@ -1500,6 +1515,7 @@ var projectData = {
                         var thisValue = $(this).val().trim();
 
                         if ($(this).find('option:selected').hasClass('option-type')) {
+                            // LOCATION
                             $.event.trigger({
                                 type: 'showLocationInList',
                                 time: new Date(),
@@ -1516,12 +1532,13 @@ var projectData = {
                                 }
                             });
                         } else if ($(this).find('option:selected').hasClass('city-type')) {
+                            // CITY
                             var eventData = {
                                 'country_code' : $(this).find('option:selected').attr('data-country-code'),
                                 'city' : $(this).find('option:selected').attr('data-city'),
                                 'zoom' : 7,
                                 'disallowAlreadyLoaded' : true,
-                                'center_city' : true,
+                                'center_by_average_coordinates' : true,
                                 'response_type' : 'city'
                             };
 
@@ -1531,6 +1548,7 @@ var projectData = {
                                 response_data: eventData
                             });
                         } else if ($(this).find('option:selected').hasClass('country-type')) {
+                            // COUNTRY
                             var eventData = {
                                 'country_code' : $(this).find('option:selected').attr('data-country-code'),
                                 'zoom' : 5,
@@ -1787,7 +1805,7 @@ var projectData = {
                                 tooltipHtml = 'data-toggle="tooltip" title="'+currentCountryNonPartnersData.description+'"';
                             }
 
-                            var bindNonPartnersCategoryHtml = '<li class="'+parentElementClass+' category-label" data-name="'+currentCountryNonPartnersData.name+'"><a href="javascript:void(0);" class="category-toggle-button non-partners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+currentCountryNonPartnersData.name+'</span></a><ul class="locations-list">';
+                            var bindNonPartnersCategoryHtml = '<li class="'+parentElementClass+' category-label" data-name="'+currentCountryNonPartnersData.name+'"><a href="javascript:void(0);" class="category-toggle-button non-partners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> Other registered dental practices</span></a><ul class="locations-list">';
                             for (var i = 0, len = currentCountryNonPartnersData.data.length; i < len; i+=1) {
                                 bindNonPartnersCategoryHtml += buildSingleLocationTile(currentCountryNonPartnersData.data[i].avatar_url, currentCountryNonPartnersData.data[i].name, currentCountryNonPartnersData.data[i].address, currentCountryNonPartnersData.data[i].is_partner, currentCountryNonPartnersData.data[i].city_name, currentCountryNonPartnersData.data[i].phone, currentCountryNonPartnersData.data[i].website, currentCountryNonPartnersData.data[i].top_dentist_month, currentCountryNonPartnersData.data[i].avg_rating, currentCountryNonPartnersData.data[i].ratings, currentCountryNonPartnersData.data[i].trp_public_profile_link, thisBtn.find('.element-name').html(), currentCountryNonPartnersData.data[i].id, 'core-db', currentCountryNonPartnersData.data[i].lat, currentCountryNonPartnersData.data[i].lon);
                             }
@@ -1837,7 +1855,7 @@ var projectData = {
                                     } else if ($(this).hasClass('industryPartners')) {
                                         // check category-4
                                         updateTopAndBottomLocationTypesFilters('category-4', false);
-                                    } else if ($(this).hasClass('non_partners')) {
+                                    } else if ($(this).hasClass('non-partners')) {
                                         // check category-5
                                         updateTopAndBottomLocationTypesFilters('category-5', false);
                                     }
@@ -1927,7 +1945,12 @@ var projectData = {
                                     $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
                                 }
 
-                                updateTopLocationsSelectOnBottomFilterChange($('.selectpicker.location-types').val());
+                                var topFilterValue = $('.selectpicker.location-types').val();
+                                if (topFilterValue.includes('category-5') && !topFilterValue.includes('category-1')) {
+                                    topFilterValue.push('category-1');
+                                }
+
+                                updateTopLocationsSelectOnBottomFilterChange(topFilterValue);
 
                                 $('.selectpicker.location-types').selectpicker('refresh');
 
@@ -2079,11 +2102,12 @@ var projectData = {
                         lastMapData = {
                             initialLat: thisBtn.attr('data-country-centroid-lat'),
                             initialLng: thisBtn.attr('data-country-centroid-lng'),
-                            initialZoom: 6,
+                            initialZoom: 4,
                             filter_country: $(this).attr('data-country-code'),
                             categories: $('.selectpicker.location-types').val(),
                             campForZoomChange: true,
-                            location_id_and_source_pairs: []
+                            location_id_and_source_pairs: [],
+                            center_by_average_coordinates: true
                         };
 
                         initMap(locationsOnInit, lastMapData);
@@ -2175,12 +2199,13 @@ var projectData = {
                             lastMapData = {
                                 initialLat: $('.country-list-parent.open-item > a').attr('data-country-centroid-lat'),
                                 initialLng: $('.country-list-parent.open-item > a').attr('data-country-centroid-lng'),
-                                initialZoom: 5,
+                                initialZoom: 4,
                                 filter_country: $('.country-list-parent.open-item > a').attr('data-country-code'),
                                 location_id_and_source_pairs: [],
                                 categories: $('.selectpicker.location-types').val(),
                                 campForZoomChange: true,
-                                location_content: '<div class="map-infowindow"><button>'+arrowBtn.attr('data-name')+'</button></div>'
+                                location_content: '<div class="map-infowindow"><button>'+arrowBtn.attr('data-name')+'</button></div>',
+                                center_by_average_coordinates: true
                             };
                             initMap(locationsOnInit, lastMapData);
                         }

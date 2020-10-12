@@ -2,7 +2,7 @@
     <div class="absolute-content padding-bottom-50 padding-bottom-xs-5 text-center-xs">
         <h2 class="fs-46 fs-md-40 fs-sm-30 color-white lato-black users-title padding-bottom-lgll-20 hide-xs">TRADERS</h2>
         <h3 class="fs-46 fs-md-40 fs-sm-30 fs-xs-22 lato-black color-white padding-top-10 padding-bottom-25">Bringing<br class="hide-xs"> Blockchain<br class="show-xs"> solutions<br class="hide-xs"> to the masses.</h3>
-        <div class="fs-24 fs-md-22 fs-sm-18 fs-xs-18 color-white lato-bold">Join 190,326 people who care about sustainable oral health and capitalize on prevention!</div>
+        <div class="fs-24 fs-md-22 fs-sm-18 fs-xs-18 color-white lato-bold">Join 201,326 people who care about sustainable oral health and capitalize on prevention!</div>
     </div>
     @php($arrWithPossibilities = array ('male', 'female'))
     @if ($arrWithPossibilities[rand(0, count($arrWithPossibilities) - 1)] == 'male')
@@ -244,7 +244,7 @@
                          src="/assets/uploads/dcn-whitepaper-icon-animation.gif"/>
                     <img alt="Whitepaper image icon" itemprop="contentUrl" class="width-100 max-width-100 image-version"
                          src="/assets/uploads/dcn-whitepaper-icon-animation.png"/>
-                    <figcaption class="lato-bold fs-20 padding-top-10">Whitepaper</figcaption>
+                    <figcaption class="lato-bold fs-20 padding-top-10">Dentacoin Whitepaper</figcaption>
                 </figure>
             </a>
         </div>
