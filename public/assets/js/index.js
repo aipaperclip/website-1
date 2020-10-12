@@ -1516,6 +1516,8 @@ var projectData = {
                     $('.selectpicker.locations').on('change', function() {
                         var thisValue = $(this).val().trim();
 
+                        if ()
+
                         if ($(this).find('option:selected').hasClass('option-type')) {
                             // LOCATION
                             $.event.trigger({
@@ -1592,6 +1594,18 @@ var projectData = {
                         $('.results-list .countries-nav').addClass('shown');
 
                         $('.dentacoin-stats-category-label span').html('in ' + $(this).find('.element-name').html());
+
+                        if ($('.locations-category-list .locations-list .single-location.hide').length) {
+                            $('.locations-category-list .locations-list .single-location').removeClass('hide');
+                        }
+
+                        if ($('.continents-list .single-continent .country-list-parent.hide').length) {
+                            $('.continents-list .single-continent .country-list-parent.hide').removeClass('hide');
+                        }
+
+                        if ($('.continents-list .single-continent .country-list-parent.open-item').length) {
+                            $('.continents-list .single-continent .country-list-parent.open-item').removeClass('open-item');
+                        }
 
                         $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> <span class="inline-block">'+$(this).find('.element-name').html().trim()).attr('data-last-continent', $(this).find('.element-name').html().trim()+'</span></a>');
 
