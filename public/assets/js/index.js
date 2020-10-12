@@ -2514,11 +2514,11 @@ var projectData = {
             });
 
             $(document).on('click', '.traders-page-exchange-click-gtag-event', function() {
-                projectData.events.fireGoogleAnalyticsEvent('Exchange', 'Main', 'How it works');
+                projectData.events.fireGoogleAnalyticsEvent('Exchange', 'Main', $(this).closest('.single-exchange').attr('data-exchange-name'));
             });
 
             $(document).on('click', '.traders-page-exchange-pair-click-gtag-event', function() {
-                projectData.events.fireGoogleAnalyticsEvent('Exchange', 'Pair', 'How it works');
+                projectData.events.fireGoogleAnalyticsEvent('Exchange', 'Pair', $(this).closest('.single-exchange').attr('data-exchange-name'));
             });
 
             $(document).on('click', '.traders-page-dentacoin-intro-click-gtag-event', function() {
