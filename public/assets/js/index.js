@@ -2499,37 +2499,37 @@ var projectData = {
     },
     events: {
         eventTrackers: function() {
-            $(document).on('click', 'company-intro-gtag-event', function() {
+            $(document).on('click', '.company-intro-gtag-event', function() {
                 projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'Intro');
             });
-            $(document).on('click', 'factsheet-gtag-event', function() {
+            $(document).on('click', '.factsheet-gtag-event', function() {
                 projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'EN Factsheet');
             });
-            $(document).on('click', 'factsheet-de-gtag-event', function() {
+            $(document).on('click', '.factsheet-de-gtag-event', function() {
                 projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'DE Factsheet');
             });
 
-            $(document).on('click', 'dentist-page-see-how-it-works-gtag-event', function() {
+            $(document).on('click', '.dentist-page-see-how-it-works-gtag-event', function() {
                 projectData.events.fireGoogleAnalyticsEvent('Dentist page', 'Click', 'How it works');
             });
 
-            $(document).on('click', 'traders-page-exchange-click-gtag-event', function() {
+            $(document).on('click', '.traders-page-exchange-click-gtag-event', function() {
                 projectData.events.fireGoogleAnalyticsEvent('Exchange', 'Main', 'How it works');
             });
 
-            $(document).on('click', 'traders-page-exchange-pair-click-gtag-event', function() {
+            $(document).on('click', '.traders-page-exchange-pair-click-gtag-event', function() {
                 projectData.events.fireGoogleAnalyticsEvent('Exchange', 'Pair', 'How it works');
             });
 
-            $(document).on('click', 'traders-page-dentacoin-intro-click-gtag-event', function() {
+            $(document).on('click', '.traders-page-dentacoin-intro-click-gtag-event', function() {
                 projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'Whitepaper');
             });
 
-            $(document).on('click', 'traders-page-whitepaper-click-gtag-event', function() {
+            $(document).on('click', '.traders-page-whitepaper-click-gtag-event', function() {
                 projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'Intro');
             });
 
-            $(document).on('click', 'traders-page-cmc-click-gtag-event', function() {
+            $(document).on('click', '.traders-page-cmc-click-gtag-event', function() {
                 projectData.events.fireGoogleAnalyticsEvent('Link', 'Click', 'CMC');
             });
         },
