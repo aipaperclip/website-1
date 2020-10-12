@@ -2522,11 +2522,11 @@ var projectData = {
             });
 
             $(document).on('click', '.traders-page-dentacoin-intro-click-gtag-event', function() {
-                projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'Whitepaper');
+                projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'Intro');
             });
 
             $(document).on('click', '.traders-page-whitepaper-click-gtag-event', function() {
-                projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'Intro');
+                projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'Whitepaper');
             });
 
             $(document).on('click', '.traders-page-cmc-click-gtag-event', function() {
