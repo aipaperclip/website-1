@@ -309,12 +309,13 @@
 
 .social-login-btn.civic-custom-btn {
     background-image: url(/assets/images/civic.svg);
-    border: 1px solid #3bb03f; 
+    border: 1px solid #3bb03f;
 }
 
 .social-login-btn.facebook-custom-btn {
     background-color: #4267B2;
     background-image: url(/assets/images/facebook-icon.svg);
+    color: white; 
 }
 
 .dentacoin-login-gateway-container * {
