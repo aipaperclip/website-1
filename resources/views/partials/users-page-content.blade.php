@@ -38,10 +38,10 @@
     </div>
 </section>
 <section class="section-users-expressions padding-left-40 padding-right-40 padding-left-xs-0 padding-right-xs-0 hide-on-map-open hide-on-hub-open">
-    @include('partials.video-expressions', array('video_expressions' => $video_expressions, 'type' => 'users', 'title' => 'COMMUNITY SPEAKING:'))
+    @include('partials.video-expressions', array('video_expressions' => $video_expressions, 'type' => 'users', 'title' => 'COMMUNITY SPEAKING:', 'mobile' => $mobile_device))
 </section>
 <section class="section-users-text-expressions hide-on-map-open hide-on-hub-open">
-    @include('partials.user-expressions', array('user_expressions' => $user_expressions, 'type' => 'users'))
+    @include('partials.user-expressions', array('user_expressions' => $user_expressions, 'type' => 'users', 'mobile' => $mobile_device))
 </section>
 <section class="section-google-map module hide-on-hub-open">
     <div class="container-fluid">

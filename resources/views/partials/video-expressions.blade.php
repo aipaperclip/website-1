@@ -9,6 +9,11 @@
         <div class="row">
             <div class="col-xs-12 video-expressions-slider module" data-type="{{$type}}">
                 @foreach ($video_expressions as $video_expression)
+                    @if (isset($mobile))
+                        @if(($mobile && !filter_var($video_expression->mobile_visible, FILTER_VALIDATE_BOOLEAN)) || (!$mobile && !filter_var($video_expression->desktop_visible, FILTER_VALIDATE_BOOLEAN)))
+                            @continue
+                        @endif
+                    @endif
                     @php($videoId = (new \App\Http\Controllers\Controller())->getYoutubeVideoId($video_expression->url))
                     <div class="single-slide" data-video-id="{{$videoId}}" data-order-id="{{$video_expression->order_id}}">
                         <div class="slide-wrapper">

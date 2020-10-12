@@ -52,9 +52,9 @@
                                 <div class="mobile-extra-row active row fs-0" data-bullet="{{$exchangeCounter}}">
                                     @php(array_push($bulletsArray, $exchangeCounter))
                                     @endif
-                                    <div class="col-xs-6 inline-block-top single-exchange padding-bottom-30 padding-left-10 padding-right-10">
+                                    <div class="col-xs-6 inline-block-top single-exchange padding-bottom-30 padding-left-10 padding-right-10" data-exchange-name="{{$exchange_platform->title}}">
                                         <a href="{{$exchange_platform->link}}" target="_blank"
-                                           class="exchange-link text-center lato-bold display-block padding-bottom-10">
+                                           class="exchange-link text-center lato-bold display-block padding-bottom-10 traders-page-exchange-click-gtag-event">
                                             @if($exchange_platform->media) <img
                                                     src="{{URL::asset('assets/uploads/' . $exchange_platform->media->name) }}"
                                                     alt="{{$exchange_platform->media->alt}}"
@@ -65,9 +65,7 @@
                                         @if(sizeof($pairs) > 0)
                                             <ul class="lato-semibold fs-18 fs-xs-16 padding-top-10">
                                                 @foreach($pairs as $pair)
-                                                    <li class="padding-bottom-5"><a href="{{$pair->url}}"
-                                                                                    target="_blank"
-                                                                                    class="display-block padding-left-15 padding-right-15 padding-left-xs-10 padding-right-xs-10">{{$pair->title}}</a>
+                                                    <li class="padding-bottom-5"><a href="{{$pair->url}}" target="_blank" class="display-block padding-left-15 padding-right-15 padding-left-xs-10 padding-right-xs-10 traders-page-exchange-pair-click-gtag-event">{{$pair->title}}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
@@ -91,22 +89,16 @@
                             @php($exchangeCounter = 0)
                             @foreach ($exchange_platforms as $exchange_platform)
                                 @php($exchangeCounter = $exchangeCounter + 1)
-                                <div class="col-xs-6 col-md-4 col-lg-2 inline-block-top padding-bottom-50 padding-bottom-xs-30 single-exchange">
-                                    <a href="{{$exchange_platform->link}}" target="_blank"
-                                       class="exchange-link text-center lato-bold display-block padding-bottom-10">
-                                        @if($exchange_platform->media) <img
-                                                src="{{URL::asset('assets/uploads/' . $exchange_platform->media->name) }}"
-                                                alt="{{$exchange_platform->media->alt}}"
-                                                class="inline-block"/> @endif
+                                <div class="col-xs-6 col-md-4 col-lg-2 inline-block-top padding-bottom-50 padding-bottom-xs-30 single-exchange" data-exchange-name="{{$exchange_platform->title}}">
+                                    <a href="{{$exchange_platform->link}}" target="_blank" class="exchange-link text-center lato-bold display-block padding-bottom-10 traders-page-exchange-click-gtag-event">
+                                        @if($exchange_platform->media) <img src="{{URL::asset('assets/uploads/' . $exchange_platform->media->name) }}" alt="{{$exchange_platform->media->alt}}" class="inline-block"/> @endif
                                         <span class="inline-block padding-left-5 fs-18">{{$exchange_platform->title}}</span>
                                     </a>
                                     @php($pairs = \App\ExchangePair::where(array('exchange_id' => $exchange_platform->id))->get()->sortBy('order_id'))
                                     @if(sizeof($pairs) > 0)
                                         <ul class="lato-semibold fs-16 padding-top-10">
                                             @foreach($pairs as $pair)
-                                                <li class="padding-bottom-5"><a href="{{$pair->url}}"
-                                                                                target="_blank"
-                                                                                class="display-block padding-left-15 padding-right-15">{{$pair->title}}</a>
+                                                <li class="padding-bottom-5"><a href="{{$pair->url}}" target="_blank" class="display-block padding-left-15 padding-right-15 traders-page-exchange-pair-click-gtag-event">{{$pair->title}}</a>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -234,7 +226,7 @@
     <div class="row text-center links padding-top-50 padding-top-lgll-70">
         <div class="col-xs-12 col-sm-4 padding-top-15 padding-bottom-15 single-link">
             <a href="//dentacoin.com/assets/uploads/dentacoin-company-introduction.pdf" target="_blank"
-               class="display-block color-black">
+               class="display-block color-black traders-page-dentacoin-intro-click-gtag-event">
                 <figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
                     <img alt="Dentacoin gif intro" itemprop="contentUrl" class="width-100 max-width-100 gif-version"
                          src="/assets/uploads/dcn-info-icon-animation.gif"/>
@@ -246,7 +238,7 @@
         </div>
         <div class="col-xs-12 col-sm-4 padding-top-15 padding-bottom-15 single-link">
             <a href="https://dentacoin.com/assets/uploads/whitepaper.pdf" target="_blank"
-               class="display-block color-black">
+               class="display-block color-black traders-page-whitepaper-click-gtag-event">
                 <figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
                     <img alt="Whitepaper gif icon" itemprop="contentUrl" class="width-100 max-width-100 gif-version"
                          src="/assets/uploads/dcn-whitepaper-icon-animation.gif"/>
@@ -257,7 +249,7 @@
             </a>
         </div>
         <div class="col-xs-12 col-sm-4 padding-top-15 padding-bottom-15 single-link">
-            <a href="https://coinmarketcap.com/currencies/dentacoin/" target="_blank" class="display-block color-black">
+            <a href="https://coinmarketcap.com/currencies/dentacoin/" target="_blank" class="display-block color-black traders-page-cmc-click-gtag-event">
                 <figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
                     <img alt="CoinMarketCap gif icon" itemprop="contentUrl" class="width-100 max-width-100 gif-version"
                          src="/assets/uploads/cmc-icon-animation.gif"/>

@@ -126,10 +126,10 @@
     </div>
 </section>
 <section class="section-users-expressions padding-left-40 padding-right-40 padding-left-xs-0 padding-right-xs-0 hide-on-map-open">
-    @include('partials.video-expressions', array('video_expressions' => $video_expressions, 'type' => 'dentists', 'title' => 'SUCCESS STORIES:'))
+    @include('partials.video-expressions', array('video_expressions' => $video_expressions, 'type' => 'dentists', 'title' => 'SUCCESS STORIES:', 'mobile' => $mobile_device))
 </section>
 <section class="section-users-text-expressions hide-on-map-open">
-    @include('partials.user-expressions', array('user_expressions' => $user_expressions, 'type' => 'dentists'))
+    @include('partials.user-expressions', array('user_expressions' => $user_expressions, 'type' => 'dentists', 'mobile' => $mobile_device))
 </section>
 <section class="section-google-map module">
     <div class="container-fluid">

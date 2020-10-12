@@ -503,22 +503,24 @@ removeImage();
 function deleteMedia() {
     $(document).on('click', '.delete-media', function()    {
         var this_btn = $(this);
-        $.ajax({
-            type: 'POST',
-            url: SITE_URL + '/media/delete/'+this_btn.closest('tr').attr('data-id'),
-            dataType: 'json',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function (response) {
-                if(response.success)    {
-                    basic.showAlert(response.success, '', true);
-                    this_btn.closest('tr').remove();
-                } else if(response.error) {
-                    basic.showAlert(response.error, '', true);
+        if (confirm('Are you sure you want to delete this resource?')) {
+            $.ajax({
+                type: 'POST',
+                url: SITE_URL + '/media/delete/'+this_btn.closest('tr').attr('data-id'),
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (response) {
+                    if(response.success)    {
+                        basic.showAlert(response.success, '', true);
+                        this_btn.closest('tr').remove();
+                    } else if(response.error) {
+                        basic.showAlert(response.error, '', true);
+                    }
                 }
-            }
-        });
+            });
+        }
     });
 }
 deleteMedia();
@@ -529,7 +531,9 @@ function saveImageAltsEvent()   {
         $('.save-image-alts').click(function()  {
             var alts_object = {};
             for(let i = 0, len = $('.media-table tbody tr').length; i < len; i+=1)  {
-                alts_object[$('.media-table tbody tr').eq(i).attr('data-id')] = $('.media-table tbody tr').eq(i).find('.alt-attribute').val().trim();
+                if ($('.media-table tbody tr').eq(i).find('.alt-attribute').val() != undefined && $('.media-table tbody tr').eq(i).find('.alt-attribute').val() != null) {
+                    alts_object[$('.media-table tbody tr').eq(i).attr('data-id')] = $('.media-table tbody tr').eq(i).find('.alt-attribute').val().trim();
+                }
             }
             $.ajax({
                 type: 'POST',
@@ -792,7 +796,7 @@ if($('.add-edit-menu-element select[name="type"]').length > 0) {
         var type = $(this).val();
         $.ajax({
             type: 'POST',
-            url: SITE_URL + '/footer/menu/change-url-option',
+            url: SITE_URL + '/menus/change-url-option',
             data: {
                 'type' : type
             },
@@ -893,35 +897,33 @@ function initUploadMediaLogic() {
 }
 initUploadMediaLogic();
 
-if($('.sortable-container').length) {
-    for(var i = 0, len = $('.sortable-container').length; i < len; i+=1) {
-        if($('.sortable-container').eq(i).hasClass('update-menu-children-order')) {
-            $('.sortable-container').eq(i).sortable({
-                stop: function() {
-                    var array_with_menu_chilren = {};
-                    for(var y = 0, len_y = $('.single-child').length; y < len_y; y+=1) {
-                        array_with_menu_chilren[$('.single-child').eq(y).attr('data-id')] = parseInt($('.single-child').eq(y).index());
-                    }
-
-                    $.ajax({
-                        type: 'POST',
-                        url: SITE_URL + $('.sortable-container').attr('data-route-update-order'),
-                        data: {
-                            'order_object' : array_with_menu_chilren,
-                            'binded_to' : $('.sortable-container').attr('data-binded-to')
-                        },
-                        dataType: 'json',
-                        success: function (response) {
-                            if(response.success)    {
-                                basic.showAlert(response.success, '', true);
-                            }
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
+if($('.sortable-container.update-menu-children-order').length) {
+    for(var i = 0, len = $('.sortable-container.update-menu-children-order').length; i < len; i+=1) {
+        $('.sortable-container.update-menu-children-order').eq(i).sortable({
+            stop: function() {
+                var array_with_menu_chilren = {};
+                for(var y = 0, len_y = $('.single-child').length; y < len_y; y+=1) {
+                    array_with_menu_chilren[$('.single-child').eq(y).attr('data-id')] = parseInt($('.single-child').eq(y).index());
                 }
-            });
-        }
+
+                $.ajax({
+                    type: 'POST',
+                    url: SITE_URL + $('.sortable-container').attr('data-route-update-order'),
+                    data: {
+                        'order_object' : array_with_menu_chilren,
+                        'binded_to' : $('.sortable-container').attr('data-binded-to')
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                        if(response.success)    {
+                            basic.showAlert(response.success, '', true);
+                        }
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            }
+        });
     }
 }

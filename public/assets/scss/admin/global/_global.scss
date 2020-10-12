@@ -350,6 +350,7 @@ body.add-job-offer, body.edit-job-offer {
         padding: 5px 5px 20px;
         margin-bottom: 5px;
         cursor: all-scroll;
+        min-width: 250px;
         @include rounded(4px);
     }
 }

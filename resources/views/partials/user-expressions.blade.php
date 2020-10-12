@@ -4,6 +4,11 @@
             <div class="col-xs-12 overflow-hidden user-expressions-slider-parent module padding-top-50 padding-top-xs-20 padding-bottom-10">
                 <div class="user-expressions-slider" data-type="{{$type}}">
                     @foreach ($user_expressions as $user_expression)
+                        @if (isset($mobile))
+                            @if(($mobile && !filter_var($user_expression->mobile_visible, FILTER_VALIDATE_BOOLEAN)) || (!$mobile && !filter_var($user_expression->desktop_visible, FILTER_VALIDATE_BOOLEAN)))
+                                @continue
+                            @endif
+                        @endif
                         <div class="single-slide">
                             <div class="slide-wrapper">
                                 <article>

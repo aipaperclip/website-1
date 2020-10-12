@@ -43,18 +43,10 @@ class Controller extends BaseController
             View::share('parent_sections', $this->getParentDbSections());
             View::share('titles', $this->getDbTitles());
             View::share('sections', $this->getDbSections());
-            View::share('socials', $this->getFooterSocials());
-            View::share('footer_menu', $this->getFooterMenu());
-            View::share('footer_data', $this->getFooterData());
+            View::share('socials', $this->getSocials());
             View::share('social_engagement_cookie', $this->checkIfSocialEngagementCookie());
             View::share('client_ip', $this->getClientIp());
         }
-    }
-
-    protected function getFooterData()
-    {
-        $footer_section_id = Section::where(array('slug' => 'footer'))->get()->first()->id;
-        return PagesHtmlSection::where(array('section_id' => $footer_section_id))->get()->sortBy('order_id')->toArray();
     }
 
     protected function getMetaData()
@@ -118,14 +110,9 @@ class Controller extends BaseController
         }
     }
 
-    protected function getFooterSocials()
+    protected function getSocials()
     {
         return Social::all()->sortBy('order_id');
-    }
-
-    protected function getFooterMenu()
-    {
-        return MenuElement::all()->sortBy('order_id');
     }
 
     protected function getDbTitles()

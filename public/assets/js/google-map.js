@@ -1,8 +1,6 @@
 var markerCluster;
 function initMap(map_locations, options) {
     //initialLat, initialLng, initialZoom, filter_country, location_id, location_source, categories, campForZoomChange, filter_city, location_content, center_city
-    console.log(map_locations, 'map_locations');
-    console.log(options, 'options');
 
     if (options.categories != undefined && options.categories.includes('category-5') && !options.categories.includes('category-1')) {
         options.categories.push('category-1');
@@ -83,7 +81,6 @@ function initMap(map_locations, options) {
         // doing this so when the map is not zoomed much to show all locations with map clusters, even the ones that are single in their area
         function wrapSingleLocationsIntoClusters() {
             var zoomLevel = map.getZoom();
-            console.log(zoomLevel, 'zoomLevel');
             if (zoomLevel > 15) {
                 markerCluster.setMinimumClusterSize(10);
             } else if (zoomLevel > 10) {
@@ -221,9 +218,6 @@ function initMap(map_locations, options) {
 
                 visibleLocationsCount+=1;
             }
-
-            console.log(visibleLocationsCount, 'visibleLocationsCount');
-            
 
             // calculate city center
             if (options.center_city != undefined && currentLocationsOnMapLats.length && currentLocationsOnMapLngs.length) {

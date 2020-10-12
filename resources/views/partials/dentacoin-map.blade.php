@@ -152,7 +152,7 @@
                                     <li>
                                         <div class="custom-checkbox-style module">
                                             <label class="custom-checkbox-label" for="category-{{$location_type->id}}"><span class="inline-block" @if (!empty($location_type->description)) data-toggle="tooltip" title="{{$location_type->description}}" @endif>{{$location_type->name}}</span> <span class="inline-block color-box" style="background-color: {{$location_type->color}};"></span></label>
-                                            <input type="checkbox" class="custom-checkbox-input" checked id="category-{{$location_type->id}}"/>
+                                            <input type="checkbox" class="custom-checkbox-input" data-name="{{$location_type->name}}" checked id="category-{{$location_type->id}}"/>
                                         </div>
                                     </li>
                                 @endforeach

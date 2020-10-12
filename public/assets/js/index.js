@@ -1224,9 +1224,42 @@ var projectData = {
                     }
                     $('body').removeClass('overflow-hidden');
 
+                    var locationTypesValueOnInit = $('.selectpicker.location-types').val();
                     $('.selectpicker.location-types').on('change', function() {
                         var thisValue = $(this).val();
+                        proceedWithOnLocationsTypeChange(thisValue);
 
+                        // google analytics check which option was checked or unchecked
+                        if ($(this).val().length > locationTypesValueOnInit.length) {
+                            // some option has been checked
+                            var tempArr = $(this).val();
+                            for (var i = 0, len = $(this).val().length; i < len; i+=1) {
+                                if (locationTypesValueOnInit.includes($(this).val()[i])) {
+                                    var index = tempArr.indexOf($(this).val()[i]);
+                                    tempArr.splice(index, 1);
+                                }
+                            }
+                            console.log(tempArr, 'this has beeen checked');
+
+                            projectData.events.fireGoogleAnalyticsEvent('Map', 'Check type filter', $('.location-types option[value="'+tempArr+'"]').html());
+
+                            locationTypesValueOnInit = $(this).val();
+                        } else {
+                            // some option has been unchecked
+                            for (var i = 0, len = locationTypesValueOnInit.length; i < len; i+=1) {
+                                if (!$(this).val().includes(locationTypesValueOnInit[i])) {
+                                    projectData.events.fireGoogleAnalyticsEvent('Map', 'Uncheck type filter', $('.location-types option[value="'+locationTypesValueOnInit[i]+'"]').html());
+                                    break;
+                                }
+                            }
+                            locationTypesValueOnInit = $(this).val();
+                        }
+
+                        return false;
+                    });
+
+
+                    function proceedWithOnLocationsTypeChange(thisValue) {
                         // update bottom filter checkboxes
                         $('.right-side-filters input[type="checkbox"]').prop('checked', false);
                         $('.right-side-filters .custom-checkbox').html('');
@@ -1246,7 +1279,7 @@ var projectData = {
 
                         $('.right-side-filters input[type="checkbox"]').prop('checked', true);
                         updateTopLocationsSelectOnBottomFilterChange(thisValue);
-                    });
+                    }
 
                     // this event is fired in 2 cases:
                     // - when someone click a marker pin right on the map
@@ -1417,6 +1450,8 @@ var projectData = {
 
                                 var searchKeyword = $('.locations-splitted-by-category .bs-searchbox .form-control').val().trim();
                                 if (searchKeyword != '') {
+                                    projectData.events.fireGoogleAnalyticsEvent('Map', 'Search', searchKeyword);
+
                                     var searchHtml = '';
                                     var location_id_and_source_pairs = [];
                                     for (var i = 0, len = locationsOnInit.length; i < len; i+=1) {
@@ -1528,6 +1563,7 @@ var projectData = {
                     // =================== CONTINENTS LOGIC ====================
                     $('.continents-list > ul > li > a').click(async function() {
                         // MAKE REQUEST TO QUERY ALL LOCATIONS ONLY FOR THIS CONTINENT
+                        projectData.events.fireGoogleAnalyticsEvent('Map', 'Continent', $(this).find('.element-name').html());
 
                         $('.continents-list > ul > li').addClass('hide');
 
@@ -1647,7 +1683,7 @@ var projectData = {
                                 tooltipHtml = 'data-toggle="tooltip" title="'+currentCountryPartnersData.description+'"';
                             }
 
-                            var bindPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button partners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+currentCountryPartnersData.name+'</span></a><ul class="locations-list">';
+                            var bindPartnersCategoryHtml = '<li class="'+parentElementClass+' category-label" data-name="'+currentCountryPartnersData.name+'"><a href="javascript:void(0);" class="category-toggle-button partners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+currentCountryPartnersData.name+'</span></a><ul class="locations-list">';
                             for (var i = 0, len = currentCountryPartnersData.data.length; i < len; i+=1) {
                                 bindPartnersCategoryHtml += buildSingleLocationTile(currentCountryPartnersData.data[i].avatar_url, currentCountryPartnersData.data[i].name, currentCountryPartnersData.data[i].address, currentCountryPartnersData.data[i].is_partner, currentCountryPartnersData.data[i].city_name, currentCountryPartnersData.data[i].phone, currentCountryPartnersData.data[i].website, currentCountryPartnersData.data[i].top_dentist_month, currentCountryPartnersData.data[i].avg_rating, currentCountryPartnersData.data[i].ratings, currentCountryPartnersData.data[i].trp_public_profile_link, thisBtn.find('.element-name').html(), currentCountryPartnersData.data[i].id, 'core-db', currentCountryPartnersData.data[i].lat, currentCountryPartnersData.data[i].lon);
                             }
@@ -1675,7 +1711,7 @@ var projectData = {
                                 }
 
                                 totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.labs.data.length;
-                                var bindLabsCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button labs fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+getLabsSuppliersAndIndustryPartnersData.data.labs.name+'</span></a><ul class="locations-list">';
+                                var bindLabsCategoryHtml = '<li class="'+parentElementClass+' category-label" data-name="'+getLabsSuppliersAndIndustryPartnersData.data.labs.name+'"><a href="javascript:void(0);" class="category-toggle-button labs fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+getLabsSuppliersAndIndustryPartnersData.data.labs.name+'</span></a><ul class="locations-list">';
                                 for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.labs.data.length; i < len; i+=1) {
                                     bindLabsCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].lat, getLabsSuppliersAndIndustryPartnersData.data.labs.data[i].lng);
                                 }
@@ -1700,7 +1736,7 @@ var projectData = {
                                 }
 
                                 totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.suppliers.data.length;
-                                var bindSuppliersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button suppliers fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+getLabsSuppliersAndIndustryPartnersData.data.suppliers.name+'</span></a><ul class="locations-list">';
+                                var bindSuppliersCategoryHtml = '<li class="'+parentElementClass+' category-label" data-name="'+getLabsSuppliersAndIndustryPartnersData.data.suppliers.name+'"><a href="javascript:void(0);" class="category-toggle-button suppliers fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+getLabsSuppliersAndIndustryPartnersData.data.suppliers.name+'</span></a><ul class="locations-list">';
                                 for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.suppliers.data.length; i < len; i+=1) {
                                     bindSuppliersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].lat, getLabsSuppliersAndIndustryPartnersData.data.suppliers.data[i].lng);
                                 }
@@ -1725,7 +1761,7 @@ var projectData = {
                                 }
 
                                 totalLocationsCountByCountry += getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data.length;
-                                var bindIndustryPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button industryPartners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+getLabsSuppliersAndIndustryPartnersData.data.industryPartners.name+'</span></a><ul class="locations-list">';
+                                var bindIndustryPartnersCategoryHtml = '<li class="'+parentElementClass+' category-label" data-name="'+getLabsSuppliersAndIndustryPartnersData.data.industryPartners.name+'"><a href="javascript:void(0);" class="category-toggle-button industryPartners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+getLabsSuppliersAndIndustryPartnersData.data.industryPartners.name+'</span></a><ul class="locations-list">';
                                 for (var i = 0, len = getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data.length; i < len; i+=1) {
                                     bindIndustryPartnersCategoryHtml += buildSingleLocationTile('//dentacoin.com/assets/uploads/' + getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].clinic_media, getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].clinic_name, getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].address, null, null, null, getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].clinic_link, null, null, null, null, thisBtn.find('.element-name').html(), getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].id, 'dentacoin-db', getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].lat, getLabsSuppliersAndIndustryPartnersData.data.industryPartners.data[i].lng);
                                 }
@@ -1751,7 +1787,7 @@ var projectData = {
                                 tooltipHtml = 'data-toggle="tooltip" title="'+currentCountryNonPartnersData.description+'"';
                             }
 
-                            var bindNonPartnersCategoryHtml = '<li class="'+parentElementClass+'"><a href="javascript:void(0);" class="category-toggle-button non-partners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+currentCountryNonPartnersData.name+'</span></a><ul class="locations-list">';
+                            var bindNonPartnersCategoryHtml = '<li class="'+parentElementClass+' category-label" data-name="'+currentCountryNonPartnersData.name+'"><a href="javascript:void(0);" class="category-toggle-button non-partners fs-20 fs-xs-18" '+tooltipHtml+'><span><i class="fa '+iconClass+'" aria-hidden="true"></i> '+currentCountryNonPartnersData.name+'</span></a><ul class="locations-list">';
                             for (var i = 0, len = currentCountryNonPartnersData.data.length; i < len; i+=1) {
                                 bindNonPartnersCategoryHtml += buildSingleLocationTile(currentCountryNonPartnersData.data[i].avatar_url, currentCountryNonPartnersData.data[i].name, currentCountryNonPartnersData.data[i].address, currentCountryNonPartnersData.data[i].is_partner, currentCountryNonPartnersData.data[i].city_name, currentCountryNonPartnersData.data[i].phone, currentCountryNonPartnersData.data[i].website, currentCountryNonPartnersData.data[i].top_dentist_month, currentCountryNonPartnersData.data[i].avg_rating, currentCountryNonPartnersData.data[i].ratings, currentCountryNonPartnersData.data[i].trp_public_profile_link, thisBtn.find('.element-name').html(), currentCountryNonPartnersData.data[i].id, 'core-db', currentCountryNonPartnersData.data[i].lat, currentCountryNonPartnersData.data[i].lon);
                             }
@@ -1884,8 +1920,10 @@ var projectData = {
                         switch(thisCheckbox.attr('id')) {
                             case 'category-1':
                                 if (thisCheckbox.is(':checked')) {
+                                    projectData.events.fireGoogleAnalyticsEvent('Map', 'Check type filter', thisCheckbox.attr('data-name'));
                                     $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
                                 } else {
+                                    projectData.events.fireGoogleAnalyticsEvent('Map', 'Uncheck type filter', thisCheckbox.attr('data-name'));
                                     $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
                                 }
 
@@ -1896,8 +1934,10 @@ var projectData = {
                                 break;
                             case 'category-2':
                                 if (thisCheckbox.is(':checked')) {
+                                    projectData.events.fireGoogleAnalyticsEvent('Map', 'Check type filter', thisCheckbox.attr('data-name'));
                                     $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
                                 } else {
+                                    projectData.events.fireGoogleAnalyticsEvent('Map', 'Uncheck type filter', thisCheckbox.attr('data-name'))
                                     $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
                                 }
 
@@ -1908,8 +1948,10 @@ var projectData = {
                                 break;
                             case 'category-3':
                                 if (thisCheckbox.is(':checked')) {
+                                    projectData.events.fireGoogleAnalyticsEvent('Map', 'Check type filter', thisCheckbox.attr('data-name'));
                                     $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
                                 } else {
+                                    projectData.events.fireGoogleAnalyticsEvent('Map', 'Uncheck type filter', thisCheckbox.attr('data-name'))
                                     $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
                                 }
 
@@ -1920,8 +1962,10 @@ var projectData = {
                                 break;
                             case 'category-4':
                                 if (thisCheckbox.is(':checked')) {
+                                    projectData.events.fireGoogleAnalyticsEvent('Map', 'Check type filter', thisCheckbox.attr('data-name'));
                                     $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
                                 } else {
+                                    projectData.events.fireGoogleAnalyticsEvent('Map', 'Uncheck type filter', thisCheckbox.attr('data-name'))
                                     $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
                                 }
 
@@ -1932,8 +1976,10 @@ var projectData = {
                                 break;
                             case 'category-5':
                                 if (thisCheckbox.is(':checked')) {
+                                    projectData.events.fireGoogleAnalyticsEvent('Map', 'Check type filter', thisCheckbox.attr('data-name'));
                                     $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', true);
                                 } else {
+                                    projectData.events.fireGoogleAnalyticsEvent('Map', 'Uncheck type filter', thisCheckbox.attr('data-name'))
                                     $('select.location-types option[value="'+thisCheckbox.attr('id')+'"]').prop('selected', false);
                                 }
 
@@ -2028,6 +2074,8 @@ var projectData = {
                         var thisBtn = $(this);
                         thisBtn.parent().find('.locations-category-list').html('');
 
+                        projectData.events.fireGoogleAnalyticsEvent('Map', 'Country', thisBtn.find('.element-name').html().trim());
+
                         lastMapData = {
                             initialLat: thisBtn.attr('data-country-centroid-lat'),
                             initialLng: thisBtn.attr('data-country-centroid-lng'),
@@ -2109,6 +2157,8 @@ var projectData = {
                         $(this).toggleClass('toggled');
 
                         if ($(this).hasClass('toggled')) {
+                            projectData.events.fireGoogleAnalyticsEvent('Map', $(this).closest('.category-label').attr('data-name'), arrowBtn.attr('data-name').trim());
+
                             lastMapData = {
                                 initialLat: arrowBtn.attr('data-lat'),
                                 initialLng: arrowBtn.attr('data-lng'),
@@ -2449,7 +2499,39 @@ var projectData = {
     },
     events: {
         eventTrackers: function() {
-            projectData.events.fireGoogleAnalyticsEvent('Video', 'Play', 'How to Create a Wallet Demo', wallet_video_time_watched);
+            $(document).on('click', 'company-intro-gtag-event', function() {
+                projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'Intro');
+            });
+            $(document).on('click', 'factsheet-gtag-event', function() {
+                projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'EN Factsheet');
+            });
+            $(document).on('click', 'factsheet-de-gtag-event', function() {
+                projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'DE Factsheet');
+            });
+
+            $(document).on('click', 'dentist-page-see-how-it-works-gtag-event', function() {
+                projectData.events.fireGoogleAnalyticsEvent('Dentist page', 'Click', 'How it works');
+            });
+
+            $(document).on('click', 'traders-page-exchange-click-gtag-event', function() {
+                projectData.events.fireGoogleAnalyticsEvent('Exchange', 'Main', 'How it works');
+            });
+
+            $(document).on('click', 'traders-page-exchange-pair-click-gtag-event', function() {
+                projectData.events.fireGoogleAnalyticsEvent('Exchange', 'Pair', 'How it works');
+            });
+
+            $(document).on('click', 'traders-page-dentacoin-intro-click-gtag-event', function() {
+                projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'Whitepaper');
+            });
+
+            $(document).on('click', 'traders-page-whitepaper-click-gtag-event', function() {
+                projectData.events.fireGoogleAnalyticsEvent('Assets', 'Download', 'Intro');
+            });
+
+            $(document).on('click', 'traders-page-cmc-click-gtag-event', function() {
+                projectData.events.fireGoogleAnalyticsEvent('Link', 'Click', 'CMC');
+            });
         },
         fireGoogleAnalyticsEvent: function (category, action, label, value) {
             var event_obj = {

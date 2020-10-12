@@ -43,8 +43,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.17">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.17">
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.18">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.18">
 
     @if((!(new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'home')) || ((new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'foundation')) || (!empty(Route::current()) && (Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists' || Route::current()->getName() == 'traders')))
         <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v={{time()}}">
@@ -184,29 +184,32 @@
                 </div>
             @endif
             @include('partials.newsletter-registration')
-            @if(!empty($footer_menu))
+            @php($footerMenu = (new \App\Http\Controllers\Admin\MenuController())->getMenu('footer'))
+            @if(!empty($footerMenu))
             <div class="row menu">
                 <nav class="col-xs-12">
                     <ul itemscope="" itemtype="http://schema.org/SiteNavigationElement">
                         @php($first_el = false)
-                        @foreach($footer_menu as $el)
+                        @foreach($footerMenu as $el)
+                            @if (isset($mobile))
+                                @if(($mobile && !filter_var($el->mobile_visible, FILTER_VALIDATE_BOOLEAN)) || (!$mobile && !filter_var($el->desktop_visible, FILTER_VALIDATE_BOOLEAN)))
+                                    @continue
+                                @endif
+                            @endif
+                            @php($submenu = (new \App\Http\Controllers\Admin\MenuController())->getMenuChildrenElementsByParentId($el->id))
                             @if($first_el)
                                 <li class="inline-block separator">|</li>
                             @endif
-                            <li class="inline-block @if($el->url == '/assets/uploads/dentacoin-fact-sheet.pdf') has-submenu padding-right-15 padding-right-xs-20 @endif">
-                                {{--@if($el->url == '/assets/uploads/dentacoin-fact-sheet.pdf')--}}
-                                @if((strpos($el->url, 'dentacoin-fact-sheet.pdf') !== false))
-                                    <a href="javascript:void(0);"><span itemprop="name">{{$el->name}}</span></a>
+                            <li class="inline-block @if(sizeof($submenu)) has-submenu padding-right-15 padding-right-xs-20 @endif {{$el->class_attribute}}" @if(!empty($submenu->id_attribute)) id="{{$submenu->id_attribute}}" @endif>
+                                <a @if($el->new_window) target="_blank" @endif itemprop="url" href="{{$el->url}}"><span itemprop="name">{{$el->name}}</span></a>
+                                @if (sizeof($submenu))
                                     <ul itemscope="" itemtype="http://schema.org/SiteNavigationElement" class="submenu">
-                                        <li>
-                                            <a @if($el->new_window) target="_blank" @endif href="/assets/uploads/dentacoin-fact-sheet.pdf" itemprop="url"><span itemprop="name">English</span></a>
-                                        </li>
-                                        <li>
-                                            <a @if($el->new_window) target="_blank" @endif href="/assets/uploads/was-ist-dentacoin.pdf" itemprop="url"><span itemprop="name">Deutsch</span></a>
-                                        </li>
+                                        @foreach($submenu as $submenu_el)
+                                            <li @if(!empty($submenu_el->class_attribute)) class="{{$submenu_el->class_attribute}}" @endif @if(!empty($submenu_el->id_attribute)) id="{{$submenu_el->id_attribute}}" @endif>
+                                                <a @if($submenu_el->new_window) target="_blank" @endif href="{{$submenu_el->url}}" itemprop="url"><span itemprop="name">{{$submenu_el->name}}</span></a>
+                                            </li>
+                                        @endforeach
                                     </ul>
-                                @else
-                                    <a @if($el->new_window) target="_blank" @endif itemprop="url" href="{{$el->url}}"><span itemprop="name">{{$el->name}}</span></a>
                                 @endif
                             </li>
                             @if(!$first_el)
@@ -281,13 +284,13 @@
     @endif
     {{----}}
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.1.17"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.1.18"></script>
     <script src="/assets/libs/dentacoin-package/js/init.js?v={{time()}}"></script>
     @if (!(new \App\Http\Controllers\UserController())->checkSession())
         <script src="/assets/libs/dentacoin-login-gateway/js/init.js?v={{time()}}"></script>
     @endif
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.1.17"></script>
+    <script src="/dist/js/front-script.js?v=1.1.18"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/address.js"></script>
