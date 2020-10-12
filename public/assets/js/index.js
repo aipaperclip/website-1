@@ -1516,8 +1516,6 @@ var projectData = {
                     $('.selectpicker.locations').on('change', function() {
                         var thisValue = $(this).val().trim();
 
-                        if ()
-
                         if ($(this).find('option:selected').hasClass('option-type')) {
                             // LOCATION
                             $.event.trigger({
