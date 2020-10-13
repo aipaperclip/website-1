@@ -43,6 +43,11 @@
     <style>
 
     </style>
+    <link rel="preload" href="/assets/fonts/Lato-Bold.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Semibold.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Regular.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Black.woff2" as="font">
+
     {{--<link rel="preload" href="/assets/fonts/OpenSans-SemiBold.eot" as="font">
     <link rel="preload" href="/assets/fonts/OpenSans-SemiBold.woff2" as="font">
     <link rel="preload" href="/assets/fonts/OpenSans-SemiBold.woff" as="font">
