@@ -166,8 +166,8 @@
                 border: 1px solid black;
             }
             &.active {
-                height: 200px;
-                width: 200px;
+                height: 180px;
+                width: 180px;
                 z-index: 10;
                 @include box-shadow(0 2px 15px 0 rgba(0, 0, 0, 0.5));
                 .content {
@@ -182,8 +182,8 @@
                 }
             }
             @include breakpoint($lgl)    {
-                height: 140px;
-                width: 140px;
+                height: 130px;
+                width: 130px;
             }
             @include breakpoint($sm-down) {
                 height: 125px;

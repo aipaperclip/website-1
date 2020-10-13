@@ -359,8 +359,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12 color-black tweets-iframe-container">
-            <a class="twitter-timeline" href="https://twitter.com/dentacoin" data-tweet-limit="3">Tweets by
-                @dentacoin</a>
+            <a class="twitter-timeline" href="https://twitter.com/dentacoin" data-tweet-limit="3">Tweets by @dentacoin</a>
             <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
     </div>

@@ -493,6 +493,10 @@ var projectData = {
                     $('.clickable-squares-row .square').click(function () {
                         $(this).closest('.clickable-squares-row').find('.square').removeClass('active');
                         $(this).addClass('active');
+
+                        if (!$(this).find('img').attr('src')) {
+                            $(this).find('img').attr('src', $(this).find('img').attr('data-defer-src'));
+                        }
                     });
                 }
             },
