@@ -70,7 +70,7 @@
             <meta itemprop="description" content="Dentacoin Loading Video which is shown whenever website content is still loading">
             <meta itemprop="uploadDate" content="2020-09-19T08:00:00+08:00">
             <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
-            <link itemprop="contentURL" href="">
+            <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/{{$mp4VideoUrl}}">
         </div>
         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="loader-over-map">
             <img data-defer-src="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif" alt="Loader">
