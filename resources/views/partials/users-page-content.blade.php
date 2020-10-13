@@ -32,7 +32,13 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 class-video-container">
-                <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="patient-dentist-triangle-video"></div>
+                <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="patient-dentist-triangle-video">
+                    <meta itemprop="name" content="Dentacoin Currency Video">
+                    <meta itemprop="description" content="Relation between patients and dentists via Dentacoin Currency.">
+                    <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
+                    <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
+                    <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/patient-dentist-triangle-animation.webm">
+                </div>
             </div>
         </div>
     </div>

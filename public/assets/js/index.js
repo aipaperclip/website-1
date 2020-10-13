@@ -229,9 +229,11 @@ var projectData = {
                                 var videoFormat = 'webm';
                                 if (basic.getMobileOperatingSystem() == 'iOS' || basic.getMobileOperatingSystem() == 'Mac') {
                                     videoFormat = 'mp4';
+
+                                    $('.patient-dentist-triangle-video [itemprop="contentURL"]').attr('href', 'https://dentacoin.com/assets/uploads/patient-dentist-triangle-animation.'+videoFormat+'"');
                                 }
 
-                                $('.patient-dentist-triangle-video').html('<video muted="muted" autoplay><source src="/assets/uploads/patient-dentist-triangle-animation.'+videoFormat+'" type="video/'+videoFormat+'"> Your browser does not support HTML5 video.</video><meta itemprop="name" content="Dentacoin Currency Video"><meta itemprop="description" content="Relation between patients and dentists via Dentacoin Currency."><meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00"><meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png"><link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/patient-dentist-triangle-animation.'+videoFormat+'">');
+                                $('.patient-dentist-triangle-video').prepend('<video muted="muted" autoplay><source src="/assets/uploads/patient-dentist-triangle-animation.'+videoFormat+'" type="video/'+videoFormat+'"> Your browser does not support HTML5 video.</video>');
                             }
                         }
                     });
