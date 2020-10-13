@@ -48,8 +48,6 @@
 
     @if((new \App\Http\Controllers\UserController())->checkSession())
         <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style.css?v={{time()}}">
-    @elseif (!(new \App\Http\Controllers\UserController())->checkSession())
-        <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v={{time()}}"/>
     @endif
     <script>
         var HOME_URL = '{{ route("home") }}';

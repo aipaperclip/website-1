@@ -711,10 +711,6 @@ if (typeof jQuery == 'undefined') {
                     var platform_color_and_background = '<style class="platform-colors">.gateway-platform-fill{fill:'+currentPlatformColor+';}.gateway-platform-color{color:'+currentPlatformColor+';}.gateway-platform-color-important{color:'+currentPlatformColor+' !important;}.gateway-platform-background-color{background-color:'+currentPlatformColor+'}.gateway-platform-background-color-important{background-color:'+currentPlatformColor+' !important;}.gateway-platform-border-color{border-color:'+currentPlatformColor+';}.gateway-platform-border-color-important{border-color:'+currentPlatformColor+' !important;}.tooltip-label:after {border-top-color:'+currentPlatformColor+' !important;}</style>';
                     $('head').append(platform_color_and_background);
 
-                    // load avatar cropper
-                    $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');
-                    await $.getScript('https://dentacoin.com/assets/libs/croppie/croppie.min.js', function() {});
-
                     // platform parameter
                     if (!validPlatform) {
                         console.error('False \'platform\' parameter passed to dentacoin login gateway.');
@@ -745,6 +741,11 @@ if (typeof jQuery == 'undefined') {
                         // if inviteid in the URL pass it to the gateway
                         if (getParams.hasOwnProperty('inviteid')) {
                             gatewayData.inviteid = getParams.inviteid;
+                        }
+
+                        // load login gateway style
+                        if (!$('#dentacoin-login-gateway-style').length) {
+                            $('head').append('<link rel="stylesheet" id="dentacoin-login-gateway-style" type="text/css" href="/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v='+new Date().getTime()+'"/>');
                         }
 
                         await dcnGateway.dcnGatewayRequests.getGatewayHtml(gatewayData, async function(gatewayHtml) {
@@ -1433,6 +1434,10 @@ if (typeof jQuery == 'undefined') {
                                     }
 
                                     await $.getScript('https://www.google.com/recaptcha/api.js', function() {});
+
+                                    // load avatar cropper
+                                    $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');
+                                    await $.getScript('https://dentacoin.com/assets/libs/croppie/croppie.min.js', function() {});
                                 }
 
                                 if ($('.next-step').attr('data-cached-step') == 'true') {
@@ -1715,6 +1720,10 @@ if (typeof jQuery == 'undefined') {
                                                 }
 
                                                 await $.getScript('https://www.google.com/recaptcha/api.js', function() {});
+
+                                                // load avatar cropper
+                                                $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');
+                                                await $.getScript('https://dentacoin.com/assets/libs/croppie/croppie.min.js', function() {});
                                             }
                                             break;
                                         case 'fourth':
