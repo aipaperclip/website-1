@@ -109,11 +109,11 @@
     <link rel="preload" href="/assets/fonts/Lato-Light.ttf" as="font">--}}
 
 
-    <link rel="preload" as="style" onload="this.rel='stylesheet'" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.19">
-    <link rel="preload" as="style" onload="this.rel='stylesheet'" type="text/css" href="/assets/css/style.css?v=1.1.19">
+    <link rel=stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.19">
+    <link rel=stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.19">
 
     @if((new \App\Http\Controllers\UserController())->checkSession())
-        <link rel="preload" as="style" onload="this.rel='stylesheet'" type="text/css" href="/assets/libs/dentacoin-package/css/style.css?v={{time()}}">
+        <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style.css?v={{time()}}">
     @endif
     <script>
         var HOME_URL = '{{ route("home") }}';
