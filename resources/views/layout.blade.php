@@ -43,10 +43,14 @@
     <style>
 
     </style>
-    <link rel="preload" href="/assets/fonts/Lato-Bold.woff2" as="font" crossorigin>
-    <link rel="preload" href="/assets/fonts/Lato-Semibold.woff2" as="font" crossorigin>
-    <link rel="preload" href="/assets/fonts/Lato-Regular.woff2" as="font" crossorigin>
-    <link rel="preload" href="/assets/fonts/Lato-Black.woff2" as="font" crossorigin>
+
+    {{--Lato font is used only for the following routes--}}
+    @if(!empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'foundation' || Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists'  || Route::current()->getName() == 'traders'))
+        <link rel="preload" href="/assets/fonts/Lato-Bold.woff2" as="font" crossorigin>
+        <link rel="preload" href="/assets/fonts/Lato-Semibold.woff2" as="font" crossorigin>
+        <link rel="preload" href="/assets/fonts/Lato-Regular.woff2" as="font" crossorigin>
+        <link rel="preload" href="/assets/fonts/Lato-Black.woff2" as="font" crossorigin>
+    @endif
 
     {{--<link rel="preload" href="/assets/fonts/OpenSans-SemiBold.eot" as="font">
     <link rel="preload" href="/assets/fonts/OpenSans-SemiBold.woff2" as="font">
