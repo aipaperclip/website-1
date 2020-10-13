@@ -43,11 +43,72 @@
     <style>
 
     </style>
+    <link rel="preload" href="/assets/fonts/OpenSans-SemiBold.eot" as="font">
+    <link rel="preload" href="/assets/fonts/OpenSans-SemiBold.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/OpenSans-SemiBold.woff" as="font">
+    <link rel="preload" href="/assets/fonts/OpenSans-SemiBold.ttf" as="font">
+
+    <link rel="preload" href="/assets/fonts/OpenSans-Bold.eot" as="font">
+    <link rel="preload" href="/assets/fonts/OpenSans-Bold.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/OpenSans-Bold.woff" as="font">
+    <link rel="preload" href="/assets/fonts/OpenSans-Bold.ttf" as="font">
+
+    <link rel="preload" href="/assets/fonts/Calibri-Bold.eot" as="font">
+    <link rel="preload" href="/assets/fonts/Calibri-Bold.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/Calibri-Bold.woff" as="font">
+    <link rel="preload" href="/assets/fonts/Calibri-Bold.ttf" as="font">
+
+    <link rel="preload" href="/assets/fonts/calibril.eot" as="font">
+    <link rel="preload" href="/assets/fonts/calibril.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/calibril.woff" as="font">
+    <link rel="preload" href="/assets/fonts/calibril.ttf" as="font">
+
+    <link rel="preload" href="/assets/fonts/Lato-Italic.eot" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Italic.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Italic.woff" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Italic.ttf" as="font">
+
+    <link rel="preload" href="/assets/fonts/Lato-Heavy.eot" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Heavy.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Heavy.woff" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Heavy.ttf" as="font">
+
+    <link rel="preload" href="/assets/fonts/Lato-Bold.eot" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Bold.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Bold.woff" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Bold.ttf" as="font">
+
+    <link rel="preload" href="/assets/fonts/Lato-Black.eot" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Black.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Black.woff" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Black.ttf" as="font">
+
+    <link rel="preload" href="/assets/fonts/Calibri.eot" as="font">
+    <link rel="preload" href="/assets/fonts/Calibri.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/Calibri.woff" as="font">
+    <link rel="preload" href="/assets/fonts/Calibri.ttf" as="font">
+
+    <link rel="preload" href="/assets/fonts/Lato-Semibold.eot" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Semibold.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Semibold.woff" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Semibold.ttf" as="font">
+
+    <link rel="preload" href="/assets/fonts/Lato-Regular.eot" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Regular.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Regular.woff" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Regular.ttf" as="font">
+
+    <link rel="preload" href="/assets/fonts/Lato-Light.eot" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Light.woff2" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Light.woff" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Light.ttf" as="font">
+
+
     <link rel="preload" as="style" onload="this.rel='stylesheet'" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.19">
     <link rel="preload" as="style" onload="this.rel='stylesheet'" type="text/css" href="/assets/css/style.css?v=1.1.19">
 
     @if((new \App\Http\Controllers\UserController())->checkSession())
-        <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style.css?v={{time()}}">
+        <link rel="preload" as="style" onload="this.rel='stylesheet'" type="text/css" href="/assets/libs/dentacoin-package/css/style.css?v={{time()}}">
     @endif
     <script>
         var HOME_URL = '{{ route("home") }}';

@@ -406,39 +406,57 @@ var projectData = {
                     $('.google-play-btn').fadeIn(500);
                 }
 
-                // add styles for latest twitter tweets iframe
-                var twitterStyleInterval = setInterval(function() {
-                    if ($('iframe.twitter-timeline').length) {
-                        $('body').addClass('overflow-hidden');
-                        if ($(window).width() < 767) {
-                            $('iframe.twitter-timeline').contents().find('head').append('<style>.timeline-Header, .timeline-Footer{display:none}.timeline-Widget{max-width: none !important;}.timeline-TweetList{font-size: 0;position:relative;}li.timeline-TweetList-tweet {display: inline-block;vertical-align: top;width:100%}.SandboxRoot.env-bp-970 .timeline-Tweet-text {font-size: 16px !important; line-height: 22px !important;font-weight: 300;}.timeline-TweetList-tweet:nth-of-type(2){top: 0;position: absolute;left: 100%;background: white;--moz-transition: 0.3s;-ms-transition: 0.3s;transition: 0.3s;z-index:50;}.timeline-TweetList-tweet:nth-of-type(3){top: 0;position: absolute;left: 100%;background: white;--moz-transition: 0.3s;-ms-transition: 0.3s;transition: 0.3s;z-index:100;}</style>');
+                var twitterInit = true;
+                // if on load the view is scrolled to the twitter section
+                if (basic.isInViewport($('.section-latest-twitter-data'))) {
+                    twitterInit = false;
+                    initTwitterLatestTweets();
+                }
 
-                            $('iframe.twitter-timeline').height('auto');
+                $(window).on('scroll', function() {
+                    if (twitterInit && basic.isInViewport($('.section-latest-twitter-data'))) {
+                        twitterInit = false;
+                        initTwitterLatestTweets();
+                    }
+                });
 
-                            $('.tweets-iframe-container').append('<div class="tweet-bullets padding-top-10 padding-bottom-15"><a href="javascript:void(0);" class="inline-block first active"></a><a href="javascript:void(0);" class="inline-block second"></a><a href="javascript:void(0);" class="inline-block third"></a></div>');
+                async function initTwitterLatestTweets() {
+                    await $.getScript('//platform.twitter.com/widgets.js');
 
-                            $('.tweet-bullets a').click(function() {
-                                $('.tweet-bullets a').removeClass('active');
-                                $(this).addClass('active');
-
-                                if ($(this).hasClass('first')) {
-                                    $('iframe.twitter-timeline').contents().find('head').append('<style>.timeline-TweetList-tweet:nth-of-type(2){left: 100% !important}.timeline-TweetList-tweet:nth-of-type(3){left: 100% !important}</style>');
-                                } else if ($(this).hasClass('second')) {
-                                    $('iframe.twitter-timeline').contents().find('head').append('<style>.timeline-TweetList-tweet:nth-of-type(2){left: 0 !important}.timeline-TweetList-tweet:nth-of-type(3){left: 100% !important}</style>');
-                                } else if ($(this).hasClass('third')) {
-                                    $('iframe.twitter-timeline').contents().find('head').append('<style>.timeline-TweetList-tweet:nth-of-type(2){left: 100% !important}.timeline-TweetList-tweet:nth-of-type(3){left: 0 !important}</style>');
-                                }
+                    // add styles for latest twitter tweets iframe
+                    var twitterStyleInterval = setInterval(function() {
+                        if ($('iframe.twitter-timeline').length) {
+                            $('body').addClass('overflow-hidden');
+                            if ($(window).width() < 767) {
+                                $('iframe.twitter-timeline').contents().find('head').append('<style>.timeline-Header, .timeline-Footer{display:none}.timeline-Widget{max-width: none !important;}.timeline-TweetList{font-size: 0;position:relative;}li.timeline-TweetList-tweet {display: inline-block;vertical-align: top;width:100%}.SandboxRoot.env-bp-970 .timeline-Tweet-text {font-size: 16px !important; line-height: 22px !important;font-weight: 300;}.timeline-TweetList-tweet:nth-of-type(2){top: 0;position: absolute;left: 100%;background: white;--moz-transition: 0.3s;-ms-transition: 0.3s;transition: 0.3s;z-index:50;}.timeline-TweetList-tweet:nth-of-type(3){top: 0;position: absolute;left: 100%;background: white;--moz-transition: 0.3s;-ms-transition: 0.3s;transition: 0.3s;z-index:100;}</style>');
 
                                 $('iframe.twitter-timeline').height('auto');
-                            });
-                        } else {
-                            $('iframe.twitter-timeline').height('auto').contents().find('head').append('<style>.timeline-Header, .timeline-Footer{display:none}.timeline-Widget{max-width: none !important;}.timeline-TweetList{font-size: 0;}li.timeline-TweetList-tweet {display: inline-block;vertical-align: top;width:33.33333%}.SandboxRoot.env-bp-970 .timeline-Tweet-text {font-size: 16px !important; line-height: 22px !important;font-weight: 300;}</style>');
-                        }
-                        $('body').removeClass('overflow-hidden');
 
-                        clearInterval(twitterStyleInterval);
-                    }
-                }, 500);
+                                $('.tweets-iframe-container').append('<div class="tweet-bullets padding-top-10 padding-bottom-15"><a href="javascript:void(0);" class="inline-block first active"></a><a href="javascript:void(0);" class="inline-block second"></a><a href="javascript:void(0);" class="inline-block third"></a></div>');
+
+                                $('.tweet-bullets a').click(function() {
+                                    $('.tweet-bullets a').removeClass('active');
+                                    $(this).addClass('active');
+
+                                    if ($(this).hasClass('first')) {
+                                        $('iframe.twitter-timeline').contents().find('head').append('<style>.timeline-TweetList-tweet:nth-of-type(2){left: 100% !important}.timeline-TweetList-tweet:nth-of-type(3){left: 100% !important}</style>');
+                                    } else if ($(this).hasClass('second')) {
+                                        $('iframe.twitter-timeline').contents().find('head').append('<style>.timeline-TweetList-tweet:nth-of-type(2){left: 0 !important}.timeline-TweetList-tweet:nth-of-type(3){left: 100% !important}</style>');
+                                    } else if ($(this).hasClass('third')) {
+                                        $('iframe.twitter-timeline').contents().find('head').append('<style>.timeline-TweetList-tweet:nth-of-type(2){left: 100% !important}.timeline-TweetList-tweet:nth-of-type(3){left: 0 !important}</style>');
+                                    }
+
+                                    $('iframe.twitter-timeline').height('auto');
+                                });
+                            } else {
+                                $('iframe.twitter-timeline').height('auto').contents().find('head').append('<style>.timeline-Header, .timeline-Footer{display:none}.timeline-Widget{max-width: none !important;}.timeline-TweetList{font-size: 0;}li.timeline-TweetList-tweet {display: inline-block;vertical-align: top;width:33.33333%}.SandboxRoot.env-bp-970 .timeline-Tweet-text {font-size: 16px !important; line-height: 22px !important;font-weight: 300;}</style>');
+                            }
+                            $('body').removeClass('overflow-hidden');
+
+                            clearInterval(twitterStyleInterval);
+                        }
+                    }, 500);
+                }
 
                 // add roadmap show logic
                 if ($('.section-dentacoin-roadmap').length) {
@@ -450,6 +468,8 @@ var projectData = {
 
                         $('.single-year-content').hide();
                         $('.single-year-content[data-year="'+$(this).attr('data-year')+'"]').fadeIn(500);
+
+                        projectData.general_logic.data.loadDeferImages();
                     });
                 }
 

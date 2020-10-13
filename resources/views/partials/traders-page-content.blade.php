@@ -349,8 +349,7 @@
         </div>
     </section>
 @endif
-<section
-        class="section-latest-twitter-data container-fluid padding-top-50 padding-top-xs-20 padding-top-lgll-100 padding-bottom-90">
+<section class="section-latest-twitter-data container-fluid padding-top-50 padding-top-xs-20 padding-top-lgll-100 padding-bottom-90">
     <div class="row">
         <div class="col-xs-12 color-black text-center padding-bottom-40 padding-bottom-lgll-60">
             <h2 class="lato-bold fs-30 fs-sm-24 fs-xs-20 padding-bottom-lgll-10">FOLLOW US ON</h2>
@@ -360,7 +359,6 @@
     <div class="row">
         <div class="col-xs-12 color-black tweets-iframe-container">
             <a class="twitter-timeline" href="https://twitter.com/dentacoin" data-tweet-limit="3">Tweets by @dentacoin</a>
-            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
     </div>
     <div class="row">
