@@ -1,5 +1,5 @@
 @if (sizeof($user_expressions) > 0)
-    <div class="container-fluid padding-top-10 padding-bottom-50 padding-bottom-xs-10 padding-bottom-sm-10">
+    <div class="container-fluid padding-top-10 padding-bottom-50">
         <div class="row">
             <div class="col-xs-12 overflow-hidden user-expressions-slider-parent module padding-top-50 padding-top-xs-20 padding-bottom-10">
                 <div class="user-expressions-slider" data-type="{{$type}}">
@@ -33,6 +33,11 @@
                         </div>
                     @endforeach
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <a href="{{route('testimonials', ['page' => 1])}}" class="white-bright-blue-btn">SEE ALL</a>
             </div>
         </div>
     </div>

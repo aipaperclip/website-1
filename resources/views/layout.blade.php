@@ -43,8 +43,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.19">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.19">
+    <link rel="preload" as="style" onload="this.rel='stylesheet'" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.19">
+    <link rel="preload" as="style" onload="this.rel='stylesheet'" type="text/css" href="/assets/css/style.css?v=1.1.19">
 
     @if((new \App\Http\Controllers\UserController())->checkSession())
         <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style.css?v={{time()}}">
@@ -240,16 +240,7 @@
             <img src="//hub.dentacoin.com/custom-cookie?logout-token={{ urlencode(session('logout_token')) }}" class="hide"/>
         @endif
     @endif
-    <div class="camping-loader">
-        {{--<div class="response-layer">
-            <div class="wrapper">
-                <video muted="muted" autoplay>
-                    <source src="/assets/test-video.mp4" type="video/mp4">
-                    Your browser does not support HTML5 video.
-                </video>
-            </div>
-        </div>--}}
-    </div>
+    <div class="camping-loader"></div>
     @if(!empty($_COOKIE['marketing_cookies']))
         <!--Start of Tawk.to Script-->
         {{--<script type="text/javascript">
