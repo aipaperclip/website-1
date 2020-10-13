@@ -12,7 +12,7 @@
                     <div class="col-xs-12 col-md-8 col-md-offset-2 single fs-0">
                         <div class="inline-block-top image-and-socials">
                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                <img src="{{URL::asset('assets/uploads/'.$team_member->media->name) }}" alt="@if(!empty($team_member->media->alt)){{$team_member->media->alt}}@endif" itemprop="contentUrl"/>
+                                <img data-defer-src="{{URL::asset('assets/uploads/'.$team_member->media->name) }}" alt="@if(!empty($team_member->media->alt)){{$team_member->media->alt}}@endif" itemprop="contentUrl"/>
                             </figure>
                             <div class="socials">
                                 @if(!empty($team_member->mail))
@@ -60,7 +60,7 @@
                             @if(!empty($advisor->text) && !empty($advisor->media))
                                 <div class="single">
                                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="{{URL::asset('assets/uploads/'.$advisor->media->name) }}" alt="@if(!empty($advisor->media->alt)){{$advisor->media->alt}}@endif" itemprop="contentUrl"/>
+                                        <img data-defer-src="{{URL::asset('assets/uploads/'.$advisor->media->name) }}" alt="@if(!empty($advisor->media->alt)){{$advisor->media->alt}}@endif" itemprop="contentUrl"/>
                                     </figure>
                                     <div class="name">{{$advisor->name}}</div>
                                     @if(!empty($advisor->position))
@@ -106,7 +106,7 @@
                             <div class="single">
                                 @if(!empty($more_advisor->media))
                                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="{{URL::asset('assets/uploads/'.$more_advisor->media->name) }}" alt="@if(!empty($more_advisor->media->alt)){{$more_advisor->media->alt}}@endif" itemprop="contentUrl"/>
+                                        <img data-defer-src="{{URL::asset('assets/uploads/'.$more_advisor->media->name) }}" alt="@if(!empty($more_advisor->media->alt)){{$more_advisor->media->alt}}@endif" itemprop="contentUrl"/>
                                     </figure>
                                 @endif
                                 <div class="name">{{$more_advisor->name}}</div>

@@ -56,7 +56,7 @@
                                         <a href="{{$exchange_platform->link}}" target="_blank"
                                            class="exchange-link text-center lato-bold display-block padding-bottom-10 traders-page-exchange-click-gtag-event">
                                             @if($exchange_platform->media) <img
-                                                    src="{{URL::asset('assets/uploads/' . $exchange_platform->media->name) }}"
+                                                    data-defer-src="{{URL::asset('assets/uploads/' . $exchange_platform->media->name) }}"
                                                     alt="{{$exchange_platform->media->alt}}"
                                                     class="inline-block"/> @endif
                                             <span class="inline-block padding-left-5 fs-18">{{$exchange_platform->title}}</span>
@@ -91,7 +91,7 @@
                                 @php($exchangeCounter = $exchangeCounter + 1)
                                 <div class="col-xs-6 col-md-4 col-lg-2 inline-block-top padding-bottom-50 padding-bottom-xs-30 single-exchange" data-exchange-name="{{$exchange_platform->title}}">
                                     <a href="{{$exchange_platform->link}}" target="_blank" class="exchange-link text-center lato-bold display-block padding-bottom-10 traders-page-exchange-click-gtag-event">
-                                        @if($exchange_platform->media) <img src="{{URL::asset('assets/uploads/' . $exchange_platform->media->name) }}" alt="{{$exchange_platform->media->alt}}" class="inline-block"/> @endif
+                                        @if($exchange_platform->media) <img data-defer-src="{{URL::asset('assets/uploads/' . $exchange_platform->media->name) }}" alt="{{$exchange_platform->media->alt}}" class="inline-block"/> @endif
                                         <span class="inline-block padding-left-5 fs-18">{{$exchange_platform->title}}</span>
                                     </a>
                                     @php($pairs = \App\ExchangePair::where(array('exchange_id' => $exchange_platform->id))->get()->sortBy('order_id'))
@@ -144,7 +144,7 @@
         <div class="col-xs-12 col-md-6 col-lg-5 col-lg-offset-1 padding-bottom-50">
             <figure class="max-width-60 inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
                 <img alt="Max supply icon" itemprop="contentUrl" class="width-100"
-                     src="/assets/uploads/max-supply-icon.svg"/>
+                     data-defer-src="/assets/uploads/max-supply-icon.svg"/>
             </figure>
             <div class="right-to-image inline-block-top padding-left-15 padding-left-xs-0 padding-left-sm-0 lato-bold">
                 <h4 class="fs-28 fs-xs-22 color-black">Max supply:</h4>
@@ -154,7 +154,7 @@
         <div class="col-xs-12 col-md-6 col-lg-5 padding-bottom-50">
             <figure class="max-width-60 inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
                 <img alt="Unlocked supply icon" itemprop="contentUrl" class="width-100"
-                     src="/assets/uploads/total-unlocked-icon.svg"/>
+                     data-defer-src="/assets/uploads/total-unlocked-icon.svg"/>
             </figure>
             <div class="right-to-image inline-block-top padding-left-15 padding-left-xs-0 padding-left-sm-0 lato-bold">
                 <h4 class="fs-28 fs-xs-22 color-black">Total unlocked:</h4>
@@ -164,7 +164,7 @@
         <div class="col-xs-12 col-md-6 col-lg-5 col-lg-offset-1 padding-bottom-50">
             <figure class="max-width-60 inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
                 <img alt="Locked supply icon" itemprop="contentUrl" class="width-100"
-                     src="/assets/uploads/locked-icon.svg"/>
+                     data-defer-src="/assets/uploads/locked-icon.svg"/>
             </figure>
             <div class="right-to-image inline-block-top padding-left-15 padding-left-xs-0 padding-left-sm-0 lato-bold">
                 <h4 class="fs-28 fs-xs-22 color-black padding-bottom-10">Partly Locked:</h4>
@@ -177,7 +177,7 @@
         <div class="col-xs-12 col-md-6 col-lg-5 padding-bottom-50">
             <figure class="max-width-60 inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
                 <img alt="Coin burn icon" itemprop="contentUrl" class="width-100"
-                     src="/assets/uploads/burned-icon.svg"/>
+                     data-defer-src="/assets/uploads/burned-icon.svg"/>
             </figure>
             <div class="right-to-image inline-block-top padding-left-15 lato-bold">
                 <h4 class="fs-28 fs-xs-22 color-black padding-bottom-10">Coin Burn Sessions:</h4>
@@ -199,10 +199,10 @@
     </div>
     <div class="row middle-animated-subsection padding-top-20 padding-bottom-20">
         <figure class="left-animated-border" itemscope="" itemtype="http://schema.org/ImageObject">
-            <img alt="Animated border" itemprop="contentUrl" src="/assets/uploads/left-animated-border.svg"/>
+            <img alt="Animated border" itemprop="contentUrl" data-defer-src="/assets/uploads/left-animated-border.svg"/>
         </figure>
         <figure class="right-animated-border" itemscope="" itemtype="http://schema.org/ImageObject">
-            <img alt="Animated border" itemprop="contentUrl" src="/assets/uploads/right-animated-border.svg"/>
+            <img alt="Animated border" itemprop="contentUrl" data-defer-src="/assets/uploads/right-animated-border.svg"/>
         </figure>
         <div class="col-xs-12 col-lg-10 col-lg-offset-1">
             <div class="animation-wrapper">
@@ -229,9 +229,9 @@
                class="display-block color-black traders-page-dentacoin-intro-click-gtag-event">
                 <figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
                     <img alt="Dentacoin gif intro" itemprop="contentUrl" class="width-100 max-width-100 gif-version"
-                         src="/assets/uploads/dcn-info-icon-animation.gif"/>
+                         data-defer-src="/assets/uploads/dcn-info-icon-animation.gif"/>
                     <img alt="Dentacoin image icon" itemprop="contentUrl" class="width-100 max-width-100 image-version"
-                         src="/assets/uploads/dcn-info-icon-animation.png"/>
+                         data-defer-src="/assets/uploads/dcn-info-icon-animation.png"/>
                     <figcaption class="lato-bold fs-20 padding-top-10">Dentacoin Intro</figcaption>
                 </figure>
             </a>
@@ -241,9 +241,9 @@
                class="display-block color-black traders-page-whitepaper-click-gtag-event">
                 <figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
                     <img alt="Whitepaper gif icon" itemprop="contentUrl" class="width-100 max-width-100 gif-version"
-                         src="/assets/uploads/dcn-whitepaper-icon-animation.gif"/>
+                         data-defer-src="/assets/uploads/dcn-whitepaper-icon-animation.gif"/>
                     <img alt="Whitepaper image icon" itemprop="contentUrl" class="width-100 max-width-100 image-version"
-                         src="/assets/uploads/dcn-whitepaper-icon-animation.png"/>
+                         data-defer-src="/assets/uploads/dcn-whitepaper-icon-animation.png"/>
                     <figcaption class="lato-bold fs-20 padding-top-10">Dentacoin Whitepaper</figcaption>
                 </figure>
             </a>
@@ -252,9 +252,9 @@
             <a href="https://coinmarketcap.com/currencies/dentacoin/" target="_blank" class="display-block color-black traders-page-cmc-click-gtag-event">
                 <figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
                     <img alt="CoinMarketCap gif icon" itemprop="contentUrl" class="width-100 max-width-100 gif-version"
-                         src="/assets/uploads/cmc-icon-animation.gif"/>
+                         data-defer-src="/assets/uploads/cmc-icon-animation.gif"/>
                     <img alt="CoinMarketCap image icon" itemprop="contentUrl"
-                         class="width-100 max-width-100 image-version" src="/assets/uploads/cmc-icon-animation.png"/>
+                         class="width-100 max-width-100 image-version" data-defer-src="/assets/uploads/cmc-icon-animation.png"/>
                     <figcaption class="lato-bold fs-20 padding-top-10">CoinMarketCap</figcaption>
                 </figure>
             </a>
@@ -328,13 +328,13 @@
                                                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                         <img alt="Checked icon" itemprop="contentUrl"
                                                              class="width-100 max-width-40 max-width-xs-30"
-                                                             src="/assets/uploads/roadmap-checked-icon.svg"/>
+                                                             data-defer-src="/assets/uploads/roadmap-checked-icon.svg"/>
                                                     </figure>
                                                 @else
                                                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                                         <img alt="Unchecked icon" itemprop="contentUrl"
                                                              class="width-100 max-width-40 max-width-xs-30"
-                                                             src="/assets/uploads/roadmap-not-checked-icon.svg"/>
+                                                             data-defer-src="/assets/uploads/roadmap-not-checked-icon.svg"/>
                                                     </figure>
                                                 @endif
                                             </div>
@@ -380,12 +380,12 @@
                 <div class="padding-top-25 padding-top-lgll-40 padding-bottom-10 text-center">
                     <a href="https://play.google.com/store/apps/details?id=wallet.dentacoin.com" target="_blank"
                        class="inline-block padding-left-10 padding-right-10 padding-bottom-10 google-play-btn">
-                        <img src="/assets/uploads/google-play-badge.svg" class="width-100 max-width-220"
+                        <img data-defer-src="/assets/uploads/google-play-badge.svg" class="width-100 max-width-220"
                              alt="Google Play button">
                     </a>
                     <a href="https://apps.apple.com/us/app/dentacoin-wallet/id1478732657" target="_blank"
                        class="inline-block padding-left-10 padding-right-10 padding-bottom-10 app-store-btn">
-                        <img src="/assets/uploads/app-store.svg" class="width-100 max-width-220" alt="App store button">
+                        <img data-defer-src="/assets/uploads/app-store.svg" class="width-100 max-width-220" alt="App store button">
                     </a>
                 </div>
             </div>
@@ -394,9 +394,9 @@
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-12 col-md-offset-0 padding-top-40 padding-top-xs-10">
                 <figure itemscope="" itemtype="http://schema.org/ImageObject" class="laptop-phone-holder">
                     <img alt="Dentacoin wallet app on laptop" class="laptop" itemprop="contentUrl"
-                         src="/assets/uploads/laptop-wallet-app-banner.png"/>
+                         data-defer-src="/assets/uploads/laptop-wallet-app-banner.png"/>
                     <img alt="Dentacoin wallet app on phone" class="phone" itemprop="contentUrl"
-                         src="/assets/uploads/phone-wallet-app-banner.png"/>
+                         data-defer-src="/assets/uploads/phone-wallet-app-banner.png"/>
                 </figure>
             </div>
         </div>

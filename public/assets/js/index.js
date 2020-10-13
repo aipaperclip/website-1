@@ -1,21 +1,9 @@
 console.log('Don\'t touch the code. Or do ... ¯\\_(ツ)_/¯');
 
-//load images after website load
-function loadDeferImages() {
-    for (var i = 0, len = jQuery('[data-defer-src]').length; i < len; i += 1) {
-        var elementInViewport = jQuery('[data-defer-src]').eq(i);
-
-        if (basic.isInViewport(elementInViewport) && jQuery('[data-defer-src]').eq(i).attr('src') == undefined) {
-            jQuery('[data-defer-src]').eq(i).attr('src', jQuery('[data-defer-src]').eq(i).attr('data-defer-src'));
-        }
-    }
-}
-
-loadDeferImages();
-
 var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
 var allowedDocumentExtensions = ['pdf', 'doc', 'docx', 'ppt', 'pptx', 'odt', 'rtf'];
 var get_params = basic.getGETParameters();
+var loadedLibs = {};
 
 $(window).on('load', function () {
     if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) {
@@ -61,7 +49,7 @@ $(window).on('load', function () {
 });
 
 $(window).on('scroll', function () {
-    loadDeferImages();
+    projectData.general_logic.data.loadDeferImages();
 });
 
 $(window).on('resize', function () {
@@ -173,7 +161,7 @@ var projectData = {
                     }, 2000);
                 }
             },
-            users: function(bodyClassCheck) {
+            users: async function(bodyClassCheck) {
                 if (bodyClassCheck != undefined) {
                     if (!$('body').hasClass('users')) {
                         return false;
@@ -207,6 +195,18 @@ var projectData = {
                 projectData.general_logic.data.showStickySubpagesNav();
 
                 if ($('#append-big-hub-dentacoin').length) {
+                    if (!hasOwnProperty.call(loadedLibs, 'bigHubStyle')) {
+                        console.log('bigHubStyle loaded');
+                        loadedLibs.bigHubStyle = true;
+                        $('head').append('<link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v='+new Date().getTime()+'"/>');
+                    }
+
+                    if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
+                        console.log('dentacoinPackageJs loaded');
+                        loadedLibs.dentacoinPackageJs = true;
+                        await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
+                    }
+
                     var bigHubParams = {
                         'element_id_to_append' : 'append-big-hub-dentacoin',
                         'type_hub' : 'dentacoin',
@@ -238,8 +238,8 @@ var projectData = {
                 }
                 $('body').removeClass('overflow-hidden');
 
-                projectData.general_logic.data.videoExpressionsSlider('users');
-                projectData.general_logic.data.userExpressionsSlider('users');
+                await projectData.general_logic.data.videoExpressionsSlider('users');
+                await projectData.general_logic.data.userExpressionsSlider('users');
 
                 var mapVisible = false;
                 function loadMap() {
@@ -256,7 +256,7 @@ var projectData = {
                 $(window).unbind('scroll', loadMap);
                 $(window).bind('scroll', loadMap);
             },
-            dentists: function(bodyClassCheck) {
+            dentists: async function(bodyClassCheck) {
                 if (bodyClassCheck != undefined) {
                     if (!$('body').hasClass('dentists')) {
                         return false;
@@ -282,7 +282,12 @@ var projectData = {
                     $('footer').removeClass('black-style');
                     for (var i = 0, len = $('.socials ul li a img').length; i < len; i+=1) {
                         var currentSocial = $('.socials ul li a img').eq(i);
-                        currentSocial.attr('src', currentSocial.attr('data-default-src')).attr('alt', currentSocial.attr('data-default-alt'));
+                        if (currentSocial.attr('src')) {
+                            // means scroll reached footer and socials are already loaded
+                            currentSocial.attr('src', currentSocial.attr('data-default-src')).attr('alt', currentSocial.attr('data-default-alt'));
+                        } else {
+                            currentSocial.attr('data-defer-src', currentSocial.attr('data-default-src')).attr('alt', currentSocial.attr('data-default-alt'));
+                        }
                     }
                 }
 
@@ -309,8 +314,8 @@ var projectData = {
                     });
                 }
 
-                projectData.general_logic.data.videoExpressionsSlider('dentists');
-                projectData.general_logic.data.userExpressionsSlider('dentists');
+                await projectData.general_logic.data.videoExpressionsSlider('dentists');
+                await projectData.general_logic.data.userExpressionsSlider('dentists');
 
                 var mapVisible = false;
                 function loadMap() {
@@ -327,7 +332,7 @@ var projectData = {
                 $(window).unbind('scroll', loadMap);
                 $(window).bind('scroll', loadMap);
             },
-            traders: function(bodyClassCheck) {
+            traders: async function(bodyClassCheck) {
                 if (bodyClassCheck != undefined) {
                     if (!$('body').hasClass('traders')) {
                         return false;
@@ -350,6 +355,14 @@ var projectData = {
                 }*/
 
                 if ($('.mobile-exchanges').length) {
+                    // load slick lib
+                    if (!hasOwnProperty.call(loadedLibs, 'slick')) {
+                        console.log('slick loaded');
+                        loadedLibs.slick = true;
+                        $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        await $.getScript('/dist/libs/slick/slick.min.js', function() {});
+                    }
+
                     $('.mobile-exchanges .slider-row').slick({
                         slidesToShow: 1,
                         infinite: true,
@@ -374,7 +387,12 @@ var projectData = {
                 $('footer').addClass('black-style');
                 for (var i = 0, len = $('.socials ul li a img').length; i < len; i+=1) {
                     var currentSocial = $('.socials ul li a img').eq(i);
-                    currentSocial.attr('src', currentSocial.attr('data-black-style-src')).attr('alt', currentSocial.attr('data-black-style-alt'));
+                    if (currentSocial.attr('src')) {
+                        // means scroll reached footer and socials are already loaded
+                        currentSocial.attr('src', currentSocial.attr('data-black-style-src')).attr('alt', currentSocial.attr('data-black-style-alt'));
+                    } else {
+                        currentSocial.attr('data-defer-src', currentSocial.attr('data-black-style-src')).attr('alt', currentSocial.attr('data-black-style-alt'));
+                    }
                 }
 
                 if (basic.isMobile()) {
@@ -583,8 +601,16 @@ var projectData = {
                     }
                 }
             },
-            team: function() {
+            team: async function() {
                 if ($('body').hasClass('team')) {
+                    // load slick lib
+                    if (!hasOwnProperty.call(loadedLibs, 'slick')) {
+                        console.log('slick loaded');
+                        loadedLibs.slick = true;
+                        $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        await $.getScript('/dist/libs/slick/slick.min.js', function() {});
+                    }
+
                     $('.team-container .advisors .advisors-slider').slick({
                         slidesToShow: 3,
                         autoplay: true,
@@ -746,9 +772,17 @@ var projectData = {
                     initMap();
                 }
             },
-            berlinRoundtable: function() {
+            berlinRoundtable: async function() {
                 if ($('body').hasClass('berlin-roundtable')) {
                     // BERLIN ROUNDTABLE
+
+                    // load slick lib
+                    if (!hasOwnProperty.call(loadedLibs, 'slick')) {
+                        console.log('slick loaded');
+                        loadedLibs.slick = true;
+                        $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        await $.getScript('/dist/libs/slick/slick.min.js', function() {});
+                    }
 
                     $(document).on('click', '.reserve-your-spot', function() {
                         $('html, body').animate({'scrollTop': $('.reserve-your-spot-form').offset().top }, 300);
@@ -848,6 +882,15 @@ var projectData = {
             projectData.general_logic.data.cookie();
         },
         data: {
+            loadDeferImages: function() {
+                for (var i = 0, len = jQuery('[data-defer-src]').length; i < len; i += 1) {
+                    var elementInViewport = jQuery('[data-defer-src]').eq(i);
+
+                    if (basic.isInViewport(elementInViewport) && jQuery('[data-defer-src]').eq(i).attr('src') == undefined) {
+                        jQuery('[data-defer-src]').eq(i).attr('src', jQuery('[data-defer-src]').eq(i).attr('data-defer-src'));
+                    }
+                }
+            },
             gateway: function() {
                 dcnGateway.init({
                     'platform': 'dentacoin',
@@ -865,19 +908,32 @@ var projectData = {
                     window.location.href = window.location.href + '?cross-login=true';
                 });
             },
-            cookie: function() {
-                if (typeof(dcnCookie) != undefined) {
-                    dcnCookie.init({
-                        'google_app_id': 'UA-97167262-1',
-                        'fb_app_id': '2366034370318681'
-                    });
+            cookie: async function() {
+                if (basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '') {
+                    if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
+                        console.log('dentacoinPackageJs loaded');
+                        loadedLibs.dentacoinPackageJs = true;
+                        $('head').append('<link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style-cookie.css?v='+new Date().getTime()+'"/>');
+                        await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
+
+                        if (typeof(dcnCookie) != 'undefined') {
+                            dcnCookie.init({
+                                'google_app_id': 'UA-97167262-1',
+                                'fb_app_id': '2366034370318681'
+                            });
+                        }
+                    }
                 }
             },
             showLoader: function() {
-                $('.response-layer').show();
+                if (!$('.camping-loader').hasClass('loaded')) {
+                    $('.camping-loader').html('<div class="response-layer"><div class="wrapper"><picture itemscope="" itemtype="http://schema.org/ImageObject"><source media="(max-width: 768px)" srcset="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif"><img itemprop="contentUrl" src="/assets/uploads/dcn-flipping-coin-logo-loader-v3_desktop.gif" class="max-width-250 max-width-xs-200" alt="Loader"></picture></div></div>').addClass('loaded');
+                } else {
+                    $('.camping-loader').show();
+                }
             },
             hideLoader: function() {
-                $('.response-layer').hide();
+                $('.camping-loader').hide();
             },
             handlePushStateRedirects: function(event) {
                 if (window.location.href.includes('users')) {
@@ -890,8 +946,14 @@ var projectData = {
                     window.location.href = HOME_URL;
                 }
             },
-            miniHub: function() {
-                console.log('miniHub');
+            miniHub: async function() {
+                if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
+                    loadedLibs.dentacoinPackageJs = true;
+                    console.log('dentacoinPackageJs loaded');
+                    await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
+                }
+
+                // /assets/libs/dentacoin-package/js/init.js?v=
                 var miniHubParams = {
                     'element_id_to_bind': 'header-avatar',
                     'platform': 'dentacoin',
@@ -912,8 +974,16 @@ var projectData = {
 
                 dcnHub.initMiniHub(miniHubParams);
             },
-            videoExpressionsSlider: function(type) {
+            videoExpressionsSlider: async function(type) {
                 if ($('.module.video-expressions-slider[data-type="'+type+'"]').length) {
+                    // load slick lib
+                    if (!hasOwnProperty.call(loadedLibs, 'slick')) {
+                        console.log('slick loaded');
+                        loadedLibs.slick = true;
+                        $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        await $.getScript('/dist/libs/slick/slick.min.js', function() {});
+                    }
+
                     // add youtube API
                     var tag = document.createElement('script');
                     tag.src = "https://www.youtube.com/iframe_api";
@@ -1022,8 +1092,16 @@ var projectData = {
                     }
                 }
             },
-            userExpressionsSlider(type) {
+            userExpressionsSlider: async function(type) {
                 if ($('.user-expressions-slider[data-type="'+type+'"]').length) {
+                    // load slick lib
+                    if (!hasOwnProperty.call(loadedLibs, 'slick')) {
+                        console.log('slick loaded');
+                        loadedLibs.slick = true;
+                        $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        await $.getScript('/dist/libs/slick/slick.min.js', function() {});
+                    }
+
                     $('.user-expressions-slider[data-type="'+type+'"]').slick({
                         slidesToShow: 3,
                         infinite: true,
@@ -1106,6 +1184,13 @@ var projectData = {
                 }
             },
             async dentacoinGoogleMap() {
+                if (!hasOwnProperty.call(loadedLibs, 'googleMap')) {
+                    console.log('googleMap loaded');
+                    loadedLibs.googleMap = true;
+                    await $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en', function() {});
+                    await $.getScript('/dist/js/init-map.min.js', function() {});
+                }
+
                 if (basic.getMobileOperatingSystem() == 'Mac') {
                     $('.section-google-map').addClass('safari-browser');
                 }
@@ -2594,6 +2679,9 @@ var projectData = {
         },
     }
 };
+
+//load images after website load
+projectData.general_logic.data.loadDeferImages();
 
 if ($('body').hasClass('logged-in')) {
     projectData.pages.logged_in();

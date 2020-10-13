@@ -19,10 +19,10 @@
                         <div class="slide-wrapper">
                             <div class="video-thumb">
                                 <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="https://img.youtube.com/vi/{{$videoId}}/maxresdefault.jpg" alt="Youtube video thumbnail" itemprop="contentUrl"/>
+                                    <img data-defer-src="https://img.youtube.com/vi/{{$videoId}}/maxresdefault.jpg" alt="Youtube video thumbnail" itemprop="contentUrl"/>
                                 </figure>
                                 <a href="javascript:void(0);" class="youtube-play-button" data-id="{{$video_expression->id}}">
-                                    <img src="/assets/images/youtube-play-button.png" alt="Youtube play video" itemprop="contentUrl"/>
+                                    <img data-defer-src="/assets/images/youtube-play-button.png" alt="Youtube play video" itemprop="contentUrl"/>
                                 </a>
                             </div>
                         </div>

@@ -23,9 +23,9 @@
                                 <div class="person-avatar">
                                     <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                         @if(empty($user_expression->media))
-                                            <img src="/assets/images/avatar-icon.svg" alt="Avatar icon" itemprop="contentUrl"/>
+                                            <img data-defer-src="/assets/images/avatar-icon.svg" alt="Avatar icon" itemprop="contentUrl"/>
                                         @else
-                                            <img src="//dentacoin.com/assets/uploads/{{$user_expression->media->name}}" alt="{{$user_expression->media->alt}}" itemprop="contentUrl"/>
+                                            <img data-defer-src="//dentacoin.com/assets/uploads/{{$user_expression->media->name}}" alt="{{$user_expression->media->alt}}" itemprop="contentUrl"/>
                                         @endif
                                     </figure>
                                 </div>

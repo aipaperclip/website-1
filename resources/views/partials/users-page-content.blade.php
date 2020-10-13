@@ -67,7 +67,7 @@
             <link itemprop="contentURL" href="">
         </div>
         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="loader-over-map">
-            <img src="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif" alt="Loader">
+            <img data-defer-src="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif" alt="Loader">
         </figure>
     </div>
 </section>

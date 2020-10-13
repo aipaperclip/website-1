@@ -54,7 +54,7 @@
         <section class="single-section">
             <div class="container">
                 <div class="row fs-0">
-                    <figure class="col-xs-12 col-md-5 col-md-offset-2 col-sm-7 inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><img alt="Dentist tools" itemprop="contentUrl" src="/assets/images/community-map.svg" /></figure>
+                    <figure class="col-xs-12 col-md-5 col-md-offset-2 col-sm-7 inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><img alt="Dentist tools" itemprop="contentUrl" data-defer-src="/assets/images/community-map.svg" /></figure>
 
                     <div class="col-xs-12 col-md-4 col-md-offset-1 col-sm-5 inline-block text-center-xs">
                         <div class="lato-heavy fs-30 padding-bottom-25"><i>Community &amp; Network</i></div>
@@ -101,12 +101,12 @@
             <div class="container-fluid chain">
                 <div class="row">
                     <div class="col-xs-12 no-gutter">
-                        <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://reviews.dentacoin.com/" target="_blank"><img alt="Trusted reviews logo" itemprop="contentUrl" src="/assets/uploads/trusted-reviews-chain-icon.svg" /> <img alt="External link icon" class="hidden-image" itemprop="contentUrl" src="/assets/images/tools-link-icon.svg" /> </a></figure>
-                        <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://dentavox.dentacoin.com/" target="_blank"><img alt="Dentavox logo" itemprop="contentUrl" src="/assets/uploads/dentavox-chain-icon.svg" /> <img alt="External link icon" class="hidden-image" itemprop="contentUrl" src="/assets/images/tools-link-icon.svg" /> </a></figure>
-                        <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://dentacare.dentacoin.com/" target="_blank"><img alt="Dentacare logo" itemprop="contentUrl" src="/assets/uploads/dentacare-chain-icon.svg" /> <img alt="External link icon" class="hidden-image" itemprop="contentUrl" src="/assets/images/tools-link-icon.svg" /> </a></figure>
-                        <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://wallet.dentacoin.com/" target="_blank"><img alt="Dentacare logo" itemprop="contentUrl" src="/assets/uploads/wallet-chain-icon.svg" /> <img alt="External link icon" class="hidden-image" itemprop="contentUrl" src="/assets/images/tools-link-icon.svg" /> </a></figure>
-                        <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="javascript:void(0)" target="_blank"><img alt="Assurance logo" itemprop="contentUrl" src="/assets/uploads/assurance-chain-icon.svg" /> <img alt="Coming soon icon" class="hidden-image" itemprop="contentUrl" src="/assets/images/coming-soon-tools.svg" /> </a></figure>
-                        <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="javascript:void(0)" target="_blank"><img alt="Health database logo" itemprop="contentUrl" src="/assets/uploads/health-database-chain-icon.svg" /> <img alt="Coming soon icon" class="hidden-image" itemprop="contentUrl" src="/assets/images/coming-soon-tools.svg" /> </a></figure>
+                        <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://reviews.dentacoin.com/" target="_blank"><img alt="Trusted reviews logo" itemprop="contentUrl" data-defer-src="/assets/uploads/trusted-reviews-chain-icon.svg" /> <img alt="External link icon" class="hidden-image" itemprop="contentUrl" data-defer-src="/assets/images/tools-link-icon.svg" /> </a></figure>
+                        <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://dentavox.dentacoin.com/" target="_blank"><img alt="Dentavox logo" itemprop="contentUrl" data-defer-src="/assets/uploads/dentavox-chain-icon.svg" /> <img alt="External link icon" class="hidden-image" itemprop="contentUrl" data-defer-src="/assets/images/tools-link-icon.svg" /> </a></figure>
+                        <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://dentacare.dentacoin.com/" target="_blank"><img alt="Dentacare logo" itemprop="contentUrl" data-defer-src="/assets/uploads/dentacare-chain-icon.svg" /> <img alt="External link icon" class="hidden-image" itemprop="contentUrl" data-defer-src="/assets/images/tools-link-icon.svg" /> </a></figure>
+                        <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://wallet.dentacoin.com/" target="_blank"><img alt="Dentacare logo" itemprop="contentUrl" data-defer-src="/assets/uploads/wallet-chain-icon.svg" /> <img alt="External link icon" class="hidden-image" itemprop="contentUrl" data-defer-src="/assets/images/tools-link-icon.svg" /> </a></figure>
+                        <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="javascript:void(0)" target="_blank"><img alt="Assurance logo" itemprop="contentUrl" data-defer-src="/assets/uploads/assurance-chain-icon.svg" /> <img alt="Coming soon icon" class="hidden-image" itemprop="contentUrl" data-defer-src="/assets/images/coming-soon-tools.svg" /> </a></figure>
+                        <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><a href="javascript:void(0)" target="_blank"><img alt="Health database logo" itemprop="contentUrl" data-defer-src="/assets/uploads/health-database-chain-icon.svg" /> <img alt="Coming soon icon" class="hidden-image" itemprop="contentUrl" data-defer-src="/assets/images/coming-soon-tools.svg" /> </a></figure>
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-10 col-md-offset-1 fs-0">
-                    <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><img alt="Dentacoin logo" itemprop="contentUrl" src="/assets/uploads/flipping-coin-logo.gif" /></figure>
+                    <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject"><img alt="Dentacoin logo" itemprop="contentUrl" data-defer-src="/assets/uploads/flipping-coin-logo.gif" /></figure>
                     <p class="description inline-block"><strong>DENTACOIN CORPORATE DESIGN</strong>The logo is an integral part of our visual identity and should therefore be used thoughtfully and consistently. Every company or individual must follow the guidelines when using the Dentacoin logo. Dentacoin B.V. reserves the right to withdraw permission to use its logo at any time if the use is inconsistent with these guidelines or is otherwise deemed inappropriate by Dentacoin B.V.&nbsp;<a href="/corporate-design">Read more...</a></p>
                     <div class="btn-container inline-block text-center-xs"><a class="white-bright-blue-btn" download="" href="https://dentacoin.com\assets\uploads\dentacoin-logos-rar.zip"><i aria-hidden="true" class="fa fa-download"></i> DOWNLOAD</a></div>
                 </div>

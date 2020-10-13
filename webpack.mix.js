@@ -17,12 +17,8 @@ mix.disableSuccessNotifications();
 mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'public/assets/libs/jquery-ui/jquery-ui.css',
-    'node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.css',
     'public/assets/libs/font-awesome/css/font-awesome.min.css',
-    'node_modules/slick-carousel/slick/slick.css',
     'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
-    'public/assets/libs/combobox/combobox.css',
-    'public/assets/libs/croppie/croppie.css',
 ], 'public/dist/css/front-libs-style.css');
 
 mix.styles([
@@ -33,22 +29,14 @@ mix.scripts([
     'node_modules/jquery/dist/jquery.min.js',
     'public/assets/libs/jquery-ui/jquery-ui.js',
     'public/assets/libs/jquery-touch-punch/jquery.ui.touch-punch.min.js',
-    'public/assets/libs/emailoctopus/emailoctopus.js',
-    'public/assets/libs/bidali/bidali-commerce.js',
+    /*'public/assets/libs/bidali/bidali-commerce.js',*/
     'node_modules/bootstrap/dist/js/bootstrap.min.js',
     'node_modules/bootbox.js/bootbox.min.js',
-    'node_modules/slick-carousel/slick/slick.min.js',
-    'node_modules/bootstrap-select/dist/js/bootstrap-select.min.js',
-    'node_modules/datatables.net/js/jquery.dataTables.min.js',
-    'public/assets/libs/combobox/combobox.js',
-    'public/assets/libs/croppie/croppie.min.js',
+    'node_modules/bootstrap-select/dist/js/bootstrap-select.min.js'
 ], 'public/dist/js/front-libs-script.js');
 
 mix.scripts([
     'public/assets/js/basic.js',
-    'public/assets/js/markerclusterer-v2.js',
-    'public/assets/js/google-map.js',
-    'public/assets/js/address.js',
     'public/assets/js/index.js',
 ], 'public/dist/js/front-script.js');
 
@@ -61,6 +49,26 @@ mix.scripts([
 mix.scripts([
     'public/assets/libs/dentacoin-login-gateway/js/init.raw.js',
 ], 'public/assets/libs/dentacoin-login-gateway/js/init.js');
+
+// compress the google suggester for dentacoin-login-gateway lib
+mix.scripts([
+    'public/assets/libs/dentacoin-login-gateway/js/address-combined-login.raw.js',
+], 'public/assets/libs/dentacoin-login-gateway/js/address-combined-login.js');
+
+// combine google scripts
+mix.scripts([
+    'public/assets/js/markerclusterer-v2.js',
+    'public/assets/js/google-map.js'
+], 'public/dist/js/init-map.min.js');
+
+// slick slider lib
+mix.styles([
+    'node_modules/slick-carousel/slick/slick.css',
+], 'public/dist/libs/slick/slick.min.css');
+
+mix.scripts([
+    'node_modules/slick-carousel/slick/slick.min.js',
+], 'public/dist/libs/slick/slick.min.js');
 
 /* ===== /PUBLIC =====*/
 

@@ -31,7 +31,7 @@
             <div class="single-benefit inline-block-top">
                 @if (isset($mobile_device) && $mobile_device)
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
-                        <img src="/assets/uploads/dentists-circle-1.png" alt="Dentists circle 1" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
+                        <img data-defer-src="/assets/uploads/dentists-circle-1.png" alt="Dentists circle 1" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
                 @else
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto changeable-video" data-mp4="/assets/uploads/dentists-circle-icon1.mp4" data-webm="/assets/uploads/dentists-circle-icon1.webm" data-video-attributes="muted">
@@ -40,7 +40,7 @@
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
                         <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
                         <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon1.webm">
-                        <img src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
+                        <img data-defer-src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
                     </div>
                 @endif
                 <div class="fs-20 fs-sm-16 fs-xs-18 lato-bold padding-top-10 color-black">Happier and healthier patients</div>
@@ -48,7 +48,7 @@
             <div class="single-benefit inline-block-top">
                 @if (isset($mobile_device) && $mobile_device)
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
-                        <img src="/assets/uploads/dentists-circle-2.png" alt="Dentists circle 2" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
+                        <img data-defer-src="/assets/uploads/dentists-circle-2.png" alt="Dentists circle 2" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
                 @else
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto changeable-video" data-mp4="/assets/uploads/dentists-circle-icon2.mp4" data-webm="/assets/uploads/dentists-circle-icon2.webm" data-video-attributes="muted">
@@ -57,7 +57,7 @@
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
                         <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
                         <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon2.webm">
-                        <img src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
+                        <img data-defer-src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
                     </div>
                 @endif
                 <div class="fs-20 fs-sm-16 fs-xs-18 lato-bold padding-top-10 color-black">Improved online presence and
@@ -67,7 +67,7 @@
             <div class="single-benefit inline-block-top">
                 @if (isset($mobile_device) && $mobile_device)
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
-                        <img src="/assets/uploads/dentists-circle-3.png" alt="Dentists circle 3" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
+                        <img data-defer-src="/assets/uploads/dentists-circle-3.png" alt="Dentists circle 3" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
                 @else
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto changeable-video" data-mp4="/assets/uploads/dentists-circle-icon3.mp4" data-webm="/assets/uploads/dentists-circle-icon3.webm" data-video-attributes="muted">
@@ -76,7 +76,7 @@
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
                         <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
                         <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon3.webm">
-                        <img src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
+                        <img data-defer-src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
                     </div>
                 @endif
                 <div class="fs-20 fs-sm-16 fs-xs-18 lato-bold padding-top-10 color-black">Additional income and innovative payments</div>
@@ -84,7 +84,7 @@
             <div class="single-benefit inline-block-top">
                 @if (isset($mobile_device) && $mobile_device)
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
-                        <img src="/assets/uploads/dentists-circle-4.png" alt="Dentists circle 4" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
+                        <img data-defer-src="/assets/uploads/dentists-circle-4.png" alt="Dentists circle 4" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
                 @else
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto changeable-video" data-mp4="/assets/uploads/dentists-circle-icon4.mp4" data-webm="/assets/uploads/dentists-circle-icon4.webm" data-video-attributes="muted">
@@ -93,7 +93,7 @@
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
                         <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
                         <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon4.webm">
-                        <img src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
+                        <img data-defer-src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
                     </div>
                 @endif
                 <div class="fs-20 fs-sm-16 fs-xs-18 lato-bold padding-top-10 color-black">Market overview via free DentaVox stats</div>
@@ -101,7 +101,7 @@
             <div class="single-benefit inline-block-top">
                 @if (isset($mobile_device) && $mobile_device)
                     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="padding-top-5">
-                        <img src="/assets/uploads/dentists-circle-5.png" alt="Dentists circle 5" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
+                        <img data-defer-src="/assets/uploads/dentists-circle-5.png" alt="Dentists circle 5" class="margin-0-auto max-width-220 width-100" itemprop="contentUrl"/>
                     </figure>
                 @else
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="video max-width-220 margin-0-auto changeable-video" data-mp4="/assets/uploads/dentists-circle-icon5.mp4" data-webm="/assets/uploads/dentists-circle-icon5.webm" data-video-attributes="muted">
@@ -110,7 +110,7 @@
                         <meta itemprop="uploadDate" content="2020-08-30T08:00:00+08:00">
                         <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
                         <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentists-circle-icon5.webm">
-                        <img src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
+                        <img data-defer-src="/assets/images/circle-border.png" class="rounded-border" alt="Rounded border"/>
                     </div>
                 @endif
                 <div class="fs-20 fs-sm-16 fs-xs-18 lato-bold padding-top-10 color-black">Valuable feedback via Trusted
@@ -155,7 +155,7 @@
             <link itemprop="contentURL" href="">
         </div>
         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="loader-over-map">
-            <img src="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif" alt="Loader">
+            <img data-defer-src="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif" alt="Loader">
         </figure>
     </div>
 </section>

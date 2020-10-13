@@ -4,5 +4,9 @@
     "/dist/js/front-libs-script.js": "/dist/js/front-libs-script.js",
     "/dist/js/front-script.js": "/dist/js/front-script.js",
     "/assets/libs/dentacoin-package/js/init.js": "/assets/libs/dentacoin-package/js/init.js",
-    "/assets/libs/dentacoin-login-gateway/js/init.js": "/assets/libs/dentacoin-login-gateway/js/init.js"
+    "/assets/libs/dentacoin-login-gateway/js/init.js": "/assets/libs/dentacoin-login-gateway/js/init.js",
+    "/assets/libs/dentacoin-login-gateway/js/address-combined-login.js": "/assets/libs/dentacoin-login-gateway/js/address-combined-login.js",
+    "/dist/js/init-map.min.js": "/dist/js/init-map.min.js",
+    "/dist/libs/slick/slick.min.css": "/dist/libs/slick/slick.min.css",
+    "/dist/libs/slick/slick.min.js": "/dist/libs/slick/slick.min.js"
 }

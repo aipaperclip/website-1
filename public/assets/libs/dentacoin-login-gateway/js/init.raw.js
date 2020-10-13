@@ -1398,15 +1398,15 @@ if (typeof jQuery == 'undefined') {
 
                                     // ====================================== GOOGLE MAP LIB =============================================
                                     if ((!loadedGoogleMapLib && typeof google !== 'object') || (typeof google === 'object' && typeof google.maps !== 'object')) {
+                                        // init Google lib
                                         await $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en', function() {});
-                                        // init Google address suggester
                                         loadedGoogleMapLib = false;
                                     }
 
                                     // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
                                     if (!loadedAddressSuggesterLib) {
-                                        await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
                                         // init Google address suggester
+                                        await $.getScript('https://dentacoin.com/assets/libs/dentacoin-login-gateway/js/address-combined-login.js?v='+new Date().getTime(), function() {});
                                         if (typeof initAddressSuggesters === 'function') {
                                             initAddressSuggesters();
                                         }
@@ -1417,15 +1417,15 @@ if (typeof jQuery == 'undefined') {
                                 async function initFourthStepLogic() {
                                     // ====================================== GOOGLE MAP LIB =============================================
                                     if ((!loadedGoogleMapLib && typeof google !== 'object') || (typeof google === 'object' && typeof google.maps !== 'object')) {
+                                        // init Google lib
                                         await $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en', function() {});
-// init Google address suggester
                                         loadedGoogleMapLib = false;
                                     }
 
                                     // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
                                     if (!loadedAddressSuggesterLib) {
-                                        await $.getScript('https://dentacoin.com/assets/js/address-combined-login.js?v='+new Date().getTime(), function() {});
-// init Google address suggester
+                                        // init Google address suggester
+                                        await $.getScript('https://dentacoin.com/assets/libs/dentacoin-login-gateway/js/address-combined-login.js?v='+new Date().getTime(), function() {});
                                         if (typeof initAddressSuggesters === 'function') {
                                             initAddressSuggesters();
                                         }

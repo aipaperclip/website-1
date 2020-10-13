@@ -27,7 +27,7 @@
                         @endif
                         <div class="inline-block-top image">
                             <figure @if(!empty($post->media)) itemscope="" itemtype="http://schema.org/ImageObject" @endif>
-                                <img src="{{URL::asset('assets/uploads/'.$post->media->name) }}" @if(!empty($post->media->alt)) alt="{{$post->media->alt}}" @endif itemprop="contentUrl"/>
+                                <img data-defer-src="{{URL::asset('assets/uploads/'.$post->media->name) }}" @if(!empty($post->media->alt)) alt="{{$post->media->alt}}" @endif itemprop="contentUrl"/>
                             </figure>
                             @if(!empty($post) && !empty($post->created_at))
                                 <time>{{$post->created_at->format('d-m-Y')}}</time>

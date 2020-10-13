@@ -43,16 +43,8 @@
     <style>
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.18">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.18">
-
-    @if((!(new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'home')) || ((new \App\Http\Controllers\UserController())->checkSession() && !empty(Route::current()) && (Route::current()->getName() == 'foundation')) || (!empty(Route::current()) && (Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists' || Route::current()->getName() == 'traders')))
-        <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v={{time()}}">
-    @endif
-
-    @if(empty($_COOKIE['performance_cookies']) && empty($_COOKIE['functionality_cookies']) && empty($_COOKIE['marketing_cookies']) && empty($_COOKIE['strictly_necessary_policy']))
-        <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style-cookie.css?v={{time()}}">
-    @endif
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.19">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.19">
 
     @if((new \App\Http\Controllers\UserController())->checkSession())
         <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style.css?v={{time()}}">
@@ -174,7 +166,7 @@
                                                 @php($currentMedia = URL::asset('assets/uploads/'.$social->media->name))
                                                 @php($currentAlt = $social->media->alt)
                                             @endif
-                                            <img src="{{$currentMedia}}" data-default-src="{{URL::asset('assets/uploads/'.$social->media->name) }}" alt="{{$currentMedia}}" data-default-alt="{{$social->media->alt}}" data-black-style-src="{{URL::asset('assets/uploads/'.$social->reversed_media->name) }}" data-black-style-alt="{{$social->reversed_media->alt}}" itemprop="contentUrl"/>
+                                            <img data-defer-src="{{$currentMedia}}" alt="{{$social->media->alt}}" data-default-src="{{URL::asset('assets/uploads/'.$social->media->name) }}" data-default-alt="{{$social->media->alt}}" data-black-style-src="{{URL::asset('assets/uploads/'.$social->reversed_media->name) }}" data-black-style-alt="{{$social->reversed_media->alt}}" itemprop="contentUrl"/>
                                         </figure>
                                     </a>
                                 </li>
@@ -250,14 +242,7 @@
             <img src="//hub.dentacoin.com/custom-cookie?logout-token={{ urlencode(session('logout_token')) }}" class="hide"/>
         @endif
     @endif
-    <div class="response-layer">
-        <div class="wrapper">
-            <picture itemscope="" itemtype="http://schema.org/ImageObject">
-                <source media="(max-width: 768px)" srcset="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif">
-                <img itemprop="contentUrl" src="/assets/uploads/dcn-flipping-coin-logo-loader-v3_desktop.gif" class="max-width-250 max-width-xs-200" alt="Loader">
-            </picture>
-        </div>
-    </div>
+    <div class="camping-loader"></div>
     @if(!empty($_COOKIE['marketing_cookies']))
         <!--Start of Tawk.to Script-->
         {{--<script type="text/javascript">
@@ -279,18 +264,17 @@
     <!--End of Schema Markup-->
 
     {{--<script src="/assets/js/basic.js"></script>--}}
-    @if(!empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'foundation' || Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists'  || Route::current()->getName() == 'traders' || Route::current()->getName() == 'partner-network'))
+    {{--@if(!empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'foundation' || Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists'  || Route::current()->getName() == 'traders' || Route::current()->getName() == 'partner-network'))
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en"></script>
-    @endif
+    @endif--}}
     {{----}}
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.1.18"></script>
-    <script src="/assets/libs/dentacoin-package/js/init.js?v={{time()}}"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.1.19"></script>
     @if (!(new \App\Http\Controllers\UserController())->checkSession())
         <script src="/assets/libs/dentacoin-login-gateway/js/init.js?v={{time()}}"></script>
     @endif
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.1.18"></script>
+    <script src="/dist/js/front-script.js?v=1.1.19"></script>
     {{--<script src="/assets/js/markerclusterer-v2.js"></script>
     <script src="/assets/js/google-map.js"></script>
     <script src="/assets/js/address.js"></script>

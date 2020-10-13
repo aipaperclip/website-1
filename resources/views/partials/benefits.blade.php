@@ -10,7 +10,7 @@
                 @foreach($benefits as $benefit)
                     <div class="col-xs-12 col-sm-3 single inline-block-top text-center">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                            <img src="{{URL::asset('assets/uploads/'.$benefit->media->name) }}" alt="{{$benefit->media->alt}}" itemprop="contentUrl"/>
+                            <img data-defer-src="{{URL::asset('assets/uploads/'.$benefit->media->name) }}" alt="{{$benefit->media->alt}}" itemprop="contentUrl"/>
                             <figcaption>{!! $benefit->text !!}</figcaption>
                         </figure>
                     </div>

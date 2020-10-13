@@ -17,10 +17,10 @@
         <div class="arrows-container">
             <div class="container">
                 @if(!empty($prev))
-                    <figure class="prev custom-arrow" itemscope="" itemtype="http://schema.org/ImageObject"><a href="{{route('careers', ['slug' => $prev->slug])}}"><img src="{{URL::asset('assets/images/arrow-left.svg') }}" alt="arrow icon" itemprop="contentUrl"/></a></figure>
+                    <figure class="prev custom-arrow" itemscope="" itemtype="http://schema.org/ImageObject"><a href="{{route('careers', ['slug' => $prev->slug])}}"><img data-defer-src="{{URL::asset('assets/images/arrow-left.svg') }}" alt="arrow icon" itemprop="contentUrl"/></a></figure>
                 @endif
                 @if(!empty($next))
-                    <figure class="next custom-arrow" itemscope="" itemtype="http://schema.org/ImageObject"><a href="{{route('careers', ['slug' => $next->slug])}}"><img src="{{URL::asset('assets/images/arrow-right.svg') }}" alt="arrow icon" itemprop="contentUrl"/></a></figure>
+                    <figure class="next custom-arrow" itemscope="" itemtype="http://schema.org/ImageObject"><a href="{{route('careers', ['slug' => $next->slug])}}"><img data-defer-src="{{URL::asset('assets/images/arrow-right.svg') }}" alt="arrow icon" itemprop="contentUrl"/></a></figure>
                 @endif
                 <div class="row">
                     <div class="errors col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
@@ -38,15 +38,15 @@
                 </div>
                 <div class="row job-offer-info">
                     <figure class="col-xs-12 col-sm-4 col-md-6 col-lg-5 inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
-                        <img src="{{URL::asset('assets/uploads/'.$job_offer->media->name) }}" alt="{{$job_offer->media->alt}}" itemprop="contentUrl"/>
+                        <img data-defer-src="{{URL::asset('assets/uploads/'.$job_offer->media->name) }}" alt="{{$job_offer->media->alt}}" itemprop="contentUrl"/>
                     </figure>
                     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-5 inline-block job-description">
                         <div class="title section-subtitle" itemprop="title">{{$job_offer->title}}</div>
                         @if(!empty($job_offer->location))
-                            <div class="location"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/location-icon.svg') }}" alt="Location icon" itemprop="contentUrl"/></figure> Office Location: <span>{{$job_offer->location}}</span></div>
+                            <div class="location"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img data-defer-src="{{URL::asset('assets/images/location-icon.svg') }}" alt="Location icon" itemprop="contentUrl"/></figure> Office Location: <span>{{$job_offer->location}}</span></div>
                         @endif
                         @if(!empty($job_offer->remote_work))
-                            <div class="remote-work"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="{{URL::asset('assets/images/remote-work-icon.svg') }}" alt="Remote work icon" itemprop="contentUrl"/></figure> Remote work: <span>{{$job_offer->remote_work}}</span></div>
+                            <div class="remote-work"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img data-defer-src="{{URL::asset('assets/images/remote-work-icon.svg') }}" alt="Remote work icon" itemprop="contentUrl"/></figure> Remote work: <span>{{$job_offer->remote_work}}</span></div>
                         @endif
                         <div class="description" itemprop="description">{!! $job_offer->text !!}</div>
                     </div>
@@ -59,7 +59,7 @@
                     <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
                         <div class="logo-over-line">
                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
+                                <img data-defer-src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
                             </figure>
                             <div class="border-behind-logo"></div>
                         </div>
@@ -73,7 +73,7 @@
                         <ul>
                         @foreach(unserialize($job_offer->skills) as $skill)
                             <li itemprop="skills">
-                                <img src="{{URL::asset('assets/images/check-mark.svg') }}" alt="Check mark"/>
+                                <img data-defer-src="{{URL::asset('assets/images/check-mark.svg') }}" alt="Check mark"/>
                                 {{$skill}}
                             </li>
                         @endforeach
@@ -87,7 +87,7 @@
                 <div class="col-xs-12">
                     <div class="logo-over-line">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                            <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl" class="inline-block"/>
+                            <img data-defer-src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl" class="inline-block"/>
                         </figure>
                         <div class="border-behind-logo"></div>
                     </div>
@@ -102,7 +102,7 @@
                 <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
                     <div class="logo-over-line below-apply-for-position">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                            <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
+                            <img data-defer-src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo" itemprop="contentUrl"/>
                         </figure>
                         <div class="border-behind-logo"></div>
                     </div>

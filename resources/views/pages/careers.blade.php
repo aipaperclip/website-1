@@ -26,7 +26,7 @@
                 <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
                     <div class="logo-over-line">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                            <img src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo"
+                            <img data-defer-src="{{URL::asset('assets/images/logo.svg') }}" alt="Dentacoin section logo"
                                  itemprop="contentUrl"/>
                         </figure>
                         <div class="border-behind-logo"></div>
@@ -57,7 +57,7 @@
                                     <div class="wrapper">
                                         <a href="{{route('careers', ['slug' => $job_offer->slug])}}">
                                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                                <img src="{{URL::asset('assets/uploads/'.$job_offer->media->name) }}"
+                                                <img data-defer-src="{{URL::asset('assets/uploads/'.$job_offer->media->name) }}"
                                                      alt="{{$job_offer->media->alt}}" itemprop="contentUrl"/>
                                                 <figcaption>{{$job_offer->title}}</figcaption>
                                             </figure>
