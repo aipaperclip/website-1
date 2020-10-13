@@ -43,7 +43,7 @@
     <style>
 
     </style>
-    <link rel="preload" href="/assets/fonts/OpenSans-SemiBold.eot" as="font">
+    {{--<link rel="preload" href="/assets/fonts/OpenSans-SemiBold.eot" as="font">
     <link rel="preload" href="/assets/fonts/OpenSans-SemiBold.woff2" as="font">
     <link rel="preload" href="/assets/fonts/OpenSans-SemiBold.woff" as="font">
     <link rel="preload" href="/assets/fonts/OpenSans-SemiBold.ttf" as="font">
@@ -101,7 +101,7 @@
     <link rel="preload" href="/assets/fonts/Lato-Light.eot" as="font">
     <link rel="preload" href="/assets/fonts/Lato-Light.woff2" as="font">
     <link rel="preload" href="/assets/fonts/Lato-Light.woff" as="font">
-    <link rel="preload" href="/assets/fonts/Lato-Light.ttf" as="font">
+    <link rel="preload" href="/assets/fonts/Lato-Light.ttf" as="font">--}}
 
 
     <link rel="preload" as="style" onload="this.rel='stylesheet'" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.19">
