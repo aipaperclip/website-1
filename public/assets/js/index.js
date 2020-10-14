@@ -212,7 +212,7 @@ var projectData = {
                     async function initBigHub() {
                         if (!hasOwnProperty.call(loadedLibs, 'bigHubStyle')) {
                             loadedLibs.bigHubStyle = true;
-                            $('head').append('<link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v='+new Date().getTime()+'"/>');
+                            $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v='+new Date().getTime()+'"/>');
                         }
 
                         if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
@@ -375,7 +375,7 @@ var projectData = {
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
                         console.log('slick loaded');
                         loadedLibs.slick = true;
-                        $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
                     }
 
@@ -647,7 +647,7 @@ var projectData = {
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
                         console.log('slick loaded');
                         loadedLibs.slick = true;
-                        $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
                     }
 
@@ -820,7 +820,7 @@ var projectData = {
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
                         console.log('slick loaded');
                         loadedLibs.slick = true;
-                        $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
                     }
 
@@ -953,7 +953,7 @@ var projectData = {
                     if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
                         console.log('dentacoinPackageJs loaded');
                         loadedLibs.dentacoinPackageJs = true;
-                        $('head').append('<link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style-cookie.css?v='+new Date().getTime()+'"/>');
+                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/assets/libs/dentacoin-package/css/style-cookie.css?v='+new Date().getTime()+'"/>');
                         await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
 
                         if (typeof(dcnCookie) != 'undefined') {
@@ -1022,7 +1022,7 @@ var projectData = {
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
                         console.log('slick loaded');
                         loadedLibs.slick = true;
-                        $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
                     }
 
@@ -1140,7 +1140,7 @@ var projectData = {
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
                         console.log('slick loaded');
                         loadedLibs.slick = true;
-                        $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
                     }
 

@@ -742,14 +742,15 @@
     background: white;
 }
 
-.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .call-sign-up {
-    font-weight: bold;
-    color: black;
-    text-decoration: underline;
-}
-
-.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .call-sign-up:hover {
-    color: black;
+.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist {
+    .call-sign-up, .call-log-in {
+        font-weight: bold;
+        color: black;
+        text-decoration: underline;
+        &:hover {
+            color: black;
+        }
+    }
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .popup-half-footer {
