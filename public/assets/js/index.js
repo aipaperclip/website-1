@@ -203,7 +203,7 @@ var projectData = {
                     }
 
                     $(window).on('scroll', function() {
-                        if (basic.isInViewport($('#append-big-hub-dentacoin'))) {
+                        if (bigHubInit && basic.isInViewport($('#append-big-hub-dentacoin'))) {
                             bigHubInit = false;
                             initBigHub();
                         }
