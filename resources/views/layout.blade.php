@@ -113,8 +113,8 @@
     <link rel="preload" href="/assets/fonts/Lato-Light.ttf" as="font">--}}
 
 
-    <link media="none" onload="if(media!=='all')media='all'" rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.19">
-    <link media="none" onload="if(media!=='all')media='all'" rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.19">
+    <link onload="if(media!=='all')media='all'" rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.19">
+    <link onload="if(media!=='all')media='all'" rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.19">
 
     @if((new \App\Http\Controllers\UserController())->checkSession())
         <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style.css?v={{time()}}">
