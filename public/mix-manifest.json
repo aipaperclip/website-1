@@ -6,6 +6,7 @@
     "/assets/libs/dentacoin-package/js/init.js": "/assets/libs/dentacoin-package/js/init.js",
     "/assets/libs/dentacoin-login-gateway/js/init.js": "/assets/libs/dentacoin-login-gateway/js/init.js",
     "/assets/libs/dentacoin-login-gateway/js/address-combined-login.js": "/assets/libs/dentacoin-login-gateway/js/address-combined-login.js",
+    "/assets/js/basic.js": "/assets/js/basic.js",
     "/dist/js/init-map.min.js": "/dist/js/init-map.min.js",
     "/dist/libs/slick/slick.min.css": "/dist/libs/slick/slick.min.css",
     "/dist/libs/slick/slick.min.js": "/dist/libs/slick/slick.min.js"

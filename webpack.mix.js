@@ -55,6 +55,11 @@ mix.scripts([
     'public/assets/libs/dentacoin-login-gateway/js/address-combined-login.raw.js',
 ], 'public/assets/libs/dentacoin-login-gateway/js/address-combined-login.js');
 
+// compress basic.js
+mix.scripts([
+    'public/assets/js/basic.raw.js',
+], 'public/assets/js/basic.js');
+
 // combine google scripts
 mix.scripts([
     'public/assets/js/markerclusterer-v2.js',
