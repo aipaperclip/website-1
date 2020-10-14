@@ -141,22 +141,19 @@
         </div>
     </div>
     <div class="map-container">
-        @php ($webmVideoUrl = 'desktop-map-loader.webm')
-        @php ($mp4VideoUrl = 'desktop-map-loader.mp4')
+        @php ($webmVideoUrl = 'desktop-map-loader-combined.webm')
+        @php ($mp4VideoUrl = 'desktop-map-loader-combined.mp4')
         @if (isset($mobile_device) && $mobile_device)
-            @php ($webmVideoUrl = 'mobile-map-loader.webm')
-            @php ($mp4VideoUrl = 'mobile-map-loader.mp4')
+            @php ($webmVideoUrl = 'mobile-map-loader-combined.webm')
+            @php ($mp4VideoUrl = 'mobile-map-loader-combined.mp4')
         @endif
-        <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video" data-mp4="/assets/uploads/{{$mp4VideoUrl}}" data-webm="/assets/uploads/{{$webmVideoUrl}}" data-video-attributes="autoplay muted loop" data-video-class="width-100">
+        <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video" data-mp4="https://dentacoin.com/assets/uploads/{{$mp4VideoUrl}}" data-webm="https://dentacoin.com/assets/uploads/{{$webmVideoUrl}}" data-video-attributes="autoplay muted loop" data-video-class="width-100">
             <meta itemprop="name" content="Dentacoin Loading Video">
             <meta itemprop="description" content="Dentacoin Loading Video which is shown whenever website content is still loading">
             <meta itemprop="uploadDate" content="2020-09-19T08:00:00+08:00">
             <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
-            <link itemprop="contentURL" href="">
+            <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/{{$mp4VideoUrl}}">
         </div>
-        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="loader-over-map">
-            <img data-defer-src="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif" alt="Loader">
-        </figure>
     </div>
 </section>
 <section class="module section-dentacoin-stats padding-top-90 padding-bottom-80 hide-on-map-open">

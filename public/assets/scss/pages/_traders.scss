@@ -352,17 +352,17 @@
         .single-link {
             border-right: 1px solid black;
             position: relative;
-            .gif-version {
+            .video-version {
                 display: none;
             }
-            .gif-version, .image-version {
+            .video-version, .image-version {
                 margin: 0 auto;
             }
             &:hover {
                 .image-version {
                     display: none;
                 }
-                .gif-version {
+                .video-version {
                     display: block;
                 }
             }

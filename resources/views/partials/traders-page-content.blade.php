@@ -4,13 +4,22 @@
         <h3 class="fs-46 fs-md-40 fs-sm-30 fs-xs-22 lato-black color-white padding-top-10 padding-bottom-25">Bringing<br class="hide-xs"> Blockchain<br class="show-xs"> solutions<br class="hide-xs"> to the masses.</h3>
         <div class="fs-24 fs-md-22 fs-sm-18 fs-xs-18 color-white lato-bold">Join 201,326 people who care about sustainable oral health and capitalize on prevention!</div>
     </div>
+    @php ($webmVideoUrl = 'traders-page-monitors-animation.webm')
+    @php ($mp4VideoUrl = 'traders-page-monitors-animation.mp4')
+    @if (isset($mobile_device) && $mobile_device)
+        @php ($webmVideoUrl = 'traders-page-monitors-animation-mobile.webm')
+        @php ($mp4VideoUrl = 'traders-page-monitors-animation-mobile.mp4')
+    @endif
     @php($arrWithPossibilities = array ('male', 'female'))
     @if ($arrWithPossibilities[rand(0, count($arrWithPossibilities) - 1)] == 'male')
         <div class="hidden-picture padding-top-xs-40" itemscope="" itemtype="http://schema.org/ImageObject">
-            <picture itemscope="" itemtype="http://schema.org/ImageObject" class="trader-animated-background">
-                <source media="(max-width: 992px)" srcset="/assets/uploads/trader-monitors-animation-mob.gif">
-                <img alt="Trader animated background" class="width-100" itemprop="contentUrl" src="/assets/uploads/trader-monitors-animation.gif"/>
-            </picture>
+            <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video trader-animated-background" data-mp4="https://dentacoin.com/assets/uploads/{{$mp4VideoUrl}}" data-webm="https://dentacoin.com/assets/uploads/{{$webmVideoUrl}}" data-video-attributes="autoplay muted loop" data-video-class="width-100">
+                <meta itemprop="name" content="Dentacoin traders page animation">
+                <meta itemprop="description" content="Dentacoin traders page first view animated monitors background">
+                <meta itemprop="uploadDate" content="2020-10-14T08:00:00+08:00">
+                <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
+                <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/{{$mp4VideoUrl}}">
+            </div>
             <picture itemscope="" itemtype="http://schema.org/ImageObject" class="trader">
                 <source media="(max-width: 992px)" srcset="/assets/uploads/man-trader-mobile-img.png">
                 <img alt="Male dentacoin trader" class="width-100" itemprop="contentUrl" src="/assets/uploads/man-trader-img.png"/>
@@ -18,10 +27,13 @@
         </div>
     @else
         <div class="hidden-picture padding-top-xs-40" itemscope="" itemtype="http://schema.org/ImageObject">
-            <picture itemscope="" itemtype="http://schema.org/ImageObject" class="trader-animated-background">
-                <source media="(max-width: 992px)" srcset="/assets/uploads/trader-monitors-animation-mob.gif">
-                <img alt="Trader animated background" class="width-100" itemprop="contentUrl" src="/assets/uploads/trader-monitors-animation.gif"/>
-            </picture>
+            <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video trader-animated-background" data-mp4="https://dentacoin.com/assets/uploads/{{$mp4VideoUrl}}" data-webm="https://dentacoin.com/assets/uploads/{{$webmVideoUrl}}" data-video-attributes="autoplay muted loop" data-video-class="width-100">
+                <meta itemprop="name" content="Dentacoin traders page animation">
+                <meta itemprop="description" content="Dentacoin traders page first view animated monitors background">
+                <meta itemprop="uploadDate" content="2020-10-14T08:00:00+08:00">
+                <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
+                <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/{{$mp4VideoUrl}}">
+            </div>
             <picture itemscope="" itemtype="http://schema.org/ImageObject" class="trader">
                 <source media="(max-width: 992px)" srcset="/assets/uploads/woman-trader-mobile-img.png">
                 <img alt="Female dentacoin trader" class="width-100" itemprop="contentUrl" src="/assets/uploads/woman-trader-img.png"/>
@@ -228,8 +240,13 @@
             <a href="//dentacoin.com/assets/uploads/dentacoin-company-introduction.pdf" target="_blank"
                class="display-block color-black traders-page-dentacoin-intro-click-gtag-event">
                 <figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
-                    <img alt="Dentacoin gif intro" itemprop="contentUrl" class="width-100 max-width-100 gif-version"
-                         data-defer-src="/assets/uploads/dcn-info-icon-animation.gif"/>
+                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video video-version fs-0 width-100 max-width-100" data-mp4="https://dentacoin.com/assets/uploads/dentacoin-info-icon-animation.mp4" data-webm="https://dentacoin.com/assets/uploads/dentacoin-info-icon-animation.webm" data-video-attributes="autoplay muted loop" data-video-class="width-100">
+                        <meta itemprop="name" content="Dentacoin info">
+                        <meta itemprop="description" content="Dentacoin info animated icon">
+                        <meta itemprop="uploadDate" content="2020-10-14T08:00:00+08:00">
+                        <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
+                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentacoin-info-icon-animation.webm">
+                    </div>
                     <img alt="Dentacoin image icon" itemprop="contentUrl" class="width-100 max-width-100 image-version"
                          data-defer-src="/assets/uploads/dcn-info-icon-animation.png"/>
                     <figcaption class="lato-bold fs-20 padding-top-10">Dentacoin Intro</figcaption>
@@ -240,8 +257,13 @@
             <a href="https://dentacoin.com/assets/uploads/whitepaper.pdf" target="_blank"
                class="display-block color-black traders-page-whitepaper-click-gtag-event">
                 <figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
-                    <img alt="Whitepaper gif icon" itemprop="contentUrl" class="width-100 max-width-100 gif-version"
-                         data-defer-src="/assets/uploads/dcn-whitepaper-icon-animation.gif"/>
+                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video video-version fs-0 width-100 max-width-100" data-mp4="https://dentacoin.com/assets/uploads/dentacoin-whitepaper-icon-animation.mp4" data-webm="https://dentacoin.com/assets/uploads/dentacoin-whitepaper-icon-animation.webm" data-video-attributes="autoplay muted loop" data-video-class="width-100">
+                        <meta itemprop="name" content="Dentacoin whitepaper">
+                        <meta itemprop="description" content="Dentacoin whitepaper animated icon">
+                        <meta itemprop="uploadDate" content="2020-10-14T08:00:00+08:00">
+                        <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
+                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/dentacoin-whitepaper-icon-animation.webm">
+                    </div>
                     <img alt="Whitepaper image icon" itemprop="contentUrl" class="width-100 max-width-100 image-version"
                          data-defer-src="/assets/uploads/dcn-whitepaper-icon-animation.png"/>
                     <figcaption class="lato-bold fs-20 padding-top-10">Dentacoin Whitepaper</figcaption>
@@ -251,8 +273,13 @@
         <div class="col-xs-12 col-sm-4 padding-top-15 padding-bottom-15 single-link">
             <a href="https://coinmarketcap.com/currencies/dentacoin/" target="_blank" class="display-block color-black traders-page-cmc-click-gtag-event">
                 <figure class="inline-block-top" itemscope="" itemtype="http://schema.org/ImageObject">
-                    <img alt="CoinMarketCap gif icon" itemprop="contentUrl" class="width-100 max-width-100 gif-version"
-                         data-defer-src="/assets/uploads/cmc-icon-animation.gif"/>
+                    <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video video-version fs-0 width-100 max-width-100" data-mp4="https://dentacoin.com/assets/uploads/cmc-icon-animation.mp4" data-webm="https://dentacoin.com/assets/uploads/cmc-icon-animation.webm" data-video-attributes="autoplay muted loop" data-video-class="width-100">
+                        <meta itemprop="name" content="Dentacoin CoinMarketCap">
+                        <meta itemprop="description" content="Dentacoin CoinMarketCap animated icon">
+                        <meta itemprop="uploadDate" content="2020-10-14T08:00:00+08:00">
+                        <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
+                        <link itemprop="contentURL" href="https://dentacoin.com/assets/uploads/cmc-icon-animation.webm">
+                    </div>
                     <img alt="CoinMarketCap image icon" itemprop="contentUrl"
                          class="width-100 max-width-100 image-version" data-defer-src="/assets/uploads/cmc-icon-animation.png"/>
                     <figcaption class="lato-bold fs-20 padding-top-10">CoinMarketCap</figcaption>

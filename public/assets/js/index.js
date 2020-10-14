@@ -972,12 +972,11 @@ var projectData = {
                 } else {
                     $('.camping-loader .response-layer').show();
                 }
-                //<div class="response-layer"><div class="wrapper"><video muted="muted" autoplay loop><source src="/assets/test-video.mp4" type="video/mp4">Your browser does not support HTML5 video.</video></div>
             },
             hideLoader: function() {
                 $('.camping-loader .response-layer').hide();
             },
-            handlePushStateRedirects: function(event) {
+            handlePushStateRedirects: function() {
                 if (window.location.href.includes('users')) {
                     window.location.href = HOME_URL + '/users';
                 } else if (window.location.href.includes('dentists')) {
