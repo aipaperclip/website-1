@@ -247,7 +247,12 @@ var projectData = {
                                     $('.patient-dentist-triangle-video [itemprop="contentURL"]').attr('href', 'https://dentacoin.com/assets/uploads/patient-dentist-triangle-animation.'+videoFormat+'"');
                                 }
 
-                                $('.patient-dentist-triangle-video').prepend('<video muted="muted" autoplay><source src="/assets/uploads/patient-dentist-triangle-animation.'+videoFormat+'" type="video/'+videoFormat+'"> Your browser does not support HTML5 video.</video>');
+                                var videoAttr = 'muted="muted" autoplay';
+                                if (basic.getMobileOperatingSystem() == 'iOS') {
+                                    videoAttr += ' playsinline';
+                                }
+
+                                $('.patient-dentist-triangle-video').prepend('<video '+videoAttr+'><source src="/assets/uploads/patient-dentist-triangle-animation.'+videoFormat+'" type="video/'+videoFormat+'"> Your browser does not support HTML5 video.</video>');
                             }
                         }
                     });
@@ -1215,6 +1220,10 @@ var projectData = {
                         }
 
                         if (basic.getMobileOperatingSystem() == 'iOS' || basic.getMobileOperatingSystem() == 'Mac') {
+                            if (basic.getMobileOperatingSystem() == 'iOS') {
+                                videoAttr += ' playsinline';
+                            }
+
                             $('.changeable-video').eq(i).prepend('<video '+videoAttr+' '+videoClass+'><source src="'+$('.changeable-video').eq(i).attr('data-mp4')+'" type="video/mp4">Your browser does not support HTML5 video.</video>');
                             $('.changeable-video').eq(i).find('link[itemprop="contentURL"]').attr('href', $('.changeable-video').eq(i).attr('data-mp4'));
                         } else {

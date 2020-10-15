@@ -358,12 +358,14 @@
             .video-version, .image-version {
                 margin: 0 auto;
             }
-            &:hover {
-                .image-version {
-                    display: none;
-                }
-                .video-version {
-                    display: block;
+            &.allow-hover {
+                &:hover {
+                    .image-version {
+                        display: none;
+                    }
+                    .video-version {
+                        display: block;
+                    }
                 }
             }
             &:last-child {
