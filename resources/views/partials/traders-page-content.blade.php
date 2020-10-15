@@ -12,7 +12,7 @@
     @endif
     @php($arrWithPossibilities = array ('male', 'female'))
     @if ($arrWithPossibilities[rand(0, count($arrWithPossibilities) - 1)] == 'male')
-        <div class="hidden-picture padding-top-xs-40" itemscope="" itemtype="http://schema.org/ImageObject">
+        <div class="hidden-picture padding-top-xs-40">
             <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video trader-animated-background" data-mp4="https://dentacoin.com/assets/uploads/{{$mp4VideoUrl}}" data-webm="https://dentacoin.com/assets/uploads/{{$webmVideoUrl}}" data-video-attributes="autoplay muted loop" data-video-class="width-100">
                 <meta itemprop="name" content="Dentacoin traders page animation">
                 <meta itemprop="description" content="Dentacoin traders page first view animated monitors background">
@@ -26,7 +26,7 @@
             </picture>
         </div>
     @else
-        <div class="hidden-picture padding-top-xs-40" itemscope="" itemtype="http://schema.org/ImageObject">
+        <div class="hidden-picture padding-top-xs-40">
             <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video trader-animated-background" data-mp4="https://dentacoin.com/assets/uploads/{{$mp4VideoUrl}}" data-webm="https://dentacoin.com/assets/uploads/{{$webmVideoUrl}}" data-video-attributes="autoplay muted loop" data-video-class="width-100">
                 <meta itemprop="name" content="Dentacoin traders page animation">
                 <meta itemprop="description" content="Dentacoin traders page first view animated monitors background">
