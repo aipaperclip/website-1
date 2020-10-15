@@ -238,7 +238,7 @@
     <div class="row text-center links padding-top-50 padding-top-lgll-70">
         <div class="col-xs-12 col-sm-4 padding-top-15 padding-bottom-15 single-link @if (isset($mobile_device) && !$mobile_device) allow-hover @endif">
             <a href="//dentacoin.com/assets/uploads/dentacoin-company-introduction.pdf" target="_blank" class="display-block color-black traders-page-dentacoin-intro-click-gtag-event">
-                @if (isset($mobile_device) && $mobile_device)
+                @if (isset($mobile_device) && !$mobile_device)
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video video-version fs-0 width-100 max-width-100" data-mp4="https://dentacoin.com/assets/uploads/dentacoin-info-icon-animation.mp4" data-webm="https://dentacoin.com/assets/uploads/dentacoin-info-icon-animation.webm" data-video-attributes="autoplay muted loop" data-video-class="width-100">
                         <meta itemprop="name" content="Dentacoin info">
                         <meta itemprop="description" content="Dentacoin info animated icon">
@@ -256,7 +256,7 @@
         <div class="col-xs-12 col-sm-4 padding-top-15 padding-bottom-15 single-link @if (isset($mobile_device) && !$mobile_device) allow-hover @endif">
             <a href="https://dentacoin.com/assets/uploads/whitepaper.pdf" target="_blank"
                class="display-block color-black traders-page-whitepaper-click-gtag-event">
-                @if (isset($mobile_device) && $mobile_device)
+                @if (isset($mobile_device) && !$mobile_device)
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video video-version fs-0 width-100 max-width-100" data-mp4="https://dentacoin.com/assets/uploads/dentacoin-whitepaper-icon-animation.mp4" data-webm="https://dentacoin.com/assets/uploads/dentacoin-whitepaper-icon-animation.webm" data-video-attributes="autoplay muted loop" data-video-class="width-100">
                         <meta itemprop="name" content="Dentacoin whitepaper">
                         <meta itemprop="description" content="Dentacoin whitepaper animated icon">
@@ -273,7 +273,7 @@
         </div>
         <div class="col-xs-12 col-sm-4 padding-top-15 padding-bottom-15 single-link @if (isset($mobile_device) && !$mobile_device) allow-hover @endif">
             <a href="https://coinmarketcap.com/currencies/dentacoin/" target="_blank" class="display-block color-black traders-page-cmc-click-gtag-event">
-                @if (isset($mobile_device) && $mobile_device)
+                @if (isset($mobile_device) && !$mobile_device)
                     <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject" class="changeable-video video-version fs-0 width-100 max-width-100" data-mp4="https://dentacoin.com/assets/uploads/cmc-icon-animation.mp4" data-webm="https://dentacoin.com/assets/uploads/cmc-icon-animation.webm" data-video-attributes="autoplay muted loop" data-video-class="width-100">
                         <meta itemprop="name" content="Dentacoin CoinMarketCap">
                         <meta itemprop="description" content="Dentacoin CoinMarketCap animated icon">
