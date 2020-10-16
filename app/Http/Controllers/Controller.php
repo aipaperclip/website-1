@@ -188,7 +188,7 @@ class Controller extends BaseController
         //$sitemap->add(URL::to('publications'), '2012-08-25T20:10:00+02:00', '0.6', 'weekly');
         $sitemap->add(URL::to('privacy-policy'), '2018-02-25T20:10:00+02:00', '0.4', 'monthly');
         //$sitemap->add(URL::to('changelly'), '2018-08-25T20:10:00+02:00', '1.0', 'monthly');
-        $sitemap->add(URL::to('partner-network'), '2018-08-25T20:10:00+02:00', '0.8', 'daily');
+        /*$sitemap->add(URL::to('partner-network'), '2018-08-25T20:10:00+02:00', '0.8', 'daily');*/
         $sitemap->add(URL::to('team'), '2018-09-25T20:10:00+02:00', '0.9', 'weekly');
         $sitemap->add(URL::to('careers'), '2018-10-10T20:10:00+02:00', '1', 'daily');
         $sitemap->add(URL::to('corporate-identity'), '2018-12-10T20:10:00+02:00', '0.6', 'monthly');
