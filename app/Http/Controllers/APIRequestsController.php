@@ -396,7 +396,7 @@ class APIRequestsController extends Controller {
 
     public function getDentacoinDataByExternalProvider()  {
         // check if external provider price reading is allowed
-        if  (!empty(getenv('EXTERNAL_PROVIDER_PRICE_READING')) && !filter_var(getenv('EXTERNAL_PROVIDER_PRICE_READING'), FILTER_VALIDATE_BOOLEAN)) {
+        if  (!empty(getenv('EXTERNAL_PROVIDER_PRICE_READING')) && filter_var(getenv('EXTERNAL_PROVIDER_PRICE_READING'), FILTER_VALIDATE_BOOLEAN)) {
             $currencies = array('USD'/*, 'EUR', 'GBP', 'RUB'*/);
             $tempArray = array();
             foreach($currencies as $currency) {
