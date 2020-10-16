@@ -670,6 +670,9 @@ if (typeof jQuery == 'undefined') {
                     return false;
                 }
 
+                console.log('init call civic');
+                await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+
                 if (hasOwnProperty.call(params, 'environment') && params.environment == 'staging') {
                     apiDomain = 'https://dev-api.dentacoin.com';
                     environment = 'staging';
@@ -753,7 +756,7 @@ if (typeof jQuery == 'undefined') {
                                 if (!loadedSocialLibs) {
                                     console.log('Load external libraries.');
                                     // =============================================== CIVIC =======================================================
-                                    await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+                                    //await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
 
                                     // =============================================== FACEBOOK ====================================================
                                     await $.getScript('https://dentacoin.com/assets/libs/facebook-login/facebook-combined-login.js?v='+new Date().getTime(), function() {});

@@ -1,4 +1,5 @@
 (async function() {
+    console.log('civic loaded');
     await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-config.js', function() {});
 
     //load civic lib CSS
