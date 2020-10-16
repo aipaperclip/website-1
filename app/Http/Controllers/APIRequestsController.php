@@ -396,27 +396,50 @@ class APIRequestsController extends Controller {
 
     public function getDentacoinDataByExternalProvider()  {
         // check if external provider price reading is allowed
-        if  (!empty(getenv('EXTERNAL_PROVIDER_PRICE_READING')) && filter_var(getenv('EXTERNAL_PROVIDER_PRICE_READING'), FILTER_VALIDATE_BOOLEAN)) {
-            $currencies = array('USD'/*, 'EUR', 'GBP', 'RUB'*/);
-            $tempArray = array();
-            foreach($currencies as $currency) {
+        if  (!empty(getenv('EXTERNAL_PROVIDER_PRICE_READING')) && !empty(getenv('EXTERNAL_PROVIDER_PRICE_READING_TYPE')) && filter_var(getenv('EXTERNAL_PROVIDER_PRICE_READING'), FILTER_VALIDATE_BOOLEAN)) {
+            if (getenv('EXTERNAL_PROVIDER_PRICE_READING_TYPE') == 'indacoin') {
+                $currencies = array('USD'/*, 'EUR', 'GBP', 'RUB'*/);
+                $tempArray = array();
+                foreach($currencies as $currency) {
+                    $curl = curl_init();
+                    curl_setopt_array($curl, array(
+                        CURLOPT_RETURNTRANSFER => 1,
+                        CURLOPT_URL => 'https://indacoin.com/api/GetCoinConvertAmount/'.$currency.'/DCN/100/dentacoin',
+                        CURLOPT_SSL_VERIFYPEER => 0
+                    ));
+                    curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+                    $resp = json_decode(curl_exec($curl));
+                    curl_close($curl);
+
+                    if(!empty($resp))   {
+                        $tempArray[$currency] = 1 / (int)((int)$resp / 100);
+                    }
+                }
+
+                if(!empty($tempArray)) {
+                    return $tempArray;
+                } else {
+                    return 0;
+                }
+            } else if (getenv('EXTERNAL_PROVIDER_PRICE_READING_TYPE') == 'coingecko') {
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                     CURLOPT_RETURNTRANSFER => 1,
-                    CURLOPT_URL => 'https://indacoin.com/api/GetCoinConvertAmount/'.$currency.'/DCN/100/dentacoin',
+                    CURLOPT_URL => "https://api.coingecko.com/api/v3/coins/dentacoin",
                     CURLOPT_SSL_VERIFYPEER => 0
                 ));
                 curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
                 $resp = json_decode(curl_exec($curl));
                 curl_close($curl);
-
                 if(!empty($resp))   {
-                    $tempArray[$currency] = 1 / (int)((int)$resp / 100);
+                    if(!empty($resp->market_data->current_price))  {
+                        return array(
+                            'USD' => $resp->market_data->current_price->usd
+                        );
+                    }else {
+                        return 0;
+                    }
                 }
-            }
-
-            if(!empty($tempArray)) {
-                return $tempArray;
             } else {
                 return 0;
             }
