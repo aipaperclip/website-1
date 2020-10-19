@@ -11,6 +11,19 @@
     await $.getScript('https://hosted-sip.civic.com/js/civic.sip.min.js?v='+new Date().getTime(), function() {});
 
     var civic_custom_btn = $('.civic-custom-btn');
+    var civicAjaxUrl;
+    if (civic_custom_btn.length) {
+        // this url is either:
+        // https://api.dentacoin.com/api/register
+        // or
+        // https://api.dentacoin.com/api/login
+        civicAjaxUrl = civic_custom_btn.attr('data-url');
+
+    } else {
+        // civic popup called by library get param condition and not, because of Dentacoin login call
+        civicAjaxUrl = 123;
+    }
+
     //init civic
     var civicSip = new civic.sip({appId: civic_config.app_id});
 
@@ -107,8 +120,9 @@
                             }
                         }
 
-                        var ajaxDataForDentacoinApiCall = {
+                        $.ajax({
                             type: 'POST',
+                            url: civicAjaxUrl,
                             dataType: 'json',
                             data: register_data,
                             success: function(data) {
@@ -171,20 +185,7 @@
                             error: function() {
                                 customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
                             }
-                        };
-
-                        if (civic_custom_btn.length) {
-                            // this url is either:
-                            // https://api.dentacoin.com/api/register
-                            // or
-                            // https://api.dentacoin.com/api/login
-                            ajaxDataForDentacoinApiCall.url = civic_custom_btn.attr('data-url');
-                        } else {
-                            // civic popup called by library get param condition and not, because of Dentacoin login call
-                            ajaxDataForDentacoinApiCall.url = 123;
-                        }
-
-                        $.ajax(ajaxDataForDentacoinApiCall);
+                        });
                     }, 3000);
                 }
             },
