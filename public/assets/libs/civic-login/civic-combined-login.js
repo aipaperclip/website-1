@@ -10,31 +10,22 @@
     //await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js', function() {});
     await $.getScript('https://hosted-sip.civic.com/js/civic.sip.min.js?v='+new Date().getTime(), function() {});
 
-    var civic_custom_btn = $('.civic-custom-btn');
-    var civicAjaxUrl;
-    if (civic_custom_btn.length) {
-        // this url is either:
-        // https://api.dentacoin.com/api/register
-        // or
-        // https://api.dentacoin.com/api/login
-        civicAjaxUrl = civic_custom_btn.attr('data-url');
-
-    } else {
-        // civic popup called by library get param condition and not, because of Dentacoin login call
-        civicAjaxUrl = 123;
-    }
+    var civic_custom_btn;
+    var civicAjaxUrl = 123;
 
     //init civic
     var civicSip = new civic.sip({appId: civic_config.app_id});
 
     //bind click event for the civic button
     $('body').on('click', '.civic-custom-btn', function(){
+        civic_custom_btn = $(this);
         if(document.cookie.indexOf('strictly_necessary_policy=') == -1) {
             customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
         } else {
             customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.');
 
             if (civic_custom_btn.length) {
+                civicAjaxUrl = civic_custom_btn.attr('data-url');
                 if(civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
                     customCivicEvent('customCivicFbStopperTriggered', '');
                     return false;
