@@ -10,7 +10,7 @@
     //await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js', function() {});
     await $.getScript('https://hosted-sip.civic.com/js/civic.sip.min.js?v='+new Date().getTime(), function() {});
 
-    var civic_custom_btn;
+    var civic_custom_btn = $('.civic-custom-btn');
     //init civic
     var civicSip = new civic.sip({appId: civic_config.app_id});
 
@@ -19,12 +19,13 @@
         if(document.cookie.indexOf('strictly_necessary_policy=') == -1) {
             customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
         } else {
-            civic_custom_btn = $(this);
             customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.');
 
-            if(civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
-                customCivicEvent('customCivicFbStopperTriggered', '');
-                return false;
+            if (civic_custom_btn.length) {
+                if(civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
+                    customCivicEvent('customCivicFbStopperTriggered', '');
+                    return false;
+                }
             }
 
             civicSip.signup({
@@ -54,11 +55,33 @@
                 } else {
                     customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret);
                     var register_data = {
-                        platform: civic_custom_btn.attr('data-platform'),
                         auth_token: jwtToken,
                         social_network: 'civic',
                         type: 'patient'
                     };
+
+                    var currentPlatform;
+
+                    if (civic_custom_btn.length) {
+                        currentPlatform = civic_custom_btn.attr('data-platform');
+                        register_data.platform = currentPlatform;
+                    } else {
+                        // civic popup called by library get param condition and not, because of Dentacoin login call
+                        if (location.hostname == 'dentacoin.com') {
+                            currentPlatform = 'dentacoin';
+                        } else if (location.hostname == 'reviews.dentacoin.com') {
+                            currentPlatform = 'trusted-reviews';
+                        } else if (location.hostname == 'dentavox.dentacoin.com') {
+                            currentPlatform = 'dentavox';
+                        } else if (location.hostname == 'dentists.dentacoin.com') {
+                            currentPlatform = 'dentists';
+                        } else if (location.hostname == 'assurance.dentacoin.com') {
+                            currentPlatform = 'assurance';
+                        }
+                        register_data.platform = currentPlatform;
+                    }
+
+                    console.log(currentPlatform, 'currentPlatform');
 
                     if (dcnGateway.utils.cookies.get('first_test') != '') {
                         register_data.country_id = JSON.parse(decodeURIComponent(dcnGateway.utils.cookies.get('first_test')))['location'];
@@ -74,26 +97,35 @@
                     }
 
                     setTimeout(function () {
-                        if(civic_custom_btn.attr('data-inviter') != undefined) {
-                            register_data.invited_by = civic_custom_btn.attr('data-inviter');
+                        if (civic_custom_btn.length) {
+                            if(civic_custom_btn.attr('data-inviter') != undefined) {
+                                register_data.invited_by = civic_custom_btn.attr('data-inviter');
+                            }
+
+                            if (civic_custom_btn.attr('data-inviteid') != undefined) {
+                                register_data.inviteid = civic_custom_btn.attr('data-inviteid');
+                            }
                         }
 
-                        if (civic_custom_btn.attr('data-inviteid') != undefined) {
-                            register_data.inviteid = civic_custom_btn.attr('data-inviteid');
-                        }
-
-                        $.ajax({
+                        var ajaxDataForDentacoinApiCall = {
                             type: 'POST',
                             dataType: 'json',
-                            url: civic_custom_btn.attr('data-url'),
                             data: register_data,
                             success: function(data) {
                                 if (data.success) {
                                     if (data.deleted) {
-                                        if (data.appeal) {
-                                            window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + civic_custom_btn.attr('data-platform'));
+                                        if (currentPlatform != undefined) {
+                                            if (data.appeal) {
+                                                window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + currentPlatform);
+                                            } else {
+                                                window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id));
+                                            }
                                         } else {
-                                            window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + civic_custom_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
+                                            if (data.appeal) {
+                                                window.location.replace('https://account.dentacoin.com/blocked-account-thank-you');
+                                            } else {
+                                                window.location.replace('https://account.dentacoin.com/blocked-account?key=' + encodeURIComponent(data.data.encrypted_id));
+                                            }
                                         }
                                         return false;
                                     } else if (data.bad_ip || data.suspicious_admin) {
@@ -104,10 +136,18 @@
                                             on_hold_type = '&on-hold-type=suspicious_admin';
                                         }
 
-                                        if (data.appeal) {
-                                            window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + civic_custom_btn.attr('data-platform'));
+                                        if (currentPlatform != undefined) {
+                                            if (data.appeal) {
+                                                window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + currentPlatform);
+                                            } else {
+                                                window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type);
+                                            }
                                         } else {
-                                            window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + civic_custom_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type);
+                                            if (data.appeal) {
+                                                window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you');
+                                            } else {
+                                                window.location.replace('https://account.dentacoin.com/account-on-hold?key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type);
+                                            }
                                         }
                                         return false;
                                     } else if (data.new_account) {
@@ -131,7 +171,20 @@
                             error: function() {
                                 customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
                             }
-                        });
+                        };
+
+                        if (civic_custom_btn.length) {
+                            // this url is either:
+                            // https://api.dentacoin.com/api/register
+                            // or
+                            // https://api.dentacoin.com/api/login
+                            ajaxDataForDentacoinApiCall.url = civic_custom_btn.attr('data-url');
+                        } else {
+                            // civic popup called by library get param condition and not, because of Dentacoin login call
+                            ajaxDataForDentacoinApiCall.url = 123;
+                        }
+
+                        $.ajax(ajaxDataForDentacoinApiCall);
                     }, 3000);
                 }
             },
@@ -146,6 +199,7 @@
     });*/
 
     civicSip.on('read', function (event) {
+        console.log(event, 'reading')
         customCivicEvent('civicRead', '');
     });
 
