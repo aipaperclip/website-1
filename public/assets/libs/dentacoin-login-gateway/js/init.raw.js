@@ -752,7 +752,7 @@ if (typeof jQuery == 'undefined') {
 
                         // load login gateway style
                         if (!$('#dentacoin-login-gateway-style').length) {
-                            $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" id="dentacoin-login-gateway-style" type="text/css" href='+dcnLibsDomain+'"/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v='+new Date().getTime()+'"/>');
+                            $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" id="dentacoin-login-gateway-style" type="text/css" href="'+dcnLibsDomain+'/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v='+new Date().getTime()+'"/>');
                         }
 
                         await dcnGateway.dcnGatewayRequests.getGatewayHtml(gatewayData, async function(gatewayHtml) {
