@@ -11,14 +11,22 @@
     await $.getScript('https://hosted-sip.civic.com/js/civic.sip.min.js?v='+new Date().getTime(), function() {});
 
     var civic_custom_btn;
+    var civicApiVersion;
+    var civicActionType;
     var civicAjaxUrl = 123;
 
     //init civic
     var civicSip = new civic.sip({appId: civic_config.app_id});
 
     //bind click event for the civic button
-    $('body').on('click', '.civic-custom-btn', function(){
+    $('body').on('click', '.civic-custom-btn', function() {
         civic_custom_btn = $(this);
+        if (civic_custom_btn.hasClass('type-login')) {
+            civicActionType = 'login';
+        } else if (civic_custom_btn.hasClass('type-register')) {
+            civicActionType = 'register';
+        }
+
         if(document.cookie.indexOf('strictly_necessary_policy=') == -1) {
             customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
         } else {
@@ -41,6 +49,21 @@
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
+        if (civicActionType == 'login') {
+            if (civicApiVersion == 'v2') {
+                // this should work on second phase
+                console.log('stop civic login');
+                customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.');
+            }
+        } else if (civicActionType == 'register') {
+            if (civicApiVersion == 'v2') {
+                // this should work on first phase
+                // old legacy app
+                console.log('stop civic register');
+                customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.');
+            }
+        }
+
         console.log(event, 'event');
         var jwtToken = event.response;
         // customCivicEvent('receivedCivicToken', 'Received civic token successfully.', jwtToken);
@@ -191,7 +214,8 @@
     });*/
 
     civicSip.on('read', function (event) {
-        console.log(event, 'reading')
+        console.log(event, 'reading');
+        civicApiVersion = event.clientVersion;
         customCivicEvent('civicRead', '');
     });
 

@@ -7,6 +7,7 @@
     //load civic lib JS
     await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js?v='+new Date().getTime(), function() {});
 
+    var civicApiVersion;
     var civic_custom_btn;
     //init civic
     var civicSip = new civic.sip({appId: civic_config.app_id});
@@ -24,8 +25,12 @@
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
-        var jwtToken = event.response;
-        customCivicEvent('receivedKYCCivicToken', 'Received civic token successfully.', jwtToken);
+        if (civicApiVersion == 'v2') {
+            customCivicEvent('CivicLegacyAppForbiddenKYC', 'KYC via Civic Legacy App is forbidden.');
+        } else if (civicApiVersion == 'v3') {
+            var jwtToken = event.response;
+            customCivicEvent('receivedKYCCivicToken', 'Received civic token successfully.', jwtToken);
+        }
     });
 
     civicSip.on('user-cancelled', function (event) {
@@ -33,6 +38,8 @@
     });
 
     civicSip.on('read', function (event) {
+        console.log(event, 'reading');
+        civicApiVersion = event.clientVersion;
         customCivicEvent('civicRead', '');
     });
 
