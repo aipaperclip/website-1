@@ -10,6 +10,7 @@ if (typeof jQuery == 'undefined') {
     var gateway_croppie_instance;
     var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
     var apiDomain = 'https://api.dentacoin.com';
+    var dcnLibsDomain = 'https://dentacoin.com';
     var environment = 'live';
     var dcnGateway = {
         dcnGatewayRequests: {
@@ -672,13 +673,14 @@ if (typeof jQuery == 'undefined') {
                     return false;
                 }
 
-                console.log('init call civic');
-                await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
-
                 if (hasOwnProperty.call(params, 'environment') && params.environment == 'staging') {
                     apiDomain = 'https://dev-api.dentacoin.com';
+                    dcnLibsDomain = 'https://dev.dentacoin.com';
                     environment = 'staging';
                 }
+
+                console.log('init call civic');
+                await $.getScript(dcnLibsDomain + '/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
 
                 await dcnGateway.dcnGatewayRequests.getPlatformsData(async function(platformsData) {
                     var validPlatform = false;
@@ -761,7 +763,7 @@ if (typeof jQuery == 'undefined') {
                                     //await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
 
                                     // =============================================== FACEBOOK ====================================================
-                                    await $.getScript('https://dentacoin.com/assets/libs/facebook-login/facebook-combined-login.js?v='+new Date().getTime(), function() {});
+                                    await $.getScript(dcnLibsDomain + '/assets/libs/facebook-login/facebook-combined-login.js?v='+new Date().getTime(), function() {});
                                     loadedSocialLibs = true;
                                 }
 
