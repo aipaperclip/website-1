@@ -124,7 +124,7 @@ class APIRequestsController extends Controller {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/countries/',
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/countries/',
             CURLOPT_SSL_VERIFYPEER => 0
         ));
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
@@ -141,7 +141,7 @@ class APIRequestsController extends Controller {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/enums/',
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/enums/',
             CURLOPT_SSL_VERIFYPEER => 0
         ));
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
@@ -158,7 +158,7 @@ class APIRequestsController extends Controller {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/user/?id='.urlencode($this->encrypt($id, getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))),
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/user/?id='.urlencode($this->encrypt($id, getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))),
             CURLOPT_SSL_VERIFYPEER => 0,
         ));
 
@@ -181,7 +181,7 @@ class APIRequestsController extends Controller {
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/get-users-data/',
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/get-users-data/',
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_POSTFIELDS => array(
                 'ids' => (new \App\Http\Controllers\Controller())->encrypt(json_encode($arrayIds) , getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
@@ -203,7 +203,7 @@ class APIRequestsController extends Controller {
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/add-rewards/',
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/add-rewards/',
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_POSTFIELDS => array(
                 'hashed_dcn_reward' => (new \App\Http\Controllers\Controller())->encrypt(json_encode(array('user_id' => $user_id, 'amount' => $amount, 'platform' => $platform)) , getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
@@ -225,7 +225,7 @@ class APIRequestsController extends Controller {
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/check-email/',
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/check-email/',
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_POSTFIELDS => array(
                 'email' => $email
@@ -247,7 +247,7 @@ class APIRequestsController extends Controller {
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/check-email',
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/check-email',
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_POSTFIELDS => array(
                 'email' => $email
@@ -290,7 +290,7 @@ class APIRequestsController extends Controller {
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/balance',
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/balance',
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_HTTPHEADER => $header
         ));
@@ -314,7 +314,7 @@ class APIRequestsController extends Controller {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/transcations/',
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/transcations/',
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_HTTPHEADER => $header
         ));
@@ -481,7 +481,7 @@ class APIRequestsController extends Controller {
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/check-user-info/',
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/check-user-info/',
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_HTTPHEADER => $header,
             CURLOPT_POSTFIELDS => array(
@@ -509,7 +509,7 @@ class APIRequestsController extends Controller {
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/validate-access-token/',
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/validate-access-token/',
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_HTTPHEADER => $header
         ));
@@ -529,7 +529,7 @@ class APIRequestsController extends Controller {
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
-            CURLOPT_URL => 'https://api.dentacoin.com/api/get-dentacoin-map-data',
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/get-dentacoin-map-data',
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_POSTFIELDS => array(
                 'search' => (new \App\Http\Controllers\Controller())->encrypt(json_encode($array) , getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))

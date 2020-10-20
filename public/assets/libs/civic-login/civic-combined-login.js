@@ -19,11 +19,7 @@
     var civicSip = new civic.sip({appId: civic_config.app_id});
 
     //bind click event for the civic button
-
-    $(document).off('click', '.civic-custom-btn', civicInitPopup);
-    $(document).on('click', '.civic-custom-btn', civicInitPopup);
-
-    function civicInitPopup() {
+    $('body').on('click', '.civic-custom-btn', function() {
         civic_custom_btn = $(this);
         if (civic_custom_btn.hasClass('type-login')) {
             civicActionType = 'login';
@@ -49,7 +45,7 @@
                 scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
             });
         }
-    }
+    });
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
@@ -59,8 +55,15 @@
                 // old legacy app
                 console.log('stop civic register');
 
+                var data = {};
+                data.tempData = {
+                    civicActionType: civicActionType,
+                    civicAjaxUrl: civicAjaxUrl
+                };
+                console.log(data, 'auth-code-received');
+
                 civicSip.close();
-                customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.');
+                customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', data);
             }
         }
 
@@ -191,6 +194,11 @@
                                             if (civicApiVersion == 'v2') {
                                                 // this should work on second phase
                                                 console.log('stop civic login');
+
+                                                data.tempData = {
+                                                    civicActionType: civicActionType,
+                                                    civicAjaxUrl: civicAjaxUrl
+                                                };
 
                                                 civicSip.close();
                                                 customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.', data);
