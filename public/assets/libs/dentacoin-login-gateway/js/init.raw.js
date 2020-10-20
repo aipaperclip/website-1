@@ -40,10 +40,10 @@ if (typeof jQuery == 'undefined') {
                     return ajaxCall;
                 }*/
             },
-            getGatewayHtml: async function(data, callback) {
+            getGatewayHtml: async function(url, data, callback) {
                 await $.ajax({
                     type: 'POST',
-                    url: 'https://dentacoin.com/dentacoin-login-gateway',
+                    url: url,
                     dataType: 'json',
                     data: data,
                     success: function(response) {
@@ -53,20 +53,6 @@ if (typeof jQuery == 'undefined') {
                         dcnGateway.utils.showPopup('Something went wrong with logging in, please try again a bit later. If the problem still appears please contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                     }
                 });
-
-                /*if (fireAjax) {
-                    fireAjax = false;
-
-                    var ajaxCall = await $.ajax({
-                        type: 'POST',
-                        url: 'https://dentacoin.com/dentacoin-login-gateway',
-                        dataType: 'json',
-                        data: data
-                    });
-
-                    fireAjax = true;
-                    return ajaxCall;
-                }*/
             },
             getUserCountry: async function() {
                 if (fireAjax) {
@@ -755,7 +741,11 @@ if (typeof jQuery == 'undefined') {
                             $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" id="dentacoin-login-gateway-style" type="text/css" href="'+dcnLibsDomain+'/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v='+new Date().getTime()+'"/>');
                         }
 
-                        await dcnGateway.dcnGatewayRequests.getGatewayHtml(gatewayData, async function(gatewayHtml) {
+                        var getGatewayHtmlUrl = 'https://dentacoin.com/dentacoin-login-gateway';
+                        if (hasOwnProperty.call(params, 'subplatform')) {
+                            getGatewayHtmlUrl = params.subplatform + 'dentacoin-login-gateway';
+                        }
+                        await dcnGateway.dcnGatewayRequests.getGatewayHtml(getGatewayHtmlUrl, gatewayData, async function(gatewayHtml) {
                             if (gatewayHtml.success) {
                                 if (!loadedSocialLibs) {
                                     console.log('Load external libraries.');
