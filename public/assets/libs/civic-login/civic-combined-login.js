@@ -13,6 +13,7 @@
     var civic_custom_btn;
     var civicApiVersion;
     var civicActionType;
+    var civicStyleLoaded = false;
     var civicAjaxUrl = 123;
 
     //init civic
@@ -27,14 +28,14 @@
             civicActionType = 'register';
         }
 
-        if(document.cookie.indexOf('strictly_necessary_policy=') == -1) {
+        if (document.cookie.indexOf('strictly_necessary_policy=') == -1) {
             customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
         } else {
             customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.');
 
             if (civic_custom_btn.length) {
                 civicAjaxUrl = civic_custom_btn.attr('data-url');
-                if(civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
+                if (civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
                     customCivicEvent('customCivicFbStopperTriggered', '');
                     return false;
                 }
@@ -77,7 +78,7 @@
             },
             dataType: 'json',
             success: function (ret) {
-                if(!ret.userId) {
+                if (!ret.userId) {
                     customCivicEvent('noUserIdReceived', 'No userId found after civic token/data exchange.', ret);
                 } else {
                     customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret);
@@ -125,7 +126,7 @@
 
                     setTimeout(function () {
                         if (civic_custom_btn.length) {
-                            if(civic_custom_btn.attr('data-inviter') != undefined) {
+                            if (civic_custom_btn.attr('data-inviter') != undefined) {
                                 register_data.invited_by = civic_custom_btn.attr('data-inviter');
                             }
 
@@ -233,7 +234,7 @@ function customCivicEvent(type, message, response_data) {
         time: new Date()
     };
 
-    if(response_data != undefined) {
+    if (response_data != undefined) {
         event_obj.response_data = response_data;
     }
     $.event.trigger(event_obj);
