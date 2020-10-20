@@ -44,6 +44,7 @@
         console.log(event.clientVersion, 'read');
 
         if (event.clientVersion == 'v2') {
+            civicSip.close();
             customCivicEvent('CivicLegacyAppForbiddenKYC', 'KYC via Civic Legacy App is forbidden.');
         } else {
             authCodeReceivedEvent();
