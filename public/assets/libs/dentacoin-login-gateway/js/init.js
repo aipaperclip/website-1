@@ -883,7 +883,7 @@ if (typeof jQuery == 'undefined') {
                                         console.log('continue with civic wallet app');
                                         dcnGateway.utils.hideGateway();
                                         await showGateway('patient-login');
-                                        console.log($('.civic-custom-btn.type-login').length, 'civic-custom-btn type-login length');
+                                        $('.civic-custom-btn.type-login').click();
                                     });
                                 });
 
