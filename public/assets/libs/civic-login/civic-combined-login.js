@@ -28,7 +28,7 @@
         }
 
         if (document.cookie.indexOf('strictly_necessary_policy=') == -1) {
-            customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
+            customCivicEvent('cannotLoginBecauseOfMissingCookies', '');
         } else {
             customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.');
 
@@ -182,9 +182,9 @@
                                         }
                                         return false;
                                     } else if (data.new_account) {
-                                        customFacebookEvent('successfulCivicPatientRegistration', '');
+                                        customCivicEvent('successfulCivicPatientRegistration', '');
                                     } else {
-                                        customFacebookEvent('successfulCivicPatientLogin', '');
+                                        customCivicEvent('successfulCivicPatientLogin', '');
                                     }
 
                                     if (data.data.email == '' || data.data.email == null) {
@@ -213,7 +213,7 @@
                                 } else if (!data.success) {
                                     customCivicEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data);
                                 } else {
-                                    customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
+                                    customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
                                 }
                             },
                             error: function() {
