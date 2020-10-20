@@ -49,6 +49,7 @@
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
+        var jwtToken = event.response;
         if (civicActionType == 'register') {
             if (civicApiVersion == 'v2') {
                 // this should work on first phase
@@ -63,14 +64,15 @@
                 console.log(data, 'auth-code-received');
 
                 customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', data);
+            } else {
+                proceedWithDentacoinAuth(jwtToken);
             }
+        } else {
+            proceedWithDentacoinAuth(jwtToken);
         }
+    });
 
-        console.log(event, 'event');
-        var jwtToken = event.response;
-        // customCivicEvent('receivedCivicToken', 'Received civic token successfully.', jwtToken);
-
-        //ajax for exchanging received token from civic for user personal data
+    function proceedWithDentacoinAuth(jwtToken) {
         $.ajax({
             type: 'POST',
             url: civic_config.url_exchange_token_for_data,
@@ -225,7 +227,7 @@
                 customCivicEvent('noExternalLoginProviderConnection', 'Request to Civic NodeJS API failed while exchanging token for data.');
             }
         });
-    });
+    }
 
     /*civicSip.on('user-cancelled', function (event) {
         customCivicEvent('civicUserCancelled', '');
