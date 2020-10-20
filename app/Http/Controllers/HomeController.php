@@ -24,7 +24,16 @@ class HomeController extends Controller
             $slug = (new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['id'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
             $type = (new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['type'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
             $token = (new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['token'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
-            return Redirect::to('https://hub.dentacoin.com/custom-cookie?platform=dentacoin&slug='.urlencode($slug).'&type='.urlencode($type).'&token='.urlencode($token));
+
+            if (!empty(getenv('API_DOMAIN'))) {
+                if (getenv('API_DOMAIN') == 'https://api.dentacoin.com') {
+                    return Redirect::to('https://hub.dentacoin.com/custom-cookie?platform=dentacoin&slug='.urlencode($slug).'&type='.urlencode($type).'&token='.urlencode($token));
+                } else if (getenv('API_DOMAIN') == 'https://dev-api.dentacoin.com') {
+                    return Redirect::to('https://dev-account.dentacoin.com/custom-cookie?platform=dentacoin&slug='.urlencode($slug).'&type='.urlencode($type).'&token='.urlencode($token));
+                }
+            } else {
+                return Redirect::to('https://hub.dentacoin.com/custom-cookie?platform=dentacoin&slug='.urlencode($slug).'&type='.urlencode($type).'&token='.urlencode($token));
+            }
         } else {
             return $this->getNotLoggedView();
         }
