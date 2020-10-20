@@ -38,7 +38,6 @@
     });
 
     civicSip.on('read', function (event) {
-        console.log(event, 'reading');
         civicApiVersion = event.clientVersion;
         customCivicEvent('civicRead', '');
     });
