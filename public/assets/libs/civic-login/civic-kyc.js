@@ -7,6 +7,7 @@
     //load civic lib JS
     await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js?v='+new Date().getTime(), function() {});
 
+    var civicApiVersion;
     var civic_custom_btn;
     //init civic
     var civicSip = new civic.sip({appId: civic_config.app_id});
@@ -22,33 +23,24 @@
         });
     });
 
-    var initAuthCodeReceivedEvent = true;
-    function authCodeReceivedEvent() {
-        if (initAuthCodeReceivedEvent) {
-            initAuthCodeReceivedEvent = false;
-
-            // Listen for data
-            civicSip.on('auth-code-received', function (event) {
-                customCivicEvent('receivedKYCCivicToken', 'Received civic token successfully.', event.response);
-            });
+    // Listen for data
+    civicSip.on('auth-code-received', function (event) {
+        if (civicApiVersion == 'v2') {
+            customCivicEvent('CivicLegacyAppForbiddenKYC', 'KYC via Civic Legacy App is forbidden.');
+        } else if (civicApiVersion == 'v3') {
+            var jwtToken = event.response;
+            customCivicEvent('receivedKYCCivicToken', 'Received civic token successfully.', jwtToken);
         }
-    }
+    });
 
     civicSip.on('user-cancelled', function (event) {
         customCivicEvent('civicUserCancelled', '');
     });
 
     civicSip.on('read', function (event) {
+        console.log(event, 'reading');
+        civicApiVersion = event.clientVersion;
         customCivicEvent('civicRead', '');
-
-        console.log(event.clientVersion, 'read');
-
-        if (event.clientVersion == 'v2') {
-            civicSip.hidePopup();
-            customCivicEvent('CivicLegacyAppForbiddenKYC', 'KYC via Civic Legacy App is forbidden.');
-        } else {
-            authCodeReceivedEvent();
-        }
     });
 
     civicSip.on('civic-sip-error', function (error) {
