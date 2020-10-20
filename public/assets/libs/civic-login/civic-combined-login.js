@@ -62,7 +62,6 @@
                 };
                 console.log(data, 'auth-code-received');
 
-                civicSip.close();
                 customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', data);
             }
         }
@@ -200,7 +199,6 @@
                                                     civicAjaxUrl: civicAjaxUrl
                                                 };
 
-                                                civicSip.close();
                                                 customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.', data);
                                             } else {
                                                 customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
