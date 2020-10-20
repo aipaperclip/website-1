@@ -667,11 +667,17 @@
             font-weight: bold;
         }
         .platform-button {
-            font-weight: bold;
+            font-weight: normal;
         }
     }
     @include breakpoint($xs) {
         margin-bottom: 100px;
+        padding: 20px;
+        .platform-button {
+            display: block;
+            max-width: 400px;
+            margin: 0 auto;
+        }
     }
 }
 

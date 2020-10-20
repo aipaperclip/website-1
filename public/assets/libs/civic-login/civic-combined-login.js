@@ -13,14 +13,17 @@
     var civic_custom_btn;
     var civicApiVersion;
     var civicActionType;
-    var civicStyleLoaded = false;
     var civicAjaxUrl = 123;
 
     //init civic
     var civicSip = new civic.sip({appId: civic_config.app_id});
 
     //bind click event for the civic button
-    $('body').on('click', '.civic-custom-btn', function() {
+
+    $(document).off('click', '.civic-custom-btn', civicInitPopup);
+    $(document).on('click', '.civic-custom-btn', civicInitPopup);
+
+    function civicInitPopup() {
         civic_custom_btn = $(this);
         if (civic_custom_btn.hasClass('type-login')) {
             civicActionType = 'login';
@@ -46,21 +49,17 @@
                 scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
             });
         }
-    });
+    }
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
-        if (civicActionType == 'login') {
-            if (civicApiVersion == 'v2') {
-                // this should work on second phase
-                console.log('stop civic login');
-                customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.');
-            }
-        } else if (civicActionType == 'register') {
+        if (civicActionType == 'register') {
             if (civicApiVersion == 'v2') {
                 // this should work on first phase
                 // old legacy app
                 console.log('stop civic register');
+
+                civicSip.close();
                 customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.');
             }
         }
@@ -188,7 +187,19 @@
                                     if (data.data.email == '' || data.data.email == null) {
                                         customCivicEvent('registeredAccountMissingEmail', '', data);
                                     } else {
-                                        customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                                        if (civicActionType == 'login') {
+                                            if (civicApiVersion == 'v2') {
+                                                // this should work on second phase
+                                                console.log('stop civic login');
+
+                                                civicSip.close();
+                                                customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.', data);
+                                            } else {
+                                                customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                                            }
+                                        } else {
+                                            customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                                        }
                                     }
 
                                 } else if (!data.success) {
