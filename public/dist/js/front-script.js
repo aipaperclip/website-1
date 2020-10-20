@@ -1260,6 +1260,7 @@ var projectData = {
                 dcnGateway.init({
                     'platform': 'dentacoin',
                     'environment' : 'staging',
+                    'subplatform' : 'https://dev.dentacoin.com/',
                     'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password'
                 });
 
