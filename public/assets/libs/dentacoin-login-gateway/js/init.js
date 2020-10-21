@@ -691,6 +691,17 @@ if (typeof jQuery == 'undefined') {
                             }
                         }
                         validPlatform = true;
+                    } else if (params.platform == 'dev.dentacoin') {
+                        currentPlatformDomain = 'https://dev.dentacoin.com/';
+                        params.platform = 'dentacoin';
+
+                        for (var i = 0, len = platformsData.length; i < len; i+=1) {
+                            if (platformsData[i].slug == 'dentavox') {
+                                currentPlatformColor = platformsData[i].color;
+                                break;
+                            }
+                        }
+                        validPlatform = true;
                     } else {
                         for (var i = 0, len = platformsData.length; i < len; i+=1) {
                             if (platformsData[i].slug == params.platform) {
@@ -744,8 +755,8 @@ if (typeof jQuery == 'undefined') {
                         }
 
                         var getGatewayHtmlUrl = 'https://dentacoin.com/dentacoin-login-gateway';
-                        if (hasOwnProperty.call(params, 'subplatform')) {
-                            getGatewayHtmlUrl = params.subplatform + 'dentacoin-login-gateway';
+                        if (environment == 'staging') {
+                            getGatewayHtmlUrl = 'https://dev.dentacoin.com/dentacoin-login-gateway';
                         }
                         await dcnGateway.dcnGatewayRequests.getGatewayHtml(getGatewayHtmlUrl, gatewayData, async function(gatewayHtml) {
                             if (gatewayHtml.success) {
@@ -870,7 +881,6 @@ if (typeof jQuery == 'undefined') {
 
                                     $('.continue-with-legacy-app').click(function() {
                                         console.log('continue with legacy app');
-
                                         $.event.trigger({
                                             type: 'patientProceedWithCreatingSession',
                                             platform_type: 'civic',
@@ -971,9 +981,6 @@ if (typeof jQuery == 'undefined') {
 
                                 $(document).on('patientProceedWithCreatingSession', async function (event) {
                                     var ajaxLink = currentPlatformDomain + 'authenticate-user';
-                                    if (hasOwnProperty.call(params, 'subplatform')) {
-                                        ajaxLink = params.subplatform + 'authenticate-user';
-                                    }
 
                                     var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
                                         token: event.response_data.token,
@@ -1016,9 +1023,6 @@ if (typeof jQuery == 'undefined') {
 
                                 $(document).on('dentistProceedWithCreatingSession', async function (event) {
                                     var ajaxLink = currentPlatformDomain + 'authenticate-user';
-                                    if (hasOwnProperty.call(params, 'subplatform')) {
-                                        ajaxLink = params.subplatform + 'authenticate-user';
-                                    }
 
                                     var createDentistSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
                                         token: event.response_data.token,

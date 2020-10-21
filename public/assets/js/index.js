@@ -938,9 +938,8 @@ var projectData = {
             },
             gateway: function() {
                 dcnGateway.init({
-                    'platform': 'dentacoin',
+                    'platform': 'dev.dentacoin',
                     'environment' : 'staging',
-                    'subplatform' : 'https://dev.dentacoin.com/',
                     'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password'
                 });
 
@@ -981,6 +980,11 @@ var projectData = {
             },
             hideLoader: function() {
                 $('.camping-loader .response-layer').hide();
+            },
+            initTooltips: function() {
+                if ($('[data-toggle="tooltip"]').length) {
+                    $('[data-toggle="tooltip"]').tooltip();
+                }
             },
             handlePushStateRedirects: function() {
                 if (window.location.href.includes('users')) {
@@ -1251,7 +1255,7 @@ var projectData = {
                     $('.section-google-map.module .map-container').html(mapHtml.data);
 
                     $('.selectpicker').selectpicker();
-                    projectData.utils.initTooltips();
+                    projectData.data.initTooltips();
 
                     var locationsOnInit = JSON.parse($('.google-map-box').attr('data-locations'));
                     var lastMapData = {
@@ -1965,7 +1969,7 @@ var projectData = {
                         }
 
                         list.append(listBottomExtraHtml);
-                        projectData.utils.initTooltips();
+                        projectData.data.initTooltips();
 
                         // make request to select all locations DATA for this country FOR THE MAP
                         var currentCountryLocationsData = await projectData.requests.getMapData({action: 'all-partners-and-non-partners-data-by-country', data: code});
@@ -2721,13 +2725,6 @@ var projectData = {
 
             gtag('event', label, event_obj);
         }
-    },
-    utils: {
-        initTooltips: function() {
-            if ($('[data-toggle="tooltip"]').length) {
-                $('[data-toggle="tooltip"]').tooltip();
-            }
-        },
     }
 };
 
