@@ -23,7 +23,7 @@
     var civic_custom_btn;
     var civicApiVersion;
     var civicActionType;
-    var civicAjaxUrl = 123;
+    var civicAjaxUrl;
 
     //init civic
     var civicSip = new civic.sip({appId: civic_config.app_id});
@@ -64,7 +64,8 @@
         console.log(civicApiVersion, 'civicApiVersion uth-code-received');
 
         if (civicActionType == undefined) {
-            console.log('redirect from civic app)');
+            civicAjaxUrl = '//dev-api.dentacoin.com';
+            proceedWithDentacoinAuth(jwtToken, true);
         } else {
             if (civicActionType == 'register') {
                 if (civicApiVersion == 'v2') {
@@ -82,7 +83,7 @@
         }
     });
 
-    function proceedWithDentacoinAuth(jwtToken) {
+    function proceedWithDentacoinAuth(jwtToken, redirectedFromCivicApp) {
         $.ajax({
             type: 'POST',
             url: civic_config.url_exchange_token_for_data,
@@ -101,6 +102,10 @@
                         social_network: 'civic',
                         type: 'patient'
                     };
+
+                    if (redirectedFromCivicApp) {
+                        loginRegisterData.redirectedFromCivicApp = true;
+                    }
 
                     var currentPlatform;
 
