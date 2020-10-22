@@ -65,9 +65,9 @@
 
         if (civicActionType == undefined) {
             if (location.hostname == 'dev.dentacoin.com' || location.hostname == 'urgent.dentavox.dentacoin.com' || location.hostname == 'urgent.reviews.dentacoin.com') {
-                civicAjaxUrl = '//dev-api.dentacoin.com';
+                civicAjaxUrl = '//dev-api.dentacoin.com/login';
             } else {
-                civicAjaxUrl = '//api.dentacoin.com';
+                civicAjaxUrl = '//api.dentacoin.com/login';
             }
 
             proceedWithDentacoinAuth(jwtToken, true);
