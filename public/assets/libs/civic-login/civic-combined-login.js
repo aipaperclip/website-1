@@ -42,7 +42,7 @@
         } else {
             customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.');
 
-            if (civic_custom_btn.length) {
+            if (civic_custom_btn != undefined) {
                 civicAjaxUrl = civic_custom_btn.attr('data-url');
                 if (civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
                     customCivicEvent('customCivicFbStopperTriggered', '');
@@ -109,16 +109,16 @@
 
                     var currentPlatform;
 
-                    if (civic_custom_btn.length) {
+                    if (civic_custom_btn != undefined) {
                         currentPlatform = civic_custom_btn.attr('data-platform');
                         loginRegisterData.platform = currentPlatform;
                     } else {
                         // civic popup called by library get param condition and not, because of Dentacoin login call
-                        if (location.hostname == 'dentacoin.com') {
+                        if (location.hostname == 'dentacoin.com' || location.hostname == 'dev.dentacoin.com') {
                             currentPlatform = 'dentacoin';
-                        } else if (location.hostname == 'reviews.dentacoin.com') {
+                        } else if (location.hostname == 'reviews.dentacoin.com' || location.hostname == 'urgent.reviews.dentacoin.com') {
                             currentPlatform = 'trusted-reviews';
-                        } else if (location.hostname == 'dentavox.dentacoin.com') {
+                        } else if (location.hostname == 'dentavox.dentacoin.com' || location.hostname == 'urgent.dentavox.dentacoin.com') {
                             currentPlatform = 'dentavox';
                         } else if (location.hostname == 'dentists.dentacoin.com') {
                             currentPlatform = 'dentists';
@@ -144,7 +144,7 @@
                     }
 
                     setTimeout(function () {
-                        if (civic_custom_btn.length) {
+                        if (civic_custom_btn != undefined) {
                             if (civic_custom_btn.attr('data-inviter') != undefined) {
                                 loginRegisterData.invited_by = civic_custom_btn.attr('data-inviter');
                             }
