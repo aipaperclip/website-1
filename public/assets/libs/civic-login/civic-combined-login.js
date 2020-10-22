@@ -103,7 +103,6 @@
                 } else {
                     customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret);
                     var loginRegisterData = {
-                        clientVersion: civicApiVersion,
                         auth_token: jwtToken,
                         social_network: 'civic',
                         type: 'patient'
