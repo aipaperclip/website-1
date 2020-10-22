@@ -12,6 +12,7 @@ if (typeof jQuery == 'undefined') {
     var apiDomain = 'https://api.dentacoin.com';
     var dcnLibsDomain = 'https://dentacoin.com';
     var environment = 'live';
+    var initCivicEvents = true;
     var dcnGateway = {
         dcnGatewayRequests: {
             getPlatformsData: async function(callback) {
@@ -606,6 +607,147 @@ if (typeof jQuery == 'undefined') {
                     }
                 });
             },
+            initCivicListeners: function() {
+                $(document).on('successfulCivicPatientLogin', async function (event) {
+                    dcnGateway.utils.fireGoogleAnalyticsEvent('PatientLogin', 'ClickCivic', 'PatientLoginCivic');
+                    dcnGateway.utils.fireFacebookPixelEvent('PatientLogin');
+                });
+
+                $(document).on('registeredAccountMissingEmail', async function (event) {
+                    dcnGateway.utils.hideLoader();
+
+                    $('.login-section-title').html($('.popup-body.translations').attr('data-translation-update-email'));
+
+                    $('.dentacoin-login-gateway-container .patient .form-login .form-login-fields').hide();
+                    $('.dentacoin-login-gateway-container .patient .form-login').append('<div class="registered-user-without-email-parent"><div class="padding-bottom-10 field-parent"><div class="custom-gateway-google-label-style module" data-input-colorful-border="true"><label for="registered-patient-without-email">'+$('.popup-body.translations').attr('data-translation-email-field')+'</label><input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" /></div><div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">'+$('.popup-body.translations').attr('data-translation-please-add-email')+'</div></div><div class="patient-register-checkboxes padding-top-5"><div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registered-user-without-email"/><label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registered-user-without-email">'+$('.popup-body.translations').attr('data-translation-i-agree')+'<a href="//dentacoin.com/privacy-policy" target="_blank">'+$('.popup-body.translations').attr('data-translation-privacy-policy')+'</a></label></div></div><div class="text-right padding-top-15"><a href="javascript:void(0);" class="platform-button opposite gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email inline-block">'+$('.popup-body.translations').attr('data-translation-continue')+'</a></div></div>');
+
+                    dcnGateway.utils.initCustomCheckboxes();
+
+                    $('.dentacoin-login-gateway-container .patient .form-login .save-registered-patient-without-email').click(async function() {
+                        $('.registered-user-without-email-parent .error-handle').remove();
+
+                        if ($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim() == '' || !dcnGateway.utils.validateEmail($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim())) {
+                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').closest('.field-parent'), 'Please use valid email address.');
+                        } else if (!$('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').is(':checked')) {
+                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').closest('.patient-register-checkboxes'), 'Please agree with our Privacy Policy.');
+                        } else {
+                            var editUserDataData = {
+                                email: $('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim()
+                            };
+                            var editUserDataResponse = await dcnGateway.dcnGatewayRequests.editUserData(editUserDataData, event.response_data.token);
+                            if (editUserDataResponse.success) {
+                                // on success save email to db
+                                $.event.trigger({
+                                    type: 'patientProceedWithCreatingSession',
+                                    response_data: event.response_data,
+                                    platform_type: event.platform_type,
+                                    time: new Date()
+                                });
+
+                                dcnGateway.utils.hideGateway(true);
+                            } else if (editUserDataResponse.errors) {
+                                var error_popup_html = '';
+                                for(var key in editUserDataResponse.errors) {
+                                    error_popup_html += editUserDataResponse.errors[key]+'<br>';
+                                }
+
+                                dcnGateway.utils.showPopup(error_popup_html, 'alert');
+                            } else {
+                                dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                            }
+                        }
+                    });
+                });
+
+                $(document).on('civicRead', async function (event) {
+                    dcnGateway.utils.hideGateway();
+                    dcnGateway.utils.showLoader('Receiving your details from Civic...');
+                });
+
+                $(document).on('CivicLegacyAppForbiddenLogging', async function (event) {
+                    var eventData = event;
+                    console.log(eventData, 'eventData');
+
+                    dcnGateway.utils.hideLoader();
+                    dcnGateway.utils.showPopup('<div class="warning-icon"><?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/"><!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/"><!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/"><!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/"><!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/"><!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/"><!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/"><!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/"><svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 82" style="enable-background:new 0 0 64 82;" xml:space="preserve"><metadata><sfw xmlns="&ns_sfw;"><slices></slices><sliceSourceBounds bottomLeftOrigin="true" height="82.1" width="63.9" x="0.1" y="-0.1"></sliceSourceBounds></sfw></metadata><g transform="translate(0,-952.36218)"><g><path style="fill:#3AB03E;" d="M31.8,952.4c-0.1,0-0.3,0.1-0.4,0.1l-30,11c-0.8,0.3-1.3,1-1.3,1.9v33c0,7.8,4.4,14.3,10.3,20c5.9,5.7,13.5,10.7,20.5,15.7c0.7,0.5,1.6,0.5,2.3,0c7-5,14.6-10,20.5-15.7c5.9-5.7,10.3-12.2,10.3-20v-33c0-0.8-0.5-1.6-1.3-1.9l-30-11C32.5,952.4,32.1,952.3,31.8,952.4z M32.1,956.5l28,10.3v31.6c0,6.3-3.5,11.8-9.1,17.1c-5.2,5-12.2,9.7-18.9,14.4c-6.7-4.7-13.7-9.4-18.9-14.4c-5.5-5.3-9.1-10.8-9.1-17.1v-31.6L32.1,956.5z"/></g></g><text transform="matrix(1 0 0 1 22.2637 60.0695)" style="fill:#3AB03E;font-size:58.497px;">!</text></svg></div><div class="popup-text">CIVIC Identity app will be deprecated soon and integrated in the new upgraded CIVIC Wallet application. To avoid interruptions of your login experience, switch to the new CIVIC Wallet app now. Get it on <a href="https://play.google.com/store/apps/details?id=com.civic.wallet&referrer=utm_source%3Dhomepage%26utm_medium%3Dwebsite&_branch_match_id=827481124251595050&utm_source=homepage&utm_campaign=android&utm_medium=download" class="gateway-platform-color-important" target="_blank">GooglePlay</a> or <a href="https://l.civic.com/1RP0bpRMg7" class="gateway-platform-color-important" target="_blank">AppStore</a>.<br><br>Make sure you create your account in CIVIC Wallet with the <b>same email address</b> you are currently using to get access to your account.</div><div class="text-center padding-bottom-15"><a href="javascript:void(0);" class="continue-with-civic-wallet-app platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20">CONTINUE WITH CIVIC WALLET APP</a></div><div class="text-center dentacoin-login-gateway-fs-18">Not yet. <a href="javascript:void(0);" class="continue-with-legacy-app gateway-platform-color-important">Login with CIVIC Identity app.</a></div>', 'forbidden-civic-warning');
+
+                    $('.continue-with-legacy-app').click(function() {
+                        console.log('continue with legacy app');
+                        $.event.trigger({
+                            type: 'patientProceedWithCreatingSession',
+                            platform_type: 'civic',
+                            time: new Date(),
+                            response_data: eventData.response_data
+                        });
+                    });
+
+                    $('.continue-with-civic-wallet-app').click(async function() {
+                        console.log('continue with civic wallet app');
+                        dcnGateway.utils.hideGateway();
+                        await showGateway('patient-login');
+                        $('.civic-custom-btn.type-login').click();
+                    });
+                });
+
+                $(document).on('CivicLegacyAppForbiddenRegistrations', async function (event) {
+                    dcnGateway.utils.hideLoader();
+                    dcnGateway.utils.showPopup('<div class="warning-icon"><?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/"><!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/"><!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/"><!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/"><!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/"><!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/"><!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/"><!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/"><svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 82" style="enable-background:new 0 0 64 82;" xml:space="preserve"><metadata><sfw xmlns="&ns_sfw;"><slices></slices><sliceSourceBounds bottomLeftOrigin="true" height="82.1" width="63.9" x="0.1" y="-0.1"></sliceSourceBounds></sfw></metadata><g transform="translate(0,-952.36218)"><g><path style="fill:#3AB03E;" d="M31.8,952.4c-0.1,0-0.3,0.1-0.4,0.1l-30,11c-0.8,0.3-1.3,1-1.3,1.9v33c0,7.8,4.4,14.3,10.3,20c5.9,5.7,13.5,10.7,20.5,15.7c0.7,0.5,1.6,0.5,2.3,0c7-5,14.6-10,20.5-15.7c5.9-5.7,10.3-12.2,10.3-20v-33c0-0.8-0.5-1.6-1.3-1.9l-30-11C32.5,952.4,32.1,952.3,31.8,952.4z M32.1,956.5l28,10.3v31.6c0,6.3-3.5,11.8-9.1,17.1c-5.2,5-12.2,9.7-18.9,14.4c-6.7-4.7-13.7-9.4-18.9-14.4c-5.5-5.3-9.1-10.8-9.1-17.1v-31.6L32.1,956.5z"/></g></g><text transform="matrix(1 0 0 1 22.2637 60.0695)" style="fill:#3AB03E;font-size:58.497px;">!</text></svg></div><div class="popup-text">CIVIC Identity app has been replaced by the new upgraded CIVIC Wallet app. Get it on <a href="https://play.google.com/store/apps/details?id=com.civic.wallet&referrer=utm_source%3Dhomepage%26utm_medium%3Dwebsite&_branch_match_id=827481124251595050&utm_source=homepage&utm_campaign=android&utm_medium=download" class="gateway-platform-color-important" target="_blank">GooglePlay</a> or <a href="https://l.civic.com/1RP0bpRMg7" class="gateway-platform-color-important" target="_blank">AppStore</a>.</div><div class="text-center padding-bottom-15"><a href="javascript:void(0);" class="continue-with-civic-wallet-app platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20">CONTINUE WITH CIVIC WALLET APP</a></div>', 'forbidden-civic-warning');
+
+                    $('.continue-with-civic-wallet-app').click(function() {
+                        console.log('continue with civic wallet app');
+                        dcnGateway.utils.hideGateway();
+                        showGateway('patient-register');
+                    });
+                });
+
+                $(document).on('successfulCivicPatientRegistration', async function (event) {
+                    dcnGateway.utils.fireGoogleAnalyticsEvent('PatientRegistration', 'ClickCivic', ' PatientRegistrationCivic');
+                    dcnGateway.utils.fireFacebookPixelEvent('PatientRegistration');
+                });
+
+                $(document).on('noCoreDBApiConnection', function (event) {
+                    dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                });
+
+                $(document).on('patientAuthErrorResponse', function (event) {
+                    var error_popup_html = '';
+                    if (event.response_data.errors) {
+                        for(var key in event.response_data.errors) {
+                            error_popup_html += event.response_data.errors[key]+'<br>';
+                        }
+                    }
+
+                    var params = {};
+                    if (event.response_data.log_button) {
+                        params.log_button = true;
+                    }
+
+                    dcnGateway.utils.hideLoader();
+                    dcnGateway.utils.showPopup(error_popup_html, 'alert', null, params);
+                });
+
+                $(document).on('patientProceedWithCreatingSession', async function (event) {
+                    var ajaxLink = currentPlatformDomain + 'authenticate-user';
+
+                    var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
+                        token: event.response_data.token,
+                        id: event.response_data.data.id,
+                        type: 'patient'
+                    });
+
+                    if (createPatientSessionResponse.success) {
+                        $.event.trigger({
+                            type: 'patientAuthSuccessResponse',
+                            response_data: event.response_data,
+                            platform_type: params.platform,
+                            time: new Date()
+                        });
+                    } else {
+                        dcnGateway.utils.hideLoader();
+                        dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                    }
+                });
+            },
             hideGateway: function(removeEvents) {
                 // remove popup
                 $('.dentacoin-login-gateway-container').remove();
@@ -635,6 +777,8 @@ if (typeof jQuery == 'undefined') {
                     $(document).off('civicSipError');
                     $(document).off('getAfterDentistRegistrationPopupForDentist');
                     $(document).off('getAfterDentistRegistrationPopupForClinic');
+
+                    initCivicEvents = true;
                 }
             },
             hidePopup: function() {
@@ -669,6 +813,11 @@ if (typeof jQuery == 'undefined') {
 
                 console.log('init call civic');
                 await $.getScript(dcnLibsDomain + '/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+
+                if (initCivicEvents) {
+                    initCivicEvents = false;
+                    dcnGateway.utils.initCivicListeners();
+                }
 
                 await dcnGateway.dcnGatewayRequests.getPlatformsData(async function(platformsData) {
                     var validPlatform = false;
@@ -863,49 +1012,13 @@ if (typeof jQuery == 'undefined') {
                                     }
                                 });
 
+                                if (initCivicEvents) {
+                                    initCivicEvents = false;
+                                    dcnGateway.utils.initCivicListeners();
+                                }
+
                                 $(document).on('civicCustomBtnClicked', function (event) {
                                     $('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder').html('');
-                                });
-
-                                $(document).on('civicRead', async function (event) {
-                                    dcnGateway.utils.hideGateway();
-                                    dcnGateway.utils.showLoader('Receiving your details from Civic...');
-                                });
-
-                                $(document).on('CivicLegacyAppForbiddenLogging', async function (event) {
-                                    var eventData = event;
-                                    console.log(eventData, 'eventData');
-
-                                    dcnGateway.utils.hideLoader();
-                                    dcnGateway.utils.showPopup('<div class="warning-icon"><?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/"><!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/"><!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/"><!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/"><!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/"><!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/"><!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/"><!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/"><svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 82" style="enable-background:new 0 0 64 82;" xml:space="preserve"><metadata><sfw xmlns="&ns_sfw;"><slices></slices><sliceSourceBounds bottomLeftOrigin="true" height="82.1" width="63.9" x="0.1" y="-0.1"></sliceSourceBounds></sfw></metadata><g transform="translate(0,-952.36218)"><g><path style="fill:#3AB03E;" d="M31.8,952.4c-0.1,0-0.3,0.1-0.4,0.1l-30,11c-0.8,0.3-1.3,1-1.3,1.9v33c0,7.8,4.4,14.3,10.3,20c5.9,5.7,13.5,10.7,20.5,15.7c0.7,0.5,1.6,0.5,2.3,0c7-5,14.6-10,20.5-15.7c5.9-5.7,10.3-12.2,10.3-20v-33c0-0.8-0.5-1.6-1.3-1.9l-30-11C32.5,952.4,32.1,952.3,31.8,952.4z M32.1,956.5l28,10.3v31.6c0,6.3-3.5,11.8-9.1,17.1c-5.2,5-12.2,9.7-18.9,14.4c-6.7-4.7-13.7-9.4-18.9-14.4c-5.5-5.3-9.1-10.8-9.1-17.1v-31.6L32.1,956.5z"/></g></g><text transform="matrix(1 0 0 1 22.2637 60.0695)" style="fill:#3AB03E;font-size:58.497px;">!</text></svg></div><div class="popup-text">CIVIC Identity app will be deprecated soon and integrated in the new upgraded CIVIC Wallet application. To avoid interruptions of your login experience, switch to the new CIVIC Wallet app now. Get it on <a href="https://play.google.com/store/apps/details?id=com.civic.wallet&referrer=utm_source%3Dhomepage%26utm_medium%3Dwebsite&_branch_match_id=827481124251595050&utm_source=homepage&utm_campaign=android&utm_medium=download" class="gateway-platform-color-important" target="_blank">GooglePlay</a> or <a href="https://l.civic.com/1RP0bpRMg7" class="gateway-platform-color-important" target="_blank">AppStore</a>.<br><br>Make sure you create your account in CIVIC Wallet with the <b>same email address</b> you are currently using to get access to your account.</div><div class="text-center padding-bottom-15"><a href="javascript:void(0);" class="continue-with-civic-wallet-app platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20">CONTINUE WITH CIVIC WALLET APP</a></div><div class="text-center dentacoin-login-gateway-fs-18">Not yet. <a href="javascript:void(0);" class="continue-with-legacy-app gateway-platform-color-important">Login with CIVIC Identity app.</a></div>', 'forbidden-civic-warning');
-
-                                    $('.continue-with-legacy-app').click(function() {
-                                        console.log('continue with legacy app');
-                                        $.event.trigger({
-                                            type: 'patientProceedWithCreatingSession',
-                                            platform_type: 'civic',
-                                            time: new Date(),
-                                            response_data: eventData.response_data
-                                        });
-                                    });
-
-                                    $('.continue-with-civic-wallet-app').click(async function() {
-                                        console.log('continue with civic wallet app');
-                                        dcnGateway.utils.hideGateway();
-                                        await showGateway('patient-login');
-                                        $('.civic-custom-btn.type-login').click();
-                                    });
-                                });
-
-                                $(document).on('CivicLegacyAppForbiddenRegistrations', async function (event) {
-                                    dcnGateway.utils.hideLoader();
-                                    dcnGateway.utils.showPopup('<div class="warning-icon"><?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/"><!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/"><!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/"><!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/"><!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/"><!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/"><!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/"><!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/"><svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 82" style="enable-background:new 0 0 64 82;" xml:space="preserve"><metadata><sfw xmlns="&ns_sfw;"><slices></slices><sliceSourceBounds bottomLeftOrigin="true" height="82.1" width="63.9" x="0.1" y="-0.1"></sliceSourceBounds></sfw></metadata><g transform="translate(0,-952.36218)"><g><path style="fill:#3AB03E;" d="M31.8,952.4c-0.1,0-0.3,0.1-0.4,0.1l-30,11c-0.8,0.3-1.3,1-1.3,1.9v33c0,7.8,4.4,14.3,10.3,20c5.9,5.7,13.5,10.7,20.5,15.7c0.7,0.5,1.6,0.5,2.3,0c7-5,14.6-10,20.5-15.7c5.9-5.7,10.3-12.2,10.3-20v-33c0-0.8-0.5-1.6-1.3-1.9l-30-11C32.5,952.4,32.1,952.3,31.8,952.4z M32.1,956.5l28,10.3v31.6c0,6.3-3.5,11.8-9.1,17.1c-5.2,5-12.2,9.7-18.9,14.4c-6.7-4.7-13.7-9.4-18.9-14.4c-5.5-5.3-9.1-10.8-9.1-17.1v-31.6L32.1,956.5z"/></g></g><text transform="matrix(1 0 0 1 22.2637 60.0695)" style="fill:#3AB03E;font-size:58.497px;">!</text></svg></div><div class="popup-text">CIVIC Identity app has been replaced by the new upgraded CIVIC Wallet app. Get it on <a href="https://play.google.com/store/apps/details?id=com.civic.wallet&referrer=utm_source%3Dhomepage%26utm_medium%3Dwebsite&_branch_match_id=827481124251595050&utm_source=homepage&utm_campaign=android&utm_medium=download" class="gateway-platform-color-important" target="_blank">GooglePlay</a> or <a href="https://l.civic.com/1RP0bpRMg7" class="gateway-platform-color-important" target="_blank">AppStore</a>.</div><div class="text-center padding-bottom-15"><a href="javascript:void(0);" class="continue-with-civic-wallet-app platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20">CONTINUE WITH CIVIC WALLET APP</a></div>', 'forbidden-civic-warning');
-
-                                    $('.continue-with-civic-wallet-app').click(function() {
-                                        console.log('continue with civic wallet app');
-                                        dcnGateway.utils.hideGateway();
-                                        showGateway('patient-register');
-                                    });
                                 });
 
                                 $(document).on('receivedFacebookToken', async function (event) {
@@ -925,80 +1038,8 @@ if (typeof jQuery == 'undefined') {
                                     dcnGateway.utils.showPopup(event.message, 'alert');
                                 });
 
-                                $(document).on('noCoreDBApiConnection', function (event) {
-                                    dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
-                                });
-
                                 $(document).on('customCivicFbStopperTriggered', function (event) {
                                     dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder'), 'Please confirm you\'re 18 years of age and agree with our Privacy Policy.');
-                                });
-
-                                $(document).on('registeredAccountMissingEmail', async function (event) {
-                                    dcnGateway.utils.hideLoader();
-
-                                    $('.login-section-title').html($('.popup-body.translations').attr('data-translation-update-email'));
-
-                                    $('.dentacoin-login-gateway-container .patient .form-login .form-login-fields').hide();
-                                    $('.dentacoin-login-gateway-container .patient .form-login').append('<div class="registered-user-without-email-parent"><div class="padding-bottom-10 field-parent"><div class="custom-gateway-google-label-style module" data-input-colorful-border="true"><label for="registered-patient-without-email">'+$('.popup-body.translations').attr('data-translation-email-field')+'</label><input class="full-rounded form-field" maxlength="100" type="email" id="registered-patient-without-email" /></div><div class="dentacoin-login-gateway-fs-14 light-gray-color padding-top-5">'+$('.popup-body.translations').attr('data-translation-please-add-email')+'</div></div><div class="patient-register-checkboxes padding-top-5"><div class="custom-checkbox-style"><input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registered-user-without-email"/><label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registered-user-without-email">'+$('.popup-body.translations').attr('data-translation-i-agree')+'<a href="//dentacoin.com/privacy-policy" target="_blank">'+$('.popup-body.translations').attr('data-translation-privacy-policy')+'</a></label></div></div><div class="text-right padding-top-15"><a href="javascript:void(0);" class="platform-button opposite gateway-platform-color-important dentacoin-login-gateway-fs-20 save-registered-patient-without-email inline-block">'+$('.popup-body.translations').attr('data-translation-continue')+'</a></div></div>');
-
-                                    dcnGateway.utils.initCustomCheckboxes();
-
-                                    $('.dentacoin-login-gateway-container .patient .form-login .save-registered-patient-without-email').click(async function() {
-                                        $('.registered-user-without-email-parent .error-handle').remove();
-
-                                        if ($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim() == '' || !dcnGateway.utils.validateEmail($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim())) {
-                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').closest('.field-parent'), 'Please use valid email address.');
-                                        } else if (!$('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').is(':checked')) {
-                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-login #privacy-policy-registered-user-without-email').closest('.patient-register-checkboxes'), 'Please agree with our Privacy Policy.');
-                                        } else {
-                                            var editUserDataData = {
-                                                email: $('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim()
-                                            };
-                                            var editUserDataResponse = await dcnGateway.dcnGatewayRequests.editUserData(editUserDataData, event.response_data.token);
-                                            if (editUserDataResponse.success) {
-                                                // on success save email to db
-                                                $.event.trigger({
-                                                    type: 'patientProceedWithCreatingSession',
-                                                    response_data: event.response_data,
-                                                    platform_type: event.platform_type,
-                                                    time: new Date()
-                                                });
-
-                                                dcnGateway.utils.hideGateway(true);
-                                            } else if (editUserDataResponse.errors) {
-                                                var error_popup_html = '';
-                                                for(var key in editUserDataResponse.errors) {
-                                                    error_popup_html += editUserDataResponse.errors[key]+'<br>';
-                                                }
-
-                                                dcnGateway.utils.showPopup(error_popup_html, 'alert');
-                                            } else {
-                                                dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
-                                            }
-                                        }
-                                    });
-                                });
-
-                                $(document).on('patientProceedWithCreatingSession', async function (event) {
-                                    var ajaxLink = currentPlatformDomain + 'authenticate-user';
-
-                                    var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
-                                        token: event.response_data.token,
-                                        id: event.response_data.data.id,
-                                        type: 'patient'
-                                    });
-
-                                    if (createPatientSessionResponse.success) {
-                                        $.event.trigger({
-                                            type: 'patientAuthSuccessResponse',
-                                            response_data: event.response_data,
-                                            platform_type: params.platform,
-                                            time: new Date()
-                                        });
-                                    } else {
-                                        dcnGateway.utils.hideLoader();
-                                        dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
-                                    }
                                 });
 
                                 $(document).on('successfulFacebookPatientLogin', async function (event) {
@@ -1008,16 +1049,6 @@ if (typeof jQuery == 'undefined') {
 
                                 $(document).on('successfulFacebookPatientRegistration', async function (event) {
                                     dcnGateway.utils.fireGoogleAnalyticsEvent('PatientRegistration', 'ClickFB', 'PatientRegistrationFB');
-                                    dcnGateway.utils.fireFacebookPixelEvent('PatientRegistration');
-                                });
-
-                                $(document).on('successfulCivicPatientLogin', async function (event) {
-                                    dcnGateway.utils.fireGoogleAnalyticsEvent('PatientLogin', 'ClickCivic', 'PatientLoginCivic');
-                                    dcnGateway.utils.fireFacebookPixelEvent('PatientLogin');
-                                });
-
-                                $(document).on('successfulCivicPatientRegistration', async function (event) {
-                                    dcnGateway.utils.fireGoogleAnalyticsEvent('PatientRegistration', 'ClickCivic', ' PatientRegistrationCivic');
                                     dcnGateway.utils.fireFacebookPixelEvent('PatientRegistration');
                                 });
 
@@ -1096,23 +1127,6 @@ if (typeof jQuery == 'undefined') {
                                             type: 'clinic'
                                         });
                                     }
-                                });
-
-                                $(document).on('patientAuthErrorResponse', function (event) {
-                                    var error_popup_html = '';
-                                    if (event.response_data.errors) {
-                                        for(var key in event.response_data.errors) {
-                                            error_popup_html += event.response_data.errors[key]+'<br>';
-                                        }
-                                    }
-
-                                    var params = {};
-                                    if (event.response_data.log_button) {
-                                        params.log_button = true;
-                                    }
-
-                                    dcnGateway.utils.hideLoader();
-                                    dcnGateway.utils.showPopup(error_popup_html, 'alert', null, params);
                                 });
 
                                 $(document).on('noExternalLoginProviderConnection', function (event) {
