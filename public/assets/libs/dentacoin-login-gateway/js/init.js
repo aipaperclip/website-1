@@ -636,6 +636,8 @@ if (typeof jQuery == 'undefined') {
                                 email: $('.dentacoin-login-gateway-container .patient .form-login #registered-patient-without-email').val().trim()
                             };
                             var editUserDataResponse = await dcnGateway.dcnGatewayRequests.editUserData(editUserDataData, event.response_data.token);
+
+                            dcnGateway.utils.hideLoader();
                             if (editUserDataResponse.success) {
                                 // on success save email to db
                                 $.event.trigger({
@@ -707,6 +709,7 @@ if (typeof jQuery == 'undefined') {
                 });
 
                 $(document).on('noCoreDBApiConnection', function (event) {
+                    dcnGateway.utils.hideLoader();
                     dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                 });
 
