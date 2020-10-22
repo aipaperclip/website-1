@@ -59,6 +59,7 @@
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
+        console.log(event, 'event');
         var jwtToken = event.response;
         console.log(civicActionType, 'civicActionType uth-code-received');
         console.log(civicApiVersion, 'civicApiVersion uth-code-received');
