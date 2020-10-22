@@ -64,7 +64,12 @@
         console.log(civicApiVersion, 'civicApiVersion uth-code-received');
 
         if (civicActionType == undefined) {
-            civicAjaxUrl = '//dev-api.dentacoin.com';
+            if (location.hostname == 'dev.dentacoin.com' || location.hostname == 'urgent.dentavox.dentacoin.com' || location.hostname == 'urgent.reviews.dentacoin.com') {
+                civicAjaxUrl = '//dev-api.dentacoin.com';
+            } else {
+                civicAjaxUrl = '//api.dentacoin.com';
+            }
+
             proceedWithDentacoinAuth(jwtToken, true);
         } else {
             if (civicActionType == 'register') {
