@@ -865,6 +865,11 @@ if (typeof jQuery == 'undefined') {
                         return false;
                     }
 
+                    // load login gateway style
+                    if (!$('#dentacoin-login-gateway-style').length) {
+                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" id="dentacoin-login-gateway-style" type="text/css" href="'+dcnLibsDomain+'/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v='+new Date().getTime()+'"/>');
+                    }
+
                     console.log('init call civic');
                     await $.getScript(dcnLibsDomain + '/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
 
@@ -897,11 +902,6 @@ if (typeof jQuery == 'undefined') {
                         // if inviteid in the URL pass it to the gateway
                         if (getParams.hasOwnProperty('inviteid')) {
                             gatewayData.inviteid = getParams.inviteid;
-                        }
-
-                        // load login gateway style
-                        if (!$('#dentacoin-login-gateway-style').length) {
-                            $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" id="dentacoin-login-gateway-style" type="text/css" href="'+dcnLibsDomain+'/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v='+new Date().getTime()+'"/>');
                         }
 
                         var getGatewayHtmlUrl = 'https://dentacoin.com/dentacoin-login-gateway';
