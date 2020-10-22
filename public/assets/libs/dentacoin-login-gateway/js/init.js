@@ -608,6 +608,7 @@ if (typeof jQuery == 'undefined') {
                 });
             },
             initCivicListeners: function() {
+                console.log('initCivicListeners');
                 $(document).on('successfulCivicPatientLogin', async function (event) {
                     dcnGateway.utils.fireGoogleAnalyticsEvent('PatientLogin', 'ClickCivic', 'PatientLoginCivic');
                     dcnGateway.utils.fireFacebookPixelEvent('PatientLogin');
@@ -811,14 +812,6 @@ if (typeof jQuery == 'undefined') {
                     environment = 'staging';
                 }
 
-                console.log('init call civic');
-                await $.getScript(dcnLibsDomain + '/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
-
-                if (initCivicEvents) {
-                    initCivicEvents = false;
-                    dcnGateway.utils.initCivicListeners();
-                }
-
                 await dcnGateway.dcnGatewayRequests.getPlatformsData(async function(platformsData) {
                     var validPlatform = false;
                     var currentPlatformColor;
@@ -870,6 +863,14 @@ if (typeof jQuery == 'undefined') {
                     if (!validPlatform) {
                         console.error('False \'platform\' parameter passed to dentacoin login gateway.');
                         return false;
+                    }
+
+                    console.log('init call civic');
+                    await $.getScript(dcnLibsDomain + '/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+
+                    if (initCivicEvents) {
+                        initCivicEvents = false;
+                        dcnGateway.utils.initCivicListeners();
                     }
 
                     // show login gateway by url
