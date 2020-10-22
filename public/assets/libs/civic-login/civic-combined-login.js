@@ -109,6 +109,12 @@
                         type: 'patient'
                     };
 
+                    if (civicApiVersion != undefined) {
+                        loginRegisterData.clientVersion = civicApiVersion;
+                    } else {
+                        loginRegisterData.clientVersion = 'v2';
+                    }
+
                     if (redirectedFromCivicApp) {
                         loginRegisterData.redirectedFromCivicApp = true;
                     }
