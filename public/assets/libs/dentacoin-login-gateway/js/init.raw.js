@@ -690,9 +690,7 @@ if (typeof jQuery == 'undefined') {
 
                         $.event.trigger({
                             type: 'openPatientLogin',
-                            response_data: {
-                                openLogin: true
-                            },
+                            openLogin: true,
                             time: new Date()
                         });
                     });
