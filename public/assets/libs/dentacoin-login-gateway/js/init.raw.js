@@ -607,7 +607,7 @@ if (typeof jQuery == 'undefined') {
                     }
                 });
             },
-            initCivicListeners: function(currentPlatformDomain) {
+            initCivicListeners: function(currentPlatformDomain, params) {
                 console.log('initCivicListeners');
                 $(document).on('successfulCivicPatientLogin', async function (event) {
                     dcnGateway.utils.fireGoogleAnalyticsEvent('PatientLogin', 'ClickCivic', 'PatientLoginCivic');
@@ -886,7 +886,7 @@ if (typeof jQuery == 'undefined') {
 
                     if (initCivicEvents) {
                         initCivicEvents = false;
-                        dcnGateway.utils.initCivicListeners(currentPlatformDomain);
+                        dcnGateway.utils.initCivicListeners(currentPlatformDomain, params);
                     }
 
                     // show login gateway by url
@@ -1026,7 +1026,7 @@ if (typeof jQuery == 'undefined') {
 
                                 if (initCivicEvents) {
                                     initCivicEvents = false;
-                                    dcnGateway.utils.initCivicListeners(currentPlatformDomain);
+                                    dcnGateway.utils.initCivicListeners(currentPlatformDomain, params);
                                 }
 
                                 $(document).on('civicCustomBtnClicked', function (event) {
