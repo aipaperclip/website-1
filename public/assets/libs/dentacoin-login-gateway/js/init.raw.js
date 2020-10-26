@@ -690,9 +690,11 @@ if (typeof jQuery == 'undefined') {
 
                         $.event.trigger({
                             type: 'openPatientLogin',
+                            response_data: {
+                                openLogin: true
+                            },
                             time: new Date()
                         });
-                        $('.civic-custom-btn.type-login').click();
                     });
                 });
 
@@ -1932,6 +1934,11 @@ if (typeof jQuery == 'undefined') {
 
                     $(document).on('openPatientLogin', function (event) {
                         showGateway('patient-login');
+                        console.log(event.openLogin, 'event.openLogin');
+
+                        if (hasOwnProperty.call(event, 'openLogin') && event.openLogin) {
+                            $('.civic-custom-btn.type-login').click();
+                        }
                     });
 
                     $(document).on('openPatientRegister', function (event) {
