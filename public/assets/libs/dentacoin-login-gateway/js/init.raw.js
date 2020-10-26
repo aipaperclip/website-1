@@ -892,7 +892,7 @@ if (typeof jQuery == 'undefined') {
                     // show login gateway by url
                     var getParams = dcnGateway.utils.getGETParameters();
 
-                    async function showGateway(type, data) {
+                    async function showGateway(type, data, callback) {
                         var gatewayData = {
                             'type' : type
                         };
@@ -1903,6 +1903,10 @@ if (typeof jQuery == 'undefined') {
                                 return false;
                             }
                         });
+
+                        if (callback != undefined) {
+                            callback();
+                        }
                     }
 
                     $(document).on('click', '.dentacoin-login-gateway-container', function(event) {
@@ -1931,13 +1935,9 @@ if (typeof jQuery == 'undefined') {
                     });
 
                     $(document).on('openPatientLogin', function (event) {
-                        showGateway('patient-login');
-                        console.log(event.openLogin, 'event.openLogin');
-console.log(hasOwnProperty.call(event, 'openLogin'), 'hasOwnProperty.call(event, \'openLogin\')"');
-                        if (hasOwnProperty.call(event, 'openLogin') && event.openLogin) {
-                            console.log('click');
+                        showGateway('patient-login', undefined, function() {
                             $('.civic-custom-btn.type-login').click();
-                        }
+                        });
                     });
 
                     $(document).on('openPatientRegister', function (event) {
