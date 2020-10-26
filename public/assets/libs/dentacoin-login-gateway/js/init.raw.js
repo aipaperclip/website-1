@@ -1933,8 +1933,9 @@ if (typeof jQuery == 'undefined') {
                     $(document).on('openPatientLogin', function (event) {
                         showGateway('patient-login');
                         console.log(event.openLogin, 'event.openLogin');
-
+console.log(hasOwnProperty.call(event, 'openLogin'), 'hasOwnProperty.call(event, \'openLogin\')"');
                         if (hasOwnProperty.call(event, 'openLogin') && event.openLogin) {
+                            console.log('click');
                             $('.civic-custom-btn.type-login').click();
                         }
                     });
