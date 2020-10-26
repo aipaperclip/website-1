@@ -687,7 +687,11 @@ if (typeof jQuery == 'undefined') {
                     $('.continue-with-civic-wallet-app').click(async function() {
                         console.log('continue with civic wallet app');
                         dcnGateway.utils.hideGateway();
-                        await showGateway('patient-login');
+
+                        $.event.trigger({
+                            type: 'openPatientLogin',
+                            time: new Date()
+                        });
                         $('.civic-custom-btn.type-login').click();
                     });
                 });
@@ -699,7 +703,11 @@ if (typeof jQuery == 'undefined') {
                     $('.continue-with-civic-wallet-app').click(function() {
                         console.log('continue with civic wallet app');
                         dcnGateway.utils.hideGateway();
-                        showGateway('patient-register');
+
+                        $.event.trigger({
+                            type: 'openPatientRegister',
+                            time: new Date()
+                        });
                     });
                 });
 
