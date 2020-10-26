@@ -61,6 +61,7 @@
     civicSip.on('auth-code-received', function (event) {
         console.log(event, 'event');
         var jwtToken = event.response;
+        civicApiVersion = event.clientVersion;
         console.log(civicActionType, 'civicActionType uth-code-received');
         console.log(civicApiVersion, 'civicApiVersion uth-code-received');
 
@@ -104,16 +105,11 @@
                 } else {
                     customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret);
                     var loginRegisterData = {
+                        clientVersion: civicApiVersion,
                         auth_token: jwtToken,
                         social_network: 'civic',
                         type: 'patient'
                     };
-
-                    if (civicApiVersion != undefined) {
-                        loginRegisterData.clientVersion = civicApiVersion;
-                    } else {
-                        loginRegisterData.clientVersion = 'v2';
-                    }
 
                     if (redirectedFromCivicApp) {
                         loginRegisterData.redirectedFromCivicApp = true;
@@ -263,7 +259,6 @@
 
     civicSip.on('read', function (event) {
         console.log(event, 'reading');
-        civicApiVersion = event.clientVersion;
         customCivicEvent('civicRead', '');
     });
 
