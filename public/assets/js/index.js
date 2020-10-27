@@ -1256,7 +1256,7 @@ var projectData = {
                     $('.section-google-map.module .map-container').html(mapHtml.data);
 
                     $('.selectpicker').selectpicker();
-                    projectData.data.initTooltips();
+                    projectData.general_logic.data.initTooltips();
 
                     var locationsOnInit = JSON.parse($('.google-map-box').attr('data-locations'));
                     var lastMapData = {
@@ -1970,7 +1970,7 @@ var projectData = {
                         }
 
                         list.append(listBottomExtraHtml);
-                        projectData.data.initTooltips();
+                        projectData.general_logic.data.initTooltips();
 
                         // make request to select all locations DATA for this country FOR THE MAP
                         var currentCountryLocationsData = await projectData.requests.getMapData({action: 'all-partners-and-non-partners-data-by-country', data: code});
