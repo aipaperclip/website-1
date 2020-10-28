@@ -1258,6 +1258,19 @@ var projectData = {
                     $('.section-google-map.module .map-container').html(mapHtml.data);
                     projectData.general_logic.data.hideLoader();
 
+                    if ($('body').hasClass('dentacoin-map-iframe')) {
+                        console.log($('.section-google-map.module .map-container').height(), 'event height');
+                        window.parent.postMessage(
+                            {
+                                event_id: 'iframe_size_event',
+                                data: {
+                                    height: $('.section-google-map.module .map-container').height()
+                                }
+                            },
+                            "*"
+                        );
+                    }
+
                     $('.selectpicker').selectpicker();
                     projectData.general_logic.data.initTooltips();
 
