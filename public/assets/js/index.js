@@ -1305,6 +1305,8 @@ var projectData = {
                             $('.locations-list .invite-text').hide();
 
                             $('html, body').animate({'scrollTop': $('.section-google-map.module').offset().top }, 300);
+
+                            notifyParentForMapHeight();
                         }
 
                         $('html, body').animate({'scrollTop': $('.map-container').offset().top }, 300);
@@ -1332,6 +1334,8 @@ var projectData = {
                             }
                         }
                         $('body').removeClass('overflow-hidden');
+
+                        notifyParentForMapHeight();
                     }
 
                     var locationsCountsArr = [];
@@ -2435,18 +2439,21 @@ var projectData = {
                     });
                     // =================== /COUNTRIES LOGIC ===================
 
-                    if ($('body').hasClass('dentacoin-map-iframe')) {
-                        console.log($('.section-google-map.module .map-container').height(), 'event height');
-                        window.parent.postMessage(
-                            {
-                                event_id: 'iframe_size_event',
-                                data: {
-                                    height: $('.section-google-map.module .map-container').height()
-                                }
-                            },
-                            "*"
-                        );
+                    function notifyParentForMapHeight() {
+                        if ($('body').hasClass('dentacoin-map-iframe')) {
+                            console.log($('.section-google-map.module .map-container').height(), 'event height');
+                            window.parent.postMessage(
+                                {
+                                    event_id: 'iframe_size_event',
+                                    data: {
+                                        height: $('.section-google-map.module .map-container').height()
+                                    }
+                                },
+                                "*"
+                            );
+                        }
                     }
+                    notifyParentForMapHeight();
                 }
             },
             showStickyHomepageNav() {
