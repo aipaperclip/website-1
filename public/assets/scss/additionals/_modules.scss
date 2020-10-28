@@ -890,6 +890,12 @@
         }
         .header-filter-line {
             background-color: $bright_blue;
+            .inner-container {
+                width: 1200px;
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 0 15px;
+            }
             .dropdown.bootstrap-select {
                 max-width: 450px;
                 .dropdown-header {
@@ -913,23 +919,9 @@
                     display: none;
                 }
             }
-            .locations-splitted-by-category {
-                .dropdown-menu {
-                    min-height: auto !important;
-                    .inner {
-                        display: none;
-                    }
-                }
-                /*.filter-option-inner-inner {
-                    font-size: 0;
-                    &:after {
-                        content: 'Search by name or location';
-                        font-size: 16px;
-                        color: black;
-                    }
-                }*/
-            }
             .location-types {
+                width: 50%;
+                padding-right: 15px;
                 .filter-option-inner-inner {
                     font-size: 0;
                     &:after {
@@ -937,6 +929,24 @@
                         font-size: 16px;
                         color: black;
                     }
+                }
+                @include breakpoint($sm-down) {
+                    padding: 0;
+                    width: 100%;
+                }
+            }
+            .locations-splitted-by-category {
+                width: 50%;
+                padding-left: 15px;
+                .dropdown-menu {
+                    min-height: auto !important;
+                    .inner {
+                        display: none;
+                    }
+                }
+                @include breakpoint($sm-down) {
+                    padding: 0;
+                    width: 100%;
                 }
             }
             .dropdown-header {

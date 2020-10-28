@@ -1,71 +1,69 @@
 @php($combinedCountData = (new \App\Http\Controllers\APIRequestsController())->getMapData(array('action' => 'combined-count-data')))
 <div class="header-filter-line padding-top-15 padding-bottom-15">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-6 text-right text-center-sm text-center-xs padding-bottom-sm-20 padding-bottom-xs-15 location-types">
-                @if (!empty($location_types))
-                    <select class="selectpicker location-types" data-live-search="true" multiple>
-                        <option disabled="">Search by type</option>
-                        @foreach ($location_types as $location_type)
-                            <option selected value="category-{{$location_type->id}}">{{$location_type->name}}</option>
-                        @endforeach
-                    </select>
-                @endif
-            </div>
-            <div class="col-xs-12 col-md-6 text-center-sm text-center-xs locations-splitted-by-category">
-                @if (!empty($arrayWithAllLocationsSplittedByCategory))
-                    @php($arrayWithColors = array())
-                    @php($arrayWithGroupsHtml = array())
-                    <select class="selectpicker locations" data-live-search="true">
-                        <option value="" disabled selected>Search by name or location</option>
-                        @php($counter = 1)
-                        @php($allGroupsHtml = '')
-                        @foreach ($arrayWithAllLocationsSplittedByCategory as $value)
-                            @php($arrayWithColors['category-'.$value['id']] = $value['color'])
-                            @php($groupHtml = '<optgroup label="'.$value['name'].'" class="optgroup-for-types category-'.$value['id'].'">')
-                            @if (!empty($value['data']))
-                                @foreach ($value['data'] as $location)
-                                    @php($groupHtml .= '<option class="option-type" data-id="'.$location['id'].'" data-lat="'.$location['lat'].'" data-lng="'.$location['lng'].'" data-country-code="'.$location['country_code'].'" value="'.$location['source'].'">'.$location['name'].', '.$location['country_name'].'</option>')
-                                @endforeach
-                            @endif
-                            @php($groupHtml .= '</optgroup>')
-                            @php($arrayWithGroupsHtml['optgroup-'.$counter] = $groupHtml)
-                            @php($allGroupsHtml .= $groupHtml)
-                            @php($counter += 1)
-                        @endforeach
-                        @if (!empty($arrWithCountriesAndCities))
-                            @php($groupHtml = '<optgroup label="Countries">')
-                                @foreach ($arrWithCountriesAndCities as $country => $countryData)
-                                    @php($groupHtml .= '<option class="country-type" ' . ((array_key_exists('centroid_lat', $countryData)) ? 'data-centroid-lat="'.$countryData['centroid_lat'].'"' : '') . '  ' . ((array_key_exists('centroid_lng', $countryData)) ? 'data-centroid-lng="'.$countryData['centroid_lng'].'"' : '') . ' data-country-code="'.$countryData['code'].'">'.$country.'</option>')
-                                @endforeach
-                            @php($groupHtml .= '</optgroup>')
-                            @php($arrayWithGroupsHtml['optgroup-'.$counter] = $groupHtml)
-                            @php($allGroupsHtml .= $groupHtml)
-
-                            @php($groupHtml = '<optgroup label="Locations">')
-                                @foreach ($arrWithCountriesAndCities as $country => $countryData)
-                                    @foreach ($countryData['data'] as $city)
-                                        @php($groupHtml .= '<option class="city-type" data-country-code="'.$countryData['code'].'" data-city="'.$city.'">'.$city.', '.$country.'</option>')
-                                    @endforeach
-                                @endforeach
-                            @php($groupHtml .= '</optgroup>')
-                            @php($arrayWithGroupsHtml['optgroup-'.$counter] = $groupHtml)
-                            @php($allGroupsHtml .= $groupHtml)
-
-                            {!! $allGroupsHtml !!}
-                        @else
-                            {!! $allGroupsHtml !!}
-                        @endif
-                    </select>
-                    @if (!empty($arrayWithColors))
-                        <style class="locations-style" data-groups-html="{{json_encode($arrayWithGroupsHtml)}}">
-                            @foreach ($arrayWithColors as $class => $color)
-                                .{{$class}} { color: {{$color}}; }
+    <div class="inner-container fs-0">
+        <div class="text-right inline-block text-center-sm text-center-xs padding-bottom-sm-20 padding-bottom-xs-15 location-types">
+            @if (!empty($location_types))
+                <select class="selectpicker location-types" data-live-search="true" multiple>
+                    <option disabled="">Search by type</option>
+                    @foreach ($location_types as $location_type)
+                        <option selected value="category-{{$location_type->id}}">{{$location_type->name}}</option>
+                    @endforeach
+                </select>
+            @endif
+        </div>
+        <div class="text-center-sm inline-block text-center-xs locations-splitted-by-category">
+            @if (!empty($arrayWithAllLocationsSplittedByCategory))
+                @php($arrayWithColors = array())
+                @php($arrayWithGroupsHtml = array())
+                <select class="selectpicker locations" data-live-search="true">
+                    <option value="" disabled selected>Search by name or location</option>
+                    @php($counter = 1)
+                    @php($allGroupsHtml = '')
+                    @foreach ($arrayWithAllLocationsSplittedByCategory as $value)
+                        @php($arrayWithColors['category-'.$value['id']] = $value['color'])
+                        @php($groupHtml = '<optgroup label="'.$value['name'].'" class="optgroup-for-types category-'.$value['id'].'">')
+                        @if (!empty($value['data']))
+                            @foreach ($value['data'] as $location)
+                                @php($groupHtml .= '<option class="option-type" data-id="'.$location['id'].'" data-lat="'.$location['lat'].'" data-lng="'.$location['lng'].'" data-country-code="'.$location['country_code'].'" value="'.$location['source'].'">'.$location['name'].', '.$location['country_name'].'</option>')
                             @endforeach
-                        </style>
+                        @endif
+                        @php($groupHtml .= '</optgroup>')
+                        @php($arrayWithGroupsHtml['optgroup-'.$counter] = $groupHtml)
+                        @php($allGroupsHtml .= $groupHtml)
+                        @php($counter += 1)
+                    @endforeach
+                    @if (!empty($arrWithCountriesAndCities))
+                        @php($groupHtml = '<optgroup label="Countries">')
+                            @foreach ($arrWithCountriesAndCities as $country => $countryData)
+                                @php($groupHtml .= '<option class="country-type" ' . ((array_key_exists('centroid_lat', $countryData)) ? 'data-centroid-lat="'.$countryData['centroid_lat'].'"' : '') . '  ' . ((array_key_exists('centroid_lng', $countryData)) ? 'data-centroid-lng="'.$countryData['centroid_lng'].'"' : '') . ' data-country-code="'.$countryData['code'].'">'.$country.'</option>')
+                            @endforeach
+                        @php($groupHtml .= '</optgroup>')
+                        @php($arrayWithGroupsHtml['optgroup-'.$counter] = $groupHtml)
+                        @php($allGroupsHtml .= $groupHtml)
+
+                        @php($groupHtml = '<optgroup label="Locations">')
+                            @foreach ($arrWithCountriesAndCities as $country => $countryData)
+                                @foreach ($countryData['data'] as $city)
+                                    @php($groupHtml .= '<option class="city-type" data-country-code="'.$countryData['code'].'" data-city="'.$city.'">'.$city.', '.$country.'</option>')
+                                @endforeach
+                            @endforeach
+                        @php($groupHtml .= '</optgroup>')
+                        @php($arrayWithGroupsHtml['optgroup-'.$counter] = $groupHtml)
+                        @php($allGroupsHtml .= $groupHtml)
+
+                        {!! $allGroupsHtml !!}
+                    @else
+                        {!! $allGroupsHtml !!}
                     @endif
+                </select>
+                @if (!empty($arrayWithColors))
+                    <style class="locations-style" data-groups-html="{{json_encode($arrayWithGroupsHtml)}}">
+                        @foreach ($arrayWithColors as $class => $color)
+                            .{{$class}} { color: {{$color}}; }
+                        @endforeach
+                    </style>
                 @endif
-            </div>
+            @endif
         </div>
     </div>
 </div>

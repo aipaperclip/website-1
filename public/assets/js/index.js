@@ -937,25 +937,27 @@ var projectData = {
                 }
             },
             gateway: function() {
-                dcnGateway.init({
-                    /*'platform': 'dev.dentacoin',*/
-                    'platform': 'dentacoin',
-                    /*'environment' : 'staging',*/
-                    'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password'
-                });
+                if (typeof(dcnGateway) != 'undefined') {
+                    dcnGateway.init({
+                        /*'platform': 'dev.dentacoin',*/
+                        'platform': 'dentacoin',
+                        /*'environment' : 'staging',*/
+                        'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password'
+                    });
 
-                $(document).on('dentistAuthSuccessResponse', async function (event) {
-                    console.log('dentistAuthSuccessResponse');
-                    window.location.href = window.location.href + '?cross-login=true';
-                });
+                    $(document).on('dentistAuthSuccessResponse', async function (event) {
+                        console.log('dentistAuthSuccessResponse');
+                        window.location.href = window.location.href + '?cross-login=true';
+                    });
 
-                $(document).on('patientAuthSuccessResponse', async function (event) {
-                    console.log('patientAuthSuccessResponse');
-                    window.location.href = window.location.href + '?cross-login=true';
-                });
+                    $(document).on('patientAuthSuccessResponse', async function (event) {
+                        console.log('patientAuthSuccessResponse');
+                        window.location.href = window.location.href + '?cross-login=true';
+                    });
+                }
             },
             cookie: async function() {
-                if (basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '') {
+                if (basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && !$('body').hasClass('dentacoin-map-iframe')) {
                     if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
                         console.log('dentacoinPackageJs loaded');
                         loadedLibs.dentacoinPackageJs = true;
@@ -1254,6 +1256,7 @@ var projectData = {
                 var mapHtml = await projectData.requests.getMapHtml();
                 if (mapHtml.success) {
                     $('.section-google-map.module .map-container').html(mapHtml.data);
+                    projectData.general_logic.data.hideLoader();
 
                     $('.selectpicker').selectpicker();
                     projectData.general_logic.data.initTooltips();
@@ -2724,7 +2727,9 @@ var projectData = {
                 event_obj.value = value;
             }
 
-            gtag('event', label, event_obj);
+            if (typeof(gtag) != 'undefined') {
+                gtag('event', label, event_obj);
+            }
         }
     }
 };
