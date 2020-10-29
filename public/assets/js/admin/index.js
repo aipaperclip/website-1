@@ -183,7 +183,7 @@ if($('body').hasClass('add-job-offer')) {
             $('.pair-url').val('');
         }
     });
-} else if($('body').hasClass('add-roadmap-year') || $('body').hasClass('edit-roadmap-year')) {
+} else if($('body').hasClass('add-roadmap-year') || $('body').hasClass('edit-roadmap-year') || $('body').hasClass('edit-roadmap-year-event')) {
     function initColorPicker() {
         var color_picker_options = {
             preferredFormat: "hex",

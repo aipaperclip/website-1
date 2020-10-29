@@ -27,7 +27,7 @@
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
         customCivicEvent('civicRead', '');
-        
+
         if (event.clientVersion == 'v2') {
             customCivicEvent('CivicLegacyAppForbiddenKYC', 'KYC via Civic Legacy App is forbidden.');
         } else if (event.clientVersion == 'v3') {
