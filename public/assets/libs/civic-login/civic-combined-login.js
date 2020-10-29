@@ -14,7 +14,8 @@
 
     //load civic lib CSS
     // downloaded from https://hosted-sip.civic.com/css/civic-modal.min.css
-    $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css?v='+new Date().getTime()+'"/>');
+    //$('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css?v='+new Date().getTime()+'"/>');
+    $('head').append('<link rel="stylesheet" type="text/css" href="https://hosted-sip.civic.com/css/civic-modal.min.css?v='+new Date().getTime()+'"/>');
 
     //load civic lib JS
     //await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js', function() {});

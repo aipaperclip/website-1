@@ -7,6 +7,7 @@ if (typeof jQuery == 'undefined') {
     var loadedSocialLibs = false;
     var loadedAddressSuggesterLib = false;
     var loadedGoogleMapLib = false;
+    var loadedCivicLib = false;
     var gateway_croppie_instance;
     var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
     var apiDomain = 'https://api.dentacoin.com';
@@ -881,16 +882,20 @@ if (typeof jQuery == 'undefined') {
                         $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" id="dentacoin-login-gateway-style" type="text/css" href="'+dcnLibsDomain+'/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v='+new Date().getTime()+'"/>');
                     }
 
-                    console.log('init call civic');
-                    await $.getScript(dcnLibsDomain + '/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+                    // show login gateway by url
+                    var getParams = dcnGateway.utils.getGETParameters();
+
+                    // if trying to reach civic from mobile phone
+                    if (getParams.hasOwnProperty('uuid') && !loadedCivicLib) {
+                        console.log('init civic lib for mobile civic');
+                        loadedCivicLib = true;
+                        await $.getScript(dcnLibsDomain + '/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+                    }
 
                     if (initCivicEvents) {
                         initCivicEvents = false;
                         dcnGateway.utils.initCivicListeners(currentPlatformDomain, params);
                     }
-
-                    // show login gateway by url
-                    var getParams = dcnGateway.utils.getGETParameters();
 
                     async function showGateway(type, data, callback) {
                         var gatewayData = {
@@ -924,7 +929,10 @@ if (typeof jQuery == 'undefined') {
                                 if (!loadedSocialLibs) {
                                     console.log('Load external libraries.');
                                     // =============================================== CIVIC =======================================================
-                                    //await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+                                    if (!loadedCivicLib) {
+                                        loadedCivicLib = true;
+                                        await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+                                    }
 
                                     // =============================================== FACEBOOK ====================================================
                                     await $.getScript(dcnLibsDomain + '/assets/libs/facebook-login/facebook-combined-login.js?v='+new Date().getTime(), function() {});

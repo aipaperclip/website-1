@@ -2,10 +2,12 @@
     await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-config.js', function() {});
 
     //load civic lib CSS
-    $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css?v='+new Date().getTime()+'"/>');
+    //$('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css?v='+new Date().getTime()+'"/>')
+    $('head').append('<link rel="stylesheet" type="text/css" href="https://hosted-sip.civic.com/css/civic-modal.min.css?v='+new Date().getTime()+'"/>');
 
     //load civic lib JS
-    await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js?v='+new Date().getTime(), function() {});
+    // await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js?v='+new Date().getTime(), function() {});
+    await $.getScript('https://hosted-sip.civic.com/js/civic.sip.min.js?v='+new Date().getTime(), function() {});
 
     var civicApiVersion;
     var civic_custom_btn;
