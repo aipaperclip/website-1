@@ -867,6 +867,11 @@
                 font-family: "Lato-Bold";
             }
         }
+        &.dentists-color-style {
+            .header-filter-line, .picker-and-map .left-picker .results-list .invite-text {
+                background-color: #002248 !important; 
+            }
+        }
         .tooltip-inner {
             background-color: #333;
         }
