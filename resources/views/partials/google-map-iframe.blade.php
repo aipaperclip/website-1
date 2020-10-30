@@ -14,7 +14,7 @@
 <body class="dentacoin-map-iframe">
     <div class="camping-loader"></div>
     @php($type = \Illuminate\Support\Facades\Input::get('type'))
-    <section class="section-google-map module @if ($type == 'dentist') dentists-color-style @endif"><div class="map-container"></div></section>
+    <section class="section-google-map module @if ($type == 'dentists') dentists-color-style @endif"><div class="map-container"></div></section>
     <script src="/dist/js/front-libs-script.js"></script>
     <script src="/dist/js/front-script.js"></script>
     <script>
