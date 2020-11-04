@@ -942,7 +942,10 @@ var projectData = {
                         /*'platform': 'dev.dentacoin',*/
                         'platform': 'dentacoin',
                         /*'environment' : 'staging',*/
-                        'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password'
+                        'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password',
+                        'callback' : function() {
+                            console.log('INITIATED')
+                        }
                     });
 
                     $(document).on('dentistAuthSuccessResponse', async function (event) {

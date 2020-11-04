@@ -1912,8 +1912,12 @@ if (typeof jQuery == 'undefined') {
                             }
                         });
 
-                        if (callback != undefined) {
+                        if (typeof(callback) == 'function') {
                             callback();
+                        }
+
+                        if (typeof(params.callback) == 'function') {
+                            params.callback();
                         }
                     }
 
