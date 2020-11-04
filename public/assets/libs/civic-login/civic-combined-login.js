@@ -38,7 +38,7 @@
             civicActionType = 'register';
         }
 
-        if (document.cookie.indexOf('strictly_necessary_policy=') == -1) {
+        if (document.cookie.indexOf('strictly_necessary_policy=') == -1 && !civic_custom_btn.hasClass('mobile-app')) {
             customCivicEvent('cannotLoginBecauseOfMissingCookies', '');
         } else {
             customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.');

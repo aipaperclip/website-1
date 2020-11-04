@@ -16,7 +16,7 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
 
     //binding click event for all the faceboon login btns
     $('body').on('click', '.facebook-custom-btn', function(rerequest){
-        if(document.cookie.indexOf('strictly_necessary_policy=') == -1) {
+        if(document.cookie.indexOf('strictly_necessary_policy=') == -1 && !$(this).hasClass('mobile-app')) {
             customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
         } else {
             var this_btn = $(this);

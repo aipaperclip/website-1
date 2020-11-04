@@ -8,7 +8,7 @@
 @endif
 <div class="dentacoin-login-gateway-fs-0 popup-header-action" data-translation-patients="{{ __('login-register.patients-tab') }}">
     <a href="javascript:void(0)" class="inline-block @if($type == 'patient-login' || $type == 'patient-register') gateway-platform-background-color-important active @endif" data-type="patient"><span class="header-custom-radio-btn inline-block"></span> <span class="inline-block">{{ __('login-register.users-tab') }}</span></a>
-    <button class="inline-block dentacoin-login-gateway-close"><img src="//dentacoin.com/assets/uploads/close-combined-login-popup.svg" alt="Close combined login popup"/></button>
+    <button class="inline-block dentacoin-login-gateway-close"><img src="https://dentacoin.com/assets/uploads/close-combined-login-popup.svg" alt="Close combined login popup"/></button>
     <a href="javascript:void(0)" class="inline-block init-dentists-click-event @if($type == 'dentist-login' || $type == 'dentist-register' || $type == 'incompleted-dentist-register') active @endif" data-type="dentist"><span class="header-custom-radio-btn inline-block"></span> <span class="inline-block">{{ __('login-register.dentists-tab') }}</span></a>
 </div>
 <div class="dentacoin-login-gateway-fs-0 popup-body translations" data-translation-update-email="{{ __('login-register.update-email') }}" data-translation-update-password="{{ __('login-register.update-password') }}" data-translation-password-field="{{ __('login-register.password-field') }}" data-translation-repeat-password-field="{{ __('login-register.repeat-password-field') }}" data-translation-save="{{ __('login-register.save') }}" data-translation-practise-name-field="{{ __('login-register.practise-name-field') }}" data-translation-official-email-field="{{ __('login-register.official-email-field') }}" data-translation-file-size-error="{{ __('login-register.file-size-error') }}" data-translation-add-profile-photo="{{ __('login-register.add-profile-photo') }}" data-translation-email-field="{{ __('login-register.email-field') }}" data-translation-please-add-email="{{ __('login-register.please-add-email') }}" data-translation-privacy-policy="{{ __('login-register.privacy-policy') }}" data-translation-i-agree="{{ __('login-register.i-agree') }}" data-translation-continue="{{ __('login-register.continue') }}" data-translation-please-specify-field="{{ __('login-register.please-specify-field') }}">
@@ -18,7 +18,7 @@
             <h2 class="login-section-title">{{ __('login-register.log-in-uppercase') }}</h2>
             <div class="form-login-fields">
                 <div class="padding-bottom-10">
-                    <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18" data-url="{{getenv('API_DOMAIN')}}/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-fb') }}</a>
+                <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn @if (!empty($mobile_app)) mobile-app @endif calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18" data-url="{{getenv('API_DOMAIN')}}/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-fb') }}</a>
                 </div>
                 <div>
                     <a href="javascript:void(0)" class="civic-custom-btn type-login social-login-btn calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18" data-url="{{getenv('API_DOMAIN')}}/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
@@ -225,7 +225,7 @@
                                 <label for="privacy-policy-registration" class="custom-checkbox gateway-platform-background-color-important">✓</label>
                             @endif
                             <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration" @if(!empty($incompletedRegistrationData)) checked @endif/>
-                            <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registration">{{ __('login-register.i-ve-read') }} <a href="//dentacoin.com/privacy-policy" class="gateway-platform-color data-external-link" target="_blank">{{ __('login-register.privacy-policy') }}</a></label>
+                            <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registration">{{ __('login-register.i-ve-read') }} <a href="https://dentacoin.com/privacy-policy" class="gateway-platform-color data-external-link" target="_blank">{{ __('login-register.privacy-policy') }}</a></label>
                         </div>
                     </div>
                 </div>

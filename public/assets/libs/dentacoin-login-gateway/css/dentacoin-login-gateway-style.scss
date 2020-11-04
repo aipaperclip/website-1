@@ -551,6 +551,7 @@
     transform: translateX(-50%);
     width: 95%;
     max-width: 1000px;
+    text-transform: none;
     .close-custom-popup {
         position: absolute;
         right: 0;
@@ -958,6 +959,8 @@
             width: 70%;
             .platform-button {
                 font-size: 16px !important;
+                margin-left: auto !important;
+                margin-right: 0 !important;
             }
         }
     }
@@ -966,10 +969,11 @@
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .form-register .btns-container .inline-block .prev-step {
     display: none;
     color: black;
-    font-size: 14px;
     font-family: "Calibri Light";
     border: 0;
     background: transparent;
+    padding: 0;
+    font-size: 18px;
     &.show {
         display: block;
     }
