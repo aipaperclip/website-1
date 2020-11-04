@@ -3,7 +3,6 @@ if (typeof jQuery == 'undefined') {
     console.error('Dentacoin login gateway requires the usage of jQuery.');
 } else {
     var fireAjax = true;
-
     var loadedSocialLibs = false;
     var loadedAddressSuggesterLib = false;
     var loadedGoogleMapLib = false;
@@ -14,7 +13,7 @@ if (typeof jQuery == 'undefined') {
     var dcnLibsDomain = 'https://dentacoin.com';
     var environment = 'live';
     var initCivicEvents = true;
-    var checkForCookies = true;
+    var loadedFromMobileApp = false;
     var dcnGateway = {
         dcnGatewayRequests: {
             getPlatformsData: async function(callback) {
@@ -741,15 +740,7 @@ if (typeof jQuery == 'undefined') {
                 });
 
                 $(document).on('patientProceedWithCreatingSession', async function (event) {
-                    var ajaxLink = currentPlatformDomain + 'authenticate-user';
-
-                    var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
-                        token: event.response_data.token,
-                        id: event.response_data.data.id,
-                        type: 'patient'
-                    });
-
-                    if (createPatientSessionResponse.success) {
+                    if (loadedFromMobileApp) {
                         $.event.trigger({
                             type: 'patientAuthSuccessResponse',
                             response_data: event.response_data,
@@ -757,8 +748,25 @@ if (typeof jQuery == 'undefined') {
                             time: new Date()
                         });
                     } else {
-                        dcnGateway.utils.hideLoader();
-                        dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                        var ajaxLink = currentPlatformDomain + 'authenticate-user';
+
+                        var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
+                            token: event.response_data.token,
+                            id: event.response_data.data.id,
+                            type: 'patient'
+                        });
+
+                        if (createPatientSessionResponse.success) {
+                            $.event.trigger({
+                                type: 'patientAuthSuccessResponse',
+                                response_data: event.response_data,
+                                platform_type: params.platform,
+                                time: new Date()
+                            });
+                        } else {
+                            dcnGateway.utils.hideLoader();
+                            dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                        }
                     }
                 });
             },
@@ -826,7 +834,7 @@ if (typeof jQuery == 'undefined') {
                 }
 
                 if (hasOwnProperty.call(params, 'mobile_app') && params.mobile_app == true) {
-                    checkForCookies = false;
+                    loadedFromMobileApp = true;
                 }
 
                 await dcnGateway.dcnGatewayRequests.getPlatformsData(async function(platformsData) {
@@ -1083,15 +1091,7 @@ if (typeof jQuery == 'undefined') {
                                 });
 
                                 $(document).on('dentistProceedWithCreatingSession', async function (event) {
-                                    var ajaxLink = currentPlatformDomain + 'authenticate-user';
-
-                                    var createDentistSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
-                                        token: event.response_data.token,
-                                        id: event.response_data.data.id,
-                                        type: 'dentist'
-                                    });
-
-                                    if (createDentistSessionResponse.success) {
+                                    if (loadedFromMobileApp) {
                                         $.event.trigger({
                                             type: 'dentistAuthSuccessResponse',
                                             response_data: event.response_data,
@@ -1099,8 +1099,25 @@ if (typeof jQuery == 'undefined') {
                                             time: new Date()
                                         });
                                     } else {
-                                        dcnGateway.utils.hideLoader();
-                                        dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                                        var ajaxLink = currentPlatformDomain + 'authenticate-user';
+
+                                        var createDentistSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
+                                            token: event.response_data.token,
+                                            id: event.response_data.data.id,
+                                            type: 'dentist'
+                                        });
+
+                                        if (createDentistSessionResponse.success) {
+                                            $.event.trigger({
+                                                type: 'dentistAuthSuccessResponse',
+                                                response_data: event.response_data,
+                                                platform_type: params.platform,
+                                                time: new Date()
+                                            });
+                                        } else {
+                                            dcnGateway.utils.hideLoader();
+                                            dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                                        }
                                     }
                                 });
 
@@ -1180,7 +1197,7 @@ if (typeof jQuery == 'undefined') {
                                     var this_form = $(this_form_native);
                                     event.preventDefault();
 
-                                    if (dcnGateway.utils.cookies.get('strictly_necessary_policy') != '1' && checkForCookies) {
+                                    if (dcnGateway.utils.cookies.get('strictly_necessary_policy') != '1' && !loadedFromMobileApp) {
                                         dcnGateway.utils.showPopup('Please accept the strictly necessary cookies in order to continue with logging in.', 'alert');
                                     } else {
                                         //clear prev errors
