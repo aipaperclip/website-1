@@ -75,8 +75,8 @@ function proceedWithFacebookLogin(response, this_btn, type) {
             type: 'patient'
         };
 
-        if (dcnGateway.utils.cookies.get('first_test') != '') {
-            register_data.country_id = JSON.parse(decodeURIComponent(dcnGateway.utils.cookies.get('first_test')))['location'];
+        if (getCookie('first_test') != '') {
+            register_data.country_id = JSON.parse(decodeURIComponent(getCookie('first_test')))['location'];
         }
 
         if (this_btn.attr('data-inviter') != undefined) {
@@ -104,7 +104,7 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                         }
 
                         if (type == 'mobile') {
-                            dcnGateway.utils.hideLoader();
+                            hideDcnGatewayLoader();
                             window.open(redirectUrl);
                         } else if (type == 'desktop') {
                             window.location.replace(redirectUrl);
@@ -126,7 +126,7 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                         }
 
                         if (type == 'mobile') {
-                            dcnGateway.utils.hideLoader();
+                            hideDcnGatewayLoader();
                             window.open(redirectUrl);
                         } else if (type == 'desktop') {
                             window.location.replace(redirectUrl);
@@ -149,7 +149,7 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                                 platform_type: register_data.platform,
                                 time: new Date()
                             });
-                            dcnGateway.utils.hideLoader();
+                            hideDcnGatewayLoader();
                         } else if (type == 'desktop') {
                             customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
                         }
@@ -196,4 +196,21 @@ function customFacebookEvent(type, message, response_data) {
         event_obj.response_data = response_data;
     }
     $.event.trigger(event_obj);
+}
+
+function getCookie(name) {
+    name = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+function hideDcnGatewayLoader() {
+    if ($('.dentacoin-login-gateway-response-layer').length) {
+        $('.dentacoin-login-gateway-response-layer').hide();
+    }
 }
