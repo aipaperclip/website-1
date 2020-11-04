@@ -104,7 +104,7 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                         }
 
                         if (type == 'mobile') {
-                            customFacebookEvent('hideGatewayLoader', '');
+                            dcnGateway.utils.hideLoader();
                             window.open(redirectUrl);
                         } else if (type == 'desktop') {
                             window.location.replace(redirectUrl);
@@ -126,7 +126,7 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                         }
 
                         if (type == 'mobile') {
-                            customFacebookEvent('hideGatewayLoader', '');
+                            dcnGateway.utils.hideLoader();
                             window.open(redirectUrl);
                         } else if (type == 'desktop') {
                             window.location.replace(redirectUrl);
