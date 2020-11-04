@@ -668,6 +668,10 @@ if (typeof jQuery == 'undefined') {
                     dcnGateway.utils.showLoader('Receiving your details from Civic...');
                 });
 
+                $(document).on('hideGatewayLoader', async function (event) {
+                    dcnGateway.utils.hideLoader();
+                });
+
                 $(document).on('CivicLegacyAppForbiddenLogging', async function (event) {
                     var eventData = event;
                     console.log(eventData, 'eventData');
@@ -779,6 +783,7 @@ if (typeof jQuery == 'undefined') {
                     // reset the event listeners
                     $(document).off('civicCustomBtnClicked');
                     $(document).off('civicRead');
+                    $(document).off('hideGatewayLoader');
                     $(document).off('CivicLegacyAppForbiddenLogging');
                     $(document).off('CivicLegacyAppForbiddenRegistrations');
                     $(document).off('receivedFacebookToken');
