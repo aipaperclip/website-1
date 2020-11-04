@@ -91,7 +91,7 @@
                     <input type="submit" value="{{ __('login-register.log-in') }}" class="platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20"/>
                 </div>
                 <div class="text-center padding-top-40 padding-bottom-xs-30 dentacoin-login-gateway-fs-16">
-                    <a href="javascript:void(0);" target="_blank" class="forgotten-password-link">{{ __('login-register.forgotten-password') }}</a>
+                    <a href="javascript:void(0);" target="_blank" class="forgotten-password-link data-external-link">{{ __('login-register.forgotten-password') }}</a>
                 </div>
             </form>
             <div class="popup-half-footer">
@@ -225,7 +225,7 @@
                                 <label for="privacy-policy-registration" class="custom-checkbox gateway-platform-background-color-important">✓</label>
                             @endif
                             <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration" @if(!empty($incompletedRegistrationData)) checked @endif/>
-                            <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registration">{{ __('login-register.i-ve-read') }} <a href="//dentacoin.com/privacy-policy" class="gateway-platform-color" target="_blank">{{ __('login-register.privacy-policy') }}</a></label>
+                            <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registration">{{ __('login-register.i-ve-read') }} <a href="//dentacoin.com/privacy-policy" class="gateway-platform-color data-external-link" target="_blank">{{ __('login-register.privacy-policy') }}</a></label>
                         </div>
                     </div>
                 </div>
