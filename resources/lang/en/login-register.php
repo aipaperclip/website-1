@@ -14,7 +14,7 @@ return [
     'log-in' => 'Log in',
     'sign-up-uppercase' => 'SIGN UP',
     'i-confirm' => 'I confirm that I\'m 18 years of age or older.',
-    'privacy-policy-text' => 'I agree with <a href="//dentacoin.com/privacy-policy" target="_blank">Privacy Policy</a>',
+    'privacy-policy-text' => 'I agree with <a href="//dentacoin.com/privacy-policy" target="_blank" class="data-external-link">Privacy Policy</a>',
     'does-any' => 'Does any of the following apply to you (optional):',
     'already-have-account' => 'Already have an account?',
     'email-field' => 'Email address:',
