@@ -139,9 +139,20 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                     }
 
                     if (data.data.email == '' || data.data.email == null) {
+                        console.log('registeredAccountMissingEmail');
                         customFacebookEvent('registeredAccountMissingEmail', '', data);
                     } else {
-                        customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                        if (type == 'mobile') {
+                            $.event.trigger({
+                                type: 'patientAuthSuccessResponse',
+                                response_data: data,
+                                platform_type: register_data.platform,
+                                time: new Date()
+                            });
+                            dcnGateway.utils.hideLoader();
+                        } else if (type == 'desktop') {
+                            customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                        }
                     }
                 } else if (!data.success) {
                     customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data);

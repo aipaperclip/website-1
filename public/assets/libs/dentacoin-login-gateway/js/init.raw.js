@@ -740,7 +740,14 @@ if (typeof jQuery == 'undefined') {
                 });
 
                 $(document).on('patientProceedWithCreatingSession', async function (event) {
-                    if (loadedFromMobileApp) {
+                    var ajaxLink = currentPlatformDomain + 'authenticate-user';
+                    var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
+                        token: event.response_data.token,
+                        id: event.response_data.data.id,
+                        type: 'patient'
+                    });
+
+                    if (createPatientSessionResponse.success) {
                         $.event.trigger({
                             type: 'patientAuthSuccessResponse',
                             response_data: event.response_data,
@@ -748,25 +755,8 @@ if (typeof jQuery == 'undefined') {
                             time: new Date()
                         });
                     } else {
-                        var ajaxLink = currentPlatformDomain + 'authenticate-user';
-
-                        var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
-                            token: event.response_data.token,
-                            id: event.response_data.data.id,
-                            type: 'patient'
-                        });
-
-                        if (createPatientSessionResponse.success) {
-                            $.event.trigger({
-                                type: 'patientAuthSuccessResponse',
-                                response_data: event.response_data,
-                                platform_type: params.platform,
-                                time: new Date()
-                            });
-                        } else {
-                            dcnGateway.utils.hideLoader();
-                            dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
-                        }
+                        dcnGateway.utils.hideLoader();
+                        dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                     }
                 });
             },
@@ -1103,6 +1093,8 @@ if (typeof jQuery == 'undefined') {
                                             platform_type: params.platform,
                                             time: new Date()
                                         });
+
+                                        dcnGateway.utils.hideLoader();
                                     } else {
                                         var ajaxLink = currentPlatformDomain + 'authenticate-user';
 
