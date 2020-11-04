@@ -29,7 +29,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
 
                 openFB.login(
                     function(response) {
-                        proceedWithFacebookLogin(response, this_btn);
+                        proceedWithFacebookLogin(response, this_btn, 'mobile');
                     },
                     obj
                 );
@@ -52,7 +52,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
                 };
 
                 FB.login(function (response) {
-                    proceedWithFacebookLogin(response, this_btn);
+                    proceedWithFacebookLogin(response, this_btn, 'desktop');
                 }, obj);
             }).fail(function() {
                 alert('Looks like your browser is blocking Facebook login. Please check and edit your privacy settings in order to login in Dentacoin tools.');
@@ -61,7 +61,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
     }
 });
 
-function proceedWithFacebookLogin(response, this_btn) {
+function proceedWithFacebookLogin(response, this_btn, type) {
     if (response.authResponse && response.status == 'connected') {
         //fbGetData();
 
@@ -96,10 +96,17 @@ function proceedWithFacebookLogin(response, this_btn) {
             success: function(data) {
                 if (data.success) {
                     if (data.deleted) {
+                        var redirectUrl;
                         if (data.appeal) {
-                            window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform'));
+                            redirectUrl = 'https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform');
                         } else {
-                            window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
+                            redirectUrl = 'https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id);
+                        }
+
+                        if (type == 'mobile') {
+                            window.open(redirectUrl);
+                        } else if (type == 'desktop') {
+                            window.location.replace(redirectUrl);
                         }
                         return false;
                     } else if (data.bad_ip || data.suspicious_admin) {
@@ -110,10 +117,17 @@ function proceedWithFacebookLogin(response, this_btn) {
                             on_hold_type = '&on-hold-type=suspicious_admin';
                         }
 
+                        var redirectUrl;
                         if (data.appeal) {
-                            window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + this_btn.attr('data-platform'));
+                            redirectUrl = 'https://account.dentacoin.com/account-on-hold-thank-you?platform=' + this_btn.attr('data-platform');
                         } else {
-                            window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type);
+                            redirectUrl = 'https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type;
+                        }
+
+                        if (type == 'mobile') {
+                            window.open(redirectUrl);
+                        } else if (type == 'desktop') {
+                            window.location.replace(redirectUrl);
                         }
                         return false;
                     } else if (data.new_account) {
