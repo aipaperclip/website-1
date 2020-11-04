@@ -21,7 +21,7 @@
                 <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn @if (!empty($mobile_app)) mobile-app @endif calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18" data-url="{{getenv('API_DOMAIN')}}/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-fb') }}</a>
                 </div>
                 <div>
-                    <a href="javascript:void(0)" class="civic-custom-btn type-login social-login-btn calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18" data-url="{{getenv('API_DOMAIN')}}/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
+                    <a href="javascript:void(0)" class="civic-custom-btn type-login social-login-btn @if (!empty($mobile_app)) mobile-app @endif calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18" data-url="{{getenv('API_DOMAIN')}}/api/login" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
                 </div>
                 <div class="have-old-account text-center">{{ __('login-register.have-old-profile') }} <a href="mailto:admin@dentacoin.com">{{ __('login-register.contact-us') }}</a>
                 </div>
@@ -34,10 +34,10 @@
             <div class="cta"> <i class="fas fa-sign-in-alt"></i> You need to log in or register to do this action.</div>
             <h2>{{ __('login-register.sign-up-uppercase') }}</h2>
             <div class="padding-bottom-10">
-                <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-fb') }}</a>
+                <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn @if (!empty($mobile_app)) mobile-app @endif calibri-regular dentacoin-login-gateway-fs-20" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-fb') }}</a>
             </div>
             <div>
-                <a href="javascript:void(0)" class="civic-custom-btn type-register social-login-btn calibri-regular dentacoin-login-gateway-fs-20" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-civic') }}</a>
+                <a href="javascript:void(0)" class="civic-custom-btn type-register social-login-btn @if (!empty($mobile_app)) mobile-app @endif calibri-regular dentacoin-login-gateway-fs-20" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-civic') }}</a>
             </div>
             <div class="padding-top-20">
                 <div class="custom-checkbox-style">
