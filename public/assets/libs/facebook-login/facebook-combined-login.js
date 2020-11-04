@@ -4,6 +4,9 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
         customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
     } else {
         var this_btn = $(this);
+        const fb_config = {
+            app_id: '1906201509652855'
+        };
         customFacebookEvent('facebookCustomBtnClicked', 'Button #facebook-custom-btn was clicked.');
 
         //based on some logic and conditions you can add or remove this attribute, if custom-stopped="true" the facebook login won't proceed
@@ -22,7 +25,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
             console.log('loading facebook from mobile app');
             // loading facebook from mobile app
             if (typeof(openFB) != 'undefined') {
-                openFB.init({appId: '1906201509652855'});
+                openFB.init({appId: fb_config.app_id});
 
                 openFB.login(
                     function(response) {
@@ -37,9 +40,6 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
             console.log('loading facebook from browser');
             // loading facebook from browser
             $.getScript('https://connect.facebook.net/bg_BG/sdk.js', async function( data, textStatus, jqxhr ) {
-                const fb_config = {
-                    app_id: fb_config.app_id
-                };
 
                 //application init
                 window.fbAsyncInit = await function () {
