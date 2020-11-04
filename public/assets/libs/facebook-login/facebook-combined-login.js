@@ -1,123 +1,148 @@
-$.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textStatus, jqxhr ) {
-    const fb_config = {
-        //app_id: '299398824049604',
-        app_id: '1906201509652855'
-    };
+//binding click event for all the faceboon login btns
+$('body').on('click', '.facebook-custom-btn', function(rerequest){
+    if(document.cookie.indexOf('strictly_necessary_policy=') == -1 && !$(this).hasClass('mobile-app')) {
+        customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
+    } else {
+        var this_btn = $(this);
+        customFacebookEvent('facebookCustomBtnClicked', 'Button #facebook-custom-btn was clicked.');
 
-    //application init
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: fb_config.app_id,
-            cookie: true,
-            xfbml: true,
-            version: 'v2.8'
-        });
-    };
-
-    //binding click event for all the faceboon login btns
-    $('body').on('click', '.facebook-custom-btn', function(rerequest){
-        if(document.cookie.indexOf('strictly_necessary_policy=') == -1 && !$(this).hasClass('mobile-app')) {
-            customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
-        } else {
-            var this_btn = $(this);
-            customFacebookEvent('facebookCustomBtnClicked', 'Button #facebook-custom-btn was clicked.');
-
-            //based on some logic and conditions you can add or remove this attribute, if custom-stopped="true" the facebook login won't proceed
-            if ($(this).attr('custom-stopper') && $(this).attr('custom-stopper') == 'true') {
-                customFacebookEvent('customCivicFbStopperTriggered', '');
-                return false;
-            }
-
-            var obj = {
-                //scope: 'email,first_name,last_name,user_gender,user_birthday,user_location'
-                scope: 'email,public_profile,user_link',
-                auth_type: 'rerequest'
-            };
-
-            FB.login(function (response) {
-                if (response.authResponse && response.status == 'connected') {
-                    //fbGetData();
-
-                    //setTimeout(function() {
-                    customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
-
-                    var register_data = {
-                        platform: this_btn.attr('data-platform'),
-                        auth_token: response.authResponse.accessToken,
-                        social_network: 'fb',
-                        type: 'patient'
-                    };
-
-                    if (dcnGateway.utils.cookies.get('first_test') != '') {
-                        register_data.country_id = JSON.parse(decodeURIComponent(dcnGateway.utils.cookies.get('first_test')))['location'];
-                    }
-
-                    if (this_btn.attr('data-inviter') != undefined) {
-                        register_data.invited_by = this_btn.attr('data-inviter');
-                    }
-
-                    if (this_btn.attr('data-inviteid') != undefined) {
-                        register_data.inviteid = this_btn.attr('data-inviteid');
-                    }
-
-                    //exchanging the token for user data
-                    $.ajax({
-                        type: 'POST',
-                        dataType: 'json',
-                        url: this_btn.attr('data-url'),
-                        data: register_data,
-                        success: function(data) {
-                            if (data.success) {
-                                if (data.deleted) {
-                                    if (data.appeal) {
-                                        window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform'));
-                                    } else {
-                                        window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
-                                    }
-                                    return false;
-                                } else if (data.bad_ip || data.suspicious_admin) {
-                                    var on_hold_type = '';
-                                    if (data.bad_ip) {
-                                        on_hold_type = '&on-hold-type=bad_ip';
-                                    } else if (data.suspicious_admin) {
-                                        on_hold_type = '&on-hold-type=suspicious_admin';
-                                    }
-
-                                    if (data.appeal) {
-                                        window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + this_btn.attr('data-platform'));
-                                    } else {
-                                        window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type);
-                                    }
-                                    return false;
-                                } else if (data.new_account) {
-                                    customFacebookEvent('successfulFacebookPatientRegistration', '');
-                                } else {
-                                    customFacebookEvent('successfulFacebookPatientLogin', '');
-                                }
-
-                                if (data.data.email == '' || data.data.email == null) {
-                                    customFacebookEvent('registeredAccountMissingEmail', '', data);
-                                } else {
-                                    customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
-                                }
-                            } else if (!data.success) {
-                                customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data);
-                            } else {
-                                customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
-                            }
-                        },
-                        error: function() {
-                            //ajax to the external url is not working properly
-                            customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
-                        }
-                    });
-                    //}, 5000);
-                } else {
-                    customCivicEvent('noExternalLoginProviderConnection', 'Request to Facebook failed while exchanging token for data.');
-                }
-            }, obj);
+        //based on some logic and conditions you can add or remove this attribute, if custom-stopped="true" the facebook login won't proceed
+        if ($(this).attr('custom-stopper') && $(this).attr('custom-stopper') == 'true') {
+            customFacebookEvent('customCivicFbStopperTriggered', '');
+            return false;
         }
-    });
+
+        var obj = {
+            //scope: 'email,first_name,last_name,user_gender,user_birthday,user_location'
+            scope: 'email,public_profile,user_link',
+            auth_type: 'rerequest'
+        };
+
+        if (this_btn.hasClass('mobile-app')) {
+            console.log('loading facebook from mobile app');
+            // loading facebook from mobile app
+            if (typeof(openFB) != 'undefined') {
+                openFB.init({appId: '1906201509652855'});
+
+                openFB.login(
+                    function(response) {
+                        proceedWithFacebookLogin(response, this_btn);
+                    },
+                    obj
+                );
+            } else {
+                alert('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.');
+            }
+        } else {
+            console.log('loading facebook from browser');
+            // loading facebook from browser
+            $.getScript('https://connect.facebook.net/bg_BG/sdk.js', async function( data, textStatus, jqxhr ) {
+                const fb_config = {
+                    app_id: fb_config.app_id
+                };
+
+                //application init
+                window.fbAsyncInit = await function () {
+                    FB.init({
+                        appId: fb_config.app_id,
+                        cookie: true,
+                        xfbml: true,
+                        version: 'v2.8'
+                    });
+                };
+
+                FB.login(function (response) {
+                    proceedWithFacebookLogin(response, this_btn);
+                }, obj);
+            }).fail(function() {
+                alert('Looks like your browser is blocking Facebook login. Please check and edit your privacy settings in order to login in Dentacoin tools.');
+            });
+        }
+    }
+});
+
+function proceedWithFacebookLogin(response, this_btn) {
+    if (response.authResponse && response.status == 'connected') {
+        //fbGetData();
+
+        //setTimeout(function() {
+        customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
+
+        var register_data = {
+            platform: this_btn.attr('data-platform'),
+            auth_token: response.authResponse.accessToken,
+            social_network: 'fb',
+            type: 'patient'
+        };
+
+        if (dcnGateway.utils.cookies.get('first_test') != '') {
+            register_data.country_id = JSON.parse(decodeURIComponent(dcnGateway.utils.cookies.get('first_test')))['location'];
+        }
+
+        if (this_btn.attr('data-inviter') != undefined) {
+            register_data.invited_by = this_btn.attr('data-inviter');
+        }
+
+        if (this_btn.attr('data-inviteid') != undefined) {
+            register_data.inviteid = this_btn.attr('data-inviteid');
+        }
+
+        //exchanging the token for user data
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: this_btn.attr('data-url'),
+            data: register_data,
+            success: function(data) {
+                if (data.success) {
+                    if (data.deleted) {
+                        if (data.appeal) {
+                            window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform'));
+                        } else {
+                            window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id));
+                        }
+                        return false;
+                    } else if (data.bad_ip || data.suspicious_admin) {
+                        var on_hold_type = '';
+                        if (data.bad_ip) {
+                            on_hold_type = '&on-hold-type=bad_ip';
+                        } else if (data.suspicious_admin) {
+                            on_hold_type = '&on-hold-type=suspicious_admin';
+                        }
+
+                        if (data.appeal) {
+                            window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + this_btn.attr('data-platform'));
+                        } else {
+                            window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type);
+                        }
+                        return false;
+                    } else if (data.new_account) {
+                        customFacebookEvent('successfulFacebookPatientRegistration', '');
+                    } else {
+                        customFacebookEvent('successfulFacebookPatientLogin', '');
+                    }
+
+                    if (data.data.email == '' || data.data.email == null) {
+                        customFacebookEvent('registeredAccountMissingEmail', '', data);
+                    } else {
+                        customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                    }
+                } else if (!data.success) {
+                    customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data);
+                } else {
+                    customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
+                }
+            },
+            error: function() {
+                //ajax to the external url is not working properly
+                customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
+            }
+        });
+        //}, 5000);
+    } else {
+        customCivicEvent('noExternalLoginProviderConnection', 'Request to Facebook failed while exchanging token for data.');
+    }
+}
 
     //exchanging token for data
     /*function fbGetData() {
@@ -130,22 +155,6 @@ $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textSta
             );
         });
     }*/
-}).fail(function() {
-    alert('Looks like your browser is blocking Facebook login. Please check and edit your privacy settings in order to login in Dentacoin tools.');
-});
-
-/*
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {
-        return;
-    }
-    js = d.createElement(s);
-    js.id = id;
-    js.src = '//connect.facebook.net/bg_BG/sdk.js';
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-*/
 
 //custom function for firing events
 function customFacebookEvent(type, message, response_data) {
