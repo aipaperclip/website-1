@@ -145,14 +145,16 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                         console.log('registeredAccountMissingEmail');
                         customFacebookEvent('registeredAccountMissingEmail', '', data);
                     } else {
+                        console.log(type, 'type');
                         if (type == 'mobile') {
                             console.log('fire patientAuthSuccessResponse');
 
-                            const event = new CustomEvent('build', {
-                                type: 'patientAuthSuccessResponse',
-                                response_data: data,
-                                platform_type: register_data.platform,
-                                time: new Date()
+                            const event = new CustomEvent('patientAuthSuccessResponse', {
+                                detail: {
+                                    response_data: data,
+                                    platform_type: register_data.platform,
+                                    time: new Date()
+                                }
                             });
                             document.dispatchEvent(event);
                             hideDcnGatewayLoader();
