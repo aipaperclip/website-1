@@ -25,10 +25,12 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
             console.log('loading facebook from mobile app');
             // loading facebook from mobile app
             if (typeof(openFB) != 'undefined') {
+                console.log('openFB.init');
                 openFB.init({appId: fb_config.app_id});
 
                 openFB.login(
                     function(response) {
+                        console.log(response, 'response');
                         proceedWithFacebookLogin(response, this_btn, 'mobile');
                     },
                     obj
@@ -62,6 +64,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
 });
 
 function proceedWithFacebookLogin(response, this_btn, type) {
+    console.log('proceedWithFacebookLogin');
     if (response.authResponse && response.status == 'connected') {
         //fbGetData();
 
@@ -167,6 +170,7 @@ function proceedWithFacebookLogin(response, this_btn, type) {
         });
         //}, 5000);
     } else {
+        console.log('noExternalLoginProviderConnection');
         customCivicEvent('noExternalLoginProviderConnection', 'Request to Facebook failed while exchanging token for data.');
     }
 }
