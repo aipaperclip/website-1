@@ -146,6 +146,7 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                         customFacebookEvent('registeredAccountMissingEmail', '', data);
                     } else {
                         if (type == 'mobile') {
+                            console.log('fire patientAuthSuccessResponse');
                             $.event.trigger({
                                 type: 'patientAuthSuccessResponse',
                                 response_data: data,
