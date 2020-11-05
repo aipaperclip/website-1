@@ -131,7 +131,7 @@
 <section class="section-users-text-expressions hide-on-map-open">
     @include('partials.user-expressions', array('user_expressions' => $user_expressions, 'type' => 'dentists', 'mobile' => $mobile_device))
 </section>
-<section class="section-google-map module">
+<section class="section-google-map module" id="section-google-map">
     <div class="container-fluid">
         <div class="row padding-top-20 padding-bottom-30">
             <div class="col-xs-12 text-center color-black">

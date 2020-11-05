@@ -49,7 +49,7 @@
 <section class="section-users-text-expressions hide-on-map-open hide-on-hub-open">
     @include('partials.user-expressions', array('user_expressions' => $user_expressions, 'type' => 'users', 'mobile' => $mobile_device))
 </section>
-<section class="section-google-map module hide-on-hub-open">
+<section class="section-google-map module hide-on-hub-open" id="section-google-map">
     <div class="container-fluid">
         <div class="row padding-top-20 padding-bottom-30">
             <div class="col-xs-12 text-center color-black">
