@@ -147,12 +147,14 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                     } else {
                         if (type == 'mobile') {
                             console.log('fire patientAuthSuccessResponse');
-                            $.event.trigger({
+
+                            const event = new CustomEvent('build', {
                                 type: 'patientAuthSuccessResponse',
                                 response_data: data,
                                 platform_type: register_data.platform,
                                 time: new Date()
                             });
+                            document.dispatchEvent(event);
                             hideDcnGatewayLoader();
                         } else if (type == 'desktop') {
                             customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
