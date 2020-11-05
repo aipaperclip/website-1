@@ -69,7 +69,7 @@ function proceedWithFacebookLogin(response, this_btn, type) {
         //fbGetData();
 
         //setTimeout(function() {
-        customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response);
+        customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response, type);
 
         var register_data = {
             platform: this_btn.attr('data-platform'),
@@ -136,47 +136,35 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                         }
                         return false;
                     } else if (data.new_account) {
-                        customFacebookEvent('successfulFacebookPatientRegistration', '');
+                        customFacebookEvent('successfulFacebookPatientRegistration', '', null, type);
                     } else {
-                        customFacebookEvent('successfulFacebookPatientLogin', '');
+                        customFacebookEvent('successfulFacebookPatientLogin', '', null, type);
                     }
 
                     if (data.data.email == '' || data.data.email == null) {
-                        console.log('registeredAccountMissingEmail');
-                        customFacebookEvent('registeredAccountMissingEmail', '', data);
+                        customFacebookEvent('registeredAccountMissingEmail', '', data, type);
                     } else {
-                        console.log(type, 'type');
                         if (type == 'mobile') {
-                            console.log('fire patientAuthSuccessResponse');
-
-                            const event = new CustomEvent('patientAuthSuccessResponse', {
-                                detail: {
-                                    response_data: data,
-                                    platform_type: register_data.platform,
-                                    time: new Date()
-                                }
-                            });
-                            document.dispatchEvent(event);
-                            hideDcnGatewayLoader();
+                            customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, type);
                         } else if (type == 'desktop') {
-                            customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                            customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, type);
                         }
                     }
                 } else if (!data.success) {
-                    customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data);
+                    customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data, type);
                 } else {
-                    customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
+                    customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', null, type);
                 }
             },
             error: function() {
                 //ajax to the external url is not working properly
-                customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
+                customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', null, type);
             }
         });
         //}, 5000);
     } else {
         console.log('noExternalLoginProviderConnection');
-        customCivicEvent('noExternalLoginProviderConnection', 'Request to Facebook failed while exchanging token for data.');
+        customCivicEvent('noExternalLoginProviderConnection', 'Request to Facebook failed while exchanging token for data.', null, type);
     }
 }
 
@@ -193,18 +181,35 @@ function proceedWithFacebookLogin(response, this_btn, type) {
     }*/
 
 //custom function for firing events
-function customFacebookEvent(type, message, response_data) {
-    var event_obj = {
-        type: type,
-        message: message,
-        platform_type: 'facebook',
-        time: new Date()
-    };
+function customFacebookEvent(type, message, response_data, event_type) {
+    if (event_type != undefined && event_type == 'mobile') {
+        var event_obj = {
+            message: message,
+            platform_type: 'facebook',
+            time: new Date()
+        };
 
-    if (response_data != undefined) {
-        event_obj.response_data = response_data;
+        if (response_data != undefined) {
+            event_obj.response_data = response_data;
+        }
+
+        const event = new CustomEvent(type, {
+            detail: event_obj
+        });
+        document.dispatchEvent(event);
+    } else {
+        var event_obj = {
+            type: type,
+            message: message,
+            platform_type: 'facebook',
+            time: new Date()
+        };
+
+        if (response_data != undefined) {
+            event_obj.response_data = response_data;
+        }
+        $.event.trigger(event_obj);
     }
-    $.event.trigger(event_obj);
 }
 
 function getCookie(name) {
