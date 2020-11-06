@@ -9,6 +9,9 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
         };
         customFacebookEvent('facebookCustomBtnClicked', 'Button #facebook-custom-btn was clicked.');
 
+        console.log($(this), "$(this)");
+        console.log($(this).attr('custom-stopper'), "$(this).attr('custom-stopper')");
+
         //based on some logic and conditions you can add or remove this attribute, if custom-stopped="true" the facebook login won't proceed
         if ($(this).attr('custom-stopper') && $(this).attr('custom-stopper') == 'true') {
             customFacebookEvent('customCivicFbStopperTriggered', '');
