@@ -50,7 +50,7 @@ if (typeof jQuery == 'undefined') {
                     var d = new Date();
                     d.setTime(d.getTime() + (100*24*60*60*1000));
                     var expires = "expires="+d.toUTCString();
-                    document.cookie = name + "=" + value + "; " + expires + ";domain=.dentacoin.com;path=/;secure";
+                    document.cookie = name + "=" + value + "; " + expires + ";domain=."+location.hostname+";path=/;secure";
                     if(name == "cookieLaw"){
                         jQuery(".cookies_popup").slideUp();
                     }
