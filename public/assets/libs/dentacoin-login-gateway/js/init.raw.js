@@ -453,19 +453,6 @@ if (typeof jQuery == 'undefined') {
                             if (failedExtensionsCallback != undefined) {
                                 failedExtensionsCallback();
                             }
-
-                            /*var allowedExtensionsHtml = '';
-                            var firstLoop = true;
-                            for(var i = 0, len = allowedImagesExtensions.length; i < len; i+=1) {
-                                if (firstLoop) {
-                                    firstLoop = false;
-                                    allowedExtensionsHtml += allowedImagesExtensions[i];
-                                } else {
-                                    allowedExtensionsHtml += ', ' + allowedImagesExtensions[i];
-                                }
-                            }
-
-                            $(input).closest('.upload-btn-parent').append('<div class="error-handle task-error">'+$('.popup-body.translations').attr('data-translation-file-size-error')+allowedExtensionsHtml+' format.</div>');*/
                             return false;
                         }
                     }
@@ -528,10 +515,6 @@ if (typeof jQuery == 'undefined') {
                                     url: e.target.result,
                                     zoom: 1
                                 });
-
-                                /*gateway_croppie_instance.croppie('bind', 'url').then(function(){
-                                    gateway_croppie_instance.croppie('setZoom', 1);
-                                });*/
 
                                 $('#gateway-cropper-container').on('update.croppie', function(ev, cropData) {
                                     gateway_croppie_instance.croppie('result', {
@@ -1532,27 +1515,92 @@ if (typeof jQuery == 'undefined') {
                                     $('.step.fourth .btn-wrapper').append('<label class="custom-upload-avatar" role="button"><div class="inner"><i class="fa fa-plus" aria-hidden="true"></i><div class="inner-label">'+$('.popup-body.translations').attr('data-translation-add-profile-photo')+'</div></div></label>');
 
                                     $('.step.fourth .custom-upload-avatar').click(function() {
-                                        if (dcnGateway.utils.getMobileOperatingSystem() == 'Android') {
+                                        if (dcnGateway.utils.getMobileOperatingSystem() == 'Android' || dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
                                             dcnGateway.utils.androidFileUpload(function (file) {
                                                 console.log(file, 'file');
-                                                var reader = new FileReader();
+                                                if (2 < dcnGateway.utils.bytesToMegabytes(file.size)) {
+                                                    $('.gateway-avatar.module').append('<div class="error-handle task-error">The file you selected is large. Max size: 2MB.</div>');
+                                                    return false;
+                                                } else {
+                                                    var reachedAllowedExtension = false;
+                                                    for (var i = 0, len = allowedImagesExtensions.length; i < len; i+=1) {
+                                                        if (file.type.includes(allowedImagesExtensions[i])) {
+                                                            reachedAllowedExtension = true;
+                                                            break;
+                                                        }
+                                                    }
 
-                                                reader.onloadend = function () {
-                                                    console.log(this.result, 'this.result');
-                                                };
+                                                    if (!reachedAllowedExtension) {
+                                                        $('.gateway-avatar.module').append('<div class="error-handle task-error">Allowed file formats are only .png, .jpeg and .jpg.</div>');
+                                                    } else {
+                                                        var reader = new FileReader();
+                                                        reader.onloadend = function () {
+                                                            var filename = file.name;
+                                                            console.log(this.result, 'this.result');
+                                                            console.log(file.localURL, 'file.localURL');
 
-                                                reader.readAsDataURL(file);
-                                            });
-                                        } else if (dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
-                                            dcnGateway.utils.iOSFileUpload(function (file) {
-                                                console.log(file, 'file');
-                                                var reader = new FileReader();
+                                                            if (filename != '' && filename != undefined) {
+                                                                $('.avatar-name').show().find('span').html(filename.slice(0, 20) + '...');
+                                                                $('.upload-label-btn').addClass('less-padding');
+                                                            }
 
-                                                reader.onloadend = function () {
-                                                    console.log(this.result, 'this.result');
-                                                };
+                                                            console.log(filename, 'filename');
 
-                                                reader.readAsDataURL(file);
+                                                            $('#gateway-cropper-container').addClass('width-and-height');
+                                                            if (gateway_croppie_instance != undefined) {
+                                                                gateway_croppie_instance.croppie('destroy');
+                                                                $('#gateway-cropper-container').html('');
+                                                            }
+
+                                                            var croppieParams = {
+                                                                enableOrientation: true,
+                                                                enforceBoundary: false
+                                                            };
+
+                                                            if ($(window).width() < 768) {
+                                                                croppieParams.viewport = {
+                                                                    width: 200,
+                                                                    height: 200
+                                                                };
+                                                                croppieParams.boundary = {width: 200, height: 200};
+                                                            } else {
+                                                                croppieParams.viewport = {
+                                                                    width: 180,
+                                                                    height: 180
+                                                                };
+                                                                croppieParams.boundary = {width: 180, height: 180};
+                                                            }
+
+                                                            gateway_croppie_instance = $('#gateway-cropper-container').croppie(croppieParams);
+
+                                                            $('.destroy-croppie').unbind().click(function() {
+                                                                gateway_croppie_instance.croppie('destroy');
+                                                                $('#gateway-cropper-container').html('');
+                                                                $('#gateway-cropper-container').removeClass('width-and-height');
+                                                                $('.gateway-avatar.module .btn-wrapper').show();
+                                                                $('.avatar-name').hide();
+                                                                $('.dentist .form-register .step.fourth #custom-upload-avatar').val('');
+                                                            });
+
+                                                            $('.gateway-avatar.module .btn-wrapper').hide();
+
+                                                            gateway_croppie_instance.croppie('bind', {
+                                                                url: file.localURL,
+                                                                zoom: 1
+                                                            });
+
+                                                            $('#gateway-cropper-container').on('update.croppie', function(ev, cropData) {
+                                                                gateway_croppie_instance.croppie('result', {
+                                                                    type: 'canvas',
+                                                                    size: {width: 300, height: 300}
+                                                                }).then(function (src) {
+                                                                    $('#hidden-image').val(src);
+                                                                });
+                                                            });
+                                                        };
+                                                        reader.readAsDataURL(file);
+                                                    }
+                                                }
                                             });
                                         }
                                     });
