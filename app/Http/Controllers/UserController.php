@@ -285,12 +285,18 @@ class UserController extends Controller {
 
         $data = $request->input();
 
+        $recaptchaSecret = env('GOOGLE_reCAPTCHA_SECRET');
+        $typeRegistration = $request->input('typeRegistration');
+        if (!empty($typeRegistration) && $typeRegistration == 'mobile') {
+            $recaptchaSecret = env('GOOGLE_reCAPTCHA_SECRET_ONLY_MOBILE_APPS');
+        }
+
         $captcha = false;
         $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt ($ch, CURLOPT_POST, 1);
         curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query(array(
-            'secret' => env('GOOGLE_reCAPTCHA_SECRET'),
+            'secret' => $recaptchaSecret,
             'response' => $data['grecaptcha'],
             'remoteip' => $this->getClientIp()
         )));
