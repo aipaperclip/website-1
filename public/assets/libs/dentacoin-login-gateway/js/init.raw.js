@@ -1557,22 +1557,12 @@ if (typeof jQuery == 'undefined') {
 
                                                             var croppieParams = {
                                                                 enableOrientation: true,
-                                                                enforceBoundary: false
-                                                            };
-
-                                                            if ($(window).width() < 768) {
-                                                                croppieParams.viewport = {
+                                                                enforceBoundary: false,
+                                                                viewport = {
                                                                     width: 200,
                                                                     height: 200
-                                                                };
-                                                                croppieParams.boundary = {width: 200, height: 200};
-                                                            } else {
-                                                                croppieParams.viewport = {
-                                                                    width: 180,
-                                                                    height: 180
-                                                                };
-                                                                croppieParams.boundary = {width: 180, height: 180};
-                                                            }
+                                                                }
+                                                            };
 
                                                             gateway_croppie_instance = $('#gateway-cropper-container').croppie(croppieParams);
 
