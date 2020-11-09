@@ -1872,9 +1872,12 @@ if (typeof jQuery == 'undefined') {
                                                 if (typeof(grecaptcha) != undefined && grecaptcha.getResponse().length == 0) {
                                                     dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Please prove that you\'re not a robot.');
                                                     errors = true;
+                                                } else {
+                                                    proceedWithFourthStepLogic();
                                                 }
                                             }
 
+                                        async function proceedWithFourthStepLogic() {
                                             if (!errors) {
                                                 $('.dentacoin-login-gateway-container form#dentist-register .step.fourth .step-errors-holder').html('');
                                                 dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationComplete');
@@ -1957,8 +1960,9 @@ if (typeof jQuery == 'undefined') {
                                                     dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                                                 }
                                             }
+                                        }
 
-                                            break;
+                                        break;
                                     }
                                 });
                                 // ====================== /DENTIST LOGIN/ SIGNUP LOGIC ======================
