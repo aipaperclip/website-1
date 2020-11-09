@@ -1594,9 +1594,10 @@ if (typeof jQuery == 'undefined') {
 
                                                             $('#gateway-cropper-container').on('update.croppie', function(ev, cropData) {
                                                                 gateway_croppie_instance.croppie('result', {
-                                                                    type: 'canvas',
+                                                                    type: 'base64',
                                                                     size: {width: 300, height: 300}
                                                                 }).then(function (src) {
+                                                                    console.log(src, 'src');
                                                                     $('#hidden-image').val(src);
                                                                 });
                                                             });
