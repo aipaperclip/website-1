@@ -1523,10 +1523,12 @@ if (typeof jQuery == 'undefined') {
                                                     return false;
                                                 } else {
                                                     var reachedAllowedExtension = false;
-                                                    for (var i = 0, len = allowedImagesExtensions.length; i < len; i+=1) {
-                                                        if (file.type.includes(allowedImagesExtensions[i])) {
-                                                            reachedAllowedExtension = true;
-                                                            break;
+                                                    if (file.type != null) {
+                                                        for (var i = 0, len = allowedImagesExtensions.length; i < len; i+=1) {
+                                                            if (file.type.includes(allowedImagesExtensions[i])) {
+                                                                reachedAllowedExtension = true;
+                                                                break;
+                                                            }
                                                         }
                                                     }
 
