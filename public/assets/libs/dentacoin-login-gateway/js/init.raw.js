@@ -463,7 +463,7 @@ if (typeof jQuery == 'undefined') {
                     var inputs = document.querySelectorAll('.inputfile');
                     Array.prototype.forEach.call(inputs, function(input) {
                         var this_file_btn_parent = $(input).parent();
-                        this_file_btn_parent.find('.btn-wrapper').append('<label for="custom-upload-avatar" role="button"><div class="inner"><i class="fa fa-plus" aria-hidden="true"></i><div class="inner-label">'+$('.popup-body.translations').attr('data-translation-add-profile-photo')+'</div></div></label>');
+                        this_file_btn_parent.find('.btn-wrapper').append('<label for="custom-upload-avatar" role="button"><div class="inner"><svg aria-hidden="true" style="width: 50px;" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-plus fa-w-14 fa-5x"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" class=""></path></svg><div class="inner-label">'+$('.popup-body.translations').attr('data-translation-add-profile-photo')+'</div></div></label>');
 
                         input.addEventListener('change', function(e) {
                             var this_input = $(this);
@@ -1512,7 +1512,7 @@ if (typeof jQuery == 'undefined') {
 
                                 //FOURTH STEP INIT LOGIC
                                 if (loadedFromMobileApp) {
-                                    $('.step.fourth .btn-wrapper').append('<label class="custom-upload-avatar" role="button"><div class="inner"><i class="fa fa-plus" aria-hidden="true"></i><div class="inner-label">'+$('.popup-body.translations').attr('data-translation-add-profile-photo')+'</div></div></label>');
+                                    $('.step.fourth .btn-wrapper').append('<label class="custom-upload-avatar" role="button"><div class="inner"><svg aria-hidden="true" style="width: 50px;" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-plus fa-w-14 fa-5x"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" class=""></path></svg><div class="inner-label">'+$('.popup-body.translations').attr('data-translation-add-profile-photo')+'</div></div></label>');
 
                                     $('.step.fourth .custom-upload-avatar').click(function() {
                                         $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').find('.error-handle').remove();
