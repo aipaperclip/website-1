@@ -1845,122 +1845,94 @@ if (typeof jQuery == 'undefined') {
 
                                             //checking if no specialization checkbox selected
                                             if (loadedFromMobileApp) {
-                                                function initHybridAppCaptcha() {
-                                                    console.log('initHybridAppCaptcha');
-                                                    if (hasOwnProperty.call(window.plugins, 'recaptcha')) {
-                                                        window.plugins.recaptcha.verify('6LdXxOAZAAAAAEKv7gr3z6J-WnM8lrSWmFJrfXNt', function(response) {
-                                                            console.log('SUCCESS RECAPTCHA');
-                                                            $('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').val(response);
-
-                                                            proceedWithFourthStepLogic();
-                                                        }, function() {
-                                                            console.log('FAIL RECAPTCHA');
-                                                            $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').find('.error-handle').remove();
-                                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Captcha failed. Please prove that you\'re not a robot. <a href="javascript:void(0);" class="try-again-hybrid-captcha">Try again</a>');
-                                                            $('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').val('');
-
-                                                            $('try-again-hybrid-captcha').click(function() {
-                                                                initHybridAppCaptcha();
-                                                            });
-                                                        });
-                                                    } else {
-                                                        console.error('Missing cordova plugin cordova-plugin-recaptcha.')
-                                                    }
-                                                }
-                                                initHybridAppCaptcha();
+                                               
                                             } else {
                                                 if (typeof(grecaptcha) != undefined && grecaptcha.getResponse().length == 0) {
                                                     dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Please prove that you\'re not a robot.');
                                                     errors = true;
-                                                } else {
-                                                    proceedWithFourthStepLogic();
                                                 }
                                             }
 
-                                            function proceedWithFourthStepLogic() {
-                                                console.log('proceedWithFourthStepLogic');
+                                            if (!errors) {
+                                                $('.dentacoin-login-gateway-container form#dentist-register .step.fourth .step-errors-holder').html('');
+                                                dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationComplete');
+                                                dcnGateway.utils.fireFacebookPixelEvent('DentistRegistrationComplete');
 
-                                                if (!errors) {
-                                                    $('.dentacoin-login-gateway-container form#dentist-register .step.fourth .step-errors-holder').html('');
-                                                    dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationComplete');
-                                                    dcnGateway.utils.fireFacebookPixelEvent('DentistRegistrationComplete');
+                                                var registerParams = {
+                                                    'platform' : params.platform,
+                                                    'email' : $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-email').val().trim(),
+                                                    'password' : $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-password').val().trim(),
+                                                    'repeat-password' : $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-repeat-password').val().trim(),
+                                                    'latin-name' : $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-latin-name').val().trim(),
+                                                    'user-type' : $('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val(),
+                                                    'country-code' : $('.dentacoin-login-gateway-container .step.third [name="country-code"]').val(),
+                                                    'address' : $('.dentacoin-login-gateway-container .step.third #dentist-register-address').val().trim(),
+                                                    'website' : $('.dentacoin-login-gateway-container .step.third #dentist-register-website').val().trim(),
+                                                    'phone' : $('.dentacoin-login-gateway-container .step.third #dentist-register-phone').val().trim(),
+                                                    'specializations' : $('.dentacoin-login-gateway-container form#dentist-register input[name="password"]').val().trim(),
+                                                    'hidden-image' : $('.dentacoin-login-gateway-container form#dentist-register .step.fourth #hidden-image').val().trim()
+                                                };
 
-                                                    var registerParams = {
-                                                        'platform' : params.platform,
-                                                        'email' : $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-email').val().trim(),
-                                                        'password' : $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-password').val().trim(),
-                                                        'repeat-password' : $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-repeat-password').val().trim(),
-                                                        'latin-name' : $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-latin-name').val().trim(),
-                                                        'user-type' : $('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val(),
-                                                        'country-code' : $('.dentacoin-login-gateway-container .step.third [name="country-code"]').val(),
-                                                        'address' : $('.dentacoin-login-gateway-container .step.third #dentist-register-address').val().trim(),
-                                                        'website' : $('.dentacoin-login-gateway-container .step.third #dentist-register-website').val().trim(),
-                                                        'phone' : $('.dentacoin-login-gateway-container .step.third #dentist-register-phone').val().trim(),
-                                                        'specializations' : $('.dentacoin-login-gateway-container form#dentist-register input[name="password"]').val().trim(),
-                                                        'hidden-image' : $('.dentacoin-login-gateway-container form#dentist-register .step.fourth #hidden-image').val().trim()
-                                                    };
+                                                if (loadedFromMobileApp) {
+                                                    registerParams.grecaptcha = $('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').val();
+                                                    registerParams.typeRegistration = 'mobile';
+                                                } else {
+                                                    registerParams.grecaptcha = grecaptcha.getResponse();
+                                                }
 
-                                                    if (loadedFromMobileApp) {
-                                                        registerParams.grecaptcha = $('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').val();
-                                                        registerParams.typeRegistration = 'mobile';
+                                                var specializationsArr = [];
+                                                for (var i = 0, len = $('.dentacoin-login-gateway-container form#dentist-register .step.fourth [name="specializations[]"]:checked').length; i < len; i+=1) {
+                                                    specializationsArr.push($('.dentacoin-login-gateway-container form#dentist-register .step.fourth [name="specializations[]"]:checked').eq(i).val());
+                                                }
+                                                registerParams['specializations'] = JSON.stringify(specializationsArr);
+
+                                                if ($('.dentacoin-login-gateway-container form#dentist-register #dentist-register-alternative-name').val().trim() != '') {
+                                                    registerParams['alternative-name'] = $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-alternative-name').val().trim();
+                                                }
+
+                                                if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'dentist') {
+                                                    registerParams['dentist-title'] = $('.dentacoin-login-gateway-container form#dentist-register select[name="dentist-title"]').val().trim();
+                                                    registerParams['dentist_practice'] = $('.dentacoin-login-gateway-container .step.second [name="dentist-type"]:checked').val();
+
+                                                    if (registerParams['dentist_practice'] == 'work_at_practice') {
+                                                        registerParams['clinic_name'] = $('.dentacoin-login-gateway-container .step.second #practice-name').val().trim();
+                                                        registerParams['clinic_email'] = $('.dentacoin-login-gateway-container .step.second #practice-email').val().trim();
+                                                    }
+                                                } else if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'clinic') {
+                                                    registerParams['worker_name'] = $('.dentacoin-login-gateway-container .step.second #clinic-member-name').val().trim();
+                                                    registerParams['working_position'] = $('.dentacoin-login-gateway-container .step.second [name="clinic-member-job-title"]').val();
+
+                                                    if (registerParams['working_position'] == 'other') {
+                                                        registerParams['working_position_label'] = $('.dentacoin-login-gateway-container .step.second #clinic-member-job-title-other').val().trim();
+                                                    }
+                                                }
+
+                                                if (environment == 'staging') {
+                                                    registerParams.staging = true;
+                                                }
+
+                                                var registeringDentistResponse = await dcnGateway.dcnGatewayRequests.dentistRegistration(registerParams);
+                                                if (registeringDentistResponse.success) {
+                                                    $.event.trigger({
+                                                        type: 'dentistRegisterSuccessResponse',
+                                                        response_data: registeringDentistResponse.data,
+                                                        platform_type: params.platform,
+                                                        time: new Date()
+                                                    });
+
+                                                    dcnGateway.utils.hideGateway(true);
+                                                } else if (registeringDentistResponse.error) {
+                                                    if (typeof(registeringDentistResponse.message) === 'object' && registeringDentistResponse.message !== null) {
+                                                        var error_popup_html = '';
+                                                        for(var key in registeringDentistResponse.message) {
+                                                            error_popup_html += registeringDentistResponse.message[key]+'<br>';
+                                                        }
+                                                        $('.dentacoin-login-gateway-container form#dentist-register .step.fourth .step-errors-holder').html('<div class="error-handle">'+error_popup_html+'</div>');
                                                     } else {
-                                                        registerParams.grecaptcha = grecaptcha.getResponse();
+                                                        $('.dentacoin-login-gateway-container form#dentist-register .step.fourth .step-errors-holder').html('<div class="error-handle">'+registeringDentistResponse.message+'</div>');
                                                     }
-
-                                                    var specializationsArr = [];
-                                                    for (var i = 0, len = $('.dentacoin-login-gateway-container form#dentist-register .step.fourth [name="specializations[]"]:checked').length; i < len; i+=1) {
-                                                        specializationsArr.push($('.dentacoin-login-gateway-container form#dentist-register .step.fourth [name="specializations[]"]:checked').eq(i).val());
-                                                    }
-                                                    registerParams['specializations'] = JSON.stringify(specializationsArr);
-
-                                                    if ($('.dentacoin-login-gateway-container form#dentist-register #dentist-register-alternative-name').val().trim() != '') {
-                                                        registerParams['alternative-name'] = $('.dentacoin-login-gateway-container form#dentist-register #dentist-register-alternative-name').val().trim();
-                                                    }
-
-                                                    if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'dentist') {
-                                                        registerParams['dentist-title'] = $('.dentacoin-login-gateway-container form#dentist-register select[name="dentist-title"]').val().trim();
-                                                        registerParams['dentist_practice'] = $('.dentacoin-login-gateway-container .step.second [name="dentist-type"]:checked').val();
-
-                                                        if (registerParams['dentist_practice'] == 'work_at_practice') {
-                                                            registerParams['clinic_name'] = $('.dentacoin-login-gateway-container .step.second #practice-name').val().trim();
-                                                            registerParams['clinic_email'] = $('.dentacoin-login-gateway-container .step.second #practice-email').val().trim();
-                                                        }
-                                                    } else if ($('.dentacoin-login-gateway-container .step.second .user-type-container [name="user-type"]').val() == 'clinic') {
-                                                        registerParams['worker_name'] = $('.dentacoin-login-gateway-container .step.second #clinic-member-name').val().trim();
-                                                        registerParams['working_position'] = $('.dentacoin-login-gateway-container .step.second [name="clinic-member-job-title"]').val();
-
-                                                        if (registerParams['working_position'] == 'other') {
-                                                            registerParams['working_position_label'] = $('.dentacoin-login-gateway-container .step.second #clinic-member-job-title-other').val().trim();
-                                                        }
-                                                    }
-
-                                                    if (environment == 'staging') {
-                                                        registerParams.staging = true;
-                                                    }
-
-                                                    var registeringDentistResponse = await dcnGateway.dcnGatewayRequests.dentistRegistration(registerParams);
-                                                    if (registeringDentistResponse.success) {
-                                                        $.event.trigger({
-                                                            type: 'dentistRegisterSuccessResponse',
-                                                            response_data: registeringDentistResponse.data,
-                                                            platform_type: params.platform,
-                                                            time: new Date()
-                                                        });
-
-                                                        dcnGateway.utils.hideGateway(true);
-                                                    } else if (registeringDentistResponse.error) {
-                                                        if (typeof(registeringDentistResponse.message) === 'object' && registeringDentistResponse.message !== null) {
-                                                            var error_popup_html = '';
-                                                            for(var key in registeringDentistResponse.message) {
-                                                                error_popup_html += registeringDentistResponse.message[key]+'<br>';
-                                                            }
-                                                            $('.dentacoin-login-gateway-container form#dentist-register .step.fourth .step-errors-holder').html('<div class="error-handle">'+error_popup_html+'</div>');
-                                                        } else {
-                                                            $('.dentacoin-login-gateway-container form#dentist-register .step.fourth .step-errors-holder').html('<div class="error-handle">'+registeringDentistResponse.message+'</div>');
-                                                        }
-                                                    } else {
-                                                        dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
-                                                    }
+                                                } else {
+                                                    dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                                                 }
                                             }
                                             break;
