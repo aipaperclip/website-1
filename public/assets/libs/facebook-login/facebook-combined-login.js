@@ -148,6 +148,7 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                         customFacebookEvent('registeredAccountMissingEmail', '', data, type);
                     } else {
                         if (type == 'mobile') {
+                            customFacebookEvent('hideGatewayLoader', '');
                             customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, type);
                         } else if (type == 'desktop') {
                             customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, type);
