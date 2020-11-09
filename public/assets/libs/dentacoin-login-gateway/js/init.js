@@ -1558,7 +1558,7 @@ if (typeof jQuery == 'undefined') {
                                                             var croppieParams = {
                                                                 enableOrientation: true,
                                                                 enforceBoundary: false,
-                                                                viewport = {
+                                                                viewport: {
                                                                     width: 200,
                                                                     height: 200
                                                                 }
