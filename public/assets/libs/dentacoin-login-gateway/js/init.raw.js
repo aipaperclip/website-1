@@ -2072,7 +2072,8 @@ if (typeof jQuery == 'undefined') {
                                                     'address' : $('.dentacoin-login-gateway-container .step.third #dentist-register-address').val().trim(),
                                                     'website' : $('.dentacoin-login-gateway-container .step.third #dentist-register-website').val().trim(),
                                                     'phone' : $('.dentacoin-login-gateway-container .step.third #dentist-register-phone').val().trim(),
-                                                    'specializations' : $('.dentacoin-login-gateway-container form#dentist-register input[name="password"]').val().trim()
+                                                    'specializations' : $('.dentacoin-login-gateway-container form#dentist-register input[name="password"]').val().trim(),
+                                                    'hidden-image' : $('.dentacoin-login-gateway-container form#dentist-register .step.fourth #hidden-image').val().trim()
                                                 };
 
                                                 if (loadedFromMobileApp) {
@@ -2080,7 +2081,6 @@ if (typeof jQuery == 'undefined') {
                                                     registerParams.typeRegistration = 'mobile';
                                                 } else {
                                                     registerParams.grecaptcha = grecaptcha.getResponse();
-                                                    registerParams['hidden-image'] = $('.dentacoin-login-gateway-container form#dentist-register .step.fourth #hidden-image').val().trim();
                                                 }
 
                                                 var specializationsArr = [];
