@@ -585,6 +585,15 @@
         max-width: 900px;
         background-color: white;
         @include vertical-horizontal-align(absolute);
+        @include breakpoint($xs) {
+            position: absolute;
+            top: 20px;
+            margin-bottom: 50px;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
         .enrich-profile-container {
             position: relative;
             .check-icon {

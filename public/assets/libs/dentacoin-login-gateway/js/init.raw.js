@@ -1843,42 +1843,43 @@ if (typeof jQuery == 'undefined') {
                                                 errors = true;
                                             }
 
-                                            //checking if no specialization checkbox selected
-                                            if (loadedFromMobileApp) {
-                                                function initHybridAppCaptcha() {
-                                                    console.log($('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').attr('data-public-key'), 'initHybridAppCaptcha');
-                                                    if (hasOwnProperty.call(window.plugins, 'recaptcha')) {
-                                                        window.plugins.recaptcha.verify($('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').attr('data-public-key'), function(response) {
-                                                            console.log('SUCCESS RECAPTCHA');
-                                                            $('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').val(response);
+                                            if (!errors) {
+                                                //checking captcha
+                                                if (loadedFromMobileApp) {
+                                                    function initHybridAppCaptcha() {
+                                                        console.log($('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').attr('data-public-key'), 'initHybridAppCaptcha');
+                                                        if (hasOwnProperty.call(window.plugins, 'recaptcha')) {
+                                                            window.plugins.recaptcha.verify($('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').attr('data-public-key'), function(response) {
+                                                                console.log('SUCCESS RECAPTCHA');
+                                                                $('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').val(response);
 
-                                                            proceedWithFourthStepLogic();
-                                                        }, function() {
-                                                            console.log('FAIL RECAPTCHA');
-                                                            $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').find('.error-handle').remove();
-                                                            dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Captcha failed. Please prove that you\'re not a robot. <a href="javascript:void(0);" class="try-again-hybrid-captcha">Try again</a>');
-                                                            $('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').val('');
+                                                                proceedWithFourthStepLogic();
+                                                            }, function() {
+                                                                console.log('FAIL RECAPTCHA');
+                                                                $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').find('.error-handle').remove();
+                                                                dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Captcha failed. Please prove that you\'re not a robot. <a href="javascript:void(0);" class="try-again-hybrid-captcha">Try again</a>');
+                                                                $('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').val('');
 
-                                                            $('try-again-hybrid-captcha').click(function() {
-                                                                initHybridAppCaptcha();
+                                                                $('try-again-hybrid-captcha').click(function() {
+                                                                    initHybridAppCaptcha();
+                                                                });
                                                             });
-                                                        });
-                                                    } else {
-                                                        console.error('Missing cordova plugin cordova-plugin-recaptcha.')
+                                                        } else {
+                                                            console.error('Missing cordova plugin cordova-plugin-recaptcha.')
+                                                        }
                                                     }
-                                                }
-                                                initHybridAppCaptcha();
-                                            } else {
-                                                if (typeof(grecaptcha) != undefined && grecaptcha.getResponse().length == 0) {
-                                                    dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Please prove that you\'re not a robot.');
-                                                    errors = true;
+                                                    initHybridAppCaptcha();
                                                 } else {
-                                                    proceedWithFourthStepLogic();
+                                                    if (typeof(grecaptcha) != undefined && grecaptcha.getResponse().length == 0) {
+                                                        dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Please prove that you\'re not a robot.');
+                                                        errors = true;
+                                                    } else {
+                                                        proceedWithFourthStepLogic();
+                                                    }
                                                 }
                                             }
 
-                                        async function proceedWithFourthStepLogic() {
-                                            if (!errors) {
+                                            async function proceedWithFourthStepLogic() {
                                                 $('.dentacoin-login-gateway-container form#dentist-register .step.fourth .step-errors-holder').html('');
                                                 dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationComplete');
                                                 dcnGateway.utils.fireFacebookPixelEvent('DentistRegistrationComplete');
@@ -1960,7 +1961,6 @@ if (typeof jQuery == 'undefined') {
                                                     dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                                                 }
                                             }
-                                        }
 
                                         break;
                                     }
