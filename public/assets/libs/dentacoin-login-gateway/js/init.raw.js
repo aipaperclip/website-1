@@ -1588,13 +1588,13 @@ if (typeof jQuery == 'undefined') {
                                                         zoom: 1
                                                     });
 
-                                                    var setCrossoriginAttr = setInterval(function() {
+                                                    /*var setCrossoriginAttr = setInterval(function() {
                                                         console.log($('#gateway-cropper-container .cr-boundary img').length, '$(\'#gateway-cropper-container .cr-boundary img\').length');
                                                         if ($('#gateway-cropper-container .cr-boundary img').length) {
                                                             $('#gateway-cropper-container .cr-boundary img').attr('crossorigin', 'anonymous');
                                                             clearInterval(setCrossoriginAttr);
                                                         }
-                                                    }, 300);
+                                                    }, 300);*/
 
                                                     $('#gateway-cropper-container').on('update.croppie', function(ev, cropData) {
                                                         gateway_croppie_instance.croppie('result', {
