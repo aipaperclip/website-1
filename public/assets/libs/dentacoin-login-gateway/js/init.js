@@ -1515,6 +1515,7 @@ if (typeof jQuery == 'undefined') {
                                     $('.step.fourth .btn-wrapper').append('<label class="custom-upload-avatar" role="button"><div class="inner"><i class="fa fa-plus" aria-hidden="true"></i><div class="inner-label">'+$('.popup-body.translations').attr('data-translation-add-profile-photo')+'</div></div></label>');
 
                                     $('.step.fourth .custom-upload-avatar').click(function() {
+                                        $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').find('.error-handle').remove();
                                         if (dcnGateway.utils.getMobileOperatingSystem() == 'Android' || dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
                                             dcnGateway.utils.androidFileUpload(function (file) {
                                                 console.log(file, 'file');
