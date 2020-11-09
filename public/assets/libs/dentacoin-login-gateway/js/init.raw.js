@@ -1872,7 +1872,6 @@ if (typeof jQuery == 'undefined') {
                                                 } else {
                                                     if (typeof(grecaptcha) != undefined && grecaptcha.getResponse().length == 0) {
                                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Please prove that you\'re not a robot.');
-                                                        errors = true;
                                                     } else {
                                                         proceedWithFourthStepLogic();
                                                     }
