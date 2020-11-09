@@ -800,6 +800,91 @@ if (typeof jQuery == 'undefined') {
                 $('.dentacoin-login-gateway-container').remove();
 
                 $('body').removeClass('dentacoin-login-gateway-overflow-hidden');
+            },
+            getMobileOperatingSystem: function () {
+                var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+                // Windows Phone must come first because its UA also contains "Android"
+                if (/windows phone/i.test(userAgent)) {
+                    return "Windows Phone";
+                }
+
+                if (/android/i.test(userAgent)) {
+                    return "Android";
+                }
+
+                // iOS detection from: http://stackoverflow.com/a/9039885/177710
+                if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                    return "iOS";
+                }
+
+                if (/(Mac|iPhone|iPod|iPad)/.test(userAgent) && !window.MSStream) {
+                    return "Mac";
+                }
+
+                return "unknown";
+            },
+            androidFileUpload: function(callback) {
+                fileChooser.open(function (file_uri) {
+                    window.FilePath.resolveNativePath(file_uri, successNative, failNative);
+
+                    function successNative(finalPath) {
+                        window.resolveLocalFileSystemURL(finalPath, function (entry) {
+                            console.log(entry, 'entry1');
+                            window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function (rootEntry) {
+                                console.log(rootEntry, 'rootEntry1');
+                                //checking external storage
+                                rootEntry.getFile(decodeURIComponent(entry.fullPath), {create: false}, function (fileEntry) {
+                                    console.log(fileEntry, 'fileEntry1');
+                                    fileEntry.file(function (file) {
+                                        console.log(file, 'file1');
+                                        callback(file);
+                                    }, function (err) {
+                                        failNative();
+                                    });
+                                }, function (err) {
+                                    //if file is not found in the external storage check in the internal one
+                                    window.resolveLocalFileSystemURL('file:///', function (rootEntry) {
+                                        console.log(rootEntry, 'rootEntry2');
+                                        rootEntry.getFile(decodeURIComponent(entry.fullPath), {create: false}, function (fileEntry) {
+                                            console.log(fileEntry, 'fileEntry2');
+                                            fileEntry.file(function (file) {
+                                                console.log(file, 'file2');
+                                                callback(file);
+                                            }, function (err) {
+                                                failNative();
+                                            });
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    }
+
+                    function failNative(e) {
+                        alert('Something went wrong with uploading your file. Please contact admin@dentacoin.com.');
+                    }
+                });
+            },
+            iOSFileUpload: function(callback) {
+                FilePicker.pickFile(function (path) {
+                    var fileDir = cordova.file.tempDirectory.replace('file://', '');
+                    var fileName = path.replace(fileDir, '');
+
+                    window.resolveLocalFileSystemURL(cordova.file.tempDirectory, function (rootEntry) {
+                        console.log(rootEntry, 'rootEntry');
+                        rootEntry.getFile(fileName, {create: false}, function (fileEntry) {
+                            fileEntry.file(function (file) {
+                                console.log(file, 'file');
+                                callback(file);
+                            });
+                        }, function (err) {
+                            alert('Something went wrong with reading your cached file (Core error 2). Please contact admin@dentacoin.com.');
+                        });
+                    });
+                }, function (err) {
+                    alert('File importing failed. Please update to one of the latest iOS versions in order to have file importing working.');
+                });
             }
         },
         init: async function(params) {
@@ -1443,7 +1528,37 @@ if (typeof jQuery == 'undefined') {
                                 });
 
                                 //FOURTH STEP INIT LOGIC
-                                dcnGateway.utils.styleAvatarUploadButton();
+                                if (loadedFromMobileApp) {
+                                    $('.step.fourth .btn-wrapper').append('<label class="custom-upload-avatar" role="button"><div class="inner"><i class="fa fa-plus" aria-hidden="true"></i><div class="inner-label">'+$('.popup-body.translations').attr('data-translation-add-profile-photo')+'</div></div></label>');
+
+                                    $('.step.fourth .custom-upload-avatar').click(function() {
+                                        if (dcnGateway.utils.getMobileOperatingSystem() == 'Android') {
+                                            dcnGateway.utils.androidFileUpload(function (file) {
+                                                console.log(file, 'file');
+                                                var reader = new FileReader();
+
+                                                reader.onloadend = function () {
+                                                    console.log(this.result, 'this.result');
+                                                };
+
+                                                reader.readAsDataURL(file);
+                                            });
+                                        } else if (dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
+                                            dcnGateway.utils.iOSFileUpload(function (file) {
+                                                console.log(file, 'file');
+                                                var reader = new FileReader();
+
+                                                reader.onloadend = function () {
+                                                    console.log(this.result, 'this.result');
+                                                };
+
+                                                reader.readAsDataURL(file);
+                                            });
+                                        }
+                                    });
+                                } else {
+                                    dcnGateway.utils.styleAvatarUploadButton();
+                                }
 
                                 function collectFirstAndSecondStepData() {
                                     var secondStepIncompleteRegistrationParams = {
@@ -1831,10 +1946,15 @@ if (typeof jQuery == 'undefined') {
                                         case 'fourth':
                                             $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').find('.error-handle').remove();
                                             var errors = false;
-                                            //checking if empty avatar
-                                            if ($('.dentist .form-register .step.fourth #custom-upload-avatar').val().trim() == '') {
-                                                dcnGateway.utils.customErrorHandle($('.step.fourth .step-errors-holder'), 'Please add a profile photo.');
-                                                errors = true;
+
+                                            if (loadedFromMobileApp) {
+
+                                            } else {
+                                                //checking if empty avatar
+                                                if ($('.dentist .form-register .step.fourth #custom-upload-avatar').val().trim() == '') {
+                                                    dcnGateway.utils.customErrorHandle($('.step.fourth .step-errors-holder'), 'Please add a profile photo.');
+                                                    errors = true;
+                                                }
                                             }
 
                                             //checking if no specialization checkbox selected
@@ -1894,8 +2014,7 @@ if (typeof jQuery == 'undefined') {
                                                     'address' : $('.dentacoin-login-gateway-container .step.third #dentist-register-address').val().trim(),
                                                     'website' : $('.dentacoin-login-gateway-container .step.third #dentist-register-website').val().trim(),
                                                     'phone' : $('.dentacoin-login-gateway-container .step.third #dentist-register-phone').val().trim(),
-                                                    'specializations' : $('.dentacoin-login-gateway-container form#dentist-register input[name="password"]').val().trim(),
-                                                    'hidden-image' : $('.dentacoin-login-gateway-container form#dentist-register .step.fourth #hidden-image').val().trim()
+                                                    'specializations' : $('.dentacoin-login-gateway-container form#dentist-register input[name="password"]').val().trim()
                                                 };
 
                                                 if (loadedFromMobileApp) {
@@ -1903,6 +2022,7 @@ if (typeof jQuery == 'undefined') {
                                                     registerParams.typeRegistration = 'mobile';
                                                 } else {
                                                     registerParams.grecaptcha = grecaptcha.getResponse();
+                                                    registerParams['hidden-image'] = $('.dentacoin-login-gateway-container form#dentist-register .step.fourth #hidden-image').val().trim();
                                                 }
 
                                                 var specializationsArr = [];
