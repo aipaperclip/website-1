@@ -1557,10 +1557,8 @@ if (typeof jQuery == 'undefined') {
 
                                                             var croppieParams = {
                                                                 enforceBoundary: false,
-                                                                viewport: {
-                                                                    width: 200,
-                                                                    height: 200
-                                                                }
+                                                                viewport: {width: 200, height: 200},
+                                                                boundary: {width: 200, height: 200}
                                                             };
 
                                                             gateway_croppie_instance = $('#gateway-cropper-container').croppie(croppieParams);
