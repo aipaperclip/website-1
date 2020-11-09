@@ -7,13 +7,14 @@ if (typeof jQuery == 'undefined') {
     var loadedAddressSuggesterLib = false;
     var loadedGoogleMapLib = false;
     var loadedCivicLib = false;
+    var loadedFromMobileApp = false;
     var gateway_croppie_instance;
     var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
     var apiDomain = 'https://api.dentacoin.com';
     var dcnLibsDomain = 'https://dentacoin.com';
     var environment = 'live';
     var initCivicEvents = true;
-    var loadedFromMobileApp = false;
+    var googleKey = 'AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk';
     var dcnGateway = {
         dcnGatewayRequests: {
             getPlatformsData: async function(callback) {
@@ -826,6 +827,7 @@ if (typeof jQuery == 'undefined') {
 
                 if (hasOwnProperty.call(params, 'mobile_app') && params.mobile_app == true) {
                     loadedFromMobileApp = true;
+                    googleKey = 'AIzaSyAq7ie77jwp2ydsmjM0yvo69f0yyrx-9QA';
                 }
 
                 await dcnGateway.dcnGatewayRequests.getPlatformsData(async function(platformsData) {
@@ -1496,7 +1498,7 @@ if (typeof jQuery == 'undefined') {
                                     // ====================================== GOOGLE MAP LIB =============================================
                                     if ((!loadedGoogleMapLib && typeof google !== 'object') || (typeof google === 'object' && typeof google.maps !== 'object')) {
                                         // init Google lib
-                                        await $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en', function() {});
+                                        await $.getScript('https://maps.googleapis.com/maps/api/js?key=' + googleKey + '&libraries=places&language=en', function() {});
                                         loadedGoogleMapLib = false;
                                     }
 
@@ -1515,7 +1517,7 @@ if (typeof jQuery == 'undefined') {
                                     // ====================================== GOOGLE MAP LIB =============================================
                                     if ((!loadedGoogleMapLib && typeof google !== 'object') || (typeof google === 'object' && typeof google.maps !== 'object')) {
                                         // init Google lib
-                                        await $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en', function() {});
+                                        await $.getScript('https://maps.googleapis.com/maps/api/js?key=' + googleKey + '&libraries=places&language=en', function() {});
                                         loadedGoogleMapLib = false;
                                     }
 

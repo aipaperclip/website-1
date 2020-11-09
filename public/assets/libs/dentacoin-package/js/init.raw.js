@@ -50,9 +50,7 @@ if (typeof jQuery == 'undefined') {
                     var d = new Date();
                     d.setTime(d.getTime() + (100*24*60*60*1000));
                     var expires = "expires="+d.toUTCString();
-                    console.log(location.hostname, 'ocation.hostname');
                     if (location.hostname == 'localhost') {
-                        console.log(name + "=" + value + "; " + expires + ";domain="+location.hostname+";path=/;");
                         document.cookie = name + "=" + value + "; " + expires + ";domain="+location.hostname+";path=/;";
                     } else {
                         document.cookie = name + "=" + value + "; " + expires + ";domain=."+location.hostname+";path=/;secure";
