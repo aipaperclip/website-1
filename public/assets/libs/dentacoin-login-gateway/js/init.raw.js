@@ -1579,6 +1579,8 @@ if (typeof jQuery == 'undefined') {
                                                                 zoom: 1
                                                             });
 
+                                                            $('#gateway-cropper-container .cr-boundary img').attr('crossorigin', 'anonymous');
+
                                                             $('#gateway-cropper-container').on('update.croppie', function(ev, cropData) {
                                                                 gateway_croppie_instance.croppie('result', {
                                                                     type: 'base64',
