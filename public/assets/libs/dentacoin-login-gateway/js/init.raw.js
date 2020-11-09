@@ -820,7 +820,6 @@ if (typeof jQuery == 'undefined') {
                                 rootEntry.getFile(decodeURIComponent(entry.fullPath), {create: false}, function (fileEntry) {
                                     console.log(fileEntry, 'fileEntry1');
                                     fileEntry.file(function (file) {
-                                        console.log(file, 'file1');
                                         callback(file);
                                     }, function (err) {
                                         failNative();
@@ -858,7 +857,6 @@ if (typeof jQuery == 'undefined') {
                         console.log(rootEntry, 'rootEntry');
                         rootEntry.getFile(fileName, {create: false}, function (fileEntry) {
                             fileEntry.file(function (file) {
-                                console.log(file, 'file');
                                 callback(file);
                             });
                         }, function (err) {
@@ -1516,87 +1514,98 @@ if (typeof jQuery == 'undefined') {
 
                                     $('.step.fourth .custom-upload-avatar').click(function() {
                                         $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').find('.error-handle').remove();
-                                        if (dcnGateway.utils.getMobileOperatingSystem() == 'Android' || dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
+                                        if (dcnGateway.utils.getMobileOperatingSystem() == 'Android') {
                                             dcnGateway.utils.androidFileUpload(function (file) {
                                                 console.log(file, 'file');
-                                                if (2 < dcnGateway.utils.bytesToMegabytes(file.size)) {
-                                                    $('.gateway-avatar.module').append('<div class="error-handle task-error">The file you selected is large. Max size: 2MB.</div>');
-                                                    return false;
-                                                } else {
-                                                    var reachedAllowedExtension = false;
-                                                    if (file.type != null) {
-                                                        for (var i = 0, len = allowedImagesExtensions.length; i < len; i+=1) {
-                                                            if (file.type.includes(allowedImagesExtensions[i])) {
-                                                                reachedAllowedExtension = true;
-                                                                break;
-                                                            }
-                                                        }
-                                                    }
-
-                                                    if (!reachedAllowedExtension) {
-                                                        $('.gateway-avatar.module').append('<div class="error-handle task-error">Allowed file formats are only .png, .jpeg and .jpg.</div>');
-                                                    } else {
-                                                        var reader = new FileReader();
-                                                        reader.onloadend = function () {
-                                                            var filename = file.name;
-                                                            console.log(this.result, 'this.result');
-                                                            console.log(file.localURL, 'file.localURL');
-
-                                                            if (filename != '' && filename != undefined) {
-                                                                $('.avatar-name').show().find('span').html(filename.slice(0, 20) + '...');
-                                                                $('.upload-label-btn').addClass('less-padding');
-                                                            }
-
-                                                            console.log(filename, 'filename');
-
-                                                            $('#gateway-cropper-container').addClass('width-and-height');
-                                                            if (gateway_croppie_instance != undefined) {
-                                                                gateway_croppie_instance.croppie('destroy');
-                                                                $('#gateway-cropper-container').html('');
-                                                            }
-
-                                                            var croppieParams = {
-                                                                enforceBoundary: false,
-                                                                viewport: {width: 200, height: 200},
-                                                                boundary: {width: 200, height: 200}
-                                                            };
-
-                                                            gateway_croppie_instance = $('#gateway-cropper-container').croppie(croppieParams);
-
-                                                            $('.destroy-croppie').unbind().click(function() {
-                                                                gateway_croppie_instance.croppie('destroy');
-                                                                $('#gateway-cropper-container').html('');
-                                                                $('#gateway-cropper-container').removeClass('width-and-height');
-                                                                $('.gateway-avatar.module .btn-wrapper').show();
-                                                                $('.avatar-name').hide();
-                                                                $('.dentist .form-register .step.fourth #custom-upload-avatar').val('');
-                                                            });
-
-                                                            $('.gateway-avatar.module .btn-wrapper').hide();
-
-                                                            gateway_croppie_instance.croppie('bind', {
-                                                                url: file.localURL,
-                                                                zoom: 1
-                                                            });
-
-                                                            $('#gateway-cropper-container .cr-boundary img').attr('crossorigin', 'anonymous');
-
-                                                            $('#gateway-cropper-container').on('update.croppie', function(ev, cropData) {
-                                                                gateway_croppie_instance.croppie('result', {
-                                                                    type: 'base64',
-                                                                    size: {width: 300, height: 300}
-                                                                }).then(function (src) {
-                                                                    console.log(src, 'src');
-                                                                    $('#hidden-image').val(src);
-                                                                });
-                                                            });
-                                                        };
-                                                        reader.readAsDataURL(file);
-                                                    }
-                                                }
+                                                hybridAppFileUpload(file);
+                                            });
+                                        } else if (dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
+                                            dcnGateway.utils.iOSFileUpload(function (file) {
+                                                console.log(file, 'file');
+                                                hybridAppFileUpload(file);
                                             });
                                         }
                                     });
+
+                                    function hybridAppFileUpload(file) {
+                                        if (2 < dcnGateway.utils.bytesToMegabytes(file.size)) {
+                                            $('.gateway-avatar.module').append('<div class="error-handle task-error">The file you selected is large. Max size: 2MB.</div>');
+                                            return false;
+                                        } else {
+                                            var reachedAllowedExtension = false;
+                                            if (file.type != null) {
+                                                for (var i = 0, len = allowedImagesExtensions.length; i < len; i+=1) {
+                                                    if (file.type.includes(allowedImagesExtensions[i])) {
+                                                        reachedAllowedExtension = true;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+
+                                            if (!reachedAllowedExtension) {
+                                                $('.gateway-avatar.module').append('<div class="error-handle task-error">Allowed file formats are only .png, .jpeg and .jpg.</div>');
+                                            } else {
+                                                var reader = new FileReader();
+                                                reader.onloadend = function () {
+                                                    var filename = file.name;
+                                                    console.log(this.result, 'this.result');
+                                                    console.log(file.localURL, 'file.localURL');
+
+                                                    if (filename != '' && filename != undefined) {
+                                                        $('.avatar-name').show().find('span').html(filename.slice(0, 20) + '...');
+                                                        $('.upload-label-btn').addClass('less-padding');
+                                                    }
+
+                                                    console.log(filename, 'filename');
+
+                                                    $('#gateway-cropper-container').addClass('width-and-height');
+                                                    if (gateway_croppie_instance != undefined) {
+                                                        gateway_croppie_instance.croppie('destroy');
+                                                        $('#gateway-cropper-container').html('');
+                                                    }
+
+                                                    var croppieParams = {
+                                                        enforceBoundary: false,
+                                                        viewport: {width: 200, height: 200},
+                                                        boundary: {width: 200, height: 200}
+                                                    };
+
+                                                    gateway_croppie_instance = $('#gateway-cropper-container').croppie(croppieParams);
+
+                                                    $('.destroy-croppie').unbind().click(function() {
+                                                        gateway_croppie_instance.croppie('destroy');
+                                                        $('#gateway-cropper-container').html('');
+                                                        $('#gateway-cropper-container').removeClass('width-and-height');
+                                                        $('.gateway-avatar.module .btn-wrapper').show();
+                                                        $('.avatar-name').hide();
+                                                        $('.dentist .form-register .step.fourth #custom-upload-avatar').val('');
+                                                    });
+
+                                                    $('.gateway-avatar.module .btn-wrapper').hide();
+
+                                                    gateway_croppie_instance.croppie('bind', {
+                                                        url: file.localURL,
+                                                        zoom: 1
+                                                    });
+
+                                                    $('#gateway-cropper-container .cr-boundary img').attr('crossorigin', 'anonymous');
+
+                                                    $('#gateway-cropper-container').on('update.croppie', function(ev, cropData) {
+                                                        $('#gateway-cropper-container .cr-boundary img').attr('crossorigin', 'anonymous');
+
+                                                        gateway_croppie_instance.croppie('result', {
+                                                            type: 'base64',
+                                                            size: {width: 300, height: 300}
+                                                        }).then(function (src) {
+                                                            console.log(src, 'src');
+                                                            $('#hidden-image').val(src);
+                                                        });
+                                                    });
+                                                };
+                                                reader.readAsDataURL(file);
+                                            }
+                                        }
+                                    }
                                 } else {
                                     dcnGateway.utils.styleAvatarUploadButton();
                                 }
