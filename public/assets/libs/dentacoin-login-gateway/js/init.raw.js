@@ -1588,19 +1588,18 @@ if (typeof jQuery == 'undefined') {
                                                         zoom: 1
                                                     });
 
-                                                    $('#gateway-cropper-container .cr-boundary img').attr('crossorigin', 'anonymous');
-
                                                     $('#gateway-cropper-container').on('update.croppie', function(ev, cropData) {
-                                                        $('#gateway-cropper-container .cr-boundary img').attr('crossorigin', 'anonymous');
-
                                                         gateway_croppie_instance.croppie('result', {
                                                             type: 'base64',
                                                             size: {width: 300, height: 300}
                                                         }).then(function (src) {
+                                                            $('#gateway-cropper-container .cr-boundary img').attr('crossorigin', 'anonymous');
                                                             console.log(src, 'src');
                                                             $('#hidden-image').val(src);
                                                         });
                                                     });
+
+                                                    $('#gateway-cropper-container .cr-boundary img').attr('crossorigin', 'anonymous');
                                                 };
                                                 reader.readAsDataURL(file);
                                             }
