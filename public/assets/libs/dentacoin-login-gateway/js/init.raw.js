@@ -1556,7 +1556,6 @@ if (typeof jQuery == 'undefined') {
                                                             }
 
                                                             var croppieParams = {
-                                                                enableOrientation: true,
                                                                 enforceBoundary: false,
                                                                 viewport: {
                                                                     width: 200,
