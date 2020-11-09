@@ -300,10 +300,10 @@
                         {{--Only if dentacoin login gateway is loaded from websites show the captcha in the library html--}}
                         @if (empty($mobile_app))
                             <div class="captcha-container">
-                                <div class="g-recaptcha" id="g-recaptcha" data-callback="sendReCaptcha" style="display: inline-block;" data-size="compact" data-sitekey="6LfS5-cUAAAAAFcqPKe4ArUQfv8znLMN9oU5e57A"></div>
+                                <div class="g-recaptcha" id="g-recaptcha" data-callback="sendReCaptcha" style="display: inline-block;" data-size="compact" data-sitekey="{{$recaptcha_public}}"></div>
                             </div>
                         @else
-                            <input type="hidden" id="mobile-captcha-response"/>
+                            <input type="hidden" id="mobile-captcha-response" data-public-key="{{$recaptcha_public_only_mobile_apps}}"/>
                         @endif
                         <div class="step-errors-holder padding-top-10"></div>
                     </div>

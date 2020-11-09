@@ -10,7 +10,9 @@ class DentacoinLoginGateway extends Controller
 {
     public function getView(Request $request)   {
         $params = array(
-            'type' => $request->input('type')
+            'type' => $request->input('type'),
+            'recaptcha_public' => getenv('GOOGLE_reCAPTCHA_PUBLIC'),
+            'recaptcha_public_only_mobile_apps' => getenv('GOOGLE_reCAPTCHA_PUBLIC_ONLY_MOBILE_APPS')
         );
 
         if ($params['type'] == 'incompleted-dentist-register') {
