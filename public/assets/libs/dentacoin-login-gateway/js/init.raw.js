@@ -521,7 +521,7 @@ if (typeof jQuery == 'undefined') {
                                         type: 'canvas',
                                         size: {width: 300, height: 300}
                                     }).then(function (src) {
-                                        $('#hidden-image').val(src);
+                                        $('.dentacoin-login-gateway-container form#dentist-register .step.fourth #hidden-image').val(src);
                                     });
                                 });
                             }, function() {
@@ -1602,7 +1602,7 @@ if (typeof jQuery == 'undefined') {
                                                             size: {width: 300, height: 300}
                                                         }).then(function (src) {
                                                             console.log(src, 'src');
-                                                            $('#hidden-image').val(src);
+                                                            $('.dentacoin-login-gateway-container form#dentist-register .step.fourth #hidden-image').val(src);
                                                         });
                                                     });
 
@@ -2003,7 +2003,10 @@ if (typeof jQuery == 'undefined') {
                                             var errors = false;
 
                                             if (loadedFromMobileApp) {
-
+                                                if ($('.dentacoin-login-gateway-container form#dentist-register .step.fourth #hidden-image').val() == '') {
+                                                    dcnGateway.utils.customErrorHandle($('.step.fourth .step-errors-holder'), 'Please add a profile photo.');
+                                                    errors = true;
+                                                }
                                             } else {
                                                 //checking if empty avatar
                                                 if ($('.dentist .form-register .step.fourth #custom-upload-avatar').val().trim() == '') {
