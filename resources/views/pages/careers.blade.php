@@ -2,6 +2,15 @@
 
 @section("content")
     <section class="careers-container">
+        @if (!empty(\Illuminate\Support\Facades\Input::get('mobile-app')))
+            <br><br>
+            <a href="http://example.com">Example.com</a>
+            <br><br>
+            <a href="https://example.com">https Example.com</a>
+            <br><br>
+            <a href="https://example.com" target="_blank">Example.com target</a>
+            <br><br>
+        @endif
         <div class="container">
             <div class="row">
                 <h1 class="col-xs-12 page-h1-title">DENTACOIN CAREERS</h1>

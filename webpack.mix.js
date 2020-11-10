@@ -100,10 +100,10 @@ mix.scripts([
 mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'node_modules/admin-lte/plugins/datatables/dataTables.bootstrap.css',
+    'node_modules/datatables.net-rowreorder-bs/css/rowReorder.bootstrap.min.css',
     'public/assets/libs/font-awesome/css/font-awesome.min.css',
     'public/assets/libs/spectrum/spectrum.css',
     'node_modules/admin-lte/dist/css/AdminLTE.min.css',
-    'node_modules/datatables.net-rowreorder-bs/css/rowReorder.bootstrap.min.css',
     'node_modules/admin-lte/dist/css/skins/_all-skins.min.css',
     'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
     'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
