@@ -402,13 +402,21 @@ if (typeof jQuery == 'undefined') {
 
                             var enrichProfileResponse = await dcnGateway.dcnGatewayRequests.enrichProfile(enrichProfileData);
                             if (enrichProfileResponse.success) {
+                                var eventType;
                                 if (data.type == 'dentist') {
+                                    eventType = 'dentistEnrichProfileSuccessResponse';
                                     dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickSave', 'DentDescr');
                                 } else if (data.type == 'clinic') {
+                                    eventType = 'clinicEnrichProfileSuccessResponse';
                                     dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickSave', 'ClinicDescr');
                                 }
 
-                                $('form#enrich-profile').addClass('padding-bottom-50').html('<div class="alert alert-success">'+enrichProfileResponse.data+'</div>')
+                                $('form#enrich-profile').addClass('padding-bottom-50').html('<div class="alert alert-success">'+enrichProfileResponse.data+'</div>');
+
+                                $.event.trigger({
+                                    type: eventType,
+                                    time: new Date()
+                                });
                             } else if (enrichProfileResponse.error) {
                                 dcnGateway.utils.hidePopup();
                                 dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
@@ -1579,6 +1587,7 @@ if (typeof jQuery == 'undefined') {
                                                         $('.gateway-avatar.module .btn-wrapper').show();
                                                         $('.avatar-name').hide();
                                                         $('.dentist .form-register .step.fourth #custom-upload-avatar').val('');
+                                                        $('.dentacoin-login-gateway-container form#dentist-register .step.fourth #hidden-image').val('');
                                                     });
 
                                                     $('.gateway-avatar.module .btn-wrapper').hide();
@@ -1587,14 +1596,6 @@ if (typeof jQuery == 'undefined') {
                                                         url: file.localURL,
                                                         zoom: 1
                                                     });
-
-                                                    /*var setCrossoriginAttr = setInterval(function() {
-                                                        console.log($('#gateway-cropper-container .cr-boundary img').length, '$(\'#gateway-cropper-container .cr-boundary img\').length');
-                                                        if ($('#gateway-cropper-container .cr-boundary img').length) {
-                                                            $('#gateway-cropper-container .cr-boundary img').attr('crossorigin', 'anonymous');
-                                                            clearInterval(setCrossoriginAttr);
-                                                        }
-                                                    }, 300);*/
 
                                                     $('#gateway-cropper-container').on('update.croppie', function(ev, cropData) {
                                                         gateway_croppie_instance.croppie('result', {
