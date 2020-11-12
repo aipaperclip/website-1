@@ -82,8 +82,11 @@ class DentacoinLoginGateway extends Controller
             'email.required' => 'Email is required.',
             'email.email' => 'Invalid email.'
         ]);
+        var_dump($request->input());
 
         $response = (new APIRequestsController())->checkIfCivicEmailTryingToLoginFromMobileApp($request->input('email'));
+        var_dump($response);
+        die();
 
         if (!empty($response) && is_object($response) && property_exists($response, 'success') && $response->success) {
             return response()->json(['success' => true]);
