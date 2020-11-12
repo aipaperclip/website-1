@@ -46,7 +46,7 @@ if (typeof jQuery == 'undefined') {
             saveCivicEmailTryingToLoginFromMobileApp: async function(data, callback) {
                 $.ajax({
                     type: 'POST',
-                    url: 'https://dentacoin.com/combined-hub/save-civic-email',
+                    url: 'https://dentacoin.com/dentacoin-login-gateway/save-civic-email',
                     dataType: 'json',
                     data: data,
                     success: function(response) {
@@ -1101,7 +1101,7 @@ if (typeof jQuery == 'undefined') {
                                             }
 
                                             var civicMobileProceeded = false;
-                                            $('.mobile-proceeding-to-civic').click(function() {
+                                            $('.mobile-proceeding-to-civic .social-login-btn').click(function() {
                                                 //clear prev errors
                                                 if ($('.patient .mobile-proceeding-to-civic .error-handle').length) {
                                                     $('.patient .mobile-proceeding-to-civic .error-handle').remove();

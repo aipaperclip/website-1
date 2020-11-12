@@ -312,6 +312,17 @@
     border: 1px solid #3bb03f;
 }
 
+.social-login-btn.facebook-custom-btn {
+    background-color: #4267B2;
+    background-image: url(/assets/images/facebook-icon.svg);
+    color: white;
+    @include breakpoint($md) {
+        &:hover {
+            color: white;
+        }
+    }
+}
+
 .dentacoin-login-gateway-container * {
     outline: none;
     box-sizing: border-box;

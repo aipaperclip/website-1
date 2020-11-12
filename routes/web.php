@@ -178,14 +178,14 @@ Route::group(['prefix' => 'combined-hub'], function () {
     Route::post('/get-platform-menu/{menu}', 'DentacoinHubController@getPlatformMenu')->name('get-platform-menu');
 
     Route::post('/get-big-hub-html/{hubType}', 'DentacoinHubController@getBigHubHtml')->name('get-big-hub-html');
-
-    Route::post('/save-civic-email', 'DentacoinHubController@saveCivicEmailTryingToLoginFromMobileApp')->name('save-civic-email');
-
-    Route::post('/check-civic-email', 'DentacoinHubController@checkIfCivicEmailTryingToLoginFromMobileApp')->name('check-civic-email');
 });
 
 Route::group(['prefix' => 'dentacoin-login-gateway'], function () {
     Route::post('/', 'DentacoinLoginGateway@getView')->name('dentacoin-login-gateway');
+
+    Route::post('/save-civic-email', 'DentacoinLoginGateway@saveCivicEmailTryingToLoginFromMobileApp')->name('save-civic-email');
+
+    Route::post('/check-civic-email', 'DentacoinLoginGateway@checkIfCivicEmailTryingToLoginFromMobileApp')->name('check-civic-email');
 
     Route::post('/handle-dentist-register', 'UserController@handleDentistRegister')->name('handle-dentist-register');
 

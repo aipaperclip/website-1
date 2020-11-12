@@ -300,7 +300,7 @@ function customCivicEvent(type, message, response_data) {
 async function checkCivicEmailIfLoggingFromMobileApp(email) {
     return await $.ajax({
         type: 'POST',
-        url: 'https://dentacoin.com/combined-hub/check-civic-email',
+        url: 'https://dentacoin.com/dentacoin-login-gateway/check-civic-email',
         dataType: 'json',
         data: {
             email: email
