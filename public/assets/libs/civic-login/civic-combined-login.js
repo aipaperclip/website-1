@@ -232,6 +232,7 @@
                                                 // request to check if data.data.civic_email is in logging from mobile apps table
                                                 if (logging_from_mobile_app.success) {
                                                     console.log('dcngateway://?token=' + encodeURIComponent(data.token), '\'dcngateway://?token=\' + encodeURIComponent(data.token)');
+                                                    location.href = 'dcngateway://?token=' + encodeURIComponent(data.token);
                                                 } else {
                                                     customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
                                                 }
@@ -241,7 +242,7 @@
                                             // request to check if data.data.civic_email is in logging from mobile apps table
                                             if (logging_from_mobile_app.success) {
                                                 console.log('dcngateway://?token=' + encodeURIComponent(data.token), '\'dcngateway://?token=\' + encodeURIComponent(data.token)');
-                                                window.open('dcngateway://?token=' + encodeURIComponent(data.token));
+                                                location.href = 'dcngateway://?token=' + encodeURIComponent(data.token);
                                             } else {
                                                 customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
                                             }
