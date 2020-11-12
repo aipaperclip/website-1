@@ -1091,6 +1091,10 @@ if (typeof jQuery == 'undefined') {
                                         var thisBtn = $(this);
                                         if (thisBtn.hasClass('type-register')) {
                                             if (!$('#agree-over-eighteen').is(':checked') || !$('#privacy-policy-registration-patient').is(':checked')) {
+                                                if ($('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder .error-handle').length) {
+                                                    $('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder .error-handle').remove();
+                                                }
+                                                
                                                 dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder'), 'Please confirm you\'re 18 years of age and agree with our Privacy Policy.');
                                                 return false;
                                             }
@@ -2324,6 +2328,8 @@ if (typeof jQuery == 'undefined') {
                                 if (hasOwnProperty.call(getParams, 'open-civic-register')) {
                                     $(document).off('civicLibLoaded');
                                     $(document).on('civicLibLoaded', function() {
+                                        $('#agree-over-eighteen').prop('checked', true).trigger('change');
+                                        $('#privacy-policy-registration-patient').prop('checked', true).trigger('change');
                                         $('.civic-custom-btn.type-register').click();
                                     });
                                 }
