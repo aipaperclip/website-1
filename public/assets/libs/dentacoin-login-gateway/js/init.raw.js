@@ -1140,9 +1140,9 @@ if (typeof jQuery == 'undefined') {
                                                 $('.patient .form-register-fields, .patient .form-login-fields').show();
 
                                                 if (thisBtn.hasClass('type-login')) {
-                                                    window.open('https://dentavox.dentacoin.com/?dcn-gateway-type=patient-login&open-civic=true', '_blank');
+                                                    window.open('https://dentavox.dentacoin.com/?dcn-gateway-type=patient-login&open-civic-login=true', '_blank');
                                                 } else if (thisBtn.hasClass('type-register')) {
-                                                    window.open('https://dentavox.dentacoin.com/?dcn-gateway-type=patient-register&open-civic=true', '_blank');
+                                                    window.open('https://dentavox.dentacoin.com/?dcn-gateway-type=patient-register&open-civic-register=true', '_blank');
                                                 }
                                             } else {
                                                 dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
@@ -2257,6 +2257,14 @@ if (typeof jQuery == 'undefined') {
                         if (typeof(params.callback) == 'function') {
                             params.callback();
                         }
+
+                        if (hasOwnProperty.call(getParams, 'open-civic-login')) {
+                            $('.civic-custom-btn.type-login').click();
+                        }
+
+                        if (hasOwnProperty.call(getParams, 'open-civic-register')) {
+                            $('.civic-custom-btn.type-register').click();
+                        }
                     }
 
                     $(document).on('click', '.dentacoin-login-gateway-container', function(event) {
@@ -2301,10 +2309,6 @@ if (typeof jQuery == 'undefined') {
                     $(document).on('openDentistRegister', function (event) {
                         showGateway('dentist-register');
                     });
-
-                    if (hasOwnProperty.call(getParams, 'open-civic')) {
-                        $('.civic-custom-btn.type-login').click();
-                    }
 
                     if (hasOwnProperty.call(getParams, 'dcn-gateway-type')) {
                         if (['patient-login', 'patient-register', 'dentist-login', 'dentist-register'].indexOf(getParams['dcn-gateway-type']) == -1) {
