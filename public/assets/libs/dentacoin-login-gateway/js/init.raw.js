@@ -2257,14 +2257,6 @@ if (typeof jQuery == 'undefined') {
                         if (typeof(params.callback) == 'function') {
                             params.callback();
                         }
-
-                        if (hasOwnProperty.call(getParams, 'open-civic-login')) {
-                            $('.civic-custom-btn.type-login').click();
-                        }
-
-                        if (hasOwnProperty.call(getParams, 'open-civic-register')) {
-                            $('.civic-custom-btn.type-register').click();
-                        }
                     }
 
                     $(document).on('click', '.dentacoin-login-gateway-container', function(event) {
@@ -2314,7 +2306,17 @@ if (typeof jQuery == 'undefined') {
                         if (['patient-login', 'patient-register', 'dentist-login', 'dentist-register'].indexOf(getParams['dcn-gateway-type']) == -1) {
                             console.error('Wrong dcn-gateway-type get parameter value in the url.');
                         } else {
-                            showGateway(getParams['dcn-gateway-type']);
+                            if (getParams['dcn-gateway-type'] == 'patient-login' && hasOwnProperty.call(getParams, 'open-civic-login')) {
+                                showGateway(getParams['dcn-gateway-type'], undefined, function() {
+                                    $('.civic-custom-btn.type-login').click();
+                                });
+                            } else if (getParams['dcn-gateway-type'] == 'patient-register' && hasOwnProperty.call(getParams, 'open-civic-register')) {
+                                showGateway(getParams['dcn-gateway-type'], undefined, function() {
+                                    $('.civic-custom-btn.type-register').click();
+                                });
+                            } else {
+                                showGateway(getParams['dcn-gateway-type']);
+                            }
                         }
                     } else if (hasOwnProperty.call(getParams, 'inviter') || hasOwnProperty.call(getParams, 'show-patient-register')) {
                         showGateway('patient-register');
