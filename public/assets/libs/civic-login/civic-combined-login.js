@@ -303,9 +303,6 @@ async function checkCivicEmailIfLoggingFromMobileApp(email) {
         dataType: 'json',
         data: {
             email: email
-        },
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 }
