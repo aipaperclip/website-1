@@ -56,10 +56,10 @@
                 scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
             });
         }
-
-        console.log('fire civicLibLoaded');
-        customCivicEvent('civicLibLoaded', '');
     });
+
+    console.log('fire civicLibLoaded');
+    customCivicEvent('civicLibLoaded', '');
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
