@@ -307,20 +307,9 @@
     @include rounded(4px);
 }
 
-.social-login-btn.civic-custom-btn {
+.social-login-btn.civic-custom-btn, .social-login-btn.civic-style {
     background-image: url(/assets/images/civic.svg);
     border: 1px solid #3bb03f;
-}
-
-.social-login-btn.facebook-custom-btn {
-    background-color: #4267B2;
-    background-image: url(/assets/images/facebook-icon.svg);
-    color: white;
-    @include breakpoint($md) {
-        &:hover {
-            color: white;
-        }
-    }
 }
 
 .dentacoin-login-gateway-container * {
