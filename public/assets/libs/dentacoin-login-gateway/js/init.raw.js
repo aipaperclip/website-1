@@ -1089,6 +1089,13 @@ if (typeof jQuery == 'undefined') {
                                 if (loadedFromMobileApp) {
                                     $('.civic-custom-btn').click(function() {
                                         var thisBtn = $(this);
+                                        if (thisBtn.hasClass('type-register')) {
+                                            if (!$('#agree-over-eighteen').is(':checked') || !$('#privacy-policy-registration-patient').is(':checked')) {
+                                                dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder'), 'Please confirm you\'re 18 years of age and agree with our Privacy Policy.');
+                                                return false;
+                                            }
+                                        }
+
                                         if (window.localStorage.getItem('user_civic_email') == null) {
                                             // display email field to let user save his civic email into the mobile app
                                             if (thisBtn.hasClass('type-login')) {
