@@ -19,10 +19,7 @@
 
     //load civic lib JS
     //await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js', function() {});
-    await $.getScript('https://hosted-sip.civic.com/js/civic.sip.min.js?v='+new Date().getTime(), function() {
-        console.log('fire civicLibLoaded');
-        customCivicEvent('civicLibLoaded', '');
-    });
+    await $.getScript('https://hosted-sip.civic.com/js/civic.sip.min.js?v='+new Date().getTime(), function() {});
 
     var civic_custom_btn;
     var civicApiVersion;
@@ -59,6 +56,9 @@
                 scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
             });
         }
+
+        console.log('fire civicLibLoaded');
+        customCivicEvent('civicLibLoaded', '');
     });
 
     // Listen for data
