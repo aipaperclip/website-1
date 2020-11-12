@@ -1144,6 +1144,8 @@ if (typeof jQuery == 'undefined') {
                                                 } else if (thisBtn.hasClass('type-register')) {
                                                     window.open('https://dentavox.dentacoin.com/?dcn-gateway-type=patient-register', '_blank');
                                                 }
+                                            } else {
+                                                dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                                             }
                                         });
                                     }
