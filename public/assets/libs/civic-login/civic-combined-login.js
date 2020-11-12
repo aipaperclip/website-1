@@ -1,3 +1,15 @@
+console.log('civic loaded');
+$.getScript('https://dentacoin.com/assets/libs/civic-login/civic-config.js', function() {});
+
+//load civic lib CSS
+// downloaded from https://hosted-sip.civic.com/css/civic-modal.min.css
+//$('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css?v='+new Date().getTime()+'"/>');
+$('head').append('<link rel="stylesheet" type="text/css" href="https://hosted-sip.civic.com/css/civic-modal.min.css?v='+new Date().getTime()+'"/>');
+
+//load civic lib JS
+//await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js', function() {});
+$.getScript('https://hosted-sip.civic.com/js/civic.sip.min.js?v='+new Date().getTime(), function() {});
+
 (async function() {
     function isMobile() {
         var isMobile = false; //initiate as false
@@ -8,18 +20,6 @@
         }
         return isMobile;
     }
-
-    console.log('civic loaded');
-    await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-config.js', function() {});
-
-    //load civic lib CSS
-    // downloaded from https://hosted-sip.civic.com/css/civic-modal.min.css
-    //$('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css?v='+new Date().getTime()+'"/>');
-    $('head').append('<link rel="stylesheet" type="text/css" href="https://hosted-sip.civic.com/css/civic-modal.min.css?v='+new Date().getTime()+'"/>');
-
-    //load civic lib JS
-    //await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic/civic.min.js', function() {});
-    await $.getScript('https://hosted-sip.civic.com/js/civic.sip.min.js?v='+new Date().getTime(), function() {});
 
     var civic_custom_btn;
     var civicApiVersion;
