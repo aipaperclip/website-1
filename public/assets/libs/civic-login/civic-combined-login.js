@@ -228,21 +228,20 @@
                                                     customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.', data);
                                                 }
                                             } else {
-                                                var logging_from_mobile_app;
+                                                var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email);
                                                 // request to check if data.data.civic_email is in logging from mobile apps table
-                                                console.log(await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email), 'checkCivicEmailIfLoggingFromMobileApp');
-                                                if (logging_from_mobile_app) {
-                                                    customCivicEvent('patientProceedWithCreatingSessionInMobileApp', 'Request to CoreDB-API succeed.', data);
+                                                if (logging_from_mobile_app.success) {
+                                                    console.log('dcngateway://?token=' + encodeURIComponent(data.token), '\'dcngateway://?token=\' + encodeURIComponent(data.token)');
                                                 } else {
                                                     customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
                                                 }
                                             }
                                         } else {
-                                            var logging_from_mobile_app;
+                                            var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email);
                                             // request to check if data.data.civic_email is in logging from mobile apps table
-                                            console.log(await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email), 'checkCivicEmailIfLoggingFromMobileApp');
-                                            if (logging_from_mobile_app) {
-                                                customCivicEvent('patientProceedWithCreatingSessionInMobileApp', 'Request to CoreDB-API succeed.', data);
+                                            if (logging_from_mobile_app.success) {
+                                                console.log('dcngateway://?token=' + encodeURIComponent(data.token), '\'dcngateway://?token=\' + encodeURIComponent(data.token)');
+                                                window.open('dcngateway://?token=' + encodeURIComponent(data.token));
                                             } else {
                                                 customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
                                             }
