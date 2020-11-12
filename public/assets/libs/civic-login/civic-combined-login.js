@@ -168,7 +168,7 @@
                             url: civicAjaxUrl,
                             dataType: 'json',
                             data: loginRegisterData,
-                            success: function(data) {
+                            success: async function(data) {
                                 if (data.success) {
                                     if (data.deleted) {
                                         if (currentPlatform != undefined) {
@@ -228,10 +228,24 @@
                                                     customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.', data);
                                                 }
                                             } else {
-                                                customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                                                var logging_from_mobile_app;
+                                                // request to check if data.data.civic_email is in logging from mobile apps table
+                                                console.log(await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email), 'checkCivicEmailIfLoggingFromMobileApp');
+                                                if (logging_from_mobile_app) {
+                                                    customCivicEvent('patientProceedWithCreatingSessionInMobileApp', 'Request to CoreDB-API succeed.', data);
+                                                } else {
+                                                    customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                                                }
                                             }
                                         } else {
-                                            customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                                            var logging_from_mobile_app;
+                                            // request to check if data.data.civic_email is in logging from mobile apps table
+                                            console.log(await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email), 'checkCivicEmailIfLoggingFromMobileApp');
+                                            if (logging_from_mobile_app) {
+                                                customCivicEvent('patientProceedWithCreatingSessionInMobileApp', 'Request to CoreDB-API succeed.', data);
+                                            } else {
+                                                customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                                            }
                                         }
                                     }
 
@@ -281,4 +295,18 @@ function customCivicEvent(type, message, response_data) {
         event_obj.response_data = response_data;
     }
     $.event.trigger(event_obj);
+}
+
+async function checkCivicEmailIfLoggingFromMobileApp(email) {
+    return await $.ajax({
+        type: 'POST',
+        url: 'https://dentacoin.com/combined-hub/check-civic-email',
+        dataType: 'json',
+        data: {
+            email: email
+        },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 }

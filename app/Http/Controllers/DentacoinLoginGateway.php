@@ -52,4 +52,44 @@ class DentacoinLoginGateway extends Controller
 
         return response()->json(['success' => true, 'data' => $view]);
     }
+
+    public function saveCivicEmailTryingToLoginFromMobileApp(Request $request)    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'type' => 'required'
+        ], [
+            'email.required' => 'Email is required.',
+            'email.email' => 'Invalid email.',
+            'type.required' => 'Type is required.',
+        ]);
+
+        var_dump($request->input());
+        $response = (new APIRequestsController())->saveCivicEmailTryingToLoginFromMobileApp(array(
+            'email' => $request->input('email'),
+            'type' => $request->input('type')
+        ));
+        var_dump($response);
+        die();
+    }
+
+    public function checkIfCivicEmailTryingToLoginFromMobileApp(Request $request)    {
+        $this->validate($request, [
+            'email' => 'required|email',
+        ], [
+            'email.required' => 'Email is required.',
+            'email.email' => 'Invalid email.'
+        ]);
+
+        var_dump($request->input());
+
+        $response = (new APIRequestsController())->checkIfCivicEmailTryingToLoginFromMobileApp($request->input('email'));
+        var_dump($response);
+        die();
+
+        if (!empty($response)) {
+            return response()->json(['error' => true]);
+        } else {
+            return response()->json(['error' => true]);
+        }
+    }
 }

@@ -43,6 +43,33 @@ if (typeof jQuery == 'undefined') {
                     return ajaxCall;
                 }*/
             },
+            saveCivicEmailTryingToLoginFromMobileApp: async function(data, callback) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://dentacoin.com/combined-hub/save-civic-email',
+                    dataType: 'json',
+                    data: data,
+                    success: function(response) {
+                        callback(response);
+                    },
+                    error: function() {
+                        console.error('Request to dentacoin.com currently not working.');
+                    }
+                });
+
+                /*if (fireAjax) {
+                    fireAjax = false;
+
+                    var ajaxCall = await $.ajax({
+                        type: 'GET',
+                        url: 'https://dentacoin.com/info/platforms',
+                        dataType: 'json'
+                    });
+
+                    fireAjax = true;
+                    return ajaxCall;
+                }*/
+            },
             getGatewayHtml: async function(url, data, callback) {
                 await $.ajax({
                     type: 'POST',
@@ -1014,7 +1041,7 @@ if (typeof jQuery == 'undefined') {
                                 if (!loadedSocialLibs) {
                                     console.log('Load external libraries.');
                                     // =============================================== CIVIC =======================================================
-                                    if (!loadedCivicLib) {
+                                    if (!loadedCivicLib && !loadedFromMobileApp) {
                                         loadedCivicLib = true;
                                         await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
                                     }
@@ -1057,6 +1084,70 @@ if (typeof jQuery == 'undefined') {
                                         return false;
                                     }
                                 });
+
+                                // if loaded from hybrid app on civic button click add logic for email collecting
+                                if (loadedFromMobileApp) {
+                                    $('.civic-custom-btn').click(function() {
+                                        var thisBtn = $(this);
+                                        if (window.localStorage.getItem('user_civic_email') == null) {
+                                            // display email field to let user save his civic email into the mobile app
+                                            if (thisBtn.hasClass('type-login')) {
+                                                $('.form-login-fields').hide();
+                                                $('.patient .form-login').append('<div class="padding-bottom-50 mobile-proceeding-to-civic"><div class="padding-bottom-10 field-parent" style="color: white;">Open your Civic Wallet mobile app and paste your account email:</div><div class="padding-bottom-10 field-parent"><div class="custom-gateway-google-label-style module" data-input-colorful-border="true"><label for="mobile-logging-civic-email">Civic Wallet email</label><input class="full-rounded form-field" maxlength="100" type="email" id="mobile-logging-civic-email" /></div></div><div class="padding-bottom-20"><a href="javascript:void(0)" class="social-login-btn calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18">Continue with Civic</a></div><div><a href="javascript:void(0);" class="go-back-to-logins" style="color: white;">← Go back</a></div></div>');
+
+                                            } else if (thisBtn.hasClass('type-register')) {
+                                                $('.form-register-fields').hide();
+                                                $('.patient .form-register').append('<div class="padding-bottom-50 mobile-proceeding-to-civic"><div class="padding-bottom-10 field-parent" style="color: white;">Open your Civic Wallet mobile app and paste your account email:</div><div class="padding-bottom-10 field-parent"><div class="custom-gateway-google-label-style module" data-input-colorful-border="true"><label for="mobile-logging-civic-email">Civic Wallet email</label><input class="full-rounded form-field" maxlength="100" type="email" id="mobile-logging-civic-email" /></div></div><div class="padding-bottom-20"><a href="javascript:void(0)" class="social-login-btn calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18">Continue with Civic</a></div><div><a href="javascript:void(0);" class="go-back-to-logins" style="color: white;">← Go back</a></div></div>');
+                                            }
+
+                                            var civicMobileProceeded = false;
+                                            $('.mobile-proceeding-to-civic').click(function() {
+                                                //clear prev errors
+                                                if ($('.patient .mobile-proceeding-to-civic .error-handle').length) {
+                                                    $('.patient .mobile-proceeding-to-civic .error-handle').remove();
+                                                }
+
+                                                if ($('.patient #mobile-logging-civic-email').val().trim() != '' && dcnGateway.utils.validateEmail($('.patient #mobile-logging-civic-email').val().trim())) {
+                                                    if (!civicMobileProceeded) {
+                                                        civicMobileProceeded = true;
+
+                                                        window.localStorage.setItem('user_civic_email', $('.patient #mobile-logging-civic-email').val().trim());
+                                                        proceedWithMobileAppAuth(thisBtn);
+                                                    }
+                                                } else {
+                                                    dcnGateway.utils.customErrorHandle($('.patient #mobile-logging-civic-email').parent(), 'Please etner valid email.');
+                                                }
+                                            });
+
+                                            $('.patient .go-back-to-logins').click(function() {
+                                                $('.patient .mobile-proceeding-to-civic').remove();
+                                                $('.patient .form-register-fields, .patient .form-login-fields').show();
+                                            });
+                                        } else {
+                                            // civic email already saved in mobile app
+                                            proceedWithMobileAppAuth(thisBtn);
+                                        }
+                                    });
+
+                                    function proceedWithMobileAppAuth(thisBtn) {
+                                        dcnGateway.dcnGatewayRequests.saveCivicEmailTryingToLoginFromMobileApp({
+                                            email: window.localStorage.getItem('user_civic_email'),
+                                            type: params.platform
+                                        }, function(response) {
+                                            console.log(response, 'response');
+                                            if (response.success) {
+                                                $('.patient .mobile-proceeding-to-civic').remove();
+                                                $('.patient .form-register-fields, .patient .form-login-fields').show();
+
+                                                if (thisBtn.hasClass('type-login')) {
+                                                    window.open('https://dentavox.dentacoin.com/?dcn-gateway-type=patient-login', '_blank');
+                                                } else if (thisBtn.hasClass('type-register')) {
+                                                    window.open('https://dentavox.dentacoin.com/?dcn-gateway-type=patient-register', '_blank');
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
 
                                 $('body').on('keyup change focusout', '.custom-gateway-google-label-style input', function() {
                                     var value = $(this).val().trim();

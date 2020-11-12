@@ -33,40 +33,42 @@
         <div class="form-register @if($type == 'patient-login' || $type == 'dentist-login') display-none @endif">
             <div class="cta"> <i class="fas fa-sign-in-alt"></i> You need to log in or register to do this action.</div>
             <h2>{{ __('login-register.sign-up-uppercase') }}</h2>
-            <div class="padding-bottom-10">
-                <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn @if (!empty($mobile_app)) mobile-app @endif calibri-regular dentacoin-login-gateway-fs-20" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-fb') }}</a>
-            </div>
-            <div>
-                <a href="javascript:void(0)" class="civic-custom-btn type-register social-login-btn @if (!empty($mobile_app)) mobile-app @endif calibri-regular dentacoin-login-gateway-fs-20" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-civic') }}</a>
-            </div>
-            <div class="padding-top-20">
-                <div class="custom-checkbox-style">
-                    <input type="checkbox" class="custom-checkbox-input" id="agree-over-eighteen"/>
-                    <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="agree-over-eighteen">{{ __('login-register.i-confirm') }}</label>
+            <div class="form-register-fields">
+                <div class="padding-bottom-10">
+                    <a href="javascript:void(0)" class="facebook-custom-btn social-login-btn @if (!empty($mobile_app)) mobile-app @endif calibri-regular dentacoin-login-gateway-fs-20" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-fb') }}</a>
                 </div>
-            </div>
-            <div class="patient-register-checkboxes padding-top-5">
-                <div class="custom-checkbox-style">
-                    <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration-patient"/>
-                    <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registration-patient">{!! __('login-register.privacy-policy-text') !!}</label>
+                <div>
+                    <a href="javascript:void(0)" class="civic-custom-btn type-register social-login-btn @if (!empty($mobile_app)) mobile-app @endif calibri-regular dentacoin-login-gateway-fs-20" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-civic') }}</a>
                 </div>
-            </div>
-            <div class="step-errors-holder"></div>
-            <div class="optional-user-type">
-                @if(!empty($api_enums) && property_exists($api_enums, 'user_patient_type') && !empty($api_enums->user_patient_type))
-                    <div class="dentacoin-login-gateway-fs-15 padding-top-50">{{ __('login-register.does-any') }}</div>
-                    <ul class="padding-top-10">
-                        @foreach($api_enums->user_patient_type as $key => $title)
-                            <li class="padding-bottom-5 custom-checkbox-style">
-                                <input type="checkbox" data-radio-group="user_patient_type" name="user_patient_type[]" class="custom-checkbox-input" id="{{$key}}" value="{{$key}}"/>
-                                <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="{{$key}}">{{$title}}</label>
-                            </li>
-                        @endforeach
-                    </ul>
-                @endif
-            </div>
-            <div class="popup-half-footer">
-                {{ __('login-register.already-have-account') }} <a href="javascript:void(0)" class="call-log-in">{{ __('login-register.log-in') }}</a>
+                <div class="padding-top-20">
+                    <div class="custom-checkbox-style">
+                        <input type="checkbox" class="custom-checkbox-input" id="agree-over-eighteen"/>
+                        <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="agree-over-eighteen">{{ __('login-register.i-confirm') }}</label>
+                    </div>
+                </div>
+                <div class="patient-register-checkboxes padding-top-5">
+                    <div class="custom-checkbox-style">
+                        <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration-patient"/>
+                        <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registration-patient">{!! __('login-register.privacy-policy-text') !!}</label>
+                    </div>
+                </div>
+                <div class="step-errors-holder"></div>
+                <div class="optional-user-type">
+                    @if(!empty($api_enums) && property_exists($api_enums, 'user_patient_type') && !empty($api_enums->user_patient_type))
+                        <div class="dentacoin-login-gateway-fs-15 padding-top-50">{{ __('login-register.does-any') }}</div>
+                        <ul class="padding-top-10">
+                            @foreach($api_enums->user_patient_type as $key => $title)
+                                <li class="padding-bottom-5 custom-checkbox-style">
+                                    <input type="checkbox" data-radio-group="user_patient_type" name="user_patient_type[]" class="custom-checkbox-input" id="{{$key}}" value="{{$key}}"/>
+                                    <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="{{$key}}">{{$title}}</label>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+                <div class="popup-half-footer">
+                    {{ __('login-register.already-have-account') }} <a href="javascript:void(0)" class="call-log-in">{{ __('login-register.log-in') }}</a>
+                </div>
             </div>
         </div>
     </div>

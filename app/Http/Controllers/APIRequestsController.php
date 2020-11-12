@@ -545,4 +545,48 @@ class APIRequestsController extends Controller {
             return false;
         }
     }
+
+    public function checkIfCivicEmailTryingToLoginFromMobileApp($email) {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_POST => 1,
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/check-mobile-app-login',
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_POSTFIELDS => array(
+                'email' => (new \App\Http\Controllers\Controller())->encrypt($email, getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
+            )
+        ));
+
+        $resp = json_decode(curl_exec($curl));
+        curl_close($curl);
+
+        if(!empty($resp))   {
+            return $resp;
+        } else {
+            return false;
+        }
+    }
+
+    public function saveCivicEmailTryingToLoginFromMobileApp($array) {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_POST => 1,
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/mobile-app-login',
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_POSTFIELDS => array(
+                'fields' => (new \App\Http\Controllers\Controller())->encrypt(json_encode($array), getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
+            )
+        ));
+
+        $resp = json_decode(curl_exec($curl));
+        curl_close($curl);
+
+        if(!empty($resp))   {
+            return $resp;
+        } else {
+            return false;
+        }
+    }
 }
