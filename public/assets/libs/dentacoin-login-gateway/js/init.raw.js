@@ -2250,6 +2250,7 @@ if (typeof jQuery == 'undefined') {
                             }
                         });
 
+                        console.log(typeof(callback), 'typeof(callback)');
                         if (typeof(callback) == 'function') {
                             callback();
                         }
@@ -2306,15 +2307,19 @@ if (typeof jQuery == 'undefined') {
                         if (['patient-login', 'patient-register', 'dentist-login', 'dentist-register'].indexOf(getParams['dcn-gateway-type']) == -1) {
                             console.error('Wrong dcn-gateway-type get parameter value in the url.');
                         } else {
+                            console.log(getParams, 'getParams');
                             if (getParams['dcn-gateway-type'] == 'patient-login' && hasOwnProperty.call(getParams, 'open-civic-login')) {
+                                console.log('1');
                                 showGateway(getParams['dcn-gateway-type'], undefined, function() {
                                     $('.civic-custom-btn.type-login').click();
                                 });
                             } else if (getParams['dcn-gateway-type'] == 'patient-register' && hasOwnProperty.call(getParams, 'open-civic-register')) {
+                                console.log('2');
                                 showGateway(getParams['dcn-gateway-type'], undefined, function() {
                                     $('.civic-custom-btn.type-register').click();
                                 });
                             } else {
+                                console.log('3');
                                 showGateway(getParams['dcn-gateway-type']);
                             }
                         }
