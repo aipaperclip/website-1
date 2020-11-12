@@ -788,6 +788,7 @@ if (typeof jQuery == 'undefined') {
                     // reset the event listeners
                     $(document).off('civicCustomBtnClicked');
                     $(document).off('civicRead');
+                    $(document).off('hideGateway');
                     $(document).off('hideGatewayLoader');
                     $(document).off('CivicLegacyAppForbiddenLogging');
                     $(document).off('CivicLegacyAppForbiddenRegistrations');
@@ -1090,11 +1091,12 @@ if (typeof jQuery == 'undefined') {
                                     $('.civic-custom-btn').click(function() {
                                         var thisBtn = $(this);
                                         if (thisBtn.hasClass('type-register')) {
+                                            if ($('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder .error-handle').length) {
+                                                $('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder .error-handle').remove();
+                                            }
+
                                             if (!$('#agree-over-eighteen').is(':checked') || !$('#privacy-policy-registration-patient').is(':checked')) {
-                                                if ($('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder .error-handle').length) {
-                                                    $('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder .error-handle').remove();
-                                                }
-                                                
+
                                                 dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder'), 'Please confirm you\'re 18 years of age and agree with our Privacy Policy.');
                                                 return false;
                                             }
@@ -1259,6 +1261,10 @@ if (typeof jQuery == 'undefined') {
                                 $(document).on('successfulFacebookPatientRegistration', async function (event) {
                                     dcnGateway.utils.fireGoogleAnalyticsEvent('PatientRegistration', 'ClickFB', 'PatientRegistrationFB');
                                     dcnGateway.utils.fireFacebookPixelEvent('PatientRegistration');
+                                });
+
+                                $(document).on('hideGateway', async function (event) {
+                                    dcnGateway.utils.hideGateway(true);
                                 });
 
                                 $(document).on('hideGatewayLoader', async function (event) {
