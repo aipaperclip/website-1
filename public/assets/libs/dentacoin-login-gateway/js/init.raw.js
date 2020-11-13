@@ -987,7 +987,7 @@ if (typeof jQuery == 'undefined') {
 
                     // load login gateway style
                     if (!$('#dentacoin-login-gateway-style').length) {
-                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" id="dentacoin-login-gateway-style" type="text/css" href="'+dcnLibsDomain+'/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v='+new Date().getTime()+'"/>');
+                        $('head').append('<link rel="stylesheet" id="dentacoin-login-gateway-style" type="text/css" href="'+dcnLibsDomain+'/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v='+new Date().getTime()+'"/>');
                     }
 
                     // show login gateway by url
@@ -1817,7 +1817,7 @@ if (typeof jQuery == 'undefined') {
                                     }
 
                                     // load avatar cropper
-                                    $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');
+                                    $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');
                                     await $.getScript('https://dentacoin.com/assets/libs/croppie/croppie.min.js', function() {});
                                 }
 
@@ -2105,7 +2105,7 @@ if (typeof jQuery == 'undefined') {
                                                 }
 
                                                 // load avatar cropper
-                                                $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');
+                                                $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');
                                                 await $.getScript('https://dentacoin.com/assets/libs/croppie/croppie.min.js', function() {});
                                             }
                                             break;

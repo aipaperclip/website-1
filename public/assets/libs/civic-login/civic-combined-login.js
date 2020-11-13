@@ -234,7 +234,7 @@
                                                 var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email);
                                                 // request to check if data.data.civic_email is in logging from mobile apps table
                                                 if (logging_from_mobile_app.success) {
-                                                    location.href = 'dcngateway://?token=' + encodeURIComponent(data.token);
+                                                    location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                                 } else {
                                                     customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
                                                 }
@@ -243,7 +243,7 @@
                                             var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email);
                                             // request to check if data.data.civic_email is in logging from mobile apps table
                                             if (logging_from_mobile_app.success) {
-                                                location.href = 'dcngateway://?token=' + encodeURIComponent(data.token);
+                                                location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                             } else {
                                                 customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
                                             }
