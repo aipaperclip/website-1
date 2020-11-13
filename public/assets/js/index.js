@@ -4,6 +4,7 @@ var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
 var allowedDocumentExtensions = ['pdf', 'doc', 'docx', 'ppt', 'pptx', 'odt', 'rtf'];
 var get_params = basic.getGETParameters();
 var loadedLibs = {};
+var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
 $(window).on('load', function () {
     if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) {
@@ -212,7 +213,11 @@ var projectData = {
                     async function initBigHub() {
                         if (!hasOwnProperty.call(loadedLibs, 'bigHubStyle')) {
                             loadedLibs.bigHubStyle = true;
-                            $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v='+new Date().getTime()+'"/>');
+                            if (isFirefox) {
+                                $('head').append('<link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v='+new Date().getTime()+'"/>');
+                            } else {
+                                $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v='+new Date().getTime()+'"/>');
+                            }
                         }
 
                         if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
@@ -380,7 +385,11 @@ var projectData = {
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
                         console.log('slick loaded');
                         loadedLibs.slick = true;
-                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        if (isFirefox) {
+                            $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        } else {
+                            $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        }
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
                     }
 
@@ -652,7 +661,11 @@ var projectData = {
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
                         console.log('slick loaded');
                         loadedLibs.slick = true;
-                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        if (isFirefox) {
+                            $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        } else {
+                            $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        }
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
                     }
 
@@ -825,7 +838,11 @@ var projectData = {
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
                         console.log('slick loaded');
                         loadedLibs.slick = true;
-                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        if (isFirefox) {
+                            $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        } else {
+                            $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        }
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
                     }
 
@@ -964,7 +981,11 @@ var projectData = {
                     if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
                         console.log('dentacoinPackageJs loaded');
                         loadedLibs.dentacoinPackageJs = true;
-                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/assets/libs/dentacoin-package/css/style-cookie.css?v='+new Date().getTime()+'"/>');
+                        if (isFirefox) {
+                            $('head').append('<link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style-cookie.css?v='+new Date().getTime()+'"/>');
+                        } else {
+                            $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/assets/libs/dentacoin-package/css/style-cookie.css?v='+new Date().getTime()+'"/>');
+                        }
                         await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
 
                         if (typeof(dcnCookie) != 'undefined') {
@@ -1037,7 +1058,11 @@ var projectData = {
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
                         console.log('slick loaded');
                         loadedLibs.slick = true;
-                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        if (isFirefox) {
+                            $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        } else {
+                            $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        }
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
                     }
 
@@ -1155,7 +1180,11 @@ var projectData = {
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
                         console.log('slick loaded');
                         loadedLibs.slick = true;
-                        $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        if (isFirefox) {
+                            $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        } else {
+                            $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
+                        }
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
                     }
 
