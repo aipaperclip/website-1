@@ -1242,7 +1242,7 @@ var projectData = {
                                                         avatar_border = 2;
                                                     }
 
-                                                    $('.task-body .upload-image .border').html('<img src="/assets/images/christmas-calendar-campaign/border-'+avatar_border+'.png"/>');
+                                                    $('.task-body .upload-image .border').html('<img src="https://christmas-calendar-api.dentacoin.com/assets/images/'+response.year+'/border-'+avatar_border+'.png"/>');
                                                 });
 
                                                 function readUserPhoto(input) {

@@ -119,7 +119,7 @@ class ChristmasCalendarController extends Controller
 
                 $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'year' => $year, 'type' => 'task']);
                 $view = $view->render();
-                return response()->json(['success' => $view]);
+                return response()->json(['success' => $view, 'year' => $year]);
             } else {
                 $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'year' => $year, 'type' => 'not-active-yet']);
                 $view = $view->render();
