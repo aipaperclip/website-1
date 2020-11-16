@@ -101,18 +101,20 @@ class ChristmasCalendarController extends Controller
             }
 
             if (time() > strtotime($task->date)) {
-                if ((int)$id > 1) {
-                    // check if user completed the tasks before this one
-                    $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')
-                        ->select('christmas_calendar_task_participant.*')
-                        ->where(array('christmas_calendar_task_participant.participant_id' => $participant->id))
-                        ->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)
-                        ->whereRaw('christmas_calendar_task_participant.task_id <= ' . $task->id)->get()->toArray();
-                    if (sizeof($passedTasks) != (int)$id - 1) {
-                        $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'no-hurries']);
-                        $view = $view->render();
-                        return response()->json(['error' => $view]);
-                    }
+                // check if user completed the tasks before this one
+                $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')
+                    ->select('christmas_calendar_task_participant.*')
+                    ->leftJoin('christmas_calendar_participants', 'christmas_calendar_task_participant.participant_id', '=', 'christmas_calendar_participants.id')
+                    ->where(array('christmas_calendar_task_participant.participant_id' => $participant->id, 'christmas_calendar_participants.year' => $year))
+                    ->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)
+                    ->whereRaw('christmas_calendar_task_participant.task_id <= ' . $task->id)->get()->toArray();
+
+                $dayId = date('j', strtotime($task->date));
+
+                if (sizeof($passedTasks) != (int)$dayId - 1) {
+                    $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'no-hurries']);
+                    $view = $view->render();
+                    return response()->json(['error' => $view]);
                 }
 
                 $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'task']);
