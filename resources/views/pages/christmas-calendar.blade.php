@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-    @if(strtotime('2020/01/02 00:00:00') < time())
+    @if(strtotime('2021/01/02 00:00:00') < time())
         <div class="christmas-calendar-not-logged challenge-passed">
             <section class="container text-center">
                 <div class="row">
@@ -47,8 +47,7 @@
                         <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto">Join Dentacoin Holiday CALENDAR CHALLENGE 2019</h1>
                         <p class="fs-22 fs-xs-20 lato-regular">Unlock a new surprise every day from December 1 to 31!</p>
                         <div class="padding-bottom-35 padding-top-10">
-                            <a href="javascript:void(0);" class="show-login-signin">
-                                <img src="" class="Sign up button"/>
+                            <a href="javascript:void(0);" class="open-dentacoin-gateway patient-login">
                                 <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                     <img src="/assets/images/christmas-calendar-campaign/sign-up-button.svg" class="max-width-280 max-width-xs-300" alt="Sign up button" itemprop="contentUrl"/>
                                 </figure>
@@ -74,9 +73,9 @@
                         <div class="row fs-0 position-relative">
                             @for($i = 1; $i <= 31; $i+=1)
                                 @if($i == 31)
-                                    <a href="javascript:void(0);" class="col-xs-6 col-sm-4 col-md-2 padding-left-15 padding-right-15 padding-bottom-30 inline-block padding-left-xs-10 padding-right-xs-10 padding-bottom-xs-15 show-login-signin show-on-mobile show-xs dots"><span></span><span></span><span></span></a>
+                                    <a href="javascript:void(0);" class="col-xs-6 col-sm-4 col-md-2 padding-left-15 padding-right-15 padding-bottom-30 inline-block padding-left-xs-10 padding-right-xs-10 padding-bottom-xs-15 open-dentacoin-gateway patient-login show-on-mobile show-xs dots"><span></span><span></span><span></span></a>
                                 @endif
-                                <a href="javascript:void(0);" class="col-xs-6 col-sm-4 col-md-2 padding-left-15 padding-right-15 padding-bottom-30 inline-block padding-left-xs-10 padding-right-xs-10 padding-bottom-xs-15 show-login-signin @if($i > 4 && $i < 31) hide-xs @endif">
+                                <a href="javascript:void(0);" class="col-xs-6 col-sm-4 col-md-2 padding-left-15 padding-right-15 padding-bottom-30 inline-block padding-left-xs-10 padding-right-xs-10 padding-bottom-xs-15 open-dentacoin-gateway patient-login @if($i > 4 && $i < 31) hide-xs @endif">
                                     <div class="wrapper">
                                         <div class="present__pane">
                                             <h2 class="present__date">{{$i}}</h2>

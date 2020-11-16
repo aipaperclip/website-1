@@ -10,20 +10,26 @@ use Illuminate\Support\Facades\DB;
 class ChristmasCalendarController extends Controller
 {
     //const ALLOWED_ACCOUNTS = [70879, 3040, 69468];
+    const CALENDAR_YEARS = [2019, 2020];
 
-    public function getView()   {
+    public function getView($year)   {
+        if (!in_array($year, self::CALENDAR_YEARS)) {
+            return abort(404);
+        }
+
         // if (in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
         //if (strtotime('12/01/2019') < time()) {
             if ((new UserController())->checkSession()) {
                 $dcnAmount = 0;
                 $ticketAmount = 0;
                 $bonusTickets = 0;
-                $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
+                $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id'], 'year' => $year))->get()->first();
 
                 if (empty($participant)) {
                     // create participant
                     $participant = new ChristmasCalendarParticipant();
                     $participant->user_id = session('logged_user')['id'];
+                    $participant->year = $year;
                     $participant->save();
 
                     // just created participant should not have any passed tasks
@@ -31,7 +37,7 @@ class ChristmasCalendarController extends Controller
                     $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id, 'christmas_calendar_task_participant.disqualified' => 0))->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)->whereRaw('christmas_calendar_task_participant.task_id <= 31')->get()->toArray();
                     if (!empty($passedTasks)) {
                         foreach($passedTasks as $passedTask) {
-                            $task = ChristmasCalendarTask::where(array('id' => $passedTask->task_id))->get()->first();
+                            $task = ChristmasCalendarTask::where(array('id' => $passedTask->task_id, 'year' => $year))->get()->first();
                             if (!empty($task)) {
                                 if ($task->type == 'dcn-reward') {
                                     $dcnAmount += $task->value;

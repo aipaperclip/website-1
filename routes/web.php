@@ -53,7 +53,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/holiday-calendar-terms', 'ChristmasCalendarController@getChristmasCalendarTermsView')->name('holiday-calendar-terms');
 
-    Route::group(['prefix' => 'holiday-calendar-2019'], function () {
+    Route::group(['prefix' => 'holiday-calendar/{yearnum}'], function () {
         Route::get('/', 'ChristmasCalendarController@getView')->name('christmas-calendar');
 
         Route::post('/get-task-popup/{id}', 'ChristmasCalendarController@getTaskPopup')->name('get-task-popup');
@@ -167,6 +167,10 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('corporate-design', function() {
         return Redirect::to('/corporate-design/one-line-logo');
+    });
+
+    Route::get('holiday-calendar-2019', function() {
+        return Redirect::to('/holiday-calendar/2019');
     });
 });
 
