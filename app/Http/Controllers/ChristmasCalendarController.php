@@ -84,7 +84,7 @@ class ChristmasCalendarController extends Controller
             $task = ChristmasCalendarTask::where(array('id' => $id, 'year' => $year))->get()->first();
 
             //$participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
-            $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
+            $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id'], 'year' => $year))->get()->first();
 
             if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id, $task->year)) {
                 $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
@@ -134,7 +134,7 @@ class ChristmasCalendarController extends Controller
         // if ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
         if ((new UserController())->checkSession() && strtotime('12/01/2019') < time()) {
             $task = ChristmasCalendarTask::where(array('id' => $id))->get()->first();
-            $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
+            $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id'], 'year' => $year))->get()->first();
             $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
 
             // check if time passed to unlock this task
@@ -216,7 +216,7 @@ class ChristmasCalendarController extends Controller
                     $dcnAmount = 0;
                     $ticketAmount = 0;
                     $bonusTickets = 0;
-                    $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
+                    $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id'], 'year' => $year))->get()->first();
                     $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id, 'christmas_calendar_task_participant.disqualified' => 0))->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)->whereRaw('christmas_calendar_task_participant.task_id <= 31')->get()->toArray();
 
                     foreach($passedTasks as $passedTask) {
