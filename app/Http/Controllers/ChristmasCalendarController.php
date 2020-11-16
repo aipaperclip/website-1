@@ -36,7 +36,7 @@ class ChristmasCalendarController extends Controller
                 } else {
                     $allTasksForThisYear = $this->getAllTasksByYear($year);
                     var_dump($allTasksForThisYear[0]['id']);
-                    var_dump($allTasksForThisYear[sizeof($allTasksForThisYear) - 1]['id']);
+                    var_dump($allTasksForThisYear[count($allTasksForThisYear) - 1]['id']);
                     die();
 
                     $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')
