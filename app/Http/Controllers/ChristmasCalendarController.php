@@ -86,7 +86,7 @@ class ChristmasCalendarController extends Controller
             //$participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
 
-            if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id)) {
+            if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id, $task->year)) {
                 $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
 
                 $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'already-completed', 'coredbData' => $coredbData]);
@@ -151,7 +151,7 @@ class ChristmasCalendarController extends Controller
                     }
                 }
 
-                if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id)) {
+                if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id, $task->year)) {
                     $view = view('partials/christmas-calendar-task', ['task' => $task, 'type' => 'already-completed', 'coredbData' => $coredbData]);
                     $view = $view->render();
                     return response()->json(['error' => $view]);
