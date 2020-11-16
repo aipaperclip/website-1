@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-    @if(strtotime('2020/01/02 00:00:00') < time())
+    @if(strtotime('2021/01/02 00:00:00') < time())
         <div class="christmas-calendar-logged">
             <section class="container text-center">
                 <div class="row">

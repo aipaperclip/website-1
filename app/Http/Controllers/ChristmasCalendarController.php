@@ -34,7 +34,7 @@ class ChristmasCalendarController extends Controller
 
                     // just created participant should not have any passed tasks
                 } else {
-                    $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id, 'christmas_calendar_task_participant.disqualified' => 0))->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)->whereRaw('christmas_calendar_task_participant.task_id <= 31')->get()->toArray();
+                    $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id, 'christmas_calendar_task_participant.disqualified' => 0, 'christmas_calendar_task_participant.year' => $year))->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)->whereRaw('christmas_calendar_task_participant.task_id <= 31')->get()->toArray();
                     if (!empty($passedTasks)) {
                         foreach($passedTasks as $passedTask) {
                             $task = ChristmasCalendarTask::where(array('id' => $passedTask->task_id, 'year' => $year))->get()->first();
@@ -56,7 +56,7 @@ class ChristmasCalendarController extends Controller
                     }
                 }
 
-                return view('pages/logged-user/christmas-calendar-logged', ['tasks' => $this->getAllTasks()->toArray(), 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets, 'participant' => $participant]);
+                return view('pages/logged-user/christmas-calendar-logged', ['tasks' => $this->getAllTasksByYear($year), 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets, 'participant' => $participant]);
             } else {
                 return view('pages/christmas-calendar');
             }
@@ -69,8 +69,8 @@ class ChristmasCalendarController extends Controller
         return view('pages/holiday-calendar-terms');
     }
 
-    public function getAllTasks() {
-        return ChristmasCalendarTask::all();
+    public function getAllTasksByYear($year) {
+        return ChristmasCalendarTask::where(array('year' => $year))->get()->all();
     }
 
     public function getTaskPopup($id) {
