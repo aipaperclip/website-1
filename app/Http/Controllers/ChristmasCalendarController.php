@@ -40,6 +40,9 @@ class ChristmasCalendarController extends Controller
                         ->where(array('christmas_calendar_task_participant.participant_id' => $participant->id, 'christmas_calendar_task_participant.disqualified' => 0, 'christmas_calendar_participants.year' => $year))
                         ->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)
                         ->whereRaw('christmas_calendar_task_participant.task_id <= 31')->get()->toArray();
+
+                    var_dump($passedTasks);
+                    die();
                     if (!empty($passedTasks)) {
                         foreach($passedTasks as $passedTask) {
                             $task = ChristmasCalendarTask::where(array('id' => $passedTask->task_id, 'year' => $year))->get()->first();
