@@ -1,3 +1,4 @@
+@php($dayId = date('j', strtotime($task->date)))
 <div class="popup-header">
     <figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center">
         <img src="/assets/images/christmas-calendar-campaign/popup-gifts-header.png" alt="Dentacoins" itemprop="contentUrl"/>
@@ -10,12 +11,12 @@
             <div class="small-yellow-line"></div>
             <div class="small-red-line"></div>
         </div>
-        <div class="day">DEC {{date('j', strtotime($task->date))}}</div>
+        <div class="day">DEC {{$dayId}}</div>
     </div>
 </div>
 <div class="popup-body">
     @if($type == 'task')
-        @if($task->id == 9)
+        @if($dayId == 9)
             <div class="newsletter-register">
                 <form action="https://dentacoin.us16.list-manage.com/subscribe/post?u=61ace7d2b009198ca373cb213&amp;id=993df5967d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
                     <div class="padding-bottom-15 padding-top-25 fs-0 text-center-xs">
@@ -98,7 +99,7 @@
                     <div class="task-name inline-block lato-black fs-26 fs-xs-20 line-height-30 padding-left-20 padding-left-xs-0">{!! $task->task !!}</div>
                 </div>
                 <div class="task-body">
-                    @switch($task->id)
+                    @switch($dayId)
                         @case(1)
                         <input type="file" id="upload-avatar"/>
                         <input type="hidden" name="avatar" />
@@ -554,7 +555,7 @@
             </form>
         @endif
     @elseif($type == 'congrats')
-        @if($task->id == 31)
+        @if($dayId == 31)
             @php($subtitle = 'YOU’VE COMPLETED ALL TASKS!')
             @php($btnText = 'STAY TUNED FOR RAFFLE WINNERS')
         @else
@@ -590,20 +591,20 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if($task->id == 1 || $task->id == 16 || $task->id == 8 || $task->id == 24)
-                @if($task->id == 1)
-                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredbData->slug.'.png')
+            @if($dayId == 1 || $dayId == 16 || $dayId == 8 || $dayId == 24)
+                @if($dayId == 1)
+                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
-                @elseif($task->id == 8)
+                @elseif($dayId == 8)
                     @php($btnLink = 'https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500')
                     @php($btnLabel = 'HOLIDAY FRAME')
                     @php($actionType = 'external-link')
-                @elseif($task->id == 16)
-                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredbData->slug.'.png')
+                @elseif($dayId == 16)
+                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
-                @elseif($task->id == 24)
+                @elseif($dayId == 24)
                     @php($btnLink = 'https://dentacoin.com/assets/docs/dentacoin-oral-health-guide-2020.pdf')
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
@@ -646,20 +647,20 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if($task->id == 1 || $task->id == 16 || $task->id == 8 || $task->id == 24)
-                @if($task->id == 1)
-                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/'.$coredbData->slug.'.png')
+            @if($dayId == 1 || $dayId == 16 || $dayId == 8 || $dayId == 24)
+                @if($dayId == 1)
+                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
-                @elseif($task->id == 8)
+                @elseif($dayId == 8)
                     @php($btnLink = 'https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500')
                     @php($btnLabel = 'HOLIDAY FRAME')
                     @php($actionType = 'external-link')
-                @elseif($task->id == 16)
-                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/'.$coredbData->slug.'.png')
+                @elseif($dayId == 16)
+                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
-                @elseif($task->id == 24)
+                @elseif($dayId == 24)
                     @php($btnLink = 'https://dentacoin.com/assets/docs/dentacoin-oral-health-guide-2020.pdf')
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
