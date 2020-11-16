@@ -258,6 +258,10 @@ class ChristmasCalendarController extends Controller
     }
 
     public function checkIfTaskIsAlreadyFinished($task_id, $participant_id, $year) {
+        var_dump($task_id);
+        var_dump($participant_id);
+        var_dump($year);
+        die();
         return DB::connection('mysql')->table('christmas_calendar_task_participant')
             ->select('christmas_calendar_task_participant.*')
             ->leftJoin('christmas_calendar_participants', 'christmas_calendar_task_participant.participant_id', '=', 'christmas_calendar_participants.id')
