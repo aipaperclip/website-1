@@ -94,7 +94,7 @@ class ChristmasCalendarController extends Controller
                 return response()->json(['error' => $view]);
             }
 
-            if (strtotime('2020/01/02 00:00:00') < time()) {
+            if (strtotime('2021/01/02 00:00:00') < time()) {
                 $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'campaign-expired']);
                 $view = $view->render();
                 return response()->json(['error' => $view]);
