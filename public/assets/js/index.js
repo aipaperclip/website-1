@@ -834,7 +834,7 @@ var projectData = {
                             basic.closeDialog();
                         });
 
-                        if (Date.now() > Math.floor(new Date(2019, 12, 1, 23, 59, 59, 0).getTime())) {
+                        if (Date.now() > Math.floor(new Date(2020, 12, 1, 23, 59, 59, 0).getTime())) {
                             initTasksEvent();
                         } else {
                             if (basic.cookies.get('agreed_with_christmas_calendar_rules') != '1') {
