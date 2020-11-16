@@ -34,15 +34,18 @@ class ChristmasCalendarController extends Controller
 
                     // just created participant should not have any passed tasks
                 } else {
+                    $allTasksForThisYear = $this->getAllTasksByYear($year);
+                    var_dump($allTasksForThisYear[0]['id']);
+                    var_dump($allTasksForThisYear[sizeof($allTasksForThisYear) - 1]['id']);
+                    die();
+
                     $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')
                         ->select('christmas_calendar_task_participant.*')
                         ->leftJoin('christmas_calendar_participants', 'christmas_calendar_task_participant.participant_id', '=', 'christmas_calendar_participants.id')
                         ->where(array('christmas_calendar_task_participant.participant_id' => $participant->id, 'christmas_calendar_task_participant.disqualified' => 0, 'christmas_calendar_participants.year' => $year))
-                        ->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)
-                        ->whereRaw('christmas_calendar_task_participant.task_id <= 31')->get()->toArray();
+                        ->whereRaw('christmas_calendar_task_participant.task_id >= ' . $allTasksForThisYear[0]['id'])
+                        ->whereRaw('christmas_calendar_task_participant.task_id <= ' . $allTasksForThisYear[sizeof($allTasksForThisYear) - 1]['id'])->get()->toArray();
 
-                    var_dump($passedTasks);
-                    die();
                     if (!empty($passedTasks)) {
                         foreach($passedTasks as $passedTask) {
                             $task = ChristmasCalendarTask::where(array('id' => $passedTask->task_id, 'year' => $year))->get()->first();
@@ -220,7 +223,7 @@ class ChristmasCalendarController extends Controller
                     $ticketAmount = 0;
                     $bonusTickets = 0;
                     $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id'], 'year' => $year))->get()->first();
-                    $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id, 'christmas_calendar_task_participant.disqualified' => 0))->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)->whereRaw('christmas_calendar_task_participant.task_id <= 31')->get()->toArray();
+                    $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id, 'christmas_calendar_task_participant.disqualified' => 0))->whereRaw('christmas_calendar_task_participant.task_id >= 32')->whereRaw('christmas_calendar_task_participant.task_id <= 62')->get()->toArray();
 
                     foreach($passedTasks as $passedTask) {
                         $taskRecord = ChristmasCalendarTask::where(array('id' => $passedTask->task_id))->get()->first();
