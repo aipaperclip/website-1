@@ -1227,7 +1227,7 @@ var projectData = {
                                             basic.closeDialog();
                                             basic.showDialog(response.success, 'christmas-calendar-task', null);
 
-                                            if (this_btn.attr('data-task') == '1') {
+                                            if (this_btn.attr('data-day-id') == '1') {
                                                 // face sticker generation task
                                                 var vertical_step = 0;
                                                 var horizontal_step = 0;
@@ -1517,13 +1517,13 @@ var projectData = {
                                                         });
                                                     }
                                                 });
-                                            } else if (['3', '4', '5', '7', '8', '10', '13', '14', '15', '17', '18', '19', '2', '6', '11', '20', '12', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'].indexOf(this_btn.attr('data-task')) > -1) {
+                                            } else if (['3', '4', '5', '7', '8', '10', '13', '14', '15', '17', '18', '19', '2', '6', '11', '20', '12', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'].indexOf(this_btn.attr('data-day-id')) > -1) {
                                                 $('.popup-body form').on('submit', function(event) {
                                                     event.preventDefault();
                                                     var form = $(this);
                                                     var this_form = this;
 
-                                                    if (['12', '21', '25', '30'].indexOf(this_btn.attr('data-task')) > -1) {
+                                                    if (['12', '21', '25', '30'].indexOf(this_btn.attr('data-day-id')) > -1) {
                                                         var warningReminderAboutTaskValidation = {};
                                                         warningReminderAboutTaskValidation.callback = function (result) {
                                                             if (result) {
@@ -1560,7 +1560,7 @@ var projectData = {
                                                         basic.showDialog(response.success, 'response-popup', null);
                                                     });
                                                 }
-                                            } else if (['9'].indexOf(this_btn.attr('data-task')) > -1) {
+                                            } else if (['9'].indexOf(this_btn.attr('data-day-id')) > -1) {
                                                 // newsletter registration task
                                                 $('.newsletter-register form').on('submit', function(event)  {
                                                     var this_form = this;
@@ -1595,7 +1595,7 @@ var projectData = {
                                                         fireGoogleAnalyticsEvent('Subscription', 'Sign-up', 'Newsletter');
                                                     }
                                                 });
-                                            } else if (['16'].indexOf(this_btn.attr('data-task')) > -1) {
+                                            } else if (['16'].indexOf(this_btn.attr('data-day-id')) > -1) {
                                                 // holiday card generation task
                                                 $('.popup-body form').on('submit', function(event) {
                                                     event.preventDefault();
