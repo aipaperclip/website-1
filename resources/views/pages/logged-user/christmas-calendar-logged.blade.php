@@ -164,7 +164,6 @@
                 <div class="row blurred-section active">
                     <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                         <div class="row fs-0 position-relative">
-                            @php(var_dump($task['id']))
                             @php(var_dump($participant->id))
                             @php(var_dump($year))
                             @php(die())
