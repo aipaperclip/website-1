@@ -164,6 +164,10 @@
                 <div class="row blurred-section active">
                     <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                         <div class="row fs-0 position-relative">
+                            @php(var_dump($task['id']))
+                            @php(var_dump($participant->id))
+                            @php(var_dump($year))
+                            @php(die())
                             @foreach($tasks as $task)
                                 <a href="javascript:void(0);" class="single-task col-xs-4 col-sm-2 padding-left-xs-15 padding-right-xs-15 padding-left-10 padding-right-10 padding-bottom-30 padding-bottom-xs-25 inline-block @if((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsDisqualified($task['id'], $participant->id, $year)) disqualified @endif" data-task="{{$task['id']}}" data-day-id="{{date('j', strtotime($task['date']))}}" data-type="{{$task['type']}}">
                                     <div class="wrapper @if((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id, $year)) opened @endif">
