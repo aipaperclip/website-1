@@ -1856,7 +1856,7 @@ var projectData = {
                     dcnGateway.init({
                         'platform': 'dev.dentacoin',
                         /*'platform': 'dentacoin',*/
-                        /*'environment' : 'staging',*/
+                        'environment' : 'staging',
                         'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password',
                         'callback' : function() {
                             console.log('INITIATED')
