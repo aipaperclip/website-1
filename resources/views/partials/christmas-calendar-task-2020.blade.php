@@ -10,7 +10,7 @@
             <div class="small-yellow-line"></div>
             <div class="small-red-line"></div>
         </div>
-        <div class="day">DEC {{$task->id}}</div>
+        <div class="day">DEC {{date('j', strtotime($task->date))}}</div>
     </div>
 </div>
 <div class="popup-body">
