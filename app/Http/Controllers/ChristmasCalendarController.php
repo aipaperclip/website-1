@@ -89,13 +89,13 @@ class ChristmasCalendarController extends Controller
             if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id, $task->year)) {
                 $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
 
-                $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'already-completed', 'coredbData' => $coredbData]);
+                $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'year' => $year, 'type' => 'already-completed', 'coredbData' => $coredbData]);
                 $view = $view->render();
                 return response()->json(['error' => $view]);
             }
 
             if (strtotime('2021/01/02 00:00:00') < time()) {
-                $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'campaign-expired']);
+                $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'year' => $year, 'type' => 'campaign-expired']);
                 $view = $view->render();
                 return response()->json(['error' => $view]);
             }
@@ -112,16 +112,16 @@ class ChristmasCalendarController extends Controller
                 $dayId = date('j', strtotime($task->date));
 
                 if (sizeof($passedTasks) != (int)$dayId - 1) {
-                    $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'no-hurries']);
+                    $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'year' => $year, 'type' => 'no-hurries']);
                     $view = $view->render();
                     return response()->json(['error' => $view]);
                 }
 
-                $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'task']);
+                $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'year' => $year, 'type' => 'task']);
                 $view = $view->render();
                 return response()->json(['success' => $view]);
             } else {
-                $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'not-active-yet']);
+                $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'year' => $year, 'type' => 'not-active-yet']);
                 $view = $view->render();
                 return response()->json(['error' => $view]);
             }
@@ -147,14 +147,14 @@ class ChristmasCalendarController extends Controller
                         ->whereRaw('christmas_calendar_task_participant.task_id >= ' . 1)
                         ->whereRaw('christmas_calendar_task_participant.task_id <= ' . $task->id)->get()->toArray();
                     if (sizeof($passedTasks) != (int)$id - 1) {
-                        $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'no-hurries']);
+                        $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'year' => $year, 'type' => 'no-hurries']);
                         $view = $view->render();
                         return response()->json(['error' => $view]);
                     }
                 }
 
                 if ($this->checkIfTaskIsAlreadyFinished($task->id, $participant->id, $task->year)) {
-                    $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'already-completed', 'coredbData' => $coredbData]);
+                    $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'year' => $year, 'type' => 'already-completed', 'coredbData' => $coredbData]);
                     $view = $view->render();
                     return response()->json(['error' => $view]);
                 } else {
@@ -239,12 +239,12 @@ class ChristmasCalendarController extends Controller
                         $dcnAmount *= 2;
                     }
 
-                    $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'congrats', 'coredbData' => $coredbData]);
+                    $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'year' => $year, 'type' => 'congrats', 'coredbData' => $coredbData]);
                     $view = $view->render();
-                    return response()->json(['success' => $view, 'data' => $coredbData->slug, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets, 'doubleAmount' => $doubleAmount]);
+                    return response()->json(['success' => $view, 'data' => $coredbData->slug, 'year' => $year, 'dcnAmount' => $dcnAmount, 'ticketAmount' => $ticketAmount, 'bonusTickets' => $bonusTickets, 'doubleAmount' => $doubleAmount]);
                 }
             } else {
-                $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'type' => 'not-active-yet']);
+                $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'year' => $year, 'type' => 'not-active-yet']);
                 $view = $view->render();
                 return response()->json(['error' => $view]);
             }

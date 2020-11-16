@@ -1454,6 +1454,7 @@ var projectData = {
 
                                                         var post_data = {
                                                             'avatar' : form.find('[name="avatar"]').val(),
+                                                            'year' : form.find('[name="year"]').val(),
                                                             'background_scale' : form.find('[name="background_scale"]').val(),
                                                             'avatar-border' : avatar_border,
                                                             'horizontal_step' : horizontal_step,
@@ -1604,6 +1605,7 @@ var projectData = {
                                                     completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
                                                         var post_data = {};
                                                         post_data['user_slug'] = response.data;
+                                                        post_data['year'] = response.year;
                                                         $.ajax({
                                                             type: 'POST',
                                                             url: 'https://christmas-calendar-api.dentacoin.com/generate-holiday-card',

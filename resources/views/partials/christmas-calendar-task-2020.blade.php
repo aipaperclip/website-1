@@ -102,6 +102,7 @@
                     @switch($dayId)
                         @case(1)
                         <input type="file" id="upload-avatar"/>
+                        <input type="hidden" name="year" value="{{$year}}"/>
                         <input type="hidden" name="avatar" />
                         <input type="hidden" name="background_scale" value="1"/>
                         <input type="hidden" name="avatar-border" id="avatar-border"/>
